@@ -1,7 +1,7 @@
 """Integration tests for the orchestration pipeline.
 
-Mocks Gemini at the SDK boundary so no network is hit. Uses real pdftoppm
-on hand-rolled blank PDFs (skipped if poppler is not installed).
+Mocks Gemini at the SDK boundary so no network is hit. Uses the bundled
+fixture PDF (real CCITT-G4 embedded images) when poppler is available.
 """
 
 from __future__ import annotations
@@ -23,9 +23,10 @@ from core.pipeline import (
     result_path_for,
 )
 from core.schema import Entry, PageResult, Quadrant
-from tests.unit.test_render import _make_blank_pdf  # reuse the blank-PDF helper
 
-POPPLER_AVAILABLE = shutil.which("pdftoppm") is not None and shutil.which("pdfinfo") is not None
+POPPLER_AVAILABLE = shutil.which("pdfimages") is not None and shutil.which("pdfinfo") is not None
+FIXTURE_PDF = Path(__file__).resolve().parents[1] / "fixtures" / "three_pages_with_images.pdf"
+FIXTURE_PDF_PAGES = 3
 
 
 def _build_page_result(date: str = "Monday 1 Jan '90") -> PageResult:
@@ -76,13 +77,17 @@ async def store(tmp_path: Path) -> JobStore:
 
 @pytest.fixture
 def scans_root(tmp_path: Path) -> Path:
-    """Create a small scans/ tree with two PDFs (3 pages and 2 pages)."""
+    """Create a small scans/ tree by copying the fixture PDF into two locations."""
     root = tmp_path / "scans"
     (root / "1990" / "January 1990").mkdir(parents=True)
     (root / "1990" / "February 1990").mkdir(parents=True)
-    _make_blank_pdf(root / "1990" / "January 1990" / "1990-01jan0106.pdf", n_pages=3)
-    _make_blank_pdf(root / "1990" / "February 1990" / "1990-02feb0106.pdf", n_pages=2)
+    payload = FIXTURE_PDF.read_bytes()
+    (root / "1990" / "January 1990" / "1990-01jan0106.pdf").write_bytes(payload)
+    (root / "1990" / "February 1990" / "1990-02feb0106.pdf").write_bytes(payload)
     return root
+
+
+SCANS_ROOT_TOTAL_PAGES = FIXTURE_PDF_PAGES * 2
 
 
 def test_result_path_for_mirrors_pdf_layout(tmp_path: Path) -> None:
@@ -95,40 +100,40 @@ def test_result_path_for_mirrors_pdf_layout(tmp_path: Path) -> None:
     assert p == data_root / "results" / "1990" / "January 1990" / "1990-01jan0106" / "page-01.json"
 
 
-@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_discover_pdfs_registers_one_job_per_page(store: JobStore, scans_root: Path) -> None:
     n = await discover_pdfs(store, scans_root=scans_root)
-    assert n == 5  # 3 + 2
+    assert n == 6  # 3 + 3
 
     counts = await store.counts_by_status()
-    assert counts == {JobStatus.PENDING: 5}
+    assert counts == {JobStatus.PENDING: 6}
 
 
-@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_discover_pdfs_is_idempotent(store: JobStore, scans_root: Path) -> None:
     await discover_pdfs(store, scans_root=scans_root)
     n_second = await discover_pdfs(store, scans_root=scans_root)
     assert n_second == 0  # nothing new
     counts = await store.counts_by_status()
-    assert counts == {JobStatus.PENDING: 5}
+    assert counts == {JobStatus.PENDING: 6}
 
 
-@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_render_pending_renders_and_marks_rendered(
     store: JobStore, scans_root: Path, tmp_path: Path
 ) -> None:
     data_root = tmp_path / "data"
     await discover_pdfs(store, scans_root=scans_root)
 
-    n = await render_pending(store, scans_root=scans_root, data_root=data_root, dpi=72, limit=10)
-    assert n == 5
+    n = await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
+    assert n == 6
 
     counts = await store.counts_by_status()
-    assert counts == {JobStatus.RENDERED: 5}
+    assert counts == {JobStatus.RENDERED: 6}
 
     # Each rendered file is on disk.
     rendered = list(data_root.glob("pages/**/page-*.png"))
-    assert len(rendered) == 5
+    assert len(rendered) == 6
 
 
 async def test_render_pending_respects_concurrency_limit(
@@ -138,7 +143,7 @@ async def test_render_pending_respects_concurrency_limit(
 ) -> None:
     """Peak in-flight render_page calls must not exceed `concurrency`.
 
-    We don't need real pdftoppm here — patch render_page to measure
+    We don't need a real pdfimages call here — patch render_page to measure
     overlap and complete quickly.
     """
     import threading
@@ -154,7 +159,7 @@ async def test_render_pending_respects_concurrency_limit(
     state = {"in_flight": 0, "peak": 0}
 
     def fake_render(
-        pdf_path: Path, page_number: int, out_dir: Path, dpi: int, *, force: bool = False
+        pdf_path: Path, page_number: int, out_dir: Path, *, force: bool = False
     ) -> Path:
         with lock:
             state["in_flight"] += 1
@@ -173,7 +178,6 @@ async def test_render_pending_respects_concurrency_limit(
         store,
         scans_root=tmp_path / "scans",
         data_root=tmp_path / "data",
-        dpi=72,
         limit=12,
         concurrency=3,
     )
@@ -195,9 +199,7 @@ async def test_render_pending_one_failure_does_not_kill_others(
     for i in range(5):
         await store.register("scans/x.pdf", i + 1)
 
-    def maybe_fail(
-        pdf_path: Path, page_number: int, out_dir: Path, dpi: int, *, force: bool = False
-    ) -> Path:
+    def maybe_fail(pdf_path: Path, page_number: int, out_dir: Path, *, force: bool = False) -> Path:
         if page_number == 3:
             raise RenderError("simulated render failure on page 3")
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -211,7 +213,6 @@ async def test_render_pending_one_failure_does_not_kill_others(
         store,
         scans_root=tmp_path / "scans",
         data_root=tmp_path / "data",
-        dpi=72,
         limit=10,
         concurrency=3,
     )
@@ -222,35 +223,35 @@ async def test_render_pending_one_failure_does_not_kill_others(
     assert counts.get(JobStatus.FAILED) == 1
 
 
-@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_process_pending_writes_json_and_marks_completed(
     store: JobStore, scans_root: Path, tmp_path: Path
 ) -> None:
     data_root = tmp_path / "data"
     await discover_pdfs(store, scans_root=scans_root)
-    await render_pending(store, scans_root=scans_root, data_root=data_root, dpi=72, limit=10)
+    await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
 
     client = _fake_gemini_client(_build_page_result())
     n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
-    assert n == 5
+    assert n == 6
 
     counts = await store.counts_by_status()
-    assert counts == {JobStatus.COMPLETED: 5}
+    assert counts == {JobStatus.COMPLETED: 6}
 
     # Result JSON exists and round-trips through PageResult.
     results = list(data_root.glob("results/**/page-*.json"))
-    assert len(results) == 5
+    assert len(results) == 6
     sample = json.loads(results[0].read_text())
     PageResult.model_validate(sample)
 
 
-@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_process_pending_marks_failed_on_exception(
     store: JobStore, scans_root: Path, tmp_path: Path
 ) -> None:
     data_root = tmp_path / "data"
     await discover_pdfs(store, scans_root=scans_root)
-    await render_pending(store, scans_root=scans_root, data_root=data_root, dpi=72, limit=10)
+    await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
 
     client = _fake_gemini_client(RuntimeError("rate limit exceeded"))
     n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
@@ -258,7 +259,7 @@ async def test_process_pending_marks_failed_on_exception(
     assert n == 0  # zero successes
 
     counts = await store.counts_by_status()
-    assert counts.get(JobStatus.FAILED) == 5
+    assert counts.get(JobStatus.FAILED) == 6
 
     # All five recorded the error message.
     for job in await store.next_pending_for_process(limit=10, max_attempts=99):
@@ -267,23 +268,21 @@ async def test_process_pending_marks_failed_on_exception(
         assert job.attempts == 1
 
 
-@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_full_run_end_to_end(store: JobStore, scans_root: Path, tmp_path: Path) -> None:
     data_root = tmp_path / "data"
     await discover_pdfs(store, scans_root=scans_root)
-    await render_pending(store, scans_root=scans_root, data_root=data_root, dpi=72, limit=10)
+    await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
 
     client = _fake_gemini_client(_build_page_result())
     await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
 
     # Re-running discover + render + process is idempotent (nothing repeats).
     assert (await discover_pdfs(store, scans_root=scans_root)) == 0
-    assert (
-        await render_pending(store, scans_root=scans_root, data_root=data_root, dpi=72, limit=10)
-    ) == 0
+    assert (await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)) == 0
     assert (
         await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
     ) == 0
 
     counts = await store.counts_by_status()
-    assert counts == {JobStatus.COMPLETED: 5}
+    assert counts == {JobStatus.COMPLETED: 6}

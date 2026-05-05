@@ -60,17 +60,16 @@ async def render_pending(
     store: JobStore,
     scans_root: Path,
     data_root: Path,
-    dpi: int,
     limit: int,
     *,
     concurrency: int = 1,
 ) -> int:
     """Render up to `limit` pending pages. Returns the count rendered.
 
-    `concurrency` controls how many pdftoppm subprocesses may be in flight at
-    once. pdftoppm is CPU-bound but releases the GIL inside the subprocess
-    boundary, so an asyncio semaphore + to_thread gives near-linear speedup
-    up to roughly the number of physical cores.
+    `concurrency` controls how many pdfimages subprocesses may be in flight
+    at once. The work is CPU-bound but each subprocess releases the GIL,
+    so an asyncio semaphore + to_thread gives near-linear speedup up to
+    roughly the number of physical cores.
 
     Per-job failures (RenderError) mark only that job failed and do not abort
     the rest of the batch.
@@ -89,9 +88,7 @@ async def render_pending(
         out_dir = _pages_dir_for(data_root, job.pdf_path)
         async with sem:
             try:
-                image_path = await asyncio.to_thread(
-                    render_page, pdf_abs, job.page_number, out_dir, dpi
-                )
+                image_path = await asyncio.to_thread(render_page, pdf_abs, job.page_number, out_dir)
             except RenderError as exc:
                 await store.mark_failed(job.pdf_path, job.page_number, error=str(exc))
                 return False

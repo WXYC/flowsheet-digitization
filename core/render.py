@@ -1,12 +1,25 @@
-"""PDF → PNG rendering via the poppler `pdftoppm` and `pdfinfo` CLIs.
+"""Page-image extraction via the poppler `pdfimages` and `pdfinfo` CLIs.
 
-We shell out instead of pulling pypdfium2/pdf2image because:
-  * poppler is already standard on macOS via Homebrew and on Ubuntu via apt,
-  * it's the same toolchain we used to generate the sample images,
-  * it gives us the most predictable file naming.
+The WXYC scan PDFs each embed exactly one CCITT Group 4 (lossless 1-bit
+grayscale) image per page, at the page's native 300 PPI. We extract those
+embedded images directly with `pdfimages -png` rather than rasterizing the
+PDF page with `pdftoppm`. That:
 
-Renders are idempotent — if the target PNG already exists we skip unless
-`force=True`. Page numbers are 1-based.
+  * avoids the rendering pipeline's anti-aliasing and color-space steps,
+    so the output is bit-for-bit identical to the source CCITT bitmap,
+  * gives us native resolution automatically (no DPI to choose),
+  * is faster and produces smaller PNGs.
+
+Public surface keeps the function name `render_page` because callers care
+about "give me a PNG of this page" — the implementation behind it is
+strictly an implementation detail. Renders are idempotent: if the target
+PNG already exists we skip unless `force=True`. Page numbers are 1-based.
+
+Assumes each PDF page contains exactly one embedded image. The
+`scripts/audit_embedded_images.sh`-style check in the README's
+calibration section verified this across the entire WXYC corpus. If a
+future PDF has 0 or 2+ images on a page, `render_page` raises
+`RenderError` and the pipeline marks that page failed.
 """
 
 from __future__ import annotations
@@ -19,19 +32,19 @@ from pathlib import Path
 
 
 class RenderError(RuntimeError):
-    """Raised when pdftoppm or pdfinfo cannot process a PDF."""
+    """Raised when pdfimages or pdfinfo cannot process a PDF."""
 
 
 def _require_poppler() -> None:
-    if shutil.which("pdftoppm") is None or shutil.which("pdfinfo") is None:
+    if shutil.which("pdfimages") is None or shutil.which("pdfinfo") is None:
         raise RenderError(
-            "poppler not found on PATH (need pdftoppm and pdfinfo). "
+            "poppler not found on PATH (need pdfimages and pdfinfo). "
             "Install with `brew install poppler` (macOS) or `apt-get install poppler-utils`."
         )
 
 
 def image_path_for(out_dir: Path, page_number: int) -> Path:
-    """Return the canonical path for a rendered page image.
+    """Return the canonical path for an extracted page image.
 
     Two-digit zero-padding is the default; longer is allowed for PDFs > 99 pages.
     """
@@ -62,14 +75,14 @@ def render_page(
     pdf_path: Path,
     page_number: int,
     out_dir: Path,
-    dpi: int = 300,
     *,
     force: bool = False,
 ) -> Path:
-    """Render a single page of `pdf_path` to a PNG in `out_dir`.
+    """Extract page `page_number` of `pdf_path` to a PNG in `out_dir`.
 
     Returns the output path. Idempotent: skips if the file already exists,
-    unless `force=True`. Raises RenderError on failure or out-of-range pages.
+    unless `force=True`. Raises RenderError on failure, out-of-range pages,
+    or pages whose embedded-image count is not exactly 1.
     """
     _require_poppler()
     if not pdf_path.is_file():
@@ -83,44 +96,41 @@ def render_page(
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # pdftoppm names output as <root>-<padded-page>.png, where the padding
-    # width depends on total page count (not the requested page number). To
-    # avoid colliding with any pre-existing output in `out_dir`, we render
-    # into a per-call tempdir and move the single produced file to `target`.
-    with tempfile.TemporaryDirectory(prefix="flowsheet_render_", dir=out_dir) as tmp:
+    # `pdfimages -f N -l N -png in.pdf <root>` writes one file per embedded
+    # image on page N, named `<root>-NNN.png` where NNN is a 0-based serial
+    # number reset to 0 for each invocation. We extract into a per-call
+    # tempdir so the produced file is unambiguous, then move it to `target`.
+    with tempfile.TemporaryDirectory(prefix="flowsheet_extract_", dir=out_dir) as tmp:
         tmp_dir = Path(tmp)
-        root = tmp_dir / "page"
         cmd = [
-            "pdftoppm",
-            "-r",
-            str(dpi),
+            "pdfimages",
             "-f",
             str(page_number),
             "-l",
             str(page_number),
             "-png",
             str(pdf_path),
-            str(root),
+            str(tmp_dir / "page"),
         ]
         result = subprocess.run(cmd, capture_output=True, text=True, check=False)
         if result.returncode != 0:
             raise RenderError(
-                f"pdftoppm failed for {pdf_path} page {page_number}: {result.stderr.strip()}"
+                f"pdfimages failed for {pdf_path} page {page_number}: {result.stderr.strip()}"
             )
 
-        produced: Path | None = None
-        for cand in sorted(tmp_dir.iterdir()):
-            match = re.match(r"^page-(\d+)\.png$", cand.name)
-            if match and int(match.group(1)) == page_number:
-                produced = cand
-                break
-        if produced is None:
+        produced = sorted(tmp_dir.glob("page-*.png"))
+        if len(produced) == 0:
             raise RenderError(
-                f"pdftoppm reported success but produced no file for page {page_number}; "
-                f"saw {[c.name for c in tmp_dir.iterdir()]}"
+                f"page {page_number} of {pdf_path} has no embedded image; "
+                "phase-1 assumes exactly one image per page"
+            )
+        if len(produced) > 1:
+            raise RenderError(
+                f"page {page_number} of {pdf_path} has {len(produced)} embedded images; "
+                "phase-1 assumes exactly one image per page"
             )
 
         if target.exists():
             target.unlink()
-        shutil.move(str(produced), str(target))
+        shutil.move(str(produced[0]), str(target))
     return target

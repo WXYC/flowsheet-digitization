@@ -6,7 +6,7 @@ OCR pipeline that turns 1990–2001 WXYC handwritten flowsheet PDFs into structu
 
 For each page of every PDF under `scans/`:
 
-1. Renders the page to a PNG (`pdftoppm`, 300 DPI default).
+1. Extracts the embedded page image directly with `pdfimages -png`. The WXYC PDFs each wrap a single CCITT Group 4 (lossless 1-bit grayscale) image at 300 PPI native, so the extracted PNG is bit-for-bit identical to the source bitmap — no rasterization, no anti-aliasing, no DPI choice.
 2. Sends the image to Gemini 3 with a Pydantic `response_schema` that defines the four-quadrant flowsheet layout.
 3. Stores a JSON result file with the per-row `raw_text`, `artist_guess`, `track_guess`, `confidence`, and any phase-2 `notes` (continuation, double-height, crossed-out, illegible).
 4. Tracks every page in a SQLite job table so reruns are idempotent and partial failures resume.
@@ -29,7 +29,7 @@ cp .env.example .env
 
 # 3. Run the pipeline
 .venv/bin/flowsheets discover                       # register one job per PDF page
-.venv/bin/flowsheets render --limit 200             # PDF -> PNG, parallel by default (RENDER_CONCURRENCY)
+.venv/bin/flowsheets render --limit 200             # extract embedded PNGs, parallel by default (RENDER_CONCURRENCY)
 .venv/bin/flowsheets render --concurrency 8 --limit 1000   # override per-run
 .venv/bin/flowsheets process --limit 50             # PNG -> Gemini -> JSON
 .venv/bin/flowsheets status                         # show counts by status
@@ -46,7 +46,6 @@ All settings live in `.env` (see `.env.example` for the canonical list):
 | `GEMINI_API_KEY` | _(required)_ | API key from <https://aistudio.google.com/apikey>. |
 | `SCANS_ROOT` | `./scans` | Where the PDFs live. Point at an external drive or synced folder if needed. |
 | `DATA_ROOT` | `./data` | Where rendered PNGs, JSON results, and `jobs.db` are written. Gitignored. |
-| `RENDER_DPI` | `300` | DPI for PDF→PNG. Bump to 400 if a decade's handwriting is unreadable. |
 | `GEMINI_MODEL` | `gemini-3.1-pro-preview` | The original `gemini-3-pro-preview` was shut down March 2026; we use 3.1 Pro Preview. Bump as Google releases stable Gemini 3.x. |
 | `GEMINI_MEDIA_RESOLUTION` | `high` | Vision token allocation: `low` / `medium` / `high` (1120 tokens) / `ultra_high`. `high` is the default for fine handwriting. |
 | `RENDER_CONCURRENCY` | `4` | Parallel pdftoppm workers for `flowsheets render`. Override per-run with `--concurrency`. |

@@ -23,8 +23,10 @@ core/
                                  changes are reviewable independently).
   gemini.py                      Async wrapper around google-genai. Dependency
                                  injects the SDK Client for testability.
-  render.py                      pdftoppm/pdfinfo wrappers. Renders are
-                                 idempotent (skip if file exists).
+  render.py                      pdfimages/pdfinfo wrappers. Extracts the
+                                 embedded CCITT-G4 page image directly (no
+                                 rasterization). Idempotent: skip if file
+                                 exists.
   jobs.py                        aiosqlite-backed state machine:
                                  pending → rendered → processing → completed
                                                     ↘ failed → (retry) ↗

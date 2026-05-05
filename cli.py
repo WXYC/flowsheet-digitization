@@ -124,12 +124,10 @@ def render(
 
 async def _render(limit: int, concurrency: int) -> int:
     store = await _init_store()
-    dpi = int(os.environ.get("RENDER_DPI", "300"))
     return await render_pending(
         store,
         scans_root=_scans_root(),
         data_root=_data_root(),
-        dpi=dpi,
         limit=limit,
         concurrency=concurrency,
     )
