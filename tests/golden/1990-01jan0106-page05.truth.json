@@ -1,0 +1,39 @@
+{
+  "page_date_substrings": ["Mon", "Jan", "90"],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "hour_raw": "6AM",
+      "jock_substring": "ALECIA",
+      "rows": [
+        {"raw_substring": "LED ZEP"},
+        {"raw_substring": "TRAMPLED"},
+        {"raw_substring": "STONES"},
+        {"raw_substring": "VELVETS"},
+        {"raw_substring": "WAITING"},
+        {"raw_substring": "TV"},
+        {"raw_substring": "SEE NO EVIL"},
+        {"raw_substring": "DAMNED"},
+        {"raw_substring": "ALONE AGAIN"}
+      ]
+    },
+    {
+      "position": "top_right",
+      "jock_substring": "Brian",
+      "rows": []
+    },
+    {
+      "position": "bottom_left",
+      "hour_raw": "7PM",
+      "jock_substring": "HOLLAND",
+      "rows": [
+        {"raw_substring": "BIG WHEEL"}
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "jock_substring": "Brian",
+      "rows": []
+    }
+  ]
+}

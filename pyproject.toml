@@ -1,0 +1,81 @@
+[project]
+name = "flowsheet-digitization"
+version = "0.1.0"
+description = "WXYC handwritten flowsheet OCR pipeline (Gemini 3 vision)"
+requires-python = ">=3.12"
+readme = "README.md"
+authors = [
+    {name = "WXYC Engineering"}
+]
+
+dependencies = [
+    "google-genai>=0.8.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "aiosqlite>=0.19.0",
+    "typer>=0.12.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    # Pinned (not >=) so a new release that changes lint or type-check rules
+    # cannot silently fail CI on an unrelated PR. Bumps should be deliberate.
+    # Mirrors library-metadata-lookup.
+    "ruff==0.15.6",
+    "mypy==1.19.1",
+]
+
+[project.scripts]
+flowsheets = "cli:app"
+
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["cli"]
+
+[tool.setuptools.packages.find]
+include = ["core*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "N", "UP", "B", "C4"]
+ignore = ["E501", "B008", "C901"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["N802", "N803"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+strict_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "external_api: tests that hit a real external API (Gemini). Excluded from default CI; opt-in via -m external_api.",
+    "slow: tests that take more than a few seconds.",
+]
+# Default run excludes external_api and slow. CI runs the same default; a
+# separate workflow runs `pytest -m external_api` on a schedule against a
+# small set of golden pages.
+addopts = "-m 'not external_api and not slow'"

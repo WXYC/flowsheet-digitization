@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Scans (huge; user keeps locally or on external storage; pointed at via SCANS_ROOT)
+scans/
+
+# Pipeline outputs (regenerated; never commit)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Venv & tooling caches
+.venv/
+.env
+.env.local
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Local Claude scratch
+.claude/settings.local.json
