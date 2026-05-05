@@ -26,6 +26,24 @@ async def test_init_is_idempotent(tmp_path: Path) -> None:
     assert counts == {}
 
 
+async def test_init_enables_wal_mode(tmp_path: Path) -> None:
+    """WAL mode is required for healthy concurrency between render workers.
+
+    Without it, every writer briefly locks readers, which slows the
+    render-pending dispatcher when several workers mark_rendered at once.
+    """
+    import aiosqlite
+
+    s = JobStore(tmp_path / "jobs.db")
+    await s.init()
+
+    async with aiosqlite.connect(s.db_path) as db:
+        cursor = await db.execute("PRAGMA journal_mode")
+        row = await cursor.fetchone()
+    assert row is not None
+    assert row[0].lower() == "wal"
+
+
 async def test_register_and_count(store: JobStore) -> None:
     await store.register("scans/a.pdf", page_number=1)
     await store.register("scans/a.pdf", page_number=2)

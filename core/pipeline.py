@@ -11,7 +11,7 @@ import asyncio
 from pathlib import Path
 
 from core.gemini import GeminiClient
-from core.jobs import JobStore
+from core.jobs import Job, JobStore
 from core.render import RenderError, count_pages, render_page
 
 
@@ -62,26 +62,44 @@ async def render_pending(
     data_root: Path,
     dpi: int,
     limit: int,
+    *,
+    concurrency: int = 1,
 ) -> int:
-    """Render up to `limit` pending pages. Returns the count rendered."""
+    """Render up to `limit` pending pages. Returns the count rendered.
+
+    `concurrency` controls how many pdftoppm subprocesses may be in flight at
+    once. pdftoppm is CPU-bound but releases the GIL inside the subprocess
+    boundary, so an asyncio semaphore + to_thread gives near-linear speedup
+    up to roughly the number of physical cores.
+
+    Per-job failures (RenderError) mark only that job failed and do not abort
+    the rest of the batch.
+    """
+    if concurrency < 1:
+        raise ValueError(f"concurrency must be >= 1, got {concurrency}")
+
     pending = await store.next_pending_for_render(limit=limit)
     if not pending:
         return 0
 
-    rendered = 0
-    for job in pending:
+    sem = asyncio.Semaphore(concurrency)
+
+    async def render_one(job: Job) -> bool:
         pdf_abs = scans_root / job.pdf_path
         out_dir = _pages_dir_for(data_root, job.pdf_path)
-        try:
-            image_path = await asyncio.to_thread(
-                render_page, pdf_abs, job.page_number, out_dir, dpi
-            )
-        except RenderError as exc:
-            await store.mark_failed(job.pdf_path, job.page_number, error=str(exc))
-            continue
+        async with sem:
+            try:
+                image_path = await asyncio.to_thread(
+                    render_page, pdf_abs, job.page_number, out_dir, dpi
+                )
+            except RenderError as exc:
+                await store.mark_failed(job.pdf_path, job.page_number, error=str(exc))
+                return False
         await store.mark_rendered(job.pdf_path, job.page_number, image_path=image_path)
-        rendered += 1
-    return rendered
+        return True
+
+    results = await asyncio.gather(*(render_one(j) for j in pending))
+    return sum(results)
 
 
 async def process_pending(

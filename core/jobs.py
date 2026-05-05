@@ -106,6 +106,11 @@ class JobStore:
     async def init(self) -> None:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         async with aiosqlite.connect(self.db_path) as db:
+            # WAL lets concurrent readers run while a writer is active. With
+            # multiple render workers each marking jobs `rendered`, this
+            # avoids the writer-blocks-everyone behaviour of the default
+            # rollback journal. The pragma is persistent across connections.
+            await db.execute("PRAGMA journal_mode=WAL")
             await db.executescript(_SCHEMA)
             await db.commit()
 

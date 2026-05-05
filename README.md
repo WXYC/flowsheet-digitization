@@ -28,10 +28,11 @@ cp .env.example .env
 # an external drive, a synced Dropbox/iCloud folder, or a future cloud mount.
 
 # 3. Run the pipeline
-.venv/bin/flowsheets discover                # register one job per PDF page
-.venv/bin/flowsheets render --limit 200      # PDF -> PNG (idempotent)
-.venv/bin/flowsheets process --limit 50      # PNG -> Gemini -> JSON
-.venv/bin/flowsheets status                  # show counts by status
+.venv/bin/flowsheets discover                       # register one job per PDF page
+.venv/bin/flowsheets render --limit 200             # PDF -> PNG, parallel by default (RENDER_CONCURRENCY)
+.venv/bin/flowsheets render --concurrency 8 --limit 1000   # override per-run
+.venv/bin/flowsheets process --limit 50             # PNG -> Gemini -> JSON
+.venv/bin/flowsheets status                         # show counts by status
 ```
 
 Each step is resumable: rerun any subcommand and it picks up where it left off. Successful work is never repeated unless you explicitly call `retry-page`.
@@ -48,7 +49,8 @@ All settings live in `.env` (see `.env.example` for the canonical list):
 | `RENDER_DPI` | `300` | DPI for PDF→PNG. Bump to 400 if a decade's handwriting is unreadable. |
 | `GEMINI_MODEL` | `gemini-3.1-pro-preview` | The original `gemini-3-pro-preview` was shut down March 2026; we use 3.1 Pro Preview. Bump as Google releases stable Gemini 3.x. |
 | `GEMINI_MEDIA_RESOLUTION` | `high` | Vision token allocation: `low` / `medium` / `high` (1120 tokens) / `ultra_high`. `high` is the default for fine handwriting. |
-| `PROCESS_CONCURRENCY` | `4` | Reserved for future parallelism (current pipeline is sequential). |
+| `RENDER_CONCURRENCY` | `4` | Parallel pdftoppm workers for `flowsheets render`. Override per-run with `--concurrency`. |
+| `PROCESS_CONCURRENCY` | `4` | Reserved for future parallelism of the process step (currently sequential). |
 | `MAX_ATTEMPTS` | `3` | Failed pages retry up to this many times across runs before sticking in `failed`. |
 
 ## Job lifecycle and data safety

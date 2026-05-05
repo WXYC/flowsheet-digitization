@@ -107,13 +107,22 @@ async def _discover() -> int:
 @app.command()
 def render(
     limit: Annotated[int, typer.Option(help="Max pages to render this run.")] = 200,
+    concurrency: Annotated[
+        int | None,
+        typer.Option(
+            help="Parallel render workers. Defaults to RENDER_CONCURRENCY env var, then 4.",
+        ),
+    ] = None,
 ) -> None:
     """Render pending pages to PNGs under DATA_ROOT/pages."""
-    n = asyncio.run(_render(limit=limit))
-    console.print(f"Rendered [bold]{n}[/bold] pages.")
+    effective = (
+        concurrency if concurrency is not None else int(os.environ.get("RENDER_CONCURRENCY", "4"))
+    )
+    n = asyncio.run(_render(limit=limit, concurrency=effective))
+    console.print(f"Rendered [bold]{n}[/bold] pages (concurrency={effective}).")
 
 
-async def _render(limit: int) -> int:
+async def _render(limit: int, concurrency: int) -> int:
     store = await _init_store()
     dpi = int(os.environ.get("RENDER_DPI", "300"))
     return await render_pending(
@@ -122,6 +131,7 @@ async def _render(limit: int) -> int:
         data_root=_data_root(),
         dpi=dpi,
         limit=limit,
+        concurrency=concurrency,
     )
 
 

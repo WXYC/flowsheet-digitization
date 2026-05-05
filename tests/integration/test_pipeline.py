@@ -131,6 +131,97 @@ async def test_render_pending_renders_and_marks_rendered(
     assert len(rendered) == 5
 
 
+async def test_render_pending_respects_concurrency_limit(
+    store: JobStore,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Peak in-flight render_page calls must not exceed `concurrency`.
+
+    We don't need real pdftoppm here — patch render_page to measure
+    overlap and complete quickly.
+    """
+    import threading
+    import time
+
+    from core import pipeline as pipeline_mod
+
+    # Register 12 jobs and mark them all as pending → next_pending_for_render returns them.
+    for i in range(12):
+        await store.register("scans/x.pdf", i + 1)
+
+    lock = threading.Lock()
+    state = {"in_flight": 0, "peak": 0}
+
+    def fake_render(
+        pdf_path: Path, page_number: int, out_dir: Path, dpi: int, *, force: bool = False
+    ) -> Path:
+        with lock:
+            state["in_flight"] += 1
+            state["peak"] = max(state["peak"], state["in_flight"])
+        time.sleep(0.02)
+        with lock:
+            state["in_flight"] -= 1
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out = out_dir / f"page-{page_number:02d}.png"
+        out.write_bytes(b"\x89PNG")
+        return out
+
+    monkeypatch.setattr(pipeline_mod, "render_page", fake_render)
+
+    n = await render_pending(
+        store,
+        scans_root=tmp_path / "scans",
+        data_root=tmp_path / "data",
+        dpi=72,
+        limit=12,
+        concurrency=3,
+    )
+    assert n == 12
+    assert state["peak"] <= 3
+    # Sanity: with 12 jobs and concurrency 3, we should exceed serial-1 in flight.
+    assert state["peak"] >= 2
+
+
+async def test_render_pending_one_failure_does_not_kill_others(
+    store: JobStore,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A RenderError on one job must mark only that job failed and leave others intact."""
+    from core import pipeline as pipeline_mod
+    from core.render import RenderError
+
+    for i in range(5):
+        await store.register("scans/x.pdf", i + 1)
+
+    def maybe_fail(
+        pdf_path: Path, page_number: int, out_dir: Path, dpi: int, *, force: bool = False
+    ) -> Path:
+        if page_number == 3:
+            raise RenderError("simulated render failure on page 3")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out = out_dir / f"page-{page_number:02d}.png"
+        out.write_bytes(b"\x89PNG")
+        return out
+
+    monkeypatch.setattr(pipeline_mod, "render_page", maybe_fail)
+
+    n = await render_pending(
+        store,
+        scans_root=tmp_path / "scans",
+        data_root=tmp_path / "data",
+        dpi=72,
+        limit=10,
+        concurrency=3,
+    )
+    assert n == 4  # 4 succeeded, 1 failed
+
+    counts = await store.counts_by_status()
+    assert counts.get(JobStatus.RENDERED) == 4
+    assert counts.get(JobStatus.FAILED) == 1
+
+
 @pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdftoppm/pdfinfo not installed")
 async def test_process_pending_writes_json_and_marks_completed(
     store: JobStore, scans_root: Path, tmp_path: Path

@@ -71,6 +71,33 @@ def test_render_invokes_pipeline_and_reports_count(stub_env: Path) -> None:
     assert kwargs["limit"] == 100
 
 
+def test_render_passes_concurrency_flag_to_pipeline(stub_env: Path) -> None:
+    render_mock = AsyncMock(return_value=2)
+    with (
+        patch.object(cli, "_init_store", new=AsyncMock(return_value=_MockStore())),
+        patch.object(cli, "render_pending", new=render_mock),
+    ):
+        result = runner.invoke(cli.app, ["render", "--concurrency", "8"])
+    assert result.exit_code == 0
+    kwargs = render_mock.await_args.kwargs
+    assert kwargs["concurrency"] == 8
+
+
+def test_render_concurrency_defaults_from_env(
+    stub_env: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("RENDER_CONCURRENCY", "6")
+    render_mock = AsyncMock(return_value=0)
+    with (
+        patch.object(cli, "_init_store", new=AsyncMock(return_value=_MockStore())),
+        patch.object(cli, "render_pending", new=render_mock),
+    ):
+        result = runner.invoke(cli.app, ["render"])
+    assert result.exit_code == 0
+    kwargs = render_mock.await_args.kwargs
+    assert kwargs["concurrency"] == 6
+
+
 def test_process_invokes_pipeline_and_reports_count(stub_env: Path) -> None:
     process_mock = AsyncMock(return_value=3)
     # Bypass real genai.Client construction.
