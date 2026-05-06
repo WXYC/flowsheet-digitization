@@ -7,8 +7,6 @@
 -- target table to a few-hundred-thousand rows, making (artist, track) lookups
 -- sub-millisecond.
 --
--- Used by: scripts/spot_check_discogs.py (and any future phase-2 reconciliation).
---
 -- Run once:
 --     psql -h localhost -p 5432 -d discogs -f scripts/build_wxyc_track_mv.sql
 --
