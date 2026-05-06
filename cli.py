@@ -22,6 +22,15 @@ from typing import Annotated
 import typer
 from dotenv import load_dotenv
 from rich.console import Console
+from rich.progress import (
+    BarColumn,
+    MofNCompleteColumn,
+    Progress,
+    SpinnerColumn,
+    TextColumn,
+    TimeElapsedColumn,
+    TimeRemainingColumn,
+)
 from rich.table import Table
 
 from core.gemini import GeminiClient, MediaResolution
@@ -136,23 +145,58 @@ async def _render(limit: int, concurrency: int) -> int:
 @app.command()
 def process(
     limit: Annotated[int, typer.Option(help="Max pages to process this run.")] = 50,
+    concurrency: Annotated[
+        int | None,
+        typer.Option(
+            help="Parallel Gemini calls. Defaults to PROCESS_CONCURRENCY env var, then 4. "
+            "Tune to fit your per-minute rate limit.",
+        ),
+    ] = None,
 ) -> None:
     """Send rendered pages to Gemini and store JSON results."""
-    n = asyncio.run(_process(limit=limit))
-    console.print(f"Processed [bold]{n}[/bold] pages.")
+    effective = (
+        concurrency if concurrency is not None else int(os.environ.get("PROCESS_CONCURRENCY", "4"))
+    )
+    n = asyncio.run(_process(limit=limit, concurrency=effective))
+    console.print(f"Processed [bold]{n}[/bold] pages (concurrency={effective}).")
 
 
-async def _process(limit: int) -> int:
+async def _process(limit: int, concurrency: int) -> int:
     store = await _init_store()
     client = _build_gemini_client()
     max_attempts = int(os.environ.get("MAX_ATTEMPTS", "3"))
-    return await process_pending(
-        store,
-        client=client,
-        data_root=_data_root(),
-        limit=limit,
-        max_attempts=max_attempts,
+
+    progress = Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        MofNCompleteColumn(),
+        TextColumn("•"),
+        TimeElapsedColumn(),
+        TextColumn("•"),
+        TimeRemainingColumn(),
+        console=console,
+        transient=False,
     )
+
+    with progress:
+        task_id = progress.add_task("Processing", total=limit)
+
+        def on_complete(pdf_path: str, page_number: int, success: bool) -> None:
+            mark = "ok" if success else "FAIL"
+            progress.console.log(f"[{mark}] {pdf_path} page {page_number}")
+            progress.advance(task_id)
+
+        n = await process_pending(
+            store,
+            client=client,
+            data_root=_data_root(),
+            limit=limit,
+            max_attempts=max_attempts,
+            concurrency=concurrency,
+            on_complete=on_complete,
+        )
+    return n
 
 
 @app.command()

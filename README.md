@@ -48,8 +48,8 @@ All settings live in `.env` (see `.env.example` for the canonical list):
 | `DATA_ROOT` | `./data` | Where rendered PNGs, JSON results, and `jobs.db` are written. Gitignored. |
 | `GEMINI_MODEL` | `gemini-3.1-pro-preview` | The original `gemini-3-pro-preview` was shut down March 2026; we use 3.1 Pro Preview. Bump as Google releases stable Gemini 3.x. |
 | `GEMINI_MEDIA_RESOLUTION` | `high` | Vision token allocation: `low` / `medium` / `high` (1120 tokens) / `ultra_high`. `high` is the default for fine handwriting. |
-| `RENDER_CONCURRENCY` | `4` | Parallel pdftoppm workers for `flowsheets render`. Override per-run with `--concurrency`. |
-| `PROCESS_CONCURRENCY` | `4` | Reserved for future parallelism of the process step (currently sequential). |
+| `RENDER_CONCURRENCY` | `4` | Parallel `pdfimages` workers for `flowsheets render`. Override per-run with `--concurrency`. |
+| `PROCESS_CONCURRENCY` | `4` | Parallel Gemini calls for `flowsheets process`. Tune to fit your per-minute rate limit. Override per-run with `--concurrency`. |
 | `MAX_ATTEMPTS` | `3` | Failed pages retry up to this many times across runs before sticking in `failed`. |
 
 ## Job lifecycle and data safety

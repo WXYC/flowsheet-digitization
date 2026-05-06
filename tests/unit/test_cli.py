@@ -113,6 +113,50 @@ def test_process_invokes_pipeline_and_reports_count(stub_env: Path) -> None:
     assert kwargs["limit"] == 50
 
 
+def test_process_passes_concurrency_flag_to_pipeline(stub_env: Path) -> None:
+    process_mock = AsyncMock(return_value=2)
+    with (
+        patch.object(cli, "_init_store", new=AsyncMock(return_value=_MockStore())),
+        patch.object(cli, "process_pending", new=process_mock),
+        patch.object(cli, "_build_gemini_client", return_value=object()),
+    ):
+        result = runner.invoke(cli.app, ["process", "--concurrency", "8"])
+    assert result.exit_code == 0
+    kwargs = process_mock.await_args.kwargs
+    assert kwargs["concurrency"] == 8
+
+
+def test_process_concurrency_defaults_from_env(
+    stub_env: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("PROCESS_CONCURRENCY", "5")
+    process_mock = AsyncMock(return_value=0)
+    with (
+        patch.object(cli, "_init_store", new=AsyncMock(return_value=_MockStore())),
+        patch.object(cli, "process_pending", new=process_mock),
+        patch.object(cli, "_build_gemini_client", return_value=object()),
+    ):
+        result = runner.invoke(cli.app, ["process"])
+    assert result.exit_code == 0
+    kwargs = process_mock.await_args.kwargs
+    assert kwargs["concurrency"] == 5
+
+
+def test_process_passes_on_complete_callback(stub_env: Path) -> None:
+    """The CLI should pass an on_complete callback so progress is shown."""
+    process_mock = AsyncMock(return_value=0)
+    with (
+        patch.object(cli, "_init_store", new=AsyncMock(return_value=_MockStore())),
+        patch.object(cli, "process_pending", new=process_mock),
+        patch.object(cli, "_build_gemini_client", return_value=object()),
+    ):
+        result = runner.invoke(cli.app, ["process", "--limit", "1"])
+    assert result.exit_code == 0
+    kwargs = process_mock.await_args.kwargs
+    assert kwargs.get("on_complete") is not None
+    assert callable(kwargs["on_complete"])
+
+
 def test_retry_page_calls_store_retry(stub_env: Path) -> None:
     store = _MockStore()
     with patch.object(cli, "_init_store", new=AsyncMock(return_value=store)):

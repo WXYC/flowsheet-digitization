@@ -268,6 +268,109 @@ async def test_process_pending_marks_failed_on_exception(
         assert job.attempts == 1
 
 
+async def test_process_pending_respects_concurrency_limit(
+    store: JobStore,
+    tmp_path: Path,
+) -> None:
+    """Peak in-flight Gemini calls must not exceed `concurrency`.
+
+    Uses a fake SDK whose generate_content sleeps briefly while incrementing
+    a peak counter, so we observe real overlap.
+    """
+    import asyncio as _asyncio
+    import threading
+
+    data_root = tmp_path / "data"
+    # Register and pre-render 12 jobs by hand (skipping the actual pdfimages step).
+    for i in range(12):
+        await store.register("scans/x.pdf", i + 1)
+        img = tmp_path / f"img-{i + 1}.png"
+        img.write_bytes(b"\x89PNG")
+        await store.mark_rendered("scans/x.pdf", i + 1, image_path=img)
+
+    lock = threading.Lock()
+    state = {"in_flight": 0, "peak": 0}
+
+    async def fake_generate(*args: object, **kwargs: object) -> MagicMock:
+        with lock:
+            state["in_flight"] += 1
+            state["peak"] = max(state["peak"], state["in_flight"])
+        await _asyncio.sleep(0.02)
+        with lock:
+            state["in_flight"] -= 1
+        response = MagicMock()
+        response.parsed = _build_page_result()
+        return response
+
+    sdk = MagicMock()
+    sdk.aio.models.generate_content = AsyncMock(side_effect=fake_generate)
+    client = GeminiClient(sdk=sdk, model="m")
+
+    n = await process_pending(
+        store, client=client, data_root=data_root, limit=12, max_attempts=3, concurrency=3
+    )
+    assert n == 12
+    assert state["peak"] <= 3
+    # With 12 jobs and concurrency 3, expect actual overlap.
+    assert state["peak"] >= 2
+
+
+async def test_process_pending_calls_progress_callback_on_each_completion(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """The CLI uses this hook to render a live progress bar."""
+    data_root = tmp_path / "data"
+    for i in range(3):
+        await store.register("scans/x.pdf", i + 1)
+        img = tmp_path / f"img-{i + 1}.png"
+        img.write_bytes(b"\x89PNG")
+        await store.mark_rendered("scans/x.pdf", i + 1, image_path=img)
+
+    client = _fake_gemini_client(_build_page_result())
+
+    events: list[tuple[str, int, bool]] = []
+
+    def on_complete(pdf_path: str, page_number: int, success: bool) -> None:
+        events.append((pdf_path, page_number, success))
+
+    n = await process_pending(
+        store,
+        client=client,
+        data_root=data_root,
+        limit=10,
+        max_attempts=3,
+        on_complete=on_complete,
+    )
+    assert n == 3
+    assert len(events) == 3
+    assert all(success for _, _, success in events)
+    assert {p for p, _, _ in events} == {"scans/x.pdf"}
+
+
+async def test_process_pending_progress_callback_fires_on_failure_too(
+    store: JobStore, tmp_path: Path
+) -> None:
+    data_root = tmp_path / "data"
+    await store.register("scans/x.pdf", 1)
+    img = tmp_path / "img.png"
+    img.write_bytes(b"\x89PNG")
+    await store.mark_rendered("scans/x.pdf", 1, image_path=img)
+
+    client = _fake_gemini_client(RuntimeError("boom"))
+
+    events: list[tuple[str, int, bool]] = []
+    n = await process_pending(
+        store,
+        client=client,
+        data_root=data_root,
+        limit=10,
+        max_attempts=3,
+        on_complete=lambda p, pg, ok: events.append((p, pg, ok)),
+    )
+    assert n == 0
+    assert events == [("scans/x.pdf", 1, False)]
+
+
 @pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
 async def test_full_run_end_to_end(store: JobStore, scans_root: Path, tmp_path: Path) -> None:
     data_root = tmp_path / "data"
