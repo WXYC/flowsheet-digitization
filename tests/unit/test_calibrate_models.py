@@ -95,6 +95,90 @@ def test_select_models_accepts_modal_names() -> None:
     ]
 
 
+# -- _wrap_raw_text_as_page_result -----------------------------------------
+
+
+def test_wrap_raw_text_broadcasts_to_all_four_quadrants() -> None:
+    result = cm._wrap_raw_text_as_page_result("LED ZEP - WHOLE LOTTA", model_version="t")
+    assert len(result.quadrants) == 4
+    for quad in result.quadrants:
+        assert len(quad.entries) == 1
+        assert quad.entries[0].raw_text == "LED ZEP - WHOLE LOTTA"
+    assert result.model_version == "t"
+
+
+def test_wrap_raw_text_keeps_quadrant_order() -> None:
+    result = cm._wrap_raw_text_as_page_result("text", model_version="t")
+    positions = [q.position for q in result.quadrants]
+    assert positions == ["top_left", "top_right", "bottom_left", "bottom_right"]
+
+
+def test_wrap_raw_text_handles_empty_string() -> None:
+    result = cm._wrap_raw_text_as_page_result("", model_version="t")
+    assert result.page_date_raw is None
+    for quad in result.quadrants:
+        assert quad.entries[0].raw_text == ""
+
+
+# -- _torch_dtype ----------------------------------------------------------
+
+
+class _FakeTorch:
+    """Stand-in for the torch module so this test stays import-light."""
+
+    float16 = "FP16_SENTINEL"
+    bfloat16 = "BF16_SENTINEL"
+    float32 = "FP32_SENTINEL"
+
+
+def test_torch_dtype_passes_auto_through() -> None:
+    assert cm._torch_dtype(_FakeTorch, "auto") == "auto"
+
+
+def test_torch_dtype_maps_named_dtypes() -> None:
+    assert cm._torch_dtype(_FakeTorch, "fp16") == "FP16_SENTINEL"
+    assert cm._torch_dtype(_FakeTorch, "bf16") == "BF16_SENTINEL"
+    assert cm._torch_dtype(_FakeTorch, "fp32") == "FP32_SENTINEL"
+
+
+def test_torch_dtype_rejects_unknown_name() -> None:
+    with pytest.raises(ValueError, match="unknown dtype"):
+        cm._torch_dtype(_FakeTorch, "fp8")
+
+
+# -- _wrap_with_dump -------------------------------------------------------
+
+
+def test_wrap_with_dump_writes_result_and_returns_unchanged(tmp_path: Path) -> None:
+    sentinel = cm._wrap_raw_text_as_page_result("hello world", model_version="t")
+
+    def underlying(_image_path: Path) -> object:
+        return sentinel
+
+    decorated = cm._wrap_with_dump(underlying, tmp_path / "churro")  # type: ignore[arg-type]
+    image = tmp_path / "1990-04apr0106-page05.png"
+    image.write_bytes(b"\x89PNG\r\n\x1a\n")
+
+    result = decorated(image)
+    assert result is sentinel
+
+    dump = tmp_path / "churro" / "1990-04apr0106-page05.json"
+    assert dump.is_file()
+    text = dump.read_text()
+    assert '"model_version": "t"' in text
+    assert '"raw_text": "hello world"' in text
+
+
+def test_wrap_with_dump_creates_target_directory(tmp_path: Path) -> None:
+    target = tmp_path / "deep" / "nested" / "dir"
+
+    def underlying(_image_path: Path) -> object:
+        return cm._wrap_raw_text_as_page_result("x", model_version="t")
+
+    cm._wrap_with_dump(underlying, target)  # type: ignore[arg-type]
+    assert target.is_dir()
+
+
 def test_select_models_rejects_empty_list() -> None:
     with pytest.raises(SystemExit, match="empty"):
         cm._select_models([""])
