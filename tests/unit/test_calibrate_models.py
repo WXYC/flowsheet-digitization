@@ -85,6 +85,16 @@ def test_select_models_strips_whitespace_and_drops_empties() -> None:
     assert cm._select_models([" gemini-stored ", "", "churro"]) == ["gemini-stored", "churro"]
 
 
+def test_select_models_accepts_modal_names() -> None:
+    # The modal-* adapters lazily import `modal`, so the registration table
+    # must list them by name even before that import is satisfied. This
+    # test catches accidental drops of the modal entries.
+    assert cm._select_models(["modal-churro", "modal-qwen-vl"]) == [
+        "modal-churro",
+        "modal-qwen-vl",
+    ]
+
+
 def test_select_models_rejects_empty_list() -> None:
     with pytest.raises(SystemExit, match="empty"):
         cm._select_models([""])
