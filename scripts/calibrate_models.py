@@ -25,20 +25,30 @@ Models:
                    For 4-bit quantized variants, use `--qwen-model` to
                    point at an Unsloth checkpoint.
 
+  modal-churro     Same as `churro` but the inference runs on a remote
+                   A100 via Modal. ~30-60s per page, no local RAM use.
+                   Requires: `pip install modal && modal token new`.
+
+  modal-qwen-vl    Same as `qwen-vl`, on Modal A100. Pricing reference:
+                   one golden page ~$0.01-0.02; full 18K-page corpus
+                   run ~$100-200.
+
 Both local-model adapters wrap the model output with the project's
-`PageResult` schema. Churro's raw OCR string is run through a small
-post-processor that splits lines into the four-quadrant layout; Qwen-VL
-is prompted with the same `PAGE_EXTRACTION_PROMPT` used for Gemini and
-asked to return JSON matching the schema.
+`PageResult` schema. Churro's raw OCR string is wrapped into the same
+text in all four quadrants so substring scoring works regardless of
+where the truth file located the row; Qwen-VL is prompted with the same
+`PAGE_EXTRACTION_PROMPT` used for Gemini and asked to return JSON
+matching the schema.
 
 Examples:
 
     .venv/bin/python scripts/calibrate_models.py --models gemini-stored
     .venv/bin/python scripts/calibrate_models.py --models gemini-stored,churro
+    .venv/bin/python scripts/calibrate_models.py --models modal-churro,modal-qwen-vl
     .venv/bin/python scripts/calibrate_models.py \\
         --models gemini-stored,qwen-vl \\
-        --golden-dir tests/golden \\
-        --limit 3
+        --device cpu --dtype fp32 \\
+        --golden-dir tests/golden --limit 3
 """
 
 from __future__ import annotations
@@ -255,6 +265,59 @@ def make_qwen_vl_adapter(
     return transcribe
 
 
+# -- modal-* adapters ------------------------------------------------------
+
+
+def make_modal_churro_adapter(
+    model_id: str = "stanford-oval/churro-3B",
+) -> TranscribeFn:
+    """Adapter that runs Churro on a remote A100 via Modal.
+
+    See `scripts/modal_app.py` for the deployed function definitions.
+    Each call opens an ephemeral `app.run()` context so `modal token new`
+    needs to have happened once on this machine.
+    """
+    # Lazy import: modal is only required if a modal-* model is selected.
+    from scripts.modal_app import app, transcribe_churro
+
+    def transcribe(image_path: Path) -> PageResult:
+        image_bytes = image_path.read_bytes()
+        with app.run():
+            text: str = transcribe_churro.remote(image_bytes, model_id)
+        return _wrap_raw_text_as_page_result(text, model_version=f"modal-churro:{model_id}")
+
+    return transcribe
+
+
+def make_modal_qwen_vl_adapter(
+    model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct",
+) -> TranscribeFn:
+    """Adapter that runs Qwen-VL on a remote A100 via Modal.
+
+    Same dispatch pattern as `make_modal_churro_adapter`. The schema
+    prompt is sent in the request payload so the Modal app stays free
+    of project-internal imports.
+    """
+    from scripts.modal_app import app, transcribe_qwen_vl
+
+    schema_prompt = (
+        PAGE_EXTRACTION_PROMPT + "\n\nReturn ONLY a JSON object matching the PageResult schema. "
+        "No prose before or after the JSON."
+    )
+
+    def transcribe(image_path: Path) -> PageResult:
+        image_bytes = image_path.read_bytes()
+        with app.run():
+            text: str = transcribe_qwen_vl.remote(image_bytes, schema_prompt, model_id)
+        payload = _extract_json_block(text)
+        data = json.loads(payload)
+        data.setdefault("model_version", f"modal-qwen-vl:{model_id}")
+        data.setdefault("extracted_at", datetime.now(UTC).isoformat())
+        return PageResult.model_validate(data)
+
+    return transcribe
+
+
 # -- helpers shared by adapters --------------------------------------------
 
 
@@ -344,6 +407,8 @@ _ADAPTER_BUILDERS: dict[str, Callable[[argparse.Namespace], TranscribeFn]] = {
     "gemini-stored": lambda a: make_gemini_stored_adapter(a.results_root),
     "churro": lambda a: make_churro_adapter(a.churro_model, device=a.device, dtype=a.dtype),
     "qwen-vl": lambda a: make_qwen_vl_adapter(a.qwen_model, device=a.device, dtype=a.dtype),
+    "modal-churro": lambda a: make_modal_churro_adapter(a.churro_model),
+    "modal-qwen-vl": lambda a: make_modal_qwen_vl_adapter(a.qwen_model),
 }
 
 
