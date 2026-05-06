@@ -30,6 +30,12 @@ dev = [
     "ruff==0.15.6",
     "mypy==1.19.1",
 ]
+analysis = [
+    # Used by scripts/spot_check_discogs.py to query the local Discogs PG cache.
+    # Optional because the pipeline itself doesn't need it; only included here
+    # so a fresh checkout can `pip install -e ".[analysis]"` and run the script.
+    "psycopg[binary]>=3.1",
+]
 
 [project.scripts]
 flowsheets = "cli:app"
