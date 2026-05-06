@@ -1,0 +1,48 @@
+{
+  "page_date_substrings": ["Thurs", "4/5", "90"],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "rows": [
+        {"raw_substring": "BEASTIE"},
+        {"raw_substring": "ROBYN HITCHCOCK"},
+        {"raw_substring": "LLOYD COLE"},
+        {"raw_substring": "PRIMAL SCREAM"},
+        {"raw_substring": "SAVAGE REPUBLIC"},
+        {"raw_substring": "FALL"}
+      ]
+    },
+    {
+      "position": "top_right",
+      "rows": [
+        {"raw_substring": "SMITHS"},
+        {"raw_substring": "LUSH"},
+        {"raw_substring": "BEVIS FROND"},
+        {"raw_substring": "STANDELLS"},
+        {"raw_substring": "CHRISTINE LAVIN"},
+        {"raw_substring": "HOODOO"},
+        {"raw_substring": "NAKED CITY"},
+        {"raw_substring": "LUKA BLOOM"},
+        {"raw_substring": "JOHN LEE HOOKER"}
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "rows": [
+        {"raw_substring": "SUNDAYS"},
+        {"raw_substring": "JESUS LIZARD"},
+        {"raw_substring": "FELT"}
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "rows": [
+        {"raw_substring": "BLUE AEROPLANES"},
+        {"raw_substring": "SINEAD"},
+        {"raw_substring": "MILES DAVIS"},
+        {"raw_substring": "CHILLS"},
+        {"raw_substring": "SLITS"}
+      ]
+    }
+  ]
+}

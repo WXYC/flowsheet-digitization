@@ -1,0 +1,29 @@
+{
+  "page_date_substrings": ["Sun", "90"],
+  "quadrants": [
+    {
+      "position": "top_right",
+      "rows": [
+        {"raw_substring": "DILLON FENCE"},
+        {"raw_substring": "MICHAEL"},
+        {"raw_substring": "BLACK GIRLS"}
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "hour_raw": "9",
+      "rows": [
+        {"raw_substring": "BONGWATER"},
+        {"raw_substring": "BALL"},
+        {"raw_substring": "BEL CANTO"},
+        {"raw_substring": "PETROL EMOTION"},
+        {"raw_substring": "TACKHEAD"},
+        {"raw_substring": "PRONG"},
+        {"raw_substring": "CECIL TAYLOR"},
+        {"raw_substring": "LUSH"},
+        {"raw_substring": "CATERWAUL"},
+        {"raw_substring": "LOW PROFILE"}
+      ]
+    }
+  ]
+}
