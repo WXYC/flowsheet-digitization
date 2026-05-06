@@ -133,10 +133,13 @@ def make_churro_adapter(model_id: str = "stanford-oval/churro-3B") -> Transcribe
     # Lazy import: torch + transformers is multi-GB and most callers
     # never touch this adapter.
     from PIL import Image
-    from transformers import AutoModelForCausalLM, AutoProcessor  # type: ignore[import-untyped]
+    from transformers import (  # type: ignore[import-untyped]
+        AutoModelForImageTextToText,
+        AutoProcessor,
+    )
 
     processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(
+    model = AutoModelForImageTextToText.from_pretrained(
         model_id,
         trust_remote_code=True,
         device_map="auto",
@@ -166,10 +169,13 @@ def make_qwen_vl_adapter(model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct") -> Trans
     raises and is recorded by the harness as an errored outcome.
     """
     from PIL import Image
-    from transformers import AutoModelForCausalLM, AutoProcessor  # type: ignore[import-untyped]
+    from transformers import (  # type: ignore[import-untyped]
+        AutoModelForImageTextToText,
+        AutoProcessor,
+    )
 
     processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(
+    model = AutoModelForImageTextToText.from_pretrained(
         model_id,
         trust_remote_code=True,
         device_map="auto",
