@@ -10,15 +10,22 @@ PDF page with `pdftoppm`. That:
   * gives us native resolution automatically (no DPI to choose),
   * is faster and produces smaller PNGs.
 
+After extraction we **rotate 180°** before saving. The WXYC PDFs (produced
+by EPSON Scan) draw their embedded bitmap with a content-stream
+transformation matrix that flips the image right-side up at render time;
+`pdftoppm` honors that transform, `pdfimages` does not — it dumps the raw
+stored bitmap. Hardcoded 180° here is correct for this corpus (519 PDFs,
+all from the same scanner workflow). If we ever ingest non-WXYC PDFs,
+this becomes a flag.
+
 Public surface keeps the function name `render_page` because callers care
 about "give me a PNG of this page" — the implementation behind it is
 strictly an implementation detail. Renders are idempotent: if the target
 PNG already exists we skip unless `force=True`. Page numbers are 1-based.
 
-Assumes each PDF page contains exactly one embedded image. The
-`scripts/audit_embedded_images.sh`-style check in the README's
-calibration section verified this across the entire WXYC corpus. If a
-future PDF has 0 or 2+ images on a page, `render_page` raises
+Assumes each PDF page contains exactly one embedded image. The audit
+documented in the README confirmed this across the entire WXYC corpus.
+If a future PDF has 0 or 2+ images on a page, `render_page` raises
 `RenderError` and the pipeline marks that page failed.
 """
 
@@ -29,6 +36,8 @@ import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+
+from PIL import Image
 
 
 class RenderError(RuntimeError):
@@ -130,7 +139,11 @@ def render_page(
                 "phase-1 assumes exactly one image per page"
             )
 
+        # Rotate 180° before writing to `target`. See module docstring.
+        with Image.open(produced[0]) as img:
+            img.load()
+            rotated = img.rotate(180, expand=False)
         if target.exists():
             target.unlink()
-        shutil.move(str(produced[0]), str(target))
+        rotated.save(target, format="PNG", optimize=True)
     return target

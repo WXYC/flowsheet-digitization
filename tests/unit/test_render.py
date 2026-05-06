@@ -99,3 +99,48 @@ def test_render_page_rejects_out_of_range(sample_pdf: Path, tmp_path: Path) -> N
 def test_render_page_rejects_missing_pdf(tmp_path: Path) -> None:
     with pytest.raises(RenderError):
         render_page(tmp_path / "nope.pdf", page_number=1, out_dir=tmp_path / "out")
+
+
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
+def test_render_page_rotates_180_after_extraction(
+    sample_pdf: Path,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The WXYC PDFs draw their embedded bitmap with a flipping transform.
+
+    `pdfimages` emits the raw stored bitmap (upside-down) while `pdftoppm`
+    honors the page's content-stream transform. Since the pipeline uses
+    `pdfimages` for losslessness, we rotate 180° after extraction so the
+    saved PNG matches the page's intended orientation.
+    """
+    from PIL import Image
+
+    rotation_angles: list[float] = []
+    real_rotate = Image.Image.rotate
+
+    def spy_rotate(self: Image.Image, angle: float, *args: object, **kwargs: object) -> Image.Image:
+        rotation_angles.append(angle)
+        return real_rotate(self, angle, *args, **kwargs)
+
+    monkeypatch.setattr(Image.Image, "rotate", spy_rotate)
+
+    out = tmp_path / "rendered"
+    render_page(sample_pdf, page_number=1, out_dir=out)
+
+    assert 180 in rotation_angles, (
+        f"render_page must rotate 180° after pdfimages extraction; "
+        f"observed rotation angles: {rotation_angles}"
+    )
+
+
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
+def test_render_page_output_dimensions_preserved(sample_pdf: Path, tmp_path: Path) -> None:
+    """180° rotation preserves image dimensions (width/height swap is for 90°)."""
+    from PIL import Image
+
+    out = tmp_path / "rendered"
+    result = render_page(sample_pdf, page_number=1, out_dir=out)
+
+    with Image.open(result) as img:
+        assert img.size == (50, 50)  # the test fixture is 50x50
