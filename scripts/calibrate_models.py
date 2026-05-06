@@ -279,31 +279,33 @@ def _torch_dtype(torch_module: Any, name: str):  # type: ignore[no-untyped-def]
 
 
 def _wrap_raw_text_as_page_result(text: str, *, model_version: str) -> PageResult:
-    """Build a PageResult that puts a whole-page transcript in one quadrant.
+    """Build a PageResult that puts the whole-page transcript in every quadrant.
 
-    The golden harness uses substring matching on `Entry.raw_text`, so a
-    single Entry whose `raw_text` contains the entire transcript will
-    pass any row-level expectation that exists somewhere on the page.
-    Header expectations (date, hour, jock) will fail unless the OCR
-    output happens to include them — which is exactly the signal we
-    want: "OCR can read words" vs "model can find the schema".
+    OCR-only models like Churro produce one long string of text without
+    any quadrant attribution. The golden harness scores per-quadrant —
+    'is this substring in some entry of THIS quadrant'. Putting the same
+    transcript in all four quadrants means the row-substring check
+    succeeds wherever the truth file located the row, while the
+    header-level checks (hour, jock) still fail unless those fields
+    actually appeared in the OCR output. That keeps the signal we want
+    (does the model READ?) without penalizing it for not knowing the
+    layout, which is a separate phase-2 problem.
     """
     quadrants = [
-        Quadrant(position=pos, entries=[])
+        Quadrant(
+            position=pos,
+            hour_raw=None,
+            jock_raw=None,
+            entries=[
+                {  # type: ignore[list-item]
+                    "row_index": 0,
+                    "raw_text": text,
+                    "confidence": "medium",
+                }
+            ],
+        )
         for pos in QUADRANT_ORDER  # type: ignore[arg-type]
     ]
-    quadrants[0] = Quadrant(
-        position="top_left",
-        hour_raw=None,
-        jock_raw=None,
-        entries=[
-            {  # type: ignore[list-item]
-                "row_index": 0,
-                "raw_text": text,
-                "confidence": "medium",
-            }
-        ],
-    )
     return PageResult(
         page_date_raw=text[:200] if text else None,
         quadrants=quadrants,
@@ -356,6 +358,24 @@ def _print_progress(case: CalibrationCase, outcome: CalibrationOutcome) -> None:
         f"  {case.stem:<40}  {outcome.elapsed_seconds:>6.1f}s  {marker}",
         file=sys.stderr,
     )
+
+
+def _wrap_with_dump(transcribe: TranscribeFn, dump_dir: Path) -> TranscribeFn:
+    """Decorate a transcribe callable to also write each PageResult to disk.
+
+    Useful for after-the-fact inspection: a CPU run takes ~7 min/page,
+    so you want the raw transcript on disk even if rescoring against an
+    updated truth file changes the verdict.
+    """
+    dump_dir.mkdir(parents=True, exist_ok=True)
+
+    def wrapped(image_path: Path) -> PageResult:
+        result = transcribe(image_path)
+        out = dump_dir / f"{image_path.stem}.json"
+        out.write_text(result.model_dump_json(indent=2))
+        return result
+
+    return wrapped
 
 
 def _select_models(requested: Iterable[str]) -> list[str]:
@@ -423,6 +443,16 @@ def main(argv: list[str]) -> int:
         ),
     )
     parser.add_argument(
+        "--dump-dir",
+        type=Path,
+        default=None,
+        help=(
+            "If set, save each model's PageResult JSON to "
+            "<dump-dir>/<model>/<stem>.json so the raw transcript can be "
+            "inspected without re-running inference."
+        ),
+    )
+    parser.add_argument(
         "--churro-model",
         default="stanford-oval/churro-3B",
         help="HuggingFace model id for the churro adapter.",
@@ -457,6 +487,8 @@ def main(argv: list[str]) -> int:
                 for c in cases
             ]
             continue
+        if args.dump_dir is not None:
+            transcribe = _wrap_with_dump(transcribe, args.dump_dir / model)
         outcomes_by_model[model] = run_calibration(cases, transcribe, on_complete=_print_progress)
 
     print()
