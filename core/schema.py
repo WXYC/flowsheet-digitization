@@ -15,7 +15,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Literal, get_args
 
-from pydantic import BaseModel, ConfigDict, Field, NonNegativeInt, model_validator
+from pydantic import BaseModel, Field, NonNegativeInt, model_validator
 
 Confidence = Literal["high", "medium", "low"]
 QuadrantPosition = Literal["top_left", "top_right", "bottom_left", "bottom_right"]
@@ -25,8 +25,6 @@ QUADRANT_ORDER: tuple[QuadrantPosition, ...] = get_args(QuadrantPosition)
 
 class Entry(BaseModel):
     """A single handwritten row inside a quadrant."""
-
-    model_config = ConfigDict(extra="forbid")
 
     row_index: NonNegativeInt = Field(description="0-based row position within the quadrant.")
     raw_text: str = Field(
@@ -58,8 +56,6 @@ class Entry(BaseModel):
 class Quadrant(BaseModel):
     """One of the four hour-blocks on a flowsheet page."""
 
-    model_config = ConfigDict(extra="forbid")
-
     position: QuadrantPosition = Field(
         description="Which quadrant this is (top_left, top_right, bottom_left, bottom_right)."
     )
@@ -79,8 +75,6 @@ class Quadrant(BaseModel):
 
 class PageResult(BaseModel):
     """The full extraction for one flowsheet page."""
-
-    model_config = ConfigDict(extra="forbid")
 
     page_date_raw: str | None = Field(
         default=None,

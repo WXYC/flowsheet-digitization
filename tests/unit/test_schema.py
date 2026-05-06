@@ -127,3 +127,27 @@ class TestPageResult:
 def test_confidence_values() -> None:
     # Sanity: documents the exact set the pipeline contracts on.
     assert set(Confidence.__args__) == {"high", "medium", "low"}  # type: ignore[attr-defined]
+
+
+def test_page_result_schema_has_no_additional_properties_key() -> None:
+    """Google's response_schema validator rejects `additionalProperties`.
+
+    Pydantic emits this key when a model has extra='forbid'; if any of our
+    models uses that, Gemini returns 400 INVALID_ARGUMENT and every page
+    fails. This test prevents the regression.
+    """
+
+    def walk(node: object) -> None:
+        if isinstance(node, dict):
+            assert "additionalProperties" not in node, (
+                "PageResult.model_json_schema() emits 'additionalProperties' — "
+                "Google's response_schema validator rejects this. Remove "
+                "extra='forbid' from the model_config that introduced it."
+            )
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for item in node:
+                walk(item)
+
+    walk(PageResult.model_json_schema())
