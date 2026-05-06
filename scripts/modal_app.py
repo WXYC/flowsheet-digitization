@@ -48,13 +48,21 @@ except ImportError as exc:  # pragma: no cover — exercised when modal is absen
     ) from exc
 
 
-_image = modal.Image.debian_slim(python_version="3.12").pip_install(
-    "transformers>=5.0",
-    "torch>=2.4",
-    "torchvision",
-    "accelerate",
-    "pillow",
-    "sentencepiece",
+# HF_HOME points the Hugging Face cache (download dir + lock dir) at the
+# mounted Modal Volume below. Without this env, transformers writes to
+# ~/.cache/huggingface on the ephemeral container disk and re-downloads
+# the full checkpoint on every cold start.
+_image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .pip_install(
+        "transformers>=5.0",
+        "torch>=2.4",
+        "torchvision",
+        "accelerate",
+        "pillow",
+        "sentencepiece",
+    )
+    .env({"HF_HOME": "/cache/huggingface"})
 )
 
 app = modal.App("flowsheet-digitization-vl")
@@ -62,7 +70,7 @@ app = modal.App("flowsheet-digitization-vl")
 
 # Caching weights on a Modal Volume avoids re-downloading the multi-GB
 # checkpoint every cold start. First call populates the cache; subsequent
-# calls mount it read-only.
+# calls mount it and reuse the on-disk shards.
 _WEIGHTS_VOLUME = modal.Volume.from_name("hf-weights", create_if_missing=True)
 _VOLUME_MOUNTS = {"/cache/huggingface": _WEIGHTS_VOLUME}
 
