@@ -1,0 +1,41 @@
+{
+  "page_date_substrings": ["4/4", "90"],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "rows": [
+        {"raw_substring": "TINY LIGHTS"},
+        {"raw_substring": "ELEVENTH"},
+        {"raw_substring": "MAYO"}
+      ]
+    },
+    {
+      "position": "top_right",
+      "rows": [
+        {"raw_substring": "GRAND FUNK"},
+        {"raw_substring": "MYRA"},
+        {"raw_substring": "LUSH"},
+        {"raw_substring": "CECIL TAYLOR"}
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "rows": [
+        {"raw_substring": "BLACK FLAG"},
+        {"raw_substring": "ROBYN HITCHCOCK"},
+        {"raw_substring": "CRAMPS"}
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "rows": [
+        {"raw_substring": "RESIDENTS"},
+        {"raw_substring": "BEATLES"},
+        {"raw_substring": "NAKED CITY"},
+        {"raw_substring": "MEMPHIS"},
+        {"raw_substring": "CHRISTIAN DEATH"},
+        {"raw_substring": "BLUE AEROPLANES"}
+      ]
+    }
+  ]
+}

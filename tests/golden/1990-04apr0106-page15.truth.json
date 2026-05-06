@@ -1,0 +1,41 @@
+{
+  "page_date_substrings": ["Tues", "4/3", "90"],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "jock_substring": "ANDR",
+      "rows": [
+        {"raw_substring": "TROUBLE"},
+        {"raw_substring": "NAKED CITY"},
+        {"raw_substring": "THROBBING"},
+        {"raw_substring": "MC 900"},
+        {"raw_substring": "LLOYD COLE"}
+      ]
+    },
+    {
+      "position": "top_right",
+      "rows": [
+        {"raw_substring": "CECIL TAYLOR"},
+        {"raw_substring": "BO DIDDLEY"},
+        {"raw_substring": "BONNIE RAITT"}
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "jock_substring": "ANDR",
+      "rows": [
+        {"raw_substring": "BONGWATER"},
+        {"raw_substring": "LUSH"},
+        {"raw_substring": "CHURCH"},
+        {"raw_substring": "PETER CASE"}
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "rows": [
+        {"raw_substring": "ELIZABETH COTT"},
+        {"raw_substring": "NICK LOWE"}
+      ]
+    }
+  ]
+}
