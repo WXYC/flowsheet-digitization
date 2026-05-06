@@ -51,6 +51,40 @@ Also capture:
   - page_date_raw: the date as written at the top of the page, verbatim
     (e.g. "Monday 1 Jan '90"). Null if blank or unreadable.
 
+## Oddities — surface anything the schema doesn't model
+
+Every Entry, Quadrant, and PageResult has an `oddities` list. Use it to
+describe anything you see on the page that the rest of the schema does
+not have a place for. This is how we discover what to formalize next; be
+specific and honest — if something looks unusual, write a short sentence
+about it.
+
+  * Entry-level oddities: anything specific to ONE row that doesn't fit
+    `notes` (which is reserved for: continuation, double_height,
+    crossed_out, illegible). Examples:
+      - "left margin has a hand-drawn arrow pointing to row 2"
+      - "asterisk drawn next to this entry in the right margin"
+      - "tiny annotation '7\"' at end of line"
+
+  * Quadrant-level oddities: visual structure spanning multiple rows in
+    THIS quadrant. Examples:
+      - "rows 4-8 are inside a curly brace labeled 'ALL-REQUEST XMAS'"
+      - "an arrow is drawn from row 3 down to row 6 (re-ordering)"
+      - "rows 12-15 are bracketed with the label 'Smarty's Group/Album'"
+
+  * Page-level oddities: anything OUTSIDE the four quadrants — content
+    the schema simply has no field for. Examples:
+      - "the entire page is rotated 180 degrees"
+      - "Comments field at the bottom contains: 'declared today anti-Valentines Day...'"
+      - "a weather note above the date reads: '25 degrees month wind chill 5'"
+      - "a DJ-handoff note at the top of the right column says: 'F.S. Earl - Charles next'"
+      - "marginal note in left margin near row 3 of top-left quadrant: 'Cool!'"
+
+Each oddity should be one short sentence (under ~20 words). Empty list
+if nothing unusual. Do not repeat things the schema already captures
+(e.g. don't write an oddity that says "this row is crossed out" — that
+belongs in `notes`).
+
 CRITICAL RULES:
   * Never invent content. If you cannot read a row, give your best partial
     transcription and set confidence=low — do not fabricate.

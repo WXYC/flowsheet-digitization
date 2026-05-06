@@ -129,6 +129,102 @@ def test_confidence_values() -> None:
     assert set(Confidence.__args__) == {"high", "medium", "low"}  # type: ignore[attr-defined]
 
 
+class TestOddities:
+    """Free-text `oddities` lists at three schema levels.
+
+    These are how we let Gemini surface anything unexpected on the page —
+    things the rest of the schema doesn't have a place for. We aggregate
+    them after a few hundred runs to discover phase-2 categories.
+    """
+
+    def test_entry_oddities_defaults_to_empty_list(self) -> None:
+        e = Entry(row_index=0, raw_text="x", confidence="high")
+        assert e.oddities == []
+
+    def test_entry_accepts_oddities_list(self) -> None:
+        e = Entry(
+            row_index=0,
+            raw_text="x",
+            confidence="medium",
+            oddities=["left margin has '*' next to this entry"],
+        )
+        assert e.oddities == ["left margin has '*' next to this entry"]
+
+    def test_quadrant_oddities_defaults_to_empty_list(self) -> None:
+        q = Quadrant(position="top_left", hour_raw=None, jock_raw=None, entries=[])
+        assert q.oddities == []
+
+    def test_quadrant_accepts_oddities_list(self) -> None:
+        q = Quadrant(
+            position="top_left",
+            hour_raw="6AM",
+            jock_raw="ALECIA",
+            entries=[],
+            oddities=["rows 4-8 bracketed with 'ALL-REQUEST XMAS'"],
+        )
+        assert q.oddities == ["rows 4-8 bracketed with 'ALL-REQUEST XMAS'"]
+
+    def test_page_result_oddities_defaults_to_empty_list(self) -> None:
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=[
+                Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+                for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+            ],
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+        )
+        assert page.oddities == []
+
+    def test_page_result_accepts_oddities_list(self) -> None:
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=[
+                Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+                for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+            ],
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+            oddities=[
+                "page is rotated 180 degrees",
+                "comments field reads: 'declared today anti-valentines day'",
+            ],
+        )
+        assert len(page.oddities) == 2
+
+    def test_oddities_round_trip_through_json(self) -> None:
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=[
+                Quadrant(
+                    position="top_left",
+                    hour_raw=None,
+                    jock_raw=None,
+                    entries=[
+                        Entry(
+                            row_index=0,
+                            raw_text="x",
+                            confidence="high",
+                            oddities=["entry-level oddity"],
+                        )
+                    ],
+                    oddities=["quadrant-level oddity"],
+                ),
+                *[
+                    Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+                    for p in ("top_right", "bottom_left", "bottom_right")
+                ],
+            ],
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+            oddities=["page-level oddity"],
+        )
+        roundtripped = PageResult.model_validate_json(page.model_dump_json())
+        assert roundtripped.oddities == ["page-level oddity"]
+        assert roundtripped.quadrants[0].oddities == ["quadrant-level oddity"]
+        assert roundtripped.quadrants[0].entries[0].oddities == ["entry-level oddity"]
+
+
 def test_page_result_schema_has_no_additional_properties_key() -> None:
     """Google's response_schema validator rejects `additionalProperties`.
 

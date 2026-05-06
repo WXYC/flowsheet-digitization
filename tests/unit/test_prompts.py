@@ -50,3 +50,20 @@ def test_prompt_demands_exactly_four_quadrants() -> None:
 def test_prompt_excludes_left_margin_type_column() -> None:
     # The H/M/L/Std/O/R column is phase 2; the prompt must say so.
     assert "IGNORE this column" in PAGE_EXTRACTION_PROMPT
+
+
+def test_prompt_documents_oddities_field() -> None:
+    """Prompt must explain the oddities list — otherwise Gemini won't fill it."""
+    assert "oddities" in PAGE_EXTRACTION_PROMPT
+
+
+@pytest.mark.parametrize("level_keyword", ["entry", "quadrant", "page"])
+def test_prompt_distinguishes_three_oddity_levels(level_keyword: str) -> None:
+    # The three lists serve different purposes; the prompt must call out each.
+    assert level_keyword in PAGE_EXTRACTION_PROMPT.lower()
+
+
+def test_prompt_warns_against_duplicating_existing_fields() -> None:
+    """Oddities must not repeat what `notes` / `crossed_out` etc. already capture."""
+    text = PAGE_EXTRACTION_PROMPT.lower()
+    assert "do not repeat" in text or "don't repeat" in text

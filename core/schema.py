@@ -51,6 +51,15 @@ class Entry(BaseModel):
             "Use one of: continuation, double_height, crossed_out, illegible, other."
         ),
     )
+    oddities: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Free-text descriptions of anything specific to THIS row that the rest of "
+            "the schema doesn't capture (e.g. a hand-drawn arrow next to it, an "
+            "asterisk in the right margin). Empty list if nothing unusual. Each item "
+            "is one short sentence."
+        ),
+    )
 
 
 class Quadrant(BaseModel):
@@ -70,6 +79,15 @@ class Quadrant(BaseModel):
     entries: list[Entry] = Field(
         default_factory=list,
         description="Rows in the quadrant, in the order they appear on the page.",
+    )
+    oddities: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Free-text descriptions of multi-row visual structure within this "
+            "quadrant that the schema doesn't capture (e.g. a curly brace "
+            "grouping rows 4-8 with a label, an arrow drawn from row 3 to row 6). "
+            "Empty list if nothing unusual."
+        ),
     )
 
 
@@ -91,6 +109,17 @@ class PageResult(BaseModel):
     )
     model_version: str = Field(description="Gemini model id that produced this result.")
     extracted_at: datetime = Field(description="When the extraction completed.")
+    oddities: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Free-text descriptions of anything on the page OUTSIDE the four "
+            "quadrants — content the schema doesn't have a place for. Examples: "
+            "the page is rotated, the comments field at the bottom contains text, "
+            "there is a header note above the date, the right column has a "
+            "DJ-handoff message, marginal notes appear next to the grid. Empty "
+            "list if nothing unusual. Each item is one short sentence."
+        ),
+    )
 
     @model_validator(mode="after")
     def _check_quadrant_order(self) -> PageResult:
