@@ -34,8 +34,8 @@ def _truth_payload() -> dict:
                 "hour_raw": "6AM",
                 "jock_substring": "ALECIA",
                 "rows": [
-                    {"raw_substring": "LED ZEP"},
-                    {"raw_substring": "STONES"},
+                    {"raw_substring": "JUANA MOLINA"},
+                    {"raw_substring": "JESSICA PRATT"},
                 ],
             }
         ],
@@ -69,12 +69,12 @@ def _passing_page() -> PageResult:
         entries=[
             {  # type: ignore[list-item]
                 "row_index": 0,
-                "raw_text": "LED ZEP - WHOLE LOTTA LOVE",
+                "raw_text": "JUANA MOLINA - LA PARADOJA",
                 "confidence": "high",
             },
             {  # type: ignore[list-item]
                 "row_index": 1,
-                "raw_text": "STONES - GIMME SHELTER",
+                "raw_text": "JESSICA PRATT - BACK, BABY",
                 "confidence": "high",
             },
         ],

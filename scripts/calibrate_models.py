@@ -196,10 +196,11 @@ def make_qwen_vl_adapter(model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct") -> Trans
             messages,
             tokenize=True,
             add_generation_prompt=True,
+            return_dict=True,
             return_tensors="pt",
         )
-        inputs = inputs.to(model.device)
-        output = model.generate(inputs, max_new_tokens=4096)
+        inputs = {k: v.to(model.device) for k, v in inputs.items()}
+        output = model.generate(**inputs, max_new_tokens=4096)
         text = processor.batch_decode(output, skip_special_tokens=True)[0]
         payload = _extract_json_block(text)
         data = json.loads(payload)
