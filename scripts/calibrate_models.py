@@ -50,6 +50,7 @@ import sys
 from collections.abc import Callable, Iterable
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 # Allow `python scripts/calibrate_models.py` to import the project's
 # `core` package without `python -m`.
@@ -120,7 +121,12 @@ def make_gemini_stored_adapter(results_root: Path) -> TranscribeFn:
 # -- churro-3B adapter -----------------------------------------------------
 
 
-def make_churro_adapter(model_id: str = "stanford-oval/churro-3B") -> TranscribeFn:
+def make_churro_adapter(
+    model_id: str = "stanford-oval/churro-3B",
+    *,
+    device: str = "auto",
+    dtype: str = "auto",
+) -> TranscribeFn:
     """Adapter that calls Churro-3B for OCR, then wraps the text in PageResult.
 
     Churro is an OCR model: it returns a transcription, not structured
@@ -129,9 +135,16 @@ def make_churro_adapter(model_id: str = "stanford-oval/churro-3B") -> Transcribe
     quadrant-aware split is a follow-up; the goal of this calibration is
     "can the model READ the handwriting at all", not "does it match our
     schema today".
+
+    `device` is passed to from_pretrained as `device_map`; "cpu" forces
+    everything onto host RAM (slow but bounded), "mps" uses Apple
+    Silicon's GPU pool (fast but can blow past system RAM on large
+    images), "auto" lets transformers choose. `dtype` is one of "auto",
+    "fp16", "bf16", "fp32".
     """
     # Lazy import: torch + transformers is multi-GB and most callers
     # never touch this adapter.
+    import torch
     from PIL import Image
     from transformers import (  # type: ignore[import-untyped]
         AutoModelForImageTextToText,
@@ -142,13 +155,32 @@ def make_churro_adapter(model_id: str = "stanford-oval/churro-3B") -> Transcribe
     model = AutoModelForImageTextToText.from_pretrained(
         model_id,
         trust_remote_code=True,
-        device_map="auto",
-        torch_dtype="auto",
+        device_map=device,
+        torch_dtype=_torch_dtype(torch, dtype),
     )
 
     def transcribe(image_path: Path) -> PageResult:
         image = Image.open(image_path).convert("RGB")
-        inputs = processor(images=image, text="Transcribe this page.", return_tensors="pt")
+        # Churro is a Qwen2.5-VL fine-tune and requires the chat-template
+        # path so the processor inserts the image-token sentinels the model
+        # was trained on. Calling processor(images=..., text=...) directly
+        # produces a token / feature mismatch at generate-time.
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image", "image": image},
+                    {"type": "text", "text": "Transcribe this handwritten page verbatim."},
+                ],
+            }
+        ]
+        inputs = processor.apply_chat_template(
+            messages,
+            tokenize=True,
+            add_generation_prompt=True,
+            return_dict=True,
+            return_tensors="pt",
+        )
         inputs = {k: v.to(model.device) for k, v in inputs.items()}
         output = model.generate(**inputs, max_new_tokens=2048)
         text = processor.batch_decode(output, skip_special_tokens=True)[0]
@@ -160,7 +192,12 @@ def make_churro_adapter(model_id: str = "stanford-oval/churro-3B") -> Transcribe
 # -- qwen-vl adapter -------------------------------------------------------
 
 
-def make_qwen_vl_adapter(model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct") -> TranscribeFn:
+def make_qwen_vl_adapter(
+    model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct",
+    *,
+    device: str = "auto",
+    dtype: str = "auto",
+) -> TranscribeFn:
     """Adapter that calls Qwen-VL with the production extraction prompt.
 
     Qwen-VL is a multimodal LLM and follows JSON-schema instructions.
@@ -168,6 +205,7 @@ def make_qwen_vl_adapter(model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct") -> Trans
     JSON output against `PageResult`. Malformed JSON or schema mismatch
     raises and is recorded by the harness as an errored outcome.
     """
+    import torch
     from PIL import Image
     from transformers import (  # type: ignore[import-untyped]
         AutoModelForImageTextToText,
@@ -178,8 +216,8 @@ def make_qwen_vl_adapter(model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct") -> Trans
     model = AutoModelForImageTextToText.from_pretrained(
         model_id,
         trust_remote_code=True,
-        device_map="auto",
-        torch_dtype="auto",
+        device_map=device,
+        torch_dtype=_torch_dtype(torch, dtype),
     )
 
     schema_hint = (
@@ -218,6 +256,26 @@ def make_qwen_vl_adapter(model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct") -> Trans
 
 
 # -- helpers shared by adapters --------------------------------------------
+
+
+def _torch_dtype(torch_module: Any, name: str):  # type: ignore[no-untyped-def]
+    """Map a CLI dtype string to a torch dtype, or pass "auto" through.
+
+    Forcing the dtype matters: torch_dtype="auto" picks fp32 when the
+    config doesn't specify, which on a 7B VLM blows past 30GB before any
+    activations. fp16 cuts that in half; bf16 has the same memory but
+    better numerics on Apple Silicon.
+    """
+    if name == "auto":
+        return "auto"
+    table = {
+        "fp16": torch_module.float16,
+        "bf16": torch_module.bfloat16,
+        "fp32": torch_module.float32,
+    }
+    if name not in table:
+        raise ValueError(f"unknown dtype {name!r}; expected one of: auto, fp16, bf16, fp32")
+    return table[name]
 
 
 def _wrap_raw_text_as_page_result(text: str, *, model_version: str) -> PageResult:
@@ -282,8 +340,8 @@ def _extract_json_block(text: str) -> str:
 
 _ADAPTER_BUILDERS: dict[str, Callable[[argparse.Namespace], TranscribeFn]] = {
     "gemini-stored": lambda a: make_gemini_stored_adapter(a.results_root),
-    "churro": lambda a: make_churro_adapter(a.churro_model),
-    "qwen-vl": lambda a: make_qwen_vl_adapter(a.qwen_model),
+    "churro": lambda a: make_churro_adapter(a.churro_model, device=a.device, dtype=a.dtype),
+    "qwen-vl": lambda a: make_qwen_vl_adapter(a.qwen_model, device=a.device, dtype=a.dtype),
 }
 
 
@@ -344,6 +402,25 @@ def main(argv: list[str]) -> int:
         type=int,
         default=None,
         help="Only score the first N pages (default: all).",
+    )
+    parser.add_argument(
+        "--device",
+        default="auto",
+        choices=["auto", "cpu", "mps", "cuda"],
+        help=(
+            "Where to run local-model inference. cpu is bounded by physical RAM and slow; "
+            "mps is Apple Silicon's GPU pool — fast but can blow past system RAM on full-res "
+            "pages because unified memory has no preallocation cap. Default: auto."
+        ),
+    )
+    parser.add_argument(
+        "--dtype",
+        default="auto",
+        choices=["auto", "fp16", "bf16", "fp32"],
+        help=(
+            "Weight dtype. 'auto' picks the model's config default (often fp32 for VLMs). "
+            "fp16 / bf16 halve weight RAM and roughly halve activation RAM. Default: auto."
+        ),
     )
     parser.add_argument(
         "--churro-model",
