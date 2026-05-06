@@ -24,6 +24,10 @@ Hits are positive signal that a transcription is plausibly real. Misses
 are weak signal — DJ shorthand ("Dylan", "S Wonder") and personal
 records WXYC never owned will both miss. Don't read this as accuracy.
 
+The pure data plumbing (entry collection, sharding, hit/miss accounting,
+ranking) lives in `core/spot_check.py` and is unit-tested. This file is
+the CLI + DB-IO wrapper.
+
 Install (one-time):
     pip install -e ".[analysis]"
 
@@ -35,55 +39,28 @@ Run:
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import sys
-from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
-from dataclasses import dataclass, field
 from pathlib import Path
 
 import psycopg
 
+# Allow `.../scripts/spot_check_discogs.py` to import the project's `core`
+# package without requiring the script to be run as `python -m`.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from core.spot_check import (  # noqa: E402
+    PageReport,
+    collect_entries,
+    evaluate,
+    joint_miss_pairs,
+    rank_by_joint_miss,
+    shard,
+)
+
 DEFAULT_DSN = "postgresql://localhost:5432/discogs"
 DEFAULT_WORKERS = 8
-
-
-@dataclass(frozen=True)
-class EntryRef:
-    """One row from a PageResult, kept just enough to query and report."""
-
-    page_path: Path
-    quadrant: str
-    row_index: int
-    artist: str
-    track: str | None
-
-
-def collect_entries(results_root: Path) -> list[EntryRef]:
-    """Read every result JSON under `results_root` and yield queryable rows.
-
-    Skips entries with no `artist_guess` (e.g. continuation rows).
-    """
-    rows: list[EntryRef] = []
-    for path in sorted(results_root.rglob("*.json")):
-        data = json.loads(path.read_text())
-        for q in data.get("quadrants", []):
-            for e in q.get("entries", []):
-                artist = (e.get("artist_guess") or "").strip()
-                if not artist:
-                    continue
-                track = (e.get("track_guess") or "").strip() or None
-                rows.append(
-                    EntryRef(
-                        page_path=path,
-                        quadrant=q["position"],
-                        row_index=e["row_index"],
-                        artist=artist,
-                        track=track,
-                    )
-                )
-    return rows
 
 
 # -- queries ---------------------------------------------------------------
@@ -127,21 +104,6 @@ def _joint_lookup(dsn: str, pairs: list[tuple[str, str]]) -> dict[tuple[str, str
     return out
 
 
-def _shard(items: list, n: int) -> list[list]:
-    """Split items into n roughly-equal shards. Empty shards are dropped."""
-    if not items:
-        return []
-    size, extra = divmod(len(items), n)
-    shards: list[list] = []
-    start = 0
-    for i in range(n):
-        end = start + size + (1 if i < extra else 0)
-        if end > start:
-            shards.append(items[start:end])
-        start = end
-    return shards
-
-
 def parallel_lookups(
     dsn: str,
     artists: list[str],
@@ -159,8 +121,8 @@ def parallel_lookups(
     artist_results: dict[str, bool] = {}
     joint_results: dict[tuple[str, str], bool] = {}
 
-    artist_shards = _shard(artists, workers)
-    joint_shards = _shard(pairs, workers)
+    artist_shards = shard(artists, workers)
+    joint_shards = shard(pairs, workers)
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         artist_futures = [pool.submit(_artist_lookup, dsn, s) for s in artist_shards]
@@ -173,42 +135,7 @@ def parallel_lookups(
     return artist_results, joint_results
 
 
-# -- reporting -------------------------------------------------------------
-
-
-@dataclass
-class PageReport:
-    page_path: Path
-    total: int = 0
-    with_track: int = 0
-    artist_hits: int = 0
-    joint_hits: int = 0
-    artist_misses: list[EntryRef] = field(default_factory=list)
-    joint_misses: list[EntryRef] = field(default_factory=list)
-
-
-def evaluate(
-    rows: list[EntryRef],
-    artist_hits: dict[str, bool],
-    joint_hits: dict[tuple[str, str], bool],
-) -> dict[Path, PageReport]:
-    pages: dict[Path, PageReport] = {}
-    for row in rows:
-        report = pages.setdefault(row.page_path, PageReport(page_path=row.page_path))
-        report.total += 1
-
-        if artist_hits[row.artist]:
-            report.artist_hits += 1
-        else:
-            report.artist_misses.append(row)
-
-        if row.track is not None:
-            report.with_track += 1
-            if joint_hits[(row.artist, row.track)]:
-                report.joint_hits += 1
-            else:
-                report.joint_misses.append(row)
-    return pages
+# -- printing --------------------------------------------------------------
 
 
 def print_report(
@@ -235,14 +162,10 @@ def print_report(
     print(f"  joint hits (artist+track):    {joint_hit_total}/{with_track}")
     print("=" * 72)
 
-    ranked = sorted(
-        pages.values(),
-        key=lambda p: (-len(p.joint_misses), -len(p.artist_misses)),
-    )
     print()
     print(f"Top {top_misses} pages by joint miss count:")
     print(f"  {'page':<58}  artist  joint")
-    for p in ranked[:top_misses]:
+    for p in rank_by_joint_miss(pages)[:top_misses]:
         rel = p.page_path.relative_to(results_root)
         artist_miss = p.total - p.artist_hits
         joint_miss = len(p.joint_misses)
@@ -250,15 +173,9 @@ def print_report(
             f"  {str(rel):<58}  {artist_miss:>2}/{p.total:<2}   {joint_miss:>2}/{p.with_track:<2}"
         )
 
-    miss_pairs: Counter[tuple[str, str]] = Counter()
-    for p in pages.values():
-        for row in p.joint_misses:
-            if row.track is not None:
-                miss_pairs[(row.artist, row.track)] += 1
-
     print()
     print(f"Top {top_misses} most-frequent joint-miss (artist, track) pairs:")
-    for (a, t), n in miss_pairs.most_common(top_misses):
+    for (a, t), n in joint_miss_pairs(pages).most_common(top_misses):
         print(f"  {n:>3}  {a} - {t}")
 
 
