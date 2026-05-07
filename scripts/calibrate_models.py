@@ -294,26 +294,41 @@ def make_modal_qwen_vl_adapter(
 ) -> TranscribeFn:
     """Adapter that runs Qwen-VL on a remote A100 via Modal.
 
-    Same dispatch pattern as `make_modal_churro_adapter`. The schema
-    prompt is sent in the request payload so the Modal app stays free
-    of project-internal imports.
+    Decoding is grammar-constrained: we derive a JSON Schema from
+    `PageResult` (minus the server-set `model_version`/`extracted_at`
+    fields) and pass it through to the Modal function, which feeds it
+    into xgrammar's logits processor. The model is then mechanically
+    forbidden from emitting anything outside the schema, which fixes
+    the "wrong wrapper shape" failure we saw with prompt-only steering.
+
+    The trimmed suffix is grammar-aware: with xgrammar enforcing the
+    output, a long "return ONLY JSON, no prose before or after" prompt
+    is redundant — the model literally cannot emit prose.
     """
     from scripts.modal_app import app, transcribe_qwen_vl
 
-    schema_prompt = (
-        PAGE_EXTRACTION_PROMPT + "\n\nReturn ONLY a JSON object matching the PageResult schema. "
-        "No prose before or after the JSON."
-    )
+    schema_prompt = PAGE_EXTRACTION_PROMPT + "\n\nReturn the page transcript as JSON."
+    wire_schema = _qwen_vl_wire_schema()
+    raw_dump_dir = Path("/tmp/modal-dump/modal-qwen-vl-raw")
 
     def transcribe(image_path: Path) -> PageResult:
         image_bytes = image_path.read_bytes()
         with app.run():
-            text: str = transcribe_qwen_vl.remote(image_bytes, schema_prompt, model_id)
-        payload = _extract_json_block(text)
-        data = json.loads(payload)
-        data.setdefault("model_version", f"modal-qwen-vl:{model_id}")
-        data.setdefault("extracted_at", datetime.now(UTC).isoformat())
-        return PageResult.model_validate(data)
+            text: str = transcribe_qwen_vl.remote(
+                image_bytes, schema_prompt, model_id, json_schema=wire_schema
+            )
+        raw_dump_dir.mkdir(parents=True, exist_ok=True)
+        (raw_dump_dir / f"{image_path.stem}.txt").write_text(text)
+        try:
+            data = json.loads(text)
+            data["model_version"] = f"modal-qwen-vl:{model_id}"
+            data["extracted_at"] = datetime.now(UTC).isoformat()
+            return PageResult.model_validate(data)
+        except Exception:
+            # Defense-in-depth: if grammar somehow lets through invalid
+            # JSON (a known xgrammar bug, a schema corner case it doesn't
+            # cover, etc.) we still want a scored row, not a hard error.
+            return _wrap_raw_text_as_page_result(text, model_version=f"modal-qwen-vl:{model_id}")
 
     return transcribe
 
@@ -339,6 +354,25 @@ def _torch_dtype(torch_module: Any, name: str):  # type: ignore[no-untyped-def]
     if name not in table:
         raise ValueError(f"unknown dtype {name!r}; expected one of: auto, fp16, bf16, fp32")
     return table[name]
+
+
+def _qwen_vl_wire_schema() -> dict[str, Any]:
+    """Return a JSON Schema that drives grammar-constrained Qwen-VL decoding.
+
+    `model_version` and `extracted_at` are populated by the adapter
+    server-side, not by the model — including them in the grammar would
+    force Qwen to invent a plausible-looking string for each. Strip them
+    from `properties` and `required` so the constrained decoder only
+    spends tokens on fields the model actually has signal for.
+    """
+    import copy
+
+    schema = copy.deepcopy(PageResult.model_json_schema())
+    for field in ("model_version", "extracted_at"):
+        schema["properties"].pop(field, None)
+        if field in schema.get("required", []):
+            schema["required"].remove(field)
+    return schema
 
 
 def _wrap_raw_text_as_page_result(text: str, *, model_version: str) -> PageResult:

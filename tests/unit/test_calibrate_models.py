@@ -182,3 +182,45 @@ def test_wrap_with_dump_creates_target_directory(tmp_path: Path) -> None:
 def test_select_models_rejects_empty_list() -> None:
     with pytest.raises(SystemExit, match="empty"):
         cm._select_models([""])
+
+
+# -- _qwen_vl_wire_schema --------------------------------------------------
+
+
+def test_wire_schema_drops_server_set_fields() -> None:
+    schema = cm._qwen_vl_wire_schema()
+    properties = schema["properties"]
+    assert "model_version" not in properties
+    assert "extracted_at" not in properties
+    required = schema.get("required", [])
+    assert "model_version" not in required
+    assert "extracted_at" not in required
+
+
+def test_wire_schema_keeps_quadrants_required_array() -> None:
+    schema = cm._qwen_vl_wire_schema()
+    assert "quadrants" in schema["properties"]
+    assert "quadrants" in schema["required"]
+    quadrants_schema = schema["properties"]["quadrants"]
+    assert quadrants_schema["type"] == "array"
+
+
+def test_wire_schema_resolves_to_quadrant_definition() -> None:
+    """The quadrants array must reference Quadrant; xgrammar walks $defs."""
+    schema = cm._qwen_vl_wire_schema()
+    items = schema["properties"]["quadrants"]["items"]
+    ref = items.get("$ref", "")
+    assert ref.endswith("/Quadrant"), f"expected quadrants items to $ref Quadrant, got {items!r}"
+    defs = schema.get("$defs") or schema.get("definitions") or {}
+    assert "Quadrant" in defs
+    assert "Entry" in defs
+
+
+def test_wire_schema_does_not_mutate_pageresult_schema() -> None:
+    """Calling the helper should not mutate PageResult.model_json_schema()."""
+    from core.schema import PageResult
+
+    before = PageResult.model_json_schema()
+    cm._qwen_vl_wire_schema()
+    after = PageResult.model_json_schema()
+    assert before == after
