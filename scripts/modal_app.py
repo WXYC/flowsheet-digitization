@@ -133,7 +133,11 @@ def transcribe_churro(image_bytes: bytes, model_id: str = "stanford-oval/churro-
     image=_image,
     gpu="A100-40GB",
     volumes=_VOLUME_MOUNTS,
-    timeout=600,
+    # Cold start downloads ~16GB (5 weight shards) into the cached volume.
+    # Modal's shared mirror is bandwidth-variable; budget for the worst case
+    # so the first call doesn't time out before weights land. After the
+    # volume is populated, warm-start inference is well under 60s.
+    timeout=1800,
 )
 def transcribe_qwen_vl(
     image_bytes: bytes,
