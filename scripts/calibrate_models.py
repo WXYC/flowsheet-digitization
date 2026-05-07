@@ -309,7 +309,6 @@ def make_modal_qwen_vl_adapter(
 
     schema_prompt = PAGE_EXTRACTION_PROMPT + "\n\nReturn the page transcript as JSON."
     wire_schema = _qwen_vl_wire_schema()
-    raw_dump_dir = Path("/tmp/modal-dump/modal-qwen-vl-raw")
 
     def transcribe(image_path: Path) -> PageResult:
         image_bytes = image_path.read_bytes()
@@ -317,17 +316,20 @@ def make_modal_qwen_vl_adapter(
             text: str = transcribe_qwen_vl.remote(
                 image_bytes, schema_prompt, model_id, json_schema=wire_schema
             )
-        raw_dump_dir.mkdir(parents=True, exist_ok=True)
-        (raw_dump_dir / f"{image_path.stem}.txt").write_text(text)
         try:
             data = json.loads(text)
             data["model_version"] = f"modal-qwen-vl:{model_id}"
             data["extracted_at"] = datetime.now(UTC).isoformat()
             return PageResult.model_validate(data)
         except Exception:
-            # Defense-in-depth: if grammar somehow lets through invalid
-            # JSON (a known xgrammar bug, a schema corner case it doesn't
-            # cover, etc.) we still want a scored row, not a hard error.
+            # Defense-in-depth: if grammar lets through invalid JSON
+            # (xgrammar version regression, schema corner case it doesn't
+            # cover, etc.) we still want a scored row. Persist the raw
+            # text on the failure path so we can diagnose the deviation;
+            # on the happy path the structured dump captures everything.
+            raw_dump_dir = Path("/tmp/modal-dump/modal-qwen-vl-raw")
+            raw_dump_dir.mkdir(parents=True, exist_ok=True)
+            (raw_dump_dir / f"{image_path.stem}.txt").write_text(text)
             return _wrap_raw_text_as_page_result(text, model_version=f"modal-qwen-vl:{model_id}")
 
     return transcribe
