@@ -224,3 +224,151 @@ def test_wire_schema_does_not_mutate_pageresult_schema() -> None:
     cm._qwen_vl_wire_schema()
     after = PageResult.model_json_schema()
     assert before == after
+
+
+# -- _XGrammarLogitsProcessor ----------------------------------------------
+
+
+class _FakeMatcher:
+    """Records every accept_token / fill_next_token_bitmask call."""
+
+    def __init__(self) -> None:
+        self.accepted: list[int] = []
+        self.fill_calls: list[tuple[object, int]] = []
+
+    def accept_token(self, tok: int) -> bool:
+        # Bindings reject anything that isn't a real Python int.
+        assert isinstance(tok, int) and not isinstance(tok, bool), (
+            f"matcher requires Python int, got {type(tok).__name__}"
+        )
+        self.accepted.append(tok)
+        return True
+
+    def fill_next_token_bitmask(self, bitmask: object, batch_idx: int) -> None:
+        self.fill_calls.append((bitmask, batch_idx))
+
+
+class _FakeBitmask:
+    """Stand-in for the torch tensor xgrammar normally allocates."""
+
+    def __init__(self) -> None:
+        self.moved_to: list[object] = []
+
+    def to(self, device: object) -> _FakeBitmask:
+        self.moved_to.append(device)
+        return self
+
+
+class _FakeTensor:
+    """1-D-or-2-D fake supporting shape, slicing, tolist(), and .device."""
+
+    def __init__(self, rows: list[list[int]], device: str = "cpu") -> None:
+        self._rows = rows
+        self.device = device
+
+    @property
+    def shape(self) -> tuple[int, int]:
+        return (len(self._rows), len(self._rows[0]) if self._rows else 0)
+
+    def __getitem__(self, key: object) -> _FakeTensor:
+        # Supports ndarray-like fancy indexing of (row_idx, slice).
+        if isinstance(key, tuple) and len(key) == 2:
+            row_idx, col_slice = key
+            assert isinstance(row_idx, int)
+            assert isinstance(col_slice, slice)
+            return _FakeTensor([self._rows[row_idx][col_slice]], device=self.device)
+        raise TypeError(f"unsupported index {key!r}")
+
+    def tolist(self) -> list[int]:
+        # `processor(input_ids[i, prev:])` collapses to a flat list of ints.
+        assert len(self._rows) == 1
+        return list(self._rows[0])
+
+
+class _FakeXGr:
+    """Drop-in for the `xgrammar` module that tracks every interaction."""
+
+    def __init__(self) -> None:
+        self.matchers_built: list[_FakeMatcher] = []
+        self.applied_calls: list[tuple[object, object]] = []
+
+    def GrammarMatcher(self, compiled_grammar: object) -> _FakeMatcher:
+        m = _FakeMatcher()
+        self.matchers_built.append(m)
+        return m
+
+    def allocate_token_bitmask(self, batch_size: int, vocab_size: int) -> _FakeBitmask:
+        self._batch_size = batch_size
+        self._vocab_size = vocab_size
+        return _FakeBitmask()
+
+    def apply_token_bitmask_inplace(self, scores: object, bitmask: object) -> None:
+        self.applied_calls.append((scores, bitmask))
+
+
+def _modal_app():
+    """Lazy import — the modal SDK has to be installed for this test file
+    to load `modal_app`. We import inside the test fn so the wider test
+    suite (which doesn't need modal) can still collect."""
+    import importlib.util
+    import sys
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parent.parent.parent / "scripts" / "modal_app.py"
+    spec = importlib.util.spec_from_file_location("modal_app", path)
+    assert spec is not None and spec.loader is not None
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["modal_app"] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_logits_processor_skips_accept_on_first_call() -> None:
+    """The first call carries only the prompt — there are no sampled
+    tokens to accept yet, so accept_token must not fire."""
+    modal_app = _modal_app()
+    xgr = _FakeXGr()
+    lp = modal_app._XGrammarLogitsProcessor(xgr, compiled_grammar=object(), vocab_size=128)
+
+    input_ids = _FakeTensor([[10, 20, 30]])  # prompt only
+    scores = _FakeTensor([[0] * 128])
+    lp(input_ids, scores)
+
+    assert xgr.matchers_built[0].accepted == []
+    assert xgr.matchers_built[0].fill_calls == [(lp.bitmask, 0)]
+
+
+def test_logits_processor_accepts_only_newly_sampled_tokens() -> None:
+    modal_app = _modal_app()
+    xgr = _FakeXGr()
+    lp = modal_app._XGrammarLogitsProcessor(xgr, compiled_grammar=object(), vocab_size=128)
+
+    # 1st call: prompt of length 3.
+    lp(_FakeTensor([[10, 20, 30]]), _FakeTensor([[0] * 128]))
+    # 2nd call: one new token sampled.
+    lp(_FakeTensor([[10, 20, 30, 99]]), _FakeTensor([[0] * 128]))
+    # 3rd call: another new token.
+    lp(_FakeTensor([[10, 20, 30, 99, 7]]), _FakeTensor([[0] * 128]))
+
+    assert xgr.matchers_built[0].accepted == [99, 7]
+
+
+def test_logits_processor_moves_bitmask_to_scores_device() -> None:
+    """Bitmask must follow the scores tensor onto its device, otherwise
+    apply_token_bitmask_inplace mixes CPU and GPU memory."""
+    modal_app = _modal_app()
+    xgr = _FakeXGr()
+    lp = modal_app._XGrammarLogitsProcessor(xgr, compiled_grammar=object(), vocab_size=128)
+
+    scores = _FakeTensor([[0] * 128], device="cuda:0")
+    lp(_FakeTensor([[1, 2]]), scores)
+
+    assert lp.bitmask.moved_to == ["cuda:0"]
+    assert xgr.applied_calls == [(scores, lp.bitmask)]
+
+
+def test_logits_processor_one_matcher_per_batch_row() -> None:
+    modal_app = _modal_app()
+    xgr = _FakeXGr()
+    modal_app._XGrammarLogitsProcessor(xgr, compiled_grammar=object(), vocab_size=64, batch_size=3)
+    assert len(xgr.matchers_built) == 3
