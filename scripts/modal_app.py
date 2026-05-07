@@ -61,6 +61,10 @@ _image = (
         "accelerate",
         "pillow",
         "sentencepiece",
+        # xgrammar masks generation logits so Qwen-VL emits JSON conforming
+        # to a passed-in JSON Schema. Without it, the 7B model invents its
+        # own wrapper shape and we lose every page to validation failures.
+        "xgrammar>=0.1",
     )
     .env({"HF_HOME": "/cache/huggingface"})
 )
@@ -73,6 +77,36 @@ app = modal.App("flowsheet-digitization-vl")
 # calls mount it and reuse the on-disk shards.
 _WEIGHTS_VOLUME = modal.Volume.from_name("hf-weights", create_if_missing=True)
 _VOLUME_MOUNTS = {"/cache/huggingface": _WEIGHTS_VOLUME}
+
+
+class _XGrammarLogitsProcessor:
+    """LogitsProcessor that masks generation logits to a JSON-Schema grammar.
+
+    A thin wrapper around xgrammar's `GrammarMatcher`. We don't use
+    `xgr.contrib.hf.LogitsProcessor` because at the version we're on it
+    passes a 0-d tensor to `GrammarMatcher.accept_token`, which the
+    binding rejects (it wants a Python int). Doing the `.item()` /
+    `.tolist()` coercion here is the simplest fix.
+    """
+
+    def __init__(self, xgr_module, compiled_grammar, vocab_size: int, batch_size: int = 1):  # type: ignore[no-untyped-def]
+        self._xgr = xgr_module
+        self.matchers = [xgr_module.GrammarMatcher(compiled_grammar) for _ in range(batch_size)]
+        self.bitmask = xgr_module.allocate_token_bitmask(batch_size, vocab_size)
+        self._prev_len: int | None = None
+
+    def __call__(self, input_ids, scores):  # type: ignore[no-untyped-def]
+        batch_size = input_ids.shape[0]
+        if self._prev_len is not None:
+            for i in range(batch_size):
+                for tok in input_ids[i, self._prev_len :].tolist():
+                    self.matchers[i].accept_token(int(tok))
+        self._prev_len = input_ids.shape[1]
+
+        for i in range(batch_size):
+            self.matchers[i].fill_next_token_bitmask(self.bitmask, i)
+        self._xgr.apply_token_bitmask_inplace(scores, self.bitmask.to(scores.device))
+        return scores
 
 
 def _load_vl_model(model_id: str):  # type: ignore[no-untyped-def]
@@ -143,8 +177,16 @@ def transcribe_qwen_vl(
     image_bytes: bytes,
     schema_prompt: str,
     model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct",
+    json_schema: dict | None = None,
 ) -> str:
     """Run Qwen-VL on a remote A100 with the project's structured-output prompt.
+
+    When `json_schema` is provided, decoding is grammar-constrained via
+    xgrammar so every emitted token is masked against the schema. This
+    eliminates the "model invents its own wrapper" failure mode that
+    bare prompt-only structured-output suffers on 7B-class instruct
+    models. Without it, we fall back to unconstrained generation for
+    debugging / A-B comparison.
 
     The full schema prompt is passed in rather than imported here so this
     module has no project-internal dependencies — the function is a pure
@@ -171,6 +213,29 @@ def transcribe_qwen_vl(
         return_tensors="pt",
     )
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
-    output = model.generate(**inputs, max_new_tokens=4096)
-    text: str = processor.batch_decode(output, skip_special_tokens=True)[0]
+    prompt_len = inputs["input_ids"].shape[1]
+
+    generate_kwargs: dict = {"max_new_tokens": 4096}
+    if json_schema is not None:
+        import xgrammar as xgr
+
+        # Qwen2.5-VL is a composite config: vocab_size lives on the
+        # nested text_config, not the top-level VL config. Read the LM
+        # head shape directly so we get the logit-space size regardless
+        # of how the config is structured.
+        full_vocab_size = model.get_output_embeddings().weight.shape[0]
+        tokenizer_info = xgr.TokenizerInfo.from_huggingface(
+            processor.tokenizer, vocab_size=full_vocab_size
+        )
+        compiler = xgr.GrammarCompiler(tokenizer_info)
+        compiled_grammar = compiler.compile_json_schema(json_schema)
+        generate_kwargs["logits_processor"] = [
+            _XGrammarLogitsProcessor(xgr, compiled_grammar, full_vocab_size)
+        ]
+
+    output = model.generate(**inputs, **generate_kwargs)
+    # Slice off the prompt prefix; batch_decode of the full sequence
+    # otherwise echoes our own chat-template back as a preamble.
+    new_tokens = output[:, prompt_len:]
+    text: str = processor.batch_decode(new_tokens, skip_special_tokens=True)[0]
     return text
