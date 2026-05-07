@@ -307,9 +307,11 @@ class _FakeXGr:
 
 
 def _modal_app():
-    """Lazy import — the modal SDK has to be installed for this test file
-    to load `modal_app`. We import inside the test fn so the wider test
-    suite (which doesn't need modal) can still collect."""
+    """Lazy import. `modal_app` raises at module-load when the modal SDK
+    isn't installed, so we skip the test in environments (like CI's
+    default test job) that don't have it. The class under test has no
+    modal coupling — the skip is purely about the import barrier."""
+    pytest.importorskip("modal", reason="modal_app requires the modal SDK to import")
     import importlib.util
     import sys
     from pathlib import Path
