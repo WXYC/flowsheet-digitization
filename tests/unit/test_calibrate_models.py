@@ -19,6 +19,8 @@ sys.path.insert(0, str(_SCRIPTS))
 
 import calibrate_models as cm  # noqa: E402
 
+from core.schema import QUADRANT_ORDER  # noqa: E402
+
 
 def test_stored_result_path_finds_match_in_pdf_subdir(tmp_path: Path) -> None:
     pdf_dir = tmp_path / "1990" / "April 1990" / "1990-04apr2430"
@@ -89,9 +91,10 @@ def test_select_models_accepts_modal_names() -> None:
     # The modal-* adapters lazily import `modal`, so the registration table
     # must list them by name even before that import is satisfied. This
     # test catches accidental drops of the modal entries.
-    assert cm._select_models(["modal-churro", "modal-qwen-vl"]) == [
+    assert cm._select_models(["modal-churro", "modal-qwen-vl", "modal-qwen-vl-quad"]) == [
         "modal-churro",
         "modal-qwen-vl",
+        "modal-qwen-vl-quad",
     ]
 
 
@@ -224,6 +227,166 @@ def test_wire_schema_does_not_mutate_pageresult_schema() -> None:
     cm._qwen_vl_wire_schema()
     after = PageResult.model_json_schema()
     assert before == after
+
+
+# -- _quadrant_wire_schema -------------------------------------------------
+
+
+def test_quadrant_wire_schema_pins_position() -> None:
+    """The position field is constrained to a singleton enum so the
+    grammar mechanically forbids any wrong label for the cell we cropped."""
+    schema = cm._quadrant_wire_schema("top_left")
+    assert schema["properties"]["position"] == {"enum": ["top_left"]}
+
+
+def test_quadrant_wire_schema_keeps_entries_array_and_defs() -> None:
+    schema = cm._quadrant_wire_schema("bottom_right")
+    entries = schema["properties"]["entries"]
+    assert entries["type"] == "array"
+    items = entries["items"]
+    assert items.get("$ref", "").endswith("/Entry")
+    defs = schema.get("$defs") or schema.get("definitions") or {}
+    assert "Entry" in defs
+
+
+def test_quadrant_wire_schema_does_not_mutate_quadrant_schema() -> None:
+    from core.schema import Quadrant
+
+    before = Quadrant.model_json_schema()
+    cm._quadrant_wire_schema("top_right")
+    cm._quadrant_wire_schema("bottom_left")
+    after = Quadrant.model_json_schema()
+    assert before == after
+
+
+def test_quadrant_wire_schema_each_position_unique() -> None:
+    """Calling once per position must yield distinct pinned schemas."""
+    schemas = {pos: cm._quadrant_wire_schema(pos) for pos in QUADRANT_ORDER}
+    for pos, schema in schemas.items():
+        assert schema["properties"]["position"] == {"enum": [pos]}
+
+
+# -- _crop_header_strip / _crop_quadrants ---------------------------------
+
+
+def _painted_page(width: int, height: int) -> object:
+    """A page-sized PIL image with each region painted a distinct color so
+    crop assignments can be checked by sampling a pixel from the result."""
+    from PIL import Image, ImageDraw
+
+    image = Image.new("RGB", (width, height), color=(255, 255, 255))
+    draw = ImageDraw.Draw(image)
+    header_h = int(height * cm.HEADER_STRIP_FRACTION)
+    body_top = header_h
+    body_h = height - body_top
+    mid_x = width // 2
+    mid_y = body_top + body_h // 2
+    # Paint each region with a distinct fill so the cropped sub-images
+    # are identifiable by sampling a pixel near their inner-corner side.
+    draw.rectangle((0, 0, width, header_h), fill=(10, 10, 10))  # header
+    draw.rectangle((0, body_top, mid_x, mid_y), fill=(255, 0, 0))  # TL
+    draw.rectangle((mid_x, body_top, width, mid_y), fill=(0, 255, 0))  # TR
+    draw.rectangle((0, mid_y, mid_x, height), fill=(0, 0, 255))  # BL
+    draw.rectangle((mid_x, mid_y, width, height), fill=(255, 255, 0))  # BR
+    return image
+
+
+def test_crop_header_strip_takes_top_fraction() -> None:
+    image = _painted_page(800, 1000)
+    strip = cm._crop_header_strip(image)
+    expected_h = int(1000 * cm.HEADER_STRIP_FRACTION)
+    assert strip.size == (800, expected_h)
+    # The painted header is solid (10,10,10).
+    assert strip.getpixel((400, expected_h // 2)) == (10, 10, 10)
+
+
+def test_crop_quadrants_returns_canonical_keys() -> None:
+    image = _painted_page(800, 1000)
+    crops = cm._crop_quadrants(image)
+    assert tuple(crops.keys()) == QUADRANT_ORDER
+
+
+def test_crop_quadrants_each_region_carries_its_paint() -> None:
+    """The center pixel of each cropped quadrant should be its paint
+    color, confirming the crop pulled from the right region of the page."""
+    image = _painted_page(800, 1000)
+    crops = cm._crop_quadrants(image)
+    expected = {
+        "top_left": (255, 0, 0),
+        "top_right": (0, 255, 0),
+        "bottom_left": (0, 0, 255),
+        "bottom_right": (255, 255, 0),
+    }
+    for pos, crop in crops.items():
+        w, h = crop.size
+        # Sample a point well inside the painted region (away from the
+        # bleed band at the inner edges, which intrudes into the neighbor).
+        sample_x = w // 4 if pos.endswith("right") else (3 * w) // 4
+        sample_y = h // 4 if pos.startswith("bottom") else (3 * h) // 4
+        assert crop.getpixel((sample_x, sample_y)) == expected[pos], (
+            f"quadrant {pos} sample ({sample_x},{sample_y}) was "
+            f"{crop.getpixel((sample_x, sample_y))!r}, expected {expected[pos]!r}"
+        )
+
+
+def test_crop_quadrants_includes_inner_bleed() -> None:
+    """Each crop overlaps neighbors by QUADRANT_BLEED on its inner edge."""
+    image = _painted_page(1000, 1200)
+    crops = cm._crop_quadrants(image)
+    body_h = 1200 - int(1200 * cm.HEADER_STRIP_FRACTION)
+    bx = int(1000 * cm.QUADRANT_BLEED)
+    by = int(body_h * cm.QUADRANT_BLEED)
+    # top_left's width is mid_x + bx; mid_x is 500.
+    assert crops["top_left"].size[0] == 500 + bx
+    # top_left's height is half of body_h + by, measured from body_top.
+    assert crops["top_left"].size[1] == body_h // 2 + by
+    # bottom_right starts at (mid_x - bx, mid_y - by) and ends at (W, H).
+    expected_w = 1000 - (500 - bx)
+    expected_h = 1200 - (int(1200 * cm.HEADER_STRIP_FRACTION) + body_h // 2 - by)
+    assert crops["bottom_right"].size == (expected_w, expected_h)
+
+
+def test_crop_quadrants_handles_odd_dimensions() -> None:
+    """Off-by-one safety: 1001x1003 should not raise and still produce 4 crops."""
+    image = _painted_page(1001, 1003)
+    crops = cm._crop_quadrants(image)
+    assert tuple(crops.keys()) == QUADRANT_ORDER
+    for crop in crops.values():
+        assert crop.size[0] > 0 and crop.size[1] > 0
+
+
+# -- _quadrant_fallback ----------------------------------------------------
+
+
+def test_quadrant_fallback_builds_low_confidence_entry() -> None:
+    """When a quadrant call returns malformed text, the page must still
+    validate. The fallback packs the raw text into one Entry, tagged so a
+    downstream scorer can tell parse-failed quadrants from real ones."""
+    quad = cm._quadrant_fallback("garbled response", "top_right")
+    assert quad.position == "top_right"
+    assert len(quad.entries) == 1
+    entry = quad.entries[0]
+    assert entry.raw_text == "garbled response"
+    assert entry.confidence == "low"
+    assert entry.notes == "parse_failed"
+    assert entry.row_index == 0
+
+
+def test_quadrant_fallback_validates_against_pageresult() -> None:
+    """A PageResult assembled from 4 fallback quadrants should validate —
+    confirms the fallback satisfies every required field on Quadrant/Entry."""
+    from datetime import UTC, datetime
+
+    from core.schema import PageResult
+
+    quads = [cm._quadrant_fallback("x", pos) for pos in QUADRANT_ORDER]
+    page = PageResult(
+        page_date_raw=None,
+        quadrants=quads,
+        model_version="test",
+        extracted_at=datetime.now(UTC),
+    )
+    assert [q.position for q in page.quadrants] == list(QUADRANT_ORDER)
 
 
 # -- _XGrammarLogitsProcessor ----------------------------------------------
@@ -374,3 +537,170 @@ def test_logits_processor_one_matcher_per_batch_row() -> None:
     xgr = _FakeXGr()
     modal_app._XGrammarLogitsProcessor(xgr, compiled_grammar=object(), vocab_size=64, batch_size=3)
     assert len(xgr.matchers_built) == 3
+
+
+# -- make_modal_qwen_vl_quad_adapter ---------------------------------------
+
+
+def _quadrant_json(position: str, hour: str, jock: str) -> str:
+    """Minimal-but-valid Quadrant JSON string for adapter dispatch tests."""
+    import json as _json
+
+    return _json.dumps(
+        {
+            "position": position,
+            "hour_raw": hour,
+            "jock_raw": jock,
+            "entries": [],
+            "oddities": [],
+        }
+    )
+
+
+def _save_fixture_page(path: Path, size: tuple[int, int] = (200, 300)) -> None:
+    """Write a small PIL PNG to `path` so the adapter has something to crop."""
+    from PIL import Image
+
+    Image.new("RGB", size, color=(255, 255, 255)).save(path)
+
+
+def _patch_modal_for_quadrant(
+    monkeypatch: pytest.MonkeyPatch,
+    side_effect: list[str | Exception],
+) -> object:
+    """Wire up the fakes the per-quadrant adapter needs:
+      - `transcribe_qwen_vl.remote` returns the next entry from `side_effect`
+      - `app.run()` is a no-op context manager.
+
+    Returns the MagicMock so callers can inspect `call_args_list`.
+    """
+    pytest.importorskip("modal", reason="adapter test requires the modal SDK")
+    from contextlib import contextmanager
+    from unittest.mock import MagicMock
+
+    import scripts.modal_app as modal_app
+
+    fake_remote = MagicMock(side_effect=side_effect)
+
+    @contextmanager
+    def fake_run() -> object:
+        yield None
+
+    monkeypatch.setattr(modal_app.transcribe_qwen_vl, "remote", fake_remote)
+    monkeypatch.setattr(modal_app.app, "run", fake_run)
+    return fake_remote
+
+
+def test_modal_qwen_vl_quad_adapter_happy_path(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """5 RPC calls in canonical order, each with the right schema and prompt;
+    the assembled PageResult round-trips the header date and four quadrants."""
+    image = tmp_path / "1990-04apr0106-page05.png"
+    _save_fixture_page(image)
+    fake_remote = _patch_modal_for_quadrant(
+        monkeypatch,
+        side_effect=[
+            '{"page_date_raw": "Mon 1 Jan 90", "oddities": ["weather: snowy"]}',
+            _quadrant_json("top_left", "6AM", "DJ A"),
+            _quadrant_json("top_right", "7AM", "DJ B"),
+            _quadrant_json("bottom_left", "8AM", "DJ C"),
+            _quadrant_json("bottom_right", "9AM", "DJ D"),
+        ],
+    )
+
+    transcribe = cm.make_modal_qwen_vl_quad_adapter("test-model")
+    result = transcribe(image)
+
+    # 5 calls: 1 header + 4 quadrants in canonical order.
+    assert fake_remote.call_count == 5
+    calls = fake_remote.call_args_list
+
+    # Call 0: header.
+    header_args = calls[0]
+    from core.prompts import HEADER_EXTRACTION_PROMPT
+
+    assert header_args.args[1] == HEADER_EXTRACTION_PROMPT
+    assert header_args.kwargs["json_schema"] == cm.HEADER_WIRE_SCHEMA
+
+    # Calls 1-4: quadrants in canonical order, each with pinned position.
+    for i, position in enumerate(QUADRANT_ORDER, start=1):
+        prompt_arg = calls[i].args[1]
+        assert position in prompt_arg, f"call {i} prompt missing position {position!r}"
+        schema = calls[i].kwargs["json_schema"]
+        assert schema["properties"]["position"] == {"enum": [position]}
+
+    # Assembled PageResult.
+    assert result.page_date_raw == "Mon 1 Jan 90"
+    assert result.oddities == ["weather: snowy"]
+    assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
+    assert result.quadrants[0].hour_raw == "6AM"
+    assert result.quadrants[3].jock_raw == "DJ D"
+    assert result.model_version == "modal-qwen-vl-quad:test-model"
+
+
+def test_modal_qwen_vl_quad_adapter_quadrant_fallback_on_malformed_json(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """When ONE quadrant call returns garbage, the page must still validate;
+    the affected quadrant gets the parse_failed fallback. The other 3 are intact."""
+    image = tmp_path / "1990-04apr0106-page15.png"
+    _save_fixture_page(image)
+    _patch_modal_for_quadrant(
+        monkeypatch,
+        side_effect=[
+            '{"page_date_raw": null, "oddities": []}',
+            _quadrant_json("top_left", "6AM", "A"),
+            "not json {{",  # second quadrant returns garbage
+            _quadrant_json("bottom_left", "8AM", "C"),
+            _quadrant_json("bottom_right", "9AM", "D"),
+        ],
+    )
+
+    transcribe = cm.make_modal_qwen_vl_quad_adapter("test-model")
+    result = transcribe(image)
+
+    # All 4 quadrants present, in canonical order.
+    assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
+
+    # The failed quadrant carries the parse_failed sentinel.
+    failed = result.quadrants[1]  # top_right
+    assert failed.position == "top_right"
+    assert len(failed.entries) == 1
+    assert failed.entries[0].notes == "parse_failed"
+    assert failed.entries[0].confidence == "low"
+    assert failed.entries[0].raw_text == "not json {{"
+
+    # The other three are NOT fallbacks — they have empty entries lists,
+    # not a single parse_failed entry.
+    for i in (0, 2, 3):
+        for entry in result.quadrants[i].entries:
+            assert entry.notes != "parse_failed"
+
+
+def test_modal_qwen_vl_quad_adapter_header_failure_does_not_fail_page(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A malformed header response leaves page_date_raw / oddities at their
+    defaults; the page still validates with all four quadrants intact."""
+    image = tmp_path / "1990-04apr0106-page20.png"
+    _save_fixture_page(image)
+    _patch_modal_for_quadrant(
+        monkeypatch,
+        side_effect=[
+            "garbage response from header call",
+            _quadrant_json("top_left", "6AM", "A"),
+            _quadrant_json("top_right", "7AM", "B"),
+            _quadrant_json("bottom_left", "8AM", "C"),
+            _quadrant_json("bottom_right", "9AM", "D"),
+        ],
+    )
+
+    transcribe = cm.make_modal_qwen_vl_quad_adapter("test-model")
+    result = transcribe(image)
+
+    assert result.page_date_raw is None
+    assert result.oddities == []
+    assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
+    # Quadrant data still flows through.
+    assert result.quadrants[0].hour_raw == "6AM"
