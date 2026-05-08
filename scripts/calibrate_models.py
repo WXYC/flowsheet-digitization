@@ -33,6 +33,14 @@ Models:
                    one golden page ~$0.01-0.02; full 18K-page corpus
                    run ~$100-200.
 
+  modal-qwen-vl-quad
+                   Per-quadrant Qwen-VL on Modal: crops the page into
+                   4 sub-images plus a header strip, calls the model 5x
+                   per page, assembles a PageResult locally. Eliminates
+                   cross-quadrant content placement errors that the
+                   single-shot `modal-qwen-vl` adapter still suffers.
+                   ~5x cost (~$0.05-0.10/page); full corpus ~$1000-1500.
+
 Both local-model adapters wrap the model output with the project's
 `PageResult` schema. Churro's raw OCR string is wrapped into the same
 text in all four quadrants so substring scoring works regardless of
@@ -54,13 +62,17 @@ Examples:
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import os
 import sys
 from collections.abc import Callable, Iterable
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from PIL.Image import Image as PILImage
 
 # Allow `python scripts/calibrate_models.py` to import the project's
 # `core` package without `python -m`.
@@ -74,8 +86,12 @@ from core.calibration import (  # noqa: E402
     run_calibration,
     summarize,
 )
-from core.prompts import PAGE_EXTRACTION_PROMPT  # noqa: E402
-from core.schema import QUADRANT_ORDER, PageResult, Quadrant  # noqa: E402
+from core.prompts import (  # noqa: E402
+    HEADER_EXTRACTION_PROMPT,
+    PAGE_EXTRACTION_PROMPT,
+    QUADRANT_EXTRACTION_PROMPT_TEMPLATE,
+)
+from core.schema import QUADRANT_ORDER, Entry, PageResult, Quadrant, QuadrantPosition  # noqa: E402
 
 # -- gemini-stored adapter -------------------------------------------------
 
@@ -289,6 +305,119 @@ def make_modal_churro_adapter(
     return transcribe
 
 
+HEADER_WIRE_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "page_date_raw": {"type": ["string", "null"]},
+        "oddities": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["page_date_raw", "oddities"],
+    "additionalProperties": False,
+}
+"""JSON Schema for the header-strip call in `modal-qwen-vl-quad`.
+
+Defined inline rather than as a Pydantic model: there's exactly one
+caller, the schema is small, and a one-off model would just be a layer
+of indirection.
+"""
+
+
+def make_modal_qwen_vl_quad_adapter(
+    model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct",
+) -> TranscribeFn:
+    """Per-quadrant Qwen-VL on a remote A100 via Modal.
+
+    Eliminates layout misplacement by construction: instead of asking
+    the model to spatially attribute rows from one full-page image to
+    the right quadrant slot in the JSON wrapper, we crop the page
+    locally and call the model 5 times — once per quadrant + once on
+    the header strip — and assemble the page server-side.
+
+    Each call is grammar-constrained (xgrammar). The four quadrant
+    schemas pin `position` to a singleton enum so the model literally
+    cannot mislabel the cell. The header schema is small and ad-hoc,
+    capturing only `page_date_raw` and page-level oddities (DJ-handoff
+    notes, weather notes, marginal annotations above the grid).
+
+    All 5 calls run inside one `with app.run():` block. Modal reuses
+    the warm container across them — the first call pays whatever
+    cold-start applies; calls 2-5 are warm. Per-page wall time is
+    roughly `cold + 4 * warm`, not `5 * warm`.
+
+    On per-quadrant JSON failure, the affected quadrant is replaced by
+    a `_quadrant_fallback` carrying the raw text in one entry tagged
+    `notes="parse_failed"`. Other quadrants still validate; the page
+    is never lost wholesale.
+    """
+    from PIL import Image
+
+    from scripts.modal_app import app, transcribe_qwen_vl
+
+    quadrant_schemas: dict[QuadrantPosition, dict[str, Any]] = {
+        pos: _quadrant_wire_schema(pos) for pos in QUADRANT_ORDER
+    }
+    quadrant_prompts: dict[QuadrantPosition, str] = {
+        pos: QUADRANT_EXTRACTION_PROMPT_TEMPLATE.format(position=pos) for pos in QUADRANT_ORDER
+    }
+
+    def transcribe(image_path: Path) -> PageResult:
+        image = Image.open(image_path).convert("RGB")
+        header_image = _crop_header_strip(image)
+        crops = _crop_quadrants(image)
+
+        page_date_raw: str | None = None
+        page_oddities: list[str] = []
+        quadrants: list[Quadrant] = []
+
+        with app.run():
+            # Header call — surfaces page-level fields the quadrant crops
+            # don't see. Failure here drops the date but does NOT fail
+            # the page; quadrant content is the load-bearing payload.
+            try:
+                header_text: str = transcribe_qwen_vl.remote(
+                    _png_bytes(header_image),
+                    HEADER_EXTRACTION_PROMPT,
+                    model_id,
+                    json_schema=HEADER_WIRE_SCHEMA,
+                )
+                header_data = json.loads(header_text)
+                page_date_raw = header_data.get("page_date_raw")
+                page_oddities = header_data.get("oddities") or []
+            except Exception:
+                pass  # leave defaults; not worth failing the page
+
+            # Quadrant calls in canonical order. Each crop sees only its
+            # own cell (plus a small bleed band) so cross-quadrant
+            # placement is structurally impossible.
+            for position in QUADRANT_ORDER:
+                text: str = transcribe_qwen_vl.remote(
+                    _png_bytes(crops[position]),
+                    quadrant_prompts[position],
+                    model_id,
+                    json_schema=quadrant_schemas[position],
+                )
+                try:
+                    data = json.loads(text)
+                    # Defense in depth: grammar already pins position via
+                    # singleton enum, but we overwrite anyway so a future
+                    # xgrammar regression on enum handling can't sneak a
+                    # mislabel through.
+                    data["position"] = position
+                    quadrants.append(Quadrant.model_validate(data))
+                except Exception:
+                    quadrants.append(_quadrant_fallback(text, position))
+
+        return PageResult(
+            page_date_raw=page_date_raw,
+            quadrants=quadrants,
+            model_version=f"modal-qwen-vl-quad:{model_id}",
+            extracted_at=datetime.now(UTC),
+            oddities=page_oddities,
+        )
+
+    return transcribe
+
+
 def make_modal_qwen_vl_adapter(
     model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct",
 ) -> TranscribeFn:
@@ -377,6 +506,98 @@ def _qwen_vl_wire_schema() -> dict[str, Any]:
     return schema
 
 
+# -- per-quadrant cropping (modal-qwen-vl-quad) ----------------------------
+
+# Top fraction of the page that gets its own header-strip call (date +
+# page-level oddities). The rest of the page is split into the 2x2 grid
+# of hour-blocks. Conservative default; tune up if the smoke run shows
+# the date cut off, tune down if quadrant headers are clipped.
+HEADER_STRIP_FRACTION = 0.12
+
+# Inner-edge overlap between adjacent quadrant crops, as a fraction of
+# page dimensions. Five percent buys forgiveness against scan skew (a 1°
+# tilt over a ~2400px page is ~40px of drift) and against rows whose
+# handwriting strays slightly across the printed grid line. The model
+# sees the same row from two crops in the bleed band; this is fine for
+# substring scoring and only marginally inflates token count.
+QUADRANT_BLEED = 0.05
+
+
+def _crop_header_strip(image: PILImage) -> PILImage:
+    """The top HEADER_STRIP_FRACTION of the page — date + page-level notes."""
+    w, h = image.size
+    return image.crop((0, 0, w, int(h * HEADER_STRIP_FRACTION)))
+
+
+def _crop_quadrants(image: PILImage) -> dict[QuadrantPosition, PILImage]:
+    """Split the page body into 4 quadrants in canonical order.
+
+    The header strip is sliced off first (handled by `_crop_header_strip`),
+    then the remaining body is bisected on both axes with `QUADRANT_BLEED`
+    overlap on every inner edge. Each returned image is one cell, big
+    enough that the model never sees a row cut by the page-midline grid.
+    """
+    w, h = image.size
+    body_top = int(h * HEADER_STRIP_FRACTION)
+    body_h = h - body_top
+    mid_x = w // 2
+    mid_y = body_top + body_h // 2
+    bx = int(w * QUADRANT_BLEED)
+    by = int(body_h * QUADRANT_BLEED)
+    return {
+        "top_left": image.crop((0, body_top, mid_x + bx, mid_y + by)),
+        "top_right": image.crop((mid_x - bx, body_top, w, mid_y + by)),
+        "bottom_left": image.crop((0, mid_y - by, mid_x + bx, h)),
+        "bottom_right": image.crop((mid_x - bx, mid_y - by, w, h)),
+    }
+
+
+def _png_bytes(image: PILImage) -> bytes:
+    """PIL image -> PNG-encoded bytes for the Modal RPC payload."""
+    buf = io.BytesIO()
+    image.save(buf, format="PNG")
+    return buf.getvalue()
+
+
+def _quadrant_fallback(text: str, position: QuadrantPosition) -> Quadrant:
+    """One-row low-confidence Quadrant, used when JSON parse/validation fails.
+
+    Tagged `notes="parse_failed"` so a downstream scorer can identify
+    these and exclude them from accuracy stats — the substring matcher
+    would otherwise reward a quadrant whose JSON failed but whose raw
+    text happened to contain a truth row, conflating a structural
+    failure with a real read.
+    """
+    return Quadrant(
+        position=position,
+        entries=[
+            Entry(
+                row_index=0,
+                raw_text=text,
+                confidence="low",
+                notes="parse_failed",
+            )
+        ],
+    )
+
+
+def _quadrant_wire_schema(position: QuadrantPosition) -> dict[str, Any]:
+    """Return a JSON Schema for ONE Quadrant with `position` pinned.
+
+    Used by the per-quadrant adapter (`modal-qwen-vl-quad`): we crop the
+    page into 4 sub-images and call the model once per quadrant. Pinning
+    `position` to a singleton enum mechanically forbids the model from
+    swapping labels — the grammar will reject any token that doesn't
+    spell the exact position string we asked for. The adapter also
+    overwrites `data["position"]` after json.loads as defense in depth.
+    """
+    import copy
+
+    schema = copy.deepcopy(Quadrant.model_json_schema())
+    schema["properties"]["position"] = {"enum": [position]}
+    return schema
+
+
 def _wrap_raw_text_as_page_result(text: str, *, model_version: str) -> PageResult:
     """Build a PageResult that puts the whole-page transcript in every quadrant.
 
@@ -445,6 +666,7 @@ _ADAPTER_BUILDERS: dict[str, Callable[[argparse.Namespace], TranscribeFn]] = {
     "qwen-vl": lambda a: make_qwen_vl_adapter(a.qwen_model, device=a.device, dtype=a.dtype),
     "modal-churro": lambda a: make_modal_churro_adapter(a.churro_model),
     "modal-qwen-vl": lambda a: make_modal_qwen_vl_adapter(a.qwen_model),
+    "modal-qwen-vl-quad": lambda a: make_modal_qwen_vl_quad_adapter(a.qwen_model),
 }
 
 
