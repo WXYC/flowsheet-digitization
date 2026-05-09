@@ -86,6 +86,7 @@ from core.calibration import (  # noqa: E402
     run_calibration,
     summarize,
 )
+from core.page_layout import PageLayout, detect_page_layout  # noqa: E402
 from core.prompts import (  # noqa: E402
     HEADER_EXTRACTION_PROMPT,
     PAGE_EXTRACTION_PROMPT,
@@ -362,8 +363,9 @@ def make_modal_qwen_vl_quad_adapter(
 
     def transcribe(image_path: Path) -> PageResult:
         image = Image.open(image_path).convert("RGB")
-        header_image = _crop_header_strip(image)
-        crops = _crop_quadrants(image)
+        layout = detect_page_layout(image)
+        header_image = _crop_header_strip(image, layout)
+        crops = _crop_quadrants(image, layout)
 
         page_date_raw: str | None = None
         page_oddities: list[str] = []
@@ -508,47 +510,30 @@ def _qwen_vl_wire_schema() -> dict[str, Any]:
 
 # -- per-quadrant cropping (modal-qwen-vl-quad) ----------------------------
 
-# Top fraction of the page that gets its own header-strip call (date +
-# page-level oddities). The rest of the page is split into the 2x2 grid
-# of hour-blocks. Conservative default; tune up if the smoke run shows
-# the date cut off, tune down if quadrant headers are clipped.
-HEADER_STRIP_FRACTION = 0.12
 
-# Inner-edge overlap between adjacent quadrant crops, as a fraction of
-# page dimensions. Five percent buys forgiveness against scan skew (a 1°
-# tilt over a ~2400px page is ~40px of drift) and against rows whose
-# handwriting strays slightly across the printed grid line. The model
-# sees the same row from two crops in the bleed band; this is fine for
-# substring scoring and only marginally inflates token count.
-QUADRANT_BLEED = 0.05
+def _crop_header_strip(image: PILImage, layout: PageLayout) -> PILImage:
+    """The header strip — date + page-level notes — above the body grid."""
+    w, _ = image.size
+    return image.crop((0, 0, w, layout.header_bottom_y))
 
 
-def _crop_header_strip(image: PILImage) -> PILImage:
-    """The top HEADER_STRIP_FRACTION of the page — date + page-level notes."""
-    w, h = image.size
-    return image.crop((0, 0, w, int(h * HEADER_STRIP_FRACTION)))
+def _crop_quadrants(image: PILImage, layout: PageLayout) -> dict[QuadrantPosition, PILImage]:
+    """Split the page body into 4 quadrants on the detected grid lines.
 
-
-def _crop_quadrants(image: PILImage) -> dict[QuadrantPosition, PILImage]:
-    """Split the page body into 4 quadrants in canonical order.
-
-    The header strip is sliced off first (handled by `_crop_header_strip`),
-    then the remaining body is bisected on both axes with `QUADRANT_BLEED`
-    overlap on every inner edge. Each returned image is one cell, big
-    enough that the model never sees a row cut by the page-midline grid.
+    No bleed: the detected coordinates land on the printed grid divider
+    itself, so a row to one side of the line belongs to one quadrant and
+    the row on the other side belongs to its neighbor — no overlap is
+    needed and bleeding the same row into two crops causes the model to
+    transcribe it twice.
     """
     w, h = image.size
-    body_top = int(h * HEADER_STRIP_FRACTION)
-    body_h = h - body_top
-    mid_x = w // 2
-    mid_y = body_top + body_h // 2
-    bx = int(w * QUADRANT_BLEED)
-    by = int(body_h * QUADRANT_BLEED)
     return {
-        "top_left": image.crop((0, body_top, mid_x + bx, mid_y + by)),
-        "top_right": image.crop((mid_x - bx, body_top, w, mid_y + by)),
-        "bottom_left": image.crop((0, mid_y - by, mid_x + bx, h)),
-        "bottom_right": image.crop((mid_x - bx, mid_y - by, w, h)),
+        "top_left": image.crop((0, layout.header_bottom_y, layout.column_mid_x, layout.body_mid_y)),
+        "top_right": image.crop(
+            (layout.column_mid_x, layout.header_bottom_y, w, layout.body_mid_y)
+        ),
+        "bottom_left": image.crop((0, layout.body_mid_y, layout.column_mid_x, h)),
+        "bottom_right": image.crop((layout.column_mid_x, layout.body_mid_y, w, h)),
     }
 
 

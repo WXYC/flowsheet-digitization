@@ -34,6 +34,11 @@ core/
                                  process_pending. No state of its own.
   golden.py                      Subset-comparison logic for hand-transcribed
                                  truth files in tests/golden/.
+  page_layout.py                 Projection-profile detector for the printed
+                                 grid lines on a flowsheet page; returns
+                                 PageLayout (header_bottom_y, body_mid_y,
+                                 column_mid_x). Used by the per-quadrant
+                                 cropper in scripts/calibrate_models.py.
 
 cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
                                  Builds dependencies from env, calls into core.
