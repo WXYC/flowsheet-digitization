@@ -19,6 +19,7 @@ sys.path.insert(0, str(_SCRIPTS))
 
 import calibrate_models as cm  # noqa: E402
 
+from core.page_layout import PageLayout  # noqa: E402
 from core.schema import QUADRANT_ORDER  # noqa: E402
 
 
@@ -269,48 +270,53 @@ def test_quadrant_wire_schema_each_position_unique() -> None:
 # -- _crop_header_strip / _crop_quadrants ---------------------------------
 
 
-def _painted_page(width: int, height: int) -> object:
+def _painted_page(width: int, height: int, layout: PageLayout) -> object:
     """A page-sized PIL image with each region painted a distinct color so
-    crop assignments can be checked by sampling a pixel from the result."""
+    crop assignments can be checked by sampling a pixel from the result.
+    The painting honors the supplied layout so each crop comes back as a
+    pure block of one color."""
     from PIL import Image, ImageDraw
 
     image = Image.new("RGB", (width, height), color=(255, 255, 255))
     draw = ImageDraw.Draw(image)
-    header_h = int(height * cm.HEADER_STRIP_FRACTION)
-    body_top = header_h
-    body_h = height - body_top
-    mid_x = width // 2
-    mid_y = body_top + body_h // 2
     # Paint each region with a distinct fill so the cropped sub-images
-    # are identifiable by sampling a pixel near their inner-corner side.
-    draw.rectangle((0, 0, width, header_h), fill=(10, 10, 10))  # header
-    draw.rectangle((0, body_top, mid_x, mid_y), fill=(255, 0, 0))  # TL
-    draw.rectangle((mid_x, body_top, width, mid_y), fill=(0, 255, 0))  # TR
-    draw.rectangle((0, mid_y, mid_x, height), fill=(0, 0, 255))  # BL
-    draw.rectangle((mid_x, mid_y, width, height), fill=(255, 255, 0))  # BR
+    # are identifiable by sampling a pixel.
+    draw.rectangle((0, 0, width, layout.header_bottom_y), fill=(10, 10, 10))  # header
+    draw.rectangle(
+        (0, layout.header_bottom_y, layout.column_mid_x, layout.body_mid_y), fill=(255, 0, 0)
+    )  # TL
+    draw.rectangle(
+        (layout.column_mid_x, layout.header_bottom_y, width, layout.body_mid_y), fill=(0, 255, 0)
+    )  # TR
+    draw.rectangle((0, layout.body_mid_y, layout.column_mid_x, height), fill=(0, 0, 255))  # BL
+    draw.rectangle(
+        (layout.column_mid_x, layout.body_mid_y, width, height), fill=(255, 255, 0)
+    )  # BR
     return image
 
 
-def test_crop_header_strip_takes_top_fraction() -> None:
-    image = _painted_page(800, 1000)
-    strip = cm._crop_header_strip(image)
-    expected_h = int(1000 * cm.HEADER_STRIP_FRACTION)
-    assert strip.size == (800, expected_h)
+def test_crop_header_strip_uses_layout_header_bottom_y() -> None:
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    image = _painted_page(800, 1000, layout)
+    strip = cm._crop_header_strip(image, layout)
+    assert strip.size == (800, 120)
     # The painted header is solid (10,10,10).
-    assert strip.getpixel((400, expected_h // 2)) == (10, 10, 10)
+    assert strip.getpixel((400, 60)) == (10, 10, 10)
 
 
 def test_crop_quadrants_returns_canonical_keys() -> None:
-    image = _painted_page(800, 1000)
-    crops = cm._crop_quadrants(image)
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    image = _painted_page(800, 1000, layout)
+    crops = cm._crop_quadrants(image, layout)
     assert tuple(crops.keys()) == QUADRANT_ORDER
 
 
 def test_crop_quadrants_each_region_carries_its_paint() -> None:
     """The center pixel of each cropped quadrant should be its paint
     color, confirming the crop pulled from the right region of the page."""
-    image = _painted_page(800, 1000)
-    crops = cm._crop_quadrants(image)
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    image = _painted_page(800, 1000, layout)
+    crops = cm._crop_quadrants(image, layout)
     expected = {
         "top_left": (255, 0, 0),
         "top_right": (0, 255, 0),
@@ -319,37 +325,38 @@ def test_crop_quadrants_each_region_carries_its_paint() -> None:
     }
     for pos, crop in crops.items():
         w, h = crop.size
-        # Sample a point well inside the painted region (away from the
-        # bleed band at the inner edges, which intrudes into the neighbor).
-        sample_x = w // 4 if pos.endswith("right") else (3 * w) // 4
-        sample_y = h // 4 if pos.startswith("bottom") else (3 * h) // 4
-        assert crop.getpixel((sample_x, sample_y)) == expected[pos], (
-            f"quadrant {pos} sample ({sample_x},{sample_y}) was "
-            f"{crop.getpixel((sample_x, sample_y))!r}, expected {expected[pos]!r}"
+        assert crop.getpixel((w // 2, h // 2)) == expected[pos], (
+            f"quadrant {pos} center pixel was {crop.getpixel((w // 2, h // 2))!r}, "
+            f"expected {expected[pos]!r}"
         )
 
 
-def test_crop_quadrants_includes_inner_bleed() -> None:
-    """Each crop overlaps neighbors by QUADRANT_BLEED on its inner edge."""
-    image = _painted_page(1000, 1200)
-    crops = cm._crop_quadrants(image)
-    body_h = 1200 - int(1200 * cm.HEADER_STRIP_FRACTION)
-    bx = int(1000 * cm.QUADRANT_BLEED)
-    by = int(body_h * cm.QUADRANT_BLEED)
-    # top_left's width is mid_x + bx; mid_x is 500.
-    assert crops["top_left"].size[0] == 500 + bx
-    # top_left's height is half of body_h + by, measured from body_top.
-    assert crops["top_left"].size[1] == body_h // 2 + by
-    # bottom_right starts at (mid_x - bx, mid_y - by) and ends at (W, H).
-    expected_w = 1000 - (500 - bx)
-    expected_h = 1200 - (int(1200 * cm.HEADER_STRIP_FRACTION) + body_h // 2 - by)
-    assert crops["bottom_right"].size == (expected_w, expected_h)
+def test_crop_quadrants_have_no_overlap() -> None:
+    """Detected coordinates land on the printed grid divider, so the
+    four crops must tile the body exactly with no overlap and no gap."""
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    image = _painted_page(1000, 1200, layout)
+    crops = cm._crop_quadrants(image, layout)
+    # top_left covers (0..400, 120..550) -> width 400, height 430.
+    assert crops["top_left"].size == (400, 430)
+    # top_right covers (400..1000, 120..550) -> width 600, height 430.
+    assert crops["top_right"].size == (600, 430)
+    # bottom_left covers (0..400, 550..1200) -> width 400, height 650.
+    assert crops["bottom_left"].size == (400, 650)
+    # bottom_right covers (400..1000, 550..1200) -> width 600, height 650.
+    assert crops["bottom_right"].size == (600, 650)
+    # Combined widths sum to image width; combined heights sum to body height.
+    assert crops["top_left"].size[0] + crops["top_right"].size[0] == 1000
+    assert crops["top_left"].size[1] + crops["bottom_left"].size[1] == 1200 - 120
 
 
-def test_crop_quadrants_handles_odd_dimensions() -> None:
-    """Off-by-one safety: 1001x1003 should not raise and still produce 4 crops."""
-    image = _painted_page(1001, 1003)
-    crops = cm._crop_quadrants(image)
+def test_crop_quadrants_handles_odd_layout_offsets() -> None:
+    """Off-by-one safety with non-divisible layout values."""
+    layout = PageLayout(header_bottom_y=137, body_mid_y=601, column_mid_x=423)
+    from PIL import Image as _Image
+
+    image = _Image.new("RGB", (1001, 1003), color=(255, 255, 255))
+    crops = cm._crop_quadrants(image, layout)
     assert tuple(crops.keys()) == QUADRANT_ORDER
     for crop in crops.values():
         assert crop.size[0] > 0 and crop.size[1] > 0
