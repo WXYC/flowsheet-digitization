@@ -142,7 +142,14 @@ def test_continuation_after_double_height_folds_into_double_height() -> None:
     """Defensive: a continuation following any non-continuation row is
     a wrap of THAT row, regardless of its notes tag. This includes
     double_height (a row that physically spans 2 grid rows but is one
-    handwritten entry) — a wrap can still happen on the line below."""
+    handwritten entry) — a wrap can still happen on the line below.
+
+    Corner-case acknowledgement: the merged entry now physically
+    occupies 3 grid rows but is still labeled `double_height`. That
+    label was a Phase-1 hint about line height, not an exact row count,
+    so this is acceptable; if Phase 2 ever needs an exact occupancy
+    count it should derive it from `row_index` boundaries on the raw
+    on-disk entries rather than from `notes`."""
     entries = [
         _entry(0, "VERY LONG ARTIST NAME WRITTEN BIG -", notes="double_height"),
         _entry(1, "A TRACK", notes="continuation"),
