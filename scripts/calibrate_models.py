@@ -35,11 +35,12 @@ Models:
 
   modal-qwen-vl-quad
                    Per-quadrant Qwen-VL on Modal: crops the page into
-                   4 sub-images plus a header strip, calls the model 5x
-                   per page, assembles a PageResult locally. Eliminates
-                   cross-quadrant content placement errors that the
-                   single-shot `modal-qwen-vl` adapter still suffers.
-                   ~5x cost (~$0.05-0.10/page); full corpus ~$1000-1500.
+                   4 sub-images plus a header strip and a footer strip,
+                   calls the model 6x per page, assembles a PageResult
+                   locally. Eliminates cross-quadrant content placement
+                   errors that the single-shot `modal-qwen-vl` adapter
+                   still suffers. ~6x cost (~$0.06-0.12/page); full
+                   corpus ~$1200-1800.
 
   local-quadrant-smoke
                    Local-only crop-quality smoke check: runs Churro
@@ -98,6 +99,7 @@ from core.calibration import (  # noqa: E402
 from core.golden import GoldenTruth, RowCountDiscrepancy, compare_row_counts  # noqa: E402
 from core.page_layout import PageLayout, detect_page_layout  # noqa: E402
 from core.prompts import (  # noqa: E402
+    FOOTER_EXTRACTION_PROMPT,
     HEADER_EXTRACTION_PROMPT,
     PAGE_EXTRACTION_PROMPT,
     QUADRANT_EXTRACTION_PROMPT_TEMPLATE,
@@ -408,6 +410,22 @@ of indirection.
 """
 
 
+FOOTER_WIRE_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "comments_raw": {"type": ["string", "null"]},
+    },
+    "required": ["comments_raw"],
+    "additionalProperties": False,
+}
+"""JSON Schema for the footer-strip call in `modal-qwen-vl-quad`.
+
+Mirrors `HEADER_WIRE_SCHEMA`'s shape: one-off, inline, no Pydantic
+indirection. Pulls only `comments_raw` (the verbatim contents of the
+printed "Comments:" band at the bottom of the page).
+"""
+
+
 def make_modal_qwen_vl_quad_adapter(
     model_id: str = "Qwen/Qwen2.5-VL-7B-Instruct",
 ) -> TranscribeFn:
@@ -416,24 +434,29 @@ def make_modal_qwen_vl_quad_adapter(
     Eliminates layout misplacement by construction: instead of asking
     the model to spatially attribute rows from one full-page image to
     the right quadrant slot in the JSON wrapper, we crop the page
-    locally and call the model 5 times — once per quadrant + once on
-    the header strip — and assemble the page server-side.
+    locally and call the model 6 times — once per quadrant, once on
+    the header strip, and once on the footer strip — and assemble the
+    page server-side.
 
     Each call is grammar-constrained (xgrammar). The four quadrant
     schemas pin `position` to a singleton enum so the model literally
     cannot mislabel the cell. The header schema is small and ad-hoc,
     capturing only `page_date_raw` and page-level oddities (DJ-handoff
-    notes, weather notes, marginal annotations above the grid).
+    notes, weather notes, marginal annotations above the grid). The
+    footer schema captures only `comments_raw` — the verbatim contents
+    of the printed "Comments:" band at the bottom of the page.
 
-    All 5 calls run inside one `with app.run():` block. Modal reuses
+    All 6 calls run inside one `with app.run():` block. Modal reuses
     the warm container across them — the first call pays whatever
-    cold-start applies; calls 2-5 are warm. Per-page wall time is
-    roughly `cold + 4 * warm`, not `5 * warm`.
+    cold-start applies; calls 2-6 are warm. Per-page wall time is
+    roughly `cold + 5 * warm`, not `6 * warm`.
 
     On per-quadrant JSON failure, the affected quadrant is replaced by
     a `_quadrant_fallback` carrying the raw text in one entry tagged
     `notes="parse_failed"`. Other quadrants still validate; the page
-    is never lost wholesale.
+    is never lost wholesale. Header and footer parse failures leave
+    their respective fields at their defaults (`page_date_raw=None`,
+    `oddities=[]`, `comments_raw=None`) without failing the page.
     """
     from PIL import Image
 
@@ -450,10 +473,12 @@ def make_modal_qwen_vl_quad_adapter(
         image = Image.open(image_path).convert("RGB")
         layout = detect_page_layout(image)
         header_image = _crop_header_strip(image, layout)
+        footer_image = _crop_footer_strip(image, layout)
         crops = _crop_quadrants(image, layout)
 
         page_date_raw: str | None = None
         page_oddities: list[str] = []
+        comments_raw: str | None = None
         quadrants: list[Quadrant] = []
 
         with app.run():
@@ -494,9 +519,26 @@ def make_modal_qwen_vl_quad_adapter(
                 except Exception:
                     quadrants.append(_quadrant_fallback(text, position))
 
+            # Footer call — surfaces the bottom Comments band, which the
+            # quadrant crops deliberately exclude (they stop at
+            # body_bottom_y). Same fault-tolerance shape as the header
+            # call: a parse failure leaves comments_raw at None.
+            try:
+                footer_text: str = transcribe_qwen_vl.remote(
+                    _png_bytes(footer_image),
+                    FOOTER_EXTRACTION_PROMPT,
+                    model_id,
+                    json_schema=FOOTER_WIRE_SCHEMA,
+                )
+                footer_data = json.loads(footer_text)
+                comments_raw = footer_data.get("comments_raw")
+            except Exception:
+                pass  # leave default; not worth failing the page
+
         return PageResult(
             page_date_raw=page_date_raw,
             quadrants=quadrants,
+            comments_raw=comments_raw,
             model_version=f"modal-qwen-vl-quad:{model_id}",
             extracted_at=datetime.now(UTC),
             oddities=page_oddities,
@@ -600,6 +642,12 @@ def _crop_header_strip(image: PILImage, layout: PageLayout) -> PILImage:
     """The header strip — date + page-level notes — above the body grid."""
     w, _ = image.size
     return image.crop((0, 0, w, layout.header_bottom_y))
+
+
+def _crop_footer_strip(image: PILImage, layout: PageLayout) -> PILImage:
+    """The footer strip — printed "Comments:" line + free-text DJ commentary — below the body grid."""
+    w, h = image.size
+    return image.crop((0, layout.body_bottom_y, w, h))
 
 
 def _crop_quadrants(image: PILImage, layout: PageLayout) -> dict[QuadrantPosition, PILImage]:

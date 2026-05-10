@@ -324,8 +324,11 @@ def _painted_page(width: int, height: int, layout: PageLayout) -> object:
     draw.rectangle(
         (layout.column_mid_x, layout.body_mid_y, width, layout.body_bottom_y), fill=(255, 255, 0)
     )  # BR
-    # Footer band below body_bottom_y is left white so any leakage into
-    # the bottom quadrants would be visible.
+    # Paint the footer band below body_bottom_y so a footer crop is
+    # identifiable by sampling a pixel; leakage into the bottom quadrants
+    # would still be visible since the color is distinct from the bottom-
+    # quadrant fills.
+    draw.rectangle((0, layout.body_bottom_y, width, height), fill=(128, 128, 128))  # footer
     return image
 
 
@@ -336,6 +339,36 @@ def test_crop_header_strip_uses_layout_header_bottom_y() -> None:
     assert strip.size == (800, 120)
     # The painted header is solid (10,10,10).
     assert strip.getpixel((400, 60)) == (10, 10, 10)
+
+
+def test_crop_footer_strip_uses_layout_body_bottom_y() -> None:
+    """The footer crop must start at body_bottom_y and run to the bottom
+    of the image. It is the band that contains the printed Comments: line
+    and any handwritten free-text below it — content the quadrant crops
+    deliberately exclude."""
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, body_bottom_y=970, column_mid_x=400)
+    image = _painted_page(800, 1000, layout)
+    strip = cm._crop_footer_strip(image, layout)
+    assert strip.size == (800, 1000 - 970)
+    # The painted footer is solid (128,128,128); sample its center.
+    assert strip.getpixel((400, 15)) == (128, 128, 128)
+
+
+def test_crop_footer_strip_excludes_body_grid() -> None:
+    """The footer crop must NOT pull pixels from the bottom quadrants —
+    if it did, the model would helpfully transcribe the last row of those
+    quadrants into comments_raw."""
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, body_bottom_y=970, column_mid_x=400)
+    image = _painted_page(800, 1000, layout)
+    strip = cm._crop_footer_strip(image, layout)
+    # Bottom-left was painted (0,0,255); bottom-right was painted (255,255,0).
+    # Sweep the whole footer strip and make sure neither color appears.
+    w, h = strip.size
+    for y in range(h):
+        for x in range(w):
+            pixel = strip.getpixel((x, y))
+            assert pixel != (0, 0, 255), f"bottom-left bled into footer at ({x},{y})"
+            assert pixel != (255, 255, 0), f"bottom-right bled into footer at ({x},{y})"
 
 
 def test_crop_quadrants_returns_canonical_keys() -> None:
@@ -642,8 +675,9 @@ def _patch_modal_for_quadrant(
 def test_modal_qwen_vl_quad_adapter_happy_path(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """5 RPC calls in canonical order, each with the right schema and prompt;
-    the assembled PageResult round-trips the header date and four quadrants."""
+    """6 RPC calls in canonical order, each with the right schema and prompt;
+    the assembled PageResult round-trips the header date, four quadrants,
+    and the comments band."""
     image = tmp_path / "1990-04apr0106-page05.png"
     _save_fixture_page(image)
     fake_remote = _patch_modal_for_quadrant(
@@ -654,19 +688,20 @@ def test_modal_qwen_vl_quad_adapter_happy_path(
             _quadrant_json("top_right", "7AM", "DJ B"),
             _quadrant_json("bottom_left", "8AM", "DJ C"),
             _quadrant_json("bottom_right", "9AM", "DJ D"),
+            '{"comments_raw": "declared today anti-Valentines Day"}',
         ],
     )
 
     transcribe = cm.make_modal_qwen_vl_quad_adapter("test-model")
     result = transcribe(image)
 
-    # 5 calls: 1 header + 4 quadrants in canonical order.
-    assert fake_remote.call_count == 5
+    # 6 calls: 1 header + 4 quadrants + 1 footer, in canonical order.
+    assert fake_remote.call_count == 6
     calls = fake_remote.call_args_list
 
     # Call 0: header.
     header_args = calls[0]
-    from core.prompts import HEADER_EXTRACTION_PROMPT
+    from core.prompts import FOOTER_EXTRACTION_PROMPT, HEADER_EXTRACTION_PROMPT
 
     assert header_args.args[1] == HEADER_EXTRACTION_PROMPT
     assert header_args.kwargs["json_schema"] == cm.HEADER_WIRE_SCHEMA
@@ -678,12 +713,18 @@ def test_modal_qwen_vl_quad_adapter_happy_path(
         schema = calls[i].kwargs["json_schema"]
         assert schema["properties"]["position"] == {"enum": [position]}
 
+    # Call 5: footer.
+    footer_args = calls[5]
+    assert footer_args.args[1] == FOOTER_EXTRACTION_PROMPT
+    assert footer_args.kwargs["json_schema"] == cm.FOOTER_WIRE_SCHEMA
+
     # Assembled PageResult.
     assert result.page_date_raw == "Mon 1 Jan 90"
     assert result.oddities == ["weather: snowy"]
     assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
     assert result.quadrants[0].hour_raw == "6AM"
     assert result.quadrants[3].jock_raw == "DJ D"
+    assert result.comments_raw == "declared today anti-Valentines Day"
     assert result.model_version == "modal-qwen-vl-quad:test-model"
 
 
@@ -702,6 +743,7 @@ def test_modal_qwen_vl_quad_adapter_quadrant_fallback_on_malformed_json(
             "not json {{",  # second quadrant returns garbage
             _quadrant_json("bottom_left", "8AM", "C"),
             _quadrant_json("bottom_right", "9AM", "D"),
+            '{"comments_raw": null}',
         ],
     )
 
@@ -741,6 +783,7 @@ def test_modal_qwen_vl_quad_adapter_header_failure_does_not_fail_page(
             _quadrant_json("top_right", "7AM", "B"),
             _quadrant_json("bottom_left", "8AM", "C"),
             _quadrant_json("bottom_right", "9AM", "D"),
+            '{"comments_raw": "valid footer"}',
         ],
     )
 
@@ -751,6 +794,37 @@ def test_modal_qwen_vl_quad_adapter_header_failure_does_not_fail_page(
     assert result.oddities == []
     assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
     # Quadrant data still flows through.
+    assert result.quadrants[0].hour_raw == "6AM"
+    # Footer call is independent of the header call — its content survives.
+    assert result.comments_raw == "valid footer"
+
+
+def test_modal_qwen_vl_quad_adapter_footer_failure_does_not_fail_page(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A malformed footer response leaves comments_raw at None; the page
+    still validates with all four quadrants and the header date intact."""
+    image = tmp_path / "1990-04apr0106-page25.png"
+    _save_fixture_page(image)
+    _patch_modal_for_quadrant(
+        monkeypatch,
+        side_effect=[
+            '{"page_date_raw": "Mon 1 Jan 90", "oddities": []}',
+            _quadrant_json("top_left", "6AM", "A"),
+            _quadrant_json("top_right", "7AM", "B"),
+            _quadrant_json("bottom_left", "8AM", "C"),
+            _quadrant_json("bottom_right", "9AM", "D"),
+            "garbage response from footer call",
+        ],
+    )
+
+    transcribe = cm.make_modal_qwen_vl_quad_adapter("test-model")
+    result = transcribe(image)
+
+    assert result.comments_raw is None
+    # The rest of the page is untouched.
+    assert result.page_date_raw == "Mon 1 Jan 90"
+    assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
     assert result.quadrants[0].hour_raw == "6AM"
 
 

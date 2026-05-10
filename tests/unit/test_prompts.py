@@ -10,6 +10,7 @@ from __future__ import annotations
 import pytest
 
 from core.prompts import (
+    FOOTER_EXTRACTION_PROMPT,
     HEADER_EXTRACTION_PROMPT,
     PAGE_EXTRACTION_PROMPT,
     QUADRANT_EXTRACTION_PROMPT_TEMPLATE,
@@ -268,3 +269,38 @@ def test_header_prompt_scopes_oddities_to_page_level() -> None:
 
 def test_header_prompt_forbids_invented_content() -> None:
     assert "Never invent content" in HEADER_EXTRACTION_PROMPT
+
+
+# -- FOOTER_EXTRACTION_PROMPT ----------------------------------------------
+
+
+def test_footer_prompt_captures_comments_raw() -> None:
+    assert "comments_raw" in FOOTER_EXTRACTION_PROMPT
+
+
+def test_footer_prompt_demands_verbatim_transcription() -> None:
+    """The Comments band is free-text DJ commentary — the model must not
+    clean it up like an editor."""
+    assert "verbatim" in FOOTER_EXTRACTION_PROMPT.lower()
+
+
+def test_footer_prompt_specifies_json_null_for_blank() -> None:
+    """Blank comments band must round-trip as null, not "" — same convention
+    as page_date_raw / hour_raw / jock_raw."""
+    assert "JSON null" in FOOTER_EXTRACTION_PROMPT
+
+
+def test_footer_prompt_scopes_to_footer_band() -> None:
+    """The footer crop slightly overlaps the bottom-quadrant baseline; the
+    prompt must tell the model to ignore content above the Comments line —
+    otherwise the model will helpfully transcribe the last row of the
+    bottom quadrants into comments_raw."""
+    text = FOOTER_EXTRACTION_PROMPT.lower()
+    assert "comments" in text
+    # Negate transcribing content from above the Comments line.
+    assert "do not" in text
+    assert "above" in text
+
+
+def test_footer_prompt_forbids_invented_content() -> None:
+    assert "Never invent content" in FOOTER_EXTRACTION_PROMPT

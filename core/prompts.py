@@ -10,7 +10,7 @@ Phase 1 explicitly asks the model to:
   * never invent content; mark unreadable rows confidence=low,
   * tag special-case rows in `notes` and skip parsing them.
 
-Three top-level prompts:
+Four top-level prompts:
 
   * `PAGE_EXTRACTION_PROMPT` — Gemini and the page-level qwen-vl adapter.
     The model sees the whole page; the schema demands all four quadrants.
@@ -23,6 +23,10 @@ Three top-level prompts:
   * `HEADER_EXTRACTION_PROMPT` — the per-quadrant adapter's header-strip
     call. Pulls only `page_date_raw` and page-level oddities from the
     top band of the page.
+
+  * `FOOTER_EXTRACTION_PROMPT` — the per-quadrant adapter's footer-strip
+    call. Pulls only `comments_raw` (the verbatim contents of the
+    printed "Comments:" band) from the bottom band of the page.
 
 The per-row guidance (raw_text / artist_guess / confidence / notes
 tags / etc.) is duplicated across the page and quadrant prompts. They
@@ -247,6 +251,34 @@ oddity collections. Examples of what belongs here:
 Each oddity is one short sentence. Empty list if nothing unusual.
 
 Never invent content. If a marker is unreadable, leave it out rather
+than guessing.
+
+Return only the structured JSON described by the response schema.
+"""
+
+
+FOOTER_EXTRACTION_PROMPT = """\
+You are reading the bottom footer strip of a 1990s WXYC handwritten
+radio flowsheet page. The image is a horizontal slice from the very
+bottom of the page — below the four hour-blocks of the broadcast grid.
+It contains the printed "Comments:" label and a free-text band where
+the DJ writes short notes about the broadcast (dedications, jokes,
+themed-show titles — e.g. "declared today anti-Valentines Day").
+
+Capture:
+  - comments_raw: the verbatim contents of the Comments band, as
+    written. Do not fix spelling, do not expand abbreviations, do not
+    normalize punctuation. Join multi-line entries with a single
+    newline. Use JSON null (not the string "null", not an empty
+    string) when the Comments band is blank, unreadable, or absent.
+
+The crop may include a few pixels of the bottom row of the broadcast
+grid just above the printed "Comments:" line. Do NOT transcribe row
+content from above the Comments line — those entries are captured by a
+separate call against the bottom quadrants. Only transcribe what the
+DJ wrote in the Comments band itself.
+
+Never invent content. If the band is unreadable, return null rather
 than guessing.
 
 Return only the structured JSON described by the response schema.
