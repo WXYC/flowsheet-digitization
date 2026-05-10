@@ -20,7 +20,11 @@ GOLDEN_DIR = Path(__file__).resolve().parents[1] / "golden"
 
 # Hand-verified by reading projection profiles on each golden:
 # - column_mid_x = argmax of vertical-line ink in the central 30-70% x-band
-# - header_bottom_y ≈ first horizontal row line of the top quadrants
+# - header_bottom_y ≈ first horizontal row line minus median row spacing
+#                     (the TOP edge of the Hour-Jock cell, not its baseline —
+#                     character ascenders extend above the baseline so the
+#                     glyphs of "Hour ___ Jock ___" sit above the first row
+#                     line). Derived as first_row_y - median(diff(row_lines)).
 # - body_mid_y ≈ midpoint of the gap between top-block last row line and
 #                bottom-block first row line (the "Hour Jock" band)
 # - body_bottom_y ≈ last horizontal line in [0.95h, 0.99h] (the printed
@@ -28,31 +32,31 @@ GOLDEN_DIR = Path(__file__).resolve().parents[1] / "golden"
 #                   that band so they fall back to int(h * 0.97) = 4074.
 GROUND_TRUTH: dict[str, dict[str, int]] = {
     "1990-01jan0106-page05": {
-        "header_bottom_y": 546,
+        "header_bottom_y": 471,
         "body_mid_y": 2256,
         "body_bottom_y": 4074,
         "column_mid_x": 1303,
     },
     "1990-04apr0106-page05": {
-        "header_bottom_y": 548,
+        "header_bottom_y": 473,
         "body_mid_y": 2301,
         "body_bottom_y": 4068,
         "column_mid_x": 1262,
     },
     "1990-04apr0106-page15": {
-        "header_bottom_y": 545,
+        "header_bottom_y": 471,
         "body_mid_y": 2254,
         "body_bottom_y": 4074,
         "column_mid_x": 1267,
     },
     "1990-04apr0106-page20": {
-        "header_bottom_y": 546,
+        "header_bottom_y": 471,
         "body_mid_y": 2300,
         "body_bottom_y": 4067,
         "column_mid_x": 1260,
     },
     "1990-04apr0106-page25": {
-        "header_bottom_y": 547,
+        "header_bottom_y": 472,
         "body_mid_y": 2301,
         "body_bottom_y": 4065,
         "column_mid_x": 1278,
