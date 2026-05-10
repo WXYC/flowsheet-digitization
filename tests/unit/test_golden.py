@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+import pytest
+
 from core.golden import (
     AccuracyReport,
     GoldenTruth,
@@ -274,12 +276,9 @@ class TestCompareRowCounts:
 
     def test_discrepancy_is_frozen(self) -> None:
         d = RowCountDiscrepancy(position="top_left", predicted_count=3, truth_count=9)
-        try:
+        # dataclass(frozen=True) raises FrozenInstanceError, an AttributeError subclass.
+        with pytest.raises(AttributeError):
             d.predicted_count = 0  # type: ignore[misc]
-        except (AttributeError, Exception):
-            pass
-        else:
-            raise AssertionError("RowCountDiscrepancy should be frozen")
 
 
 def test_truth_round_trips_through_json() -> None:
