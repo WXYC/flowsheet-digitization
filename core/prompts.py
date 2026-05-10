@@ -41,13 +41,22 @@ top-right, bottom-left, bottom-right). Each quadrant is one hour of broadcast
 and has its own "Hour" and "Jock" (DJ) labels and a list of handwritten rows.
 
 Each row generally reads "ARTIST - TRACK" (sometimes with the album in
-parentheses). The left margin has a small printed type column (H, M, L, Std,
-O, R) — IGNORE this column for now; do not include it in raw_text or guesses.
+parentheses). The left margin has a small printed type column
+(H, M, L, Std, O, R) — capture this in `type_raw` per row, NOT in
+`raw_text`.
 
 For every row, return:
   - row_index: 0-based position within the quadrant
   - raw_text: the line, transcribed verbatim. Do not expand abbreviations
     ("LED ZEP" stays "LED ZEP"). Do not fix spelling. Preserve case.
+  - type_raw: verbatim character(s) inside the printed type-column circle to
+    the LEFT of this row. Common values: H (heavy rotation), M (medium),
+    L (light), Std (standards), O (oldies), R (request, sometimes written
+    R⇒ for a handoff). Keep verbatim — do not normalize "Std" to "std" and
+    do not expand abbreviations. If the circle contains a doodle or scribble
+    instead of a letter, briefly describe what is drawn (e.g. "hand-drawn
+    smiley with tongue", "star", "arrow"); the row's raw_text is unaffected
+    in that case. null if the circle is blank.
   - artist_guess: best-effort parse of the part left of the dash, or null
   - track_guess: best-effort parse of the part right of the dash, or null
   - confidence: "high" if the row is clearly legible, "medium" if you had to
@@ -127,13 +136,21 @@ neighbors or the header.
 This quadrant has its own "Hour" and "Jock" (DJ) labels and a list of
 handwritten rows. Each row generally reads "ARTIST - TRACK" (sometimes
 with the album in parentheses). The left margin has a small printed
-type column (H, M, L, Std, O, R) — IGNORE this column for now; do not
-include it in raw_text or guesses.
+type column (H, M, L, Std, O, R) — capture this in `type_raw` per row,
+NOT in `raw_text`.
 
 For every row, return:
   - row_index: 0-based position within the quadrant
   - raw_text: the line, transcribed verbatim. Do not expand abbreviations
     ("LED ZEP" stays "LED ZEP"). Do not fix spelling. Preserve case.
+  - type_raw: verbatim character(s) inside the printed type-column circle to
+    the LEFT of this row. Common values: H (heavy rotation), M (medium),
+    L (light), Std (standards), O (oldies), R (request, sometimes written
+    R⇒ for a handoff). Keep verbatim — do not normalize "Std" to "std" and
+    do not expand abbreviations. If the circle contains a doodle or scribble
+    instead of a letter, briefly describe what is drawn (e.g. "hand-drawn
+    smiley with tongue", "star", "arrow"); the row's raw_text is unaffected
+    in that case. null if the circle is blank.
   - artist_guess: best-effort parse of the part left of the dash, or null
   - track_guess: best-effort parse of the part right of the dash, or null
   - confidence: "high" if the row is clearly legible, "medium" if you had to
