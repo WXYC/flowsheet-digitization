@@ -1,8 +1,9 @@
 """Pydantic models for the Gemini structured-output contract.
 
 The response_schema sent to Gemini and the on-disk shape are *almost*
-the same model — they share `page_date_raw`, `quadrants`, and page-level
-`oddities`. They differ in two fields the caller owns, not Gemini:
+the same model — they share `page_date_raw`, `quadrants`, `comments_raw`,
+and page-level `oddities`. They differ in two fields the caller owns,
+not Gemini:
 
   * `model_version` — the SDK arg, set by the pipeline at write-time.
   * `extracted_at`  — wall-clock UTC at the call site.
@@ -17,9 +18,10 @@ The split avoids that:
     caller-set fields, populated by `pipeline._process_one_job`.
 
 Phase 1 captures the per-row text and the four-quadrant frame. Phase 2
-adds the left-margin type column (H/M/L/Std/O/R/R⇒, in `Entry.type_raw`)
-and is iteratively rolling out continuation/double-height handling, the
-comments field, and reconciliation against the WXYC library.
+adds the left-margin type column (H/M/L/Std/O/R/R⇒, in `Entry.type_raw`),
+the bottom-of-page comments field (`GeminiPageResult.comments_raw`), and
+is iteratively rolling out continuation/double-height handling and
+reconciliation against the WXYC library.
 """
 
 from __future__ import annotations
@@ -136,15 +138,30 @@ class GeminiPageResult(BaseModel):
             "bottom_right. Always return all four even if a quadrant is blank."
         )
     )
+    comments_raw: str | None = Field(
+        default=None,
+        description=(
+            "Verbatim contents of the printed 'Comments' field at the bottom of "
+            "the page (free-text DJ commentary about the broadcast — e.g. "
+            '"declared today anti-Valentines Day"). Null when the field is '
+            "blank, unreadable, or absent from the form. Keep verbatim: do not "
+            "normalize spelling, fix grammar, expand abbreviations, or truncate. "
+            "Multi-line entries are joined with a single newline. This field "
+            "replaces capturing the comments field as a page-level oddity — "
+            "do NOT also list the comments contents under `oddities`."
+        ),
+    )
     oddities: list[str] = Field(
         default_factory=list,
         description=(
             "Free-text descriptions of anything on the page OUTSIDE the four "
-            "quadrants — content the schema doesn't have a place for. Examples: "
-            "the page is rotated, the comments field at the bottom contains text, "
-            "there is a header note above the date, the right column has a "
-            "DJ-handoff message, marginal notes appear next to the grid. Empty "
-            "list if nothing unusual. Each item is one short sentence."
+            "quadrants and the comments field — content the schema doesn't have "
+            "a place for. Examples: the page is rotated, there is a header note "
+            "above the date, the right column has a DJ-handoff message, "
+            "marginal notes appear next to the grid. Empty list if nothing "
+            "unusual. Each item is one short sentence. The bottom comments "
+            "field has its own `comments_raw` slot — do not repeat its "
+            "contents here."
         ),
     )
 

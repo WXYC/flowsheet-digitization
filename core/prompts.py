@@ -82,6 +82,16 @@ For each quadrant, capture:
 Also capture:
   - page_date_raw: the date as written at the top of the page, verbatim
     (e.g. "Monday 1 Jan '90"). Null if blank or unreadable.
+  - comments_raw: the verbatim contents of the printed "Comments" field
+    at the bottom of the page. This is a free-text band the DJ writes
+    in — short notes about the broadcast, dedications, jokes
+    (e.g. "declared today anti-Valentines Day"). Transcribe verbatim:
+    do not fix spelling, do not expand abbreviations, do not normalize
+    punctuation. Join multi-line entries with a single newline. Use
+    JSON null (not the string "null", not an empty string) when the
+    Comments band is blank, unreadable, or absent from the form. Do
+    NOT also put the comments contents into the page-level `oddities`
+    list — they belong here, only here.
 
 ## Oddities — surface anything the schema doesn't model
 
@@ -104,10 +114,11 @@ about it.
       - "an arrow is drawn from row 3 down to row 6 (re-ordering)"
       - "rows 12-15 are bracketed with the label 'Smarty's Group/Album'"
 
-  * Page-level oddities: anything OUTSIDE the four quadrants — content
-    the schema simply has no field for. Examples:
+  * Page-level oddities: anything OUTSIDE the four quadrants AND outside
+    the Comments band — content the schema simply has no field for. The
+    Comments band has its own `comments_raw` field; do not also list it
+    here. Examples:
       - "the entire page is rotated 180 degrees"
-      - "Comments field at the bottom contains: 'declared today anti-Valentines Day...'"
       - "a weather note above the date reads: '25 degrees month wind chill 5'"
       - "a DJ-handoff note at the top of the right column says: 'F.S. Earl - Charles next'"
       - "marginal note in left margin near row 3 of top-left quadrant: 'Cool!'"

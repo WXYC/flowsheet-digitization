@@ -66,7 +66,7 @@ cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
 | Confidence per row | ✓ | re-OCR queue for low-confidence |
 | Special-case `notes` (continuation/double_height/crossed_out/illegible) | continuation merged at read-time via `core.continuations.merge_continuations` (on-disk JSON keeps the raw tag); double_height/crossed_out/illegible captured verbatim | double_height/crossed_out/illegible structured + filtered |
 | Left-margin type column (H/M/L/Std/O/R) | captured verbatim into `Entry.type_raw` (doodle-tolerant) | normalized + reconciled against rotation lists |
-| Comments field | ignored | captured |
+| Comments field | captured verbatim into `GeminiPageResult.comments_raw` (null if blank/unreadable) | normalized / dedup-checked against entry text |
 | Date normalization to ISO | raw only | reconciled with filename's year/range |
 | Reconciliation against `@wxyc/shared` canonical artists | — | fuzzy-match + auto-correct |
 | Bulk full-corpus run | not in this PR | calibrate first, then schedule |
