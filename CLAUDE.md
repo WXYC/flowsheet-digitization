@@ -41,6 +41,9 @@ core/
                                  PageLayout (header_bottom_y, body_mid_y,
                                  column_mid_x). Used by the per-quadrant
                                  cropper in scripts/calibrate_models.py.
+  continuations.py               Read-time merge of `notes="continuation"`
+                                 rows into the prior entry's raw_text.
+                                 Pure function; on-disk shape unchanged.
 
 cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
                                  Builds dependencies from env, calls into core.
@@ -61,7 +64,7 @@ cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
 | Per-row Artist/Track text | ✓ | refined |
 | Four quadrants (date, hour, jock) | ✓ | refined |
 | Confidence per row | ✓ | re-OCR queue for low-confidence |
-| Special-case `notes` (continuation/double_height/crossed_out/illegible) | captured verbatim, parsed in phase 2 | parsed, structured |
+| Special-case `notes` (continuation/double_height/crossed_out/illegible) | continuation merged at read-time via `core.continuations.merge_continuations` (on-disk JSON keeps the raw tag); double_height/crossed_out/illegible captured verbatim | double_height/crossed_out/illegible structured + filtered |
 | Left-margin type column (H/M/L/Std/O/R) | captured verbatim into `Entry.type_raw` (doodle-tolerant) | normalized + reconciled against rotation lists |
 | Comments field | ignored | captured |
 | Date normalization to ISO | raw only | reconciled with filename's year/range |
