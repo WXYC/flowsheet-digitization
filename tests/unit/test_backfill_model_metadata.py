@@ -201,6 +201,40 @@ def test_sqlite_rows_updated_for_hallucinated_model_versions(tmp_path: Path) -> 
     assert after[("1990/C.pdf", 1)] is None  # NULL stays NULL
 
 
+def test_accepts_single_pass_iterator_for_known_good_models(
+    tmp_path: Path, truth_mtime: datetime
+) -> None:
+    """`known_good_models` is typed `Iterable[str]`; the public contract
+    must hold for single-pass iterators (generators), not just lists.
+
+    Regression guard: an earlier draft consumed the iterable twice
+    inside the SQLite helper (once for `?`-placeholders, once for the
+    bind values), silently producing a binding-count mismatch when a
+    generator was passed."""
+    data_root = tmp_path / "data"
+    (data_root / "results").mkdir(parents=True)
+    db = data_root / "jobs.db"
+    _seed_jobs_db(db, rows=[("1990/A.pdf", 1, "gemini-2.5-pro")])
+    _write_result(
+        data_root,
+        relpath="1990/A",
+        page=1,
+        model_version="gemini-2.5-pro",
+        extracted_at="2024-08-15T12:00:00+00:00",
+        mtime_ts=truth_mtime.timestamp(),
+    )
+
+    stats = backfill(
+        data_root=data_root,
+        jobs_db=db,
+        known_good_models=(name for name in ["gemini-3.1-pro-preview"]),  # generator
+        target_model="gemini-3.1-pro-preview",
+        dry_run=False,
+    )
+    assert stats.json_rewritten == 1
+    assert stats.sqlite_rows_updated == 1
+
+
 def test_idempotent_on_repeat_run(tmp_path: Path, truth_mtime: datetime) -> None:
     """Run the script twice. After pass #1 every row carries the truth
     value; pass #2 is a no-op. This is the operator safeguard — running

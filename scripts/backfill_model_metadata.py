@@ -37,7 +37,7 @@ import json
 import logging
 import sqlite3
 import sys
-from collections.abc import Iterable
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -78,7 +78,7 @@ def _file_mtime_utc(path: Path) -> datetime:
 def _backfill_json_files(
     data_root: Path,
     *,
-    known_good_models: Iterable[str],
+    known_good_models: Sequence[str],
     target_model: str,
     dry_run: bool,
 ) -> BackfillStats:
@@ -122,7 +122,7 @@ def _backfill_json_files(
 def _backfill_sqlite(
     jobs_db: Path,
     *,
-    known_good_models: Iterable[str],
+    known_good_models: Sequence[str],
     target_model: str,
     dry_run: bool,
 ) -> int:
@@ -170,21 +170,25 @@ def backfill(
     dry_run: bool,
 ) -> BackfillStats:
     """Run the full backfill. Public surface for the unit test."""
-    if target_model not in known_good_models:
+    # Materialize once: the helpers iterate this twice (placeholder count +
+    # bind values), and the public contract is `Iterable[str]` which may be
+    # a single-pass generator.
+    known_list: list[str] = list(known_good_models)
+    if target_model not in known_list:
         # Defensive: if the operator's truth value isn't in the allowlist,
         # a re-run would loop forever rewriting their own writes. Adding
         # it here keeps the operation idempotent regardless of CLI input.
-        known_good_models = (*known_good_models, target_model)
+        known_list.append(target_model)
 
     stats = _backfill_json_files(
         data_root,
-        known_good_models=known_good_models,
+        known_good_models=known_list,
         target_model=target_model,
         dry_run=dry_run,
     )
     stats.sqlite_rows_updated = _backfill_sqlite(
         jobs_db,
-        known_good_models=known_good_models,
+        known_good_models=known_list,
         target_model=target_model,
         dry_run=dry_run,
     )
