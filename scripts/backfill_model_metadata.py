@@ -131,7 +131,20 @@ def _backfill_sqlite(
     target_model: str,
     dry_run: bool,
 ) -> int:
-    """UPDATE rows whose recorded model_version is not in the allowlist."""
+    """UPDATE only `status='completed'` rows whose model_version is not in
+    the allowlist.
+
+    The status filter matters: rows that were once completed and then
+    `retry()`'d back to `rendered` may carry a stale hallucinated
+    model_version that no longer reflects any current extraction. Those
+    are NOT in scope for this migration — there is no on-disk JSON to
+    mirror the change. (A pre-fix `retry()` left those values stale; a
+    post-fix `retry()` clears them.)
+
+    Without this filter, an initial pass on the production corpus would
+    have updated 219 rows (34 completed JSONs + 185 stale-rendered
+    leftovers); only the 34 belong here.
+    """
     if not jobs_db.is_file():
         logger.info("no jobs.db at %s — skipping SQLite update", jobs_db)
         return 0
@@ -140,11 +153,15 @@ def _backfill_sqlite(
     known = list(known_good_models)
     select_sql = (
         f"SELECT pdf_path, page_number, model_version FROM jobs "  # noqa: S608
-        f"WHERE model_version IS NOT NULL AND model_version NOT IN ({placeholders})"
+        f"WHERE status = 'completed' "
+        f"AND model_version IS NOT NULL "
+        f"AND model_version NOT IN ({placeholders})"
     )
     update_sql = (
         f"UPDATE jobs SET model_version = ? "  # noqa: S608
-        f"WHERE model_version IS NOT NULL AND model_version NOT IN ({placeholders})"
+        f"WHERE status = 'completed' "
+        f"AND model_version IS NOT NULL "
+        f"AND model_version NOT IN ({placeholders})"
     )
 
     with sqlite3.connect(jobs_db) as conn:

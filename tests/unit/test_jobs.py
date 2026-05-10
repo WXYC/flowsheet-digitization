@@ -144,6 +144,47 @@ async def test_retry_unknown_job_raises(store: JobStore) -> None:
         await store.retry("scans/nope.pdf", 1)
 
 
+async def test_retry_clears_completion_metadata(store: JobStore, tmp_path: Path) -> None:
+    """`retry()` flips status back to RENDERED — but the previous run's
+    `model_version` and `result_path` describe a completion that no
+    longer exists. Leaving them set is a lie about state and an
+    operational footgun: an offline analysis bucketing by `model_version`
+    sees a stale id, and an idempotent migration that filters by
+    `model_version IS NOT NULL` over-touches.
+
+    Real incident: 185 rows in production reached `status=rendered` with
+    a stale `model_version` after a bulk retry in May 2026. The reset
+    code path cleared `last_error` but not `model_version` / `result_path`.
+    """
+    await store.register("scans/a.pdf", 1)
+    await store.mark_rendered("scans/a.pdf", 1, image_path=tmp_path / "a.png")
+    await store.mark_completed(
+        "scans/a.pdf",
+        1,
+        result_path=tmp_path / "a.json",
+        model_version="gemini-3.1-pro-preview",
+    )
+
+    # Sanity: completed row has both fields set.
+    job = await store.get("scans/a.pdf", 1)
+    assert job is not None
+    assert job.model_version == "gemini-3.1-pro-preview"
+    assert job.result_path == str(tmp_path / "a.json")
+
+    await store.retry("scans/a.pdf", 1)
+
+    job = await store.get("scans/a.pdf", 1)
+    assert job is not None
+    assert job.status == JobStatus.RENDERED
+    # The PRIOR completion's metadata must be cleared — no current
+    # extraction backs them up.
+    assert job.model_version is None
+    assert job.result_path is None
+    # `image_path` is preserved — the rendered PNG is still on disk and
+    # is what re-processing will read.
+    assert job.image_path == str(tmp_path / "a.png")
+
+
 async def test_low_confidence_is_terminal(store: JobStore, tmp_path: Path) -> None:
     await store.register("scans/a.pdf", 1)
     await store.mark_rendered("scans/a.pdf", 1, image_path=tmp_path / "a.png")

@@ -58,22 +58,33 @@ def _write_result(
     return p
 
 
-def _seed_jobs_db(db_path: Path, rows: list[tuple[str, int, str]]) -> None:
-    """Seed a minimal jobs.db with just enough columns for the backfill SQL."""
+def _seed_jobs_db(
+    db_path: Path,
+    rows: list[tuple[str, int, str | None]] | list[tuple[str, int, str | None, str]],
+) -> None:
+    """Seed a minimal jobs.db with just enough columns for the backfill SQL.
+
+    Accepts rows as either `(pdf_path, page_number, model_version)` —
+    in which case `status` defaults to 'completed' — or as the explicit
+    4-tuple `(pdf_path, page_number, model_version, status)` for tests
+    that need to exercise the status filter.
+    """
     with sqlite3.connect(db_path) as conn:
         conn.execute(
             """
             CREATE TABLE jobs (
                 pdf_path TEXT NOT NULL,
                 page_number INTEGER NOT NULL,
+                status TEXT NOT NULL,
                 model_version TEXT,
                 PRIMARY KEY (pdf_path, page_number)
             )
             """
         )
+        normalized = [(r[0], r[1], r[3] if len(r) == 4 else "completed", r[2]) for r in rows]
         conn.executemany(
-            "INSERT INTO jobs (pdf_path, page_number, model_version) VALUES (?, ?, ?)",
-            rows,
+            "INSERT INTO jobs (pdf_path, page_number, status, model_version) VALUES (?, ?, ?, ?)",
+            normalized,
         )
         conn.commit()
 
@@ -191,6 +202,60 @@ def test_dry_run_makes_no_changes(tmp_path: Path) -> None:
 
     assert stats.json_rewritten == 1  # would have rewritten
     assert p.read_text() == before  # but didn't
+
+
+def test_sqlite_only_updates_completed_rows(tmp_path: Path) -> None:
+    """The migration's scope is `status='completed'` rows only — those
+    are the ones whose on-disk JSON we're rewriting in lockstep. Rows
+    in any other status that happen to carry a stale hallucinated
+    `model_version` (e.g. left over from a pre-fix `retry()`) must be
+    untouched.
+
+    Real incident: the production jobs.db had 219 rows with non-truth
+    `model_version` (34 completed + 185 stale-rendered after a bulk
+    retry). Without this filter the migration would have clobbered all
+    219, lying about 185 rows that have no current extraction backing
+    them.
+    """
+    data_root = tmp_path / "data"
+    (data_root / "results").mkdir(parents=True)
+    db = data_root / "jobs.db"
+    _seed_jobs_db(
+        db,
+        rows=[
+            # In scope: completed + hallucinated.
+            ("A.pdf", 1, "gemini-2.5-pro", "completed"),
+            ("A.pdf", 2, "gemini-2.0-flash", "completed"),
+            # Out of scope: rendered with stale mv (post-retry leftover).
+            ("B.pdf", 1, "gemini-2.5-pro", "rendered"),
+            ("B.pdf", 2, "gemini-2.0-flash", "rendered"),
+            # Out of scope: failed with stale mv.
+            ("C.pdf", 1, "gemini-2.5-pro", "failed"),
+            # Sanity: completed + already truthful.
+            ("D.pdf", 1, "gemini-3.1-pro-preview", "completed"),
+        ],
+    )
+
+    stats = backfill(
+        data_root=data_root,
+        jobs_db=db,
+        known_good_models=["gemini-3.1-pro-preview"],
+        target_model="gemini-3.1-pro-preview",
+        dry_run=False,
+    )
+    # Only the 2 completed-and-hallucinated rows.
+    assert stats.sqlite_rows_updated == 2
+
+    after = _read_model_versions(db)
+    # In-scope rows updated.
+    assert after[("A.pdf", 1)] == "gemini-3.1-pro-preview"
+    assert after[("A.pdf", 2)] == "gemini-3.1-pro-preview"
+    # Out-of-scope rows preserved verbatim.
+    assert after[("B.pdf", 1)] == "gemini-2.5-pro"
+    assert after[("B.pdf", 2)] == "gemini-2.0-flash"
+    assert after[("C.pdf", 1)] == "gemini-2.5-pro"
+    # Already-truthful row untouched.
+    assert after[("D.pdf", 1)] == "gemini-3.1-pro-preview"
 
 
 def test_sqlite_rows_updated_for_hallucinated_model_versions(tmp_path: Path) -> None:
