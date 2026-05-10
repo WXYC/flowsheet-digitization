@@ -370,6 +370,82 @@ class TestGeminiPageResult:
         assert page.model_version == "gemini-3.1-pro-preview"
 
 
+class TestCommentsRaw:
+    """The bottom-of-page Comments field is captured into `comments_raw` on
+    `GeminiPageResult` (Phase 2). It's verbatim like the other `_raw` fields
+    — no normalization, no truncation. Inheritance means `PageResult` gets
+    the field for free and old extractions (no `comments_raw` key) still
+    validate so we don't invalidate the existing corpus."""
+
+    def _quads(self) -> list[Quadrant]:
+        return [
+            Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+            for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+        ]
+
+    def test_defaults_to_none_on_gemini_page_result(self) -> None:
+        result = GeminiPageResult(page_date_raw=None, quadrants=self._quads())
+        assert result.comments_raw is None
+
+    def test_defaults_to_none_on_page_result(self) -> None:
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=self._quads(),
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+        )
+        assert page.comments_raw is None
+
+    def test_accepts_verbatim_string(self) -> None:
+        text = "declared today anti-Valentines Day"
+        result = GeminiPageResult(
+            page_date_raw=None,
+            quadrants=self._quads(),
+            comments_raw=text,
+        )
+        assert result.comments_raw == text
+
+    def test_round_trips_through_json(self) -> None:
+        text = "declared today anti-Valentines Day"
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=self._quads(),
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+            comments_raw=text,
+        )
+        rebuilt = PageResult.model_validate_json(page.model_dump_json())
+        assert rebuilt.comments_raw == text
+
+    def test_response_schema_names_comments_raw(self) -> None:
+        """Gemini will only populate fields named in the response_schema."""
+        schema_json = json.dumps(GeminiPageResult.model_json_schema())
+        assert "comments_raw" in schema_json
+
+    def test_old_extraction_json_without_comments_raw_validates(self) -> None:
+        """The 34 existing corpus JSONs have no `comments_raw` key. Validation
+        must accept that — the field defaults to None on missing input.
+        Otherwise we'd invalidate every prior extraction the day we land this."""
+        old_extraction = {
+            "page_date_raw": "Monday 1 Jan '90",
+            "model_version": "gemini-3.1-pro-preview",
+            "extracted_at": datetime.now(UTC).isoformat(),
+            "oddities": [],
+            "quadrants": [
+                {
+                    "position": p,
+                    "hour_raw": None,
+                    "jock_raw": None,
+                    "oddities": [],
+                    "entries": [],
+                }
+                for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+            ],
+        }
+        page = PageResult.model_validate_json(json.dumps(old_extraction))
+        assert page.comments_raw is None
+
+
 def test_page_result_schema_has_no_additional_properties_key() -> None:
     """Google's response_schema validator rejects `additionalProperties`.
 

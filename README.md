@@ -11,7 +11,7 @@ For each page of every PDF under `scans/`:
 3. Stores a JSON result file with the per-row `raw_text`, `artist_guess`, `track_guess`, `confidence`, and any phase-2 `notes` (continuation, double-height, crossed-out, illegible).
 4. Tracks every page in a SQLite job table so reruns are idempotent and partial failures resume.
 
-Phase 1 captures only the per-row "Artist – Track" text. The left-margin H/M/L/Std/O/R type column, multi-row continuations, double-height handwriting, the comments field, and reconciliation against the WXYC library DB are all phase 2 — see `PLAN.md`.
+Phase 1 captures the per-row "Artist – Track" text and the four-quadrant frame. Phase 2 adds the left-margin H/M/L/Std/O/R type column (`Entry.type_raw`), the bottom-of-page comments field (`GeminiPageResult.comments_raw`), and continues to roll out continuation/double-height handling and reconciliation against the WXYC library DB — see `PLAN.md`.
 
 ## Quickstart
 

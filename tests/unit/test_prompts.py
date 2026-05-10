@@ -112,6 +112,56 @@ def test_prompt_warns_against_duplicating_existing_fields() -> None:
     assert "do not repeat" in text or "don't repeat" in text
 
 
+def test_prompt_captures_bottom_comments_field() -> None:
+    """Phase 2: the bottom-of-page Comments band lands in `comments_raw`. The
+    prompt must (a) name the field, (b) locate it (bottom of the page so the
+    model knows what to look at), and (c) say verbatim — otherwise it'll get
+    cleaned up like an editor."""
+    text = PAGE_EXTRACTION_PROMPT
+    assert "comments_raw" in text
+    assert "bottom" in text.lower()
+    assert "verbatim" in text.lower()
+
+
+def test_prompt_specifies_json_null_for_blank_comments_field() -> None:
+    """Blank Comments band must be null, not "" — same convention as
+    `type_raw` / `hour_raw` / `jock_raw`. Otherwise consumers can't
+    distinguish "blank" from "they wrote an empty string"."""
+    # The model must be told what to emit when the field is blank.
+    assert "comments_raw" in PAGE_EXTRACTION_PROMPT
+    # Either a dedicated "blank -> null" sentence near comments_raw, or the
+    # global JSON-null rule must be in force. Check the prompt explicitly
+    # tells the model to use null for a blank comments field.
+    lowered = PAGE_EXTRACTION_PROMPT.lower()
+    # Look for "null" near "comments" — anything that gives the model the
+    # signal. Cheap proximity check: same sentence-ish window.
+    idx = lowered.find("comments_raw")
+    window = lowered[idx : idx + 500]
+    assert "null" in window, "expected the comments_raw section to specify null for blank fields"
+
+
+def test_prompt_keeps_comments_out_of_page_oddities() -> None:
+    """Before Phase 2, the prompt nudged the model to stash the Comments
+    contents inside `oddities` (as a page-level oddity). With `comments_raw`
+    in place, double-capturing would dilute oddities and produce duplicated
+    text downstream. The prompt must explicitly tell the model NOT to do
+    that, and the old illustrative example must be gone from the oddities
+    section."""
+    text = PAGE_EXTRACTION_PROMPT
+    # The old illustrative example contained the literal "Comments field at
+    # the bottom contains" — that must be removed.
+    assert "Comments field at the bottom contains" not in text, (
+        "old page-oddities example for the comments field must be removed — "
+        "the contents now belong in `comments_raw` instead"
+    )
+    # A clear negation must remain so a future prompt edit can't re-introduce
+    # the duplication by accident.
+    lowered = text.lower()
+    assert "do not" in lowered and "comments" in lowered, (
+        "expected a 'do not …  comments' clause anchoring the negation"
+    )
+
+
 # -- QUADRANT_EXTRACTION_PROMPT_TEMPLATE -----------------------------------
 
 
