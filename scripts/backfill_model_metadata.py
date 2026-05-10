@@ -15,7 +15,11 @@ This script:
     rewrites both fields in place: `model_version` ← `--target-model`,
     `extracted_at` ← the file's mtime (UTC, ISO-8601). The mtime is the
     best wall-clock signal we have for when the file was actually
-    written — far closer to truth than the model's guess.
+    written — far closer to truth than the model's guess. Caveat: if
+    any tool (editor format-on-save, rsync, backup) has touched the
+    JSON files since extraction, mtime drifts away from truth — the
+    `--dry-run` summary will surface unexpected `extracted_at` values
+    before any write happens.
   * runs the same UPDATE on `<data-root>/jobs.db`'s `jobs` table for
     every (pdf_path, page_number) whose `result_path` matches.
 
@@ -38,7 +42,7 @@ import logging
 import sqlite3
 import sys
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -54,20 +58,21 @@ DEFAULT_KNOWN_GOOD_MODELS = ("gemini-3.1-pro-preview",)
 class BackfillStats:
     json_scanned: int = 0
     json_skipped_known_good: int = 0
+    json_skipped_unreadable: int = 0
     json_rewritten: int = 0
-    json_rewritten_paths: list[Path] = None  # type: ignore[assignment]
+    json_rewritten_paths: list[Path] = field(default_factory=list)
     sqlite_rows_updated: int = 0
 
-    def __post_init__(self) -> None:
-        if self.json_rewritten_paths is None:
-            self.json_rewritten_paths = []
 
-
-def _load_json(path: Path) -> dict | None:
+def _load_json(path: Path, stats: BackfillStats) -> dict | None:
+    """Read and decode a result JSON. Bumps `json_skipped_unreadable` and
+    returns None on read or decode failure so the operator can see the
+    miss in the final summary instead of having to grep the log."""
     try:
         return json.loads(path.read_text())
     except (OSError, json.JSONDecodeError) as exc:
         logger.warning("could not read %s: %s", path, exc)
+        stats.json_skipped_unreadable += 1
         return None
 
 
@@ -92,7 +97,7 @@ def _backfill_json_files(
 
     for path in sorted(results_root.rglob("*.json")):
         stats.json_scanned += 1
-        data = _load_json(path)
+        data = _load_json(path, stats)
         if data is None:
             continue
 
@@ -251,7 +256,8 @@ def main(argv: list[str] | None = None) -> int:
 
     print(
         f"scanned {stats.json_scanned} json files; "
-        f"skipped {stats.json_skipped_known_good} (already known-good); "
+        f"skipped {stats.json_skipped_known_good} (already known-good), "
+        f"{stats.json_skipped_unreadable} (unreadable); "
         f"{'would rewrite' if args.dry_run else 'rewrote'} {stats.json_rewritten}; "
         f"{'would update' if args.dry_run else 'updated'} "
         f"{stats.sqlite_rows_updated} rows in {jobs_db}"
