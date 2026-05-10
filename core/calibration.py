@@ -44,12 +44,17 @@ class CalibrationOutcome:
     Exactly one of `report` and `error` is populated. `error` is a string
     rather than the exception itself so a summary table doesn't have to
     juggle exception types from heterogeneous adapters.
+
+    `actual` carries the raw PageResult the adapter produced on success.
+    The default `compare()` only needs the report, but downstream checks
+    (e.g. row-count divergence) want the original prediction.
     """
 
     case: CalibrationCase
     report: AccuracyReport | None
     elapsed_seconds: float
     error: str | None = None
+    actual: PageResult | None = None
 
 
 def discover_cases(golden_dir: Path) -> list[CalibrationCase]:
@@ -101,6 +106,7 @@ def run_calibration(
                 case=case,
                 report=compare(actual=actual, truth=truth),
                 elapsed_seconds=elapsed,
+                actual=actual,
             )
         outcomes.append(outcome)
         if on_complete is not None:
