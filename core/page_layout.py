@@ -228,7 +228,14 @@ def _detect_header_bottom_y(row_lines: list[int], h: int) -> int:
     spacing = _estimate_row_spacing(row_lines)
     if spacing is None:
         return int(h * FALLBACK_HEADER_FRACTION)
-    return first - int(spacing)
+    candidate = first - int(spacing)
+    # Defense against degenerate spacings: only ~2 detected lines with one
+    # straddling the body-midline gap can yield a spacing larger than
+    # `first` itself, producing a negative y. Fall back rather than crop
+    # outside the page.
+    if candidate <= 0:
+        return int(h * FALLBACK_HEADER_FRACTION)
+    return candidate
 
 
 def _detect_body_mid_y(row_lines: list[int], h: int) -> int:
