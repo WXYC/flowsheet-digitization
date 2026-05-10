@@ -36,6 +36,12 @@ if TYPE_CHECKING:
 # the pipeline never crashes on a corner-case scan.
 FALLBACK_HEADER_FRACTION = 0.12
 
+# Fraction of page height for the body-bottom (Comments: line) fallback.
+# Empirically the printed Comments: line lands at y/h ≈ 0.967-0.969 on
+# clean goldens; 0.97 is the cleanest fixed approximation when detection
+# fails on a degraded scan.
+FALLBACK_BODY_BOTTOM_FRACTION = 0.97
+
 # Row-line detection sweeps a few thresholds. Pages 2-5 (binary CCITT-G4
 # scans) clear 0.5 easily; page 1 (RGB-mode degraded scan) needs 0.4. We
 # keep going down to 0.3 in case future scans are even noisier.
@@ -73,19 +79,28 @@ _BODY_MID_SEARCH_BAND = (0.3, 0.8)
 # across the 5 goldens.
 _BODY_MID_ANCHOR_FRACTION = 0.55
 
+# Search band for the body-bottom (Comments: printed line). The line sits
+# very near the bottom edge — pages 4 and 5 detect it at y/h ≈ 0.968. The
+# bottom block's last content row line shows up around y/h ≈ 0.95 on
+# pages with full row detection, so the lower bound 0.95 includes the
+# Comments line and excludes the last body row.
+_BODY_BOTTOM_SEARCH_BAND = (0.95, 0.99)
+
 
 @dataclass(frozen=True)
 class PageLayout:
     """Pixel coordinates of the printed grid lines on a flowsheet page.
 
     The page splits into:
-      - header strip:   image[:header_bottom_y]
-      - top quadrants:  image[header_bottom_y:body_mid_y, :/column_mid_x:]
-      - bottom quadrants: image[body_mid_y:, :/column_mid_x:]
+      - header strip:     image[:header_bottom_y]
+      - top quadrants:    image[header_bottom_y:body_mid_y, :/column_mid_x:]
+      - bottom quadrants: image[body_mid_y:body_bottom_y, :/column_mid_x:]
+      - footer strip:     image[body_bottom_y:]  (Comments: line + marginalia)
     """
 
     header_bottom_y: int
     body_mid_y: int
+    body_bottom_y: int
     column_mid_x: int
 
 
@@ -102,10 +117,12 @@ def detect_page_layout(image: PILImage) -> PageLayout:
     row_lines = _detect_row_lines(grayscale, w, column_mid_x)
     header_bottom_y = _detect_header_bottom_y(row_lines, h)
     body_mid_y = _detect_body_mid_y(row_lines, h)
+    body_bottom_y = _detect_body_bottom_y(row_lines, h)
 
     return PageLayout(
         header_bottom_y=header_bottom_y,
         body_mid_y=body_mid_y,
+        body_bottom_y=body_bottom_y,
         column_mid_x=column_mid_x,
     )
 
@@ -232,3 +249,20 @@ def _fallback_body_mid_y(h: int) -> int:
     when the body starts at FALLBACK_HEADER_FRACTION."""
     body_top = int(h * FALLBACK_HEADER_FRACTION)
     return body_top + (h - body_top) // 2
+
+
+def _detect_body_bottom_y(row_lines: list[int], h: int) -> int:
+    """Y of the printed `Comments:` line — top edge of the footer strip.
+
+    Picks the LAST detected horizontal line in [0.95h, 0.99h]. The Comments
+    line is the lowest printed horizontal feature on the form; everything
+    below it is handwritten marginalia that doesn't belong to either body
+    or comments structurally. Falls back to int(h * 0.97) when no line is
+    detected in that band (degraded scans where the printed Comments line
+    is too disrupted to clear the row-line threshold).
+    """
+    band_lo, band_hi = _BODY_BOTTOM_SEARCH_BAND[0] * h, _BODY_BOTTOM_SEARCH_BAND[1] * h
+    in_band = [y for y in row_lines if band_lo <= y <= band_hi]
+    if not in_band:
+        return int(h * FALLBACK_BODY_BOTTOM_FRACTION)
+    return in_band[-1]

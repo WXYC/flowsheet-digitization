@@ -288,15 +288,19 @@ def _painted_page(width: int, height: int, layout: PageLayout) -> object:
     draw.rectangle(
         (layout.column_mid_x, layout.header_bottom_y, width, layout.body_mid_y), fill=(0, 255, 0)
     )  # TR
-    draw.rectangle((0, layout.body_mid_y, layout.column_mid_x, height), fill=(0, 0, 255))  # BL
     draw.rectangle(
-        (layout.column_mid_x, layout.body_mid_y, width, height), fill=(255, 255, 0)
+        (0, layout.body_mid_y, layout.column_mid_x, layout.body_bottom_y), fill=(0, 0, 255)
+    )  # BL
+    draw.rectangle(
+        (layout.column_mid_x, layout.body_mid_y, width, layout.body_bottom_y), fill=(255, 255, 0)
     )  # BR
+    # Footer band below body_bottom_y is left white so any leakage into
+    # the bottom quadrants would be visible.
     return image
 
 
 def test_crop_header_strip_uses_layout_header_bottom_y() -> None:
-    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, body_bottom_y=970, column_mid_x=400)
     image = _painted_page(800, 1000, layout)
     strip = cm._crop_header_strip(image, layout)
     assert strip.size == (800, 120)
@@ -305,7 +309,7 @@ def test_crop_header_strip_uses_layout_header_bottom_y() -> None:
 
 
 def test_crop_quadrants_returns_canonical_keys() -> None:
-    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, body_bottom_y=970, column_mid_x=400)
     image = _painted_page(800, 1000, layout)
     crops = cm._crop_quadrants(image, layout)
     assert tuple(crops.keys()) == QUADRANT_ORDER
@@ -314,7 +318,7 @@ def test_crop_quadrants_returns_canonical_keys() -> None:
 def test_crop_quadrants_each_region_carries_its_paint() -> None:
     """The center pixel of each cropped quadrant should be its paint
     color, confirming the crop pulled from the right region of the page."""
-    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, body_bottom_y=970, column_mid_x=400)
     image = _painted_page(800, 1000, layout)
     crops = cm._crop_quadrants(image, layout)
     expected = {
@@ -331,28 +335,35 @@ def test_crop_quadrants_each_region_carries_its_paint() -> None:
         )
 
 
-def test_crop_quadrants_have_no_overlap() -> None:
-    """Detected coordinates land on the printed grid divider, so the
-    four crops must tile the body exactly with no overlap and no gap."""
-    layout = PageLayout(header_bottom_y=120, body_mid_y=550, column_mid_x=400)
+def test_crop_quadrants_have_no_overlap_and_exclude_footer() -> None:
+    """Detected coordinates land on the printed grid divider, so the four
+    crops must tile the body region exactly with no overlap and no gap.
+    The footer band below body_bottom_y is excluded from all quadrants —
+    that's what stops Comments: line bleed into bottom-quadrant inputs."""
+    layout = PageLayout(header_bottom_y=120, body_mid_y=550, body_bottom_y=1100, column_mid_x=400)
     image = _painted_page(1000, 1200, layout)
     crops = cm._crop_quadrants(image, layout)
     # top_left covers (0..400, 120..550) -> width 400, height 430.
     assert crops["top_left"].size == (400, 430)
     # top_right covers (400..1000, 120..550) -> width 600, height 430.
     assert crops["top_right"].size == (600, 430)
-    # bottom_left covers (0..400, 550..1200) -> width 400, height 650.
-    assert crops["bottom_left"].size == (400, 650)
-    # bottom_right covers (400..1000, 550..1200) -> width 600, height 650.
-    assert crops["bottom_right"].size == (600, 650)
-    # Combined widths sum to image width; combined heights sum to body height.
+    # bottom_left covers (0..400, 550..1100) -> width 400, height 550.
+    assert crops["bottom_left"].size == (400, 550)
+    # bottom_right covers (400..1000, 550..1100) -> width 600, height 550.
+    assert crops["bottom_right"].size == (600, 550)
+    # Combined widths sum to image width; combined heights sum to body
+    # height (header_bottom_y..body_bottom_y), NOT to image height.
     assert crops["top_left"].size[0] + crops["top_right"].size[0] == 1000
-    assert crops["top_left"].size[1] + crops["bottom_left"].size[1] == 1200 - 120
+    assert crops["top_left"].size[1] + crops["bottom_left"].size[1] == 1100 - 120
+    # Footer band (y >= body_bottom_y) is excluded — none of the crops
+    # include the bottom 100px of the painted page.
+    assert crops["bottom_left"].size[1] < 1200 - layout.body_mid_y
+    assert crops["bottom_right"].size[1] < 1200 - layout.body_mid_y
 
 
 def test_crop_quadrants_handles_odd_layout_offsets() -> None:
     """Off-by-one safety with non-divisible layout values."""
-    layout = PageLayout(header_bottom_y=137, body_mid_y=601, column_mid_x=423)
+    layout = PageLayout(header_bottom_y=137, body_mid_y=601, body_bottom_y=971, column_mid_x=423)
     from PIL import Image as _Image
 
     image = _Image.new("RGB", (1001, 1003), color=(255, 255, 255))

@@ -526,15 +526,24 @@ def _crop_quadrants(image: PILImage, layout: PageLayout) -> dict[QuadrantPositio
     the row on the other side belongs to its neighbor — no overlap is
     needed and bleeding the same row into two crops causes the model to
     transcribe it twice.
+
+    Bottom quadrants stop at `layout.body_bottom_y`, so the printed
+    `Comments:` line and any handwritten marginalia below it are excluded
+    from the quadrant inputs and the model can't transcribe them as
+    entries. Capturing the comments text itself is Phase 2 work.
     """
-    w, h = image.size
+    w, _ = image.size
     return {
         "top_left": image.crop((0, layout.header_bottom_y, layout.column_mid_x, layout.body_mid_y)),
         "top_right": image.crop(
             (layout.column_mid_x, layout.header_bottom_y, w, layout.body_mid_y)
         ),
-        "bottom_left": image.crop((0, layout.body_mid_y, layout.column_mid_x, h)),
-        "bottom_right": image.crop((layout.column_mid_x, layout.body_mid_y, w, h)),
+        "bottom_left": image.crop(
+            (0, layout.body_mid_y, layout.column_mid_x, layout.body_bottom_y)
+        ),
+        "bottom_right": image.crop(
+            (layout.column_mid_x, layout.body_mid_y, w, layout.body_bottom_y)
+        ),
     }
 
 

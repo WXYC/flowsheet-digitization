@@ -10,9 +10,11 @@ runs the detector and writes:
   <out>/<stem>/top_right.png
   <out>/<stem>/bottom_left.png
   <out>/<stem>/bottom_right.png
+  <out>/<stem>/footer.png            comments band (Phase 2 will use this)
 
 Use this when iterating on the detector to confirm at-a-glance that the
-crops cleanly separate top/bottom blocks and left/right columns.
+crops cleanly separate top/bottom blocks, left/right columns, and the
+comments band.
 """
 
 from __future__ import annotations
@@ -37,6 +39,7 @@ def _draw_overlay(image: Image.Image) -> Image.Image:
     line_kwargs = {"fill": (255, 0, 0), "width": 6}
     draw.line([(0, layout.header_bottom_y), (w, layout.header_bottom_y)], **line_kwargs)
     draw.line([(0, layout.body_mid_y), (w, layout.body_mid_y)], **line_kwargs)
+    draw.line([(0, layout.body_bottom_y), (w, layout.body_bottom_y)], **line_kwargs)
     draw.line([(layout.column_mid_x, 0), (layout.column_mid_x, h)], **line_kwargs)
     return overlay
 
@@ -52,8 +55,13 @@ def _write_crops(image: Image.Image, out_dir: Path) -> None:
     image.crop((layout.column_mid_x, layout.header_bottom_y, w, layout.body_mid_y)).save(
         out_dir / "top_right.png"
     )
-    image.crop((0, layout.body_mid_y, layout.column_mid_x, h)).save(out_dir / "bottom_left.png")
-    image.crop((layout.column_mid_x, layout.body_mid_y, w, h)).save(out_dir / "bottom_right.png")
+    image.crop((0, layout.body_mid_y, layout.column_mid_x, layout.body_bottom_y)).save(
+        out_dir / "bottom_left.png"
+    )
+    image.crop((layout.column_mid_x, layout.body_mid_y, w, layout.body_bottom_y)).save(
+        out_dir / "bottom_right.png"
+    )
+    image.crop((0, layout.body_bottom_y, w, h)).save(out_dir / "footer.png")
     _draw_overlay(image).save(out_dir / "overlay.png")
 
 
@@ -85,7 +93,8 @@ def main() -> None:
         _write_crops(image, out_dir)
         print(
             f"{png.stem}: header_bottom_y={layout.header_bottom_y} "
-            f"body_mid_y={layout.body_mid_y} column_mid_x={layout.column_mid_x} "
+            f"body_mid_y={layout.body_mid_y} body_bottom_y={layout.body_bottom_y} "
+            f"column_mid_x={layout.column_mid_x} "
             f"-> {out_dir}/"
         )
 
