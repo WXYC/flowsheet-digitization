@@ -22,7 +22,16 @@ def test_prompt_names_each_quadrant_position(position: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "field", ["row_index", "raw_text", "artist_guess", "track_guess", "confidence", "notes"]
+    "field",
+    [
+        "row_index",
+        "raw_text",
+        "type_raw",
+        "artist_guess",
+        "track_guess",
+        "confidence",
+        "notes",
+    ],
 )
 def test_prompt_names_every_entry_field(field: str) -> None:
     assert field in PAGE_EXTRACTION_PROMPT
@@ -51,9 +60,19 @@ def test_prompt_demands_exactly_four_quadrants() -> None:
     assert "EXACTLY FOUR quadrants" in PAGE_EXTRACTION_PROMPT
 
 
-def test_prompt_excludes_left_margin_type_column() -> None:
-    # The H/M/L/Std/O/R column is phase 2; the prompt must say so.
-    assert "IGNORE this column" in PAGE_EXTRACTION_PROMPT
+def test_prompt_captures_left_margin_type_column() -> None:
+    """Phase 2: the H/M/L/Std/O/R column is captured into `type_raw`. The
+    prompt must (a) name the field and (b) enumerate the canonical letters
+    so the model knows what shape to look for."""
+    assert "type_raw" in PAGE_EXTRACTION_PROMPT
+    assert "H, M, L, Std, O, R" in PAGE_EXTRACTION_PROMPT
+
+
+def test_prompt_keeps_type_letters_out_of_raw_text() -> None:
+    """`type_raw` belongs in its own field. The CRITICAL RULE forbidding the
+    type letter from leaking into `raw_text` must persist — without it a
+    future prompt edit could re-introduce duplicated content."""
+    assert "Do not include the left-margin type column" in PAGE_EXTRACTION_PROMPT
 
 
 def test_prompt_documents_oddities_field() -> None:
@@ -85,7 +104,16 @@ def test_quadrant_template_substitutes_position(position: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "field", ["row_index", "raw_text", "artist_guess", "track_guess", "confidence", "notes"]
+    "field",
+    [
+        "row_index",
+        "raw_text",
+        "type_raw",
+        "artist_guess",
+        "track_guess",
+        "confidence",
+        "notes",
+    ],
 )
 def test_quadrant_template_names_every_entry_field(field: str) -> None:
     """Per-row guidance must stay in lock-step with PAGE_EXTRACTION_PROMPT —
@@ -112,8 +140,13 @@ def test_quadrant_template_forbids_invented_content() -> None:
     assert "Never invent content" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
 
 
-def test_quadrant_template_excludes_left_margin_type_column() -> None:
-    assert "IGNORE this column" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+def test_quadrant_template_captures_left_margin_type_column() -> None:
+    assert "type_raw" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+    assert "H, M, L, Std, O, R" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+
+
+def test_quadrant_template_keeps_type_letters_out_of_raw_text() -> None:
+    assert "Do not include the left-margin type column" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
 
 
 def test_quadrant_template_explicitly_excludes_page_level_oddities() -> None:

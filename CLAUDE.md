@@ -2,7 +2,7 @@
 
 ## What this repo does
 
-Pipeline that turns 1990–2001 WXYC handwritten flowsheet PDFs (in `scans/`) into structured JSON via Gemini 3 vision. Phase 1 captures only the four-quadrant per-page layout (date, hour, jock) and per-row "Artist – Track" text. Phase 2 (deferred) handles the left-margin type column, continuation/double-height/crossed-out rows, the comments field, and reconciliation against the WXYC library.
+Pipeline that turns 1990–2001 WXYC handwritten flowsheet PDFs (in `scans/`) into structured JSON via Gemini 3 vision. Phase 1 captures the four-quadrant per-page layout (date, hour, jock) and per-row "Artist – Track" text. Phase 2 adds the left-margin type column (`Entry.type_raw`) and is rolling out continuation/double-height/crossed-out rows, the comments field, and reconciliation against the WXYC library.
 
 See `README.md` for user-facing setup. See `PLAN.md` for the full design rationale and what's deliberately out of scope.
 
@@ -60,7 +60,7 @@ cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
 | Four quadrants (date, hour, jock) | ✓ | refined |
 | Confidence per row | ✓ | re-OCR queue for low-confidence |
 | Special-case `notes` (continuation/double_height/crossed_out/illegible) | captured verbatim, parsed in phase 2 | parsed, structured |
-| Left-margin type column (H/M/L/Std/O/R) | ignored | captured |
+| Left-margin type column (H/M/L/Std/O/R) | captured verbatim into `Entry.type_raw` (doodle-tolerant) | normalized + reconciled against rotation lists |
 | Comments field | ignored | captured |
 | Date normalization to ISO | raw only | reconciled with filename's year/range |
 | Reconciliation against `@wxyc/shared` canonical artists | — | fuzzy-match + auto-correct |

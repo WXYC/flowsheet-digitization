@@ -4,10 +4,10 @@ These models are the single source of truth for both:
   * the response_schema sent to Gemini, and
   * the validated shape stored to disk.
 
-Phase 1 captures only the per-row text and the four-quadrant frame. The
-left-margin type column (H/M/L/Std/O/R/R⇒), continuation/double-height
-handling, the comments field, and reconciliation against the WXYC library
-are all phase 2.
+Phase 1 captures the per-row text and the four-quadrant frame. Phase 2
+adds the left-margin type column (H/M/L/Std/O/R/R⇒, in `Entry.type_raw`)
+and is iteratively rolling out continuation/double-height handling, the
+comments field, and reconciliation against the WXYC library.
 """
 
 from __future__ import annotations
@@ -32,6 +32,19 @@ class Entry(BaseModel):
             "Verbatim transcription of the line. Do not expand abbreviations or normalize "
             "spacing. If unreadable, give a best-effort partial transcription."
         )
+    )
+    type_raw: str | None = Field(
+        default=None,
+        description=(
+            "Verbatim character(s) from the printed type-column circle to the LEFT "
+            "of this row. Common values: 'H' (heavy rotation), 'M' (medium), "
+            "'L' (light), 'Std' (standards), 'O' (oldies), 'R' (request, sometimes "
+            "written 'R⇒' for handoff). Keep verbatim — do NOT normalize 'Std' to "
+            "'std' or expand abbreviations. If the circle contains a doodle (e.g. "
+            "a face) instead of a letter, set type_raw to a short description "
+            "('hand-drawn smiley with tongue'); the rest of the row is still a "
+            "normal entry. Null if the circle is blank."
+        ),
     )
     artist_guess: str | None = Field(
         default=None,
