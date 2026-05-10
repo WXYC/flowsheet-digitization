@@ -14,7 +14,13 @@ from pathlib import Path
 import pytest
 from PIL import Image
 
-from core.page_layout import PageLayout, detect_page_layout
+from core.page_layout import (
+    FALLBACK_HEADER_FRACTION,
+    PageLayout,
+    _detect_header_bottom_y,
+    _estimate_row_spacing,
+    detect_page_layout,
+)
 
 GOLDEN_DIR = Path(__file__).resolve().parents[1] / "golden"
 
@@ -165,3 +171,63 @@ def test_page_layout_orders_coordinates_consistently(
         f"{stem}: invariants violated, layout={layout}, image={(w, h)}"
     )
     assert 0 < layout.column_mid_x < w, f"{stem}: column_mid_x out of range, layout={layout}"
+
+
+# -- _estimate_row_spacing --------------------------------------------------
+
+
+def test_estimate_row_spacing_returns_none_for_empty_list() -> None:
+    assert _estimate_row_spacing([]) is None
+
+
+def test_estimate_row_spacing_returns_none_for_single_line() -> None:
+    """Need at least two lines to take a diff."""
+    assert _estimate_row_spacing([100]) is None
+
+
+def test_estimate_row_spacing_returns_median_diff() -> None:
+    """Five lines at 75-px spacing -> median spacing 75."""
+    assert _estimate_row_spacing([100, 175, 250, 325, 400]) == 75.0
+
+
+def test_estimate_row_spacing_robust_to_outlier_gap() -> None:
+    """A single 200-px outlier (e.g., the body-midline gap) must not move
+    the median away from the regular row spacing."""
+    # Eight rows at ~75px, with one 200px gap inserted in the middle.
+    lines = [100, 175, 250, 325, 525, 600, 675, 750]
+    assert _estimate_row_spacing(lines) == 75.0
+
+
+def test_estimate_row_spacing_returns_none_for_non_positive_median() -> None:
+    """Sorted input is the contract; if a caller passes an unsorted list
+    that produces a non-positive median, return None rather than a
+    surprising negative spacing."""
+    # Strictly decreasing, so all diffs are negative.
+    assert _estimate_row_spacing([400, 300, 200, 100]) is None
+
+
+# -- _detect_header_bottom_y degenerate inputs -----------------------------
+
+
+def test_detect_header_bottom_y_falls_back_when_subtraction_would_go_negative() -> None:
+    """Pathological case: only two detected lines, one near the top and one
+    near the body midline, yielding a spacing larger than the first row's
+    y-coordinate. Without the clamp we'd return a negative y and crash
+    image.crop downstream. Must return the fixed-fraction fallback instead."""
+    h = 4200
+    # spacing = 2200, first = 300, naive would be 300 - 2200 = -1900.
+    result = _detect_header_bottom_y([300, 2500], h)
+    assert result == int(h * FALLBACK_HEADER_FRACTION)
+
+
+def test_detect_header_bottom_y_falls_back_on_empty_input() -> None:
+    h = 4200
+    assert _detect_header_bottom_y([], h) == int(h * FALLBACK_HEADER_FRACTION)
+
+
+def test_detect_header_bottom_y_falls_back_when_first_line_too_low() -> None:
+    """A first row line below 0.3h is suspicious — likely body content,
+    not the body-grid top — fall back to the fixed fraction."""
+    h = 4200
+    # 0.3 * h = 1260; first at 1500 is too low to trust.
+    assert _detect_header_bottom_y([1500, 1575, 1650], h) == int(h * FALLBACK_HEADER_FRACTION)
