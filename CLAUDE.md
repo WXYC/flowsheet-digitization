@@ -75,8 +75,9 @@ Mirroring `request-o-matic` and `library-metadata-lookup`:
 | _(no marker)_ | Pure unit test or integration test with mocked external deps. Runs in CI on every PR. | yes |
 | `external_api` | Hits the real Gemini API. Excluded from default CI to control cost; opt-in via `pytest -m external_api`. | no |
 | `slow` | Tests that take more than a few seconds (e.g. wall-clock pdf rendering of large fixtures). | no |
+| `calibration_dump` | Tests that read saved dumps under `/tmp/modal-dump/` and assume those dumps are current. Run manually after a fresh `scripts/calibrate_models.py --dump-dir ...`; opt-in via `pytest -m calibration_dump`. | no |
 
-The default `pytest` run uses `addopts = "-m 'not external_api and not slow'"` (see `pyproject.toml`). A separate scheduled workflow can run `pytest -m external_api` against `tests/golden/` to detect prompt-quality regressions.
+The default `pytest` run uses `addopts = "-m 'not external_api and not slow and not calibration_dump'"` (see `pyproject.toml`). A separate scheduled workflow can run `pytest -m external_api` against `tests/golden/` to detect prompt-quality regressions.
 
 ## Workflow conventions
 

@@ -86,6 +86,7 @@ from core.calibration import (  # noqa: E402
     run_calibration,
     summarize,
 )
+from core.golden import GoldenTruth, RowCountDiscrepancy, compare_row_counts  # noqa: E402
 from core.page_layout import PageLayout, detect_page_layout  # noqa: E402
 from core.prompts import (  # noqa: E402
     HEADER_EXTRACTION_PROMPT,
@@ -761,6 +762,26 @@ def main(argv: list[str]) -> int:
         ),
     )
     parser.add_argument(
+        "--check-row-counts",
+        action="store_true",
+        help=(
+            "After scoring, run the asymmetric row-count check: print any "
+            "quadrant where the model returned fewer entries than truth's "
+            "row count by more than the tolerance. Exits non-zero if any "
+            "discrepancy is found. See `core.golden.compare_row_counts`."
+        ),
+    )
+    parser.add_argument(
+        "--row-count-tolerance",
+        type=int,
+        default=2,
+        help=(
+            "Tolerance for --check-row-counts. A quadrant fails when "
+            "predicted < truth - tolerance. Default 2 absorbs scribe-level "
+            "disagreement; raise it for very subset-sparse truth files."
+        ),
+    )
+    parser.add_argument(
         "--churro-model",
         default="stanford-oval/churro-3B",
         help="HuggingFace model id for the churro adapter.",
@@ -801,7 +822,53 @@ def main(argv: list[str]) -> int:
 
     print()
     print(summarize(outcomes_by_model))
+
+    if args.check_row_counts:
+        had_discrepancies = _run_row_count_check(
+            outcomes_by_model, tolerance=args.row_count_tolerance
+        )
+        if had_discrepancies:
+            return 2
     return 0
+
+
+def _run_row_count_check(
+    outcomes_by_model: dict[str, list[CalibrationOutcome]],
+    *,
+    tolerance: int,
+) -> bool:
+    """Print row-count discrepancies for every successful outcome.
+
+    Returns True if any quadrant came back with `predicted < truth - tolerance`
+    so the CLI can exit non-zero. Skips outcomes that errored or whose
+    adapter didn't carry the PageResult through.
+    """
+    any_discrepancies = False
+    print(f"\n--- row-count check (tolerance=±{tolerance}) ---", file=sys.stderr)
+    for model, outcomes in outcomes_by_model.items():
+        for outcome in outcomes:
+            if outcome.actual is None:
+                continue
+            truth = GoldenTruth.load(outcome.case.truth_path)
+            discrepancies = compare_row_counts(
+                actual=outcome.actual, truth=truth, tolerance=tolerance
+            )
+            if discrepancies:
+                any_discrepancies = True
+                print(f"  {model} / {outcome.case.stem}", file=sys.stderr)
+                for d in discrepancies:
+                    print(_format_discrepancy(d, tolerance), file=sys.stderr)
+    if not any_discrepancies:
+        print("  no discrepancies", file=sys.stderr)
+    return any_discrepancies
+
+
+def _format_discrepancy(d: RowCountDiscrepancy, tolerance: int) -> str:
+    return (
+        f"    {d.position:14s} predicted={d.predicted_count:3d}, "
+        f"truth={d.truth_count:3d}, delta={d.delta:+d}  "
+        f"(FAIL, tolerance=±{tolerance})"
+    )
 
 
 if __name__ == "__main__":

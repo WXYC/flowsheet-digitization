@@ -82,8 +82,10 @@ testpaths = ["tests"]
 markers = [
     "external_api: tests that hit a real external API (Gemini). Excluded from default CI; opt-in via -m external_api.",
     "slow: tests that take more than a few seconds.",
+    "calibration_dump: tests that read saved calibration dumps from /tmp/modal-dump and assume those dumps are current. Excluded from default CI because stale dumps would fail; opt-in via -m calibration_dump after a fresh calibration.",
 ]
-# Default run excludes external_api and slow. CI runs the same default; a
-# separate workflow runs `pytest -m external_api` on a schedule against a
-# small set of golden pages.
-addopts = "-m 'not external_api and not slow'"
+# Default run excludes external_api, slow, and calibration_dump. CI runs the
+# same default; a separate workflow runs `pytest -m external_api` on a
+# schedule against a small set of golden pages, and `pytest -m calibration_dump`
+# is a manual post-calibration step.
+addopts = "-m 'not external_api and not slow and not calibration_dump'"

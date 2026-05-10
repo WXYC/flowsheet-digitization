@@ -73,6 +73,60 @@ class AccuracyReport:
         return "\n".join(lines)
 
 
+@dataclass(frozen=True, slots=True)
+class RowCountDiscrepancy:
+    """One quadrant where the model predicted fewer rows than truth.
+
+    `delta = predicted_count - truth_count`. The check is asymmetric:
+    truth files are subsets of actual rows (see `GoldenTruth`'s docstring),
+    so a positive delta is normal — the model captured rows the human
+    didn't transcribe. A NEGATIVE delta past the tolerance is the
+    regression-grade signal: the model dropped rows the human DID
+    transcribe.
+    """
+
+    position: QuadrantPosition
+    predicted_count: int
+    truth_count: int
+
+    @property
+    def delta(self) -> int:
+        return self.predicted_count - self.truth_count
+
+
+def compare_row_counts(
+    *,
+    actual: PageResult,
+    truth: GoldenTruth,
+    tolerance: int = 2,
+) -> list[RowCountDiscrepancy]:
+    """Flag quadrants where the model dropped truth-listed rows.
+
+    Asymmetric: only quadrants with `predicted_count < truth_count - tolerance`
+    are returned. Positive deltas (predicted > truth) are always normal in
+    subset mode and never reported. Discrepancies are returned in canonical
+    quadrant order (the order truth lists them).
+
+    Quadrants that truth omits entirely are not checked — same convention
+    `compare()` uses; truth says nothing, we say nothing.
+    """
+    actual_by_position = {q.position: q for q in actual.quadrants}
+    discrepancies: list[RowCountDiscrepancy] = []
+    for qt in truth.quadrants:
+        truth_count = len(qt.rows)
+        actual_q = actual_by_position.get(qt.position)
+        predicted_count = len(actual_q.entries) if actual_q is not None else 0
+        if predicted_count < truth_count - tolerance:
+            discrepancies.append(
+                RowCountDiscrepancy(
+                    position=qt.position,
+                    predicted_count=predicted_count,
+                    truth_count=truth_count,
+                )
+            )
+    return discrepancies
+
+
 def _icontains(haystack: str | None, needle: str) -> bool:
     if haystack is None:
         return False

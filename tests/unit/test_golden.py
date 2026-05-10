@@ -8,8 +8,10 @@ from core.golden import (
     AccuracyReport,
     GoldenTruth,
     QuadrantTruth,
+    RowCountDiscrepancy,
     RowTruth,
     compare,
+    compare_row_counts,
 )
 from core.schema import Entry, PageResult, Quadrant
 
@@ -154,6 +156,130 @@ class TestCompare:
         )
         report = compare(actual=actual, truth=truth)
         assert report.passed
+
+
+class TestCompareRowCounts:
+    """Asymmetric row-count check: only NEGATIVE deltas (predicted < truth)
+    are flagged as discrepancies, because truth is a subset (positive
+    deltas are normal). The threshold is `delta < -tolerance`."""
+
+    def _page_with_quadrant_entry_counts(
+        self,
+        counts: dict[str, int],
+    ) -> PageResult:
+        quads = []
+        for pos in ("top_left", "top_right", "bottom_left", "bottom_right"):
+            quads.append(
+                Quadrant(
+                    position=pos,  # type: ignore[arg-type]
+                    hour_raw=None,
+                    jock_raw=None,
+                    entries=[
+                        Entry(row_index=i, raw_text=f"row {i}", confidence="high")
+                        for i in range(counts.get(pos, 0))
+                    ],
+                )
+            )
+        return PageResult(
+            page_date_raw=None,
+            quadrants=quads,
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+        )
+
+    def _truth_with_row_counts(self, counts: dict[str, int]) -> GoldenTruth:
+        return GoldenTruth(
+            page_date_substrings=[],
+            quadrants=[
+                QuadrantTruth(
+                    position=pos,  # type: ignore[arg-type]
+                    rows=[RowTruth(raw_substring=f"r{i}") for i in range(n)],
+                )
+                for pos, n in counts.items()
+            ],
+        )
+
+    def test_predicted_matches_truth_yields_no_discrepancies(self) -> None:
+        actual = self._page_with_quadrant_entry_counts({"top_left": 6})
+        truth = self._truth_with_row_counts({"top_left": 6})
+        assert compare_row_counts(actual=actual, truth=truth) == []
+
+    def test_predicted_far_below_truth_is_a_discrepancy(self) -> None:
+        """Page 25's regression: top_right predicted=3 vs truth=9, delta=-6."""
+        actual = self._page_with_quadrant_entry_counts({"top_right": 3})
+        truth = self._truth_with_row_counts({"top_right": 9})
+        diffs = compare_row_counts(actual=actual, truth=truth, tolerance=2)
+        assert len(diffs) == 1
+        assert diffs[0].position == "top_right"
+        assert diffs[0].predicted_count == 3
+        assert diffs[0].truth_count == 9
+        assert diffs[0].delta == -6
+
+    def test_predicted_above_truth_is_not_a_discrepancy(self) -> None:
+        """Subset semantics: predicted=20 vs truth=6 is fine — truth is a
+        subset of actual rows. Positive delta must NOT trigger."""
+        actual = self._page_with_quadrant_entry_counts({"top_left": 20})
+        truth = self._truth_with_row_counts({"top_left": 6})
+        assert compare_row_counts(actual=actual, truth=truth, tolerance=2) == []
+
+    def test_within_tolerance_is_not_a_discrepancy(self) -> None:
+        """delta=-2 with tolerance=2 is on the boundary; tolerance accommodates
+        a single-row scribe disagreement so this must NOT fail."""
+        actual = self._page_with_quadrant_entry_counts({"top_left": 4})
+        truth = self._truth_with_row_counts({"top_left": 6})
+        assert compare_row_counts(actual=actual, truth=truth, tolerance=2) == []
+
+    def test_delta_just_outside_tolerance_is_a_discrepancy(self) -> None:
+        """delta=-3 with tolerance=2 should fail (one past the boundary)."""
+        actual = self._page_with_quadrant_entry_counts({"top_left": 3})
+        truth = self._truth_with_row_counts({"top_left": 6})
+        diffs = compare_row_counts(actual=actual, truth=truth, tolerance=2)
+        assert len(diffs) == 1
+        assert diffs[0].delta == -3
+
+    def test_predicted_zero_against_truth_count_is_a_discrepancy(self) -> None:
+        """Quadrant present but empty (e.g., model returned no entries) vs
+        truth specifying rows yields delta=-truth_count — a discrepancy."""
+        actual = self._page_with_quadrant_entry_counts({"top_left": 0})
+        truth = self._truth_with_row_counts({"top_left": 5})
+        diffs = compare_row_counts(actual=actual, truth=truth, tolerance=2)
+        assert len(diffs) == 1
+        assert diffs[0].position == "top_left"
+        assert diffs[0].predicted_count == 0
+        assert diffs[0].truth_count == 5
+
+    def test_quadrants_truth_omits_are_skipped(self) -> None:
+        """If truth doesn't have a quadrant entry for `bottom_right`,
+        we don't check it — it's not a 'truth says zero' case, it's
+        a 'truth has nothing to say'. Substring scoring already does the
+        same thing."""
+        actual = self._page_with_quadrant_entry_counts({"top_left": 0, "bottom_right": 12})
+        truth = self._truth_with_row_counts({"top_left": 0})  # no bottom_right
+        assert compare_row_counts(actual=actual, truth=truth, tolerance=2) == []
+
+    def test_multiple_discrepancies_returned_in_canonical_order(self) -> None:
+        actual = self._page_with_quadrant_entry_counts(
+            {"top_left": 1, "top_right": 1, "bottom_left": 1, "bottom_right": 1}
+        )
+        truth = self._truth_with_row_counts(
+            {"top_left": 5, "top_right": 5, "bottom_left": 5, "bottom_right": 5}
+        )
+        diffs = compare_row_counts(actual=actual, truth=truth, tolerance=2)
+        assert [d.position for d in diffs] == [
+            "top_left",
+            "top_right",
+            "bottom_left",
+            "bottom_right",
+        ]
+
+    def test_discrepancy_is_frozen(self) -> None:
+        d = RowCountDiscrepancy(position="top_left", predicted_count=3, truth_count=9)
+        try:
+            d.predicted_count = 0  # type: ignore[misc]
+        except (AttributeError, Exception):
+            pass
+        else:
+            raise AssertionError("RowCountDiscrepancy should be frozen")
 
 
 def test_truth_round_trips_through_json() -> None:
