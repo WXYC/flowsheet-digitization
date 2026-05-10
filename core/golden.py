@@ -16,6 +16,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
 
+from core.continuations import merge_continuations
 from core.schema import PageResult, QuadrantPosition
 
 
@@ -143,6 +144,11 @@ def compare(*, actual: PageResult, truth: GoldenTruth) -> AccuracyReport:
         check `hour_raw` (exact, case-insensitive) and `jock_substring`
         (case-insensitive substring), then for each `RowTruth` confirm that
         SOME entry in the actual quadrant has `raw_substring` in its raw_text.
+
+    Row matching runs against the *continuation-merged* view of each
+    quadrant — see `core.continuations`. A truth substring spanning a
+    handwritten line that the model emitted as a primary row plus one
+    or more `notes="continuation"` rows still matches.
     """
     header_misses: list[str] = []
     missing_rows: list[tuple[str, str]] = []
@@ -172,8 +178,9 @@ def compare(*, actual: PageResult, truth: GoldenTruth) -> AccuracyReport:
                 f"(got {actual_q.jock_raw!r})"
             )
 
+        merged = merge_continuations(actual_q.entries)
         for row in qt.rows:
-            found = any(_icontains(e.raw_text, row.raw_substring) for e in actual_q.entries)
+            found = any(_icontains(e.raw_text, row.raw_substring) for e in merged)
             if found:
                 matched_rows += 1
             else:

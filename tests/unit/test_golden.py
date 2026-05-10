@@ -136,6 +136,44 @@ class TestCompare:
         assert any("date" in m for m in report.header_misses)
         assert not report.passed
 
+    def test_truth_substring_matches_across_continuation_rows(self) -> None:
+        """A handwritten line that wraps onto the next grid row gets
+        emitted by the model as two `Entry`s — one normal, one tagged
+        `notes="continuation"`. The truth substring is the *whole*
+        line. Without `merge_continuations`, neither raw_text alone
+        contains the full substring and the row would be reported as
+        missing. With it, the merged view contains the joined text and
+        the match succeeds — the load-bearing assertion of this PR."""
+        actual = _page(
+            tl_entries=[
+                Entry(
+                    row_index=0,
+                    raw_text="DUKE ELLINGTON & JOHN COLTRANE - IN A",
+                    confidence="high",
+                ),
+                Entry(
+                    row_index=1,
+                    raw_text="SENTIMENTAL MOOD",
+                    confidence="high",
+                    notes="continuation",
+                ),
+            ]
+        )
+        truth = GoldenTruth(
+            page_date_substrings=[],
+            quadrants=[
+                QuadrantTruth(
+                    position="top_left",
+                    hour_raw="6AM",
+                    jock_substring="ALECIA",
+                    rows=[RowTruth(raw_substring="IN A SENTIMENTAL MOOD")],
+                )
+            ],
+        )
+        report = compare(actual=actual, truth=truth)
+        assert report.matched_rows == 1
+        assert report.missing_rows == []
+
     def test_extra_actual_rows_are_allowed(self) -> None:
         # Subset semantics: model can transcribe more than truth specifies.
         actual = _page(
