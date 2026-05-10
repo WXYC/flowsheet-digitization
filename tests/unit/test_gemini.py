@@ -7,7 +7,6 @@ model id, prompt, image mime type, and response_schema.
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
@@ -16,11 +15,14 @@ import pytest
 
 from core.gemini import GeminiClient, GeminiError, MediaResolution
 from core.prompts import PAGE_EXTRACTION_PROMPT
-from core.schema import PageResult, Quadrant
+from core.schema import GeminiPageResult, Quadrant
 
 
-def _sample_page_result() -> PageResult:
-    return PageResult(
+def _sample_page_result() -> GeminiPageResult:
+    """The production shape of `extract_page`'s return value. The SDK fills
+    only `GeminiPageResult` because that's the `response_schema` we pass —
+    `model_version` and `extracted_at` are added by the pipeline."""
+    return GeminiPageResult(
         page_date_raw="Monday 1 Jan '90",
         quadrants=[
             Quadrant(position="top_left", hour_raw="6AM", jock_raw="ALECIA", entries=[]),
@@ -28,12 +30,10 @@ def _sample_page_result() -> PageResult:
             Quadrant(position="bottom_left", hour_raw=None, jock_raw=None, entries=[]),
             Quadrant(position="bottom_right", hour_raw=None, jock_raw=None, entries=[]),
         ],
-        model_version="gemini-3.1-pro-preview",
-        extracted_at=datetime.now(UTC),
     )
 
 
-def _fake_sdk(parsed: PageResult | None) -> tuple[MagicMock, AsyncMock]:
+def _fake_sdk(parsed: GeminiPageResult | None) -> tuple[MagicMock, AsyncMock]:
     """Build a fake `google-genai` Client whose async generate_content returns `parsed`.
 
     Returns the sdk mock plus the AsyncMock for `generate_content` so tests
@@ -57,15 +57,26 @@ def png_file(tmp_path: Path) -> Path:
 
 
 class TestGeminiClient:
-    async def test_extract_page_returns_parsed_page_result(self, png_file: Path) -> None:
+    async def test_extract_page_returns_parsed_gemini_page_result(self, png_file: Path) -> None:
         expected = _sample_page_result()
         sdk, _generate = _fake_sdk(parsed=expected)
 
         client = GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview")
         result = await client.extract_page(png_file)
 
-        assert isinstance(result, PageResult)
+        # Production result type — no model_version / extracted_at on it.
+        assert isinstance(result, GeminiPageResult)
         assert result.page_date_raw == "Monday 1 Jan '90"
+        # Sanity: those caller-set fields really aren't on the model.
+        assert "model_version" not in type(result).model_fields
+
+    def test_client_exposes_configured_model_id(self) -> None:
+        """The pipeline reads `client.model` to fill the truthful
+        `model_version` on the on-disk `PageResult`. Without this property
+        the wrap step would have to reach into `_model` (private)."""
+        sdk = MagicMock()
+        client = GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview")
+        assert client.model == "gemini-3.1-pro-preview"
 
     async def test_extract_page_passes_model_id_to_sdk(self, png_file: Path) -> None:
         sdk, generate = _fake_sdk(parsed=_sample_page_result())
@@ -100,7 +111,10 @@ class TestGeminiClient:
 
         config = generate.call_args.kwargs["config"]
         assert config.response_mime_type == "application/json"
-        assert config.response_schema is PageResult
+        # GeminiPageResult, NOT PageResult — caller-set fields stay out of
+        # the schema so the model can't hallucinate them. See core.schema
+        # module docstring.
+        assert config.response_schema is GeminiPageResult
 
     async def test_extract_page_passes_media_resolution(self, png_file: Path) -> None:
         sdk, generate = _fake_sdk(parsed=_sample_page_result())
@@ -120,7 +134,7 @@ class TestGeminiClient:
 
     async def test_extract_page_raises_for_wrong_parsed_type(self, png_file: Path) -> None:
         sdk, _generate = _fake_sdk(parsed=None)
-        # Patch the response so .parsed is a non-PageResult object.
+        # Patch the response so .parsed is a non-GeminiPageResult object.
         response: Any = sdk.aio.models.generate_content.return_value
         response.parsed = {"not": "a-page-result"}
         client = GeminiClient(sdk=sdk, model="m")

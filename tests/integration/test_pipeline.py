@@ -22,7 +22,7 @@ from core.pipeline import (
     render_pending,
     result_path_for,
 )
-from core.schema import Entry, PageResult, Quadrant
+from core.schema import Entry, GeminiPageResult, PageResult, Quadrant
 
 POPPLER_AVAILABLE = shutil.which("pdfimages") is not None and shutil.which("pdfinfo") is not None
 FIXTURE_PDF = Path(__file__).resolve().parents[1] / "fixtures" / "three_pages_with_images.pdf"
@@ -369,6 +369,98 @@ async def test_process_pending_progress_callback_fires_on_failure_too(
     )
     assert n == 0
     assert events == [("scans/x.pdf", 1, False)]
+
+
+async def test_process_pending_overrides_model_version_and_extracted_at(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """The pipeline owns `model_version` and `extracted_at`, not Gemini.
+
+    Even if the SDK somehow returned a `GeminiPageResult`-or-richer object
+    with those fields populated, the on-disk JSON must reflect:
+      - `model_version` == the id passed to the SDK (`GeminiClient(model=...)`)
+      - `extracted_at` within seconds of `now`, in UTC
+
+    This is the regression guard for the original bug (see core.schema
+    module docstring): real run with `gemini-3.1-pro-preview` produced 4
+    distinct hallucinated model_version values and timestamps off by 14
+    months, all because those fields were inside the response_schema.
+    """
+    data_root = tmp_path / "data"
+    await store.register("scans/x.pdf", 1)
+    img = tmp_path / "img.png"
+    img.write_bytes(b"\x89PNG")
+    await store.mark_rendered("scans/x.pdf", 1, image_path=img)
+
+    # GeminiPageResult intentionally has NO model_version / extracted_at —
+    # this is the production shape after the split.
+    gemini_result = GeminiPageResult(
+        page_date_raw="Monday 1 Jan '90",
+        quadrants=[
+            Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+            for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+        ],
+    )
+    response = MagicMock()
+    response.parsed = gemini_result
+    sdk = MagicMock()
+    sdk.aio.models.generate_content = AsyncMock(return_value=response)
+    client = GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview")
+
+    before = datetime.now(UTC)
+    n = await process_pending(store, client=client, data_root=data_root, limit=1, max_attempts=3)
+    after = datetime.now(UTC)
+    assert n == 1
+
+    [result_file] = list(data_root.glob("results/**/page-*.json"))
+    written = PageResult.model_validate_json(result_file.read_text())
+
+    assert written.model_version == "gemini-3.1-pro-preview"
+    assert before <= written.extracted_at <= after
+    assert written.extracted_at.tzinfo is not None  # UTC, not naive
+
+
+async def test_process_pending_overwrites_stale_metadata_in_parsed_result(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """Defense in depth: if a stale fixture, broken SDK, or older parsed
+    result somehow slips a `PageResult` (subclass) past `extract_page`
+    with bogus `model_version` / `extracted_at`, the pipeline still wins.
+
+    Without this overwrite, the dict-merge in `_process_one_job` would
+    have to be in the wrong order to silently propagate a hallucinated
+    field. This test pins the merge order.
+    """
+    data_root = tmp_path / "data"
+    await store.register("scans/x.pdf", 1)
+    img = tmp_path / "img.png"
+    img.write_bytes(b"\x89PNG")
+    await store.mark_rendered("scans/x.pdf", 1, image_path=img)
+
+    stale = PageResult(
+        page_date_raw=None,
+        quadrants=[
+            Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+            for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+        ],
+        model_version="gemini-2.5-pro",  # the bug — a hallucinated id
+        extracted_at=datetime(2024, 1, 1, tzinfo=UTC),  # wrong by ~16 months
+    )
+    response = MagicMock()
+    response.parsed = stale
+    sdk = MagicMock()
+    sdk.aio.models.generate_content = AsyncMock(return_value=response)
+    client = GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview")
+
+    before = datetime.now(UTC)
+    await process_pending(store, client=client, data_root=data_root, limit=1, max_attempts=3)
+    after = datetime.now(UTC)
+
+    [result_file] = list(data_root.glob("results/**/page-*.json"))
+    written = PageResult.model_validate_json(result_file.read_text())
+
+    assert written.model_version == "gemini-3.1-pro-preview"
+    assert before <= written.extracted_at <= after
 
 
 @pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")

@@ -16,9 +16,11 @@ data/                            outputs (gitignored; DATA_ROOT)
   jobs.db                        SQLite job table
 
 core/
-  schema.py                      Pydantic models (PageResult/Quadrant/Entry).
-                                 Single source of truth — same class is both
-                                 the Gemini response_schema and the on-disk shape.
+  schema.py                      Pydantic models. GeminiPageResult is what
+                                 the model returns (used as response_schema);
+                                 PageResult adds caller-set model_version +
+                                 extracted_at and is what lands on disk. Entry
+                                 and Quadrant are shared between both.
   prompts.py                     Extraction prompt (separate module so prompt
                                  changes are reviewable independently).
   gemini.py                      Async wrapper around google-genai. Dependency
@@ -46,7 +48,7 @@ cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
 
 ## Why these choices
 
-- **Pydantic models double as the response schema.** `response_schema=PageResult` means there's exactly one definition. Drift between "what Gemini returns" and "what we validate" is structurally impossible.
+- **Pydantic models drive the response schema, with a deliberate split at the page level.** `response_schema=GeminiPageResult` covers everything the model fills (`page_date_raw`, `quadrants`, `oddities`); `PageResult` extends it with `model_version` and `extracted_at`, which the pipeline sets server-side. The split keeps the "one schema, one validator" property for the parts the model actually produces while preventing it from hallucinating caller-owned metadata.
 - **Job table tracks one row per `(pdf_path, page_number)`.** Resumable pipelines need a state record per unit-of-work. SQLite is plenty for ~16K pages.
 - **`completed` never auto-retries.** Successful Gemini extractions are not cheap. Per the org data-safety rule, they are protected; explicit `retry-page` is the only path back into the pipeline.
 - **Subset semantics for golden truth.** Handwriting is hard. Forcing exhaustive transcription would mean very few golden pages. Substring-match means partial truths are still useful.

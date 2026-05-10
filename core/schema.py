@@ -1,8 +1,20 @@
 """Pydantic models for the Gemini structured-output contract.
 
-These models are the single source of truth for both:
-  * the response_schema sent to Gemini, and
-  * the validated shape stored to disk.
+The response_schema sent to Gemini and the on-disk shape are *almost*
+the same model — they share `page_date_raw`, `quadrants`, and page-level
+`oddities`. They differ in two fields the caller owns, not Gemini:
+
+  * `model_version` — the SDK arg, set by the pipeline at write-time.
+  * `extracted_at`  — wall-clock UTC at the call site.
+
+If those two fields are part of the response_schema, Gemini fills them
+with hallucinated plausible values (real run with `gemini-3.1-pro-preview`
+produced 4 distinct fake model ids and timestamps off by 14+ months).
+The split avoids that:
+
+  * `GeminiPageResult` is what Gemini returns. Used as `response_schema`.
+  * `PageResult` is the on-disk shape — `GeminiPageResult` plus the two
+    caller-set fields, populated by `pipeline._process_one_job`.
 
 Phase 1 captures the per-row text and the four-quadrant frame. Phase 2
 adds the left-margin type column (H/M/L/Std/O/R/R⇒, in `Entry.type_raw`)
@@ -13,7 +25,7 @@ comments field, and reconciliation against the WXYC library.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, get_args
+from typing import Literal, Self, get_args
 
 from pydantic import BaseModel, Field, NonNegativeInt, model_validator
 
@@ -104,8 +116,12 @@ class Quadrant(BaseModel):
     )
 
 
-class PageResult(BaseModel):
-    """The full extraction for one flowsheet page."""
+class GeminiPageResult(BaseModel):
+    """The page-level subset that Gemini actually fills.
+
+    Used directly as `response_schema` on the SDK call. Has no
+    caller-set metadata — see the module docstring for why.
+    """
 
     page_date_raw: str | None = Field(
         default=None,
@@ -120,8 +136,6 @@ class PageResult(BaseModel):
             "bottom_right. Always return all four even if a quadrant is blank."
         )
     )
-    model_version: str = Field(description="Gemini model id that produced this result.")
-    extracted_at: datetime = Field(description="When the extraction completed.")
     oddities: list[str] = Field(
         default_factory=list,
         description=(
@@ -135,7 +149,7 @@ class PageResult(BaseModel):
     )
 
     @model_validator(mode="after")
-    def _check_quadrant_order(self) -> PageResult:
+    def _check_quadrant_order(self) -> Self:
         if len(self.quadrants) != 4:
             raise ValueError(
                 f"expected exactly 4 quadrants in fixed order {QUADRANT_ORDER}, "
@@ -145,3 +159,15 @@ class PageResult(BaseModel):
         if actual != QUADRANT_ORDER:
             raise ValueError(f"quadrants must be in order {QUADRANT_ORDER}, got {actual}")
         return self
+
+
+class PageResult(GeminiPageResult):
+    """On-disk shape: `GeminiPageResult` plus the two fields the caller owns.
+
+    `model_version` and `extracted_at` are filled by the pipeline (or by
+    each calibration adapter) at write-time. They are NOT part of the
+    Gemini response_schema — see the module docstring.
+    """
+
+    model_version: str = Field(description="Model id that produced this result.")
+    extracted_at: datetime = Field(description="When the extraction completed (UTC).")
