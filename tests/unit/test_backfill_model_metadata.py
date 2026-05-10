@@ -148,6 +148,28 @@ def test_known_good_model_left_untouched(tmp_path: Path) -> None:
     assert original.read_text() == before
 
 
+def test_unreadable_json_files_are_counted_and_skipped(tmp_path: Path) -> None:
+    """A corrupted result JSON must not abort the run, but the operator
+    needs to see the miss in the final summary — bumping a dedicated
+    `json_skipped_unreadable` counter surfaces it without forcing a log
+    grep."""
+    data_root = tmp_path / "data"
+    bad = data_root / "results" / "1990" / "page-01.json"
+    bad.parent.mkdir(parents=True)
+    bad.write_text("{ this is not valid json")
+
+    stats = backfill(
+        data_root=data_root,
+        jobs_db=data_root / "jobs.db",
+        known_good_models=["gemini-3.1-pro-preview"],
+        target_model="gemini-3.1-pro-preview",
+        dry_run=False,
+    )
+    assert stats.json_scanned == 1
+    assert stats.json_skipped_unreadable == 1
+    assert stats.json_rewritten == 0
+
+
 def test_dry_run_makes_no_changes(tmp_path: Path) -> None:
     data_root = tmp_path / "data"
     p = _write_result(

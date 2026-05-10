@@ -166,19 +166,20 @@ async def _process_one_job(
     async with sem:
         try:
             gemini_result = await client.extract_page(Path(job.image_path))
+            # Wrap into PageResult with caller-set model_version / extracted_at.
+            # Dict-merge order means our values win even if a stale fixture
+            # supplied them — see core.schema module docstring. The wrap is
+            # inside the try so a future schema break can't escape gather()
+            # and abort the rest of the batch.
+            payload = gemini_result.model_dump()
+            payload["model_version"] = client.model
+            payload["extracted_at"] = datetime.now(UTC)
+            page_result = PageResult.model_validate(payload)
         except Exception as exc:  # noqa: BLE001
             # Pipeline runs over thousands of pages; one transient SDK / network
             # error must not abort the whole run. Record and move on.
             await store.mark_failed(job.pdf_path, job.page_number, error=str(exc))
             return False
-
-    # Wrap into a PageResult with caller-set `model_version` / `extracted_at`.
-    # Dict-merge order means our values win even if a stale fixture somehow
-    # supplied them — see core.schema module docstring for the underlying bug.
-    payload = gemini_result.model_dump()
-    payload["model_version"] = client.model
-    payload["extracted_at"] = datetime.now(UTC)
-    page_result = PageResult.model_validate(payload)
 
     result_path = result_path_for(data_root, job.pdf_path, job.page_number)
     result_path.parent.mkdir(parents=True, exist_ok=True)
