@@ -9,8 +9,11 @@ cropping clips content or duplicates it across neighboring crops.
 
 `detect_page_layout` returns the three coordinates the cropper needs:
 
-  - `header_bottom_y` — y of the first horizontal row line; everything
-    above is the header strip.
+  - `header_bottom_y` — y of the TOP edge of the Hour-Jock cell (the
+    first detected row line minus one median row-spacing). Cropping at
+    the row line itself would leave the Hour-Jock glyph ascenders inside
+    the header crop; backing off one row puts them in the top-quadrant
+    crops where they belong.
   - `body_mid_y`      — y in the gap between the top hour blocks' last
     row line and the bottom hour blocks' first row line.
   - `column_mid_x`    — x of the printed vertical divider between the
@@ -187,12 +190,33 @@ def _coalesce_runs(indices: np.ndarray, max_gap: int = 3) -> list[int]:
     return lines
 
 
-def _detect_header_bottom_y(row_lines: list[int], h: int) -> int:
-    """Y of the first row line, or fallback if no lines detected.
+def _estimate_row_spacing(row_lines: list[int]) -> float | None:
+    """Median pixel distance between consecutive horizontal row lines.
 
-    The first horizontal row line is the bottom edge of the top
-    quadrants' "Hour ___ Jock ___" header — equivalently, the start
-    of the body grid. Everything above is the header strip.
+    Returns None when fewer than 2 lines were detected (no diff to take)
+    or when the median is non-positive (degenerate input). Both
+    `_detect_header_bottom_y` and `_detect_body_mid_y` need this number,
+    so it lives in one place.
+    """
+    if len(row_lines) < 2:
+        return None
+    spacings = np.diff(np.asarray(row_lines))
+    median_spacing = float(np.median(spacings))
+    if median_spacing <= 0:
+        return None
+    return median_spacing
+
+
+def _detect_header_bottom_y(row_lines: list[int], h: int) -> int:
+    """Y of the TOP edge of the top quadrants' Hour-Jock cell.
+
+    The first detected horizontal row line is the BASELINE of the printed
+    "Hour ___ Jock ___" underscore line. Character ascenders extend ~30-40px
+    above that baseline, so cropping at ``image[0:first_row_y]`` includes
+    the Hour-Jock glyphs in the header strip and the model transcribes
+    them as page-level oddities. The structurally correct top-of-quadrant
+    is one row up — i.e. ``first_row_y - median_row_spacing``. Fall back
+    to the fixed-fraction value when row spacing can't be estimated.
     """
     if not row_lines:
         return int(h * FALLBACK_HEADER_FRACTION)
@@ -201,7 +225,10 @@ def _detect_header_bottom_y(row_lines: list[int], h: int) -> int:
     first = row_lines[0]
     if first > 0.3 * h:
         return int(h * FALLBACK_HEADER_FRACTION)
-    return first
+    spacing = _estimate_row_spacing(row_lines)
+    if spacing is None:
+        return int(h * FALLBACK_HEADER_FRACTION)
+    return first - int(spacing)
 
 
 def _detect_body_mid_y(row_lines: list[int], h: int) -> int:
@@ -215,12 +242,8 @@ def _detect_body_mid_y(row_lines: list[int], h: int) -> int:
     one even when the bottom block has noisier line detection than the
     top.
     """
-    if len(row_lines) < 2:
-        return _fallback_body_mid_y(h)
-
-    spacings = np.diff(np.asarray(row_lines))
-    median_spacing = float(np.median(spacings))
-    if median_spacing <= 0:
+    median_spacing = _estimate_row_spacing(row_lines)
+    if median_spacing is None:
         return _fallback_body_mid_y(h)
 
     band_lo, band_hi = _BODY_MID_SEARCH_BAND[0] * h, _BODY_MID_SEARCH_BAND[1] * h
