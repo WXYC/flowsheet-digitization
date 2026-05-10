@@ -124,6 +124,36 @@ def test_wrap_raw_text_handles_empty_string() -> None:
         assert quad.entries[0].raw_text == ""
 
 
+# -- _wrap_raw_text_as_quadrant -------------------------------------------
+
+
+def test_wrap_raw_text_as_quadrant_sets_position() -> None:
+    quad = cm._wrap_raw_text_as_quadrant("Beastie Boys", position="top_left")
+    assert quad.position == "top_left"
+
+
+def test_wrap_raw_text_as_quadrant_emits_one_entry_with_text() -> None:
+    quad = cm._wrap_raw_text_as_quadrant("Robyn Hitchcock", position="bottom_right")
+    assert len(quad.entries) == 1
+    assert quad.entries[0].raw_text == "Robyn Hitchcock"
+    assert quad.entries[0].confidence == "medium"
+    assert quad.entries[0].row_index == 0
+
+
+def test_wrap_raw_text_as_quadrant_handles_empty() -> None:
+    quad = cm._wrap_raw_text_as_quadrant("", position="top_right")
+    assert quad.entries[0].raw_text == ""
+
+
+def test_wrap_raw_text_as_quadrant_leaves_hour_jock_unset() -> None:
+    """The smoke adapter doesn't try to attribute Hour/Jock — those are
+    structured fields the OCR-only model can't reliably split out. Leave
+    them None so header_misses surface honestly in the score."""
+    quad = cm._wrap_raw_text_as_quadrant("text", position="bottom_left")
+    assert quad.hour_raw is None
+    assert quad.jock_raw is None
+
+
 # -- _torch_dtype ----------------------------------------------------------
 
 
@@ -844,3 +874,77 @@ def test_format_discrepancy_includes_position_counts_and_tolerance() -> None:
     assert "truth=  9" in line
     assert "delta=-6" in line
     assert "tolerance=±2" in line
+
+
+# -- make_local_quadrant_smoke_adapter ------------------------------------
+
+
+def _save_smoke_fixture_page(path: Path, size: tuple[int, int] = (200, 300)) -> None:
+    """Write a small PIL PNG so the smoke adapter has something to crop."""
+    from PIL import Image
+
+    Image.new("RGB", size, color=(255, 255, 255)).save(path)
+
+
+def test_local_quadrant_smoke_adapter_calls_transcribe_per_quadrant(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The adapter must run the local transcribe-image function once per
+    quadrant in canonical order, with each call's image being the matching
+    quadrant crop. This is the dispatch contract — the smoke check is
+    useless if it transcribes the whole page or the wrong region."""
+    from PIL import Image as _Image
+
+    image_path = tmp_path / "1990-04apr0106-page05.png"
+    _save_smoke_fixture_page(image_path)
+
+    seen_calls: list[tuple[int, int]] = []
+
+    def fake_transcribe(image: _Image.Image, *, model: object, processor: object) -> str:
+        seen_calls.append(image.size)
+        # Return a position-correlated string so we can verify each crop
+        # ended up in the right quadrant.
+        return f"crop {len(seen_calls)}"
+
+    # Patch the heavy load step so this test doesn't pull torch + transformers.
+    monkeypatch.setattr(cm, "_load_churro_model", lambda *a, **kw: (object(), object()))
+    monkeypatch.setattr(cm, "_churro_transcribe_image", fake_transcribe)
+
+    transcribe = cm.make_local_quadrant_smoke_adapter("test-model")
+    result = transcribe(image_path)
+
+    assert len(seen_calls) == 4, "must run once per quadrant"
+    # Quadrants returned in canonical order with their respective crop text.
+    assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
+    assert result.quadrants[0].entries[0].raw_text == "crop 1"
+    assert result.quadrants[3].entries[0].raw_text == "crop 4"
+    assert result.model_version == "local-quadrant-smoke:test-model"
+
+
+def test_local_quadrant_smoke_adapter_returns_pageresult_with_no_date(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The smoke adapter doesn't run a header pass, so page_date_raw is
+    always None; downstream scoring will surface this as a header miss
+    (which is fine — the smoke check isn't trying to be accurate)."""
+    image_path = tmp_path / "p.png"
+    _save_smoke_fixture_page(image_path)
+
+    monkeypatch.setattr(cm, "_load_churro_model", lambda *a, **kw: (object(), object()))
+    monkeypatch.setattr(
+        cm,
+        "_churro_transcribe_image",
+        lambda image, **kw: "raw ocr text",
+    )
+    transcribe = cm.make_local_quadrant_smoke_adapter("test-model")
+    result = transcribe(image_path)
+
+    assert result.page_date_raw is None
+    # Each quadrant carries the OCR text so the substring scorer can see it.
+    for quad in result.quadrants:
+        assert quad.entries[0].raw_text == "raw ocr text"
+
+
+def test_local_quadrant_smoke_registered_in_adapter_builders() -> None:
+    """The new model name must be selectable via --models on the CLI."""
+    assert "local-quadrant-smoke" in cm._ADAPTER_BUILDERS
