@@ -41,6 +41,15 @@ Models:
                    single-shot `modal-qwen-vl` adapter still suffers.
                    ~5x cost (~$0.05-0.10/page); full corpus ~$1000-1500.
 
+  local-quadrant-smoke
+                   Local-only crop-quality smoke check: runs Churro
+                   (already on disk) per quadrant on the SAME crops
+                   `modal-qwen-vl-quad` produces, then wraps each crop's
+                   raw OCR text into the matching `Quadrant`. Pair with
+                   --check-row-counts to fail fast on broken cropping
+                   geometry without paying for a Modal run. Not for
+                   accuracy — for sanity gating.
+
 Both local-model adapters wrap the model output with the project's
 `PageResult` schema. Churro's raw OCR string is wrapped into the same
 text in all four quadrants so substring scoring works regardless of
@@ -149,31 +158,18 @@ def make_gemini_stored_adapter(results_root: Path) -> TranscribeFn:
 # -- churro-3B adapter -----------------------------------------------------
 
 
-def make_churro_adapter(
-    model_id: str = "stanford-oval/churro-3B",
+def _load_churro_model(
+    model_id: str,
     *,
-    device: str = "auto",
-    dtype: str = "auto",
-) -> TranscribeFn:
-    """Adapter that calls Churro-3B for OCR, then wraps the text in PageResult.
-
-    Churro is an OCR model: it returns a transcription, not structured
-    JSON. We feed the full raw transcript into a single quadrant so the
-    golden harness can substring-match against it. Producing a real
-    quadrant-aware split is a follow-up; the goal of this calibration is
-    "can the model READ the handwriting at all", not "does it match our
-    schema today".
-
-    `device` is passed to from_pretrained as `device_map`; "cpu" forces
-    everything onto host RAM (slow but bounded), "mps" uses Apple
-    Silicon's GPU pool (fast but can blow past system RAM on large
-    images), "auto" lets transformers choose. `dtype` is one of "auto",
-    "fp16", "bf16", "fp32".
-    """
+    device: str,
+    dtype: str,
+) -> tuple[object, object]:
+    """Load a Churro model + its processor. Heavy: pulls multi-GB weights
+    on first call. Extracted so adapters that load Churro can share the
+    init path AND tests can monkeypatch it without dragging in torch."""
     # Lazy import: torch + transformers is multi-GB and most callers
     # never touch this adapter.
     import torch
-    from PIL import Image
     from transformers import (  # type: ignore[import-untyped]
         AutoModelForImageTextToText,
         AutoProcessor,
@@ -186,33 +182,121 @@ def make_churro_adapter(
         device_map=device,
         torch_dtype=_torch_dtype(torch, dtype),
     )
+    return model, processor
+
+
+def _churro_transcribe_image(
+    image: PILImage,
+    *,
+    model: object,
+    processor: object,
+) -> str:
+    """Run a loaded Churro model on a single PIL image, return raw OCR text.
+
+    Churro is a Qwen2.5-VL fine-tune and requires the chat-template path
+    so the processor inserts the image-token sentinels the model was
+    trained on. Calling processor(images=..., text=...) directly produces
+    a token / feature mismatch at generate-time.
+    """
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {"type": "image", "image": image},
+                {"type": "text", "text": "Transcribe this handwritten page verbatim."},
+            ],
+        }
+    ]
+    inputs = processor.apply_chat_template(  # type: ignore[attr-defined]
+        messages,
+        tokenize=True,
+        add_generation_prompt=True,
+        return_dict=True,
+        return_tensors="pt",
+    )
+    inputs = {k: v.to(model.device) for k, v in inputs.items()}  # type: ignore[attr-defined]
+    output = model.generate(**inputs, max_new_tokens=2048)  # type: ignore[attr-defined]
+    return str(processor.batch_decode(output, skip_special_tokens=True)[0])  # type: ignore[attr-defined]
+
+
+def make_churro_adapter(
+    model_id: str = "stanford-oval/churro-3B",
+    *,
+    device: str = "auto",
+    dtype: str = "auto",
+) -> TranscribeFn:
+    """Adapter that calls Churro-3B for OCR, then wraps the text in PageResult.
+
+    Churro is an OCR model: it returns a transcription, not structured
+    JSON. We feed the full raw transcript into a single quadrant so the
+    golden harness can substring-match against it. Producing a real
+    quadrant-aware split is `make_local_quadrant_smoke_adapter` below.
+
+    `device` is passed to from_pretrained as `device_map`; "cpu" forces
+    everything onto host RAM (slow but bounded), "mps" uses Apple
+    Silicon's GPU pool (fast but can blow past system RAM on large
+    images), "auto" lets transformers choose. `dtype` is one of "auto",
+    "fp16", "bf16", "fp32".
+    """
+    from PIL import Image
+
+    model, processor = _load_churro_model(model_id, device=device, dtype=dtype)
 
     def transcribe(image_path: Path) -> PageResult:
         image = Image.open(image_path).convert("RGB")
-        # Churro is a Qwen2.5-VL fine-tune and requires the chat-template
-        # path so the processor inserts the image-token sentinels the model
-        # was trained on. Calling processor(images=..., text=...) directly
-        # produces a token / feature mismatch at generate-time.
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image", "image": image},
-                    {"type": "text", "text": "Transcribe this handwritten page verbatim."},
-                ],
-            }
-        ]
-        inputs = processor.apply_chat_template(
-            messages,
-            tokenize=True,
-            add_generation_prompt=True,
-            return_dict=True,
-            return_tensors="pt",
-        )
-        inputs = {k: v.to(model.device) for k, v in inputs.items()}
-        output = model.generate(**inputs, max_new_tokens=2048)
-        text = processor.batch_decode(output, skip_special_tokens=True)[0]
+        text = _churro_transcribe_image(image, model=model, processor=processor)
         return _wrap_raw_text_as_page_result(text, model_version=f"churro:{model_id}")
+
+    return transcribe
+
+
+# -- local-quadrant-smoke adapter -----------------------------------------
+
+
+def make_local_quadrant_smoke_adapter(
+    model_id: str = "stanford-oval/churro-3B",
+    *,
+    device: str = "auto",
+    dtype: str = "auto",
+) -> TranscribeFn:
+    """Local-only crop-quality smoke check.
+
+    Crops the page the same way `make_modal_qwen_vl_quad_adapter` does
+    (header strip + 4 quadrants via `detect_page_layout`), then runs
+    Churro locally on each quadrant crop and wraps the raw OCR text into
+    a `Quadrant` for that position. No Modal call, no spend.
+
+    The point isn't accurate transcription. It's a $0 sanity check that
+    says "the cropping produces images the model can read" before paying
+    for a Qwen-VL run on Modal. Pair with `--check-row-counts` (#15) so a
+    broken crop boundary fails fast: a quadrant whose truth has 14 rows
+    but whose smoke output is empty means the geometry is wrong.
+
+    Header strip is intentionally NOT transcribed — capturing date and
+    page-level oddities is Phase 2 work; the smoke check just answers
+    "is each quadrant a usable image".
+    """
+    from PIL import Image
+
+    model, processor = _load_churro_model(model_id, device=device, dtype=dtype)
+
+    def transcribe(image_path: Path) -> PageResult:
+        image = Image.open(image_path).convert("RGB")
+        layout = detect_page_layout(image)
+        crops = _crop_quadrants(image, layout)
+        quadrants = [
+            _wrap_raw_text_as_quadrant(
+                _churro_transcribe_image(crops[position], model=model, processor=processor),
+                position=position,
+            )
+            for position in QUADRANT_ORDER
+        ]
+        return PageResult(
+            page_date_raw=None,
+            quadrants=quadrants,
+            model_version=f"local-quadrant-smoke:{model_id}",
+            extracted_at=datetime.now(UTC),
+        )
 
     return transcribe
 
@@ -593,6 +677,22 @@ def _quadrant_wire_schema(position: QuadrantPosition) -> dict[str, Any]:
     return schema
 
 
+def _wrap_raw_text_as_quadrant(text: str, *, position: QuadrantPosition) -> Quadrant:
+    """Wrap one raw OCR string into a single Quadrant at the given position.
+
+    Hour/Jock are left None — the OCR-only model can't reliably split
+    them out of the raw transcript, and leaving them None surfaces the
+    gap honestly as a header_miss in the score rather than pretending
+    the model attributed them.
+    """
+    return Quadrant(
+        position=position,
+        hour_raw=None,
+        jock_raw=None,
+        entries=[Entry(row_index=0, raw_text=text, confidence="medium")],
+    )
+
+
 def _wrap_raw_text_as_page_result(text: str, *, model_version: str) -> PageResult:
     """Build a PageResult that puts the whole-page transcript in every quadrant.
 
@@ -606,21 +706,7 @@ def _wrap_raw_text_as_page_result(text: str, *, model_version: str) -> PageResul
     (does the model READ?) without penalizing it for not knowing the
     layout, which is a separate phase-2 problem.
     """
-    quadrants = [
-        Quadrant(
-            position=pos,
-            hour_raw=None,
-            jock_raw=None,
-            entries=[
-                {  # type: ignore[list-item]
-                    "row_index": 0,
-                    "raw_text": text,
-                    "confidence": "medium",
-                }
-            ],
-        )
-        for pos in QUADRANT_ORDER  # type: ignore[arg-type]
-    ]
+    quadrants = [_wrap_raw_text_as_quadrant(text, position=pos) for pos in QUADRANT_ORDER]
     return PageResult(
         page_date_raw=text[:200] if text else None,
         quadrants=quadrants,
@@ -662,6 +748,9 @@ _ADAPTER_BUILDERS: dict[str, Callable[[argparse.Namespace], TranscribeFn]] = {
     "modal-churro": lambda a: make_modal_churro_adapter(a.churro_model),
     "modal-qwen-vl": lambda a: make_modal_qwen_vl_adapter(a.qwen_model),
     "modal-qwen-vl-quad": lambda a: make_modal_qwen_vl_quad_adapter(a.qwen_model),
+    "local-quadrant-smoke": lambda a: make_local_quadrant_smoke_adapter(
+        a.churro_model, device=a.device, dtype=a.dtype
+    ),
 }
 
 
