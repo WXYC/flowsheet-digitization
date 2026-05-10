@@ -252,6 +252,13 @@ class JobStore:
         """Move a completed/low_confidence job back to `rendered` for reprocessing.
 
         Only allowed when the job has an `image_path` — we won't re-render here.
+
+        Clears `model_version` and `result_path` on the way back: the
+        previous completion's metadata describes a run that no longer
+        backs the row, and leaving them set lies to anyone reading
+        `jobs.model_version` for analytics or migrations. `image_path`
+        is preserved because the rendered PNG is what re-processing
+        will read.
         """
         job = await self.get(pdf_path, page_number)
         if job is None:
@@ -262,7 +269,11 @@ class JobStore:
             await db.execute(
                 """
                 UPDATE jobs
-                SET status = ?, last_error = NULL, updated_at = ?
+                SET status = ?,
+                    last_error = NULL,
+                    model_version = NULL,
+                    result_path = NULL,
+                    updated_at = ?
                 WHERE pdf_path = ? AND page_number = ?
                 """,
                 (JobStatus.RENDERED.value, _now(), pdf_path, page_number),
