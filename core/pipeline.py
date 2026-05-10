@@ -9,11 +9,13 @@ from __future__ import annotations
 
 import asyncio
 from collections.abc import Callable
+from datetime import UTC, datetime
 from pathlib import Path
 
 from core.gemini import GeminiClient
 from core.jobs import Job, JobStore
 from core.render import RenderError, count_pages, render_page
+from core.schema import PageResult
 
 ProcessProgressCallback = Callable[[str, int, bool], None]
 """Called once per finished job with (pdf_path, page_number, success)."""
@@ -163,12 +165,20 @@ async def _process_one_job(
 
     async with sem:
         try:
-            page_result = await client.extract_page(Path(job.image_path))
+            gemini_result = await client.extract_page(Path(job.image_path))
         except Exception as exc:  # noqa: BLE001
             # Pipeline runs over thousands of pages; one transient SDK / network
             # error must not abort the whole run. Record and move on.
             await store.mark_failed(job.pdf_path, job.page_number, error=str(exc))
             return False
+
+    # Wrap into a PageResult with caller-set `model_version` / `extracted_at`.
+    # Dict-merge order means our values win even if a stale fixture somehow
+    # supplied them — see core.schema module docstring for the underlying bug.
+    payload = gemini_result.model_dump()
+    payload["model_version"] = client.model
+    payload["extracted_at"] = datetime.now(UTC)
+    page_result = PageResult.model_validate(payload)
 
     result_path = result_path_for(data_root, job.pdf_path, job.page_number)
     result_path.parent.mkdir(parents=True, exist_ok=True)

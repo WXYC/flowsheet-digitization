@@ -8,7 +8,14 @@ from datetime import UTC, datetime
 import pytest
 from pydantic import ValidationError
 
-from core.schema import Confidence, Entry, PageResult, Quadrant, QuadrantPosition
+from core.schema import (
+    Confidence,
+    Entry,
+    GeminiPageResult,
+    PageResult,
+    Quadrant,
+    QuadrantPosition,
+)
 
 
 class TestEntry:
@@ -292,6 +299,75 @@ class TestOddities:
         assert roundtripped.oddities == ["page-level oddity"]
         assert roundtripped.quadrants[0].oddities == ["quadrant-level oddity"]
         assert roundtripped.quadrants[0].entries[0].oddities == ["entry-level oddity"]
+
+
+class TestGeminiPageResult:
+    """`GeminiPageResult` is the subset of `PageResult` that Gemini actually
+    fills. `model_version` and `extracted_at` belong to the caller — leaving
+    them in `response_schema` makes Gemini hallucinate plausible values
+    (real run with `gemini-3.1-pro-preview` produced 4 distinct fake model
+    ids and timestamps off by 14+ months). The split closes that hole."""
+
+    def _quads(self) -> list[Quadrant]:
+        return [
+            Quadrant(position=p, hour_raw=None, jock_raw=None, entries=[])
+            for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+        ]
+
+    def test_minimal_construction(self) -> None:
+        result = GeminiPageResult(page_date_raw=None, quadrants=self._quads())
+        assert result.page_date_raw is None
+        assert result.oddities == []
+
+    def test_response_schema_omits_caller_set_fields(self) -> None:
+        """The load-bearing assertion of this whole change: when
+        `GeminiPageResult` is the `response_schema`, the model is never
+        asked to fill `model_version` or `extracted_at`."""
+        schema_json = json.dumps(GeminiPageResult.model_json_schema())
+        assert "model_version" not in schema_json
+        assert "extracted_at" not in schema_json
+
+    def test_response_schema_has_no_additional_properties_key(self) -> None:
+        """Same Gemini constraint as `PageResult` (see the regression test
+        below) — `additionalProperties` triggers a 400 from Google's
+        validator. Mirrored on the actual response-schema model so a
+        future Pydantic-config change can't slip past us."""
+
+        def walk(node: object) -> None:
+            if isinstance(node, dict):
+                assert "additionalProperties" not in node, (
+                    "GeminiPageResult.model_json_schema() emits "
+                    "'additionalProperties' — Google's response_schema "
+                    "validator rejects this."
+                )
+                for v in node.values():
+                    walk(v)
+            elif isinstance(node, list):
+                for item in node:
+                    walk(item)
+
+        walk(GeminiPageResult.model_json_schema())
+
+    def test_enforces_four_quadrants_in_order(self) -> None:
+        with pytest.raises(ValidationError):
+            GeminiPageResult(page_date_raw=None, quadrants=[])
+
+    def test_can_be_promoted_to_page_result(self) -> None:
+        """Pipeline pattern: take what Gemini produced + add the two
+        caller-set fields to land a `PageResult` for disk."""
+        gemini_result = GeminiPageResult(
+            page_date_raw="Monday 1 Jan '90",
+            quadrants=self._quads(),
+            oddities=["page-level note"],
+        )
+        page = PageResult(
+            **gemini_result.model_dump(),
+            model_version="gemini-3.1-pro-preview",
+            extracted_at=datetime.now(UTC),
+        )
+        assert page.page_date_raw == "Monday 1 Jan '90"
+        assert page.oddities == ["page-level note"]
+        assert page.model_version == "gemini-3.1-pro-preview"
 
 
 def test_page_result_schema_has_no_additional_properties_key() -> None:
