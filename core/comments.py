@@ -41,6 +41,18 @@ from core.schema import PageResult, QuadrantPosition
 _INTRA_LINE_WHITESPACE = re.compile(r"[^\S\n]+")
 
 
+def _normalize_line(text: str) -> str:
+    """Collapse intra-line whitespace and trim. The shared per-line primitive.
+
+    Used by `normalize_comments` to build the joined string and by
+    `find_comment_entry_overlaps` to build the substring needles and to
+    normalize the entry haystacks. Casefolding lives at the call site —
+    consumers want both the original-case form (for display) and the
+    casefolded form (for matching).
+    """
+    return _INTRA_LINE_WHITESPACE.sub(" ", text).strip()
+
+
 def normalize_comments(raw: str | None) -> str | None:
     """Return a read-time normalized form of `comments_raw`.
 
@@ -62,8 +74,7 @@ def normalize_comments(raw: str | None) -> str | None:
     """
     if raw is None:
         return None
-    lines = [_INTRA_LINE_WHITESPACE.sub(" ", line).strip() for line in raw.split("\n")]
-    kept = [line for line in lines if line]
+    kept = [line for line in (_normalize_line(line) for line in raw.split("\n")) if line]
     if not kept:
         return None
     return "\n".join(kept)
@@ -82,6 +93,13 @@ class CommentEntryOverlap(BaseModel):
     """The normalized comments substring that matched. Lowercase,
     whitespace-collapsed — this is the form the matcher compared, not
     the verbatim on-disk text."""
+
+    comment_line_raw: str
+    """The verbatim comments-band line that produced the match, exactly
+    as it appears in `page.comments_raw` (whitespace and case preserved).
+    Parallel to `entry_raw_text` on the entry side — a caller that wants
+    to display the duplicate to a human shows this and `entry_raw_text`
+    together; the matcher's casefolded form lives in `matched_text`."""
 
     position: QuadrantPosition
     """Which quadrant the matched entry lives in."""
@@ -112,6 +130,12 @@ def find_comment_entry_overlaps(page: PageResult) -> list[CommentEntryOverlap]:
     duplicates a grid row — the unrelated dedication doesn't pollute
     the diagnostic.
 
+    Scope: only ``entry.raw_text`` is matched against. Page-level and
+    quadrant-level ``oddities`` lists are intentionally not searched —
+    they have their own non-overlapping role (surface unmodeled
+    phenomena), and a "comment also appears as an oddity" duplicate is
+    not what callers of this diagnostic are asking about.
+
     Records come back in canonical quadrant order (top_left, top_right,
     bottom_left, bottom_right) with ascending ``row_index`` within each
     quadrant. Stable ordering keeps diagnostic output diffable across
@@ -119,42 +143,35 @@ def find_comment_entry_overlaps(page: PageResult) -> list[CommentEntryOverlap]:
 
     Pure: no mutation of the input ``page``, no I/O.
     """
-    normalized = normalize_comments(page.comments_raw)
-    if normalized is None:
+    if page.comments_raw is None:
         return []
 
-    # Case-insensitive matching is symmetric — fold both sides to the
-    # same case so a comments band scribbled in caps still matches an
-    # entry transcribed in lower case (and vice versa).
-    needles = [line.casefold() for line in normalized.split("\n") if line]
+    # Walk the verbatim comments_raw line-by-line so each (raw_line,
+    # needle) pair stays paired — the record carries both forms.
+    needles: list[tuple[str, str]] = []
+    for raw_line in page.comments_raw.split("\n"):
+        normalized = _normalize_line(raw_line)
+        if not normalized:
+            continue
+        needles.append((raw_line, normalized.casefold()))
     if not needles:
         return []
 
     overlaps: list[CommentEntryOverlap] = []
     for quadrant in page.quadrants:
         for entry in sorted(quadrant.entries, key=lambda e: e.row_index):
-            entry_normalized = _normalize_for_match(entry.raw_text)
-            if not entry_normalized:
+            entry_haystack = _normalize_line(entry.raw_text).casefold()
+            if not entry_haystack:
                 continue
-            for needle in needles:
-                if needle in entry_normalized:
+            for raw_line, needle in needles:
+                if needle in entry_haystack:
                     overlaps.append(
                         CommentEntryOverlap(
                             matched_text=needle,
+                            comment_line_raw=raw_line,
                             position=quadrant.position,
                             row_index=entry.row_index,
                             entry_raw_text=entry.raw_text,
                         )
                     )
     return overlaps
-
-
-def _normalize_for_match(text: str) -> str:
-    """Lowercased, whitespace-collapsed form used for substring matching.
-
-    Mirrors what `normalize_comments` does to each line, plus lowercase.
-    Kept separate from `normalize_comments` because the entry side
-    doesn't need the empty-to-None convention — entries always have
-    non-empty `raw_text` by schema.
-    """
-    return _INTRA_LINE_WHITESPACE.sub(" ", text).strip().casefold()

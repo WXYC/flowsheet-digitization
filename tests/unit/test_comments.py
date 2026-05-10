@@ -179,7 +179,48 @@ def test_overlaps_single_match_surfaces_position_and_row() -> None:
     assert overlap.position == "top_right"
     assert overlap.row_index == 1
     assert overlap.matched_text == "stereolab - ping pong"
+    assert overlap.comment_line_raw == "stereolab - ping pong"
     assert overlap.entry_raw_text == "STEREOLAB - PING PONG"
+
+
+def test_overlaps_carry_verbatim_comment_line() -> None:
+    """`comment_line_raw` is the verbatim line from `page.comments_raw` —
+    parallel to `entry_raw_text` on the entry side. A future audit CLI
+    needs the original case AND any quirky whitespace the DJ wrote, so
+    the matched record carries both the casefolded form used for matching
+    AND the verbatim line that triggered it. Without this field, a
+    consumer that wants to display the comment exactly as it appears on
+    the page would have nothing to show."""
+    page = _page(
+        comments_raw="  STEREOLAB - Ping Pong  ",
+        entries_by_position={
+            "top_left": [_entry(0, "stereolab - ping pong")],
+        },
+    )
+    overlaps = find_comment_entry_overlaps(page)
+    assert len(overlaps) == 1
+    overlap = overlaps[0]
+    # `matched_text` is the casefolded, whitespace-collapsed form used
+    # for matching.
+    assert overlap.matched_text == "stereolab - ping pong"
+    # `comment_line_raw` is the verbatim line from `page.comments_raw`,
+    # whitespace and case preserved.
+    assert overlap.comment_line_raw == "  STEREOLAB - Ping Pong  "
+
+
+def test_overlaps_carry_per_line_verbatim_for_multi_line_comments() -> None:
+    """`comment_line_raw` is per-line, not the whole comments band. A
+    multi-line comments band where only one line duplicates a grid entry
+    should surface only that line's verbatim form — not the whole blob."""
+    page = _page(
+        comments_raw="HAPPY BDAY MIKE\nSTEREOLAB - PING PONG\nrequest line @ 962-7768",
+        entries_by_position={
+            "top_left": [_entry(2, "stereolab - ping pong")],
+        },
+    )
+    overlaps = find_comment_entry_overlaps(page)
+    assert len(overlaps) == 1
+    assert overlaps[0].comment_line_raw == "STEREOLAB - PING PONG"
 
 
 def test_overlaps_case_insensitive() -> None:
