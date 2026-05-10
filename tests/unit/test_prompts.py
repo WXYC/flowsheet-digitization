@@ -75,6 +75,26 @@ def test_prompt_keeps_type_letters_out_of_raw_text() -> None:
     assert "Do not include the left-margin type column" in PAGE_EXTRACTION_PROMPT
 
 
+def test_prompt_marks_doodles_as_rare_and_forbids_fabrication() -> None:
+    """An earlier prompt revision listed concrete doodle examples without
+    qualifying frequency; the calibration spot-check showed the model
+    parroting the example string ("hand-drawn smiley with tongue") onto
+    rows where the type column was simply unreadable. The fix is two
+    instructions that must both stay in the prompt: doodles are RARE,
+    and example strings must NOT be invented onto unclear rows."""
+    text = PAGE_EXTRACTION_PROMPT
+    assert "RARE" in text, "doodle frequency qualifier must persist"
+    # The instruction must be a NEGATION of fabrication, not just a mention.
+    assert "do not invent" in text.lower() or "not invent" in text.lower()
+
+
+def test_prompt_specifies_json_null_for_blank_type_column() -> None:
+    """The model emitted the literal string "null" and "" for blank circles
+    in the spot-check; the prompt must explicitly say JSON null, not a
+    string."""
+    assert "JSON null" in PAGE_EXTRACTION_PROMPT
+
+
 def test_prompt_documents_oddities_field() -> None:
     """Prompt must explain the oddities list — otherwise Gemini won't fill it."""
     assert "oddities" in PAGE_EXTRACTION_PROMPT
@@ -147,6 +167,16 @@ def test_quadrant_template_captures_left_margin_type_column() -> None:
 
 def test_quadrant_template_keeps_type_letters_out_of_raw_text() -> None:
     assert "Do not include the left-margin type column" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+
+
+def test_quadrant_template_marks_doodles_as_rare_and_forbids_fabrication() -> None:
+    text = QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+    assert "RARE" in text
+    assert "do not invent" in text.lower() or "not invent" in text.lower()
+
+
+def test_quadrant_template_specifies_json_null_for_blank_type_column() -> None:
+    assert "JSON null" in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
 
 
 def test_quadrant_template_explicitly_excludes_page_level_oddities() -> None:
