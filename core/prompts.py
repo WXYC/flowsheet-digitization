@@ -53,10 +53,13 @@ For every row, return:
     the LEFT of this row. Common values: H (heavy rotation), M (medium),
     L (light), Std (standards), O (oldies), R (request, sometimes written
     R⇒ for a handoff). Keep verbatim — do not normalize "Std" to "std" and
-    do not expand abbreviations. If the circle contains a doodle or scribble
-    instead of a letter, briefly describe what is drawn (e.g. "hand-drawn
-    smiley with tongue", "star", "arrow"); the row's raw_text is unaffected
-    in that case. null if the circle is blank.
+    do not expand abbreviations. Use JSON null (not the string "null", not
+    an empty string) when the circle is blank, the mark is illegible, or
+    you cannot tell what was written. Doodles in the circle (a face, star,
+    arrow) are RARE — only describe one when you can clearly see a hand-
+    drawn shape that is NOT a letter; do not invent a description from
+    these examples or copy them onto rows where you cannot read the mark.
+    When in doubt, return null.
   - artist_guess: best-effort parse of the part left of the dash, or null
   - track_guess: best-effort parse of the part right of the dash, or null
   - confidence: "high" if the row is clearly legible, "medium" if you had to
@@ -147,10 +150,13 @@ For every row, return:
     the LEFT of this row. Common values: H (heavy rotation), M (medium),
     L (light), Std (standards), O (oldies), R (request, sometimes written
     R⇒ for a handoff). Keep verbatim — do not normalize "Std" to "std" and
-    do not expand abbreviations. If the circle contains a doodle or scribble
-    instead of a letter, briefly describe what is drawn (e.g. "hand-drawn
-    smiley with tongue", "star", "arrow"); the row's raw_text is unaffected
-    in that case. null if the circle is blank.
+    do not expand abbreviations. Use JSON null (not the string "null", not
+    an empty string) when the circle is blank, the mark is illegible, or
+    you cannot tell what was written. Doodles in the circle (a face, star,
+    arrow) are RARE — only describe one when you can clearly see a hand-
+    drawn shape that is NOT a letter; do not invent a description from
+    these examples or copy them onto rows where you cannot read the mark.
+    When in doubt, return null.
   - artist_guess: best-effort parse of the part left of the dash, or null
   - track_guess: best-effort parse of the part right of the dash, or null
   - confidence: "high" if the row is clearly legible, "medium" if you had to
