@@ -767,7 +767,7 @@ def main(argv: list[str]) -> int:
         help=(
             "After scoring, run the asymmetric row-count check: print any "
             "quadrant where the model returned fewer entries than truth's "
-            "row count by more than the tolerance. Exits non-zero if any "
+            "row count by more than the tolerance. Exits with code 2 if any "
             "discrepancy is found. See `core.golden.compare_row_counts`."
         ),
     )

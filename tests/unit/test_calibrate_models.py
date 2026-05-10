@@ -711,3 +711,125 @@ def test_modal_qwen_vl_quad_adapter_header_failure_does_not_fail_page(
     assert [q.position for q in result.quadrants] == list(QUADRANT_ORDER)
     # Quadrant data still flows through.
     assert result.quadrants[0].hour_raw == "6AM"
+
+
+# -- _run_row_count_check / _format_discrepancy --------------------------------
+
+
+def _build_outcome(
+    *,
+    stem: str,
+    truth_path: Path,
+    predicted_counts: dict[str, int],
+) -> object:
+    """Construct a CalibrationOutcome wrapping a PageResult whose entry counts
+    per quadrant match `predicted_counts`. Used to drive _run_row_count_check
+    without touching disk."""
+    from datetime import UTC
+    from datetime import datetime as _dt
+
+    from core.calibration import CalibrationCase, CalibrationOutcome
+    from core.golden import AccuracyReport
+    from core.schema import Entry, PageResult, Quadrant
+
+    quads = []
+    for pos in ("top_left", "top_right", "bottom_left", "bottom_right"):
+        quads.append(
+            Quadrant(
+                position=pos,  # type: ignore[arg-type]
+                hour_raw=None,
+                jock_raw=None,
+                entries=[
+                    Entry(row_index=i, raw_text=f"row {i}", confidence="high")
+                    for i in range(predicted_counts.get(pos, 0))
+                ],
+            )
+        )
+    actual = PageResult(
+        page_date_raw=None,
+        quadrants=quads,
+        model_version="m",
+        extracted_at=_dt.now(UTC),
+    )
+    case = CalibrationCase(stem=stem, image_path=Path(f"{stem}.png"), truth_path=truth_path)
+    return CalibrationOutcome(
+        case=case,
+        report=AccuracyReport(matched_rows=0),
+        elapsed_seconds=0.0,
+        actual=actual,
+    )
+
+
+def _write_truth(path: Path, counts: dict[str, int]) -> None:
+    import json as _json
+
+    quadrants = [
+        {
+            "position": pos,
+            "rows": [{"raw_substring": f"r{i}"} for i in range(n)],
+        }
+        for pos, n in counts.items()
+    ]
+    path.write_text(_json.dumps({"page_date_substrings": [], "quadrants": quadrants}))
+
+
+def test_run_row_count_check_returns_false_when_no_discrepancies(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    truth_path = tmp_path / "ok.truth.json"
+    _write_truth(truth_path, {"top_left": 5})
+    outcome = _build_outcome(stem="ok", truth_path=truth_path, predicted_counts={"top_left": 5})
+    had = cm._run_row_count_check({"model-x": [outcome]}, tolerance=2)  # type: ignore[arg-type]
+    assert had is False
+    err = capsys.readouterr().err
+    assert "no discrepancies" in err
+
+
+def test_run_row_count_check_returns_true_and_prints_failures(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The page-25 regression shape: predicted=3, truth=9, delta=-6."""
+    truth_path = tmp_path / "page25.truth.json"
+    _write_truth(truth_path, {"top_right": 9})
+    outcome = _build_outcome(
+        stem="page25", truth_path=truth_path, predicted_counts={"top_right": 3}
+    )
+    had = cm._run_row_count_check({"modal-qwen-vl-quad": [outcome]}, tolerance=2)  # type: ignore[arg-type]
+    assert had is True
+    err = capsys.readouterr().err
+    assert "modal-qwen-vl-quad / page25" in err
+    assert "top_right" in err
+    assert "predicted=  3" in err
+    assert "truth=  9" in err
+    assert "delta=-6" in err
+    assert "tolerance=±2" in err
+
+
+def test_run_row_count_check_skips_outcomes_without_actual(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """An errored outcome (actual=None) must not be checked, must not crash."""
+    from core.calibration import CalibrationCase, CalibrationOutcome
+
+    truth_path = tmp_path / "errored.truth.json"
+    _write_truth(truth_path, {"top_left": 5})
+    case = CalibrationCase(
+        stem="errored", image_path=tmp_path / "errored.png", truth_path=truth_path
+    )
+    errored = CalibrationOutcome(
+        case=case, report=None, elapsed_seconds=0.1, error="boom", actual=None
+    )
+    had = cm._run_row_count_check({"m": [errored]}, tolerance=2)
+    assert had is False
+
+
+def test_format_discrepancy_includes_position_counts_and_tolerance() -> None:
+    from core.golden import RowCountDiscrepancy
+
+    d = RowCountDiscrepancy(position="top_right", predicted_count=3, truth_count=9)
+    line = cm._format_discrepancy(d, tolerance=2)
+    assert "top_right" in line
+    assert "predicted=  3" in line
+    assert "truth=  9" in line
+    assert "delta=-6" in line
+    assert "tolerance=±2" in line

@@ -97,7 +97,8 @@ def test_detect_returns_fallback_on_blank_image() -> None:
 def test_page_layout_is_frozen() -> None:
     """PageLayout is a value type; mutation should raise."""
     layout = PageLayout(header_bottom_y=100, body_mid_y=200, column_mid_x=300)
-    with pytest.raises((AttributeError, Exception)):
+    # dataclass(frozen=True) raises FrozenInstanceError, an AttributeError subclass.
+    with pytest.raises(AttributeError):
         layout.header_bottom_y = 999  # type: ignore[misc]
 
 
