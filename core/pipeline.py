@@ -136,6 +136,11 @@ async def process_pending(
     if not pending:
         return 0
 
+    # Try to register a cache once at the start of the run; subsequent
+    # `extract_page` calls reference it and skip re-billing the prompt
+    # on every page. Failures degrade silently — see GeminiClient docstring.
+    await client.create_cache()
+
     sem = asyncio.Semaphore(concurrency)
 
     async def process_one(job: Job) -> bool:

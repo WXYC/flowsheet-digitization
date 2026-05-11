@@ -93,6 +93,8 @@ The default test run **excludes** the `external_api` and `slow` markers; CI runs
 
 Gemini 3.1 Pro charges per input token; one 300-DPI flowsheet page at `media_resolution=high` is ~1120 image tokens plus ~600 prompt tokens. Across the full corpus (~16K pages) input cost lands in the low tens of dollars; output adds modestly. Run the pipeline against a 10–20 page sample first and inspect both quality and `usage_metadata` before scheduling a full run.
 
+`flowsheets process` registers the page prompt as a Gemini `cachedContent` resource on the first call of each run so the ~2-3K-token prompt isn't re-billed on every page. Caching is best-effort: if `caches.create` fails (prompt below the SDK's min-token threshold, model doesn't support caching, transient API error), the run continues on the un-cached path. The response schema lives in the per-call config (SDK limitation — `CreateCachedContentConfig` has no `response_schema` field), so the savings are on the prompt portion only.
+
 ## Repo conventions
 
 - Python 3.12, src-flat layout (`core/` + top-level `cli.py`), Pydantic v2.

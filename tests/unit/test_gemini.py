@@ -148,6 +148,144 @@ class TestGeminiClient:
             await client.extract_page(tmp_path / "missing.png")
 
 
+def _fake_sdk_with_cache(
+    *,
+    parsed: GeminiPageResult | None,
+    cache_create_error: Exception | None = None,
+    cache_name: str = "cachedContents/abc123",
+) -> tuple[MagicMock, AsyncMock, AsyncMock]:
+    """SDK fake that also captures `caches.create` calls.
+
+    Returns the sdk plus the `generate_content` and `caches.create` mocks
+    so tests can inspect call arguments on either surface.
+    """
+    response = MagicMock()
+    response.parsed = parsed
+    generate_content = AsyncMock(return_value=response)
+
+    if cache_create_error is not None:
+        caches_create = AsyncMock(side_effect=cache_create_error)
+    else:
+        cache_response = MagicMock()
+        cache_response.name = cache_name
+        caches_create = AsyncMock(return_value=cache_response)
+
+    sdk = MagicMock()
+    sdk.aio.models.generate_content = generate_content
+    sdk.aio.caches.create = caches_create
+    return sdk, generate_content, caches_create
+
+
+class TestGeminiClientCaching:
+    """Context caching is opt-in via `create_cache()` and saves the input-
+    token cost of the ~2-3K-token prompt + response schema on every page
+    after the first. The pipeline calls it once at the start of a process
+    run; failures degrade to the un-cached path rather than abort the run."""
+
+    async def test_create_cache_caches_the_prompt_as_system_instruction(self) -> None:
+        """The cache holds the page prompt as `system_instruction`. The
+        SDK's `CreateCachedContentConfig` has no `response_schema` field
+        so the schema cannot be cached — see the module docstring for
+        why this is the right design given the SDK's constraints."""
+        sdk, _gen, caches_create = _fake_sdk_with_cache(parsed=None)
+        client = GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview")
+
+        ok = await client.create_cache()
+
+        assert ok is True
+        caches_create.assert_called_once()
+        kwargs = caches_create.call_args.kwargs
+        assert kwargs["model"] == "gemini-3.1-pro-preview"
+        config = kwargs["config"]
+        assert config.system_instruction == PAGE_EXTRACTION_PROMPT
+
+    async def test_create_cache_is_idempotent(self) -> None:
+        """Pipeline calls `create_cache` once at the start, but a future
+        caller (a retry path, a second corpus run) might call it again.
+        Second call no-ops rather than spinning up a redundant cache."""
+        sdk, _gen, caches_create = _fake_sdk_with_cache(parsed=None)
+        client = GeminiClient(sdk=sdk, model="m")
+
+        ok1 = await client.create_cache()
+        ok2 = await client.create_cache()
+
+        assert ok1 is True and ok2 is True
+        caches_create.assert_called_once()
+
+    async def test_create_cache_returns_false_when_sdk_raises(self) -> None:
+        """Caching has a min-content-size threshold (currently ~1024 tokens)
+        and some models don't support it at all. Either condition raises
+        from the SDK; we degrade to the un-cached path rather than fail
+        the entire corpus run."""
+        sdk, _gen, _create = _fake_sdk_with_cache(
+            parsed=None,
+            cache_create_error=RuntimeError("content too small for caching"),
+        )
+        client = GeminiClient(sdk=sdk, model="m")
+
+        ok = await client.create_cache()
+
+        assert ok is False
+
+    async def test_extract_page_uses_cached_content_after_create_cache(
+        self, png_file: Path
+    ) -> None:
+        """The load-bearing assertion of the whole change: after caching is
+        set up, the per-call payload omits the prompt (now in the cache)
+        so the ~2-3K prompt tokens aren't re-billed. The response schema
+        still travels in the per-call config because the SDK's
+        `CreateCachedContentConfig` has no schema field."""
+        sdk, generate, _create = _fake_sdk_with_cache(parsed=_sample_page_result())
+        client = GeminiClient(sdk=sdk, model="m")
+        await client.create_cache()
+
+        await client.extract_page(png_file)
+
+        contents = generate.call_args.kwargs["contents"]
+        # The prompt is in the cache; the per-call contents are image-only.
+        assert PAGE_EXTRACTION_PROMPT not in contents
+        config = generate.call_args.kwargs["config"]
+        assert config.cached_content == "cachedContents/abc123"
+        # Schema still travels in the per-call config — SDK limitation.
+        assert config.response_schema is GeminiPageResult
+
+    async def test_extract_page_falls_back_when_cache_creation_failed(self, png_file: Path) -> None:
+        """`create_cache` returning False must not break `extract_page` —
+        the un-cached call site stays the production-correct fallback so a
+        cache-creation hiccup doesn't tank a corpus run."""
+        sdk, generate, _create = _fake_sdk_with_cache(
+            parsed=_sample_page_result(),
+            cache_create_error=RuntimeError("nope"),
+        )
+        client = GeminiClient(sdk=sdk, model="m")
+        ok = await client.create_cache()
+        assert ok is False
+
+        await client.extract_page(png_file)
+
+        # Un-cached payload: prompt is in contents, schema is in config.
+        contents = generate.call_args.kwargs["contents"]
+        assert contents[0] == PAGE_EXTRACTION_PROMPT
+        config = generate.call_args.kwargs["config"]
+        assert config.response_schema is GeminiPageResult
+
+    async def test_extract_page_without_create_cache_uses_uncached_path(
+        self, png_file: Path
+    ) -> None:
+        """When `create_cache` is never called (the default), the client
+        behaves exactly as it did before this PR — preserving existing
+        test contracts and the un-cached dev-iteration path."""
+        sdk, generate, caches_create = _fake_sdk_with_cache(parsed=_sample_page_result())
+        client = GeminiClient(sdk=sdk, model="m")
+
+        await client.extract_page(png_file)
+
+        # `caches.create` must NOT have been invoked.
+        caches_create.assert_not_called()
+        contents = generate.call_args.kwargs["contents"]
+        assert contents[0] == PAGE_EXTRACTION_PROMPT
+
+
 class TestMediaResolution:
     def test_default_is_high(self) -> None:
         # HIGH is recommended for fine handwriting (1120 tokens/image).
