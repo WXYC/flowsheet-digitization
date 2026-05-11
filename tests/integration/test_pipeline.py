@@ -54,16 +54,36 @@ def _build_page_result(date: str = "Monday 1 Jan '90") -> PageResult:
     )
 
 
-def _fake_gemini_client(parsed: PageResult | Exception) -> GeminiClient:
+def _fake_gemini_client(
+    parsed: PageResult | Exception,
+    *,
+    cache_success: bool = False,
+) -> tuple[GeminiClient, AsyncMock]:
+    """Build a `GeminiClient` whose SDK is fully mocked.
+
+    Returns the client plus the `caches.create` AsyncMock so callers can
+    assert on its call count. By default the cache mock raises so the
+    pipeline exercises its "caching unavailable, continue" fallback —
+    set `cache_success=True` to simulate a successfully-created cache.
+    """
     response = MagicMock()
     if isinstance(parsed, Exception):
         generate_content = AsyncMock(side_effect=parsed)
     else:
         response.parsed = parsed
         generate_content = AsyncMock(return_value=response)
+
+    if cache_success:
+        cache_response = MagicMock()
+        cache_response.name = "cachedContents/test-cache"
+        caches_create = AsyncMock(return_value=cache_response)
+    else:
+        caches_create = AsyncMock(side_effect=RuntimeError("caching unavailable in test"))
+
     sdk = MagicMock()
     sdk.aio.models.generate_content = generate_content
-    return GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview")
+    sdk.aio.caches.create = caches_create
+    return GeminiClient(sdk=sdk, model="gemini-3.1-pro-preview"), caches_create
 
 
 @pytest.fixture
@@ -229,7 +249,7 @@ async def test_process_pending_writes_json_and_marks_completed(
     await discover_pdfs(store, scans_root=scans_root)
     await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
 
-    client = _fake_gemini_client(_build_page_result())
+    client, _caches_create = _fake_gemini_client(_build_page_result())
     n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
     assert n == 6
 
@@ -251,7 +271,7 @@ async def test_process_pending_marks_failed_on_exception(
     await discover_pdfs(store, scans_root=scans_root)
     await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
 
-    client = _fake_gemini_client(RuntimeError("rate limit exceeded"))
+    client, _caches_create = _fake_gemini_client(RuntimeError("rate limit exceeded"))
     n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
     # Every job tried once and failed.
     assert n == 0  # zero successes
@@ -324,7 +344,7 @@ async def test_process_pending_calls_progress_callback_on_each_completion(
         img.write_bytes(b"\x89PNG")
         await store.mark_rendered("scans/x.pdf", i + 1, image_path=img)
 
-    client = _fake_gemini_client(_build_page_result())
+    client, _caches_create = _fake_gemini_client(_build_page_result())
 
     events: list[tuple[str, int, bool]] = []
 
@@ -354,7 +374,7 @@ async def test_process_pending_progress_callback_fires_on_failure_too(
     img.write_bytes(b"\x89PNG")
     await store.mark_rendered("scans/x.pdf", 1, image_path=img)
 
-    client = _fake_gemini_client(RuntimeError("boom"))
+    client, _caches_create = _fake_gemini_client(RuntimeError("boom"))
 
     events: list[tuple[str, int, bool]] = []
     n = await process_pending(
@@ -467,7 +487,7 @@ async def test_full_run_end_to_end(store: JobStore, scans_root: Path, tmp_path: 
     await discover_pdfs(store, scans_root=scans_root)
     await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
 
-    client = _fake_gemini_client(_build_page_result())
+    client, _caches_create = _fake_gemini_client(_build_page_result())
     await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
 
     # Re-running discover + render + process is idempotent (nothing repeats).
@@ -479,3 +499,56 @@ async def test_full_run_end_to_end(store: JobStore, scans_root: Path, tmp_path: 
 
     counts = await store.counts_by_status()
     assert counts == {JobStatus.COMPLETED: 6}
+
+
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
+async def test_process_pending_creates_cache_once_per_run(
+    store: JobStore, scans_root: Path, tmp_path: Path
+) -> None:
+    """Cache lifecycle is one-creation-per-process-run. With 6 pending pages
+    we still call `caches.create` exactly once — subsequent `extract_page`
+    invocations reuse the cache name set on the client."""
+    data_root = tmp_path / "data"
+    await discover_pdfs(store, scans_root=scans_root)
+    await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
+
+    client, caches_create = _fake_gemini_client(_build_page_result(), cache_success=True)
+    n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
+
+    assert n == 6
+    caches_create.assert_called_once()
+
+
+@pytest.mark.skipif(not POPPLER_AVAILABLE, reason="pdfimages/pdfinfo not installed")
+async def test_process_pending_continues_when_cache_creation_fails(
+    store: JobStore, scans_root: Path, tmp_path: Path
+) -> None:
+    """Caching is best-effort; if `caches.create` raises (min-token threshold,
+    unsupported model, transient error) the run must still complete every
+    page via the un-cached path."""
+    data_root = tmp_path / "data"
+    await discover_pdfs(store, scans_root=scans_root)
+    await render_pending(store, scans_root=scans_root, data_root=data_root, limit=10)
+
+    # cache_success=False is the default; the SDK mock raises.
+    client, caches_create = _fake_gemini_client(_build_page_result())
+    n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
+
+    assert n == 6
+    caches_create.assert_called_once()
+    counts = await store.counts_by_status()
+    assert counts == {JobStatus.COMPLETED: 6}
+
+
+async def test_process_pending_skips_cache_creation_when_no_pending(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """No pending jobs → no cache. Avoids spinning up a cache resource
+    we'll never use (and paying its setup billing) when a run is a no-op."""
+    data_root = tmp_path / "data"
+    client, caches_create = _fake_gemini_client(_build_page_result(), cache_success=True)
+
+    n = await process_pending(store, client=client, data_root=data_root, limit=10, max_attempts=3)
+
+    assert n == 0
+    caches_create.assert_not_called()
