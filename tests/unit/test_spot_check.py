@@ -84,11 +84,26 @@ def _entry(
     track: str | None = None,
     raw: str = "x",
 ) -> dict:
+    """Legacy-shape entry: the 34 pre-audit corpus JSONs carry
+    `artist_guess` / `track_guess` keys; `collect_entries` still honors
+    them when present."""
     return {
         "row_index": row_index,
         "raw_text": raw,
         "artist_guess": artist,
         "track_guess": track,
+        "confidence": "high",
+        "notes": None,
+        "oddities": [],
+    }
+
+
+def _entry_v2(row_index: int, *, raw: str) -> dict:
+    """Post-audit entry: no `artist_guess` / `track_guess`. The artist
+    and track come from `parse_artist_track(raw_text)` at read time."""
+    return {
+        "row_index": row_index,
+        "raw_text": raw,
         "confidence": "high",
         "notes": None,
         "oddities": [],
@@ -149,6 +164,53 @@ class TestCollectEntries:
 
     def test_returns_empty_list_for_empty_root(self, tmp_path: Path) -> None:
         assert collect_entries(tmp_path) == []
+
+    def test_derives_artist_track_from_raw_text_for_post_audit_entries(
+        self, tmp_path: Path
+    ) -> None:
+        """The post-#41 on-disk shape has no `artist_guess`/`track_guess`
+        keys — both fall back to `parse_artist_track(raw_text)`. Without
+        this fallback, `collect_entries` would silently return zero rows
+        on every new corpus extraction."""
+        page = _make_page(
+            [
+                _entry_v2(0, raw="JUANA MOLINA - LA PARADOJA"),
+                _entry_v2(1, raw="STEREOLAB"),  # artist-only, no track
+                _entry_v2(2, raw="   "),  # blank row, skipped
+            ],
+        )
+        (tmp_path / "p.json").write_text(json.dumps(page))
+
+        rows = collect_entries(tmp_path)
+
+        assert {(r.artist, r.track) for r in rows} == {
+            ("JUANA MOLINA", "LA PARADOJA"),
+            ("STEREOLAB", None),
+        }
+
+    def test_legacy_artist_guess_takes_precedence_over_parsing(self, tmp_path: Path) -> None:
+        """On the 34 pre-audit JSONs `artist_guess` / `track_guess` exist
+        and may have been hand-corrected by the original model in ways
+        the deterministic parser can't reproduce. Honor the stored value
+        on those rows so a re-run of the spot-check doesn't drift."""
+        page = _make_page(
+            [
+                {
+                    "row_index": 0,
+                    "raw_text": "JUANA MOLINA - LA PARADOJA",
+                    "artist_guess": "Juana Molina",
+                    "track_guess": "la paradoja",
+                    "confidence": "high",
+                    "notes": None,
+                    "oddities": [],
+                }
+            ],
+        )
+        (tmp_path / "p.json").write_text(json.dumps(page))
+
+        rows = collect_entries(tmp_path)
+
+        assert (rows[0].artist, rows[0].track) == ("Juana Molina", "la paradoja")
 
     def test_carries_quadrant_position_and_row_index(self, tmp_path: Path) -> None:
         page = _make_page(

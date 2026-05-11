@@ -28,7 +28,7 @@ Four top-level prompts:
     call. Pulls only `comments_raw` (the verbatim contents of the
     printed "Comments:" band) from the bottom band of the page.
 
-The per-row guidance (raw_text / artist_guess / confidence / notes
+The per-row guidance (raw_text / type_raw / confidence / notes
 tags / etc.) is duplicated across the page and quadrant prompts. They
 must stay in sync. The shared row-level content is enforced by parallel
 contract tests in `tests/unit/test_prompts.py`; if you change one,
@@ -64,8 +64,6 @@ For every row, return:
     drawn shape that is NOT a letter; do not invent a description from
     these examples or copy them onto rows where you cannot read the mark.
     When in doubt, return null.
-  - artist_guess: best-effort parse of the part left of the dash, or null
-  - track_guess: best-effort parse of the part right of the dash, or null
   - confidence: "high" if the row is clearly legible, "medium" if you had to
     guess one or two characters, "low" if mostly illegible
   - notes: null in the common case. Use one of these tags only when relevant:
@@ -172,8 +170,6 @@ For every row, return:
     drawn shape that is NOT a letter; do not invent a description from
     these examples or copy them onto rows where you cannot read the mark.
     When in doubt, return null.
-  - artist_guess: best-effort parse of the part left of the dash, or null
-  - track_guess: best-effort parse of the part right of the dash, or null
   - confidence: "high" if the row is clearly legible, "medium" if you had to
     guess one or two characters, "low" if mostly illegible
   - notes: null in the common case. Use one of these tags only when relevant:

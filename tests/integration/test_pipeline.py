@@ -41,8 +41,6 @@ def _build_page_result(date: str = "Monday 1 Jan '90") -> PageResult:
                     Entry(
                         row_index=0,
                         raw_text="LED ZEP - TRAMPLED",
-                        artist_guess="LED ZEP",
-                        track_guess="TRAMPLED",
                         confidence="high",
                     )
                 ],
