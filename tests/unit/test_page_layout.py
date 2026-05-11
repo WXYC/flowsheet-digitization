@@ -20,7 +20,9 @@ from core.page_layout import (
     _detect_header_bottom_y,
     _estimate_row_spacing,
     detect_page_layout,
+    partition_row_lines_by_quadrant,
 )
+from core.schema import QUADRANT_ORDER
 
 GOLDEN_DIR = Path(__file__).resolve().parents[1] / "golden"
 
@@ -231,3 +233,73 @@ def test_detect_header_bottom_y_falls_back_when_first_line_too_low() -> None:
     h = 4200
     # 0.3 * h = 1260; first at 1500 is too low to trust.
     assert _detect_header_bottom_y([1500, 1575, 1650], h) == int(h * FALLBACK_HEADER_FRACTION)
+
+
+# -- partition_row_lines_by_quadrant ---------------------------------------
+
+
+def test_partition_row_lines_returns_quadrant_keys(
+    golden: tuple[str, Image.Image, dict[str, int]],
+) -> None:
+    """Returned dict has exactly the four quadrant keys in QUADRANT_ORDER."""
+    _, image, _ = golden
+    layout = detect_page_layout(image)
+    partitions = partition_row_lines_by_quadrant(image, layout)
+    assert set(partitions.keys()) == set(QUADRANT_ORDER)
+
+
+def test_partition_row_lines_returns_y_coordinates_as_ints(
+    golden: tuple[str, Image.Image, dict[str, int]],
+) -> None:
+    """Each list value is a pixel y-coordinate (int), matching the contract
+    of `_detect_row_lines`. The verifier pre-processor consumes these as
+    crop boundaries, so the integer type is load-bearing."""
+    _, image, _ = golden
+    layout = detect_page_layout(image)
+    partitions = partition_row_lines_by_quadrant(image, layout)
+    for ys in partitions.values():
+        for y in ys:
+            assert isinstance(y, int)
+
+
+def test_partition_row_lines_within_correct_body_band(
+    golden: tuple[str, Image.Image, dict[str, int]],
+) -> None:
+    """All returned y-coords fall within the body region and on the
+    correct side of body_mid_y for their quadrant."""
+    _, image, _ = golden
+    layout = detect_page_layout(image)
+    partitions = partition_row_lines_by_quadrant(image, layout)
+    for pos in ("top_left", "top_right"):
+        for y in partitions[pos]:
+            assert layout.header_bottom_y <= y < layout.body_mid_y, (
+                f"{pos}: y={y} outside top-band [{layout.header_bottom_y}, {layout.body_mid_y})"
+            )
+    for pos in ("bottom_left", "bottom_right"):
+        for y in partitions[pos]:
+            assert layout.body_mid_y <= y < layout.body_bottom_y, (
+                f"{pos}: y={y} outside bottom-band [{layout.body_mid_y}, {layout.body_bottom_y})"
+            )
+
+
+def test_partition_row_lines_finds_content_in_top_band(
+    golden: tuple[str, Image.Image, dict[str, int]],
+) -> None:
+    """All 5 goldens have detected lines somewhere in the top body band —
+    the printed grid alone is ~9 lines per quadrant, so at least one side
+    of the top band must come back populated."""
+    stem, image, _ = golden
+    layout = detect_page_layout(image)
+    partitions = partition_row_lines_by_quadrant(image, layout)
+    total_top = len(partitions["top_left"]) + len(partitions["top_right"])
+    assert total_top > 0, f"{stem}: no row lines detected in top band"
+
+
+def test_partition_row_lines_handles_blank_image() -> None:
+    """A blank image returns four empty lists — no crash, no missing keys."""
+    blank = Image.new("RGB", (1000, 1500), color="white")
+    layout = detect_page_layout(blank)
+    partitions = partition_row_lines_by_quadrant(blank, layout)
+    assert set(partitions.keys()) == set(QUADRANT_ORDER)
+    for ys in partitions.values():
+        assert ys == []
