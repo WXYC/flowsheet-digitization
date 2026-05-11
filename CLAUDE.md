@@ -71,6 +71,12 @@ cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
 | Reconciliation against `@wxyc/shared` canonical artists | — | fuzzy-match + auto-correct |
 | Bulk full-corpus run | not in this PR | calibrate first, then schedule |
 
+## Research adapters
+
+Production extraction goes through Gemini in `core/gemini.py`. The non-Gemini adapters in `scripts/calibrate_models.py` (`churro`, `qwen-vl`, `modal-churro`, `modal-qwen-vl`, `modal-qwen-vl-quad`, `local-quadrant-smoke`) are research-only: they exist as calibration regression alarms so a Gemini-side regression has something to compare against, and as a record of what we've tried. None of them are production candidates.
+
+Quality on the 5-golden set (matched rows out of 76): Gemini 3 Pro 68/76; modal-qwen-vl-quad 50/76; modal-qwen-vl 50/76 (with grammar-constrained decoding, 24/76 before); modal-churro 36/76. The best Modal adapter sits ~24% behind Gemini on quality while costing ~6× more per page (`modal-qwen-vl-quad` ≈ $0.06-0.12/page). Any dollar figure quoted in `scripts/calibrate_models.py` for a Modal adapter at corpus scale (e.g. "~$1200-1800") is exploration spend if we calibrated it on the full corpus — it is not a planned spend.
+
 ## Marker scheme
 
 Mirroring `request-o-matic` and `library-metadata-lookup`:
