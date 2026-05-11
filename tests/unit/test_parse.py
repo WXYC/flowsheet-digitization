@@ -96,6 +96,15 @@ class TestParseArtistTrack:
         band names with separator dashes."""
         assert parse_artist_track("X-RAY SPEX") == ("X-RAY SPEX", None)
 
+    def test_separator_matches_across_newlines(self) -> None:
+        """The regex's `\\s+` class includes `\\n`, so a separator that
+        straddles a newline still splits. Rare in practice — Gemini's
+        `raw_text` is usually a single line — but pinning the behavior
+        here means a future tightening (e.g. `[^\\S\\n]+` to exclude
+        newlines) is a deliberate decision rather than a regression.
+        """
+        assert parse_artist_track("ARTIST\n - TRACK") == ("ARTIST", "TRACK")
+
     def test_idempotent_when_artist_only_recomputed(self) -> None:
         """Round-tripping the result through join+split must be a no-op
         for the artist-only case: a downstream consumer that re-stores
