@@ -43,6 +43,11 @@ def merge_continuations(entries: list[Entry]) -> list[Entry]:
         continuation row's index is dropped from the merged view; the
         on-disk JSON still has both grid positions if needed.
 
+    Callers that want an artist/track split from the merged `raw_text`
+    should apply `core.parse.parse_artist_track` after merging — the
+    split is deterministic at read time and is intentionally not stored
+    on `Entry`.
+
     The merge is **lossy with respect to internal whitespace** at the
     wrap boundary — multiple spaces / tabs collapse to a single space.
     Verbatim whitespace round-tripping requires reading the on-disk

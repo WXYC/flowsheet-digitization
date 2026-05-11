@@ -4,8 +4,8 @@ local Discogs PostgreSQL cache.
 
 Walks every `data/results/**/*.json` and for each entry with a
 derivable artist (from `artist_guess` on the 34 legacy JSONs, or from
-`parse_artist_track(raw_text)` on post-#41 extractions) checks two
-questions against the cache:
+`parse_artist_track(raw_text)` on post-schema-trim extractions) checks
+two questions against the cache:
 
   * artist  — is this artist name in the WXYC library? (broad, cheap)
   * joint   — does any release for this WXYC-owned artist contain a
