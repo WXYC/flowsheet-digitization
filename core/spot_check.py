@@ -12,6 +12,8 @@ from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from core.parse import parse_artist_track
+
 
 @dataclass(frozen=True)
 class EntryRef:
@@ -28,7 +30,7 @@ class EntryRef:
 class PageReport:
     """Hit/miss accounting for a single result JSON.
 
-    `total` counts entries that had an `artist_guess`. `with_track` is
+    `total` counts entries we could derive an artist for. `with_track` is
     the joint-mode denominator: entries with both an artist and a track.
     The two miss lists hold the rows whose lookup returned False, so a
     caller can drill into specific transcriptions.
@@ -46,19 +48,37 @@ class PageReport:
 def collect_entries(results_root: Path) -> list[EntryRef]:
     """Walk every result JSON under `results_root` and return queryable rows.
 
-    Skips entries with no `artist_guess` (continuation rows have no
-    artist by design). An empty `track_guess` becomes `None` so callers
-    can distinguish "no track to check" from "track is the empty string".
+    Two on-disk shapes coexist:
+
+      * Pre-audit (34 legacy corpus JSONs): `artist_guess` / `track_guess`
+        are present on every entry. A null `artist_guess` is the explicit
+        "continuation row" sentinel — skip those.
+      * Post-audit (everything new): no `artist_guess` / `track_guess`
+        keys. Artist and track are derived from `raw_text` via
+        `core.parse.parse_artist_track`.
+
+    The branch is on KEY PRESENCE, not value truthiness, so the legacy
+    "explicit null means skip" contract is preserved on legacy rows
+    while new rows get the deterministic parse. An empty track becomes
+    `None` so callers can distinguish "no track to check" from "track
+    is the empty string".
     """
     rows: list[EntryRef] = []
     for path in sorted(results_root.rglob("*.json")):
         data = json.loads(path.read_text())
         for q in data.get("quadrants", []):
             for e in q.get("entries", []):
-                artist = (e.get("artist_guess") or "").strip()
-                if not artist:
-                    continue
-                track = (e.get("track_guess") or "").strip() or None
+                if "artist_guess" in e:
+                    legacy = (e.get("artist_guess") or "").strip()
+                    if not legacy:
+                        continue
+                    artist = legacy
+                    track = (e.get("track_guess") or "").strip() or None
+                else:
+                    parsed_artist, track = parse_artist_track(e.get("raw_text"))
+                    if parsed_artist is None:
+                        continue
+                    artist = parsed_artist
                 rows.append(
                     EntryRef(
                         page_path=path,

@@ -39,9 +39,6 @@ def merge_continuations(entries: list[Entry]) -> list[Entry]:
         continuation still reports "high". Substring matching doesn't
         care; if a future re-OCR queue filters by confidence and wants
         to flag merged rows, take the min over the contributing rows.
-      * `artist_guess` / `track_guess` — kept as-is. After a merge
-        these may not reflect the joined `raw_text`; downstream
-        consumers that care should re-parse from `raw_text`.
       * `row_index` — the predecessor's index is preserved. The
         continuation row's index is dropped from the merged view; the
         on-disk JSON still has both grid positions if needed.

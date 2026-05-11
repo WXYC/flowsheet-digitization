@@ -60,14 +60,6 @@ class Entry(BaseModel):
             "normal entry. Null if the circle is blank."
         ),
     )
-    artist_guess: str | None = Field(
-        default=None,
-        description="Best-effort parse of the artist portion (left of the dash).",
-    )
-    track_guess: str | None = Field(
-        default=None,
-        description="Best-effort parse of the track portion (right of the dash).",
-    )
     confidence: Confidence = Field(
         description="high if the row is clearly legible; low if mostly illegible.",
     )

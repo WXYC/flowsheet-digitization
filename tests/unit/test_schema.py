@@ -22,21 +22,36 @@ class TestEntry:
     def test_minimal_entry(self) -> None:
         e = Entry(row_index=0, raw_text="LED ZEP - TRAMPLED", confidence="high")
         assert e.row_index == 0
-        assert e.artist_guess is None
-        assert e.track_guess is None
         assert e.notes is None
 
     def test_full_entry(self) -> None:
         e = Entry(
             row_index=2,
             raw_text="LED ZEP - TRAMPLED",
-            artist_guess="Led Zeppelin",
-            track_guess="Trampled Under Foot",
             confidence="medium",
             notes="continuation",
         )
-        assert e.artist_guess == "Led Zeppelin"
+        assert e.raw_text == "LED ZEP - TRAMPLED"
         assert e.confidence == "medium"
+
+    def test_artist_guess_track_guess_keys_are_ignored(self) -> None:
+        """The 34 pre-audit corpus JSONs carry `artist_guess` and `track_guess`.
+        The new schema must accept the old shape (extra keys silently ignored)
+        and round-trip the entry without those keys reappearing on dump. That's
+        the load-bearing backward-compat contract this PR rests on."""
+        e = Entry.model_validate(
+            {
+                "row_index": 0,
+                "raw_text": "JUANA MOLINA - LA PARADOJA",
+                "artist_guess": "JUANA MOLINA",
+                "track_guess": "LA PARADOJA",
+                "confidence": "high",
+            }
+        )
+        assert e.raw_text == "JUANA MOLINA - LA PARADOJA"
+        dumped = e.model_dump()
+        assert "artist_guess" not in dumped
+        assert "track_guess" not in dumped
 
     def test_invalid_confidence_rejected(self) -> None:
         with pytest.raises(ValidationError):

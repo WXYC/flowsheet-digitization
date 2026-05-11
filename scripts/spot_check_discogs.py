@@ -2,8 +2,10 @@
 """spot_check_discogs.py — sanity-check Gemini-extracted entries against the
 local Discogs PostgreSQL cache.
 
-Walks every `data/results/**/*.json` and for each entry with an
-`artist_guess` checks two questions against the cache:
+Walks every `data/results/**/*.json` and for each entry with a
+derivable artist (from `artist_guess` on the 34 legacy JSONs, or from
+`parse_artist_track(raw_text)` on post-#41 extractions) checks two
+questions against the cache:
 
   * artist  — is this artist name in the WXYC library? (broad, cheap)
   * joint   — does any release for this WXYC-owned artist contain a
@@ -156,7 +158,7 @@ def print_report(
     print()
     print("=" * 72)
     print(f"Pages:                          {len(pages)}")
-    print(f"Entries with artist_guess:      {total}")
+    print(f"Entries with derivable artist:  {total}")
     print(f"  artist hits:                  {artist_hit_total}/{total}")
     print(f"Entries with artist + track:    {with_track}")
     print(f"  joint hits (artist+track):    {joint_hit_total}/{with_track}")
@@ -216,7 +218,7 @@ def main(argv: list[str]) -> int:
 
     rows = collect_entries(results_root)
     if not rows:
-        print(f"No entries with artist_guess under {results_root}.")
+        print(f"No entries with a derivable artist under {results_root}.")
         return 0
 
     unique_artists = sorted({r.artist for r in rows})
