@@ -89,6 +89,30 @@ Tests are split into:
 
 The default test run **excludes** the `external_api` and `slow` markers; CI runs the same default. The golden-page external-API runner is a follow-up.
 
+## Manual verifier
+
+After the pipeline produces `data/results/<rel>/page-NN.json`, you can hand-verify and correct entries via the static SPA in `verifier/`. Each row's cropped image strip sits next to its detected text in an editable field. Export emits a `<stem>.verified.json` (`PageResult`-shaped, plugs back into the pipeline as ground truth) and `derive_truth` produces a matching `tests/golden/<stem>.truth.json`.
+
+```bash
+# Generate a bundle
+python -m scripts.make_verifier_bundle \
+    data/results/<rel>/page-NN.json \
+    data/pages/<rel>/page-NN.png \
+    --out data/verifier/<stem>.bundle.json
+
+# Open the verifier
+python -m http.server 8765
+# then visit:
+# http://localhost:8765/verifier/?bundle=/data/verifier/<stem>.bundle.json
+
+# Derive a truth file from the exported verified.json
+python -m scripts.derive_truth \
+    data/verifier/<stem>.verified.json \
+    --out tests/golden/<stem>.truth.json
+```
+
+See `verifier/README.md` for the bundle schema, expected file layout, and the substring-derivation rules.
+
 ## Cost calibration
 
 Gemini 3.1 Pro charges per input token; one 300-DPI flowsheet page at `media_resolution=high` is ~1120 image tokens plus ~600 prompt tokens. Across the full corpus (~16K pages) input cost lands in the low tens of dollars; output adds modestly. Run the pipeline against a 10–20 page sample first and inspect both quality and `usage_metadata` before scheduling a full run.

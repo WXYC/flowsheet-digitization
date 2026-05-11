@@ -31,6 +31,8 @@ from typing import TYPE_CHECKING
 
 import numpy as np
 
+from core.schema import QUADRANT_ORDER, QuadrantPosition
+
 if TYPE_CHECKING:
     from PIL.Image import Image as PILImage
 
@@ -296,3 +298,55 @@ def _detect_body_bottom_y(row_lines: list[int], h: int) -> int:
     if not in_band:
         return int(h * FALLBACK_BODY_BOTTOM_FRACTION)
     return in_band[-1]
+
+
+def partition_row_lines_by_quadrant(
+    image: PILImage, layout: PageLayout
+) -> dict[QuadrantPosition, list[int]]:
+    """Detected row-line y-coords, partitioned by quadrant of the body grid.
+
+    Reuses `_detect_row_lines` for the y-coordinates, then classifies each
+    line by which page-column it spans (left, right, or both, based on ink
+    density at that y) and which body band it sits in (top vs bottom, by
+    `layout.body_mid_y`).
+
+    A line spanning both columns is added to BOTH side quadrants — most
+    printed flowsheet grid lines run full-width and bracket both hour-blocks
+    of a row.
+
+    Lines outside `[layout.header_bottom_y, layout.body_bottom_y)` are
+    dropped (header or footer artifacts, not body rows).
+
+    Returns a dict with all four `QUADRANT_ORDER` keys; empty list when
+    no lines hit a quadrant (blank image, un-printed margin).
+    """
+    w, _h = image.size
+    grayscale = np.asarray(image.convert("L"))
+    col_mid = layout.column_mid_x
+
+    all_lines = _detect_row_lines(grayscale, w, col_mid)
+
+    ink = (255 - grayscale).astype(np.float64) / 255.0
+    left_w = float(col_mid)
+    right_w = float(w - col_mid)
+    threshold = _ROW_LINE_THRESHOLDS[-1]
+
+    out: dict[QuadrantPosition, list[int]] = {q: [] for q in QUADRANT_ORDER}
+    for y in all_lines:
+        if not (layout.header_bottom_y <= y < layout.body_bottom_y):
+            continue
+        left_ink = float(ink[y, :col_mid].sum())
+        right_ink = float(ink[y, col_mid:].sum())
+        on_left = left_ink > threshold * left_w
+        on_right = right_ink > threshold * right_w
+        if y < layout.body_mid_y:
+            if on_left:
+                out["top_left"].append(int(y))
+            if on_right:
+                out["top_right"].append(int(y))
+        else:
+            if on_left:
+                out["bottom_left"].append(int(y))
+            if on_right:
+                out["bottom_right"].append(int(y))
+    return out

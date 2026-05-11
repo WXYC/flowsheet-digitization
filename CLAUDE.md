@@ -13,7 +13,14 @@ scans/                           input PDFs (gitignored; SCANS_ROOT)
 data/                            outputs (gitignored; DATA_ROOT)
   pages/<rel-pdf>/page-NN.png    rendered images
   results/<rel-pdf>/page-NN.json extraction results (one PageResult per page)
+  verifier/<stem>.bundle.json    pre-processor output: result + per-row bboxes
+  verifier/<stem>.verified.json  verifier UI export: hand-corrected PageResult
   jobs.db                        SQLite job table
+
+verifier/                        static SPA for manual row-by-row verification.
+                                 Loads a bundle, renders each row's cropped
+                                 image strip next to an editable text field,
+                                 exports a corrected verified.json.
 
 core/
   schema.py                      Pydantic models. GeminiPageResult is what
@@ -41,12 +48,28 @@ core/
                                  PageLayout (header_bottom_y, body_mid_y,
                                  column_mid_x). Used by the per-quadrant
                                  cropper in scripts/calibrate_models.py.
+                                 `partition_row_lines_by_quadrant(image,
+                                 layout)` is the public hook the verifier
+                                 pre-processor uses to compute per-row bboxes.
   continuations.py               Read-time merge of `notes="continuation"`
                                  rows into the prior entry's raw_text.
                                  Pure function; on-disk shape unchanged.
 
 cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
                                  Builds dependencies from env, calls into core.
+
+scripts/
+  make_verifier_bundle.py        PageResult JSON + page PNG -> verifier
+                                 bundle.json with per-quadrant + per-row
+                                 bboxes for the SPA to canvas-crop. Hard-codes
+                                 SCHEMA_VERSION = 1; bump on incompatible
+                                 schema changes.
+  derive_truth.py                <stem>.verified.json -> <stem>.truth.json
+                                 by extracting short uppercased substrings
+                                 (page date tokens, jock prefix, artist
+                                 portion of raw_text). Single source of
+                                 truth for those rules — the UI doesn't
+                                 derive truth itself.
 ```
 
 ## Why these choices

@@ -1,0 +1,316 @@
+:root {
+  --bg: #fafaf7;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --border: #d0d0c8;
+  --accent: #2a5fb0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+body > header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+}
+
+body > header h1 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.file-picker {
+  display: inline-block;
+}
+
+.file-picker input[type="file"] {
+  display: none;
+}
+
+.file-picker span {
+  display: inline-block;
+  padding: 4px 12px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.file-picker span:hover { background: #f0f0e8; }
+
+button {
+  padding: 4px 12px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#status {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#status.error { color: #b00; }
+
+main {
+  padding: 110px 24px 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: margin-right 0.2s ease;
+}
+
+main.page-view-open {
+  margin-right: 50vw;
+  max-width: none;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  max-width: 720px;
+}
+
+.meta-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.meta-grid input,
+.meta-grid textarea {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: white;
+  color: var(--fg);
+}
+
+.meta-grid textarea { resize: vertical; }
+
+.quadrant {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.quadrant-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.quadrant-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+  min-width: 110px;
+}
+
+.quadrant-header label {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.quadrant-header input {
+  font-size: 13px;
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  width: 80px;
+}
+
+.rows { display: flex; flex-direction: column; gap: 6px; }
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.row:last-child { border-bottom: none; }
+
+.row.deleted { opacity: 0.35; }
+
+.row-crop {
+  width: 100%;
+  height: auto;
+  background: #f0f0e8;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  display: block;
+}
+
+.row-crop.no-crop {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 12px;
+}
+
+.row-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.row-fields .raw-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: white;
+  color: var(--fg);
+  width: 100%;
+}
+
+.row-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.row-controls select,
+.row-controls input[type="text"] {
+  font-size: 12px;
+  padding: 2px 4px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: white;
+  font-family: inherit;
+}
+
+.row-controls .type-raw input[type="text"] {
+  width: 14em;
+}
+
+.row-controls button.delete-row {
+  padding: 2px 6px;
+  font-size: 12px;
+  background: white;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.row-controls button.delete-row:hover {
+  background: #fee;
+  color: #b00;
+  border-color: #f8c0c0;
+}
+
+/* Page-view side panel: toggled by the "Show page" button in the header.
+   Fixed to the right edge of the viewport, occupies half the width when
+   open; content under <main> reflows via `main.page-view-open`. */
+#page-view {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+  width: 50vw;
+  background: #1a1a1a;
+  border-left: 1px solid var(--border);
+  z-index: 50;
+  overflow: auto;
+  padding: 12px;
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+}
+
+#page-view.is-open {
+  transform: translateX(0);
+}
+
+#page-view img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: white;
+}
+
+#toggle-page-view.is-active {
+  background: #1a4080;
+}
+
+.add-row {
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: white;
+  color: var(--accent);
+  border: 1px dashed var(--border);
+  font-size: 12px;
+}
+
+.add-row:hover {
+  background: #f0f4fa;
+  border-style: solid;
+}

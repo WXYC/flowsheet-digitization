@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flowsheet verifier</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Flowsheet verifier</h1>
+    <div class="controls">
+      <label class="file-picker">
+        <span>Load bundle</span>
+        <input type="file" id="bundle-input" accept=".json">
+      </label>
+      <label class="file-picker" id="image-picker" hidden>
+        <span>Load image</span>
+        <input type="file" id="image-input" accept="image/png,image/jpeg">
+      </label>
+      <button id="toggle-page-view" disabled>Show page</button>
+      <button id="export-verified" disabled>Export verified + corrections</button>
+      <span id="status">Pick a bundle.json to begin.</span>
+    </div>
+  </header>
+
+  <aside id="page-view" aria-hidden="true">
+    <img id="page-view-img" alt="Full page">
+  </aside>
+
+  <main id="app" hidden>
+    <section id="page-meta">
+      <h2>Page</h2>
+      <div class="meta-grid">
+        <label>page_date_raw
+          <input id="page-date-raw" type="text">
+        </label>
+        <label>comments_raw
+          <textarea id="comments-raw" rows="2"></textarea>
+        </label>
+        <label>oddities (one per line)
+          <textarea id="oddities" rows="2"></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section id="quadrants-container">
+      <!-- One <article class="quadrant"> per quadrant, rendered by app.js -->
+    </section>
+  </main>
+
+  <template id="quadrant-template">
+    <article class="quadrant">
+      <header class="quadrant-header">
+        <h2 class="quadrant-title"></h2>
+        <label>hour_raw <input class="hour-raw" type="text"></label>
+        <label>jock_raw <input class="jock-raw" type="text"></label>
+      </header>
+      <div class="rows"></div>
+      <button class="add-row">+ add row</button>
+    </article>
+  </template>
+
+  <template id="row-template">
+    <div class="row" data-row-index="">
+      <canvas class="row-crop"></canvas>
+      <div class="row-fields">
+        <input class="raw-text" type="text">
+        <div class="row-controls">
+          <label class="type-raw">type
+            <input type="text" placeholder="H / M / L / Std / O / R / O/std / doodle desc">
+          </label>
+          <label class="notes">notes
+            <select>
+              <option value=""></option>
+              <option value="continuation">continuation</option>
+              <option value="double_height">double_height</option>
+              <option value="crossed_out">crossed_out</option>
+              <option value="illegible">illegible</option>
+              <option value="other">other</option>
+            </select>
+          </label>
+          <button class="delete-row" title="Remove row (hallucination)">✗</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
