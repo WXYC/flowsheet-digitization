@@ -7,21 +7,33 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <!-- Index-mode header (shown when no ?bundle= is set). -->
+  <header id="index-header" hidden>
     <h1>Flowsheet verifier</h1>
     <div class="controls">
-      <label class="file-picker">
-        <span>Load bundle</span>
-        <input type="file" id="bundle-input" accept=".json">
-      </label>
+      <button id="open-next-incomplete" disabled>Open next page that needs work</button>
+      <span id="index-status"></span>
+    </div>
+  </header>
+
+  <!-- Edit-mode header (shown when ?bundle= is set). -->
+  <header id="edit-header" hidden>
+    <h1>Flowsheet verifier</h1>
+    <div class="controls">
+      <a id="back-to-index" href="/verifier/">← All pages</a>
+      <button id="prev-page" disabled title="Previous bundle (p)">◀ Prev</button>
+      <span id="nav-position"></span>
+      <button id="next-page" disabled title="Next bundle (n)">Next ▶</button>
+      <span class="status-pill" id="status-pill" hidden></span>
       <label class="file-picker" id="image-picker" hidden>
         <span>Load image</span>
         <input type="file" id="image-input" accept="image/png,image/jpeg">
       </label>
-      <button id="toggle-page-view" disabled>Show page</button>
+      <button id="toggle-page-view" disabled title="Toggle full-page reference (?)">Show page</button>
       <button id="check-artists" disabled title="Look up each row's artist/track via the WXYC library (request-o-matic)">Check artists</button>
-      <button id="save-verified" disabled title="Persist this session: writes verified + corrections JSON to data/verifier/ and (when a job row exists) records the verification in jobs.db">Save</button>
-      <span id="status">Pick a bundle.json to begin.</span>
+      <button id="save-verified" disabled title="Save current state as draft (⌘S)">Save</button>
+      <button id="mark-complete" disabled title="Mark this page complete (⌘⇧S)">Mark complete</button>
+      <span id="status">Loading bundle…</span>
     </div>
   </header>
 
@@ -29,6 +41,24 @@
     <img id="page-view-img" alt="Full page">
   </aside>
 
+  <!-- Index mode body. -->
+  <main id="index" hidden>
+    <section id="bundle-list-wrapper">
+      <table id="bundle-list">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Stem</th>
+            <th>page_date_raw</th>
+            <th>Last saved</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Edit mode body. -->
   <main id="app" hidden>
     <section id="page-meta">
       <h2>Page</h2>
@@ -49,6 +79,25 @@
       <!-- One <article class="quadrant"> per quadrant, rendered by app.js -->
     </section>
   </main>
+
+  <!-- Keyboard shortcut overlay (toggled by `?`). -->
+  <div id="shortcut-overlay" hidden>
+    <div class="overlay-card">
+      <h2>Keyboard shortcuts</h2>
+      <dl>
+        <dt>⌘S / Ctrl+S</dt>          <dd>Save (draft)</dd>
+        <dt>⌘⇧S / Ctrl+Shift+S</dt>   <dd>Mark complete</dd>
+        <dt>j / ⌘↓</dt>                <dd>Focus next row's raw_text</dd>
+        <dt>k / ⌘↑</dt>                <dd>Focus previous row</dd>
+        <dt>⌘D / Ctrl+D</dt>           <dd>Toggle ✗ (delete) on current row</dd>
+        <dt>n</dt>                     <dd>Next bundle</dd>
+        <dt>p</dt>                     <dd>Previous bundle</dd>
+        <dt>?</dt>                     <dd>Toggle this overlay</dd>
+        <dt>Esc</dt>                   <dd>Close overlay</dd>
+      </dl>
+      <p class="overlay-note">Shortcuts ignore key events that target inputs/textareas/selects (so you can type normally). j/k/n/p require the keyboard focus to be outside an editable field.</p>
+    </div>
+  </div>
 
   <template id="quadrant-template">
     <article class="quadrant">

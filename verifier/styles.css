@@ -34,6 +34,140 @@ body > header h1 {
   font-weight: 600;
 }
 
+#back-to-index {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+#back-to-index:hover { text-decoration: underline; }
+
+#nav-position {
+  color: var(--muted);
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Status pill in the edit header. */
+.status-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.status-pill.status-incomplete { background: #f0f0e8; color: var(--muted); border: 1px solid var(--border); }
+.status-pill.status-partial    { background: #fff5e0; color: #8a5a00; border: 1px solid #ecd9a8; }
+.status-pill.status-complete   { background: #e6f5e6; color: #1f6f1f; border: 1px solid #b8e0b8; }
+
+/* Index-mode table. */
+#bundle-list {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#bundle-list th,
+#bundle-list td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+#bundle-list th {
+  background: #f0f0e8;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+#bundle-list tbody tr {
+  cursor: pointer;
+}
+
+#bundle-list tbody tr:hover {
+  background: #fafafa;
+}
+
+#bundle-list tbody tr.is-complete td:not(:first-child) {
+  color: var(--muted);
+}
+
+#bundle-list td.stem {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+}
+
+#bundle-list td.timestamp {
+  color: var(--muted);
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Keyboard-shortcut overlay. */
+#shortcut-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#shortcut-overlay .overlay-card {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 8px;
+  max-width: 520px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+#shortcut-overlay h2 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+}
+
+#shortcut-overlay dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 16px;
+  row-gap: 6px;
+  margin: 0;
+  font-size: 13px;
+}
+
+#shortcut-overlay dt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+#shortcut-overlay dd {
+  margin: 0;
+  color: var(--fg);
+}
+
+#shortcut-overlay .overlay-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 16px 0 0 0;
+  font-style: italic;
+}
+
+/* Row focus highlight (for j/k keyboard nav). */
+.row.is-focused .raw-text {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
 .controls {
   display: flex;
   gap: 12px;

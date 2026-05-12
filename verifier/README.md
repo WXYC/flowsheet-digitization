@@ -14,15 +14,15 @@ The verifier ships with a tiny FastAPI server that does two things:
 .venv/bin/python verifier/serve.py
 # default port is 8765; override with VERIFIER_PORT=9000 .venv/bin/python verifier/serve.py
 
-# then open in a browser:
-open "http://localhost:8765/verifier/?bundle=/data/verifier/<stem>.bundle.json"
+# then open the index:
+open "http://localhost:8765/verifier/"
 ```
 
-If you want only the static side and don't need the artist-lookup button, `python -m http.server 8765` from the repo root still works — the Check-artists button will return 404s but everything else functions.
+The index page lists every bundle in `data/verifier/` with its verification state and an **Open next page that needs work** button. Click a row to open it. The status badge on each row mirrors the same state machine as the in-edit pill: `incomplete` (no save yet), `partial` (saved as draft), `complete` (marked complete).
 
-The `?bundle=...` URL param is the recommended path: the UI fetches the bundle, then resolves the bundle's `image_path` (relative path inside the JSON) and fetches the image too.
+The `?bundle=<path>` URL is still the way to deep-link a specific page (e.g., bookmarks, share links). Edit-mode navigation also exposes Prev / Next buttons and the keyboard shortcuts (`?` to see all).
 
-You can also load a bundle via the **Load bundle** file picker, in which case a second **Load image** picker appears. This path works without a server but you must pick both files manually.
+You can also load a bundle via the **Load image** file picker if the page is served statically and the relative image path can't be fetched.
 
 ## File layout
 
@@ -104,15 +104,25 @@ tests/golden/<stem>.truth.json          # derive_truth output (optional destinat
 
 ## Saving
 
-Clicking **Save** POSTs the current edit state to the server's `/api/save` endpoint, which:
+Two buttons share the right side of the header: **Save** and **Mark complete**. Both POST to `/api/save`. The only difference is the `status` field in the body — `Save` omits it (treated as `draft`), `Mark complete` sends `"complete"`.
 
-1. Writes `data/verifier/<stem>.verified.json` — `PageResult`-shaped JSON validating against `core.schema.PageResult`. Bundle-only fields (`schema_version`, `stem`, `image_path`, `pdf_path`, `page_number`, per-entry `row_bbox`) are stripped before validation. Rows marked ✗ are excluded. Rows added via **+ add row** are included.
-2. Writes `data/verifier/<stem>.corrections.json` — the delta between the loaded bundle and the verified state (shape below).
-3. If the bundle has a non-null `pdf_path` + `page_number` (production-pipeline pages do; test fixtures don't), updates the matching `jobs.db` row via `JobStore.mark_verified` — setting `verified_at`, `verified_path`, and `corrections_path`.
+Status semantics:
 
-The status bar reports the destination files and whether `jobs.db` was updated:
+- **Incomplete** — no `<stem>.corrections.json` on disk. The bundle has never been saved.
+- **Partial** — `corrections.json` exists with `"status": "draft"`. The user is in progress.
+- **Complete** — `corrections.json` has `"status": "complete"`. The user explicitly marked the page done.
 
-> Saved data/verifier/X.verified.json + data/verifier/X.corrections.json · 4 field correction(s), 0 added, 0 deleted · jobs.db updated.
+The server runs a small preservation rule so a plain Save on an already-complete page **does not** downgrade it. The user can refine details on a complete page without re-marking it. (If we ever need a "Revert to draft" affordance, that's a separate ticket.)
+
+Save's three side effects:
+
+1. Writes `data/verifier/<stem>.verified.json` — `PageResult`-shaped JSON validating against `core.schema.PageResult`. Bundle-only fields are stripped before validation. Rows marked ✗ are excluded; rows added via **+ add row** are included.
+2. Writes `data/verifier/<stem>.corrections.json` — the delta between the loaded bundle and the verified state, plus a top-level `"status"` field.
+3. If the bundle has a non-null `pdf_path` + `page_number`, updates the matching `jobs.db` row via `JobStore.mark_verified`.
+
+The status bar reports the destination files, status, and whether `jobs.db` was updated:
+
+> Saved as complete · data/verifier/X.verified.json + data/verifier/X.corrections.json · 4 field correction(s), 0 added, 0 deleted · jobs.db updated.
 
 If you'd rather have a downloadable file, open the saved JSON from `data/verifier/` directly.
 
@@ -165,6 +175,24 @@ Badge states:
 - **Faded/italic** — stale. You edited the row after running Check; re-run to refresh.
 
 The lookup goes through request-o-matic's LLM-driven request parser (artist normalization, fuzzy matching) before hitting the LML library search. The badge reflects request-o-matic's `library_results` and `artwork` fields — not LML's `/api/v1/lookup` directly, since the LLM correction layer is the load-bearing piece.
+
+## Keyboard shortcuts
+
+Press `?` anywhere in the editor to see the overlay. The current set:
+
+| Key | Action |
+|---|---|
+| ⌘S / Ctrl+S | Save (draft) |
+| ⌘⇧S / Ctrl+Shift+S | Mark complete |
+| j / ⌘↓ | Focus next row's `raw_text` |
+| k / ⌘↑ | Focus previous row |
+| ⌘D / Ctrl+D | Toggle ✗ (delete) on focused row |
+| n | Next bundle |
+| p | Previous bundle |
+| ? | Toggle shortcut overlay |
+| Esc | Close overlay |
+
+The single-letter keys (`j`, `k`, `n`, `p`, `?`) are ignored when the keyboard focus is in an `<input>`, `<textarea>`, or `<select>` — so typing in a row's text field works normally.
 
 ## Known rough edges (v1)
 
