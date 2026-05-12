@@ -65,7 +65,9 @@ tests/golden/<stem>.truth.json          # derive_truth output (optional destinat
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 25,
   "stem": "<page stem>",
   "image_path": "<relative path to the page image>",
   "model_version": "<extraction model>",
@@ -98,7 +100,7 @@ tests/golden/<stem>.truth.json          # derive_truth output (optional destinat
 
 ### Versioning
 
-`schema_version` is currently `1`. Future incompatible changes bump the version; the UI shows an error banner if it sees an unsupported version. Keep `schema_version` set when archiving bundles so older bundles remain loadable.
+`schema_version` is currently `2`. v1 was the initial bundle shape; v2 added the optional `pdf_path` and `page_number` fields so `Save` can target the corresponding `jobs.db` row. Future incompatible changes bump the version; the UI shows an error banner if it sees an unsupported version. Keep `schema_version` set when archiving bundles so older bundles remain loadable.
 
 ## Saving
 
@@ -132,9 +134,6 @@ The `corrections.json` shape:
     {"position": "top_left", "row_index": 0, "field": "raw_text",
      "original": "Smiths-I wnat", "corrected": "Smiths-I want the one I can't have"}
   ],
-  "verified_rows": [
-    {"position": "top_left", "row_index": 0}
-  ],
   "added_rows": [
     {"position": "top_left", "row_index": 12, "raw_text": "...",
      "type_raw": null, "notes": null}
@@ -145,14 +144,7 @@ The `corrections.json` shape:
 }
 ```
 
-The verified.json is the consumable artifact (plugs back into the pipeline as ground truth). The corrections.json is the audit record (preserves the original model output for analysis, separates "user reviewed and accepted" from "user reviewed and corrected" from "user never touched").
-
-**Verification semantics**:
-- A row's `verified` checkbox is **off** by default.
-- Editing any field on a row (raw_text, type, notes) **auto-sets** `verified` to on.
-- Toggling ✗ (delete) auto-sets `verified` to on (a deliberate action).
-- The user can manually flip the checkbox to mark an unchanged row as reviewed.
-- Rows added via **+ add row** are implicitly verified (they were typed by the user).
+The `verified.json` is the consumable artifact (plugs back into the pipeline as ground truth). The `corrections.json` is the audit record (preserves the original model output for diff analysis). Rows the user neither edited nor marked ✗ produce no entry in either file — by clicking Save, the user is implicitly endorsing every untouched row.
 
 Truth derivation is a **separate Python tool** (`scripts/derive_truth.py`) rather than a UI button — the substring-extraction rules live in one place (Python, testable), not duplicated in JS.
 
