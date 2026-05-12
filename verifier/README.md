@@ -180,7 +180,7 @@ The lookup goes through request-o-matic's LLM-driven request parser (artist norm
 
 ## Keyboard shortcuts
 
-Press `?` anywhere in the editor to see the overlay. The current set:
+Press `?` anywhere in the editor — or click the floating `?` button at the top right — to open the shortcut overlay. Dismiss with `Esc`, the `×` in the overlay's corner, or by clicking the dimmed backdrop. The current set:
 
 | Key | Action |
 |---|---|

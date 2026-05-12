@@ -80,9 +80,14 @@
     </section>
   </main>
 
-  <!-- Keyboard shortcut overlay (toggled by `?`). -->
+  <!-- Floating help button. Always present; opens the shortcut overlay.
+       Sits above the fixed headers (z-index in styles.css). -->
+  <button id="show-shortcuts" type="button" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">?</button>
+
+  <!-- Keyboard shortcut overlay (toggled by `?` or the help button). -->
   <div id="shortcut-overlay" hidden>
     <div class="overlay-card">
+      <button class="overlay-close" type="button" aria-label="Close">×</button>
       <h2>Keyboard shortcuts</h2>
       <dl>
         <dt>⌘S / Ctrl+S</dt>          <dd>Save (draft)</dd>

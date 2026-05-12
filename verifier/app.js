@@ -981,6 +981,9 @@ function installKeyboardShortcuts() {
   $("#shortcut-overlay").addEventListener("click", (e) => {
     if (e.target.id === "shortcut-overlay") toggleShortcutOverlay();
   });
+  // Top-right floating help button and the card's × button both toggle.
+  $("#show-shortcuts").addEventListener("click", toggleShortcutOverlay);
+  $("#shortcut-overlay .overlay-close").addEventListener("click", toggleShortcutOverlay);
 }
 
 // ---- wiring --------------------------------------------------------------
