@@ -1,22 +1,25 @@
 // Flowsheet verifier — vanilla JS, no build step.
 //
-// Loads a bundle.json (produced by scripts/make_verifier_bundle.py) plus
-// the page image it references, renders per-row canvas crops next to
-// editable text fields, and on Save POSTs two files to /api/save:
-//   1. <stem>.verified.json — PageResult-shaped corrected page
-//   2. <stem>.corrections.json — delta vs the original bundle
+// Two modes, switched on the presence of `?bundle=` in the URL:
 //
-// Two load paths are supported:
-//   1. Server-served bundle: fetch(bundle) then fetch(image) by relative
-//      URL. Used when the page is served via `python verifier/serve.py`.
-//   2. File-picker bundle: read the bundle as text, then prompt for the
-//      image file separately.
+//   1. INDEX mode (no ?bundle=): show the list of every bundle in
+//      data/verifier/ with status (incomplete / partial / complete),
+//      plus an "Open next incomplete" jump button.
+//
+//   2. EDIT mode (?bundle=<path>): the legacy per-page editor. Renders
+//      per-row canvas crops next to editable text fields. Save POSTs to
+//      /api/save which writes <stem>.verified.json + <stem>.corrections.json
+//      and updates jobs.db when a job key is present. Mark complete sends
+//      the same payload with status="complete".
 //
 // State is split:
 //   state.originalBundle  — immutable snapshot of the loaded bundle. Never
 //                           mutated; used as the diff baseline on save.
 //   state.bundle          — working copy. Mutated by edits and UI flags
 //                           (`_added`, `_deleted`).
+//   state.bundleList      — cached /api/bundles response, used by Prev/Next
+//                           and the keyboard shortcuts. Refreshed after a
+//                           successful save so the status pill reflects truth.
 
 "use strict";
 
@@ -27,6 +30,8 @@ const state = {
   originalBundle: null,    // immutable snapshot for diffing
   pageImage: null,         // HTMLImageElement
   lookupConcurrency: 4,    // parallel /api/lookup requests
+  bundleList: null,        // cached array from /api/bundles
+  focusedRowIndex: null,   // for j/k keyboard nav across rows
 };
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -118,6 +123,7 @@ function finishInit() {
   );
   $("#app").hidden = false;
   $("#save-verified").disabled = false;
+  $("#mark-complete").disabled = false;
   $("#toggle-page-view").disabled = false;
   $("#check-artists").disabled = false;
   $("#page-view-img").src = state.pageImage.src;
@@ -126,6 +132,77 @@ function finishInit() {
   // Show the full-page reference by default; verifiers asked for this
   // because the row crops need page context to be useful.
   togglePageView();
+  // Best-effort: fetch the bundle list to enable Prev/Next and the
+  // status pill. Failures don't block editing.
+  refreshNavFromBundleList().catch(() => {});
+}
+
+// ---- nav + status pill --------------------------------------------------
+
+async function fetchBundleList() {
+  const r = await fetch("/api/bundles");
+  if (!r.ok) throw new Error(`/api/bundles ${r.status}`);
+  const data = await r.json();
+  state.bundleList = data.bundles || [];
+  return state.bundleList;
+}
+
+// Find the current bundle's position in state.bundleList. Returns -1 if
+// the current bundle isn't in the list (e.g., picked via file-picker, or
+// the bundle was removed between page loads).
+function currentBundleIndex() {
+  if (!state.bundle || !state.bundleList) return -1;
+  return state.bundleList.findIndex(b => b.stem === state.bundle.stem);
+}
+
+async function refreshNavFromBundleList() {
+  if (!state.bundle) return;
+  try {
+    await fetchBundleList();
+  } catch (err) {
+    // Non-fatal — Prev/Next stay disabled, no status pill.
+    console.warn("bundle list fetch failed:", err);
+    return;
+  }
+  const idx = currentBundleIndex();
+  const total = state.bundleList.length;
+  const posEl = $("#nav-position");
+  const prevBtn = $("#prev-page");
+  const nextBtn = $("#next-page");
+  if (idx >= 0) {
+    posEl.textContent = `${idx + 1} / ${total}`;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+  } else {
+    posEl.textContent = `? / ${total}`;
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+  }
+  updateStatusPill(state.bundleList[idx]?.status ?? "incomplete");
+}
+
+function updateStatusPill(status) {
+  const pill = $("#status-pill");
+  pill.hidden = false;
+  pill.className = `status-pill status-${status}`;
+  pill.textContent = status;
+}
+
+function navigateTo(bundle) {
+  if (!bundle?.url) return;
+  location.href = bundle.url;
+}
+
+function navigatePrev() {
+  const idx = currentBundleIndex();
+  if (idx > 0) navigateTo(state.bundleList[idx - 1]);
+}
+
+function navigateNext() {
+  const idx = currentBundleIndex();
+  if (idx >= 0 && idx < state.bundleList.length - 1) {
+    navigateTo(state.bundleList[idx + 1]);
+  }
 }
 
 // ---- render: page meta ---------------------------------------------------
@@ -425,12 +502,17 @@ function buildCorrectionsExport() {
 
 // ---- file-download helpers -----------------------------------------------
 
-async function saveAll() {
+async function saveAll(requestedStatus = null) {
+  // requestedStatus = "complete" when user clicked Mark complete; null
+  // for a plain Save (the server applies the preservation rule — an
+  // already-complete page stays complete).
   if (!state.bundle) return;
-  const btn = $("#save-verified");
+  const btn = requestedStatus === "complete" ? $("#mark-complete") : $("#save-verified");
+  const otherBtn = requestedStatus === "complete" ? $("#save-verified") : $("#mark-complete");
   btn.disabled = true;
+  otherBtn.disabled = true;
   const original = btn.textContent;
-  btn.textContent = "Saving…";
+  btn.textContent = requestedStatus === "complete" ? "Marking…" : "Saving…";
 
   const verified = buildVerifiedExport();
   const corrections = buildCorrectionsExport();
@@ -441,6 +523,7 @@ async function saveAll() {
     verified,
     corrections,
   };
+  if (requestedStatus) body.status = requestedStatus;
 
   try {
     const r = await fetch("/api/save", {
@@ -462,18 +545,25 @@ async function saveAll() {
       : (body.pdf_path && body.page_number != null
           ? "no matching job row (files only)"
           : "files only (no job key)");
+    updateStatusPill(result.status === "complete" ? "complete" : "partial");
     setStatus(
-      `Saved ${result.verified_path} + ${result.corrections_path} · ` +
+      `Saved as ${result.status} · ${result.verified_path} + ${result.corrections_path} · ` +
       `${n} field correction(s), ${corrections.added_rows.length} added, ` +
       `${corrections.deleted_rows.length} deleted · ${dbBit}.`
     );
+    // Refresh the cached bundle list so Prev/Next reflects the new status.
+    refreshNavFromBundleList().catch(() => {});
   } catch (err) {
     setStatus(`Save failed: ${err.message}`, "error");
   } finally {
     btn.disabled = false;
+    otherBtn.disabled = false;
     btn.textContent = original;
   }
 }
+
+const saveDraft = () => saveAll(null);
+const markComplete = () => saveAll("complete");
 
 // ---- artist/track lookup (request-o-matic via /api/lookup proxy) --------
 
@@ -717,20 +807,199 @@ function togglePageView() {
   btn.textContent = open ? "Hide page" : "Show page";
 }
 
+// ---- index mode ----------------------------------------------------------
+
+async function showIndex() {
+  $("#index-header").hidden = false;
+  $("#index").hidden = false;
+  const statusEl = $("#index-status");
+  statusEl.textContent = "Loading…";
+  try {
+    await fetchBundleList();
+    renderBundleList();
+  } catch (err) {
+    statusEl.textContent = `Failed to load bundle list: ${err.message}`;
+    return;
+  }
+  const incompleteCount = state.bundleList.filter(b => b.status !== "complete").length;
+  if (incompleteCount > 0) {
+    $("#open-next-incomplete").disabled = false;
+    $("#open-next-incomplete").addEventListener("click", openNextIncomplete);
+  }
+  const counts = {
+    incomplete: state.bundleList.filter(b => b.status === "incomplete").length,
+    partial: state.bundleList.filter(b => b.status === "partial").length,
+    complete: state.bundleList.filter(b => b.status === "complete").length,
+  };
+  statusEl.textContent =
+    `${state.bundleList.length} bundle(s): ` +
+    `${counts.incomplete} incomplete · ${counts.partial} partial · ${counts.complete} complete.`;
+}
+
+function renderBundleList() {
+  const tbody = $("#bundle-list tbody");
+  tbody.innerHTML = "";
+  for (const bundle of state.bundleList) {
+    const tr = document.createElement("tr");
+    tr.dataset.stem = bundle.stem;
+    tr.classList.toggle("is-complete", bundle.status === "complete");
+
+    const statusTd = document.createElement("td");
+    const pill = document.createElement("span");
+    pill.className = `status-pill status-${bundle.status}`;
+    pill.textContent = bundle.status;
+    statusTd.appendChild(pill);
+    tr.appendChild(statusTd);
+
+    const stemTd = document.createElement("td");
+    stemTd.className = "stem";
+    stemTd.textContent = bundle.stem;
+    tr.appendChild(stemTd);
+
+    const dateTd = document.createElement("td");
+    dateTd.textContent = bundle.page_date_raw || "—";
+    tr.appendChild(dateTd);
+
+    const tsTd = document.createElement("td");
+    tsTd.className = "timestamp";
+    tsTd.textContent = bundle.verified_at
+      ? new Date(bundle.verified_at).toLocaleString()
+      : "—";
+    tr.appendChild(tsTd);
+
+    tr.addEventListener("click", () => navigateTo(bundle));
+    tbody.appendChild(tr);
+  }
+}
+
+function openNextIncomplete() {
+  if (!state.bundleList) return;
+  const next = state.bundleList.find(b => b.status !== "complete");
+  if (next) {
+    navigateTo(next);
+  } else {
+    $("#index-status").textContent = "All pages complete!";
+  }
+}
+
+// ---- keyboard shortcuts --------------------------------------------------
+
+function isEditableTarget(target) {
+  if (!target) return false;
+  const tag = target.tagName;
+  return (
+    tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || target.isContentEditable
+  );
+}
+
+function focusedRowEl() {
+  if (state.focusedRowIndex == null) return null;
+  const rows = $$(".row");
+  return rows[state.focusedRowIndex] || null;
+}
+
+function setFocusedRow(idx) {
+  const rows = $$(".row");
+  if (idx < 0 || idx >= rows.length) return;
+  $$(".row.is-focused").forEach(el => el.classList.remove("is-focused"));
+  state.focusedRowIndex = idx;
+  const target = rows[idx];
+  target.classList.add("is-focused");
+  target.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  const input = $(".raw-text", target);
+  if (input) input.focus();
+}
+
+function focusNextRow(delta) {
+  const rows = $$(".row");
+  if (!rows.length) return;
+  let next = state.focusedRowIndex == null
+    ? (delta > 0 ? 0 : rows.length - 1)
+    : state.focusedRowIndex + delta;
+  next = Math.max(0, Math.min(rows.length - 1, next));
+  setFocusedRow(next);
+}
+
+function toggleShortcutOverlay() {
+  const o = $("#shortcut-overlay");
+  o.hidden = !o.hidden;
+}
+
+function installKeyboardShortcuts() {
+  document.addEventListener("keydown", (e) => {
+    // Esc closes overlay regardless of focus.
+    if (e.key === "Escape" && !$("#shortcut-overlay").hidden) {
+      toggleShortcutOverlay();
+      e.preventDefault();
+      return;
+    }
+    // ⌘S / Ctrl+S → save. Works even when an input has focus.
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") {
+      e.preventDefault();
+      if (e.shiftKey) markComplete();
+      else saveDraft();
+      return;
+    }
+    // ⌘D / Ctrl+D → toggle delete on focused row. Also works in inputs.
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "d") {
+      const row = focusedRowEl();
+      if (row) {
+        const btn = row.querySelector(".delete-row");
+        if (btn) {
+          btn.click();
+          e.preventDefault();
+        }
+      }
+      return;
+    }
+    // Non-modifier letter shortcuts are ignored when an input has focus,
+    // so the verifier can type normally.
+    if (isEditableTarget(e.target)) return;
+    if (e.key === "?" || (e.shiftKey && e.key === "/")) {
+      toggleShortcutOverlay();
+      e.preventDefault();
+    } else if (e.key === "j" || (e.metaKey && e.key === "ArrowDown")) {
+      focusNextRow(1);
+      e.preventDefault();
+    } else if (e.key === "k" || (e.metaKey && e.key === "ArrowUp")) {
+      focusNextRow(-1);
+      e.preventDefault();
+    } else if (e.key === "n") {
+      navigateNext();
+      e.preventDefault();
+    } else if (e.key === "p") {
+      navigatePrev();
+      e.preventDefault();
+    }
+  });
+  // Click outside the overlay card closes it.
+  $("#shortcut-overlay").addEventListener("click", (e) => {
+    if (e.target.id === "shortcut-overlay") toggleShortcutOverlay();
+  });
+}
+
 // ---- wiring --------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", async () => {
-  $("#bundle-input").addEventListener("change", (e) => {
-    const file = e.target.files?.[0];
-    if (file) loadBundleFromFile(file);
-  });
+  installKeyboardShortcuts();
+  const params = new URLSearchParams(location.search);
+  const hasBundle = !!params.get("bundle");
+  if (!hasBundle) {
+    await showIndex();
+    return;
+  }
+  // Edit mode.
+  $("#edit-header").hidden = false;
   $("#image-input").addEventListener("change", (e) => {
     const file = e.target.files?.[0];
     if (file) loadImageFromFile(file);
   });
-  $("#save-verified").addEventListener("click", saveAll);
+  $("#save-verified").addEventListener("click", saveDraft);
+  $("#mark-complete").addEventListener("click", markComplete);
   $("#toggle-page-view").addEventListener("click", togglePageView);
   $("#check-artists").addEventListener("click", checkArtists);
+  $("#prev-page").addEventListener("click", navigatePrev);
+  $("#next-page").addEventListener("click", navigateNext);
 
   await loadBundleFromUrlParam();
 });

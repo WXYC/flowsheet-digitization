@@ -10,7 +10,12 @@ Serves the repo's static files (verifier/, data/, tests/) and provides:
                         <stem>.verified.json and <stem>.corrections.json
                         into data/verifier/, and (when the bundle carries
                         a `pdf_path`/`page_number` pair) updates
-                        `jobs.db` via `JobStore.mark_verified`.
+                        `jobs.db` via `JobStore.mark_verified`. Honors
+                        an optional `status` field with preservation
+                        semantics — see the handler docstring.
+  GET  /api/bundles   — list every bundle in data/verifier/ with its
+                        verification state (incomplete / partial /
+                        complete) for the index page and Prev/Next nav.
 
 Run:
 
@@ -129,6 +134,37 @@ async def lookup(request: Request) -> JSONResponse:
     return JSONResponse(r.json())
 
 
+_VALID_STATUSES = frozenset({"draft", "complete"})
+
+
+def _resolve_status(incoming: str | None, corrections_path: Path) -> str:
+    """Compute the corrections.json `status` field for this save.
+
+    Rules (matching the UI's two-button design):
+      - `"complete"` from the client wins outright (user clicked
+        "Mark complete").
+      - Otherwise, if the existing corrections.json on disk has
+        `"status": "complete"`, preserve it. A plain Save on an
+        already-complete page is a "refine in place" edit, not a
+        downgrade. The user can revert by re-saving via a future
+        "Revert to draft" affordance if we add one.
+      - Otherwise (incoming is `"draft"`, None, or unknown), the page
+        is a draft.
+
+    Returns one of `"draft"` or `"complete"`.
+    """
+    if incoming == "complete":
+        return "complete"
+    if corrections_path.is_file():
+        try:
+            existing = json.loads(corrections_path.read_text())
+        except Exception:  # noqa: BLE001
+            existing = {}
+        if existing.get("status") == "complete":
+            return "complete"
+    return "draft"
+
+
 @app.post("/api/save")
 async def save(request: Request) -> JSONResponse:
     """Persist a verifier UI session to disk and (optionally) `jobs.db`.
@@ -139,13 +175,19 @@ async def save(request: Request) -> JSONResponse:
           "stem": "<page stem>",
           "pdf_path": "<rel path to PDF>" | null,
           "page_number": <int> | null,
+          "status": "draft" | "complete" | null,
           "verified": { ...PageResult... },
           "corrections": { ...corrections... }
         }
 
     Writes:
       - `data/verifier/<stem>.verified.json`  (validated as PageResult)
-      - `data/verifier/<stem>.corrections.json` (verbatim JSON)
+      - `data/verifier/<stem>.corrections.json` (verbatim JSON +
+        server-resolved `status` field)
+
+    Status resolution: `"complete"` wins; otherwise an existing
+    on-disk `"complete"` is preserved across plain Saves. See
+    `_resolve_status` for the table.
 
     If `pdf_path` and `page_number` are present, also calls
     `JobStore.mark_verified` to record the verification in `jobs.db`.
@@ -162,10 +204,19 @@ async def save(request: Request) -> JSONResponse:
     corrections = payload.get("corrections")
     pdf_path = payload.get("pdf_path")
     page_number = payload.get("page_number")
+    incoming_status = payload.get("status")
     if verified is None or corrections is None:
         raise HTTPException(
             status_code=400,
             detail="body must include `verified` and `corrections` objects",
+        )
+    if incoming_status is not None and incoming_status not in _VALID_STATUSES:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"status must be one of {sorted(_VALID_STATUSES)} or omitted, "
+                f"got {incoming_status!r}"
+            ),
         )
 
     # Validate verified against PageResult and keep the parsed model so
@@ -184,8 +235,12 @@ async def save(request: Request) -> JSONResponse:
     VERIFIER_DIR.mkdir(parents=True, exist_ok=True)
     verified_path = VERIFIER_DIR / f"{stem}.verified.json"
     corrections_path = VERIFIER_DIR / f"{stem}.corrections.json"
+    # Resolve status BEFORE we overwrite the existing corrections file,
+    # so the preservation rule can see the prior on-disk value.
+    resolved_status = _resolve_status(incoming_status, corrections_path)
+    corrections_with_status = {"status": resolved_status, **(corrections or {})}
     _atomic_write_text(verified_path, validated.model_dump_json(indent=2))
-    _atomic_write_text(corrections_path, json.dumps(corrections, indent=2))
+    _atomic_write_text(corrections_path, json.dumps(corrections_with_status, indent=2))
 
     db_updated = False
     # `isinstance(x, int)` is True for `bool` in Python — explicitly reject
@@ -211,8 +266,100 @@ async def save(request: Request) -> JSONResponse:
             "verified_path": str(verified_path.relative_to(DATA_ROOT.parent)),
             "corrections_path": str(corrections_path.relative_to(DATA_ROOT.parent)),
             "db_updated": db_updated,
+            "status": resolved_status,
         }
     )
+
+
+@app.get("/api/bundles")
+async def list_bundles() -> JSONResponse:
+    """Enumerate every bundle in data/verifier/ with its verification state.
+
+    The state machine: `incomplete` (no corrections.json yet), `partial`
+    (corrections.json with `status="draft"`), `complete` (corrections.json
+    with `status="complete"`). Legacy corrections.json files without a
+    `status` field default to `partial` — they were saved before status
+    tracking landed, so they're at least in-progress.
+
+    Returns:
+        {
+          "bundles": [
+            {
+              "stem": "...",
+              "page_date_raw": "..." | null,
+              "pdf_path": "..." | null,
+              "page_number": int | null,
+              "status": "incomplete" | "partial" | "complete",
+              "verified_at": "<ISO timestamp>" | null,
+              "url": "/verifier/?bundle=/data/verifier/<stem>.bundle.json"
+            },
+            ...
+          ]
+        }
+
+    Sorted by stem so navigation is deterministic and matches alphanumeric
+    page order (which the WXYC stem format respects: `page05 < page25`).
+    """
+    if not VERIFIER_DIR.is_dir():
+        return JSONResponse({"bundles": []})
+
+    bundles_out: list[dict[str, object]] = []
+    for bundle_path in sorted(VERIFIER_DIR.glob("*.bundle.json")):
+        stem = bundle_path.name.removesuffix(".bundle.json")
+        try:
+            bundle = json.loads(bundle_path.read_text())
+        except Exception:  # noqa: BLE001
+            # A malformed bundle file shouldn't break the whole index —
+            # surface it as incomplete with null metadata so it still
+            # appears and the user can see something's off.
+            bundle = {}
+
+        corrections_path = VERIFIER_DIR / f"{stem}.corrections.json"
+        verified_path = VERIFIER_DIR / f"{stem}.verified.json"
+        status, verified_at = _bundle_state(corrections_path, verified_path)
+
+        bundles_out.append(
+            {
+                "stem": stem,
+                "page_date_raw": bundle.get("page_date_raw"),
+                "pdf_path": bundle.get("pdf_path"),
+                "page_number": bundle.get("page_number"),
+                "status": status,
+                "verified_at": verified_at,
+                "url": f"/verifier/?bundle=/data/verifier/{stem}.bundle.json",
+            }
+        )
+
+    return JSONResponse({"bundles": bundles_out})
+
+
+def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str | None]:
+    """Derive (status, verified_at) for one bundle from disk.
+
+    `verified_at` is the mtime of `<stem>.verified.json` if it exists;
+    None otherwise. Reflects when the last Save / Mark-complete happened.
+    """
+    if not corrections_path.is_file():
+        return ("incomplete", None)
+    try:
+        corrections = json.loads(corrections_path.read_text())
+    except Exception:  # noqa: BLE001
+        corrections = {}
+    raw_status = corrections.get("status")
+    if raw_status == "complete":
+        status = "complete"
+    else:
+        # Anything else (`draft`, missing, malformed) is `partial`. Legacy
+        # corrections.json files written before status tracking landed end
+        # up here, which is the right semantic — they're saved, not done.
+        status = "partial"
+
+    verified_at: str | None = None
+    if verified_path.is_file():
+        from datetime import UTC, datetime
+
+        verified_at = datetime.fromtimestamp(verified_path.stat().st_mtime, tz=UTC).isoformat()
+    return (status, verified_at)
 
 
 # Static mounts. Each top-level dir we need to serve gets its own mount so
