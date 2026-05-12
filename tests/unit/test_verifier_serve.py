@@ -476,6 +476,49 @@ async def test_list_bundles_surfaces_verified_at_timestamp(serve_app, tmp_path: 
     assert "T" in bundle["verified_at"]
 
 
+async def test_save_then_bundles_reflects_status_round_trip(serve_app, tmp_path: Path) -> None:
+    """End-to-end: save with status=complete, then /api/bundles classifies
+    that bundle as complete; save another with default status, listed as
+    partial; un-saved bundle stays incomplete. Closes the integration gap
+    between the save path and the listing path (they read/write the same
+    corrections.json from different code paths)."""
+    verifier_dir = tmp_path / "data" / "verifier"
+    _write_bundle(verifier_dir, "a-incomplete", "A")
+    _write_bundle(verifier_dir, "b-partial", "B")
+    _write_bundle(verifier_dir, "c-complete", "C")
+
+    async with await _client(serve_app.app) as c:
+        # Save as draft.
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "b-partial",
+                "verified": _page_result_dict(),
+                "corrections": _corrections_dict(),
+            },
+        )
+        assert r.json()["status"] == "draft"
+        # Save as complete.
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "c-complete",
+                "status": "complete",
+                "verified": _page_result_dict(),
+                "corrections": _corrections_dict(),
+            },
+        )
+        assert r.json()["status"] == "complete"
+        # Now ask /api/bundles to classify all three.
+        r = await c.get("/api/bundles")
+    by_stem = {b["stem"]: b["status"] for b in r.json()["bundles"]}
+    assert by_stem == {
+        "a-incomplete": "incomplete",
+        "b-partial": "partial",
+        "c-complete": "complete",
+    }
+
+
 async def test_list_bundles_malformed_bundle_doesnt_break_index(serve_app, tmp_path: Path) -> None:
     """If one bundle.json is corrupted, the index still lists it (so the
     user can spot the problem) but with null metadata."""
