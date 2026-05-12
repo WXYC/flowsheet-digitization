@@ -18,6 +18,14 @@ dependencies = [
     "rich>=13.0.0",
     "pillow>=10.0",
     "numpy>=2.0",
+    # Verifier UI server (verifier/serve.py). The static SPA depends on the
+    # POST /api/lookup proxy (request-o-matic doesn't emit CORS) and
+    # POST /api/save (writes verified.json + corrections.json, updates
+    # jobs.db). httpx is also load-bearing for tests/unit/test_verifier_serve.py
+    # via httpx.ASGITransport.
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "httpx>=0.27",
 ]
 
 [project.optional-dependencies]
