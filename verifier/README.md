@@ -2,6 +2,8 @@
 
 A static, dependency-free single-page app for manually verifying flowsheet extraction output. Each row's cropped image strip is shown next to the model-detected text in an editable field. Hand-correct typos, mark hallucinated rows, add missed rows, then export a `verified.json` that flows back into the pipeline as ground truth.
 
+> **Local-dev tool.** `verifier/serve.py` binds to `127.0.0.1` and has no authentication or CSRF protection on `/api/save` or `/api/bundles`. Do not expose it on a non-loopback interface; in particular, do not run it from a tmux/ssh session forwarded to a shared host without adding auth in front. The bundle-stem path-traversal guard is the only sanitization on writes.
+
 ## Run
 
 The verifier ships with a tiny FastAPI server that does two things:

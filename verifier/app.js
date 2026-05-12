@@ -155,7 +155,7 @@ function currentBundleIndex() {
   return state.bundleList.findIndex(b => b.stem === state.bundle.stem);
 }
 
-async function refreshNavFromBundleList() {
+async function refreshNavFromBundleList({ pillFromList = true } = {}) {
   if (!state.bundle) return;
   try {
     await fetchBundleList();
@@ -178,7 +178,12 @@ async function refreshNavFromBundleList() {
     prevBtn.disabled = true;
     nextBtn.disabled = true;
   }
-  updateStatusPill(state.bundleList[idx]?.status ?? "incomplete");
+  // After a save the pill is already authoritative from /api/save's
+  // response — skip overwriting it from the (potentially-cached) list.
+  // On the initial load there's no fresher source, so we use the list.
+  if (pillFromList) {
+    updateStatusPill(state.bundleList[idx]?.status ?? "incomplete");
+  }
 }
 
 function updateStatusPill(status) {
@@ -545,14 +550,17 @@ async function saveAll(requestedStatus = null) {
       : (body.pdf_path && body.page_number != null
           ? "no matching job row (files only)"
           : "files only (no job key)");
+    // Trust the immediate response for the pill — it's authoritative for
+    // this save. The follow-up list refresh is silent and updates the
+    // Prev/Next state only (the pill is set just above and not touched
+    // by the refresh path).
     updateStatusPill(result.status === "complete" ? "complete" : "partial");
     setStatus(
       `Saved as ${result.status} · ${result.verified_path} + ${result.corrections_path} · ` +
       `${n} field correction(s), ${corrections.added_rows.length} added, ` +
       `${corrections.deleted_rows.length} deleted · ${dbBit}.`
     );
-    // Refresh the cached bundle list so Prev/Next reflects the new status.
-    refreshNavFromBundleList().catch(() => {});
+    refreshNavFromBundleList({ pillFromList: false }).catch(() => {});
   } catch (err) {
     setStatus(`Save failed: ${err.message}`, "error");
   } finally {
@@ -822,10 +830,7 @@ async function showIndex() {
     return;
   }
   const incompleteCount = state.bundleList.filter(b => b.status !== "complete").length;
-  if (incompleteCount > 0) {
-    $("#open-next-incomplete").disabled = false;
-    $("#open-next-incomplete").addEventListener("click", openNextIncomplete);
-  }
+  $("#open-next-incomplete").disabled = incompleteCount === 0;
   const counts = {
     incomplete: state.bundleList.filter(b => b.status === "incomplete").length,
     partial: state.bundleList.filter(b => b.status === "partial").length,
@@ -955,7 +960,7 @@ function installKeyboardShortcuts() {
     // Non-modifier letter shortcuts are ignored when an input has focus,
     // so the verifier can type normally.
     if (isEditableTarget(e.target)) return;
-    if (e.key === "?" || (e.shiftKey && e.key === "/")) {
+    if (e.key === "?") {
       toggleShortcutOverlay();
       e.preventDefault();
     } else if (e.key === "j" || (e.metaKey && e.key === "ArrowDown")) {
@@ -985,6 +990,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(location.search);
   const hasBundle = !!params.get("bundle");
   if (!hasBundle) {
+    // Wire index-mode controls once, then render. `showIndex` populates
+    // state and toggles the disabled state on this button — the listener
+    // itself stays attached for the lifetime of the page.
+    $("#open-next-incomplete").addEventListener("click", openNextIncomplete);
     await showIndex();
     return;
   }

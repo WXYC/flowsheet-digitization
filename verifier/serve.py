@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import UTC, datetime
 from pathlib import Path
 
 import httpx
@@ -356,8 +357,6 @@ def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str
 
     verified_at: str | None = None
     if verified_path.is_file():
-        from datetime import UTC, datetime
-
         verified_at = datetime.fromtimestamp(verified_path.stat().st_mtime, tz=UTC).isoformat()
     return (status, verified_at)
 
