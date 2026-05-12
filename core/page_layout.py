@@ -91,6 +91,14 @@ _BODY_MID_ANCHOR_FRACTION = 0.55
 # Comments line and excludes the last body row.
 _BODY_BOTTOM_SEARCH_BAND = (0.95, 0.99)
 
+# When the top quadrant's last spacing exceeds this multiple of the
+# global median row spacing, the trailing line is reattributed to the
+# corresponding bottom quadrant. The anomaly signals that body_mid_y
+# landed BELOW the bottom block's hour-jock-cell baseline, leaving that
+# line in the top partition by mistake. See
+# `partition_row_lines_by_quadrant`'s correction-pass comment.
+_BOTTOM_BASELINE_REATTRIBUTION_RATIO = 1.3
+
 
 @dataclass(frozen=True)
 class PageLayout:
@@ -371,7 +379,7 @@ def partition_row_lines_by_quadrant(
                 top_lines = out[top_pos]  # type: ignore[index]
                 if len(top_lines) >= 2:
                     last_spacing = top_lines[-1] - top_lines[-2]
-                    if last_spacing > 1.3 * median_spacing:
+                    if last_spacing > _BOTTOM_BASELINE_REATTRIBUTION_RATIO * median_spacing:
                         moved = top_lines.pop()
                         out[bottom_pos].insert(0, moved)  # type: ignore[index]
     return out
