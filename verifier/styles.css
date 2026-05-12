@@ -195,6 +195,12 @@ section h2 {
 
 .row.deleted { opacity: 0.35; }
 
+.row.has-notes .notes select {
+  border-color: var(--accent);
+  background: #eef3fb;
+  font-weight: 600;
+}
+
 .row-crop {
   width: 100%;
   height: auto;
@@ -220,6 +226,28 @@ section h2 {
   gap: 4px;
   min-width: 0;
 }
+
+.lookup-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0f0e8;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  border: 1px solid var(--border);
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.lookup-badge.loading { background: #f0f0e8; }
+.lookup-badge.hit-strong { background: #e6f5e6; color: #1f6f1f; border-color: #b8e0b8; }
+.lookup-badge.hit-weak   { background: #fff5e0; color: #8a5a00; border-color: #ecd9a8; }
+.lookup-badge.empty      { background: #f0f0e8; color: var(--muted); font-style: italic; }
+.lookup-badge.error      { background: #fee; color: #b00; border-color: #f8c0c0; }
+.lookup-badge.stale      { opacity: 0.45; font-style: italic; }
 
 .row-fields .raw-text {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;

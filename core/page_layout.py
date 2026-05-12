@@ -349,4 +349,29 @@ def partition_row_lines_by_quadrant(
                 out["bottom_left"].append(int(y))
             if on_right:
                 out["bottom_right"].append(int(y))
+
+    # Correction pass: on some pages `_detect_body_mid_y` lands BELOW the
+    # bottom-block hour-jock-cell baseline (the anchor at 0.55h prefers the
+    # gap below the cell over the true inter-block gap above it). The
+    # baseline line then gets misattributed to the top quadrant, and the
+    # bottom quadrant's first detected line is row 0's BOTTOM rather than
+    # its top — shifting every row crop up by one.
+    #
+    # Signal: the top quadrant's last spacing is significantly larger than
+    # the median row spacing across all detected lines (a normal sequence
+    # has consistent spacing; an anomalous jump at the end means the last
+    # line belongs to a different sequence — the bottom block).
+    if len(all_lines) >= 2:
+        median_spacing = float(np.median(np.diff(np.asarray(all_lines))))
+        if median_spacing > 0:
+            for top_pos, bottom_pos in (
+                ("top_left", "bottom_left"),
+                ("top_right", "bottom_right"),
+            ):
+                top_lines = out[top_pos]  # type: ignore[index]
+                if len(top_lines) >= 2:
+                    last_spacing = top_lines[-1] - top_lines[-2]
+                    if last_spacing > 1.3 * median_spacing:
+                        moved = top_lines.pop()
+                        out[bottom_pos].insert(0, moved)  # type: ignore[index]
     return out

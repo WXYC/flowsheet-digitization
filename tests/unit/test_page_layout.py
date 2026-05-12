@@ -265,8 +265,11 @@ def test_partition_row_lines_returns_y_coordinates_as_ints(
 def test_partition_row_lines_within_correct_body_band(
     golden: tuple[str, Image.Image, dict[str, int]],
 ) -> None:
-    """All returned y-coords fall within the body region and on the
-    correct side of body_mid_y for their quadrant."""
+    """All returned y-coords fall within the body region. Top quadrants
+    stay strictly below `body_mid_y`. Bottom quadrants may include one
+    line slightly ABOVE `body_mid_y` — the hour-jock-cell baseline of the
+    bottom block, reattributed by the correction pass when body_mid_y
+    landed below it. See `partition_row_lines_by_quadrant`'s docstring."""
     _, image, _ = golden
     layout = detect_page_layout(image)
     partitions = partition_row_lines_by_quadrant(image, layout)
@@ -277,8 +280,9 @@ def test_partition_row_lines_within_correct_body_band(
             )
     for pos in ("bottom_left", "bottom_right"):
         for y in partitions[pos]:
-            assert layout.body_mid_y <= y < layout.body_bottom_y, (
-                f"{pos}: y={y} outside bottom-band [{layout.body_mid_y}, {layout.body_bottom_y})"
+            assert layout.header_bottom_y <= y < layout.body_bottom_y, (
+                f"{pos}: y={y} outside body range "
+                f"[{layout.header_bottom_y}, {layout.body_bottom_y})"
             )
 
 
@@ -293,6 +297,33 @@ def test_partition_row_lines_finds_content_in_top_band(
     partitions = partition_row_lines_by_quadrant(image, layout)
     total_top = len(partitions["top_left"]) + len(partitions["top_right"])
     assert total_top > 0, f"{stem}: no row lines detected in top band"
+
+
+def test_partition_row_lines_reattributes_misclassified_bottom_baseline() -> None:
+    """When the top quadrant's last spacing is anomalously large (the line
+    is actually the hour-jock baseline of the bottom block, misattributed
+    because body_mid_y landed below it), it gets moved to the corresponding
+    bottom quadrant.
+
+    Pages 20 and 25 of the 1990-04 golden set exhibit this: top_left's last
+    spacing is 100px vs median 75. The fix moves y≈2251 (page25) from
+    top_left to bottom_left.
+    """
+    stem = "1990-04apr0106-page25"
+    image = Image.open(GOLDEN_DIR / f"{stem}.png")
+    layout = detect_page_layout(image)
+    partitions = partition_row_lines_by_quadrant(image, layout)
+    # bottom_left must start with a line ABOVE body_mid_y (the reattributed
+    # hour-jock baseline). The original first line below body_mid_y was 2352;
+    # after reattribution, ~2251 should now be the new first line.
+    assert partitions["bottom_left"][0] < layout.body_mid_y, (
+        f"expected first bottom_left line to be reattributed above body_mid_y, "
+        f"got {partitions['bottom_left'][0]} vs body_mid_y={layout.body_mid_y}"
+    )
+    # And the spacing from the new first line to the next should be ~one row,
+    # accounting for the hour-jock cell baseline at the top.
+    diff = partitions["bottom_left"][1] - partitions["bottom_left"][0]
+    assert 90 < diff < 115, f"unexpected first-row span: {diff}"
 
 
 def test_partition_row_lines_handles_blank_image() -> None:
