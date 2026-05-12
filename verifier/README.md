@@ -4,15 +4,21 @@ A static, dependency-free single-page app for manually verifying flowsheet extra
 
 ## Run
 
-The UI is static HTML + JS + CSS. It needs a local HTTP server so the browser can fetch the bundle JSON and the page image relative to it.
+The verifier ships with a tiny FastAPI server that does two things:
+
+1. Serves `verifier/`, `data/`, and `tests/` as static files.
+2. Proxies the **Check artists** lookups through `/api/lookup` to the request-o-matic `/request` endpoint (request-o-matic doesn't emit CORS headers, so a same-origin proxy is simpler than configuring CORS).
 
 ```bash
 # from the repo root
-python -m http.server 8765
+.venv/bin/python verifier/serve.py
+# default port is 8765; override with VERIFIER_PORT=9000 .venv/bin/python verifier/serve.py
 
 # then open in a browser:
 open "http://localhost:8765/verifier/?bundle=/data/verifier/<stem>.bundle.json"
 ```
+
+If you want only the static side and don't need the artist-lookup button, `python -m http.server 8765` from the repo root still works — the Check-artists button will return 404s but everything else functions.
 
 The `?bundle=...` URL param is the recommended path: the UI fetches the bundle, then resolves the bundle's `image_path` (relative path inside the JSON) and fetches the image too.
 
@@ -94,12 +100,21 @@ tests/golden/<stem>.truth.json          # derive_truth output (optional destinat
 
 `schema_version` is currently `1`. Future incompatible changes bump the version; the UI shows an error banner if it sees an unsupported version. Keep `schema_version` set when archiving bundles so older bundles remain loadable.
 
-## Exports
+## Saving
 
-Clicking **Export verified + corrections** downloads two files in sequence:
+Clicking **Save** POSTs the current edit state to the server's `/api/save` endpoint, which:
 
-1. `<stem>.verified.json` — `PageResult`-shaped JSON validating against `core.schema.PageResult`. Bundle-only fields (`schema_version`, `stem`, `image_path`, per-entry `row_bbox`) are stripped. Rows marked ✗ are excluded. Rows added via **+ add row** are included.
-2. `<stem>.corrections.json` — the delta between the loaded bundle and the verified export, plus the set of rows the user reviewed:
+1. Writes `data/verifier/<stem>.verified.json` — `PageResult`-shaped JSON validating against `core.schema.PageResult`. Bundle-only fields (`schema_version`, `stem`, `image_path`, `pdf_path`, `page_number`, per-entry `row_bbox`) are stripped before validation. Rows marked ✗ are excluded. Rows added via **+ add row** are included.
+2. Writes `data/verifier/<stem>.corrections.json` — the delta between the loaded bundle and the verified state (shape below).
+3. If the bundle has a non-null `pdf_path` + `page_number` (production-pipeline pages do; test fixtures don't), updates the matching `jobs.db` row via `JobStore.mark_verified` — setting `verified_at`, `verified_path`, and `corrections_path`.
+
+The status bar reports the destination files and whether `jobs.db` was updated:
+
+> Saved data/verifier/X.verified.json + data/verifier/X.corrections.json · 4 field correction(s), 0 added, 0 deleted · jobs.db updated.
+
+If you'd rather have a downloadable file, open the saved JSON from `data/verifier/` directly.
+
+The `corrections.json` shape:
 
 ```json
 {
@@ -140,6 +155,24 @@ The verified.json is the consumable artifact (plugs back into the pipeline as gr
 - Rows added via **+ add row** are implicitly verified (they were typed by the user).
 
 Truth derivation is a **separate Python tool** (`scripts/derive_truth.py`) rather than a UI button — the substring-extraction rules live in one place (Python, testable), not duplicated in JS.
+
+## Check artists (request-o-matic lookup)
+
+Click **Check artists** in the header to look up every row's text via the WXYC library + Discogs reconciliation pipeline. Each row gets a badge with the resolved artist + matched **release** (album / 12") and a confidence score.
+
+**Important contrast**: the flowsheet records `Artist - Track`, but the library and Discogs match at the **release** level. The badge text is labeled `artist · album: "..."` (full track match) or `artist · sample release: "..."` (artist-only fallback) so this never looks like a near-track-match when it's a release-level result.
+
+Badge states:
+
+- **Green** — track found in the library on this release. High confidence the artist is right; the release shown is the album/single containing the played track.
+- **Yellow** — one of:
+  - **`⚠ artist-only · ...`**: the library has the artist but not this specific track. The "sample release" is whichever album of theirs the library indexed first — it's *not* a confirmation that the played track lives there.
+  - **`⚠ postdates · ...`**: the matched release's year is after the flowsheet's page year. The page year is parsed from `page_date_raw` (1990 for `Thurs 4/5/90`, etc.); when `release_year > page_year` the match is almost certainly a later remix, reissue, or same-name band.
+  - artwork confidence below 0.5.
+- **Grey/italic** — no library match found. Could be a typo, a non-canonical name, or genuinely missing from the WXYC corpus (the library reflects current stock, not 1990 stock — ~30% of mid-density pages will have these).
+- **Faded/italic** — stale. You edited the row after running Check; re-run to refresh.
+
+The lookup goes through request-o-matic's LLM-driven request parser (artist normalization, fuzzy matching) before hitting the LML library search. The badge reflects request-o-matic's `library_results` and `artwork` fields — not LML's `/api/v1/lookup` directly, since the LLM correction layer is the load-bearing piece.
 
 ## Known rough edges (v1)
 

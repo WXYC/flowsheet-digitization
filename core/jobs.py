@@ -50,11 +50,15 @@ class Job:
     image_path: str | None
     result_path: str | None
     model_version: str | None
+    verified_at: str | None
+    verified_path: str | None
+    corrections_path: str | None
     created_at: str
     updated_at: str
 
     @classmethod
     def from_row(cls, row: aiosqlite.Row) -> Self:
+        keys = set(row.keys())
         return cls(
             pdf_path=row["pdf_path"],
             page_number=row["page_number"],
@@ -64,6 +68,11 @@ class Job:
             image_path=row["image_path"],
             result_path=row["result_path"],
             model_version=row["model_version"],
+            # Late-added columns are nullable; tolerate their absence on a
+            # very old jobs.db that hasn't been re-init()ed yet.
+            verified_at=row["verified_at"] if "verified_at" in keys else None,
+            verified_path=row["verified_path"] if "verified_path" in keys else None,
+            corrections_path=(row["corrections_path"] if "corrections_path" in keys else None),
             created_at=row["created_at"],
             updated_at=row["updated_at"],
         )
@@ -71,21 +80,41 @@ class Job:
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS jobs (
-    pdf_path        TEXT NOT NULL,
-    page_number     INTEGER NOT NULL,
-    status          TEXT NOT NULL,
-    attempts        INTEGER NOT NULL DEFAULT 0,
-    last_error      TEXT,
-    image_path      TEXT,
-    result_path     TEXT,
-    model_version   TEXT,
-    created_at      TEXT NOT NULL,
-    updated_at      TEXT NOT NULL,
+    pdf_path          TEXT NOT NULL,
+    page_number       INTEGER NOT NULL,
+    status            TEXT NOT NULL,
+    attempts          INTEGER NOT NULL DEFAULT 0,
+    last_error        TEXT,
+    image_path        TEXT,
+    result_path       TEXT,
+    model_version     TEXT,
+    verified_at       TEXT,
+    verified_path     TEXT,
+    corrections_path  TEXT,
+    created_at        TEXT NOT NULL,
+    updated_at        TEXT NOT NULL,
     PRIMARY KEY (pdf_path, page_number)
 );
 
 CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
 """
+
+# Columns added after the initial schema. `init()` runs `ALTER TABLE` for
+# each of these against existing databases so older jobs.db files pick up
+# the new columns without losing data.
+_LATE_COLUMNS: tuple[tuple[str, str], ...] = (
+    ("verified_at", "TEXT"),
+    ("verified_path", "TEXT"),
+    ("corrections_path", "TEXT"),
+)
+
+# Indexes that depend on late-added columns and therefore must be created
+# AFTER the ALTER TABLE migrations run. Keeping them out of `_SCHEMA`
+# avoids "no such column" errors when initializing a legacy database.
+_POST_MIGRATION_INDEXES: tuple[str, ...] = (
+    "CREATE INDEX IF NOT EXISTS idx_jobs_verified_at "
+    "ON jobs(verified_at) WHERE verified_at IS NOT NULL",
+)
 
 
 def _now() -> str:
@@ -112,6 +141,19 @@ class JobStore:
             # rollback journal. The pragma is persistent across connections.
             await db.execute("PRAGMA journal_mode=WAL")
             await db.executescript(_SCHEMA)
+            # ALTER TABLE migrations for late-added columns. CREATE TABLE
+            # above is idempotent (IF NOT EXISTS), so on a fresh DB this
+            # is a no-op; on an existing DB it adds the columns.
+            db.row_factory = aiosqlite.Row
+            cursor = await db.execute("PRAGMA table_info(jobs)")
+            existing = {row["name"] for row in await cursor.fetchall()}
+            for name, col_type in _LATE_COLUMNS:
+                if name not in existing:
+                    await db.execute(f"ALTER TABLE jobs ADD COLUMN {name} {col_type}")
+            # Indexes that reference late columns run after the ALTER
+            # TABLE pass, otherwise SQLite errors on the missing column.
+            for index_sql in _POST_MIGRATION_INDEXES:
+                await db.execute(index_sql)
             await db.commit()
 
     @asynccontextmanager
@@ -233,6 +275,49 @@ class JobStore:
             model_version=model_version,
             clear_error=True,
         )
+
+    async def mark_verified(
+        self,
+        pdf_path: str,
+        page_number: int,
+        *,
+        verified_path: Path,
+        corrections_path: Path,
+    ) -> bool:
+        """Record that a page has been hand-verified via the verifier UI.
+
+        Doesn't change `status` — verification is orthogonal to the
+        extraction state machine (a `completed` page can be verified;
+        re-extracting a verified page resets the result but should NOT
+        clear the verification record by default — that's a separate
+        decision a human makes via `retry`).
+
+        Returns True if a job row matched, False otherwise. Callers
+        (e.g. the verifier server) may want to write files even when no
+        job row exists for the page (test fixtures), so a False return
+        is not an error.
+        """
+        async with self._connect() as db:
+            cursor = await db.execute(
+                """
+                UPDATE jobs
+                SET verified_at = ?,
+                    verified_path = ?,
+                    corrections_path = ?,
+                    updated_at = ?
+                WHERE pdf_path = ? AND page_number = ?
+                """,
+                (
+                    _now(),
+                    str(verified_path),
+                    str(corrections_path),
+                    _now(),
+                    pdf_path,
+                    page_number,
+                ),
+            )
+            await db.commit()
+            return cursor.rowcount > 0
 
     async def mark_failed(self, pdf_path: str, page_number: int, error: str) -> None:
         async with self._connect() as db:

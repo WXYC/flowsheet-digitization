@@ -20,6 +20,7 @@ from scripts.make_verifier_bundle import (
     SCHEMA_VERSION,
     _assign_row_bboxes,
     _merge_with_spans,
+    _parse_job_key_from_result_path,
     _quadrant_bboxes,
     main,
     make_bundle,
@@ -185,9 +186,13 @@ def test_merge_with_spans_collapses_continuation_into_span() -> None:
     merged_first, span_first = result[0]
     assert merged_first.raw_text == "The Standells - Sometimes Good Guys Don't Wear White"
     assert span_first == 2
+    # Merged entries inherit `double_height` notes so the verifier dropdown
+    # reflects the multi-row nature.
+    assert merged_first.notes == "double_height"
     merged_second, span_second = result[1]
     assert merged_second.raw_text == "The Lovedolls - Pearls at Swine"
     assert span_second == 1
+    assert merged_second.notes is None
 
 
 def test_merge_with_spans_double_height_counts_as_two() -> None:
@@ -214,6 +219,7 @@ def test_merge_with_spans_consecutive_continuations() -> None:
     merged, span = result[0]
     assert merged.raw_text == "Line A Line B Line C"
     assert span == 3
+    assert merged.notes == "double_height"
 
 
 def test_merge_with_spans_leading_continuation_is_preserved() -> None:
@@ -255,7 +261,7 @@ def test_make_bundle_returns_schema_version(tmp_path: Path) -> None:
     image_path = _white_page(tmp_path)
     bundle_path = tmp_path / "out" / "verifier" / "page.bundle.json"
     bundle = make_bundle(_page_result(), image_path=image_path, bundle_path=bundle_path)
-    assert bundle["schema_version"] == SCHEMA_VERSION == 1
+    assert bundle["schema_version"] == SCHEMA_VERSION == 2
 
 
 def test_make_bundle_top_level_fields(tmp_path: Path) -> None:
@@ -268,6 +274,24 @@ def test_make_bundle_top_level_fields(tmp_path: Path) -> None:
     assert bundle["model_version"] == "test-model"
     assert bundle["oddities"] == []
     assert len(bundle["quadrants"]) == 4
+    # New in v2: job key fields default to null when no job_key is passed.
+    assert bundle["pdf_path"] is None
+    assert bundle["page_number"] is None
+
+
+def test_make_bundle_carries_job_key_when_provided(tmp_path: Path) -> None:
+    """When the bundle pre-processor can recover the (pdf_path, page_number)
+    job key from the result path, it's preserved in the bundle so the
+    verifier UI can target the right jobs.db row on save."""
+    image_path = _white_page(tmp_path)
+    bundle = make_bundle(
+        _page_result(),
+        image_path=image_path,
+        bundle_path=tmp_path / "out.bundle.json",
+        job_key=("1990/April 1990/1990-04apr0106.pdf", 25),
+    )
+    assert bundle["pdf_path"] == "1990/April 1990/1990-04apr0106.pdf"
+    assert bundle["page_number"] == 25
 
 
 def test_make_bundle_image_path_is_relative_to_bundle_dir(tmp_path: Path) -> None:
@@ -338,7 +362,7 @@ def test_main_writes_bundle_to_out_path(tmp_path: Path) -> None:
     assert rc == 0
     assert out_path.is_file()
     bundle = json.loads(out_path.read_text())
-    assert bundle["schema_version"] == 1
+    assert bundle["schema_version"] == SCHEMA_VERSION
     assert len(bundle["quadrants"]) == 4
 
 
@@ -377,6 +401,35 @@ def test_main_validates_bundle_against_page_result_shape(tmp_path: Path) -> None
         for entry in quad["entries"]:
             entry.pop("row_bbox", None)
     PageResult.model_validate(bundle)
+
+
+# -- _parse_job_key_from_result_path ----------------------------------------
+
+
+def test_parse_job_key_from_pipeline_path() -> None:
+    """The canonical pipeline-result path resolves to (pdf_path, page_number)."""
+    p = Path("/var/data/results/1990/April 1990/1990-04apr0106/page-25.json")
+    assert _parse_job_key_from_result_path(p) == (
+        "1990/April 1990/1990-04apr0106.pdf",
+        25,
+    )
+
+
+def test_parse_job_key_returns_none_for_non_pipeline_path() -> None:
+    """Test fixtures (/tmp, /private, fixtures/) don't follow the layout."""
+    assert _parse_job_key_from_result_path(Path("/tmp/flash-spike/pro/some.json")) is None
+    assert _parse_job_key_from_result_path(Path("/Users/x/fixtures/result.json")) is None
+
+
+def test_parse_job_key_returns_none_when_filename_not_page() -> None:
+    """The trailing component must be `page-NN.json`."""
+    p = Path("/var/data/results/1990/foo/notpage.json")
+    assert _parse_job_key_from_result_path(p) is None
+
+
+def test_parse_job_key_returns_none_when_page_index_not_numeric() -> None:
+    p = Path("/var/data/results/1990/foo/page-abc.json")
+    assert _parse_job_key_from_result_path(p) is None
 
 
 def test_main_returns_nonzero_when_inputs_missing(tmp_path: Path) -> None:

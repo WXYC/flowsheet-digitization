@@ -36,10 +36,42 @@ from core.schema import QUADRANT_ORDER, Entry, PageResult, QuadrantPosition
 
 # Bump when the bundle JSON schema becomes incompatible.
 # `verifier/README.md` documents the versioning strategy.
-SCHEMA_VERSION = 1
+#   v1: initial schema.
+#   v2: add `pdf_path` and `page_number` so the verifier UI can target the
+#       corresponding `jobs.db` row when saving corrections back.
+SCHEMA_VERSION = 2
 
 
 BBox = tuple[int, int, int, int]
+
+
+def _parse_job_key_from_result_path(result_path: Path) -> tuple[str, int] | None:
+    """Recover `(pdf_path, page_number)` from a pipeline result-JSON path.
+
+    The pipeline writes results at `<data_root>/results/<rel-pdf>/page-NN.json`
+    (see `core.pipeline.result_path_for`). Reversing that gives us the
+    `(pdf_path, page_number)` pair used as the primary key in `jobs.db`.
+
+    Returns `None` when the path doesn't match this layout (e.g. test
+    fixtures, `/tmp` spike outputs, ad-hoc files) — those bundles save
+    files only, no DB update.
+    """
+    parts = result_path.parts
+    if "results" not in parts:
+        return None
+    idx = parts.index("results")
+    after = parts[idx + 1 :]
+    if len(after) < 2:
+        return None
+    *pdf_dir_parts, page_file = after
+    if not page_file.startswith("page-") or not page_file.endswith(".json"):
+        return None
+    try:
+        page_number = int(page_file[len("page-") : -len(".json")])
+    except ValueError:
+        return None
+    pdf_path = "/".join(pdf_dir_parts) + ".pdf"
+    return (pdf_path, page_number)
 
 
 def _quadrant_bboxes(layout: PageLayout, *, page_width: int) -> dict[QuadrantPosition, BBox]:
@@ -84,10 +116,16 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
         if entry.notes == "continuation" and result:
             prior, prior_span = result[-1]
             joined = f"{prior.raw_text.rstrip()} {entry.raw_text.lstrip()}".strip()
+            # Mark the merged entry as `double_height` so the verifier UI's
+            # notes dropdown reflects the multi-row nature of the row. The
+            # original schema enum doesn't distinguish "absorbed continuation"
+            # from "model-tagged double_height" — both mean "this logical
+            # entry occupies more than one physical row" for the verifier.
             merged = prior.model_copy(
                 update={
                     "raw_text": joined,
                     "oddities": [*prior.oddities, *entry.oddities],
+                    "notes": "double_height",
                 }
             )
             result[-1] = (merged, prior_span + 1)
@@ -147,6 +185,7 @@ def make_bundle(
     *,
     image_path: Path,
     bundle_path: Path,
+    job_key: tuple[str, int] | None = None,
 ) -> dict[str, Any]:
     """Assemble the verifier bundle for one page.
 
@@ -203,10 +242,16 @@ def make_bundle(
         )
 
     image_rel = os.path.relpath(image_path, bundle_path.parent)
+    pdf_path: str | None = None
+    page_number: int | None = None
+    if job_key is not None:
+        pdf_path, page_number = job_key
     return {
         "schema_version": SCHEMA_VERSION,
         "stem": image_path.stem,
         "image_path": image_rel,
+        "pdf_path": pdf_path,
+        "page_number": page_number,
         "model_version": page.model_version,
         "extracted_at": page.extracted_at.isoformat(),
         "page_date_raw": page.page_date_raw,
@@ -242,7 +287,8 @@ def main(argv: list[str] | None = None) -> int:
 
     page = PageResult.model_validate_json(args.result.read_text())
     out_path = args.out or Path("data/verifier") / f"{args.image.stem}.bundle.json"
-    bundle = make_bundle(page, image_path=args.image, bundle_path=out_path)
+    job_key = _parse_job_key_from_result_path(args.result)
+    bundle = make_bundle(page, image_path=args.image, bundle_path=out_path, job_key=job_key)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(bundle, indent=2))

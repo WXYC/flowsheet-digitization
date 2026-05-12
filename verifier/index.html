@@ -19,7 +19,8 @@
         <input type="file" id="image-input" accept="image/png,image/jpeg">
       </label>
       <button id="toggle-page-view" disabled>Show page</button>
-      <button id="export-verified" disabled>Export verified + corrections</button>
+      <button id="check-artists" disabled title="Look up each row's artist/track via the WXYC library (request-o-matic)">Check artists</button>
+      <button id="save-verified" disabled title="Persist this session: writes verified + corrections JSON to data/verifier/ and (when a job row exists) records the verification in jobs.db">Save</button>
       <span id="status">Pick a bundle.json to begin.</span>
     </div>
   </header>
@@ -66,13 +67,14 @@
       <canvas class="row-crop"></canvas>
       <div class="row-fields">
         <input class="raw-text" type="text">
+        <div class="lookup-badge" hidden></div>
         <div class="row-controls">
           <label class="type-raw">type
             <input type="text" placeholder="H / M / L / Std / O / R / O/std / doodle desc">
           </label>
           <label class="notes">notes
             <select>
-              <option value=""></option>
+              <option value="">(none)</option>
               <option value="continuation">continuation</option>
               <option value="double_height">double_height</option>
               <option value="crossed_out">crossed_out</option>

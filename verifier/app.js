@@ -21,12 +21,13 @@
 
 "use strict";
 
-const SUPPORTED_SCHEMA_VERSION = 1;
+const SUPPORTED_SCHEMA_VERSION = 2;
 
 const state = {
   bundle: null,            // mutable working copy
   originalBundle: null,    // immutable snapshot for diffing
   pageImage: null,         // HTMLImageElement
+  lookupConcurrency: 4,    // parallel /api/lookup requests
 };
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -117,11 +118,15 @@ function finishInit() {
     `(${state.pageImage.naturalWidth}×${state.pageImage.naturalHeight}px).`
   );
   $("#app").hidden = false;
-  $("#export-verified").disabled = false;
+  $("#save-verified").disabled = false;
   $("#toggle-page-view").disabled = false;
+  $("#check-artists").disabled = false;
   $("#page-view-img").src = state.pageImage.src;
   renderPageMeta();
   renderQuadrants();
+  // Show the full-page reference by default; verifiers asked for this
+  // because the row crops need page context to be useful.
+  togglePageView();
 }
 
 // ---- render: page meta ---------------------------------------------------
@@ -212,6 +217,12 @@ function buildRow(entry, quad) {
   textEl.value = entry.raw_text;
   textEl.addEventListener("input", () => {
     entry.raw_text = textEl.value;
+    // Edit invalidates the lookup badge — show as stale until re-check.
+    const badge = $(".lookup-badge", node);
+    if (badge && !badge.hidden) {
+      badge.classList.add("stale");
+      badge.title = "Click 'Check artists' to refresh.";
+    }
   });
 
   const typeEl = $(".type-raw input", node);
@@ -221,9 +232,14 @@ function buildRow(entry, quad) {
   });
 
   const notesEl = $(".notes select", node);
-  notesEl.value = entry.notes ?? "";
+  const syncNotesView = () => {
+    notesEl.value = entry.notes ?? "";
+    node.classList.toggle("has-notes", !!entry.notes);
+  };
+  syncNotesView();
   notesEl.addEventListener("change", () => {
     entry.notes = notesEl.value || null;
+    syncNotesView();
   });
 
   $(".delete-row", node).addEventListener("click", () => {
@@ -410,32 +426,284 @@ function buildCorrectionsExport() {
 
 // ---- file-download helpers -----------------------------------------------
 
-function downloadJson(filename, data) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
+async function saveAll() {
+  if (!state.bundle) return;
+  const btn = $("#save-verified");
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.textContent = "Saving…";
 
-function exportAll() {
   const verified = buildVerifiedExport();
   const corrections = buildCorrectionsExport();
-  downloadJson(`${state.bundle.stem}.verified.json`, verified);
-  downloadJson(`${state.bundle.stem}.corrections.json`, corrections);
-  const n =
-    corrections.row_corrections.length +
-    corrections.page_corrections.length +
-    corrections.quadrant_corrections.length;
-  setStatus(
-    `Exported verified + corrections (${n} field correction(s), ` +
-    `${corrections.added_rows.length} added, ` +
-    `${corrections.deleted_rows.length} deleted).`
+  const body = {
+    stem: state.bundle.stem,
+    pdf_path: state.bundle.pdf_path ?? null,
+    page_number: state.bundle.page_number ?? null,
+    verified,
+    corrections,
+  };
+
+  try {
+    const r = await fetch("/api/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) {
+      const detail = await r.text();
+      throw new Error(`/api/save ${r.status}: ${detail}`);
+    }
+    const result = await r.json();
+    const n =
+      corrections.row_corrections.length +
+      corrections.page_corrections.length +
+      corrections.quadrant_corrections.length;
+    const dbBit = result.db_updated
+      ? "jobs.db updated"
+      : (body.pdf_path && body.page_number != null
+          ? "no matching job row (files only)"
+          : "files only (no job key)");
+    setStatus(
+      `Saved ${result.verified_path} + ${result.corrections_path} · ` +
+      `${n} field correction(s), ${corrections.added_rows.length} added, ` +
+      `${corrections.deleted_rows.length} deleted · ${dbBit}.`
+    );
+  } catch (err) {
+    setStatus(`Save failed: ${err.message}`, "error");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+
+// ---- artist/track lookup (request-o-matic via /api/lookup proxy) --------
+
+async function lookupOne(message) {
+  const r = await fetch("/api/lookup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message }),
+  });
+  if (!r.ok) throw new Error(`/api/lookup ${r.status}: ${await r.text()}`);
+  return await r.json();
+}
+
+// Same separator regex as `core.parse.parse_artist_track` (Python side).
+// Pulls the artist out of a flowsheet `Artist - Track` string for
+// comparison against the library-resolved artist.
+const ARTIST_TRACK_SEPARATOR = /\s*[-–—]\s*/;
+
+// Stop words and bibliographic prefixes that the WXYC corpus often
+// drops or adds inconsistently. Stripping them prevents a "the" / "a"
+// difference from making "the sundays" and "Sundays" look like a
+// mismatch.
+const ARTIST_TOKEN_STOPWORDS = new Set([
+  "the", "a", "an", "and", "&", "feat", "featuring", "ft", "with", "vs", "presents",
+]);
+
+function _tokenize(s) {
+  return s
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .map((t) => t.replace(/s$/, "")) // crude singularization: boys -> boy
+    .filter((t) => t.length >= 2 && !ARTIST_TOKEN_STOPWORDS.has(t));
+}
+
+function parseInputArtist(rawText) {
+  if (!rawText) return null;
+  const parts = rawText.split(ARTIST_TRACK_SEPARATOR);
+  return parts[0]?.trim() || null;
+}
+
+// Returns true when the resolved artist shares NO tokens with the input
+// artist (after normalization, stop-word and trailing-s stripping).
+// Conservative: when either side has zero meaningful tokens, returns
+// false (no signal). Catches "Pure Joy → Coldcut" where the LLM
+// fuzzy-matched on a track word; tolerates "the sundays → Sundays" and
+// "Beastie Boy → Beastie Boys".
+function artistTokensDisjoint(inputArtist, resolvedArtist) {
+  if (!inputArtist || !resolvedArtist) return false;
+  const a = new Set(_tokenize(inputArtist));
+  const b = new Set(_tokenize(resolvedArtist));
+  if (a.size === 0 || b.size === 0) return false;
+  for (const t of a) if (b.has(t)) return false;
+  return true;
+}
+
+// Parse a 2- or 4-digit year out of `page_date_raw`. The WXYC corpus spans
+// 1990-2001, so 2-digit years 90-99 map to 19xx and 00-01 map to 20xx.
+// Returns null when no plausible year is present.
+function parsePageYear(pageDateRaw) {
+  if (!pageDateRaw) return null;
+  // Try 4-digit year first.
+  const fourDigit = pageDateRaw.match(/\b(19\d{2}|20\d{2})\b/);
+  if (fourDigit) return Number(fourDigit[1]);
+  // Fall back to a 2-digit year. Scan every 2-digit token that's NOT
+  // surrounded by other digits (so we don't pluck "19" or "90" out of
+  // "1990"). 2-digit years in the WXYC corpus range (80-99 → 19xx,
+  // 00-09 → 20xx) win; anything else (a month like "04" or a day like
+  // "31") is skipped.
+  const twoDigitMatches = pageDateRaw.matchAll(/(?<!\d)(\d{2})(?!\d)/g);
+  for (const m of twoDigitMatches) {
+    const n = Number(m[1]);
+    if (n >= 80 && n <= 99) return 1900 + n;
+    if (n >= 0 && n <= 9) return 2000 + n;
+  }
+  return null;
+}
+
+function badgeContentFor(data, pageYear, inputRawText) {
+  const parsed = data.parsed || {};
+  const artwork = data.artwork || {};
+  const libResults = data.library_results || [];
+  const libTop = libResults[0];
+  if (!libTop && !artwork.artist) {
+    return { kind: "empty", text: "no library match" };
+  }
+
+  // Prefer library_results (authoritative for the WXYC corpus). Fall back
+  // to Discogs artwork for orientation.
+  const artist = libTop?.artist || artwork.artist || parsed.artist || "?";
+  // library_results[i].title and artwork.album both denote a RELEASE
+  // (album / 12") in the library — never a track. The flowsheet records
+  // tracks, so we label the field explicitly to avoid the visual conflict
+  // with the flowsheet's "Artist - Track" shape.
+  const release = libTop?.title || artwork.album || "";
+  const conf = typeof artwork.confidence === "number" ? artwork.confidence : null;
+  const releaseYear = typeof artwork.release_year === "number" ? artwork.release_year : null;
+
+  // Fallback signal: the library reconciler couldn't find the specific
+  // track and is returning the artist's catalog instead. `song_not_found`
+  // is the canonical flag; `search_type === "song_as_artist"` means the
+  // LLM parser couldn't identify the artist and reinterpreted the parsed
+  // song as the artist (e.g. "Beastie Boy" treated as artist when LLM
+  // missed the plural). Both mean: artist may be right, but the release
+  // shown is unrelated to whatever track the DJ actually played.
+  const fallback = data.song_not_found === true || data.search_type === "song_as_artist";
+
+  // Anachronism: matched release postdates the flowsheet.
+  const postdates = pageYear != null && releaseYear != null && releaseYear > pageYear;
+
+  // Artist mismatch: resolved artist shares zero tokens with the artist
+  // we parsed out of the flowsheet text. Catches request-o-matic
+  // fuzzy-matching on a track word (Pure Joy → Coldcut via "Pieces")
+  // even when the release year happens to be plausible.
+  const inputArtist = parseInputArtist(inputRawText);
+  const artistMismatch = artistTokensDisjoint(inputArtist, artist);
+
+  const stampBits = [];
+  if (releaseYear !== null) stampBits.push(String(releaseYear));
+  if (conf !== null) stampBits.push(conf.toFixed(2));
+  const stamp = stampBits.length ? ` (${stampBits.join(", ")})` : "";
+
+  let text;
+  let kind;
+  if (fallback) {
+    // "artist-only" makes it clear we have the artist but not the track,
+    // and "sample release" disclaims the album shown is illustrative
+    // (whichever release of theirs the library indexed first), not a
+    // confirmation that this is where the played track lives.
+    text = release
+      ? `⚠ artist-only · ${artist} · sample release: "${release}"${stamp}`
+      : `⚠ artist-only · ${artist}${stamp}`;
+    kind = "hit-weak";
+  } else {
+    text = release
+      ? `${artist} · album: "${release}"${stamp}`
+      : `${artist}${stamp}`;
+    kind = conf !== null && conf < 0.5 ? "hit-weak" : "hit-strong";
+  }
+  if (postdates) {
+    text = "⚠ postdates · " + text;
+    kind = "hit-weak";
+  }
+  if (artistMismatch) {
+    text = `⚠ different artist (got "${artist}", expected "${inputArtist}") · ${text}`;
+    kind = "hit-weak";
+  }
+  return { kind, text };
+}
+
+function applyBadge(rowEl, kind, text, title) {
+  const badge = $(".lookup-badge", rowEl);
+  if (!badge) return;
+  badge.hidden = false;
+  badge.className = `lookup-badge ${kind}`;
+  badge.textContent = text;
+  if (title) badge.title = title;
+}
+
+async function checkArtists() {
+  if (!state.bundle) return;
+  const btn = $("#check-artists");
+  btn.disabled = true;
+  const originalLabel = btn.textContent;
+  const pageYear = parsePageYear(state.bundle.page_date_raw);
+
+  // Collect every non-deleted, non-empty row with its DOM node.
+  const work = [];
+  for (const quad of state.bundle.quadrants) {
+    const quadNode = [...$$(".quadrant")].find(
+      (n) => $(".quadrant-title", n).textContent === quad.position
+    );
+    if (!quadNode) continue;
+    const rowNodes = $$(".row", quadNode);
+    for (let i = 0; i < quad.entries.length; i++) {
+      const entry = quad.entries[i];
+      if (entry._deleted || !entry.raw_text?.trim()) continue;
+      const rowEl = rowNodes[i];
+      if (!rowEl) continue;
+      work.push({ rowEl, entry });
+      applyBadge(rowEl, "loading", "…looking up", "");
+    }
+  }
+
+  let done = 0;
+  const total = work.length;
+  const updateBtn = () => {
+    btn.textContent = `Checking artists (${done}/${total})…`;
+  };
+  updateBtn();
+
+  // Concurrency-limited fan-out.
+  const queue = work.slice();
+  async function worker() {
+    while (queue.length) {
+      const job = queue.shift();
+      if (!job) break;
+      try {
+        const data = await lookupOne(job.entry.raw_text);
+        const { kind, text } = badgeContentFor(data, pageYear, job.entry.raw_text);
+        const aw = data.artwork || {};
+        const title =
+          `parsed_artist=${(data.parsed || {}).artist ?? "?"}; ` +
+          `library_results=${(data.library_results || []).length}` +
+          (aw.release_year ? `; release_year=${aw.release_year}` : "") +
+          (pageYear ? `; page_year=${pageYear}` : "");
+        applyBadge(job.rowEl, kind, text, title);
+      } catch (err) {
+        applyBadge(job.rowEl, "error", "lookup failed", String(err));
+      }
+      done++;
+      updateBtn();
+    }
+  }
+  await Promise.all(
+    Array.from({ length: state.lookupConcurrency }, () => worker())
   );
+
+  btn.disabled = false;
+  btn.textContent = originalLabel;
+  setStatus(
+    `Checked ${total} row(s) via request-o-matic` +
+    (pageYear ? ` (gating release_year > ${pageYear} as anachronistic).` : ".")
+  );
+}
+
+function $$(sel, root = document) {
+  return Array.from(root.querySelectorAll(sel));
 }
 
 function togglePageView() {
@@ -461,8 +729,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const file = e.target.files?.[0];
     if (file) loadImageFromFile(file);
   });
-  $("#export-verified").addEventListener("click", exportAll);
+  $("#save-verified").addEventListener("click", saveAll);
   $("#toggle-page-view").addEventListener("click", togglePageView);
+  $("#check-artists").addEventListener("click", checkArtists);
 
   await loadBundleFromUrlParam();
 });

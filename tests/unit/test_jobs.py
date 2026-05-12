@@ -205,3 +205,83 @@ async def test_pending_for_render(store: JobStore, tmp_path: Path) -> None:
 
     pending = await store.next_pending_for_render(limit=10)
     assert [(j.pdf_path, j.page_number) for j in pending] == [("scans/a.pdf", 2)]
+
+
+# -- verification tracking --------------------------------------------------
+
+
+async def test_mark_verified_records_paths_without_changing_status(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """`mark_verified` updates the verification columns but leaves `status`
+    alone — verification is orthogonal to the extraction state machine."""
+    await store.register("scans/a.pdf", 1)
+    await store.mark_rendered("scans/a.pdf", 1, image_path=tmp_path / "a.png")
+    await store.mark_completed("scans/a.pdf", 1, result_path=tmp_path / "a.json", model_version="m")
+
+    verified = tmp_path / "a.verified.json"
+    corrections = tmp_path / "a.corrections.json"
+    matched = await store.mark_verified(
+        "scans/a.pdf", 1, verified_path=verified, corrections_path=corrections
+    )
+    assert matched is True
+
+    job = await store.get("scans/a.pdf", 1)
+    assert job is not None
+    assert job.status == JobStatus.COMPLETED
+    assert job.verified_at is not None
+    assert job.verified_path == str(verified)
+    assert job.corrections_path == str(corrections)
+
+
+async def test_mark_verified_returns_false_when_no_matching_job(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """The verifier server may try to record verification for a test
+    fixture that has no `jobs.db` row. Returns False instead of raising
+    so the server can fall back to file-only persistence."""
+    matched = await store.mark_verified(
+        "scans/no-such.pdf",
+        99,
+        verified_path=tmp_path / "x.verified.json",
+        corrections_path=tmp_path / "x.corrections.json",
+    )
+    assert matched is False
+
+
+async def test_init_adds_late_columns_to_existing_db(tmp_path: Path) -> None:
+    """`init()` against a pre-verification-column DB adds the columns
+    without losing data."""
+    import aiosqlite
+
+    db_path = tmp_path / "old.db"
+    async with aiosqlite.connect(db_path) as db:
+        await db.execute(
+            """
+            CREATE TABLE jobs (
+                pdf_path TEXT NOT NULL,
+                page_number INTEGER NOT NULL,
+                status TEXT NOT NULL,
+                attempts INTEGER NOT NULL DEFAULT 0,
+                last_error TEXT,
+                image_path TEXT,
+                result_path TEXT,
+                model_version TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                PRIMARY KEY (pdf_path, page_number)
+            )
+            """
+        )
+        await db.commit()
+
+    store = JobStore(db_path)
+    await store.init()
+
+    async with aiosqlite.connect(db_path) as db:
+        db.row_factory = aiosqlite.Row
+        rows = await (await db.execute("PRAGMA table_info(jobs)")).fetchall()
+    cols = {r["name"] for r in rows}
+    assert "verified_at" in cols
+    assert "verified_path" in cols
+    assert "corrections_path" in cols
