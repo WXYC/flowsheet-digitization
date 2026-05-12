@@ -111,8 +111,11 @@ body > header h1 {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* Keyboard-shortcut overlay. */
-#shortcut-overlay {
+/* Keyboard-shortcut overlay. ID specificity beats the UA `[hidden] {
+   display: none }` rule, so we scope `display: flex` to the not-hidden
+   state — otherwise `hidden` toggles (Esc, `?`, click-outside-card) have
+   no visible effect and the overlay shows on every page load. */
+#shortcut-overlay:not([hidden]) {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
