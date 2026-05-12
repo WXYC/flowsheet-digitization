@@ -110,9 +110,11 @@ async def test_save_rejects_invalid_pageresult(serve_app, tmp_path: Path) -> Non
 
 async def test_save_rejects_path_traversal_stem(serve_app, tmp_path: Path) -> None:
     """`stem` containing `/`, `\\`, or `..` is refused so the server
-    can't be tricked into writing outside `data/verifier/`."""
+    can't be tricked into writing outside `data/verifier/`. Whitespace-
+    only stems are also rejected — they'd produce confusing ` .verified.json`
+    files."""
     async with await _client(serve_app.app) as c:
-        for bad in ("../escape", "a/b", "..", "a\\b"):
+        for bad in ("../escape", "a/b", "..", "a\\b", "", "   ", "\t"):
             r = await c.post(
                 "/api/save",
                 json={
@@ -152,6 +154,38 @@ async def test_save_writes_both_files(serve_app, tmp_path: Path) -> None:
     PageResult.model_validate_json(verified.read_text())
     # Corrections is opaque JSON — pin only that it's well-formed.
     json.loads(corrections.read_text())
+
+
+async def test_save_strips_bundle_only_fields_via_pydantic_roundtrip(
+    serve_app, tmp_path: Path
+) -> None:
+    """A client that leaks bundle-only fields (row_bbox, schema_version,
+    etc.) shouldn't pollute the on-disk verified.json. The server's
+    `PageResult.model_validate(...).model_dump_json(...)` round-trip
+    strips unknown fields by Pydantic's default `extra='ignore'`."""
+    polluted = _page_result_dict()
+    # Simulate the UI accidentally leaking bundle metadata into the
+    # verified payload (these don't belong on PageResult).
+    polluted["schema_version"] = 2
+    polluted["stem"] = "page25"
+    polluted["image_path"] = "../tests/golden/x.png"
+    polluted["quadrants"][0]["bbox"] = [0, 0, 100, 100]
+    async with await _client(serve_app.app) as c:
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "polluted",
+                "verified": polluted,
+                "corrections": _corrections_dict(),
+            },
+        )
+    assert r.status_code == 200
+    on_disk = json.loads((tmp_path / "data" / "verifier" / "polluted.verified.json").read_text())
+    assert "schema_version" not in on_disk
+    assert "stem" not in on_disk
+    assert "image_path" not in on_disk
+    # Per-quadrant bbox is bundle-only too.
+    assert "bbox" not in on_disk["quadrants"][0]
 
 
 async def test_save_overwrites_previous_files(serve_app, tmp_path: Path) -> None:
@@ -236,6 +270,53 @@ async def test_save_returns_db_updated_false_when_no_matching_job(
     assert r.json()["db_updated"] is False
     # Files still written.
     assert (tmp_path / "data" / "verifier" / "ghost.verified.json").is_file()
+
+
+async def test_save_rejects_bool_page_number(serve_app, tmp_path: Path) -> None:
+    """`isinstance(x, int)` is True for `bool` in Python — a malformed
+    `page_number: true` would coerce to 1 and look up the wrong job
+    row. Defensive: bool is rejected; the save still succeeds but with
+    `db_updated: false` (treated as no-job-key)."""
+    db_path = tmp_path / "data" / "jobs.db"
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    store = JobStore(db_path)
+    await store.init()
+    await store.register("1990/x.pdf", 1)
+
+    async with await _client(serve_app.app) as c:
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "bool-test",
+                "pdf_path": "1990/x.pdf",
+                "page_number": True,  # boolean, not real int
+                "verified": _page_result_dict(),
+                "corrections": _corrections_dict(),
+            },
+        )
+    assert r.status_code == 200
+    assert r.json()["db_updated"] is False  # bool was rejected, files only
+    # The job row at page 1 should NOT have been updated.
+    job = await store.get("1990/x.pdf", 1)
+    assert job is not None
+    assert job.verified_at is None
+
+
+async def test_save_writes_are_atomic_no_tmp_left_behind(serve_app, tmp_path: Path) -> None:
+    """Atomic writes use `.tmp` siblings + os.replace. After a successful
+    save, no `.tmp` files remain in data/verifier/."""
+    async with await _client(serve_app.app) as c:
+        await c.post(
+            "/api/save",
+            json={
+                "stem": "atomic",
+                "verified": _page_result_dict(),
+                "corrections": _corrections_dict(),
+            },
+        )
+    verifier_dir = tmp_path / "data" / "verifier"
+    tmp_files = list(verifier_dir.glob("*.tmp"))
+    assert tmp_files == [], f"unexpected tmp files left: {tmp_files}"
 
 
 async def test_save_skips_db_when_no_jobs_db_file(serve_app, tmp_path: Path) -> None:

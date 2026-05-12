@@ -46,6 +46,30 @@ JOBS_DB_PATH = DATA_ROOT / "jobs.db"
 
 app = FastAPI(docs_url=None, redoc_url=None)
 
+# Cache of jobs.db paths whose `init()` migrations have already been
+# applied this process. Avoids re-running PRAGMAs + ALTER-TABLE checks
+# on every /api/save when jobs.db is unchanged across saves. Tests that
+# swap DATA_ROOT via importlib.reload get a fresh empty set.
+_initialized_jobs_dbs: set[Path] = set()
+
+
+async def _open_jobs_store() -> JobStore | None:
+    """Return an initialized `JobStore` if `jobs.db` is on disk, else None.
+
+    Runs `JobStore.init()` once per (db_path, process) pair — subsequent
+    calls hit the in-memory cache and skip the schema-migration round
+    trip. Re-checks `is_file()` every call so a DB created after the
+    server starts (e.g., user runs the pipeline mid-session) is picked
+    up without a server restart.
+    """
+    if not JOBS_DB_PATH.is_file():
+        return None
+    store = JobStore(JOBS_DB_PATH)
+    if JOBS_DB_PATH not in _initialized_jobs_dbs:
+        await store.init()
+        _initialized_jobs_dbs.add(JOBS_DB_PATH)
+    return store
+
 
 def _safe_stem(stem: str) -> str:
     """Reject anything that could escape `data/verifier/` via path traversal.
@@ -53,10 +77,26 @@ def _safe_stem(stem: str) -> str:
     Bundle stems come from image filenames (e.g. `1990-04apr0106-page25`)
     and are unlikely to contain `/`, but a hostile or malformed POST
     shouldn't let the verifier server write outside the verifier dir.
+    Whitespace-only stems are also refused — they'd produce files named
+    ` .verified.json` which are confusing and almost certainly a bug.
     """
-    if not stem or "/" in stem or "\\" in stem or stem.startswith(".."):
+    if not stem or not stem.strip() or "/" in stem or "\\" in stem or stem.startswith(".."):
         raise HTTPException(status_code=400, detail=f"invalid stem: {stem!r}")
     return stem
+
+
+def _atomic_write_text(path: Path, content: str) -> None:
+    """Write `content` to `path` via a `.tmp` sibling and `os.replace`.
+
+    Two writes on the save path (verified + corrections) — atomic
+    individual writes mean a partially-failed save leaves either both
+    files at their pre-save state OR both at the new state, never a
+    half-updated state where verified.json reflects the edit but
+    corrections.json doesn't.
+    """
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(content)
+    os.replace(tmp, path)
 
 
 @app.post("/api/lookup")
@@ -128,10 +168,14 @@ async def save(request: Request) -> JSONResponse:
             detail="body must include `verified` and `corrections` objects",
         )
 
-    # Validate verified against PageResult so a bad client doesn't write
-    # garbage that the pipeline can't load later.
+    # Validate verified against PageResult and keep the parsed model so
+    # the on-disk JSON is the Pydantic-normalized round-trip rather than
+    # whatever the client happened to send. This makes the verified file
+    # a canonical representation that bit-matches what the pipeline
+    # writes, regardless of any extra fields or non-canonical datetime
+    # formats the client may have included.
     try:
-        PageResult.model_validate(verified)
+        validated = PageResult.model_validate(verified)
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(
             status_code=400, detail=f"verified payload not a valid PageResult: {exc}"
@@ -140,17 +184,16 @@ async def save(request: Request) -> JSONResponse:
     VERIFIER_DIR.mkdir(parents=True, exist_ok=True)
     verified_path = VERIFIER_DIR / f"{stem}.verified.json"
     corrections_path = VERIFIER_DIR / f"{stem}.corrections.json"
-    verified_path.write_text(json.dumps(verified, indent=2))
-    corrections_path.write_text(json.dumps(corrections, indent=2))
+    _atomic_write_text(verified_path, validated.model_dump_json(indent=2))
+    _atomic_write_text(corrections_path, json.dumps(corrections, indent=2))
 
     db_updated = False
-    if pdf_path and isinstance(page_number, int):
-        # Best-effort DB update. JobStore.init() is idempotent and applies
-        # late-column migrations, so first-save against a pre-verification
-        # jobs.db still works.
-        if JOBS_DB_PATH.is_file():
-            store = JobStore(JOBS_DB_PATH)
-            await store.init()
+    # `isinstance(x, int)` is True for `bool` in Python — explicitly reject
+    # so a malformed `page_number: true` doesn't coerce to 1 and lookup
+    # the wrong row.
+    if pdf_path and isinstance(page_number, int) and not isinstance(page_number, bool):
+        store = await _open_jobs_store()
+        if store is not None:
             db_updated = await store.mark_verified(
                 pdf_path=pdf_path,
                 page_number=page_number,
@@ -175,9 +218,10 @@ async def save(request: Request) -> JSONResponse:
 # Static mounts. Each top-level dir we need to serve gets its own mount so
 # the URL structure mirrors the repo layout — `image_path` in bundles is
 # relative (`../pages/.../page-NN.png`), and the UI fetches relative to
-# the bundle URL.
+# the bundle URL. `/data` honors the same DATA_ROOT override that writes
+# use so the read and write sides stay in sync when DATA_ROOT is moved.
 app.mount("/verifier", StaticFiles(directory=REPO_ROOT / "verifier", html=True), name="verifier")
-app.mount("/data", StaticFiles(directory=REPO_ROOT / "data"), name="data")
+app.mount("/data", StaticFiles(directory=DATA_ROOT, check_dir=False), name="data")
 app.mount("/tests", StaticFiles(directory=REPO_ROOT / "tests"), name="tests")
 
 

@@ -2,22 +2,21 @@
 //
 // Loads a bundle.json (produced by scripts/make_verifier_bundle.py) plus
 // the page image it references, renders per-row canvas crops next to
-// editable text fields, and exports:
+// editable text fields, and on Save POSTs two files to /api/save:
 //   1. <stem>.verified.json — PageResult-shaped corrected page
-//   2. <stem>.corrections.json — delta vs the original bundle, plus the
-//      set of rows the user marked verified
+//   2. <stem>.corrections.json — delta vs the original bundle
 //
 // Two load paths are supported:
 //   1. Server-served bundle: fetch(bundle) then fetch(image) by relative
-//      URL. Used when the page is opened via `python -m http.server`.
+//      URL. Used when the page is served via `python verifier/serve.py`.
 //   2. File-picker bundle: read the bundle as text, then prompt for the
 //      image file separately.
 //
 // State is split:
 //   state.originalBundle  — immutable snapshot of the loaded bundle. Never
-//                           mutated; used as the diff baseline on export.
+//                           mutated; used as the diff baseline on save.
 //   state.bundle          — working copy. Mutated by edits and UI flags
-//                           (`_verified`, `_added`, `_deleted`).
+//                           (`_added`, `_deleted`).
 
 "use strict";
 
