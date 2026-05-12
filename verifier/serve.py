@@ -158,10 +158,15 @@ async def save(request: Request) -> JSONResponse:
                 corrections_path=corrections_path,
             )
 
+    # Report paths relative to DATA_ROOT.parent so the UI displays
+    # `data/verifier/<stem>.verified.json` whether `data/` lives under
+    # the repo root (production) or a tmp dir (tests). Always succeeds —
+    # both written paths are under DATA_ROOT, which is a child of
+    # DATA_ROOT.parent by construction.
     return JSONResponse(
         {
-            "verified_path": str(verified_path.relative_to(REPO_ROOT)),
-            "corrections_path": str(corrections_path.relative_to(REPO_ROOT)),
+            "verified_path": str(verified_path.relative_to(DATA_ROOT.parent)),
+            "corrections_path": str(corrections_path.relative_to(DATA_ROOT.parent)),
             "db_updated": db_updated,
         }
     )
