@@ -48,7 +48,7 @@
           <tr>
             <th>Status</th>
             <th>Stem</th>
-            <th>page_date_raw</th>
+            <th>Date</th>
             <th>Last saved</th>
           </tr>
         </thead>
@@ -62,13 +62,13 @@
     <section id="page-meta">
       <h2>Page</h2>
       <div class="meta-grid">
-        <label>page_date_raw
+        <label>Date
           <input id="page-date-raw" type="text">
         </label>
-        <label>comments_raw
+        <label>Comments
           <textarea id="comments-raw" rows="2"></textarea>
         </label>
-        <label>oddities (one per line)
+        <label>Oddities (one per line)
           <textarea id="oddities" rows="2"></textarea>
         </label>
       </div>
@@ -90,8 +90,8 @@
       <h2>Keyboard shortcuts</h2>
       <dl>
         <dt>⌘S / Ctrl+S</dt>          <dd>Save (draft)</dd>
-        <dt>⌘⇧S / Ctrl+Shift+S</dt>   <dd>Mark complete</dd>
-        <dt>j / ⌘↓</dt>                <dd>Focus next row's raw_text</dd>
+        <dt>⌘⇧S / Ctrl+Shift+S</dt>   <dd>Toggle complete / draft</dd>
+        <dt>j / ⌘↓</dt>                <dd>Focus next row's text</dd>
         <dt>k / ⌘↑</dt>                <dd>Focus previous row</dd>
         <dt>⌘D / Ctrl+D</dt>           <dd>Toggle ✗ (delete) on current row</dd>
         <dt>n</dt>                     <dd>Next bundle</dd>
@@ -107,8 +107,8 @@
     <article class="quadrant">
       <header class="quadrant-header">
         <h2 class="quadrant-title"></h2>
-        <label>hour_raw <input class="hour-raw" type="text"></label>
-        <label>jock_raw <input class="jock-raw" type="text"></label>
+        <label>Hour <input class="hour-raw" type="text"></label>
+        <label>Jock <input class="jock-raw" type="text"></label>
       </header>
       <div class="rows"></div>
       <button class="add-row">+ add row</button>
@@ -122,10 +122,10 @@
         <input class="raw-text" type="text">
         <div class="lookup-badge" hidden></div>
         <div class="row-controls">
-          <label class="type-raw">type
+          <label class="type-raw">Type
             <input type="text" placeholder="H / M / L / Std / O / R / O/std / doodle desc">
           </label>
-          <label class="notes">notes
+          <label class="notes">Notes
             <select>
               <option value="">(none)</option>
               <option value="continuation">continuation</option>

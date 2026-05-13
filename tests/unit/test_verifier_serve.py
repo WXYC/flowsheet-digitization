@@ -376,6 +376,26 @@ async def test_save_preserves_complete_on_subsequent_draft_save(serve_app, tmp_p
     assert on_disk["status"] == "complete"
 
 
+async def test_save_explicit_draft_reverts_complete(serve_app, tmp_path: Path) -> None:
+    """An explicit `status: "draft"` from the UI's toggleable Mark complete
+    button DOES revert a complete page back to draft. The preserve-on-disk
+    rule only applies when the client omits the status field (plain Save)."""
+    body = {
+        "stem": "revert",
+        "verified": _page_result_dict(),
+        "corrections": _corrections_dict(),
+    }
+    body_complete = {**body, "status": "complete"}
+    body_explicit_draft = {**body, "status": "draft"}
+    async with await _client(serve_app.app) as c:
+        await c.post("/api/save", json=body_complete)
+        r = await c.post("/api/save", json=body_explicit_draft)
+    assert r.status_code == 200
+    assert r.json()["status"] == "draft"
+    on_disk = json.loads((tmp_path / "data" / "verifier" / "revert.corrections.json").read_text())
+    assert on_disk["status"] == "draft"
+
+
 async def test_save_rejects_invalid_status(serve_app, tmp_path: Path) -> None:
     """Unknown status values are rejected — no silent fallback."""
     async with await _client(serve_app.app) as c:

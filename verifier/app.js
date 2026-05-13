@@ -183,10 +183,24 @@ async function refreshNavFromBundleList({ pillFromList = true } = {}) {
 }
 
 function updateStatusPill(status) {
+  state.currentStatus = status;
   const pill = $("#status-pill");
   pill.hidden = false;
   pill.className = `status-pill status-${status}`;
   pill.textContent = status;
+  // The Mark complete button is a toggle: click on a complete page
+  // explicitly reverts to draft. Label and title reflect the action
+  // the next click will take.
+  const btn = $("#mark-complete");
+  if (btn) {
+    if (status === "complete") {
+      btn.textContent = "Mark incomplete";
+      btn.title = "Revert this page to draft (⌘⇧S)";
+    } else {
+      btn.textContent = "Mark complete";
+      btn.title = "Mark this page complete (⌘⇧S)";
+    }
+  }
 }
 
 function navigateTo(bundle) {
@@ -233,6 +247,12 @@ function renderPageMeta() {
 
 // ---- render: quadrants ---------------------------------------------------
 
+function humanizePosition(pos) {
+  // "top_left" → "Top left". Display only; the underscore form remains the
+  // canonical identifier on the bundle data and the article's dataset.
+  return pos.replace(/_/g, " ").replace(/^./, c => c.toUpperCase());
+}
+
 function renderQuadrants() {
   const container = $("#quadrants-container");
   container.innerHTML = "";
@@ -240,7 +260,10 @@ function renderQuadrants() {
 
   for (const quad of state.bundle.quadrants) {
     const node = tmpl.content.firstElementChild.cloneNode(true);
-    $(".quadrant-title", node).textContent = quad.position;
+    // Underlying position (e.g. "top_left") stays on the dataset so other
+    // code can find this node by quadrant; the visible title is humanized.
+    node.dataset.position = quad.position;
+    $(".quadrant-title", node).textContent = humanizePosition(quad.position);
 
     const hourEl = $(".hour-raw", node);
     hourEl.value = quad.hour_raw ?? "";
@@ -504,16 +527,22 @@ function buildCorrectionsExport() {
 // ---- file-download helpers -----------------------------------------------
 
 async function saveAll(requestedStatus = null) {
-  // requestedStatus = "complete" when user clicked Mark complete; null
-  // for a plain Save (the server applies the preservation rule — an
-  // already-complete page stays complete).
+  // requestedStatus options:
+  //   null         — plain Save; server applies the preserve-on-disk rule
+  //   "complete"   — toggle clicked while not complete
+  //   "draft"      — toggle clicked on an already-complete page (explicit revert)
   if (!state.bundle) return;
-  const btn = requestedStatus === "complete" ? $("#mark-complete") : $("#save-verified");
-  const otherBtn = requestedStatus === "complete" ? $("#save-verified") : $("#mark-complete");
+  const isToggle = requestedStatus !== null;
+  const btn = isToggle ? $("#mark-complete") : $("#save-verified");
+  const otherBtn = isToggle ? $("#save-verified") : $("#mark-complete");
   btn.disabled = true;
   otherBtn.disabled = true;
   const original = btn.textContent;
-  btn.textContent = requestedStatus === "complete" ? "Marking…" : "Saving…";
+  btn.textContent =
+    requestedStatus === "complete" ? "Marking…" :
+    requestedStatus === "draft"    ? "Reverting…" :
+                                     "Saving…";
+  let saveOk = false;
 
   const verified = buildVerifiedExport();
   const corrections = buildCorrectionsExport();
@@ -551,6 +580,7 @@ async function saveAll(requestedStatus = null) {
     // Prev/Next state only (the pill is set just above and not touched
     // by the refresh path).
     updateStatusPill(result.status === "complete" ? "complete" : "partial");
+    saveOk = true;
     setStatus(
       `Saved as ${result.status} · ${result.verified_path} + ${result.corrections_path} · ` +
       `${n} field correction(s), ${corrections.added_rows.length} added, ` +
@@ -562,12 +592,18 @@ async function saveAll(requestedStatus = null) {
   } finally {
     btn.disabled = false;
     otherBtn.disabled = false;
-    btn.textContent = original;
+    // Save button label is static — always restore. Mark complete button's
+    // label is set by updateStatusPill on success; only restore on failure
+    // (where it's still showing "Marking…" / "Reverting…").
+    if (!isToggle || !saveOk) btn.textContent = original;
   }
 }
 
 const saveDraft = () => saveAll(null);
-const markComplete = () => saveAll("complete");
+// Toggle: revert from complete back to draft when already complete,
+// otherwise mark complete. The button label tracks the next-click action.
+const toggleComplete = () =>
+  saveAll(state.currentStatus === "complete" ? "draft" : "complete");
 
 // ---- artist/track lookup (request-o-matic via /api/lookup proxy) --------
 
@@ -738,9 +774,7 @@ async function checkArtists() {
   // Collect every non-deleted, non-empty row with its DOM node.
   const work = [];
   for (const quad of state.bundle.quadrants) {
-    const quadNode = [...$$(".quadrant")].find(
-      (n) => $(".quadrant-title", n).textContent === quad.position
-    );
+    const quadNode = $(`.quadrant[data-position="${quad.position}"]`);
     if (!quadNode) continue;
     const rowNodes = $$(".row", quadNode);
     for (let i = 0; i < quad.entries.length; i++) {
@@ -925,7 +959,7 @@ function installKeyboardShortcuts() {
     // ⌘S / Ctrl+S → save. Works even when an input has focus.
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") {
       e.preventDefault();
-      if (e.shiftKey) markComplete();
+      if (e.shiftKey) toggleComplete();
       else saveDraft();
       return;
     }
@@ -991,7 +1025,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (file) loadImageFromFile(file);
   });
   $("#save-verified").addEventListener("click", saveDraft);
-  $("#mark-complete").addEventListener("click", markComplete);
+  $("#mark-complete").addEventListener("click", toggleComplete);
   $("#check-artists").addEventListener("click", checkArtists);
   $("#prev-page").addEventListener("click", navigatePrev);
   $("#next-page").addEventListener("click", navigateNext);

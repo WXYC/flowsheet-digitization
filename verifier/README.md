@@ -52,8 +52,8 @@ tests/golden/<stem>.truth.json          # derive_truth output (optional destinat
    ```
 
 3. Open the verifier and load the bundle.
-4. Walk the page: each row shows a cropped image strip + the model's `raw_text`. Correct typos, set `type` and `notes` when needed, click ✗ to mark hallucinations, click **+ add row** to insert a row the model missed.
-5. Edit the page-level fields: `page_date_raw`, `comments_raw`, `oddities`.
+4. Walk the page: each row shows a cropped image strip + the model's transcribed text. Correct typos, set the row's Type and Notes when needed, click ✗ to mark hallucinations, click **+ add row** to insert a row the model missed.
+5. Edit the page-level fields: Date, Comments, Oddities. (These persist to the bundle JSON as `page_date_raw`, `comments_raw`, `oddities` — see the schema below.)
 6. Click **Export verified** → downloads `<stem>.verified.json`. Move it to `data/verifier/`.
 7. (Optional) Derive a `tests/golden/*.truth.json`:
 
@@ -106,7 +106,7 @@ tests/golden/<stem>.truth.json          # derive_truth output (optional destinat
 
 ## Saving
 
-Two buttons share the right side of the header: **Save** and **Mark complete**. Both POST to `/api/save`. The only difference is the `status` field in the body — `Save` omits it (treated as `draft`), `Mark complete` sends `"complete"`.
+Two buttons share the right side of the header: **Save** and **Mark complete / Mark incomplete**. Both POST to `/api/save`; the second is a toggle whose label tracks the current status. Save omits the `status` field in the body. The toggle sends `"complete"` when the page is currently a draft (or unsaved) and `"draft"` when the page is currently complete.
 
 Status semantics:
 
@@ -114,7 +114,11 @@ Status semantics:
 - **Partial** — `corrections.json` exists with `"status": "draft"`. The user is in progress.
 - **Complete** — `corrections.json` has `"status": "complete"`. The user explicitly marked the page done.
 
-The server runs a small preservation rule so a plain Save on an already-complete page **does not** downgrade it. The user can refine details on a complete page without re-marking it. (If we ever need a "Revert to draft" affordance, that's a separate ticket.)
+Server-side status resolution (`_resolve_status` in `serve.py`):
+
+- An explicit `"complete"` or `"draft"` from the client wins outright. `"draft"` is how the toggle reverts a complete page.
+- When the client omits the status field (plain Save), an existing `"complete"` on disk is preserved — a refine-in-place edit, not a downgrade.
+- Otherwise the page is a draft.
 
 Save's three side effects:
 
@@ -185,8 +189,8 @@ Press `?` anywhere in the editor — or click the floating `?` button at the top
 | Key | Action |
 |---|---|
 | ⌘S / Ctrl+S | Save (draft) |
-| ⌘⇧S / Ctrl+Shift+S | Mark complete |
-| j / ⌘↓ | Focus next row's `raw_text` |
+| ⌘⇧S / Ctrl+Shift+S | Toggle complete / draft |
+| j / ⌘↓ | Focus next row's text |
 | k / ⌘↑ | Focus previous row |
 | ⌘D / Ctrl+D | Toggle ✗ (delete) on focused row |
 | n | Next bundle |

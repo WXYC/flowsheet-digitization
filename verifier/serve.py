@@ -141,21 +141,19 @@ _VALID_STATUSES = frozenset({"draft", "complete"})
 def _resolve_status(incoming: str | None, corrections_path: Path) -> str:
     """Compute the corrections.json `status` field for this save.
 
-    Rules (matching the UI's two-button design):
-      - `"complete"` from the client wins outright (user clicked
-        "Mark complete").
-      - Otherwise, if the existing corrections.json on disk has
-        `"status": "complete"`, preserve it. A plain Save on an
-        already-complete page is a "refine in place" edit, not a
-        downgrade. The user can revert by re-saving via a future
-        "Revert to draft" affordance if we add one.
-      - Otherwise (incoming is `"draft"`, None, or unknown), the page
-        is a draft.
+    Rules (matching the UI's Save + toggleable Mark-complete design):
+      - Any explicit valid status from the client (`"complete"` or
+        `"draft"`) wins outright. `"draft"` means the user clicked the
+        toggle on an already-complete page to revert it.
+      - When the client omits the status field (plain Save), preserve
+        an existing `"complete"` on disk — a refine-in-place edit, not
+        a status change.
+      - Otherwise the page is a draft.
 
     Returns one of `"draft"` or `"complete"`.
     """
-    if incoming == "complete":
-        return "complete"
+    if incoming in _VALID_STATUSES:
+        return incoming
     if corrections_path.is_file():
         try:
             existing = json.loads(corrections_path.read_text())
