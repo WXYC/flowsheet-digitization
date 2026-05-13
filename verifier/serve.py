@@ -419,7 +419,10 @@ def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str
 # use so the read and write sides stay in sync when DATA_ROOT is moved.
 app.mount("/verifier", StaticFiles(directory=REPO_ROOT / "verifier", html=True), name="verifier")
 app.mount("/data", StaticFiles(directory=DATA_ROOT, check_dir=False), name="data")
-app.mount("/tests", StaticFiles(directory=REPO_ROOT / "tests"), name="tests")
+# tests/ is dev-only (golden fixtures). Mount it conditionally so the
+# Docker runtime image — which excludes tests/ — doesn't crash at boot.
+if (REPO_ROOT / "tests").is_dir():
+    app.mount("/tests", StaticFiles(directory=REPO_ROOT / "tests"), name="tests")
 
 
 def main() -> None:
