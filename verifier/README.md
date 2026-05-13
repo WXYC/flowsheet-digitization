@@ -2,7 +2,7 @@
 
 A static, dependency-free single-page app for manually verifying flowsheet extraction output. Each row's cropped image strip is shown next to the model-detected text in an editable field. Hand-correct typos, mark hallucinated rows, add missed rows, then export a `verified.json` that flows back into the pipeline as ground truth.
 
-> **Local-dev tool.** `verifier/serve.py` binds to `127.0.0.1` and has no authentication or CSRF protection on `/api/save` or `/api/bundles`. Do not expose it on a non-loopback interface; in particular, do not run it from a tmux/ssh session forwarded to a shared host without adding auth in front. The bundle-stem path-traversal guard is the only sanitization on writes.
+> **Local-dev defaults.** Without `VERIFIER_PASSWORD` set, `verifier/serve.py` binds to `127.0.0.1` and serves anonymously — fine for a laptop session, not safe for a public host. The bundle-stem path-traversal guard is the only sanitization on writes. For multi-user / remote access (e.g., a volunteer), set `VERIFIER_PASSWORD` to enable HTTP Basic Auth and bind via `VERIFIER_HOST=0.0.0.0`. See the Railway deploy section below.
 
 ## Run
 
@@ -199,6 +199,32 @@ Press `?` anywhere in the editor — or click the floating `?` button at the top
 | Esc | Close overlay |
 
 The single-letter keys (`j`, `k`, `n`, `p`, `?`) are ignored when the keyboard focus is in an `<input>`, `<textarea>`, or `<select>` — so typing in a row's text field works normally.
+
+## Deploying to Railway
+
+The verifier ships with a Dockerfile, an entrypoint that hydrates a Railway volume on first boot, and HTTP Basic Auth — enough to hand the URL + a shared password to a volunteer.
+
+**One-time setup:**
+
+1. On Railway, create a service from this repo. Railway picks up `railway.toml` and `Dockerfile` automatically.
+2. Attach a persistent **volume mounted at `/data`** in the service settings. This is where `corrections.json`, `verified.json`, and (optionally) `jobs.db` will persist across redeploys.
+3. Set the environment variables:
+   - `VERIFIER_PASSWORD` — shared password the volunteer types into the browser auth prompt. **Required** to enable auth; if you leave this unset, the service serves anonymously.
+   - `VERIFIER_USER` — auth username (optional, defaults to `verifier`).
+   - `VERIFIER_HOST=0.0.0.0` — set automatically by `scripts/railway_entrypoint.sh`; no action needed.
+   - `REQUEST_O_MATIC_URL` — optional override for the `/api/lookup` proxy.
+
+**Per-deploy:**
+
+1. Locally, run `bash scripts/build_railway_seed.sh` to produce `.seed/` — bundles plus only the page PNGs they reference (so the image stays small). Re-run this any time you generate new bundles you want the volunteer to see.
+2. Push to the branch Railway watches (or `railway up` if using the CLI). Railway builds the Docker image and starts the entrypoint, which copies `/seed → /data` once and then `exec`s `verifier/serve.py`. Subsequent boots leave the volume alone — the volunteer's edits survive.
+
+**Adding more pages to the corpus while live:**
+
+The seed-on-first-boot logic only fires when the volume's `verifier/` is empty. To add new bundles after launch, either:
+
+- Use the Railway shell (`railway run /bin/sh`) and `cp /seed/verifier/<new>.bundle.json /data/verifier/`, then copy the matching PNG into `/data/pages/...`. Awkward but works.
+- Or do a one-off "reseed" deploy: bump a marker file, redeploy, and have the entrypoint re-copy missing files (not implemented today — file a ticket if this becomes a regular need).
 
 ## Known rough edges (v1)
 

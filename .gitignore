@@ -36,3 +36,6 @@ htmlcov/
 
 # Local Claude scratch
 .claude/settings.local.json
+
+# Railway deploy seed (built by scripts/build_railway_seed.sh)
+.seed/

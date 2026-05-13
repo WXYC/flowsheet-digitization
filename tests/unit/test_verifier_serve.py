@@ -556,6 +556,80 @@ async def test_list_bundles_malformed_bundle_doesnt_break_index(serve_app, tmp_p
     assert by_stem["good"]["page_date_raw"] == "ok"
 
 
+# -- HTTP Basic Auth (Railway deploy) --------------------------------------
+
+
+@pytest.fixture
+def serve_app_with_password(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
+    """Same as serve_app but with VERIFIER_PASSWORD set to enable auth."""
+    monkeypatch.setenv("DATA_ROOT", str(tmp_path / "data"))
+    monkeypatch.setenv("VERIFIER_PASSWORD", "hunter2")
+    monkeypatch.setenv("VERIFIER_USER", "verifier")
+    import importlib
+
+    import verifier.serve as serve_mod
+
+    importlib.reload(serve_mod)
+    yield serve_mod
+    monkeypatch.undo()
+    importlib.reload(serve_mod)
+
+
+async def test_auth_disabled_when_password_unset(serve_app, tmp_path: Path) -> None:
+    """No VERIFIER_PASSWORD → no auth challenge. Local dev keeps working
+    unchanged."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get("/api/bundles")
+    assert r.status_code == 200
+    assert "WWW-Authenticate" not in r.headers
+
+
+async def test_auth_required_when_password_set(serve_app_with_password) -> None:
+    """VERIFIER_PASSWORD set → unauthenticated requests get 401 with a
+    Basic-auth challenge."""
+    async with await _client(serve_app_with_password.app) as c:
+        r = await c.get("/api/bundles")
+    assert r.status_code == 401
+    assert r.headers.get("WWW-Authenticate", "").startswith("Basic ")
+
+
+async def test_auth_accepts_correct_credentials(serve_app_with_password) -> None:
+    """Correct user:pass via HTTP Basic → request proceeds normally."""
+    async with await _client(serve_app_with_password.app) as c:
+        r = await c.get("/api/bundles", auth=("verifier", "hunter2"))
+    assert r.status_code == 200
+
+
+async def test_auth_rejects_wrong_password(serve_app_with_password) -> None:
+    """Wrong password is rejected with 401."""
+    async with await _client(serve_app_with_password.app) as c:
+        r = await c.get("/api/bundles", auth=("verifier", "nope"))
+    assert r.status_code == 401
+
+
+async def test_auth_protects_static_and_save(serve_app_with_password) -> None:
+    """Static mounts (/verifier/, /data/) and POST /api/save are also
+    behind the gate — not just /api/bundles. A volunteer with creds gets
+    in; an anonymous request to any path gets challenged."""
+    async with await _client(serve_app_with_password.app) as c:
+        # Static read without creds.
+        r = await c.get("/verifier/index.html")
+        assert r.status_code == 401
+        # Static read with creds.
+        r = await c.get("/verifier/index.html", auth=("verifier", "hunter2"))
+        assert r.status_code == 200
+        # Mutating POST without creds.
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "x",
+                "verified": _page_result_dict(),
+                "corrections": _corrections_dict(),
+            },
+        )
+        assert r.status_code == 401
+
+
 async def test_save_skips_db_when_no_jobs_db_file(serve_app, tmp_path: Path) -> None:
     """If `data/jobs.db` doesn't exist (no pipeline has run), Save still
     succeeds — no DB integration is attempted."""

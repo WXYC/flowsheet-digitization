@@ -28,6 +28,8 @@ from __future__ import annotations
 
 import json
 import os
+import secrets
+from base64 import b64decode
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -36,6 +38,8 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.types import ASGIApp
 
 from core.jobs import JobStore
 from core.schema import PageResult
@@ -44,13 +48,62 @@ REQUEST_O_MATIC_URL = os.environ.get(
     "REQUEST_O_MATIC_URL",
     "https://request-o-matic-production.up.railway.app/api/v1/request",
 )
-PORT = int(os.environ.get("VERIFIER_PORT", "8765"))
+# Railway sets $PORT; honor it first, then VERIFIER_PORT, then 8765 for local.
+PORT = int(os.environ.get("PORT") or os.environ.get("VERIFIER_PORT") or "8765")
+# Default to loopback locally; Railway sets VERIFIER_HOST=0.0.0.0.
+HOST = os.environ.get("VERIFIER_HOST", "127.0.0.1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = Path(os.environ.get("DATA_ROOT", REPO_ROOT / "data"))
 VERIFIER_DIR = DATA_ROOT / "verifier"
 JOBS_DB_PATH = DATA_ROOT / "jobs.db"
 
+# When VERIFIER_PASSWORD is set, every request goes through HTTP Basic Auth.
+# Unset → no auth, matching the local-dev default the README documents.
+# VERIFIER_USER defaults to a placeholder so the volunteer only has to
+# remember a password.
+VERIFIER_PASSWORD = os.environ.get("VERIFIER_PASSWORD")
+VERIFIER_USER = os.environ.get("VERIFIER_USER", "verifier")
+
+
+class _BasicAuthMiddleware(BaseHTTPMiddleware):
+    """Gates every request with HTTP Basic Auth when a password is set.
+
+    Both static mounts (/verifier/, /data/) and the /api/* endpoints are
+    behind the gate — the verifier UI loads the bundle JSON via the same
+    static mount, so any leak of /data/ leaks the corpus.
+
+    `secrets.compare_digest` runs the credential check in constant time
+    relative to length, which is the only reasonable thing to do with a
+    shared bearer-style password.
+    """
+
+    def __init__(self, app: ASGIApp, *, user: str, password: str) -> None:
+        super().__init__(app)
+        self._user = user
+        self._password = password
+
+    async def dispatch(self, request: Request, call_next):
+        auth = request.headers.get("authorization", "")
+        if auth.lower().startswith("basic "):
+            try:
+                decoded = b64decode(auth[6:]).decode("utf-8")
+            except Exception:  # noqa: BLE001
+                decoded = ""
+            user, _, password = decoded.partition(":")
+            if secrets.compare_digest(user, self._user) and secrets.compare_digest(
+                password, self._password
+            ):
+                return await call_next(request)
+        return JSONResponse(
+            {"detail": "authentication required"},
+            status_code=401,
+            headers={"WWW-Authenticate": 'Basic realm="WXYC Verifier"'},
+        )
+
+
 app = FastAPI(docs_url=None, redoc_url=None)
+if VERIFIER_PASSWORD:
+    app.add_middleware(_BasicAuthMiddleware, user=VERIFIER_USER, password=VERIFIER_PASSWORD)
 
 # Cache of jobs.db paths whose `init()` migrations have already been
 # applied this process. Avoids re-running PRAGMAs + ALTER-TABLE checks
@@ -372,7 +425,7 @@ app.mount("/tests", StaticFiles(directory=REPO_ROOT / "tests"), name="tests")
 def main() -> None:
     # Pass the app object directly rather than an import string — the script
     # is invoked as a file (verifier/serve.py), not as a package import.
-    uvicorn.run(app, host="127.0.0.1", port=PORT, log_level="warning")
+    uvicorn.run(app, host=HOST, port=PORT, log_level="warning")
 
 
 if __name__ == "__main__":

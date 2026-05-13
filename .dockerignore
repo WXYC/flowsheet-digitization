@@ -1,0 +1,28 @@
+# Keep the Docker context small + deterministic. Mirrors .gitignore for
+# the obvious dev/runtime junk and excludes the parts of data/ we DON'T
+# want baked into the image (the seed lives in .seed/ instead).
+
+.git/
+.gitignore
+.github/
+.venv/
+.claude/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local pipeline state — too big and not what the verifier serves.
+data/
+scans/
+
+# Tests, dev configs not used by the runtime image.
+tests/
+.env
+.env.example
+
+# IDE / editor noise.
+.vscode/
+.idea/

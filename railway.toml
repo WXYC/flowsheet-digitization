@@ -1,0 +1,24 @@
+# Railway service config for the verifier UI.
+#
+# Build: Railway will detect the Dockerfile at the repo root automatically.
+# Deploy: scripts/railway_entrypoint.sh hydrates the mounted volume from
+# /seed (baked into the image) on first boot, then runs verifier/serve.py.
+#
+# Required env vars to set in the Railway dashboard:
+#   VERIFIER_PASSWORD  shared password for HTTP Basic Auth (required)
+#   VERIFIER_USER      auth username (defaults to "verifier")
+# Optional:
+#   REQUEST_O_MATIC_URL  override the /api/lookup proxy target
+#
+# Mount a persistent volume at /data so corrections.json and verified.json
+# survive redeploys. Configure that in the Railway dashboard under Volumes;
+# this file cannot create the volume itself.
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "/app/scripts/railway_entrypoint.sh"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
