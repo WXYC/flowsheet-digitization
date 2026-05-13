@@ -294,6 +294,21 @@ def test_make_bundle_carries_job_key_when_provided(tmp_path: Path) -> None:
     assert bundle["page_number"] == 25
 
 
+def test_make_bundle_stem_is_pdfstem_pageNN_when_job_key_present(tmp_path: Path) -> None:
+    """The pipeline's default image filename is just `page-NN.png` — so an
+    `image_path.stem`-based bundle stem collides across PDFs. When the
+    job key is present we derive a corpus-unique stem instead:
+    `<pdf-stem>-page<NN>` (matching the existing test-fixture convention)."""
+    image_path = _white_page(tmp_path)
+    bundle = make_bundle(
+        _page_result(),
+        image_path=image_path,
+        bundle_path=tmp_path / "out.bundle.json",
+        job_key=("1990/April 1990/1990-04apr0106.pdf", 7),
+    )
+    assert bundle["stem"] == "1990-04apr0106-page07"
+
+
 def test_make_bundle_image_path_is_relative_to_bundle_dir(tmp_path: Path) -> None:
     """The bundle stays portable: image_path is computed via os.path.relpath
     from the bundle's parent directory to the source image. Tests nested

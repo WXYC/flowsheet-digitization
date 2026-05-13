@@ -246,9 +246,15 @@ def make_bundle(
     page_number: int | None = None
     if job_key is not None:
         pdf_path, page_number = job_key
+        # When we know the job key, derive a corpus-unique stem from it.
+        # The pipeline's default image filename is just `page-NN.png`,
+        # which would collide across PDFs.
+        stem = f"{Path(pdf_path).stem}-page{page_number:02d}"
+    else:
+        stem = image_path.stem
     return {
         "schema_version": SCHEMA_VERSION,
-        "stem": image_path.stem,
+        "stem": stem,
         "image_path": image_rel,
         "pdf_path": pdf_path,
         "page_number": page_number,
@@ -286,8 +292,15 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     page = PageResult.model_validate_json(args.result.read_text())
-    out_path = args.out or Path("data/verifier") / f"{args.image.stem}.bundle.json"
     job_key = _parse_job_key_from_result_path(args.result)
+    if args.out is not None:
+        out_path = args.out
+    elif job_key is not None:
+        pdf_path, page_number = job_key
+        out_stem = f"{Path(pdf_path).stem}-page{page_number:02d}"
+        out_path = Path("data/verifier") / f"{out_stem}.bundle.json"
+    else:
+        out_path = Path("data/verifier") / f"{args.image.stem}.bundle.json"
     bundle = make_bundle(page, image_path=args.image, bundle_path=out_path, job_key=job_key)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
