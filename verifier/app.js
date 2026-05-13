@@ -124,14 +124,10 @@ function finishInit() {
   $("#app").hidden = false;
   $("#save-verified").disabled = false;
   $("#mark-complete").disabled = false;
-  $("#toggle-page-view").disabled = false;
   $("#check-artists").disabled = false;
   $("#page-view-img").src = state.pageImage.src;
   renderPageMeta();
   renderQuadrants();
-  // Show the full-page reference by default; verifiers asked for this
-  // because the row crops need page context to be useful.
-  togglePageView();
   // Best-effort: fetch the bundle list to enable Prev/Next and the
   // status pill. Failures don't block editing.
   refreshNavFromBundleList().catch(() => {});
@@ -803,18 +799,6 @@ function $$(sel, root = document) {
   return Array.from(root.querySelectorAll(sel));
 }
 
-function togglePageView() {
-  const aside = $("#page-view");
-  const main = $("main");
-  const btn = $("#toggle-page-view");
-  const open = !aside.classList.contains("is-open");
-  aside.classList.toggle("is-open", open);
-  main.classList.toggle("page-view-open", open);
-  btn.classList.toggle("is-active", open);
-  aside.setAttribute("aria-hidden", String(!open));
-  btn.textContent = open ? "Hide page" : "Show page";
-}
-
 // ---- index mode ----------------------------------------------------------
 
 async function showIndex() {
@@ -1008,7 +992,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   $("#save-verified").addEventListener("click", saveDraft);
   $("#mark-complete").addEventListener("click", markComplete);
-  $("#toggle-page-view").addEventListener("click", togglePageView);
   $("#check-artists").addEventListener("click", checkArtists);
   $("#prev-page").addEventListener("click", navigatePrev);
   $("#next-page").addEventListener("click", navigateNext);

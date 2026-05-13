@@ -268,14 +268,7 @@ button:disabled {
 
 main {
   padding: 110px 24px 80px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-  transition: margin-right 0.2s ease;
-}
-
-main.page-view-open {
-  margin-right: 50vw;
-  max-width: none;
+  margin: 0 50vw 0 0;
 }
 
 section {
@@ -479,9 +472,9 @@ section h2 {
   border-color: #f8c0c0;
 }
 
-/* Page-view side panel: toggled by the "Show page" button in the header.
-   Fixed to the right edge of the viewport, occupies half the width when
-   open; content under <main> reflows via `main.page-view-open`. */
+/* Page-view side panel: always visible at the right edge of the viewport,
+   occupies half the width. The editor <main> reserves space with
+   `margin-right: 50vw`. */
 #page-view {
   position: fixed;
   top: 100px;
@@ -493,12 +486,6 @@ section h2 {
   z-index: 50;
   overflow: auto;
   padding: 12px;
-  transform: translateX(100%);
-  transition: transform 0.2s ease;
-}
-
-#page-view.is-open {
-  transform: translateX(0);
 }
 
 #page-view img {
@@ -506,10 +493,6 @@ section h2 {
   height: auto;
   display: block;
   background: white;
-}
-
-#toggle-page-view.is-active {
-  background: #1a4080;
 }
 
 .add-row {
