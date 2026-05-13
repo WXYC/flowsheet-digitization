@@ -1,0 +1,746 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page06",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-06.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 6,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:12:16.267802+00:00",
+  "page_date_raw": "SAT 4/7/90",
+  "comments_raw": "Silos-\n11/45 f&fl Clear Cold 25-30\nS 62\nFair/Cold 35 M: MS 65-70",
+  "oddities": [
+    "A circled '4E\u00b0' or '45\u00b0' is written in the upper-left margin."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        469,
+        1258,
+        2299
+      ],
+      "hour_raw": "10 PM",
+      "jock_raw": "Jeff & Will",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Cosmic Psychos - Puby Disc",
+          "confidence": "medium",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            544,
+            1258,
+            646
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Bootsteppers - Socks Baby",
+          "confidence": "medium",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            646,
+            1258,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Stone Roses - What the World is Waiting For",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            721,
+            1258,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Boozoo Chavis - Zydeco Hee Haw",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            796,
+            1258,
+            871
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Wiseblood - Stumbo",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            871,
+            1258,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Mistress Mix - Wicked",
+          "confidence": "high",
+          "type_raw": "NJ",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            947,
+            1258,
+            1022
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nice Strong Arm - Stress City",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1022,
+            1258,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Shawn's Scene From Psycho - White Rabbit",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1096,
+            1258,
+            1172
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "XTC - This is Pop",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1172,
+            1258,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Kanda Bongo Man - Cantique",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1248,
+            1258,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Kid Creole - I'm Corrupt",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1323,
+            1258,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Savage Republic - Mapia",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1398,
+            1258,
+            1474
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Cowboy Junkies - Sun Comes Up",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1474,
+            1258,
+            1549
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1258,
+        469,
+        2550,
+        2299
+      ],
+      "hour_raw": "12A",
+      "jock_raw": "Jeff R",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Meat Puppets - New Godz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            544,
+            2550,
+            646
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Green River - Ride of Your Life",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            646,
+            2550,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Art Ensemble of Chi-Town - Nonaah",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            721,
+            2550,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Syd Barrett - Let's Split",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            796,
+            2550,
+            871
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "[illegible]",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            871,
+            2550,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Henry Kaiser - Words (Victoria Wms: vox)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            947,
+            2550,
+            1022
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Henry Kaiser - Dark Star",
+          "confidence": "medium",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [
+            "Part of the track name is crossed out before 'Dark Star'."
+          ],
+          "row_bbox": [
+            1258,
+            1022,
+            2550,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Jan & Dean - Little Old Lady From Pasadena",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1096,
+            2550,
+            1172
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Jesus & Mary Chain - Happy Place",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1172,
+            2550,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Philip Glass - Floe",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1248,
+            2550,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Devo - Snowball",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1323,
+            2550,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Cecil Taylor - Charles & Thee",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1398,
+            2550,
+            1474
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2299,
+        1258,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Charms - Carry Go Bring Come",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2249,
+            1258,
+            2349
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Nikki Sudden & French Revolution - Groove",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2349,
+            1258,
+            2499
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Silos - Porque No",
+          "confidence": "high",
+          "type_raw": "RR",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2499,
+            1258,
+            2575
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Peggy Lee - Ooh That Kiss",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2575,
+            1258,
+            2651
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Thee Hypnotics - Preachin' & Ramblin'",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2651,
+            1258,
+            2726
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Giant Sand - Loving Cup",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2726,
+            1258,
+            2800
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Sam Bush - Last Letter Home",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2800,
+            1258,
+            2876
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Neats - Tear My Soul",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2876,
+            1258,
+            2951
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Metallica - No Remorse",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2951,
+            1258,
+            3026
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Ice-T - What Ya Wanna Do? (Do U Want To Go Party?)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3026,
+            1258,
+            3176
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Public Image Ltd - Albatross",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3176,
+            1258,
+            3250
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Meat Beat Manifesto - Dog Star Man",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3250,
+            1258,
+            3326
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1258,
+        2299,
+        2550,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Johnny Mathis - Chances Are",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2249,
+            2550,
+            2349
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Cosmic Psychos - Lost Cause",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2349,
+            2550,
+            2424
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Pagans - Haven't Got the Time",
+          "confidence": "medium",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2424,
+            2550,
+            2499
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Young MC - Know How",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2499,
+            2550,
+            2575
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "(Rastafari) - Why Do the Heathen Rage",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2575,
+            2550,
+            2651
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Meters - Handclapping Song/Batches",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2651,
+            2550,
+            2726
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nick Lowe - You Got the Look I like",
+          "confidence": "high",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2726,
+            2550,
+            2800
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Tackhead - Demolition House / Free So. Africa Ticking Time Bomb",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2800,
+            2550,
+            3026
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Lazy Cowgirls - Lose'n Yr Mind Meat Shop Carbona Not Glue Know Yr Product",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3026,
+            2550,
+            3326
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Watermelon Men - Still I'm Dressed In Blue",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3326,
+            2550,
+            3400
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Sam Bush - Last Letter Home \" \" - Norman & Nancy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3400,
+            2550,
+            3551
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

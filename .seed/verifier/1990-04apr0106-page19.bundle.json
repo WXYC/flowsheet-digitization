@@ -1,0 +1,893 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page19",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-19.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 19,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:15:55.537484+00:00",
+  "page_date_raw": "WED 4/4/90",
+  "comments_raw": null,
+  "oddities": [
+    "Comments section at the bottom contains handwritten notes 'neon/PS 55', 'PC/By 58', 'PC 40', and 'MS 70'",
+    "A scribbled out mark appears next to 'MS 70' in the comments area"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        476,
+        1284,
+        2305
+      ],
+      "hour_raw": "10 AM",
+      "jock_raw": "BOB B.",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "PRETENDERS - TATTOOED LOVE BOYS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'TATTOOED' is written slightly above the rest of the track name"
+          ],
+          "row_bbox": [
+            0,
+            551,
+            1284,
+            653
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "CHRISTINE LAVIN - THE KIND OF LOVE YOU NEVER RECOVER FROM",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "The words 'RECOVER FROM' are written on a sub-line slightly below the rest of the text"
+          ],
+          "row_bbox": [
+            0,
+            653,
+            1284,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "STOP THE VIOLENCE MOVT. SELF DESTRUCTION",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            801,
+            1284,
+            954
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "STONE ROSES - SIMONE",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            954,
+            1284,
+            1028
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "SAM & DAVE - HOLD ON, I'M COMING",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1028,
+            1284,
+            1179
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "CHRIS CACHVAS - BLUE RIVER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1179,
+            1284,
+            1254
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "SKYLARK CUT# 12",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1254,
+            1284,
+            1331
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "LUSH - DE-LUXE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1331,
+            1284,
+            1405
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "PRESERVATION HALL JAZZ BAND - I AINT GOT NOBODY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1405,
+            1284,
+            1555
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "ANGELS - THE CHATTUM",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1555,
+            1284,
+            1631
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "LOVE TRACTOR - BEATLE BOOTS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1631,
+            1284,
+            1706
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "LOVE AT LARGE - THE PRINCIPLE PIECE IN CHESS GAME",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1706,
+            1284,
+            1856
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "BEVIS FROND - YOUR MINDS GONE GREY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1856,
+            1284,
+            2005
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "DANIEL OWINO MISIANI - WUORO MONONO",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2005,
+            1284,
+            2155
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1284,
+        476,
+        2550,
+        2305
+      ],
+      "hour_raw": "12 PM",
+      "jock_raw": "Bob/Jeff/Juliette",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "PRINCE ANOTHER HOLE IN YO HEAD",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            653,
+            2550,
+            806
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "CHRIS SMITHER - GHOST STORY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            806,
+            2550,
+            878
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "ALBERTA HUNTER - EZEKIEL SAW THE WHEEL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "An arrow points from the left margin into the start of this line"
+          ],
+          "row_bbox": [
+            1284,
+            878,
+            2550,
+            1028
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "BLUE AEROPLANES - THE APPLICANT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1028,
+            2550,
+            1103
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "SONNY & CHER - WHEN YOU SAY LOVE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1103,
+            2550,
+            1179
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "TOOTS HIBBERT - LOVE & HAPPINESS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1179,
+            2550,
+            1331
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "ALEX CHILTON - BANGKOK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1331,
+            2550,
+            1405
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "FREAKS - INSIDE OF MY MIND",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1405,
+            2550,
+            1480
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "NICE STRONG ARM - DESERT BEAUTY BLOOM",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1480,
+            2550,
+            1631
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Jimi Hendrix - Wait Until Tomorrow",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1631,
+            2550,
+            1706
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Sweethearts of Rodeo - What It Does To Me",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'To Me' wrap upwards diagonally at the end of the line"
+          ],
+          "row_bbox": [
+            1284,
+            1706,
+            2550,
+            1781
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Royal Trux - Love Is",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1781,
+            2550,
+            1856
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "The Elastik Band - Spazz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1856,
+            2550,
+            1931
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "MC Hammer - This Is What We Do",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1931,
+            2550,
+            2005
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "House of Love - I Don't Why I love You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2005,
+            2550,
+            2081
+          ]
+        }
+      ],
+      "oddities": [
+        "Handwriting changes to a cursive script starting at row 12"
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2305,
+        1284,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": "BOB",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "TACKHEAD - STEALING",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2255,
+            1284,
+            2356
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "CHILLS - PART PAST PART FICTION",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2356,
+            1284,
+            2506
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "MICHAEL HEDGES - SILENT ANTICIPATIONS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2506,
+            1284,
+            2656
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "NAKED CITY - 13-17",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2656,
+            1284,
+            2731
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "BOOYA TRIBE - NEW FUNKY NATION",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2731,
+            1284,
+            2881
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "KENNY NEAL - THE SON I NEVER KNEW",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2881,
+            1284,
+            3032
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "JONI MITCHELL - BIG YELLOW TAXI",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3032,
+            1284,
+            3106
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "VELDT - IT'S OVER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3106,
+            1284,
+            3181
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "EGBERTO GISMONTI - DANCANDO",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The abbreviation 'CON' is written and circled in the left margin instead of standard letters"
+          ],
+          "row_bbox": [
+            0,
+            3181,
+            1284,
+            3256
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "BONGWATER - HE LOVED THE WEATHER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3256,
+            1284,
+            3406
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "L.COLE & COMMOTIONS - SEAN PENN BLUES",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'SEAN PENN BLUES' are stacked vertically on two lines within the single row"
+          ],
+          "row_bbox": [
+            0,
+            3406,
+            1284,
+            3482
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "COWBOY JUNKIES - POWDERFINGER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3482,
+            1284,
+            3557
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "BLACK UHURU - FIT YOU HAFFEE",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3557,
+            1284,
+            3632
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1284,
+        2305,
+        2550,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "James \"Sugarboy\" Crawford - Jockomo",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2255,
+            2550,
+            2356
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "MC 900 Ft Jesus & DJ 0 - Talking 2 the Spirit",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The '& DJ 0' portion of the artist name is crossed out"
+          ],
+          "row_bbox": [
+            1284,
+            2356,
+            2550,
+            2430
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Chapter 2 - Coiya",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2430,
+            2550,
+            2506
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Beat - Beat of the Heart",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2506,
+            2550,
+            2581
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Nikki Sudden & French Rev'n - Capt. Kennedy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "An illegible word between Capt. and Kennedy is heavily scribbled out"
+          ],
+          "row_bbox": [
+            1284,
+            2581,
+            2550,
+            2731
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Dub Syndicate - Chapter & Verse",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2731,
+            2550,
+            2807
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Michelle Shocked - One Piece at a Time",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2807,
+            2550,
+            2881
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Silos (whoops) - Here's to You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2881,
+            2550,
+            2955
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Deaf Leopard - Animal Ben Brown",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The name 'Ben Brown' is written at the far right edge of the line"
+          ],
+          "row_bbox": [
+            1284,
+            2955,
+            2550,
+            3032
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "ENO - The True Wheel",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3032,
+            2550,
+            3106
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Hubert Sumlin's Blues Party - Blue Guitar",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3106,
+            2550,
+            3181
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Biz Markie - Just A Friend",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3181,
+            2550,
+            3256
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Psychefunkapus A.M.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3256,
+            2550,
+            3331
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Turtle Island - Julie-O",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3331,
+            2550,
+            3406
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Sinead O' I do not want what I haven't got",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "The artist name is missing the surname and there is no dash separating artist and track"
+          ],
+          "row_bbox": [
+            1284,
+            3406,
+            2550,
+            3557
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr2430-page28",
+  "image_path": "../pages/1990/April 1990/1990-04apr2430/page-28.png",
+  "pdf_path": "1990/April 1990/1990-04apr2430.pdf",
+  "page_number": 28,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:18:11.249733+00:00",
+  "page_date_raw": "Sat 28 Apr 90",
+  "comments_raw": null,
+  "oddities": [
+    "The number '74\u00b0' is written in the top left corner of the page above the printed 'Hour' label.",
+    "The 'Comments:' field at the bottom of the page contains the text 'Magazine - Perm Frost - Paisa~'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        479,
+        1285,
+        2309
+      ],
+      "hour_raw": "11pm",
+      "jock_raw": "Jesse Walker",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "A Tribe Called Quest - Can I Kick It?",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            554,
+            1285,
+            655
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Anita Lane - Lost in Music",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            655,
+            1285,
+            730
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Mthembu Queens - As of today",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            730,
+            1285,
+            805
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Robyn Hitchcock - Eye Satellite",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            805,
+            1285,
+            880
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Nirvana - Love Buzz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            880,
+            1285,
+            956
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Nurse w/ Wound - Nil By Mouth",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            956,
+            1285,
+            1030
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Lou Reed - Metal Machine Music",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1030,
+            1285,
+            1106
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "B-52's - Deadbeat Club",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1106,
+            1285,
+            1183
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Fugazi - Reprovisional",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1183,
+            1285,
+            1259
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Ac Temple - Up To Here w/ You",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1259,
+            1285,
+            1334
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Aquanettas - Love letters Proper Stranger",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The phrase 'Love letters' is crossed out and 'Proper Stranger' is written over/below it."
+          ],
+          "row_bbox": [
+            0,
+            1334,
+            1285,
+            1409
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Magazine - Permafrost",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1409,
+            1285,
+            1485
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Sandmen - Western Blood",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1485,
+            1285,
+            1560
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Phil Hammond - Sluglillies",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1560,
+            1285,
+            1635
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Greater Than 1 - Peace",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1635,
+            1285,
+            1711
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Dave Bowie - Up The Hill Backwards",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1711,
+            1285,
+            1785
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Jungle Bros - What U waitin 4",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1785,
+            1285,
+            1860
+          ]
+        }
+      ],
+      "oddities": [
+        "A hand-drawn curly brace in the left margin groups rows 0 through 11, with an arrow pointing outward."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1285,
+        479,
+        2550,
+        2309
+      ],
+      "hour_raw": "12am",
+      "jock_raw": "P. J.",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "More Noise",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            662,
+            2550,
+            885
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Savage Republic - Song for Adonis",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            885,
+            2550,
+            1036
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2309,
+        1285,
+        4068
+      ],
+      "hour_raw": null,
+      "jock_raw": "Pat Nolan",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Nicolas Cave - Sunday's Child",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2259,
+            1285,
+            2360
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Moonglows - Blue Velvet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2360,
+            1285,
+            2435
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Honeymoon in Red -",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2435,
+            1285,
+            2510
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Roy Orbison - In Dreams",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2510,
+            1285,
+            2585
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Virginia Astley - Waiting to fall",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2585,
+            1285,
+            2661
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Dark Arts - These are made of love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2661,
+            1285,
+            2736
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Tom Waits - Swordfishtrombone",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2736,
+            1285,
+            2810
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Depeche Mode - Memphisto",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2810,
+            1285,
+            2886
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "E. Neubauten - Adler Kommt sp\u00e4ter",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2886,
+            1285,
+            2961
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Siouxsie - An Execution",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2961,
+            1285,
+            3036
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "plus Diamanda Galas on b-vox",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "This entry acts as a modifier for the previous row and is written indented without an artist or track separation."
+          ],
+          "row_bbox": [
+            0,
+            3036,
+            1285,
+            3111
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Cure - Lament",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3111,
+            1285,
+            3186
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Swans - Anything for you",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3186,
+            1285,
+            3260
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Cindytalk - In this world",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3260,
+            1285,
+            3335
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "A bunch of stuff for awhile",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3335,
+            1285,
+            3411
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1285,
+        2309,
+        2550,
+        4068
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 11,
+          "raw_text": "John Coltrane - Blue train",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "There is a scribbled circle or symbol between 'John' and 'Coltrane'."
+          ],
+          "row_bbox": [
+            1285,
+            2360,
+            2550,
+            2435
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

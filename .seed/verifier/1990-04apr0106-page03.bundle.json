@@ -1,0 +1,860 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page03",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-03.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 3,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:11:40.976348+00:00",
+  "page_date_raw": "Sunday 4/1/90",
+  "comments_raw": null,
+  "oddities": [
+    "Text at the bottom right corner of the page below the lines reads 'Big brown eyes' and 'Nina Simone'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        468,
+        1257,
+        2300
+      ],
+      "hour_raw": "10AM",
+      "jock_raw": "KRISTINA",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Barbara Pittman - Sentimental Fool",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            547,
+            1257,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Patsy Montana - I Want to be a Cowboy's Sweetheart",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'Sweetheart' is written slightly above the line at the very end."
+          ],
+          "row_bbox": [
+            0,
+            647,
+            1257,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Billie Holiday - Miss Brown to You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            721,
+            1257,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Carl Perkins - You Can't Make Love to Somebody",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            796,
+            1257,
+            870
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Jerry Douglas - A Peaceful Return",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            870,
+            1257,
+            946
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Nat'l Indp. Gospel Singers - I MET MY ELDER THIS AM",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            946,
+            1257,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Paddy Moloney & Sean Potts - Jimmy McMahons Star",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1021,
+            1257,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Slim Harpo - Little Queen Bee (Got A Brand New King)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1096,
+            1257,
+            1171
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Kumina - Before Day",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1171,
+            1257,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "YUNIS AL HILALI - Love As Vast As A River",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'A River' are written below the rest of the track title."
+          ],
+          "row_bbox": [
+            0,
+            1248,
+            1257,
+            1324
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "MUZSIKAS - EDDIE VENDEG",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1324,
+            1257,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Prairie Ramblers - Kentucky Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1398,
+            1257,
+            1474
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Sonny Burgess - Ain't Got A Thang",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1474,
+            1257,
+            1549
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Margie Ward - I Shot Sam",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1549,
+            1257,
+            1624
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Nettles Sisters - Real Gone Jive",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1624,
+            1257,
+            1700
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Gid Tanner & the Skillet Lickers- On Tanner's Farm",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1700,
+            1257,
+            1775
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Boozoo Chavis - My Toot Toot",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1775,
+            1257,
+            1849
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Koko Taylor - Twenty Nine Ways",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1849,
+            1257,
+            1924
+          ]
+        }
+      ],
+      "oddities": [
+        "The hour '10AM' is heavily traced or written over a previous number."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1257,
+        468,
+        2550,
+        2300
+      ],
+      "hour_raw": "12AM",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "CCS",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            543,
+            2550,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Ted Hawkins & Riley Puckett - Tokio Rag",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            647,
+            2550,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Chris Knox - And I Will Cry",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            721,
+            2550,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Sister Carol - Get It Straight",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            796,
+            2550,
+            870
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2300,
+        1257,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": "Kristina",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "K.D. LANG - Diet of Strange Places Pulling Back The Reins",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The track 'Pulling Back The Reins' is struck through, and 'Diet of Strange Places' is written directly above it."
+          ],
+          "row_bbox": [
+            0,
+            2300,
+            1257,
+            2384
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Count Basie Orch. - A. F. By Basie",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2384,
+            1257,
+            2469
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Tannahill Weavers - I Once Loved A Lass",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2469,
+            1257,
+            2553
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "International Sweethearts of Rhythm - VIGOR",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2553,
+            1257,
+            2638
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Chieftains - Labadaan",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2638,
+            1257,
+            2722
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "DAVID GRISMAN - Leavin' Home",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2722,
+            1257,
+            2807
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Louvin Brothers - Yoo Hoo Running Wild - mistake",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'Yoo Hoo' are written above 'Running Wild' and the note '- mistake' is written at the far right."
+          ],
+          "row_bbox": [
+            0,
+            2807,
+            1257,
+            2891
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Willie Mae \"Big Mama\" Thornton - Hound Dog",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2891,
+            1257,
+            2976
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Janis Martin - Little Bit",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2976,
+            1257,
+            3060
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Fairport - Matty Groves",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3060,
+            1257,
+            3145
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "No Strings Attached - The Flying Cloud",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3145,
+            1257,
+            3229
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "3 Mustaphas 3 - Lenin On Trotsky!",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3229,
+            1257,
+            3314
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Hazel Dickens - Tears From an Old Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3314,
+            1257,
+            3398
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Kapelye - Valle & Pogradecit",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3398,
+            1257,
+            3483
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Cantor Berele Chagy - Mi Sheoso Nisin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The phrase 'Mi Sheoso' is written directly above the word 'Nisin'."
+          ],
+          "row_bbox": [
+            0,
+            3483,
+            1257,
+            3567
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Maddox Brothers & Rose - The Girl I Love Don't Pay Me No Mind",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The phrase 'The Girl I Love' is written directly above 'Don't Pay Me No Mind'."
+          ],
+          "row_bbox": [
+            0,
+            3567,
+            1257,
+            3652
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Hank Williams - I Saw the Light",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3652,
+            1257,
+            3736
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Kitty Wells - It Wasn't God Who Made",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3736,
+            1257,
+            3821
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Liam O'Flynn - Brendan Theme",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3821,
+            1257,
+            3905
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Steeleye Span - Saucy Sailor",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3905,
+            1257,
+            3990
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "Maura O'Connell - The Scholar",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3990,
+            1257,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1257,
+        2300,
+        2550,
+        4074
+      ],
+      "hour_raw": "1pm",
+      "jock_raw": "W Martin",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Steve Lacy 6 Morning Joy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2349,
+            2550,
+            2424
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Benny Goodman Co China Boy",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2424,
+            2550,
+            2500
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Ellington Flirtibird",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2500,
+            2550,
+            2575
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Cecil Taylor Feng Shui",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The name 'Cecil' is heavily scribbled over but remains legible."
+          ],
+          "row_bbox": [
+            1257,
+            2575,
+            2550,
+            2651
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Art Pepper Powder Puff",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2651,
+            2550,
+            2723
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "David Murray Spooring",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2723,
+            2550,
+            2798
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Fats Navaro Our delight",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2798,
+            2550,
+            2874
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Max Roach 4 Henry Street Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2874,
+            2550,
+            2948
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Jon Hendricks Bright Moments",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2948,
+            2550,
+            3023
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Charles Mingus Duet Solo Dancers",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            3023,
+            2550,
+            3098
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Lorez Alexandria Satin Doll",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            3098,
+            2550,
+            3247
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Donald Byrd Sophisticated Lady",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            3247,
+            2550,
+            3398
+          ]
+        }
+      ],
+      "oddities": [
+        "This quadrant omits dashes between artists and track titles."
+      ]
+    }
+  ]
+}

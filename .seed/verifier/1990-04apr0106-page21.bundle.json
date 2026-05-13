@@ -1,0 +1,978 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page21",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-21.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 21,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:17:02.907922+00:00",
+  "page_date_raw": "WED 4/4/90",
+  "comments_raw": null,
+  "oddities": [
+    "Top right corner contains handwritten text: 'Glenn-mocha', 'Vini-dacha' and a crossed out phrase 'magical mystery boy'.",
+    "Weather annotations near the top center read '61 degrees 40 pt/cl'.",
+    "Bottom margin contains text: 'Rave Ups (new) Agitpop 56 degrees Ptcl L 40'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1265,
+        2302
+      ],
+      "hour_raw": "6PM",
+      "jock_raw": "Cheryl Parker",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "ELO - Evil woman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            649,
+            1265,
+            724
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "PE - Hey Venus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            724,
+            1265,
+            798
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Fluid - Tomorrow",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            798,
+            1265,
+            873
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Fall - And there is",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            873,
+            1265,
+            949
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Embarrassment - Drive me to the park",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'park' is written below the end of the line."
+          ],
+          "row_bbox": [
+            0,
+            949,
+            1265,
+            1023
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Turbines - Hangin Tough",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1023,
+            1265,
+            1099
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Lyle Lovett - Why I don't know",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1099,
+            1265,
+            1174
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Buddy Guy - My mother",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1174,
+            1265,
+            1250
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Savage Republic - Mapia",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1250,
+            1265,
+            1326
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Morris Pert - Marrakesh",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1326,
+            1265,
+            1401
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Magnolias - Don't see that girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1401,
+            1265,
+            1476
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Mind Siren - What are you doing",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1476,
+            1265,
+            1551
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Cynics - cry cry cry",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1551,
+            1265,
+            1627
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "PE - 911 is a joke",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1627,
+            1265,
+            1702
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bongwater - Too much sleep",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1702,
+            1265,
+            1776
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Fundamentals - Sincere",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1776,
+            1265,
+            1852
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1265,
+        470,
+        2550,
+        2302
+      ],
+      "hour_raw": "8PM",
+      "jock_raw": "Scott",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "STETSASONIC - SALLY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            544,
+            2550,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "SOFT BOYS - BLACK SNAKE DIAMOND ROCK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            649,
+            2550,
+            724
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Chapter 2 - Be You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            724,
+            2550,
+            798
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Martin L Gore - Motherless Child",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            798,
+            2550,
+            873
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Arson Garden - 2 Sisters",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            873,
+            2550,
+            949
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Led Zeppelin - Immigrant Song",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            949,
+            2550,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Vomit Launch - Swelling Admiration",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1023,
+            2550,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Dub Syndicate - Mafia",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1099,
+            2550,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Rave Ups - Respectfully King of Rain",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1174,
+            2550,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "MA Rainey - GEORGIA CAKEWALK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1250,
+            2550,
+            1326
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "AGITPOP - Reading All About It",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1326,
+            2550,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Voodoo GEARSHIFT - 3 IN A Row",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1401,
+            2550,
+            1476
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Giant Sand - Patsy Does Dylan/It's long About Now",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'About Now' are squeezed in below the end of the line."
+          ],
+          "row_bbox": [
+            1265,
+            1476,
+            2550,
+            1551
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Charles Mingus - Free Cell Block F, 'Tis Nazi USA",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1551,
+            2550,
+            1702
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Silos - Porque No",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1702,
+            2550,
+            1776
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Jean Shepard - 2 Whoops + A Holler",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            1776,
+            2550,
+            1852
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2302,
+        1265,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Replacements - I will dare",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2302,
+            1265,
+            2413
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Dogmatics - King size cigarette",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2413,
+            1265,
+            2524
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Swallow - foetus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2524,
+            1265,
+            2634
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Popes - Don't expect",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2634,
+            1265,
+            2745
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Chills - familiarity breeds contempt",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2745,
+            1265,
+            2856
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Smithereens - I don't want to lose you",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'lose you' are wrapped below the rest of the track name."
+          ],
+          "row_bbox": [
+            0,
+            2856,
+            1265,
+            2966
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Bill Withers - use me",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2966,
+            1265,
+            3077
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Queen latifah - Queen of Royal badness",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'badness' is wrapped below the rest of the track name."
+          ],
+          "row_bbox": [
+            0,
+            3077,
+            1265,
+            3188
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "MC 900 ft. Jesus & DJ zero - I'm going straight to heaven",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3188,
+            1265,
+            3299
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Mary Marg. O'Hara - My friends have",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'have' is wrapped below the rest of the track name."
+          ],
+          "row_bbox": [
+            0,
+            3299,
+            1265,
+            3410
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Trotsky Icepick - Mar vista bustop",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3410,
+            1265,
+            3520
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Nice Strong arm - neighborhood whore",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'whore' is wrapped below the rest of the track name."
+          ],
+          "row_bbox": [
+            0,
+            3520,
+            1265,
+            3631
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Undead - Ratt fink",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3631,
+            1265,
+            3742
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Felt - Cartoon Sky",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3742,
+            1265,
+            3852
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Mission - Into the blue",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3852,
+            1265,
+            3963
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Flaming Lips - After the Goldrush",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3963,
+            1265,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1265,
+        2302,
+        2550,
+        4074
+      ],
+      "hour_raw": "9PM",
+      "jock_raw": "Scott",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Ted Nugent - Free For All",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            2302,
+            2550,
+            2420
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "House of Large Sizes - Edison human",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            2420,
+            2550,
+            2538
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "No Strings Attached - Puttin On The Ritz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            2538,
+            2550,
+            2656
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Bob Marley - So Much Trouble In The World",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            2656,
+            2550,
+            2775
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bill Monroe - Can't You Hear me Callin'",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            2775,
+            2550,
+            2893
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Ilene Weiss - No Baby",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Bracketed annotation '[Fast Folk]' in right margin."
+          ],
+          "row_bbox": [
+            1265,
+            2893,
+            2550,
+            3011
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Tom Clark - Blisters + Smoke",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Bracketed annotation '[Anti-folk]' in right margin."
+          ],
+          "row_bbox": [
+            1265,
+            3011,
+            2550,
+            3129
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Loop - Shot w/ A Diamond",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            3129,
+            2550,
+            3247
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Marvin Gaye / T. Terrell - You're All I Need 2 Get By",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words '2 Get By' are wrapped below the end of the line."
+          ],
+          "row_bbox": [
+            1265,
+            3247,
+            2550,
+            3365
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Spacemen 3 - Hey Man",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            3365,
+            2550,
+            3483
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Red Allen - Sometime some day",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Artist name is preceded by a crossed-out word."
+          ],
+          "row_bbox": [
+            1265,
+            3483,
+            2550,
+            3601
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Sarah McLachlan - Touch",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            3601,
+            2550,
+            3720
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Primal Scream - I'm Losing More Than I'll Ever Have",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'Ever Have' are wrapped below the end of the line."
+          ],
+          "row_bbox": [
+            1265,
+            3720,
+            2550,
+            3838
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Cowboy Junkies - Where Are You Tonight?",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            3838,
+            2550,
+            3956
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Sarah Vaughn - Come Rain or Come Shine",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1265,
+            3956,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

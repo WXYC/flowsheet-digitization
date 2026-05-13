@@ -1,0 +1,915 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page05",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-05.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 5,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:12:24.298928+00:00",
+  "page_date_raw": "SAT 4/7/90",
+  "comments_raw": "Stone Roses Pete Murphy- acoustic Drop Mirick Legion\nBlind Faith-\nBad Checks\nSmiths - jock no Volcano Suns",
+  "oddities": [
+    "Weather note at top right: 'cl. cold to 25.'",
+    "Circled '50\u00b0' next to top right Jock name",
+    "Circled '48\u00b0' next to bottom right Jock name"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        473,
+        1256,
+        2302
+      ],
+      "hour_raw": "6 PM",
+      "jock_raw": "SAAED",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "KEVN KINNEY- MCDOUGAL BLUES",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            548,
+            1256,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "PUBLIC ENEMY- 911 IS A JOKE",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [
+            "Circled R in left margin"
+          ],
+          "row_bbox": [
+            0,
+            650,
+            1256,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "NINA HAGEN- RUSSIAN REGGAE",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1256,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "BONGWATER - THRIVING END",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle"
+          ],
+          "row_bbox": [
+            0,
+            800,
+            1256,
+            874
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "DELMONAS - BLACK LUELLA",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            874,
+            1256,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "BRICKS - MT GOLD TO MOHO",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle"
+          ],
+          "row_bbox": [
+            0,
+            951,
+            1256,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "JOE POP O PIE - BUMMED OUT GUY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1026,
+            1256,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "IGGY POP - SCENE OF CRIME",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1101,
+            1256,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "BOOYAA TRIBE - PICKIN' UP METAL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1177,
+            1256,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "TRAGIC MULATTO - WHOLE LOTTA LOVE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Left margin note 'cradle sun april 27th concer' points near this row"
+          ],
+          "row_bbox": [
+            0,
+            1252,
+            1256,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "ROYAL TRUX - LOVE IS",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle"
+          ],
+          "row_bbox": [
+            0,
+            1328,
+            1256,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "SEAWEED - LOVE CUT",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle"
+          ],
+          "row_bbox": [
+            0,
+            1402,
+            1256,
+            1478
+          ]
+        }
+      ],
+      "oddities": [
+        "Large text 'BAD CHECKS' and an upward arrow are drawn across the bottom blank rows"
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1256,
+        473,
+        2550,
+        2302
+      ],
+      "hour_raw": "8PM",
+      "jock_raw": "Jeff E Wall",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "A Tribe Called Quest - Can I Kick It?",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            548,
+            2550,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Nick Cave - The Train Song",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            650,
+            2550,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Sinead O'Connor - Nothing Compares 2 U",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            725,
+            2550,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Chapter 2 - The Day I Nailed My Heart To Your Front Door",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            800,
+            2550,
+            951
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Peter Murphy - Marlene Dietrich's Fav Poem",
+          "confidence": "high",
+          "type_raw": "R-O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            951,
+            2550,
+            1026
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Marlene Deitrich - Falling In Love Again",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1026,
+            2550,
+            1101
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Bad Checks - Graveyard Tramp",
+          "confidence": "high",
+          "type_raw": "R H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1101,
+            2550,
+            1177
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Chills - Heavenly Pop Hit",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1177,
+            2550,
+            1252
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Mirick Legion - StoryTeller",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1252,
+            2550,
+            1328
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Gaylord Curtis - The Phantom Of The Opera",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "Small notation '0.5 opesa' at end of row"
+          ],
+          "row_bbox": [
+            1256,
+            1328,
+            2550,
+            1402
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Teddy Brannon - Everybody Get Together",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1402,
+            2550,
+            1478
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Fast Folk - Odetta - Children Go Where I Send Thee",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1478,
+            2550,
+            1553
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Funkadelic - By Way of The Drum",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1553,
+            2550,
+            1629
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2302,
+        1256,
+        4024
+      ],
+      "hour_raw": "7pm",
+      "jock_raw": "SAAED",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "L7 - CAT O' NINE TAILS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1256,
+            2357
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "SHOCKING BLUE - BOOL WEEVIL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2357,
+            1256,
+            2432
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "BEASTIE BOYS - SHADRACH",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [
+            "Type raw 'NV' has a strike through it"
+          ],
+          "row_bbox": [
+            0,
+            2432,
+            1256,
+            2503
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "LEADBELLY - ON A MONDAY",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle",
+            "Note 'song for kings' written above text"
+          ],
+          "row_bbox": [
+            0,
+            2503,
+            1256,
+            2580
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "LOOP - BREATHE INTO ME",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle",
+            "Note 'a gilded eternity' written below text"
+          ],
+          "row_bbox": [
+            0,
+            2580,
+            1256,
+            2655
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "SISTER DOUBLE HAPPINESS - POODLE DOG",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2655,
+            1256,
+            2808
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "PLASTICLAND - DONT ANTAGONIZE ME",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2808,
+            1256,
+            2876
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "SEARCHERS - LOVE POTION #9",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2876,
+            1256,
+            2882
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "SMACK - PRIMITIVE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2882,
+            1256,
+            2958
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "NIRVANA - FLOYD THE BARBER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Margin note 'cradle may 1st' near this row"
+          ],
+          "row_bbox": [
+            0,
+            2958,
+            1256,
+            3033
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "WSH - DOWNER",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle",
+            "Note 'bleach ep.' written above text"
+          ],
+          "row_bbox": [
+            0,
+            3033,
+            1256,
+            3108
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "LAZY COWGIRLS - YOURE GONNA MISS ME",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3108,
+            1256,
+            3183
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "NAKED CITY - BATMAN",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle"
+          ],
+          "row_bbox": [
+            0,
+            3183,
+            1256,
+            3255
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "HONEYMOON KILLERS - OCTOPUSSY (SERENADE)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word '(SERENADE)' at end of line is crossed out"
+          ],
+          "row_bbox": [
+            0,
+            3255,
+            1256,
+            3333
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "CARL PERKINS - HONEY DONT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3333,
+            1256,
+            3408
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "ROBYN HITCHCOCK - CERTAINLY CLICKOT",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "PB written in margin next to type circle"
+          ],
+          "row_bbox": [
+            0,
+            3408,
+            1256,
+            3485
+          ]
+        }
+      ],
+      "oddities": [
+        "Text 'interview w/ mike' and a downward arrow are drawn across the top few rows"
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1256,
+        2302,
+        2550,
+        4024
+      ],
+      "hour_raw": "9",
+      "jock_raw": "JEW.",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "T-be Bar",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2302,
+            2550,
+            2410
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Fall - Telephone Thing",
+          "confidence": "high",
+          "type_raw": "R M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2410,
+            2550,
+            2517
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Maggie Estep - Paradise Lost (broom closet)",
+          "confidence": "high",
+          "type_raw": "R M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2517,
+            2550,
+            2625
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Mthembu Queens - We Are Happy",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [
+            "Word crossed out before 'We'"
+          ],
+          "row_bbox": [
+            1256,
+            2625,
+            2550,
+            2732
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "The Penis Friend - Rejection Day",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2732,
+            2550,
+            2840
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Blind Faith - Can't Find My Way Home",
+          "confidence": "high",
+          "type_raw": "O Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2840,
+            2550,
+            2948
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Spacemen 3 - Suicide",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2948,
+            2550,
+            3055
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Led Zeppelin - Friends",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3055,
+            2550,
+            3163
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Rob Base + DJ EZ Rock - It Takes 2",
+          "confidence": "high",
+          "type_raw": "4it",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3163,
+            2550,
+            3271
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Eight Eys - Imprint w/ Witch",
+          "confidence": "medium",
+          "type_raw": "E",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3271,
+            2550,
+            3378
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Billy Bragg - A New England",
+          "confidence": "high",
+          "type_raw": "Std?",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3378,
+            2550,
+            3486
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Boys Next Door - Roman Roman",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3486,
+            2550,
+            3594
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Volcano Suns - Soft Hit",
+          "confidence": "high",
+          "type_raw": "CC",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3594,
+            2550,
+            3701
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Jazz Passngers - d.composers By A Neck",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3701,
+            2550,
+            3809
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Brazil & Forro - Melao Dos Oito Baixos",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "Small note 'art&dot' at end of row"
+          ],
+          "row_bbox": [
+            1256,
+            3809,
+            2550,
+            3916
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Bob w.e.T. - Cassidy",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3916,
+            2550,
+            4024
+          ]
+        }
+      ],
+      "oddities": [
+        "A large brace labeled 'Jwl' and 'w/' groups Spacemen 3 and Led Zeppelin rows"
+      ]
+    }
+  ]
+}

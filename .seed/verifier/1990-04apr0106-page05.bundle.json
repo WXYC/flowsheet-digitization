@@ -1,0 +1,459 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page05",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-05.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 5,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:12:08.549309+00:00",
+  "page_date_raw": "Sun 4/1/90",
+  "comments_raw": null,
+  "oddities": [
+    "The top right corner has handwritten text: 'Bob Osterreich', 'fill-in with', and heavily scribbled out names.",
+    "A thick black line is drawn vertically down the middle of the page, separating the left and right quadrants."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        473,
+        1262,
+        2301
+      ],
+      "hour_raw": "6PM",
+      "jock_raw": null,
+      "entries": [],
+      "oddities": [
+        "The hour label '6PM' is heavily crossed out."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1262,
+        473,
+        2550,
+        2301
+      ],
+      "hour_raw": "8PM",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "8PM JQ - Lady Cop",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            548,
+            2550,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Slurpee!! - Kick! O.J.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            650,
+            2550,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Pt Q - If Only",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            725,
+            2550,
+            799
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Dillon Fence",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "Entry is written very large and enclosed in a hand-drawn oval."
+          ],
+          "row_bbox": [
+            1262,
+            799,
+            2550,
+            949
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Michael Kelsh - Mary Crossed the Border",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            949,
+            2550,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Eight Eyes - Everythings Playing in my head",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1024,
+            2550,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Black Girls - Broken Leg",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1099,
+            2550,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Velvet - Willow Tree",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1174,
+            2550,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Attitudes - Up and Down",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1250,
+            2550,
+            1326
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Erectus Monotone - En Este Momento",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1326,
+            2550,
+            1401
+          ]
+        }
+      ],
+      "oddities": [
+        "The Jock field is completely scribbled out.",
+        "A bracket in the left margin groups rows 8-10 with the annotations 'Big Checks', 'Angel', and 'Brick'."
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2301,
+        1262,
+        4068
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1262,
+        2301,
+        2550,
+        4068
+      ],
+      "hour_raw": "9 pm",
+      "jock_raw": "Night Rady",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "PE Revolutionary Gentleman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2301,
+            2550,
+            2405
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Bongwater Too Much Sleep",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2405,
+            2550,
+            2509
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "BALL Mary Jane",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2509,
+            2550,
+            2613
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Sacred Miracle Cave Heavy Black Noise",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2613,
+            2550,
+            2717
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Tex Edwards & out on Parole Stragler In the Night",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2717,
+            2550,
+            2821
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Lazy Cowgirls I've Had Enough of It",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2821,
+            2550,
+            2925
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Bel Canto Oyster",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2925,
+            2550,
+            3029
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "That Petrol Emotion Blue To Black",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3029,
+            2550,
+            3133
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Tackhead Ska Trek",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3133,
+            2550,
+            3236
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Freedy Johnston Tucumcari",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3236,
+            2550,
+            3340
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Whitstein Bros Sinner You'd Better Get Ready",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'Ready' is written below the main line on the far right.",
+            "There is a crossed-out word immediately preceding this entry."
+          ],
+          "row_bbox": [
+            1262,
+            3340,
+            2550,
+            3444
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Prong Lost & Found",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3444,
+            2550,
+            3548
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Poi Dog Pondering Praise the Lord",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3548,
+            2550,
+            3652
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Cecil Taylor (Gregg Bendian) For Steve McCall",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3652,
+            2550,
+            3756
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Lush Downer",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3756,
+            2550,
+            3860
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Caterwaul Big Ox Laughing",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3860,
+            2550,
+            3964
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Low Profile Easy Money",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3964,
+            2550,
+            4068
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

@@ -1,0 +1,868 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page20",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-20.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 20,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:15:39.970687+00:00",
+  "page_date_raw": "Tue 10 Apr 90",
+  "comments_raw": null,
+  "oddities": [
+    "A note in the top right corner outside the grid says: 'Butterfield - Woman'"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        471,
+        1285,
+        2217
+      ],
+      "hour_raw": "6Am",
+      "jock_raw": "j k. weston",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Tiny Lights - Round And Around",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            471,
+            1285,
+            596
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "TRex- Electric Slim & The Factory Hen",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            596,
+            1285,
+            720
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Jose Orlando - The Brunetto of Palmeira",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            720,
+            1285,
+            845
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Home + Garden: Marco Polo The Home of Kin Sai City",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [
+            "The word 'Home' is crossed out and 'City' is written below it"
+          ],
+          "row_bbox": [
+            0,
+            845,
+            1285,
+            970
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Nice Strong Arm - From Heaven",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "'Stress City' is written in the left margin pointing to this entry"
+          ],
+          "row_bbox": [
+            0,
+            970,
+            1285,
+            1095
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "DOS - P. C. H.",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1095,
+            1285,
+            1219
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Band - The Weight",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1219,
+            1285,
+            1344
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "The House of Love - Plastic Love",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "A vertical line separates 'Plastic' and 'Love'"
+          ],
+          "row_bbox": [
+            0,
+            1344,
+            1285,
+            1469
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Wasted Youth- Jealousy",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1469,
+            1285,
+            1593
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Dinah Washington - Teach Me Tonight",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1593,
+            1285,
+            1718
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "MC 900 FT. Jesus w/ DJ Zero- Talking To The Spirits",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1718,
+            1285,
+            1843
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Byrne/Eno - The Jezebel Spirit",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1843,
+            1285,
+            1968
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Beastie Boys - Eggman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "'Paul B.' is written in the left margin next to this entry"
+          ],
+          "row_bbox": [
+            0,
+            1968,
+            1285,
+            2092
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Landscape - Norman Bates",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2092,
+            1285,
+            2217
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1285,
+        471,
+        2550,
+        2217
+      ],
+      "hour_raw": "8Am",
+      "jock_raw": "Scott Sanders",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Baaba Maal - Lam tooro",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            545,
+            2550,
+            648
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "James Brown - Funky Drummer (Reprise)",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            648,
+            2550,
+            724
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "My Dad is Dead - A Man Possesed",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            724,
+            2550,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Elliot Goldenthal - Bobs new life",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            797,
+            2550,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bad Hats - Show me your Soul",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            872,
+            2550,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Charlie Parker - I love Paris",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            948,
+            2550,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Led Zepplin over the hills & Far away",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [
+            "The code 'Std' in the left margin is crossed out"
+          ],
+          "row_bbox": [
+            1285,
+            1024,
+            2550,
+            1097
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Marta Sebyestan - Mesezi Dance",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1097,
+            2550,
+            1173
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Paul Anka - Puppy Love",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1173,
+            2550,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Pure Joy - Seems Unreal This Condition",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "'Seems Unreal' is crossed out within the entry"
+          ],
+          "row_bbox": [
+            1285,
+            1249,
+            2550,
+            1324
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Sinead O'Connor - I am streched on your grave",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [
+            "The word 'grave' is written on the line below at the end"
+          ],
+          "row_bbox": [
+            1285,
+            1324,
+            2550,
+            1400
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Dub Syndicate - Je t'aime",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1400,
+            2550,
+            1474
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2217,
+        1285,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": "keith weston",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Joy Division - Passover",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2217,
+            1285,
+            2333
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "JPSE - Inside & Out",
+          "confidence": "high",
+          "type_raw": "PPB",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2333,
+            1285,
+            2449
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Bob Mould - Shoot Out The Lights",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [
+            "The word 'Bob' appears to be written heavily over another word"
+          ],
+          "row_bbox": [
+            0,
+            2449,
+            1285,
+            2565
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Grant Hart - Now That You Know Me",
+          "confidence": "high",
+          "type_raw": "RPB",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2565,
+            1285,
+            2681
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Alligator Shear - Balkan Red Alert",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2681,
+            1285,
+            2797
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Geula Gill - To The Desert",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2797,
+            1285,
+            2913
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Maddy Prior / Ian Anderson - Gutter Geese",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2913,
+            1285,
+            3029
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Mr T. Experience - Up & Down",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3029,
+            1285,
+            3145
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Donner Party - Up & Down",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3145,
+            1285,
+            3262
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "That Petrol Emotion - Scum Surfin'",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3262,
+            1285,
+            3378
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Mighty Lem Drops - Sometimes Good Guys",
+          "confidence": "medium",
+          "type_raw": "CON",
+          "notes": null,
+          "oddities": [
+            "'Guys' is written very small beneath 'Good'"
+          ],
+          "row_bbox": [
+            0,
+            3378,
+            1285,
+            3494
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Able Tansman - What was That Thing?",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3494,
+            1285,
+            3610
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Savage Republic - Sono Cairo",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3610,
+            1285,
+            3726
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Tim Buckley - Moulon Rogue",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3726,
+            1285,
+            3842
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Paul Butterfield - Get Out Of My Life woman",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "'woman' is written below the main line at the end"
+          ],
+          "row_bbox": [
+            0,
+            3842,
+            1285,
+            3958
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "JB Hutto & The New Hawks - New Hawk Walk",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3958,
+            1285,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1285,
+        2217,
+        2550,
+        4074
+      ],
+      "hour_raw": "9am",
+      "jock_raw": "Scott Sanders",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Jungle Bros - Watch U Waiting 4",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2217,
+            2550,
+            2360
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Mthembu queens - kusleka Mahanjke",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The word 'Them' is crossed out before 'Mthembu'"
+          ],
+          "row_bbox": [
+            1285,
+            2360,
+            2550,
+            2503
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Lil Anthony & the Imperials - Shimmy koko Bop",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2503,
+            2550,
+            2646
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Cecil Taylor - Charles and thee",
+          "confidence": "medium",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2646,
+            2550,
+            2788
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Soul II Soul - African Dance",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2788,
+            2550,
+            2931
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Greater then One - I Don't need God",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2931,
+            2550,
+            3074
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Kid Creole - The sex of it",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3074,
+            2550,
+            3217
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Angels of Epistemology - Response",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3217,
+            2550,
+            3360
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "LAVACOUS - Juke Jubilee",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3360,
+            2550,
+            3503
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Beastie Boys - Some Dumb Cop gave me",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3503,
+            2550,
+            3645
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Dodge City Royal Tax Love is 2 tickets",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": "crossed_out",
+          "oddities": [
+            "'2 tickets already' is written at the end of the line, bleeding into the margin and the next row"
+          ],
+          "row_bbox": [
+            1285,
+            3645,
+            2550,
+            3788
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Frank Motley and his Motley Crew - Honkin at midnight",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The word 'midnight' is written below the main line at the end"
+          ],
+          "row_bbox": [
+            1285,
+            3788,
+            2550,
+            3931
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "B-52's - Girl from Ipanema",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3931,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

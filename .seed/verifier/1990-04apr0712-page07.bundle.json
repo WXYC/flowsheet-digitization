@@ -1,0 +1,831 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page07",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-07.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 7,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:12:25.129143+00:00",
+  "page_date_raw": "Sunday 8 April 90",
+  "comments_raw": null,
+  "oddities": [
+    "Words 'Pere Ubu', 'Sonic Youth', 'Police', and 'Red Hots' are written in cursive across the top margin area.",
+    "The printed text 'Monday 9' in the date is crossed out with 'Sunday 8' written above."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        467,
+        1268,
+        2297
+      ],
+      "hour_raw": "2AM",
+      "jock_raw": "Ray Honeycutt",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Ray Honeycutt",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            542,
+            1268,
+            645
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Big Show",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            645,
+            1268,
+            719
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Royal Crescent mob - Big Show",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            719,
+            1268,
+            869
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "NWA - Gangsta Gangsta",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            869,
+            1268,
+            946
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Deutschland - Polarlicht",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            946,
+            1268,
+            1020
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nick Cave - The Carny",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1020,
+            1268,
+            1095
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Crime & the City Solution - Untouchable",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1095,
+            1268,
+            1246
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Nick Lowe - Marie Provost",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1246,
+            1268,
+            1322
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "XTC - It's Nearly Africa",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1322,
+            1268,
+            1397
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Toni Childs - Zimbabwe",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1397,
+            1268,
+            1473
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Juluka - Spirit is the Journey",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1473,
+            1268,
+            1548
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Dub Syndicate - Hey Ho",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1548,
+            1268,
+            1623
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Blue Aeroplanes - Anti-Pretty",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1623,
+            1268,
+            1773
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Red Hot Chili Peppers - Brothers Cup",
+          "confidence": "high",
+          "type_raw": "r",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1773,
+            1268,
+            1923
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Cramps - Everything Goes",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1923,
+            1268,
+            1998
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Sonic Youth - In Human",
+          "confidence": "high",
+          "type_raw": "r",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1998,
+            1268,
+            2074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1268,
+        467,
+        2550,
+        2297
+      ],
+      "hour_raw": "4AM",
+      "jock_raw": "Ray Honeycutt",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Obed Ngobeni - Kazette No. 2",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            467,
+            2550,
+            589
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Nanci Griffith - Radio Fragite",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            589,
+            2550,
+            711
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "George Jones - Am I that Easy to Forget",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            711,
+            2550,
+            833
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Patsy Cline - Stop the World & Let me Off",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            833,
+            2550,
+            955
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "The Judds - Mr. Pain",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            955,
+            2550,
+            1077
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Hazel Dickens - Only the Lonely",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1077,
+            2550,
+            1199
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "H.P. Zinger - Sunshine",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1199,
+            2550,
+            1321
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Bongwater - Khomeni Died Tonight & One So Black",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1321,
+            2550,
+            1443
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Clyde Edgerton - A Distant Land to Roam",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1443,
+            2550,
+            1565
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "The Irish Rovers - The wind that Shakes the Corn",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1565,
+            2550,
+            1687
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "De Dannan - A Mother's Love is a Blessing",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1687,
+            2550,
+            1809
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Bela Fleck - Tonnino",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1809,
+            2550,
+            1931
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Barinya - Three Russian Songs",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1931,
+            2550,
+            2053
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "House of Love - Beatles & Stones",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2053,
+            2550,
+            2175
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Bricks - The Mountain Goes to Mohammed",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2175,
+            2550,
+            2297
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2297,
+        1268,
+        4059
+      ],
+      "hour_raw": "3AM",
+      "jock_raw": "Ray Honeycutt",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Dissidenten - Inshalla",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2247,
+            1268,
+            2348
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sheila Chandra - All You Want Is More",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2348,
+            1268,
+            2498
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Thompson Twins - The Gap",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2498,
+            1268,
+            2574
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Chaha Fadela - Dja Yadhak",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2574,
+            1268,
+            2649
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Muzsikas - Bujdosodal",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2649,
+            1268,
+            2724
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Mory Kante - Ye Ke Ye Ke",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2724,
+            1268,
+            2800
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Casselberry - City Down",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2800,
+            1268,
+            2875
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "The Meditations - Bourgeois Game",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2875,
+            1268,
+            3025
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jesus With DJ Zero - Place of Loneliness",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3025,
+            1268,
+            3175
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Hot Rize - Hear Jerusalem moan",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3175,
+            1268,
+            3325
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Pere Ubu - Talk To Me",
+          "confidence": "high",
+          "type_raw": "r",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3325,
+            1268,
+            3399
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Dead Kennedy's - Holiday In Cambodia",
+          "confidence": "high",
+          "type_raw": "std O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3399,
+            1268,
+            3551
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Minor Threat - Betray",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3551,
+            1268,
+            3626
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "MDC - My Family is a little",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "the word 'wierd' is written at the end of the entry text"
+          ],
+          "row_bbox": [
+            0,
+            3626,
+            1268,
+            3703
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Channel One - Things & Time",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3703,
+            1268,
+            3855
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1268,
+        2297,
+        2550,
+        4059
+      ],
+      "hour_raw": "5AM",
+      "jock_raw": "Ray Honeycutt",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "John Coltrane - Pursuance",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2247,
+            2550,
+            2348
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Jesus Lizard - 7 vs. 8",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2348,
+            2550,
+            2423
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Cracks in the Sidewalk - Deven",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2423,
+            2550,
+            2498
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Camouflage - Kling Klang",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2498,
+            2550,
+            2574
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Loop- Vapour",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2574,
+            2550,
+            2649
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Djivan Gasparyan - Your Strong Mind",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2649,
+            2550,
+            2800
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Sex Packets - The Humpty Dance",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2800,
+            2550,
+            2875
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Caterwaul - Stumped",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2875,
+            2550,
+            2949
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

@@ -1,0 +1,779 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page06",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-06.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 6,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:11:55.529342+00:00",
+  "page_date_raw": "Sun 7/1/90",
+  "comments_raw": null,
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        471,
+        1258,
+        2301
+      ],
+      "hour_raw": "11 PM",
+      "jock_raw": "Nithing",
+      "entries": [
+        {
+          "row_index": 1,
+          "raw_text": "KNIT FACT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            545,
+            1258,
+            647
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bob Ostertag & Fred Frith",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            647,
+            1258,
+            721
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1258,
+        471,
+        2550,
+        2301
+      ],
+      "hour_raw": "12 pm",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "The Raches -- Hallelujah Chorus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            545,
+            2550,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Tin Machine - Bus Stop",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            647,
+            2550,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Red Clay Ramblers - Satan's Church Lady Choir",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            721,
+            2550,
+            871
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Butthole Surfers - Sweet Loaf",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            871,
+            2550,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Dr. Jack Van Impe -",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            947,
+            2550,
+            1022
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Roy Acuff - Little Moses",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1022,
+            2550,
+            1097
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Van Morrison - Wherever God Shines his Light",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1097,
+            2550,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "XTC - Dear God",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1248,
+            2550,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Tom Waits - Way Down in the",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1323,
+            2550,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Daniel Johnston - Don't Play Cards w/ Satan",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1398,
+            2550,
+            1550
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Fugs - Hare Krisna",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1550,
+            2550,
+            1625
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Brian Eno/Byrne -",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1625,
+            2550,
+            1700
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "NORMAN GREENBAUM - Spirit in The Sky",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1700,
+            2550,
+            1850
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Schooly D - Black Jesus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1850,
+            2550,
+            1925
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "All in Family BDP - Why is That?",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1925,
+            2550,
+            2000
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Violent Femmes - FAITH",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2000,
+            2550,
+            2075
+          ]
+        }
+      ],
+      "oddities": [
+        "Rows 4 and 5 are bracketed together with a curly brace.",
+        "An arrow is drawn from row 12 down to row 14."
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2301,
+        1258,
+        4074
+      ],
+      "hour_raw": "1",
+      "jock_raw": "Melaven",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Chris Hillman - Turn Your Radio On",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2301,
+            1258,
+            2412
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Negativeland - Prology",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2412,
+            1258,
+            2523
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Xxy is Stupid",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2523,
+            1258,
+            2633
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Minutemen - Jesus is tequila",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2633,
+            1258,
+            2744
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "King Blank - Bulletproof",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2744,
+            1258,
+            2855
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Cline - Blood",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2855,
+            1258,
+            2966
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Contrasto (untitled)",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2966,
+            1258,
+            3077
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Mantanooska Thunderbuck - Plastic Jies",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3077,
+            1258,
+            3187
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Cop Shoot Cop - Disconnected",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3187,
+            1258,
+            3298
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Melodians - Let's Give 666 Praise & Thanks",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3298,
+            1258,
+            3409
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "MiRiAM Makeba - Buya Jabula",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3409,
+            1258,
+            3520
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "King Crimson - DR. D",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3520,
+            1258,
+            3631
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Robyn Hitchcock - O Ye Sleep knights Of Jesus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3631,
+            1258,
+            3742
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "MASH",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3742,
+            1258,
+            3852
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "BIG DAPPER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3852,
+            1258,
+            3963
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Simon & Garfunkel - Mrs. Robinson",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3963,
+            1258,
+            4074
+          ]
+        }
+      ],
+      "oddities": [
+        "A bracket line is drawn to connect entries in rows 7 through 10.",
+        "There is a hand-written margin note beside rows 13 and 14 reading 'undercover god rules' with an arrow pointing to Robyn Hitchcock."
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1258,
+        2301,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "MOJO NIXON - Rockin Religion",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2301,
+            2550,
+            2412
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Tinklers - Simple Song Of Faith",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2412,
+            2550,
+            2523
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Big Star - Jesus Christ",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2523,
+            2550,
+            2633
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Papa Michigan & General Smiley",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2633,
+            2550,
+            2744
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Yellowman - Can't Hide From - Jah Know Jah",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2744,
+            2550,
+            2855
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Shakers - The Healing Hymn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2855,
+            2550,
+            2966
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Depeche Mode - Blasphemous Rumors",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2966,
+            2550,
+            3077
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "BYRDS - Christian Life",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3077,
+            2550,
+            3187
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "HOT TUNA - True Religion",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3187,
+            2550,
+            3298
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "NICK CAVE - Jesus Met The Woman At The Well",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3298,
+            2550,
+            3409
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "BB King - Have Faith",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3409,
+            2550,
+            3520
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "John Lennon - GOD",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3520,
+            2550,
+            3631
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Buffy Sainte-Marie - GOD IS Alive, Magik Is Afoot",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3631,
+            2550,
+            3742
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "BOB DYLAN - Every Grain of Sand",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3742,
+            2550,
+            3852
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "King Missile",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3852,
+            2550,
+            3963
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Jesus WAY WAY COOL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3963,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": [
+        "A bracket line is drawn next to rows 5, 6, and 7.",
+        "There is a hand drawn arrow to the left of row 5."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,926 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page10",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-10.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 10,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:13:25.708320+00:00",
+  "page_date_raw": "Monday 4/2/90",
+  "comments_raw": null,
+  "oddities": [
+    "Handwritten note 'Young -> Tonights The Night' at the top left above the grid.",
+    "Weather observations and dates are written at the top right above the grid.",
+    "Annotation 'dress city' in the left margin with an arrow pointing to the Robyn Hitchcock entry.",
+    "Annotation 'Caribean Mystery' in the left margin with an arrow pointing to the Aswad entry."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        472,
+        1266,
+        2352
+      ],
+      "hour_raw": "2PM",
+      "jock_raw": "Sillmon",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Karen Mantler - My Cat Arnold",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            547,
+            1266,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Giant Sand - Searchlight",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            649,
+            1266,
+            724
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Inca babies - partisans river",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            724,
+            1266,
+            798
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Nice Strong Arm - Amnesia",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            798,
+            1266,
+            873
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Long Ryders - you just cant ride the boxcars anymore",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            873,
+            1266,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Robyn Hitchcock - Beautiful",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1023,
+            1266,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Nick Lowe - Dose of you girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1099,
+            1266,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Foghat -> leavin' again",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1174,
+            1266,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "The Mthembu Queens - Fumela Nganeno",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1249,
+            1266,
+            1325
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Womantalk - Respect",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1325,
+            1266,
+            1400
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Aswad - Set Them free",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1400,
+            1266,
+            1476
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Vassar Clements John Hartford Dave you cant runaway from your Holland",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1476,
+            1266,
+            1626
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Souled American - Durante's Hornpipe",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1626,
+            1266,
+            1701
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Neil Young - come on baby ....",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1701,
+            1266,
+            1776
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "John Renbourn - My Johnny was a shoemaker",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1776,
+            1266,
+            1851
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Holy Modal Rounders - Monday Morning",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1851,
+            1266,
+            2001
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Lucy Show - The Twister",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2001,
+            1266,
+            2153
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1266,
+        472,
+        2550,
+        2352
+      ],
+      "hour_raw": "4PM",
+      "jock_raw": "Andy Shull",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Cassandra Complex - Ground",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            547,
+            2550,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Christy Moore - Delirium Tremmens",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            649,
+            2550,
+            724
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Chills - Past Past Past Fiction",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            724,
+            2550,
+            798
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Sacred Miracle Cave - Summertime",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            798,
+            2550,
+            873
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "The Bees - Voices Green & Purple",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            873,
+            2550,
+            949
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Public Enemy - Revolutionary Generation",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The end of the track name has heavy scribbles or emphasis marks."
+          ],
+          "row_bbox": [
+            1266,
+            949,
+            2550,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Felt - Mobile Shack",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1023,
+            2550,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Wolfgang Press - I'm Coming Home",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1099,
+            2550,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Hossam Martin - Gimme The Mccoy (news)",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1174,
+            2550,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Copernicus - Atom by Atom",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1249,
+            2550,
+            1325
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Savage Republic - Archetype",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1325,
+            2550,
+            1400
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Guadalcanal Diary - Litany",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1400,
+            2550,
+            1476
+          ]
+        }
+      ],
+      "oddities": [
+        "An arrow points from the right margin to the Chills entry."
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2352,
+        1266,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Jason & Scorchers - Hot nights in georgia",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2352,
+            1266,
+            2467
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Jean Paul Sartre experience elemental",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "An arrow points up from this row to the row above."
+          ],
+          "row_bbox": [
+            0,
+            2467,
+            1266,
+            2582
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Loop - Vapour",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2582,
+            1266,
+            2696
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Mommyheads - Tie This dragon down",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2696,
+            1266,
+            2811
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Chapter 2 - Quit your bellyachin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2811,
+            1266,
+            2926
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "R L Jones - The Real End",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2926,
+            1266,
+            3041
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "The Bevis Frond - These dark days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3041,
+            1266,
+            3156
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Zani Diabate - Super Djata",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3156,
+            1266,
+            3270
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Fall - The littleest Rebel",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3270,
+            1266,
+            3385
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Big Dipper - He is God",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3385,
+            1266,
+            3500
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bowie & Queen Latifa - Fame",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3500,
+            1266,
+            3615
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Henry Kaiser Band - The Fishing Hole",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "The track name on this line is heavily scribbled out.",
+            "An arrow points up from this row to the row above."
+          ],
+          "row_bbox": [
+            0,
+            3615,
+            1266,
+            3730
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Marvelettes - when your young & in love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3730,
+            1266,
+            3844
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Beautiful South - Have you ever been away",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3844,
+            1266,
+            3959
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Grant Hart - 25/41",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3959,
+            1266,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1266,
+        2352,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": "Andy Shull",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Lush - de Luxe",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2352,
+            2550,
+            2460
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Defenestration - Takes a few Days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2460,
+            2550,
+            2567
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Dub Syndicate - Chapter & Verse",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2567,
+            2550,
+            2675
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Chameleons - Paper Tigers",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2675,
+            2550,
+            2782
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Yardbirds - White Summer",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2782,
+            2550,
+            2890
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Jasmine Minks - What's Happening",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2890,
+            2550,
+            2998
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Mommyheads - Space Jazz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2998,
+            2550,
+            3105
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Bud Shank & Bill Perkins - It had to be you",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3105,
+            2550,
+            3213
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Luka Bloom - The One",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3213,
+            2550,
+            3321
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Pastels - Lonely Planet Boy (NY Dolls)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3321,
+            2550,
+            3428
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "That Petrol Emotion - Abandon",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3428,
+            2550,
+            3536
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Christine Lavin - Fly on a Plane",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3536,
+            2550,
+            3644
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Muzsikas - Vetettem",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3644,
+            2550,
+            3751
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Snakecorps - Save My Heart",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3751,
+            2550,
+            3859
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Eugene Chadbourne - Honey Don't",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3859,
+            2550,
+            3966
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Did Jits - Lucille",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3966,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": [
+        "An arrow points from the right margin to the Snakecorps entry."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,822 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page22",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-22.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 22,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:16:32.330638+00:00",
+  "page_date_raw": "WED 4/4/90",
+  "comments_raw": null,
+  "oddities": [
+    "Comments section at the bottom contains multiple lines of notes: '540 PCL L40 MCL H70' and 'C8+ jane says velvet'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        472,
+        1275,
+        2302
+      ],
+      "hour_raw": "10 PM",
+      "jock_raw": "Spot",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Dusty Springfield - Wishin + Hopin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            547,
+            1275,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Robyn Hitchcock - Glass Hotel",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            649,
+            1275,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Daniel Johnston - Don't Let The Su- Go Down On Your Grievances",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1275,
+            874
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bad Checks - Do Me Right",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            874,
+            1275,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Killdozer - Hamburger Martyr",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            950,
+            1275,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nurse w/ Wound - 1 + 1 Just Ain't So (slight return)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1024,
+            1275,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Hank Packed - let me tangle in",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1099,
+            1275,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Souled American - Luggage",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Text 'Your Vines' is squeezed in above the right side of this entry, belonging to the previous row."
+          ],
+          "row_bbox": [
+            0,
+            1174,
+            1275,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Angels of Epis. - Vilest Disgusting / Wm. Campbell",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1250,
+            1275,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Pere Ubu - We Have The Technology",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1401,
+            1275,
+            1477
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "T21 - Smile",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1477,
+            1275,
+            1552
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "1971 Hugo Montenegro - Moog Power",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1552,
+            1275,
+            1627
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Christine Lavin - Fly On A Plane",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1627,
+            1275,
+            1702
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Olympics - Peanut Butter",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1702,
+            1275,
+            1777
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Eugene Chadbourne - Private Club",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1777,
+            1275,
+            1852
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Am. Music Club - Dreamsville Gone",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1852,
+            1275,
+            1926
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Conjunction Junction",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1926,
+            1275,
+            2001
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1275,
+        472,
+        2550,
+        2302
+      ],
+      "hour_raw": "12 AM",
+      "jock_raw": "Sue H",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "big dipper - bony knees of nothing",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            547,
+            2550,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "the bad brains - voyage into infinity",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            649,
+            2550,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "the lemonheads - don't tell yourself it's OK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            725,
+            2550,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "the scientists - we had love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            800,
+            2550,
+            874
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "the mthembu queens - let's go",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            874,
+            2550,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "dogbowl - obsessed with girls oklahoma",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            950,
+            2550,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "the shangri-la's - out in the street",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1024,
+            2550,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "moving targets - nothing changes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1099,
+            2550,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "slayer - in-a-gadda-da-vida",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1174,
+            2550,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "captain & tennille - muskrat love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1250,
+            2550,
+            1325
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "nick cave - the train song",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1325,
+            2550,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "leadbelly - good, good, good / we shall walk",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1401,
+            2550,
+            1477
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "jane's addiction - jane says",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Text 'through the valley)' appears in the right margin on this line, continuing the leadbelly entry from above."
+          ],
+          "row_bbox": [
+            1275,
+            1477,
+            2550,
+            1552
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "the supremes - love is like an itching in my",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            1552,
+            2550,
+            1627
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "the velvet underground",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [
+            "Text 'heart' appears in the right margin on this line, continuing the supremes entry from above."
+          ],
+          "row_bbox": [
+            1275,
+            1627,
+            2550,
+            1702
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2302,
+        1275,
+        4063
+      ],
+      "hour_raw": null,
+      "jock_raw": "Sue H.",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "inside track - savage republic - customs -",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2252,
+            1275,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "the ordinaires - dance of the coconuts",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2427,
+            1275,
+            2502
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "redhead kingpin & the f.b.i. - do the right thing",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2502,
+            1275,
+            2653
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "the flat duo jets - baby",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2653,
+            1275,
+            2728
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "christian death - of the wound",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2728,
+            1275,
+            2802
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1275,
+        2302,
+        2550,
+        4063
+      ],
+      "hour_raw": "1 am",
+      "jock_raw": "Sue H",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "the volcano suns - white elephant",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2252,
+            2550,
+            2352
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "the embarrassment - after the disco",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2352,
+            2550,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "sade - fear",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2427,
+            2550,
+            2502
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "they might be giants - kiss me, son of god",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2502,
+            2550,
+            2577
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "beat happening - drive car girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2577,
+            2550,
+            2653
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "midnight a go go",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2653,
+            2550,
+            2728
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "psychic tv - only love can break your heart",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2728,
+            2550,
+            2802
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "gene pitney - town without pity",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2802,
+            2550,
+            2877
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "the veldt - it's over",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2877,
+            2550,
+            2952
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "the fluid - tomorrow",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            2952,
+            2550,
+            3027
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "phantom tollbooth - ohm on the range",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3027,
+            2550,
+            3102
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "syd barrett - lanky (part 1)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3102,
+            2550,
+            3177
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "brave combo - polka",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3177,
+            2550,
+            3252
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "breakdancing - malcolm mclaren - buffalo gals",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3252,
+            2550,
+            3403
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "the jesus lizard - chrome",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'the' is written small directly above the word 'jesus'."
+          ],
+          "row_bbox": [
+            1275,
+            3403,
+            2550,
+            3479
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "big black - pavement saw",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3479,
+            2550,
+            3554
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page12",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-12.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 12,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:12:40.885670+00:00",
+  "page_date_raw": "Mon 9 Apr 90",
+  "comments_raw": null,
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1284,
+        2299
+      ],
+      "hour_raw": "10pm",
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1284,
+        470,
+        2550,
+        2299
+      ],
+      "hour_raw": "12Am",
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2299,
+        1284,
+        4059
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1284,
+        2299,
+        2550,
+        4059
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    }
+  ]
+}

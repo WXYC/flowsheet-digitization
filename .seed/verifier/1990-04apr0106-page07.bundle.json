@@ -1,0 +1,723 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page07",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-07.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 7,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:12:19.269389+00:00",
+  "page_date_raw": "Monday 4/2/90",
+  "comments_raw": null,
+  "oddities": [
+    "Weather notes written around the Date box read 'Midnight Oli Julia Fordham Lovesexy', 't moirew 50% c rain High 78\u00b0', and '60\u00b0 chance rain low 50 or t-storm'.",
+    "Notes in the top right margin read '- Sister Ray 18 minutes - Thrill Kill Cult'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        476,
+        1258,
+        2304
+      ],
+      "hour_raw": "2AM",
+      "jock_raw": "Joe Kendrick",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "High Priest of Harmful",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            550,
+            1258,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Matter \"Wake Up - You're Busted\" w/ Courtney",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            652,
+            1258,
+            802
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Pine \"C. Jam Blues\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            802,
+            1258,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "\" \"Giant Steps\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            876,
+            1258,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Thee Hypnotics \"Justice In Freedom\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            952,
+            1258,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "The Last Poets \"New York, NY\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1101,
+            1258,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Stooges \"1969\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1177,
+            1258,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Uriah Heep \"Bird of Prey\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1253,
+            1258,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Waterboys \"When Will We Be Married\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1258,
+            1479
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Grateful Dead \"Anthem of the Sun\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1479,
+            1258,
+            1629
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Julia Fordham \"Girlfriend\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Category type 'Hit' is crossed out next to entry"
+          ],
+          "row_bbox": [
+            0,
+            1629,
+            1258,
+            1705
+          ]
+        }
+      ],
+      "oddities": [
+        "A line connects the last entry in this quadrant down to the 3AM quadrant arrow."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1258,
+        476,
+        2550,
+        2304
+      ],
+      "hour_raw": "4AM",
+      "jock_raw": "Joe Kendrick",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Randy Van Warmer \"Suzi Found A Weapon\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            550,
+            2550,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Gene Pitney \"Town W/out Pity\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            727,
+            2550,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Feelies \"Higher Ground\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            876,
+            2550,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Marta sebestyen \"Harovn Arva\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            952,
+            2550,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Velvet Underground \"Sister Ray\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1101,
+            2550,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Thrill Kill Kult \"Resisting the Spirit\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1253,
+            2550,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Eight Eyes \"Groovy Cellar\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1403,
+            2550,
+            1479
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Depeche Mode \"Master & Servant\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1479,
+            2550,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Bullet Lavolta \"Over the Shoulder\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1554,
+            2550,
+            1705
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "The Fall \"Black Monk Theme\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1705,
+            2550,
+            1779
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Bongwater \"Talent Is A Vampire\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1779,
+            2550,
+            1854
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Meat Beat Manifesto \"God OD\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            1854,
+            2550,
+            1929
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2304,
+        1258,
+        4074
+      ],
+      "hour_raw": "3am",
+      "jock_raw": "Joe Kendrick",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Harry Chapin \"30,000 lbs of Bananas\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2254,
+            1258,
+            2504
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Sundays \"Joy\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2504,
+            1258,
+            2580
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Del Fuegos \"Hand In Hand\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2580,
+            1258,
+            2656
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Jackie Wilson \"To Be Loved\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2656,
+            1258,
+            2734
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Benny Goodman \"Stompin At the Savoy\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2734,
+            1258,
+            2881
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Loop \"Afterglow\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2881,
+            1258,
+            2958
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Christine Lavin \"Regretting What I Said...\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2958,
+            1258,
+            3034
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Cramps \"Creature From the Black Leather Lagoon\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3034,
+            1258,
+            3184
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "That Petrol Emotion \"Scum Surfin'\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3184,
+            1258,
+            3334
+          ]
+        }
+      ],
+      "oddities": [
+        "A hand-drawn arrow points down to row 0."
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1258,
+        2304,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": "Joe Kendrick",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Silas \"Commodore Peter\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2304,
+            2550,
+            2430
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sister Ray \"I don't want your Sex\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2430,
+            2550,
+            2557
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Stone Roses \"She Bangs the Drums\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2557,
+            2550,
+            2683
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "MC 900 Ft \"Real Black Angel",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2683,
+            2550,
+            2810
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Great Plains \"Exercise\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2810,
+            2550,
+            2936
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Front 242 \"Never Stop!\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            2936,
+            2550,
+            3063
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "James Galway \"The Enchanted Forest\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3063,
+            2550,
+            3189
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Felt \"Mobile Shack\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3189,
+            2550,
+            3315
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Partridge Family \"Come On Get Happy\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3315,
+            2550,
+            3442
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Mission UK \"Amelia\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3442,
+            2550,
+            3568
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Two of a Kind \"Take The Coltrane\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3568,
+            2550,
+            3695
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Lubricated Goat \"Really Making Love\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3695,
+            2550,
+            3821
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Bricks \"Girl W/ the carrot skin\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3821,
+            2550,
+            3948
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Pheromones \"Ecological Disaster",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3948,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

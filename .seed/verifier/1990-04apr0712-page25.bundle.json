@@ -1,0 +1,977 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page25",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-25.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 25,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:17:12.782669+00:00",
+  "page_date_raw": "Wed 11 Apr 90",
+  "comments_raw": "Bob Harvey - Bread + Circuses\n*",
+  "oddities": [
+    "Top right corner contains handwritten weather details: 'Wthr - 66 cloudy w windy H 68'",
+    "Below the station address is a handwritten request list for 'The Heisman - Johnny Guest' and 'Strang Girl - Iggy Pop'"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        473,
+        1274,
+        2303
+      ],
+      "hour_raw": "10Am",
+      "jock_raw": "Jimmy Langman",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Public Enemy - Fight the Power",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            548,
+            1274,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "DUB Syndicate - cuss cuss",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            651,
+            1274,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Giant Sand - Living Cup",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1274,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Spirit - Animal Zoo",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            800,
+            1274,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "m\u00e1rta Sebesty\u00e9n - Vettkem Viek\u00e4t",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            875,
+            1274,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Fred Frith - Dancing In The Street",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            950,
+            1274,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Johnny Guest - Irresponsibility",
+          "confidence": "high",
+          "type_raw": "r",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1026,
+            1274,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "The Jesus Lizard - Chrome",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1101,
+            1274,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Hell and Fire - Straw as to why",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "arrow in the left margin points from this row up to the row above"
+          ],
+          "row_bbox": [
+            0,
+            1176,
+            1274,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Iggy Pop - Strong Girl",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1252,
+            1274,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Soul Asylum - Chains",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1274,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Straitjacket Fits - Hail",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1402,
+            1274,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "The Blue Aeroplanes - Jacket Hangs",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1478,
+            1274,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Lloyd Cole - Downtown",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1554,
+            1274,
+            1628
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1274,
+        473,
+        2550,
+        2303
+      ],
+      "hour_raw": "12Pm",
+      "jock_raw": "Juliette",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Church Pharoah",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            548,
+            2550,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Cop Shoot Cop Tilton Hand Job",
+          "confidence": "medium",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            651,
+            2550,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "3 Swann Street",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            725,
+            2550,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Balancing Act Lost In Mail",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            800,
+            2550,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Harry Connick Jr Blue Skies",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            875,
+            2550,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "TMBG Birdhouse In Soul",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            950,
+            2550,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "lucy faye It's Just a Girl Thing",
+          "confidence": "medium",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1026,
+            2550,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Groovy Ghoulies Pop Goes The World",
+          "confidence": "high",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1101,
+            2550,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Silos Caroline",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1176,
+            2550,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "All Gnutheme",
+          "confidence": "medium",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1252,
+            2550,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Don't Mean Maybe Bull + Tom",
+          "confidence": "medium",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1328,
+            2550,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Cab Calloway You Rascal You",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1402,
+            2550,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Mommyheads Song About A Woman",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1478,
+            2550,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Lush Downer (Mad Love)",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1554,
+            2550,
+            1628
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Brood You've Got The Crying",
+          "confidence": "high",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1628,
+            2550,
+            1703
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Loop From Centre To Wave",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1703,
+            2550,
+            1778
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Shockabilly Nobody's Place (Bfield) Soul",
+          "confidence": "medium",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1778,
+            2550,
+            1853
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Agitpop Martha",
+          "confidence": "medium",
+          "type_raw": "o/s",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1853,
+            2550,
+            1928
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Pure Joy - Division",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1928,
+            2550,
+            2003
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2303,
+        1274,
+        4061
+      ],
+      "hour_raw": "11Am",
+      "jock_raw": "JL",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Thin White Rope - Whirling Dervish",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1274,
+            2353
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "John Prine - Paradise",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2353,
+            1274,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Chills - Sweet Times",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2428,
+            1274,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "XTC - Melt the Guns",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2504,
+            1274,
+            2579
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Meat Beat Manifesto - Dog Star Man",
+          "confidence": "high",
+          "type_raw": "m",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2579,
+            1274,
+            2654
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Yo La Tengo - The Evil that Men Do",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2654,
+            1274,
+            2730
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "The Gun Club- Shes Like Heroin to me",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2730,
+            1274,
+            2879
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "The Feelies - Slipping (Into something)",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2879,
+            1274,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Robyn Hitchcock - Glass Hotel",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2954,
+            1274,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Bunny Wailer - The Oppressed Song",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3029,
+            1274,
+            3104
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Midnight Oil - Blue Sky Mine",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3104,
+            1274,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Jackson Browne - For Everyman",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3179,
+            1274,
+            3254
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Public Enemy - Who Stole the Soul?",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3254,
+            1274,
+            3329
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "3rd Bass - Sons of 3rd Bass",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3329,
+            1274,
+            3404
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1274,
+        2303,
+        2550,
+        4061
+      ],
+      "hour_raw": "1P",
+      "jock_raw": "Juliette H. Page",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Reuben Blades Gas Caliente",
+          "confidence": "medium",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2253,
+            2550,
+            2353
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Thin White Rope - Mother",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [
+            "annotation 'Bucketfull of B's' in right margin with an arrow pointing to this row"
+          ],
+          "row_bbox": [
+            1274,
+            2353,
+            2550,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "lee \"s\" Perry Chicken S",
+          "confidence": "high",
+          "type_raw": "o/c",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2428,
+            2550,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Fall And ThereIn",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2504,
+            2550,
+            2579
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bone Loaded",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2579,
+            2550,
+            2654
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Toadstool Nothing But Teeth",
+          "confidence": "high",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2654,
+            2550,
+            2730
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "MDC Aint It Funny",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2730,
+            2550,
+            2804
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Bevis Frond This corner of England",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [
+            "right half of the line is heavily scribbled out"
+          ],
+          "row_bbox": [
+            1274,
+            2804,
+            2550,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Lloyd Cole I hate to see you Baby Doing Dat Stuff",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2954,
+            2550,
+            3104
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Toinho de Alagoas Rock Me Boat (C. Forr\u00f3)",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [
+            "starts with a heavily scribbled out word before the text"
+          ],
+          "row_bbox": [
+            1274,
+            3104,
+            2550,
+            3254
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Art Blakey Caf\u00e9",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3254,
+            2550,
+            3329
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Queen D Queen D's World",
+          "confidence": "high",
+          "type_raw": "nv",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3329,
+            2550,
+            3404
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Adrenalin OD Swindel",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3404,
+            2550,
+            3480
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Boy Dirt Car",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3480,
+            2550,
+            3554
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Mary's Danish Shanty Pig",
+          "confidence": "medium",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3554,
+            2550,
+            3630
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Lynn Anderson Rose Garden",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3630,
+            2550,
+            3707
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Jadals Its Ove",
+          "confidence": "low",
+          "type_raw": "local",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3707,
+            2550,
+            3783
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

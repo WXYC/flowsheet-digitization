@@ -1,0 +1,958 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page02",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-02.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 2,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:10:37.063601+00:00",
+  "page_date_raw": "SATURDAY 4/7/90",
+  "comments_raw": "weather 41\u00b0\nrain\nclean aite...\n48\u00b0\n?\u00b0\nSouled\nAmerican\n6 ft of snow",
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        474,
+        1254,
+        2304
+      ],
+      "hour_raw": "6AM",
+      "jock_raw": "MaryBeth Ross",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Chills Familiarity Breeds Contempt",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            548,
+            1254,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sini Kindile Nganeziyamhia no Khamhxlemvalesdisa",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            651,
+            1254,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Cecil Taylor Saita",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            801,
+            1254,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Lou Reed I Wanna Be Black",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            875,
+            1254,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Grandmaster Flash The Message",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            951,
+            1254,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Sister Carol Ah No Me Name Peggy",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1026,
+            1254,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Paul Rugierro Human Pride",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [
+            "The phrase 'Fast Folk' is written in the left margin next to this row."
+          ],
+          "row_bbox": [
+            0,
+            1101,
+            1254,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Pagans Dead End America",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1176,
+            1254,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Walkabouts The Anvil Song",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1252,
+            1254,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Tinklers Turn the Screws on the Crank",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1254,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "The Mekons Chivalry",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1402,
+            1254,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "sky sunlight saxon Blueberry Frosting",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [
+            "The artist name is split, with 'sky sunlight' written slightly above 'saxon'."
+          ],
+          "row_bbox": [
+            0,
+            1478,
+            1254,
+            1553
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Hotlegs Neanderthal Man",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1553,
+            1254,
+            1628
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Tanya Tucker Delta Dawn",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1628,
+            1254,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Public Enemy 911 is a Joke",
+          "confidence": "high",
+          "type_raw": "nu v",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1704,
+            1254,
+            1778
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1254,
+        474,
+        2550,
+        2304
+      ],
+      "hour_raw": "8AM",
+      "jock_raw": "J Gardner",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Eddie Davis / J Griffin - Billi's Bounce",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            548,
+            2550,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Dub Syndicate - Boof um Baff",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            651,
+            2550,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Metallica",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            726,
+            2550,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "T Bone Walker - I'm in Awful Mood",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            801,
+            2550,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Fugazi - Waitin Room",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            875,
+            2550,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Muzsikas - Teremtes",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            951,
+            2550,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nick Cave - New Morning",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1026,
+            2550,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Dylan - \"",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1101,
+            2550,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Cowboy Junkies - Rock + Bird",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1176,
+            2550,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Don Pullen - Rejoice",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1252,
+            2550,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Kid Creole - Sex House Dub",
+          "confidence": "high",
+          "type_raw": "NuCD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1328,
+            2550,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Freaks - Livin' In A Warzone",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1402,
+            2550,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Midnight Star - Freak A Zoid",
+          "confidence": "high",
+          "type_raw": "hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1478,
+            2550,
+            1553
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Nice Strong Arm - Neighborhood Voyeur",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1553,
+            2550,
+            1628
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bobby Fuller - Nancy Jean",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1628,
+            2550,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Steve Reich - Fast",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            1704,
+            2550,
+            1778
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2304,
+        1254,
+        4074
+      ],
+      "hour_raw": "7am",
+      "jock_raw": "MaryBeth Ross",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "D Mob C'mon+Get My Love",
+          "confidence": "high",
+          "type_raw": "hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2304,
+            1254,
+            2408
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Billy Syndrome Kill For Jesus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2408,
+            1254,
+            2512
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Bevis Frond Rejection Day (A.M.)",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2512,
+            1254,
+            2616
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Savage Republic Song For Adonis Archetype",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2616,
+            1254,
+            2720
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Lava Love Go!",
+          "confidence": "high",
+          "type_raw": "LR",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2720,
+            1254,
+            2825
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "american Music Club Animal Pen",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2825,
+            1254,
+            2929
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Duke Ellington Jump For Joy",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [
+            "A large black ink blot partially obscures 'Duke', which is written above 'Ellington'."
+          ],
+          "row_bbox": [
+            0,
+            2929,
+            1254,
+            3033
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "The Mthembu Queens Wadileya ilmunyi",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "'Queens' is written in smaller text beneath 'The Mthembu'."
+          ],
+          "row_bbox": [
+            0,
+            3033,
+            1254,
+            3137
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Pete Townshend White City Fighting",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [
+            "'Fighting' is written beneath 'White City'."
+          ],
+          "row_bbox": [
+            0,
+            3137,
+            1254,
+            3241
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Pivot Foots Olga Sikorsky's Ghost",
+          "confidence": "high",
+          "type_raw": "nu",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3241,
+            1254,
+            3345
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Sveinbjorn Beinteinsson Edda",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3345,
+            1254,
+            3449
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Pulp Little Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The type column contains an 'O' that has been scribbled out."
+          ],
+          "row_bbox": [
+            0,
+            3449,
+            1254,
+            3553
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Bad Checks The Gas Faces Do Me Right",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The words 'The Gas Faces' are struck through, with 'Do Me Right' written above them."
+          ],
+          "row_bbox": [
+            0,
+            3553,
+            1254,
+            3658
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "3rd Bass The Gas Face",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3658,
+            1254,
+            3762
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Ed Lighthouse Love Grows where My Rosemary Goes",
+          "confidence": "high",
+          "type_raw": "hot",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3762,
+            1254,
+            3866
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Giant Sand Unfinished Love",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3866,
+            1254,
+            3970
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "SF",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3970,
+            1254,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1254,
+        2304,
+        2550,
+        4074
+      ],
+      "hour_raw": "9A",
+      "jock_raw": "J Gardner",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Blue Aeroplanes - What It Is Swagger",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The word 'Swagger' is written slightly above the end of the line."
+          ],
+          "row_bbox": [
+            1254,
+            2250,
+            2550,
+            2353
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Velvet Its Over Michael Kelsh - Sonoita",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "'Velvet Its Over' is crossed out."
+          ],
+          "row_bbox": [
+            1254,
+            2353,
+            2550,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "That Petrol Emotion - Hey Venus",
+          "confidence": "high",
+          "type_raw": "NuV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2428,
+            2550,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Baaba Maal + Mansour Seck - muudo Hormo Djam Leelii",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2504,
+            2550,
+            2654
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "RH Chili Peppers - Show Me Your Soul 4:20",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2654,
+            2550,
+            2727
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Chapter Two - The Day I Nailed My Heart To You",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2727,
+            2550,
+            2802
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "100 Proof Aged in Soul - Somebody's Been Sleepin' Frat Door",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "'Frat Door' is written slightly above the track name."
+          ],
+          "row_bbox": [
+            1254,
+            2802,
+            2550,
+            2880
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Boo-Yaa Tribe - New Funky Nation",
+          "confidence": "high",
+          "type_raw": "NuV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2880,
+            2550,
+            2952
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Sade - Hold On To Your Love",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2952,
+            2550,
+            3027
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Souled American - Cup a Coffee",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            3027,
+            2550,
+            3102
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Nick Lowe - Who Was That Man?",
+          "confidence": "high",
+          "type_raw": "NuV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            3102,
+            2550,
+            3176
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Fall - Arms Control Poseur",
+          "confidence": "high",
+          "type_raw": "m",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            3176,
+            2550,
+            3251
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Joe Hughes - Shoe Shy",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            3251,
+            2550,
+            3326
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Denny Brown - I Didn't Know",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            3326,
+            2550,
+            3402
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

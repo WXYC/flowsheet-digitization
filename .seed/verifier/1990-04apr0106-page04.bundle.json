@@ -1,0 +1,547 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page04",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-04.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 4,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:11:21.257179+00:00",
+  "page_date_raw": "Sunday 4/1/90",
+  "comments_raw": null,
+  "oddities": [
+    "Handwritten names and a numbered list of artists are in the top right area.",
+    "A weather forecast is written in the top right corner.",
+    "'Heiner Goebbels' is lightly written above the WXYC logo.",
+    "The text 'John Zorn Spellane' is written below the Comments section at the very bottom."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1255,
+        2297
+      ],
+      "hour_raw": "2PM",
+      "jock_raw": "W Martin",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Arthur Blythe Bush Baby",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            544,
+            1255,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Jack Teagarden bad acting woman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            647,
+            1255,
+            722
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "RS Jackson charming the beast",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            722,
+            1255,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "George Russel concerto for Billy The Kid",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            797,
+            1255,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Paul Motian 5 Jack of Clubs",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            872,
+            1255,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Django R. Brazil",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            947,
+            1255,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Archie Shepp Moose the Mooch",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A long arrow points from this row across the left margin."
+          ],
+          "row_bbox": [
+            0,
+            1021,
+            1255,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Ornette theme for a symph",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1096,
+            1255,
+            1171
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Bud Powell Bird Food",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "There is heavily scribbled out text in the middle of this row.",
+            "An arrow points to this row from the annotation 'embracable you' in the left margin."
+          ],
+          "row_bbox": [
+            0,
+            1171,
+            1255,
+            1247
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Danny Zeitlin + C. Haden",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1247,
+            1255,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1323,
+            1255,
+            1398
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1255,
+        470,
+        2550,
+        2297
+      ],
+      "hour_raw": "4pm",
+      "jock_raw": "Andy Shull",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "John Zorn - Spillane excerpts",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            544,
+            2550,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Big Twist & the Mellow Fellows - 300 lbs",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            647,
+            2550,
+            722
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Art Tatum - Isn't This a Lovel. Day",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            722,
+            2550,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "MJQ - La Ronde",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            797,
+            2550,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Charlie Mingus - M. D. M.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            872,
+            2550,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Yomo Toro - Cuatro Feeling",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            947,
+            2550,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Benny Carter - Sweet Georgia Brown",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            1021,
+            2550,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "John Hicks & Ray Drummond - A Nightingale Sang in Berke Square",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            1096,
+            2550,
+            1247
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Claude Bolling - Royal Garden Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            1247,
+            2550,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Keith Jarrett - Follow the Crooked Path",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            1323,
+            2550,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Charlie Parker - Move",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1255,
+            1398,
+            2550,
+            1474
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2297,
+        1255,
+        4064
+      ],
+      "hour_raw": "3PM",
+      "jock_raw": "Andy Shull",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Louis Armstrong - Talk to the Animals",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2353,
+            1255,
+            2427
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Art Taylor - Batland",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2427,
+            1255,
+            2575
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Coleman Hawkins - Sweet Lorraine",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Hand-drawn arrow points to this row in the left margin."
+          ],
+          "row_bbox": [
+            0,
+            2575,
+            1255,
+            2725
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Thelonious Monk - Epistrophy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2725,
+            1255,
+            2804
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "McCoy Tyner - Goin Home",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2804,
+            1255,
+            2878
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Turtle Island String Quartet - Mr lectures",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2878,
+            1255,
+            2952
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Heiner Goebbels - It's Suicide / I step from the bus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2952,
+            1255,
+            3028
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Cab Calloway - Some of These Days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3028,
+            1255,
+            3103
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Miles Davis - Saeta",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Hand-drawn arrow points to this row in the left margin."
+          ],
+          "row_bbox": [
+            0,
+            3103,
+            1255,
+            3178
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Jessy Gonzalez - Obertul\u00e1",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3178,
+            1255,
+            3253
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "John Zorn - Sp lla",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [
+            "Hand-drawn arrow points to this row in the left margin."
+          ],
+          "row_bbox": [
+            0,
+            3253,
+            1255,
+            3328
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1255,
+        2297,
+        2550,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    }
+  ]
+}

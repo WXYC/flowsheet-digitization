@@ -1,0 +1,858 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page16",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-16.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 16,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:14:25.347795+00:00",
+  "page_date_raw": "SUN 4/8/90",
+  "comments_raw": "Red Hot Chili David\nRevolutionary generation Fears Black Planet whole Hole\nNew Order Forks Pixies Doolittle",
+  "oddities": [
+    "Text written above the header reads: 'Greg Raleigh Vanilla Trainwreck Japan Talking Islands The Fall Jusano's 15th'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        93,
+        1284,
+        2305
+      ],
+      "hour_raw": "2PM",
+      "jock_raw": "Sillmon",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "SR Vaughn - Couldnt Stand the weather",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            93,
+            1284,
+            251
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Doug Orton - House of Bajia",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            251,
+            1284,
+            409
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Blue Aeroplanes - Cat-scan History",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            409,
+            1284,
+            567
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "VU - Black Angel's Death Song",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            567,
+            1284,
+            725
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Souled American - Will dawg",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1284,
+            883
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Cocteau Twins - Fluffy Tufts",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            883,
+            1284,
+            1041
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Muzsikas - I planted a violet",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "the word 'Hungary' is written in the left margin next to this entry"
+          ],
+          "row_bbox": [
+            0,
+            1041,
+            1284,
+            1199
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Kinks - phenomenal cat",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1199,
+            1284,
+            1357
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Queen latifah - Ladies 1st",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1357,
+            1284,
+            1515
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Public Enemy - Revolutionary Generation",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1515,
+            1284,
+            1673
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "De La Soul - Says no go",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1673,
+            1284,
+            1831
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Roberta Flack - Oasis",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1831,
+            1284,
+            1989
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Christine Lavin - Attainable Love",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1989,
+            1284,
+            2147
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Meat Puppets - Upon the Sun",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2147,
+            1284,
+            2305
+          ]
+        }
+      ],
+      "oddities": [
+        "the text 'Fear of a Black Planet' is written between the last entry and the 3pm hour line"
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1284,
+        93,
+        2550,
+        2305
+      ],
+      "hour_raw": "4PM",
+      "jock_raw": "Keith Pyle",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Jandek \"Message to the Clerk\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            150,
+            2550,
+            539
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Miracle Room \"There are my Friends\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            539,
+            2550,
+            796
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Agitpop \"Adult Playpen\"",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "tiny annotation 'stick' at end of line"
+          ],
+          "row_bbox": [
+            1284,
+            796,
+            2550,
+            1017
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Fishbone \"He's a fly guy\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1017,
+            2550,
+            1092
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bongwater \"He loved the weather\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1092,
+            2550,
+            1243
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Controlled Bleeding \"The Groan\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1243,
+            2550,
+            1319
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Jimi Hendrix \"Peace in Missippi\"",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1319,
+            2550,
+            1469
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Naked City \"Saigon Pickup\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1469,
+            2550,
+            1544
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Funkadelic \"Inb You\"",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1544,
+            2550,
+            1619
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Ed Haynes \"Mikial\"",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1619,
+            2550,
+            1695
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Silos \"Commodore Peter\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1695,
+            2550,
+            1767
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bud Powell Trio \"Cherokee\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1767,
+            2550,
+            1772
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Joy Division \"New Dawn Fades\"",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "curly bracket points from the type circle to the entry"
+          ],
+          "row_bbox": [
+            1284,
+            1772,
+            2550,
+            1847
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "KMFDM \"Virus\"",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1847,
+            2550,
+            1921
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2305,
+        1284,
+        4076
+      ],
+      "hour_raw": "3pm",
+      "jock_raw": "Sillmon",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Daniel Johnston - God",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1284,
+            2357
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Shelleyan Orphan - The silent day",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2357,
+            1284,
+            2430
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Gary Burton & Stephane Grapelli Falling Grace",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [
+            "an arrow points up from this row to the previous row"
+          ],
+          "row_bbox": [
+            0,
+            2430,
+            1284,
+            2583
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "That Petrol Emotion - Scumsurfin",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2583,
+            1284,
+            2659
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Byrds - its all over now",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2659,
+            1284,
+            2733
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "H.P. Zinker - Hurdles on my way",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2733,
+            1284,
+            2808
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Godfathers - when am I coming down",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2808,
+            1284,
+            2884
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Loop -> Vapour",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2884,
+            1284,
+            2957
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Nils Lofgren - Moon tears",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2957,
+            1284,
+            3033
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Bill Nelson - Empire of the Senses",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3033,
+            1284,
+            3108
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Fall -> Popcorn dbl Feature",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3108,
+            1284,
+            3181
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "John Fogerty Change in the weather",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3181,
+            1284,
+            3254
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Taking Islands in Africa JAPAN",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": "double_height",
+          "oddities": [
+            "an arrow points from the word JAPAN to the previous entry"
+          ],
+          "row_bbox": [
+            0,
+            3254,
+            1284,
+            3408
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Jesus Lizard - 77 vs. 8",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3408,
+            1284,
+            3483
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1284,
+        2305,
+        2550,
+        4076
+      ],
+      "hour_raw": null,
+      "jock_raw": "Keith Pyle",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Green River \"Take a Dive\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2417,
+            2550,
+            2490
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Giant Sand \"Sandman\"",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2490,
+            2550,
+            2566
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "King Sunny Ade \"Mo Beru Agba\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "annotation 'April' at end of line"
+          ],
+          "row_bbox": [
+            1284,
+            2566,
+            2550,
+            2643
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Thin White Rope \"You Doo Right\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "annotation '66' at end of line"
+          ],
+          "row_bbox": [
+            1284,
+            2643,
+            2550,
+            2720
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Robyn Hitchcock \"Executioner\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2720,
+            2550,
+            2790
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Colorblind James Experience \" AD: Pleasant Bob\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2790,
+            2550,
+            2866
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Nikki Sudden & the Jacobites \" Groove\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2866,
+            2550,
+            3018
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "The Chills \"Tied up in Chain\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3018,
+            2550,
+            3173
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "House & Garden \"From the Life of King John\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3173,
+            2550,
+            3247
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Wolfgang Press \"Lira\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3247,
+            2550,
+            3317
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Wonder Stuff",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3317,
+            2550,
+            3397
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Mission \"Paradise\"",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3397,
+            2550,
+            3465
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Run Westy Run \"She Rose\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3465,
+            2550,
+            3471
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

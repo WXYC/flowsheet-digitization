@@ -37,5 +37,7 @@ htmlcov/
 # Local Claude scratch
 .claude/settings.local.json
 
-# Railway deploy seed (built by scripts/build_railway_seed.sh)
-.seed/
+# `.seed/` is intentionally NOT gitignored: it's the bundle+image snapshot
+# committed alongside the deploy. `railway up` only uploads files visible
+# to git, and the Dockerfile bakes `/seed` from this tree. Re-run
+# `scripts/build_railway_seed.sh` to refresh contents before each deploy.

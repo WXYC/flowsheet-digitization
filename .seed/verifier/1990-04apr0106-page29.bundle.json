@@ -1,0 +1,890 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page29",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-29.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 29,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T05:06:01.586175+00:00",
+  "page_date_raw": "FRIDAY 4/6/90",
+  "comments_raw": null,
+  "oddities": [
+    "Many rows have a hand-drawn check mark or slash in the far left margin.",
+    "The text '4A' is written in the left margin next to the bottom-left quadrant."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        474,
+        1270,
+        2303
+      ],
+      "hour_raw": "2A",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "BB King - You're so Mean",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            549,
+            1270,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Led Zepplin - Black Dog",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            650,
+            1270,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Cactus world News - Years Song Later",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1270,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "C.J. Chenier - Chick out the Zydeco",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            800,
+            1270,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Nine inch Nails - Head like a hole",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            875,
+            1270,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "U2 - Spanish Eyes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            951,
+            1270,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Beastie Boys - Brass Monkey",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1026,
+            1270,
+            1101
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Blotto - Its not you",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1101,
+            1270,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Galaxie 500 - When will you come home",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1176,
+            1270,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Nikki meets the Hibachi - Differently",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1253,
+            1270,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Cure \"Pictures of You\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1270,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Fugazi - Waiting Room",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1403,
+            1270,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Rush - Limelight",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1478,
+            1270,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Muddy Waters - Rollin + Tumblin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1554,
+            1270,
+            1628
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Lemonheads \"Luka\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1628,
+            1270,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Monty Python - Lumberjack Song",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1704,
+            1270,
+            1779
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Bob Marley - 3 little Birds",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1779,
+            1270,
+            1853
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Bob Marley - One Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1853,
+            1270,
+            1928
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Red Hot Chili Peppers- True Men dont Kill Coyotes",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1928,
+            1270,
+            2079
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "Johnny Quest - The Heisman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2079,
+            1270,
+            2152
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1270,
+        474,
+        2550,
+        2303
+      ],
+      "hour_raw": "4AM",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Boston- More than A Feeling",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            474,
+            2550,
+            576
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Smiths- There is a light that never goes out",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            576,
+            2550,
+            677
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Nizer Ebb- Shame (The Shame(less) Mix)",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            677,
+            2550,
+            779
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Def Leppard - Foolin'",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            779,
+            2550,
+            880
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Veldt - It's Over",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            880,
+            2550,
+            982
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Rockabilly Jack Earl - Let's Pop",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            982,
+            2550,
+            1084
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Dead Kennedy's - Holiday in Cambodia",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1084,
+            2550,
+            1185
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "(Replacements - Alex Chilton)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A curved arrow is drawn from this entry up to the previous entry."
+          ],
+          "row_bbox": [
+            1270,
+            1185,
+            2550,
+            1287
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Michael Stipe \"Big Brick Building\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1287,
+            2550,
+            1388
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jimi Hendrix - Hey Joe",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1388,
+            2550,
+            1490
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Peter Gabriel - In Your Eyes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1490,
+            2550,
+            1592
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "The Chills - Oncoming Day",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1592,
+            2550,
+            1693
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Sweet Honey in the Rock - Waters of Babylon",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1693,
+            2550,
+            1795
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Dillon Fence - I got something for you",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1795,
+            2550,
+            1897
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Kool Moe Dee - I go to Work",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1897,
+            2550,
+            1998
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Fishbone - Firehose - Riddle of the 80's",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'Fishbone' is crossed out at the beginning of the line."
+          ],
+          "row_bbox": [
+            1270,
+            1998,
+            2550,
+            2100
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "U2 - \"40\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2100,
+            2550,
+            2201
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Sex Police - If I was born today",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2201,
+            2550,
+            2303
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2303,
+        1270,
+        4061
+      ],
+      "hour_raw": "3A",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Rock Horror Picture Show- Time Warp",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1270,
+            2353
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Chieftains - Boil the Breakfast Early",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2353,
+            1270,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Gary Clail - Vegetarian Dance Song",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2428,
+            1270,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Chipmonks - Lulup/X",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2504,
+            1270,
+            2579
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Robin Hitchcock - Clean Store",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2579,
+            1270,
+            2654
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Visage - Love Glove",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2654,
+            1270,
+            2729
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Clannad - In a lifetime",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2729,
+            1270,
+            2804
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "The Popes - She's You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2804,
+            1270,
+            2879
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "King Missile - Sensitive Artist",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2879,
+            1270,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "REM - Turn u inside out",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2954,
+            1270,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Billie Holiday - God Bless the Child",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3029,
+            1270,
+            3104
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Virgin Prunes - \"Baby Turns Blue\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3104,
+            1270,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Gavin Friday - Dazzle and Delight",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3179,
+            1270,
+            3253
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Big Wheel \"Bang, Bang, Bang\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3253,
+            1270,
+            3329
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Woody Guthrie \"Vigilante Man\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3329,
+            1270,
+            3404
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Nurse with Wound \"Pleasant Banjo\" Intro w/ irritating sound",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3404,
+            1270,
+            3630
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Sin\u00e9ad O'Connor - Just call me joe",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'joe' is crossed out at the end of the line."
+          ],
+          "row_bbox": [
+            0,
+            3630,
+            1270,
+            3708
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "The Cult - Sun King",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3708,
+            1270,
+            3783
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "Dexter - Dexter's Lament",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3783,
+            1270,
+            3858
+          ]
+        },
+        {
+          "row_index": 21,
+          "raw_text": "John Lee Hooker - Mad Man Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3858,
+            1270,
+            3961
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1270,
+        2303,
+        2550,
+        4061
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    }
+  ]
+}

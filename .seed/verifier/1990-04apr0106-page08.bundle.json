@@ -1,0 +1,850 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page08",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-08.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 8,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:12:29.981321+00:00",
+  "page_date_raw": "Mon 4/2/90",
+  "comments_raw": null,
+  "oddities": [
+    "Comments section contains handwritten notes about weather conditions including temperatures and wind speeds.",
+    "Comments section contains 'Television - Friction' crossed out.",
+    "Comments section contains 'Iggy Pop - Cold Metal'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        474,
+        1262,
+        2307
+      ],
+      "hour_raw": "6AM",
+      "jock_raw": "Orlove",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "STRAUSS - Also Sprach Zarathrustra",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            549,
+            1262,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "ZALAR - \"Love is K.F. - ?\"",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            652,
+            1262,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "NAKED CITY - LATIN QUARTER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            727,
+            1262,
+            802
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Little Feat - Rock 'N' Roll Doctor Skin it Back",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "Hand-drawn arrow in left margin pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            802,
+            1262,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "CHRISTINE LAVIN - Victim / Volunteer",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            952,
+            1262,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Tom Clarke - Blisters & Smoke",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1102,
+            1262,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Cliff Eberhardt - Is it so Wrong to Feel So Good",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1177,
+            1262,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Nick Lowe - Big Hair",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1262,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Kraftwerk - Sex Object",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1403,
+            1262,
+            1479
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "J.J. Cale - Shanghaid",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1479,
+            1262,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Roxy Music - CASANOVA",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1554,
+            1262,
+            1629
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Sister Carol - Wicked Collie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1629,
+            1262,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Bill Frisell - Burden of Dreams",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Hand-drawn arrow in left margin pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            1704,
+            1262,
+            1780
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "The Blue Aeroplanes - What it Is",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1780,
+            1262,
+            1855
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1262,
+        474,
+        2550,
+        2307
+      ],
+      "hour_raw": "8AM",
+      "jock_raw": "Gavin Hudson",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Oscar Peterson - I Thought About You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            549,
+            2550,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Loop - Vapour",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            652,
+            2550,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Cream - Politician",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            727,
+            2550,
+            802
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Phil Ochs - Love Me, I'm A Liberal",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            802,
+            2550,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Cecil Taylor - In Florescence",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            876,
+            2550,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Bowie/Mofish - Fame",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            952,
+            2550,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Waterboys - World Party",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1026,
+            2550,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Nick Lowe - I want to build a jumbo ark",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1102,
+            2550,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Chapterhouse - The Day I Nailed My Heart To Your Front Door",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1177,
+            2550,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Eek A Mouse - Skull A Seaside",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1328,
+            2550,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bevis Frond - Your Mind's Gone Grey",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1403,
+            2550,
+            1479
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Mojo + Skid - Legalize It",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1479,
+            2550,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "B B King - The Thrill is Gone",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1554,
+            2550,
+            1629
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Catwoman? - Stumped",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            1629,
+            2550,
+            1704
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2307,
+        1262,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Alex Chilton - Rubber Room",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2307,
+            1262,
+            2433
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Loretta Lynn - Blue Kentucky Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2433,
+            1262,
+            2559
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Cowboy Junkies - Rock & Bird",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2559,
+            1262,
+            2686
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Giant Sand - Smash Jazz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2686,
+            1262,
+            2812
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "David Allan - Blues Theme",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2812,
+            1262,
+            2938
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Hypnotics - All Night Long",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2938,
+            1262,
+            3064
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nurse w/ Wound - Crack Up",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3064,
+            1262,
+            3191
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Sheila Chandra - The Struggle",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3191,
+            1262,
+            3317
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Tackhead - Mind & Movement",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3317,
+            1262,
+            3443
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Mthembu Queen - Juliet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3443,
+            1262,
+            3569
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "House of Love - Hanah",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Hand-drawn arrow in left margin pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            3569,
+            1262,
+            3695
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Modern Lovers - I'M STRAIGHT!",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3695,
+            1262,
+            3822
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Earl Scruggs Revue - Tommorow Is A Long Time",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3822,
+            1262,
+            3948
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Byrds - Jesus is Just Alright",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3948,
+            1262,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1262,
+        2307,
+        2550,
+        4074
+      ],
+      "hour_raw": "9A",
+      "jock_raw": "GH",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Traffic - Walking In The Wind",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2307,
+            2550,
+            2443
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Congo Ashanti Roy - Yes I Know",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2443,
+            2550,
+            2579
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Terrance Simien - Turn On Your Love Light",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2579,
+            2550,
+            2715
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Chills - Tied Up In Chain",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2715,
+            2550,
+            2851
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Ry Cooder - Women Will Rule The World",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2851,
+            2550,
+            2987
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Courtney Pine - Sacrifice",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            2987,
+            2550,
+            3123
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Sinead O'Connor - Jump In The River",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3123,
+            2550,
+            3258
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Stevie Wonder - Signed, Sealed, Delivered",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3258,
+            2550,
+            3394
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "YMO - Day Tripper",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3394,
+            2550,
+            3530
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Sacred Miracle Cave - Summertime",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3530,
+            2550,
+            3666
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Pylon - Crazy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3666,
+            2550,
+            3802
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Savage Republic - Song For Adonis",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3802,
+            2550,
+            3938
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Rev/ Gary Davis - When I Die I'll Live Again",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            3938,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

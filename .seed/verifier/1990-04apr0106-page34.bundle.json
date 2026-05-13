@@ -1,0 +1,1050 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page34",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-34.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 34,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:10:48.399713+00:00",
+  "page_date_raw": "FRIDAY 4/6/90",
+  "comments_raw": "Replacements - Zed \"chart\"",
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        467,
+        1282,
+        2297
+      ],
+      "hour_raw": "10pm",
+      "jock_raw": "Juliette H/Ege",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Boy? Fall Out",
+          "confidence": "low",
+          "type_raw": "v",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            467,
+            1282,
+            559
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Jose Orlando - Linda Niena",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            559,
+            1282,
+            650
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Seaweed Inside",
+          "confidence": "medium",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            650,
+            1282,
+            741
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Selecter On My Radio",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            741,
+            1282,
+            833
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Thelonious Monk Monk's Dream",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            833,
+            1282,
+            925
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Bakter (...) Star",
+          "confidence": "low",
+          "type_raw": "L",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            925,
+            1282,
+            1016
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "PLA Revolutionaries",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "marginal note 'channel One comp' written to the left of this entry"
+          ],
+          "row_bbox": [
+            0,
+            1016,
+            1282,
+            1107
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Bricks Girl w/ The Relatives",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1107,
+            1282,
+            1199
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Chemistry Set Look Over Yr Shoulder",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1199,
+            1282,
+            1291
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Int'l Sweethearts of Rhythm Jump Children",
+          "confidence": "medium",
+          "type_raw": "O/S",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1291,
+            1282,
+            1382
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Naked City Inside Straight",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1382,
+            1282,
+            1473
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Chills Familiarity Breeds Contempt",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1473,
+            1282,
+            1565
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Boosheer - Some Dumb Cop",
+          "confidence": "low",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1565,
+            1282,
+            1657
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Dave Orton House Of Borgia",
+          "confidence": "medium",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1657,
+            1282,
+            1748
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Ignitors Going To Be",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1748,
+            1282,
+            1839
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Cramps Bop Pills",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1839,
+            1282,
+            1931
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Luis Russel Give Me Your",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1931,
+            1282,
+            2023
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "tele. #",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "small annotation written inside the line boundary below the previous crossed-out entry"
+          ],
+          "row_bbox": [
+            0,
+            2023,
+            1282,
+            2114
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "King Tee Act A Foo",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2114,
+            1282,
+            2205
+          ]
+        },
+        {
+          "row_index": 21,
+          "raw_text": "Huayucaltia San Juanito",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2205,
+            1282,
+            2297
+          ]
+        }
+      ],
+      "oddities": [
+        "a vertical line with an upward-pointing arrow is drawn in the left margin spanning rows 2-4"
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1282,
+        467,
+        2550,
+        2297
+      ],
+      "hour_raw": "12Am",
+      "jock_raw": "Bill Wms",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Tackhead - Ticky Timebomb",
+          "confidence": "medium",
+          "type_raw": "P/I",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            542,
+            2550,
+            643
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "10,000 Maniacs - Planned Obsolesce",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "scribble drawn over the letter in the type column circle"
+          ],
+          "row_bbox": [
+            1282,
+            643,
+            2550,
+            718
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Go-Betweens - Bachelor Kisses",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            718,
+            2550,
+            794
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "AZTEC CAMERA - Boy Wonders",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            794,
+            2550,
+            868
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Felt - Never let you go",
+          "confidence": "high",
+          "type_raw": "m",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            868,
+            2550,
+            944
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Brubeck 4tet - Blue Rondo",
+          "confidence": "high",
+          "type_raw": "Jazz",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            944,
+            2550,
+            1019
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "David Byrne - Dirty old town",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1019,
+            2550,
+            1094
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Rev Stronde - Olde World",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1094,
+            2550,
+            1169
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Syd Barrett - Waving My Arms",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1169,
+            2550,
+            1245
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Helios Creed - The Bridge",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1245,
+            2550,
+            1321
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "XTC - Pink Thing",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1321,
+            2550,
+            1395
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Miracle Legion - Old + New",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1395,
+            2550,
+            1471
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Savage Republic - The World @ our Fingertips",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1471,
+            2550,
+            1621
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "P.E. - Rev. Generations -",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1621,
+            2550,
+            1696
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Musikas - Dark Winds Come",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            1696,
+            2550,
+            1772
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2297,
+        1282,
+        4056
+      ],
+      "hour_raw": "11p",
+      "jock_raw": "MR Bill WILLIAMS",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "BARMY Army - Stadium Rock",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2247,
+            1282,
+            2347
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Lil Anthony - Never Again",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2347,
+            1282,
+            2422
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Moses Mchunu - Qwahililale",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2422,
+            1282,
+            2497
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Lush - de-luxe",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2497,
+            1282,
+            2572
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Durutti Column - Spent Time",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2572,
+            1282,
+            2648
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Minutemen - The Anchor",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2648,
+            1282,
+            2723
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "SPSE - Mothers",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": "crossed_out",
+          "oddities": [
+            "a second type circle containing a crossed-out 'O' appears next to the main 'R' circle"
+          ],
+          "row_bbox": [
+            0,
+            2723,
+            1282,
+            2798
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Chris Cacavas - Wrecking yard",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2798,
+            1282,
+            2947
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Bo Diddley - Hey Bo Diddley",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2947,
+            1282,
+            3023
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Elvis - I love You Because",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3023,
+            1282,
+            3097
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Pankow - Gimme More",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3097,
+            1282,
+            3173
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Mthembu Queens - Jiliqwa",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3173,
+            1282,
+            3247
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Bauhaus - Party of the",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3247,
+            1282,
+            3322
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Die Kreuzen - First part I magne a light",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3322,
+            1282,
+            3473
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Close Lobsters - gutache",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3473,
+            1282,
+            3548
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Bad Checks - Do the Right",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3548,
+            1282,
+            3624
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Style Council - Fairy Tales",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3624,
+            1282,
+            3701
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "Packets - Packet Preludes -",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3701,
+            1282,
+            3777
+          ]
+        }
+      ],
+      "oddities": [
+        "rows 1 and 2 are grouped together with a handwritten curly brace in the left margin"
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1282,
+        2297,
+        2550,
+        4056
+      ],
+      "hour_raw": "1",
+      "jock_raw": "Bill Wms",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Spacemen 3 - Revolution",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2247,
+            2550,
+            2347
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Lost Boys - Under water Moonlight",
+          "confidence": "high",
+          "type_raw": "P",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2347,
+            2550,
+            2422
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Fall - I'm Frank",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2422,
+            2550,
+            2497
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Soul Asylum - Cartoon",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2497,
+            2550,
+            2572
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Hank Williams - Lovesick Blues",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2572,
+            2550,
+            2648
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Airport Conv. - Reno Nevada",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2648,
+            2550,
+            2723
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Sarah Vaughan - Summertime",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2723,
+            2550,
+            2798
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Stone Roses - Fools gold",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2798,
+            2550,
+            2872
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lemonheads - Second chance",
+          "confidence": "medium",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2872,
+            2550,
+            2947
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Fugazi - And the Same",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2947,
+            2550,
+            3023
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Chesterfield Kings - 60 sec Symp",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            3023,
+            2550,
+            3097
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Dub Syndicate - Je t'aime",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            3097,
+            2550,
+            3173
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "John Coltrane - Acknowl",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            3173,
+            2550,
+            3247
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Nize Strong Arm - Front edge",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            3247,
+            2550,
+            3398
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Larry Davis - Spec. Friend",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            3398,
+            2550,
+            3473
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "A",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "stray letter A written alone on this line"
+          ],
+          "row_bbox": [
+            1282,
+            3473,
+            2550,
+            3548
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

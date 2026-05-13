@@ -1,0 +1,895 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page24",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-24.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 24,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:17:15.438540+00:00",
+  "page_date_raw": "Thurs 4/5/90",
+  "comments_raw": null,
+  "oddities": [
+    "Comments field at the bottom contains 'NMA'.",
+    "A long vertical arrow is drawn down the center dividing line between the left and right quadrants."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        474,
+        1279,
+        2304
+      ],
+      "hour_raw": "6AM",
+      "jock_raw": "Houston Spence",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Iggy Pop / Real Wild Child",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            549,
+            1279,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Green River / Ozzie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            651,
+            1279,
+            724
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Pub. Enemy / 911 is a Joke",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            724,
+            1279,
+            799
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "John Prine / Angel From Mont.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            799,
+            1279,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Cecil Taylor / Leaf Taken Horn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            876,
+            1279,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Peter Hook / Jesus, I love U.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            952,
+            1279,
+            1027
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Genesis / I Know What I Like(in your...)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1027,
+            1279,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "MTHEMBU QUEENS / Thina Siyo Jabula",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1102,
+            1279,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Ice-T / You Played Yourself",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1177,
+            1279,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Love @ Large Sndtrk / Ain't No Cure For Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Left margin has 'YAWN!' with an arrow pointing to this entry."
+          ],
+          "row_bbox": [
+            0,
+            1253,
+            1279,
+            1329
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Colorbox / Hot Doggies",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1329,
+            1279,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Love-Hate / Blackout in a Red Room",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1403,
+            1279,
+            1479
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Lava Love / Juke Jubilee",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1479,
+            1279,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Jerry Niewood / Joy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1554,
+            1279,
+            1629
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1279,
+        474,
+        2550,
+        2304
+      ],
+      "hour_raw": "8Am",
+      "jock_raw": "Kendrick",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Poto Doudongo - Bolingo",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            729,
+            2550,
+            876
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Silos - Commodore Peter",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            876,
+            2550,
+            952
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Sarah Vaughn - Black Coffee",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            952,
+            2550,
+            1027
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Martha & the Muffins - World w/o Borders",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1027,
+            2550,
+            1102
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Gin Blossoms - Found out about You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1102,
+            2550,
+            1177
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Romantics - What I Like About You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1177,
+            2550,
+            1253
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Muzsikas - Vetetiem Viol\u00e1t",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1253,
+            2550,
+            1329
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Wishbone Ash - Vas Dis",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1329,
+            2550,
+            1403
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "That Petrol Emotion - Hey Venus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1403,
+            2550,
+            1479
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "\"In the Hall of the Mountain King\" (\"Peer Gynt Suite\")",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Small text 'E. Cincinn. Pops Orch.*' is written below the entry."
+          ],
+          "row_bbox": [
+            1279,
+            1479,
+            2550,
+            1554
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jazz Butcher - Drink",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1554,
+            2550,
+            1629
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Church - You're Still Beautiful",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1629,
+            2550,
+            1705
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Dub Syndicate - In The Man For You Easy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1705,
+            2550,
+            1854
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Stranglers - The European Female (In Celebration)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1854,
+            2550,
+            2004
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2304,
+        1279,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Glass Bottle / Ain't Got Time Anymore",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2254,
+            1279,
+            2354
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Black Crowes / Hard to Handle",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2354,
+            1279,
+            2429
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Ben Vaughn / Too Sensitive 4 this World",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The track name is written below heavily crossed-out text, with an arrow pointing down to it."
+          ],
+          "row_bbox": [
+            0,
+            2429,
+            1279,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Rockin' Dopsie / Dopsie's Boogie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2504,
+            1279,
+            2580
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Pretty Things / Road Runner",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2580,
+            1279,
+            2655
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Boo Yaa Tribe / Pickin' up Metal",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2655,
+            1279,
+            2730
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Scott Merritt / Blue Field",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2730,
+            1279,
+            2805
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Lucie Blue Tremblay / Jour Apr\u00e9s Jour",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2805,
+            1279,
+            2880
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "House of Love / Beatles & Stones",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2880,
+            1279,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "New Model Army / Heroes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2954,
+            1279,
+            3030
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Carmen McRae / I'm Coming Home Again",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3030,
+            1279,
+            3105
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "H.P. Zinker / Dancing Days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Left margin has 'Cool ->' pointing to this entry."
+          ],
+          "row_bbox": [
+            0,
+            3105,
+            1279,
+            3180
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Jungle Bros. / What U Waitin' 4",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3180,
+            1279,
+            3254
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Free / All Rt. Now",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3254,
+            1279,
+            3329
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1279,
+        2304,
+        2550,
+        4064
+      ],
+      "hour_raw": "9am",
+      "jock_raw": "Ken Shu",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Mekons - Hey Susan",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2254,
+            2550,
+            2354
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Loop - Blood",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2354,
+            2550,
+            2429
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Jackie Wilson - You Don't Know What it means",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2429,
+            2550,
+            2580
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Pentangle - Circle The Moon",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2580,
+            2550,
+            2655
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "John S Hall (Broome Closet) - How Much Linger",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2655,
+            2550,
+            2730
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Frank Zappa - G. Spot Tornado",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "An arrow from the right margin points to this entry with the word 'OOPS' written nearby."
+          ],
+          "row_bbox": [
+            1279,
+            2730,
+            2550,
+            2805
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Johnny Ace - The Clock",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2805,
+            2550,
+            2880
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Hell Fire (Channel 1) - Show Us The Way",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2880,
+            2550,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Buddy Rich - Bein Green",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            2954,
+            2550,
+            3030
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Ein St\u00fcrzende Neubauten - Feurio",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3030,
+            2550,
+            3105
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Glenn Miller - In the Mood",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3105,
+            2550,
+            3180
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Jerry Reed - Amos Moses (Have A Nice Day Vol. 3)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3180,
+            2550,
+            3254
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Raunch Hands - Whap - A-Dang",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3254,
+            2550,
+            3329
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Cramps - Mama-Oo-Pow-Pow",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3329,
+            2550,
+            3405
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Prefab Sprout - Horsin' Around",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3405,
+            2550,
+            3481
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Stone Roses - Fool's Gold",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3481,
+            2550,
+            3555
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

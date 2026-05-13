@@ -1,0 +1,879 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page15",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-15.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 15,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:14:13.734816+00:00",
+  "page_date_raw": "SUN 1/8/90",
+  "comments_raw": null,
+  "oddities": [
+    "A crossed-out '12' appears before the date at the top of the page.",
+    "Weather notes written in the top right corner read: 'Sinead Mostly 64 Warmer 68 P/C low 45'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        471,
+        1257,
+        2302
+      ],
+      "hour_raw": "10 AM",
+      "jock_raw": "Joe CaParo",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "REO - Ridin the Storm Out !!",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            546,
+            1257,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "T.W. ROPE - RED SUN",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            649,
+            1257,
+            724
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "'TIL TUESDAY - NO MORE CRYING",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn arrow curving up from row 4"
+          ],
+          "row_bbox": [
+            0,
+            724,
+            1257,
+            798
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "ANGELS OF - TORTA DE LOS MUSIRIOS",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            798,
+            1257,
+            873
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "MIGHTY DIAMONDS - PRETTY WOMAN",
+          "confidence": "high",
+          "type_raw": "REGGAE",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            873,
+            1257,
+            949
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "WARRENS - HER COLORS",
+          "confidence": "high",
+          "type_raw": "CART",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn arrow curving up from row 7"
+          ],
+          "row_bbox": [
+            0,
+            949,
+            1257,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "JOHN LENNON - #9 DREAM",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1023,
+            1257,
+            1099
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "RICHARD BARONE - BEFORE YOU WERE BORN",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1099,
+            1257,
+            1175
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "T.S.O.L. - CANDY",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1175,
+            1257,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "GREEN PAJAMAS - 10000 WORDS",
+          "confidence": "high",
+          "type_raw": "REQ/O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1250,
+            1257,
+            1326
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "GREEN RIVER - SWALLOW MY PRIDE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1326,
+            1257,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "PELT - CARTOON SKY",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1401,
+            1257,
+            1477
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "CHILLS - DEAD WEB",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1477,
+            1257,
+            1552
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "LUKA BLOOM - THE HILL OF ALEN",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1552,
+            1257,
+            1627
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "GREEN RIVER - SWALLOW MY PRIDE",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1627,
+            1257,
+            1702
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "BEVIS FROUD - OLD SEA DOG",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1702,
+            1257,
+            1777
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1257,
+        471,
+        2550,
+        2302
+      ],
+      "hour_raw": "12 P",
+      "jock_raw": "Phil Hammond",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "DENIM TV - BEGGING FOR CHANGE",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            649,
+            2550,
+            724
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Byrds - Feel A Whole Lot Better",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            724,
+            2550,
+            798
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "RHCP - Show Me Your Soul",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            798,
+            2550,
+            873
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Fall - Arms Control Poseur",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            873,
+            2550,
+            949
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "J Richman - Important in Your Life",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            949,
+            2550,
+            1023
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Biff Bang Pow - Love's Going Out of Fashion",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1023,
+            2550,
+            1099
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "(Peel Sessions) New Order - Dreams Never End",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1099,
+            2550,
+            1175
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Nice Strong Arm - From Heaven",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1175,
+            2550,
+            1250
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Roger Manning - Pearly Blues",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1250,
+            2550,
+            1326
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "American Music Club - Never Mind",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1326,
+            2550,
+            1401
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "2 Live Crew - We Want Some P _ _ _ _ Y",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1401,
+            2550,
+            1477
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Mighty Lemon Drops - Sometimes Good Guys Don't Wear White",
+          "confidence": "high",
+          "type_raw": "concert",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1477,
+            2550,
+            1627
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "MC 900 Foot Jesus - Truth is Out of Style",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1627,
+            2550,
+            1702
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Descendents - Xmas Vacation",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1702,
+            2550,
+            1777
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "The Standells - Try It",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1777,
+            2550,
+            1852
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2302,
+        1257,
+        4063
+      ],
+      "hour_raw": "11 A",
+      "jock_raw": "Joe CaParo",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "FUNKADELIC - WHO SAYS A FUNK BAND CANT PLAY ROCK?",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2252,
+            1257,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "HENRY KAISER - FLAVOR BUD",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2427,
+            1257,
+            2503
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "ZERO BOYS - NEW GENERATION",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2503,
+            1257,
+            2578
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "FUGS - TUNE IN, TURN ON",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2578,
+            1257,
+            2653
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "SCATTERBRAIN - SLIGHT RETURN",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2653,
+            1257,
+            2729
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "BIG DIPPER - GIRL WHO LIVES ON HEAVEN HILL",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2729,
+            1257,
+            2879
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "DIGITAL UNDER - DO WHAT YOU LIKE",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2879,
+            1257,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "CHICKASAW MUD PUPPIES - MCINTOSH",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2954,
+            1257,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "JALI MUSA JAWARA - CASKIF",
+          "confidence": "high",
+          "type_raw": "REGGAE",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3029,
+            1257,
+            3104
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "FREAKS - LOST & FOUND (ZONY)",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3104,
+            1257,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "LLOYD COLE - TO THE CHURCH",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3179,
+            1257,
+            3254
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "STYLE COUNCIL - A SOLID BOND IN YOUR",
+          "confidence": "high",
+          "type_raw": "REQ/STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3254,
+            1257,
+            3329
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "MTHLUMBU QUEENS - FUNELA NAANSAO",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3329,
+            1257,
+            3404
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "POI DOG - BURY ME DEEP",
+          "confidence": "high",
+          "type_raw": "MV",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn arrow curving up from row 17"
+          ],
+          "row_bbox": [
+            0,
+            3404,
+            1257,
+            3480
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "JOSE ORLANDO - YU TAMBIEN QUIERO BESAR",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3480,
+            1257,
+            3555
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1257,
+        2302,
+        2550,
+        4063
+      ],
+      "hour_raw": null,
+      "jock_raw": "Phil Hammond",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Little Steven - Princess of Little Italy",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2252,
+            2550,
+            2352
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Savage Republic - Sucker Punch",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2352,
+            2550,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Sex Pistols - Holidays in the Sun",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2427,
+            2550,
+            2503
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Dub Syndicate - Je T'Aime",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2503,
+            2550,
+            2578
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Volcano Suns - Sounds Like Bucks",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2578,
+            2550,
+            2653
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Marty Robbins - Streets of Laredo",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2653,
+            2550,
+            2729
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Cowboy",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2729,
+            2550,
+            2804
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Rave - ups",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2804,
+            2550,
+            2954
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Interview",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2954,
+            2550,
+            3104
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "- Respectable Pig of The",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            3104,
+            2550,
+            3179
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Cosmic Psychos - She's Cracking Up",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            3179,
+            2550,
+            3254
+          ]
+        }
+      ],
+      "oddities": [
+        "rows 8-11 are overlaid with a large hand-drawn diamond containing the words 'Rave - ups Interview'"
+      ]
+    }
+  ]
+}

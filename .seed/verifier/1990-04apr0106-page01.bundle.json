@@ -1,0 +1,898 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page01",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-01.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 1,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:12:00.690591+00:00",
+  "page_date_raw": "Sunday 4/1/90",
+  "comments_raw": null,
+  "oddities": [
+    "The numbers '13' and '5' are written and crossed out above the Hour labels in the top two quadrants."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        476,
+        1272,
+        2205
+      ],
+      "hour_raw": "2 AM",
+      "jock_raw": "R. Palmer",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Lee Perry - Train to Doomsville",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            551,
+            1272,
+            653
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "LL Cool J - Rock the Bells",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            653,
+            1272,
+            728
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Misfits - Mommy Can I Go Out & Kill tonight?",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            728,
+            1272,
+            878
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Lazy Cowgirls - Talkin' Bout Baby",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            878,
+            1272,
+            954
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Damned - Is it a Dream?",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            954,
+            1272,
+            1028
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Robyn Hitchcock - Clean Steve",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1028,
+            1272,
+            1104
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Junior Murvin - Police + Thieves",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "An arrow in the left margin points to this row."
+          ],
+          "row_bbox": [
+            0,
+            1104,
+            1272,
+            1179
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Loop - The Nail Will Burn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1179,
+            1272,
+            1254
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "The Silos - Don't Talk That Way",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1254,
+            1272,
+            1330
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Knitters : Wild Side of Life /",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1330,
+            1272,
+            1405
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "It wasn't God Who made Honky Tonk Angels",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1405,
+            1272,
+            1556
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Sweethearts of the Rodeo - This Heart",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1556,
+            1272,
+            1631
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Christine Lavin: Moving Target",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn in the left margin."
+          ],
+          "row_bbox": [
+            0,
+            1631,
+            1272,
+            1706
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Welcome to the Beaut. South - Song For Whoever",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1706,
+            1272,
+            1781
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "MC Lyte - Slave 2 the Rhythm",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "An arrow in the left margin points to this row."
+          ],
+          "row_bbox": [
+            0,
+            1781,
+            1272,
+            1857
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Slickee Boys - Gotta Tell Me Why",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1857,
+            1272,
+            1931
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1272,
+        476,
+        2550,
+        2205
+      ],
+      "hour_raw": "3 AM",
+      "jock_raw": "R. Palmer",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Chills - Pink Frost",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            551,
+            2550,
+            653
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Taj Mahal - Chevrolet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            653,
+            2550,
+            728
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Earth, Wind & Fire - Shining Star",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            728,
+            2550,
+            803
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Dread Zeppelin - Hey, Hey, What Can I Do?",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            803,
+            2550,
+            878
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "3 - Don't Walk Away",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            878,
+            2550,
+            954
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Magazine - I Want to Burn Again",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            954,
+            2550,
+            1028
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "House of Love - Hannah",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            1028,
+            2550,
+            1104
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Lava Love - Juke Jubilee",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "An arrow from the right margin points to this row."
+          ],
+          "row_bbox": [
+            1272,
+            1104,
+            2550,
+            1179
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Mayor Handy - Te Ni Nee Ni Nu",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            1179,
+            2550,
+            1254
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Hank Ballard & the Midnighters - The Twist",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            1254,
+            2550,
+            1330
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Madness - Not Home Today",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            1330,
+            2550,
+            1405
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "The Dickies - EEP OPP ORK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            1405,
+            2550,
+            1480
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Thomas Dolby - She Blinded Me With Science",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'Science' extends far into the right margin."
+          ],
+          "row_bbox": [
+            1272,
+            1480,
+            2550,
+            1556
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Drowning Pool - Fired From Within",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            1556,
+            2550,
+            1631
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2205,
+        1272,
+        4074
+      ],
+      "hour_raw": "4 AM",
+      "jock_raw": "R. Palmer",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Naked City - A Shot In the Dark",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2256,
+            1272,
+            2359
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Soulside : Hate",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2359,
+            1272,
+            2507
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Chapter Two - Cardboard Hero",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "An arrow in the left margin points to this row."
+          ],
+          "row_bbox": [
+            0,
+            2507,
+            1272,
+            2581
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Melanie - Brand New Key",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2581,
+            1272,
+            2660
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Otis Rush - Mean Old World",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2660,
+            1272,
+            2735
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Blind Boy Fuller - Piccolo Rag",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2735,
+            1272,
+            2810
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Sandy Denny - John the Gun",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2810,
+            1272,
+            2882
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "M\u00e1rta Sebesty\u00e9n - Dark Winds",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2882,
+            1272,
+            2959
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "The Mission - Grapes of Wrath",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2959,
+            1272,
+            3036
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Trio - Da Da Da",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3036,
+            1272,
+            3110
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jerry Gonzalez - Nefertititi",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3110,
+            1272,
+            3186
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Einst\u00fcrzende Neubauten - Neun Arme",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3186,
+            1272,
+            3260
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1272,
+        2205,
+        2550,
+        4074
+      ],
+      "hour_raw": "6",
+      "jock_raw": "P. Raleigh",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "King Crimson Industry",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2205,
+            2550,
+            2322
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Dig Me",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2322,
+            2550,
+            2439
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Kinks Picture Book",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2439,
+            2550,
+            2555
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Brave Combo Ooo I - - red I - - ye",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2555,
+            2550,
+            2672
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "The Who The Good's gone",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2672,
+            2550,
+            2789
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Young Fresh Fellows My Boyfriends in Killdozer",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2789,
+            2550,
+            2906
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Joy Division Passover",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            2906,
+            2550,
+            3023
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "New Dawn Fades",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3023,
+            2550,
+            3139
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Eddie Condon(?) Wolverine Blues",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3139,
+            2550,
+            3256
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Crucifucks Savior",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3256,
+            2550,
+            3373
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "[Mystery Track]",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Entry is written in square brackets."
+          ],
+          "row_bbox": [
+            1272,
+            3373,
+            2550,
+            3490
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Christine Lavin Sensitive New Age",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3490,
+            2550,
+            3607
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "1 Eye Bomp in on Sunset",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3607,
+            2550,
+            3724
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "'oo Introd Western",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3724,
+            2550,
+            3840
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Loudon Wainwright III",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3840,
+            2550,
+            3957
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Hard Day on the Planet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1272,
+            3957,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

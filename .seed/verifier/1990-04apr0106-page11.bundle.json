@@ -1,0 +1,888 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page11",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-11.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 11,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:12:57.297321+00:00",
+  "page_date_raw": "Mon 4/2/90",
+  "comments_raw": null,
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        474,
+        1263,
+        2352
+      ],
+      "hour_raw": "6PM",
+      "jock_raw": "Held",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Derek + Dominoes - Little Wing",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            548,
+            1263,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Nat King Cole - Scratchin' with the Soda",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            726,
+            1263,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Primal Scream - Ramblin' Rose",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            875,
+            1263,
+            1025
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Primitives - space head",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1025,
+            1263,
+            1100
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "A.O. E r Carmen Miranda, at least",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1100,
+            1263,
+            1251
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Suicide - Rain of ruin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1251,
+            1263,
+            1327
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "PIG - scumsberg",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1327,
+            1263,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bongwater - Teena stays the same",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1402,
+            1263,
+            1553
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Jackson Browne - The Fuse",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1553,
+            1263,
+            1628
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "HP Zinker - Dancing days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1628,
+            1263,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Wilson Pickett - 99\u00bd Won't Do",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1704,
+            1263,
+            1853
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Fairground Attraction - The Moon is mine",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1853,
+            1263,
+            2003
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "MBM - DOG STAR MAN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2003,
+            1263,
+            2078
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "Bowie - Fame",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Includes a small additional entry 'MARRS- Pump up the volume' on the right side of the track"
+          ],
+          "row_bbox": [
+            0,
+            2078,
+            1263,
+            2153
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1263,
+        474,
+        2550,
+        2352
+      ],
+      "hour_raw": "8PM",
+      "jock_raw": "Allison",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Dizzy Gillespie - Blue + Sentimental",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            548,
+            2550,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Cure - Pictures of You (Remix)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            651,
+            2550,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "House of Love - Somebodys Got to Love You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            726,
+            2550,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Robyn Hitchcock - Satellite",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            800,
+            2550,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Jim Basnight - We'll Always Be in Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            875,
+            2550,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Swallow - Coffin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            951,
+            2550,
+            1025
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nice Strong Arm - Stress City",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1025,
+            2550,
+            1100
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "War - Pumpkin",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1100,
+            2550,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Agitpop - Bullet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1176,
+            2550,
+            1251
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "RiTeP - Show Me Your Soul",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1251,
+            2550,
+            1327
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Mthembu Queens - Thina Siyajabula",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1327,
+            2550,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Queen Latifah - Ladies 1st",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1402,
+            2550,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Ozzy - Mr. Crowley",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1478,
+            2550,
+            1553
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Red Temple Spirits - Dive in Deep",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1553,
+            2550,
+            1628
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Germs - Caught in My Eye",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1628,
+            2550,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Xray spex - Day the world Turned Day-Glo",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1704,
+            2550,
+            1853
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "L7 - Shove",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            1853,
+            2550,
+            1928
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2352,
+        1263,
+        4074
+      ],
+      "hour_raw": "7",
+      "jock_raw": "Held",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "George Harrison - what is life",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2352,
+            1263,
+            2496
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "A.R. Kane - spermwhale trip over",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2496,
+            1263,
+            2639
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Russ Ballard - Halloween",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2639,
+            1263,
+            2782
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "MC 900 FT JESUS - SPACEMAN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2782,
+            1263,
+            2926
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "George Clinton - the Pinocchio Theory",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2926,
+            1263,
+            3070
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Cowboy Junkies - Rock and Bird",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3070,
+            1263,
+            3213
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Blue Aeroplanes - Ceiling Roses",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3213,
+            1263,
+            3356
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Herbie Hancock - Eye of the Hurricane",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3356,
+            1263,
+            3500
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Naked City - Punk China Doll Punk China Doll",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [
+            "Part of track name is heavily scratched out before Punk China Doll"
+          ],
+          "row_bbox": [
+            0,
+            3500,
+            1263,
+            3644
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Leadbelly - we shall be free",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3644,
+            1263,
+            3787
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Wooden tops - Steady steady",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Entry starts with a scribbled out section on the left"
+          ],
+          "row_bbox": [
+            0,
+            3787,
+            1263,
+            3930
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Savage Republic - The Birds of Pork",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3930,
+            1263,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1263,
+        2352,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Christy Moore - Ordinary Man",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            2352,
+            2550,
+            2467
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Stones - Salt of The Earth",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            2467,
+            2550,
+            2582
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Chris Cacavas - Driving Misery",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            2582,
+            2550,
+            2696
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "LOOP - The Nail Will Burn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            2696,
+            2550,
+            2811
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Spacemen 3 - Mary Anne",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            2811,
+            2550,
+            2926
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Bevis Frond - Rejection Day",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            2926,
+            2550,
+            3041
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Husker Du - 8 Miles High",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3041,
+            2550,
+            3156
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Cecil Taylor - Ell Moving Track",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3156,
+            2550,
+            3270
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Nick Cave - The Train Song",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3270,
+            2550,
+            3385
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Johnny Adams - A losing Battle",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3385,
+            2550,
+            3500
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Sam Cooke - You Send Me",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3500,
+            2550,
+            3615
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Ch. 2 - Quit your Bullyachin'",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3615,
+            2550,
+            3730
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Schooly D - Ed. of a Black Man",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3730,
+            2550,
+            3844
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "World Dom. Enterprises - Funkytown",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3844,
+            2550,
+            3959
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Sonic Youth/Lydia - Death Valley '69",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3959,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

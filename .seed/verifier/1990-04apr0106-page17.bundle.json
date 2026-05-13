@@ -1,0 +1,934 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page17",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-17.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 17,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:14:42.656696+00:00",
+  "page_date_raw": "WEDNESDAY 4/4/90",
+  "comments_raw": null,
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        477,
+        1285,
+        2308
+      ],
+      "hour_raw": "2AM",
+      "jock_raw": "Bob Crews",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "The Minutemen - Fake Contest",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            550,
+            1285,
+            804
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Chills - Singing In My Sleep",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            804,
+            1285,
+            876
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Roxanne Shante - Go on Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            876,
+            1285,
+            952
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "XTC - Dear God",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'The' was originally written before the artist name but is heavily crossed out."
+          ],
+          "row_bbox": [
+            0,
+            952,
+            1285,
+            1026
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Billy Cobham - Quadrant",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1026,
+            1285,
+            1101
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Blue Aeroplanes - Anti-Pretty",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1101,
+            1285,
+            1178
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Mojo Nixon - Elvis is Everywhere",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1178,
+            1285,
+            1254
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Alpha Blondy - Boulevard De La Mort",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1254,
+            1285,
+            1330
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Nice Strong Arm - Cakewalk",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1330,
+            1285,
+            1406
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Meat Beat Manifesto - God O.D.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1406,
+            1285,
+            1480
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Helios Creed - Superior Catholic Finger",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1480,
+            1285,
+            1556
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Led Zeppelin - Living Loving Maid",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1556,
+            1285,
+            1631
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "David Sylvian - Red Guitar",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1631,
+            1285,
+            1705
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Ornette Coleman - 3 wishes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1705,
+            1285,
+            1778
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Wreck - We Know Everything",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1778,
+            1285,
+            1854
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1285,
+        477,
+        2550,
+        2308
+      ],
+      "hour_raw": "4AM",
+      "jock_raw": "Bob Crews",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Charlie Parker - I love Paris",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            655,
+            2550,
+            730
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "MC 900 FT. Jesus w/ DJ Zero - Truth Is out of Style",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'out of Style' wrap and are written slightly below the end of the line."
+          ],
+          "row_bbox": [
+            1285,
+            730,
+            2550,
+            883
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Denim T.V. - It's A Privilege",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            883,
+            2550,
+            958
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Saccharine Trust - Speak",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            958,
+            2550,
+            1032
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Sabroso! - De Kokinde A Kunene (En S\u00f3lo Pueblo)",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1032,
+            2550,
+            1107
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Chapter Two - Be You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1107,
+            2550,
+            1254
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "The Wolfgang Press - Kansas",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1254,
+            2550,
+            1330
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Siglo XX - Vanity Lane",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1330,
+            2550,
+            1406
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Cecil Taylor - Leaf Taken Horn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1406,
+            2550,
+            1556
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Hugo Largo - Halfway Knowing",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1556,
+            2550,
+            1784
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "NomeansNO - It's Catching Up",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Small text 'Terminal City Ricochet' is written directly above the artist name."
+          ],
+          "row_bbox": [
+            1285,
+            1784,
+            2550,
+            1860
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Johnny Cash - Without Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1860,
+            2550,
+            1934
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Dub Syndicate - Hawaii",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1934,
+            2550,
+            2006
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Thrill Kill Kult - Easy Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2006,
+            2550,
+            2082
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2308,
+        1285,
+        4065
+      ],
+      "hour_raw": "3AM",
+      "jock_raw": "Bob Crews",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Throwing Muses - Dizzy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1285,
+            2503
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Boogie Down Productions - Why Is That",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2503,
+            1285,
+            2579
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Polkacide - Helena",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2579,
+            1285,
+            2654
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Naked City - Batman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2654,
+            1285,
+            2729
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Jackson Browne - Cocaine",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2729,
+            1285,
+            2807
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Fluid - Tin Top Toy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2807,
+            1285,
+            2881
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "The Church - Russian Autumn Heart",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2881,
+            1285,
+            2955
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Turtle Island String Quartet - Jaco",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2955,
+            1285,
+            3031
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Live Skull - Bootcamp",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3031,
+            1285,
+            3105
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Muzsikas - Regen volt, soka lesz",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3105,
+            1285,
+            3159
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Big Daddy Kane - On the Move",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3159,
+            1285,
+            3181
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "illegible",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3181,
+            1285,
+            3256
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Cindy Lee Berryhill - Every Man Has A Selling Son",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'Son' wraps below the rest of the track name."
+          ],
+          "row_bbox": [
+            0,
+            3256,
+            1285,
+            3332
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Souled American - Dwarte's Hornpipe",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3332,
+            1285,
+            3407
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Stooges - Loose",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3407,
+            1285,
+            3483
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Public Enemy - 911 is A JOKE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3483,
+            1285,
+            3558
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Blast - Sometimes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3558,
+            1285,
+            3633
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1285,
+        2308,
+        2550,
+        4065
+      ],
+      "hour_raw": "5AM",
+      "jock_raw": "Bob Crews",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Savage Republic - Song for Adonis",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2259,
+            2550,
+            2357
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Silos - Caroline",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2357,
+            2550,
+            2431
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Fiddler On the Roof - If I Were A Rich Man",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2431,
+            2550,
+            2509
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Pailhead - I Will Refuse",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2509,
+            2550,
+            2585
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Band of Susans - Tourniquet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2585,
+            2550,
+            2660
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Luka Bloom - Gone to Pablo",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2660,
+            2550,
+            2735
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Thelonious Monk - Nice Work If You Can Get It",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The words 'Get It' wrap underneath the line."
+          ],
+          "row_bbox": [
+            1285,
+            2735,
+            2550,
+            2807
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Thee Hypnotics - Soul Trader",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2807,
+            2550,
+            2881
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Forr\u00f3 - De Pernambuco Ao Maranhao",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2881,
+            2550,
+            2955
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Culture - Money Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2955,
+            2550,
+            3181
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Pain Teens - Preppy Killer",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3181,
+            2550,
+            3256
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Digital Underground - Underwater RIME'S",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3256,
+            2550,
+            3332
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Circle Jerks - Under the Gun",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3332,
+            2550,
+            3407
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Flaming Lips - After the Goldrush",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3407,
+            2550,
+            3483
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bud Powell - Cherokee",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3483,
+            2550,
+            3558
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

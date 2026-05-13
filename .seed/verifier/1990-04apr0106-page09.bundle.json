@@ -1,0 +1,891 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0106-page09",
+  "image_path": "../pages/1990/April 1990/1990-04apr0106/page-09.png",
+  "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
+  "page_number": 9,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-06T04:12:35.964234+00:00",
+  "page_date_raw": "Mon 4/2/90",
+  "comments_raw": null,
+  "oddities": [
+    "a handwritten note above the WXYC logo says 'Brian Eno-Burning A.'",
+    "a handwritten note on the top right says 'TWR Moonhead'"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        472,
+        1256,
+        2199
+      ],
+      "hour_raw": "10 AM",
+      "jock_raw": "JOE CAPARO",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "FLEETWOOD MAC - BIG MAC-RHIANNON",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            546,
+            1256,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "CHIPMUNKS - WHIP IT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            649,
+            1256,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "TELEVISION - FRICTION",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1256,
+            799
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "WALKABOUTS - ANVIL SONG",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            799,
+            1256,
+            874
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "YUNG WU - BIG DAY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            874,
+            1256,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "JOLLY BOYZ - BIG BAMBOO",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            950,
+            1256,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "GIN BLOSSOMS - IDIOT SUMMER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1024,
+            1256,
+            1098
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "STONE ROSES - WANNA BE ADORED",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1098,
+            1256,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "GUADALCANAL DIARY - LITANY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1174,
+            1256,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "DUB SYNDICATE - CUSS CUSS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1249,
+            1256,
+            1325
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "HEX - DIVINER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1325,
+            1256,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "VULVET - TEASER",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [
+            "left margin has a hand-drawn arrow pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            1401,
+            1256,
+            1476
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "JOSE ORLANDO - LINDA MENINA",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1476,
+            1256,
+            1551
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "LEAP OF FAITH - HOLD ON",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1551,
+            1256,
+            1627
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "DIGITAL UNDERGROUND - THE WAY WE SWING",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1627,
+            1256,
+            1777
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "TOADSTOOL - JELLY BELLY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1777,
+            1256,
+            1852
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1256,
+        472,
+        2550,
+        2199
+      ],
+      "hour_raw": "12 PM",
+      "jock_raw": "JOE & PHIL",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "LEMONHEADS- HOME IS WHERE YOU'RE HAPPY",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            546,
+            2550,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "DAVID BOWIE - FAME 90",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            649,
+            2550,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Died Pretty- Mirror Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            725,
+            2550,
+            799
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Bongwater- One Hand on the Road",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            799,
+            2550,
+            874
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Public Enenemy - Revolutionary Generation",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            874,
+            2550,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Wonder Stuff- A Wish Away",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            950,
+            2550,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Silos-Take My Country Back/Out of Town",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1024,
+            2550,
+            1098
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Church-Metropolis",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1098,
+            2550,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "LHOB- Getting Wasted w/ the Vampires",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1174,
+            2550,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Mighty Diamonds- Stoned Out of My Mind",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1249,
+            2550,
+            1325
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Eno-Burning Airlines...",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1325,
+            2550,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "MC 900 Foot Jesus-Truth is Out of Style",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1401,
+            2550,
+            1476
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "StumpWizards- I Got A Way",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            1476,
+            2550,
+            1551
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2199,
+        1256,
+        4074
+      ],
+      "hour_raw": "11 AM",
+      "jock_raw": "JOE CAPARO",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "PUBLIC ENEMY - CHANNEL ZERO",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1256,
+            2355
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "PATTI SMITH - DANCING BAREFOOT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2355,
+            1256,
+            2430
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "IGGY POP - I WANNA BE YOUR DOG",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2430,
+            1256,
+            2502
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "HAPPY FLOWERS - WANNA WATCH CARTOONS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "arrow drawn pointing right from the 'O' indicator"
+          ],
+          "row_bbox": [
+            0,
+            2502,
+            1256,
+            2578
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "MUZIKAS - VETETTEM VIOLAT",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2578,
+            1256,
+            2728
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "THIN WHITE ROPE - WHIRLING DERVISH",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2728,
+            1256,
+            2806
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "POP E.S. - NOT BEAUTIFUL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2806,
+            1256,
+            2878
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "VULVT - IT'S OVER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2878,
+            1256,
+            2955
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "CHURCH - DISAPPOINTMENT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2955,
+            1256,
+            3031
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "LAVA LOVE - I DIG YOU DUG",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3031,
+            1256,
+            3103
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "ANGELS OF - CARMEN MIRANDA",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3103,
+            1256,
+            3181
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "L7 - BLOODSTAINS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3181,
+            1256,
+            3255
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "JOE HIGGS - STEP BY STEP",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3255,
+            1256,
+            3331
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "PRIMAL SCREAM - RAMBLIN' ROSE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3331,
+            1256,
+            3406
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "FRANK ZAPPA - JOES GARAGE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3406,
+            1256,
+            3483
+          ]
+        }
+      ],
+      "oddities": [
+        "a bracket groups rows 9-11 in the left margin"
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1256,
+        2199,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Billy Bragg - Walk Away Renee",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2199,
+            2550,
+            2333
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Naked City - Various Stuff",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2333,
+            2550,
+            2467
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Cindy Lee Berryhill - Take a Giant Step",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2467,
+            2550,
+            2601
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Bluebells - Cath",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2601,
+            2550,
+            2735
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Braindrops - Quel Cheezo",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2735,
+            2550,
+            2869
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Saints- Big Hits",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            2869,
+            2550,
+            3003
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Blue Aeroplanes- Careful Boy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3003,
+            2550,
+            3136
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Joy Division - Passover",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3136,
+            2550,
+            3270
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Cramps- Journey to the Center of a Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3270,
+            2550,
+            3404
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Wedding Present - What Have I Said Now",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3404,
+            2550,
+            3538
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "D. Johnston - The Beatles",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3538,
+            2550,
+            3672
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Helios Creed - Monster Lust",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3672,
+            2550,
+            3806
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Mikey Dread- The Source of Your Divorce",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3806,
+            2550,
+            3940
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Blood on the Saddle-",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1256,
+            3940,
+            2550,
+            4074
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

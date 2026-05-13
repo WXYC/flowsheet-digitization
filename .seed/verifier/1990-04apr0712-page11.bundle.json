@@ -1,0 +1,427 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page11",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-11.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 11,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T02:13:03.440635+00:00",
+  "page_date_raw": "Mon 9 Apr 90",
+  "comments_raw": null,
+  "oddities": [
+    "Text above the WXYC logo reads: 'AID'S Benefit Toasters Slack BRTC TIX'.",
+    "A note written near the Date field reads: 'Blue October'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        467,
+        1264,
+        2300
+      ],
+      "hour_raw": "6pm",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Bad Checks - Dome Right",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            542,
+            1264,
+            644
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Billy Club Fest - Funka Form Mania",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            644,
+            1264,
+            719
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Mind Sirens - Song Y",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            719,
+            1264,
+            794
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Sex Police - Taste of Glass",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            794,
+            1264,
+            869
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "COC - Technocracy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            869,
+            1264,
+            945
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Easily Suede - Monkeyface",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            945,
+            1264,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "- SWATCHES",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1021,
+            1264,
+            1096
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Georgetown Station - I'm not falling",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1096,
+            1264,
+            1172
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Jeff Hart & The Ruins - Half Moons",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1172,
+            1264,
+            1248
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Eight or 9 Ft - Laughwithyou",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1248,
+            1264,
+            1324
+          ]
+        }
+      ],
+      "oddities": [
+        "Several rows have long horizontal dashes drawn in the left margin instead of circles."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1264,
+        467,
+        2550,
+        2300
+      ],
+      "hour_raw": "8pm",
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2300,
+        1264,
+        4061
+      ],
+      "hour_raw": null,
+      "jock_raw": "Slight Return",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Scatterbrain Down With the Ship",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2250,
+            1264,
+            2350
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Embarrassment Podmen",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2350,
+            1264,
+            2425
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Big Dipper Girl on Heaven Hill",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2425,
+            1264,
+            2501
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Beastie Boys",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Entry is underlined."
+          ],
+          "row_bbox": [
+            0,
+            2501,
+            1264,
+            2576
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Brazil Roots",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A heavily scribbled-out word precedes the text."
+          ],
+          "row_bbox": [
+            0,
+            2576,
+            1264,
+            2652
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "TMBG Ant",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2652,
+            1264,
+            2727
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Lloyd Cole Waterline",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2727,
+            1264,
+            2802
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Cows Sittin Around",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2802,
+            1264,
+            2876
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "God Bullies Monster Jesus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2876,
+            1264,
+            2951
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Fela Beasts of No Nation",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2951,
+            1264,
+            3028
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "A Tribe Called Quest These Are My Friends",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3028,
+            1264,
+            3102
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Miracle Legion These Are My Friends",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3102,
+            1264,
+            3177
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Tragic Mulatto I Dont Mind",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3177,
+            1264,
+            3252
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "P Enemy Fear of Black Planet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3252,
+            1264,
+            3327
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Ignition Flyballed",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3327,
+            1264,
+            3402
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1264,
+        2300,
+        2550,
+        4061
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [],
+      "oddities": []
+    }
+  ]
+}
