@@ -470,9 +470,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
+            2354,
             1281,
-            2354
+            2428
           ]
         },
         {
@@ -484,9 +484,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2354,
+            2428,
             1281,
-            2428
+            2504
           ]
         },
         {
@@ -498,9 +498,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2428,
+            2504,
             1281,
-            2504
+            2580
           ]
         },
         {
@@ -512,9 +512,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2504,
+            2580,
             1281,
-            2580
+            2655
           ]
         },
         {
@@ -526,9 +526,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2580,
+            2655,
             1281,
-            2655
+            2730
           ]
         }
       ],
@@ -554,9 +554,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2253,
+            2354,
             2550,
-            2354
+            2428
           ]
         },
         {
@@ -568,9 +568,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2354,
+            2428,
             2550,
-            2428
+            2504
           ]
         },
         {
@@ -582,9 +582,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2428,
+            2504,
             2550,
-            2504
+            2580
           ]
         },
         {
@@ -596,28 +596,14 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2504,
-            2550,
-            2580
-          ]
-        },
-        {
-          "row_index": 4,
-          "raw_text": "Legendary Stardust Cowboy - Paralysed",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1281,
             2580,
             2550,
             2655
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Justin Wilson - Several tales",
+          "row_index": 4,
+          "raw_text": "Legendary Stardust Cowboy - Paralysed",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -630,8 +616,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Henry Thomas - Don't Leave me here",
+          "row_index": 5,
+          "raw_text": "Justin Wilson - Several tales",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -644,8 +630,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Hot shot Love - Wolf Call Boogie",
+          "row_index": 6,
+          "raw_text": "Henry Thomas - Don't Leave me here",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -658,6 +644,20 @@
           ]
         },
         {
+          "row_index": 7,
+          "raw_text": "Hot shot Love - Wolf Call Boogie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2880,
+            2550,
+            2954
+          ]
+        },
+        {
           "row_index": 8,
           "raw_text": "Zappa - Stevie's Spanking",
           "confidence": "high",
@@ -666,9 +666,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2880,
+            2954,
             2550,
-            2954
+            3030
           ]
         },
         {
@@ -680,9 +680,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2954,
+            3030,
             2550,
-            3030
+            3105
           ]
         },
         {
@@ -694,9 +694,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            3030,
+            3105,
             2550,
-            3105
+            3180
           ]
         },
         {
@@ -708,9 +708,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            3105,
+            3180,
             2550,
-            3180
+            3255
           ]
         },
         {
@@ -722,9 +722,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            3180,
+            3255,
             2550,
-            3255
+            3330
           ]
         },
         {
@@ -736,9 +736,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            3255,
+            3330,
             2550,
-            3330
+            3405
           ]
         }
       ],

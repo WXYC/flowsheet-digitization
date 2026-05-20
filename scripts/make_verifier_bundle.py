@@ -136,16 +136,33 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
     return result
 
 
-# When the gap from the quadrant body top to the first detected row line
-# exceeds this multiple of the median inter-line gap, treat it as evidence
-# that the page's "below Hour/Jock cell" line failed detection (broken by
-# handwriting or noise) and infer it at `lines[0] - median_gap`. The
-# bottom-quadrant detector already has a separate reattribution heuristic
-# in `core.page_layout.partition_row_lines_by_quadrant`, but it only fires
-# when the misattributed line is still hiding in the TOP quadrant's tail.
-# This second heuristic catches the orthogonal case where the line is
-# missing from both quadrants.
-_MISSING_FIRST_LINE_RATIO = 1.5
+# A "normal" first-row-line sits about one median row gap below the
+# quadrant body top — the height of the Hour/Jock cell. When the observed
+# gap is well above or below that, treat the first detected line as
+# anchored to row 0's BOTTOM (missing first line above it) and infer the
+# row 0 top at `lines[0] - median_gap`.
+#
+# - Above 1.5×: `core.page_layout.partition_row_lines_by_quadrant`'s
+#   correction pass left a real Hour/Jock cell but also failed to detect
+#   the line just below it.
+# - Below 0.5×: the inter-block body-midline detector overshot, leaving
+#   no room for a real Hour/Jock cell between body_mid_y and `lines[0]`,
+#   so `lines[0]` is actually the SECOND row line and the first wasn't
+#   detected.
+_HOUR_JOCK_CELL_LOW_RATIO = 0.5
+_HOUR_JOCK_CELL_HIGH_RATIO = 1.5
+
+
+def _filter_misattributed_leading_lines(quad_bbox: BBox, lines: list[int]) -> list[int]:
+    """Drop any leading lines that sit ABOVE the quadrant body top.
+
+    The reattribution pass in `partition_row_lines_by_quadrant` sometimes
+    moves a line from the body-midline gap into the bottom quadrant.
+    Using such a line as the row 0 anchor parks the printed line in the
+    middle of the crop rather than at the row boundary.
+    """
+    y1 = quad_bbox[1]
+    return [y for y in lines if y >= y1]
 
 
 def _maybe_prepend_missing_first_line(quad_bbox: BBox, lines: list[int]) -> list[int]:
@@ -154,7 +171,10 @@ def _maybe_prepend_missing_first_line(quad_bbox: BBox, lines: list[int]) -> list
     y1 = quad_bbox[1]
     gaps = sorted(b - a for a, b in zip(lines, lines[1:], strict=False))
     median_gap = gaps[len(gaps) // 2]
-    if median_gap > 0 and (lines[0] - y1) > _MISSING_FIRST_LINE_RATIO * median_gap:
+    if median_gap <= 0:
+        return lines
+    ratio = (lines[0] - y1) / median_gap
+    if ratio < _HOUR_JOCK_CELL_LOW_RATIO or ratio > _HOUR_JOCK_CELL_HIGH_RATIO:
         return [lines[0] - median_gap, *lines]
     return lines
 
@@ -189,7 +209,7 @@ def _assign_row_bboxes(
     if not spans:
         return []
     x1, y1, x2, y2 = quad_bbox
-    lines = _maybe_prepend_missing_first_line(quad_bbox, lines)
+    lines = _filter_misattributed_leading_lines(quad_bbox, lines)
     total_physical_rows = sum(spans)
     if len(lines) >= total_physical_rows + 1:
         rows: list[BBox] = []
@@ -200,6 +220,11 @@ def _assign_row_bboxes(
         return rows
 
     n_entries = len(spans)
+    # Fallback path: not enough detected lines to clean-pair every span.
+    # Apply the "missing first line" inference now (after the clean-pair
+    # gate, so a well-detected page with exactly enough lines stays on
+    # the clean-pair path).
+    lines = _maybe_prepend_missing_first_line(quad_bbox, lines)
     if lines:
         y_top = lines[0]
         if len(lines) >= 2:

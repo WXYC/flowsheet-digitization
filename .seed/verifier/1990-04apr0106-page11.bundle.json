@@ -494,9 +494,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2254,
+            2281,
             1263,
-            2329
+            2356
           ]
         },
         {
@@ -508,9 +508,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2329,
+            2356,
             1263,
-            2479
+            2506
           ]
         },
         {
@@ -522,9 +522,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2479,
+            2506,
             1263,
-            2554
+            2581
           ]
         },
         {
@@ -536,9 +536,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2554,
+            2581,
             1263,
-            2629
+            2656
           ]
         },
         {
@@ -550,9 +550,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2629,
+            2656,
             1263,
-            2779
+            2806
           ]
         },
         {
@@ -564,9 +564,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2779,
+            2806,
             1263,
-            2854
+            2881
           ]
         },
         {
@@ -578,9 +578,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2854,
+            2881,
             1263,
-            3004
+            3031
           ]
         },
         {
@@ -592,9 +592,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3004,
+            3031,
             1263,
-            3154
+            3181
           ]
         },
         {
@@ -608,9 +608,9 @@
           ],
           "row_bbox": [
             0,
-            3154,
+            3181,
             1263,
-            3304
+            3331
           ]
         },
         {
@@ -622,9 +622,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3304,
+            3331,
             1263,
-            3379
+            3406
           ]
         },
         {
@@ -638,9 +638,9 @@
           ],
           "row_bbox": [
             0,
-            3379,
+            3406,
             1263,
-            3454
+            3481
           ]
         },
         {
@@ -652,9 +652,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3454,
+            3481,
             1263,
-            3604
+            3631
           ]
         }
       ],
@@ -680,28 +680,14 @@
           "oddities": [],
           "row_bbox": [
             1263,
-            2350,
-            2550,
-            2425
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Stones - Salt of The Earth",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1263,
             2425,
             2550,
             2500
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Chris Cacavas - Driving Misery",
+          "row_index": 1,
+          "raw_text": "Stones - Salt of The Earth",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -714,8 +700,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "LOOP - The Nail Will Burn",
+          "row_index": 2,
+          "raw_text": "Chris Cacavas - Driving Misery",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -728,8 +714,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Spacemen 3 - Mary Anne",
+          "row_index": 3,
+          "raw_text": "LOOP - The Nail Will Burn",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -742,8 +728,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Bevis Frond - Rejection Day",
+          "row_index": 4,
+          "raw_text": "Spacemen 3 - Mary Anne",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -756,8 +742,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Husker Du - 8 Miles High",
+          "row_index": 5,
+          "raw_text": "Bevis Frond - Rejection Day",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -770,9 +756,9 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Cecil Taylor - Ell Moving Track",
-          "confidence": "medium",
+          "row_index": 6,
+          "raw_text": "Husker Du - 8 Miles High",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -784,9 +770,9 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Nick Cave - The Train Song",
-          "confidence": "high",
+          "row_index": 7,
+          "raw_text": "Cecil Taylor - Ell Moving Track",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -798,8 +784,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Johnny Adams - A losing Battle",
+          "row_index": 8,
+          "raw_text": "Nick Cave - The Train Song",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -812,8 +798,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Sam Cooke - You Send Me",
+          "row_index": 9,
+          "raw_text": "Johnny Adams - A losing Battle",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -826,8 +812,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Ch. 2 - Quit your Bullyachin'",
+          "row_index": 10,
+          "raw_text": "Sam Cooke - You Send Me",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -840,8 +826,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Schooly D - Ed. of a Black Man",
+          "row_index": 11,
+          "raw_text": "Ch. 2 - Quit your Bullyachin'",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -854,8 +840,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "World Dom. Enterprises - Funkytown",
+          "row_index": 12,
+          "raw_text": "Schooly D - Ed. of a Black Man",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -868,8 +854,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Sonic Youth/Lydia - Death Valley '69",
+          "row_index": 13,
+          "raw_text": "World Dom. Enterprises - Funkytown",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -879,6 +865,20 @@
             3400,
             2550,
             3475
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Sonic Youth/Lydia - Death Valley '69",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
+            3475,
+            2550,
+            3550
           ]
         }
       ],

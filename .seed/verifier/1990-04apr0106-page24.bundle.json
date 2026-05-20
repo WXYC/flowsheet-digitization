@@ -245,28 +245,14 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            654,
-            2550,
-            729
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Silos - Commodore Peter",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1279,
             729,
             2550,
             876
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Sarah Vaughn - Black Coffee",
+          "row_index": 1,
+          "raw_text": "Silos - Commodore Peter",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -279,8 +265,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Martha & the Muffins - World w/o Borders",
+          "row_index": 2,
+          "raw_text": "Sarah Vaughn - Black Coffee",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -293,8 +279,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Gin Blossoms - Found out about You",
+          "row_index": 3,
+          "raw_text": "Martha & the Muffins - World w/o Borders",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -307,8 +293,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Romantics - What I Like About You",
+          "row_index": 4,
+          "raw_text": "Gin Blossoms - Found out about You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -321,9 +307,9 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Muzsikas - Vetetiem Viol\u00e1t",
-          "confidence": "medium",
+          "row_index": 5,
+          "raw_text": "Romantics - What I Like About You",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -335,9 +321,9 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Wishbone Ash - Vas Dis",
-          "confidence": "high",
+          "row_index": 6,
+          "raw_text": "Muzsikas - Vetetiem Viol\u00e1t",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -349,8 +335,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "That Petrol Emotion - Hey Venus",
+          "row_index": 7,
+          "raw_text": "Wishbone Ash - Vas Dis",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -360,6 +346,20 @@
             1329,
             2550,
             1403
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "That Petrol Emotion - Hey Venus",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1403,
+            2550,
+            1479
           ]
         },
         {
@@ -373,28 +373,14 @@
           ],
           "row_bbox": [
             1279,
-            1403,
-            2550,
-            1479
-          ]
-        },
-        {
-          "row_index": 10,
-          "raw_text": "Jazz Butcher - Drink",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1279,
             1479,
             2550,
             1554
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Church - You're Still Beautiful",
+          "row_index": 10,
+          "raw_text": "Jazz Butcher - Drink",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -407,6 +393,20 @@
           ]
         },
         {
+          "row_index": 11,
+          "raw_text": "Church - You're Still Beautiful",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            1629,
+            2550,
+            1705
+          ]
+        },
+        {
           "row_index": 12,
           "raw_text": "Dub Syndicate - In The Man For You Easy",
           "confidence": "high",
@@ -415,9 +415,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            1629,
+            1705,
             2550,
-            1780
+            1854
           ]
         },
         {
@@ -429,9 +429,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            1780,
+            1854,
             2550,
-            1929
+            2004
           ]
         }
       ],
@@ -457,9 +457,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2254,
+            2354,
             1279,
-            2354
+            2429
           ]
         },
         {
@@ -471,9 +471,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2354,
+            2429,
             1279,
-            2429
+            2504
           ]
         },
         {
@@ -487,28 +487,14 @@
           ],
           "row_bbox": [
             0,
-            2429,
-            1279,
-            2504
-          ]
-        },
-        {
-          "row_index": 3,
-          "raw_text": "Rockin' Dopsie / Dopsie's Boogie",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2504,
             1279,
             2580
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Pretty Things / Road Runner",
+          "row_index": 3,
+          "raw_text": "Rockin' Dopsie / Dopsie's Boogie",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -521,8 +507,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Boo Yaa Tribe / Pickin' up Metal",
+          "row_index": 4,
+          "raw_text": "Pretty Things / Road Runner",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -535,8 +521,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Scott Merritt / Blue Field",
+          "row_index": 5,
+          "raw_text": "Boo Yaa Tribe / Pickin' up Metal",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -549,8 +535,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Lucie Blue Tremblay / Jour Apr\u00e9s Jour",
+          "row_index": 6,
+          "raw_text": "Scott Merritt / Blue Field",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -563,8 +549,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "House of Love / Beatles & Stones",
+          "row_index": 7,
+          "raw_text": "Lucie Blue Tremblay / Jour Apr\u00e9s Jour",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -577,8 +563,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "New Model Army / Heroes",
+          "row_index": 8,
+          "raw_text": "House of Love / Beatles & Stones",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -591,8 +577,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Carmen McRae / I'm Coming Home Again",
+          "row_index": 9,
+          "raw_text": "New Model Army / Heroes",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -602,6 +588,20 @@
             3030,
             1279,
             3105
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Carmen McRae / I'm Coming Home Again",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3105,
+            1279,
+            3180
           ]
         },
         {
@@ -615,9 +615,9 @@
           ],
           "row_bbox": [
             0,
-            3105,
+            3180,
             1279,
-            3180
+            3254
           ]
         },
         {
@@ -629,9 +629,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3180,
+            3254,
             1279,
-            3254
+            3329
           ]
         },
         {
@@ -643,9 +643,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3254,
+            3329,
             1279,
-            3329
+            3405
           ]
         }
       ],
@@ -671,9 +671,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2254,
+            2354,
             2550,
-            2354
+            2429
           ]
         },
         {
@@ -685,9 +685,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2354,
+            2429,
             2550,
-            2429
+            2504
           ]
         },
         {
@@ -699,9 +699,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2429,
+            2504,
             2550,
-            2580
+            2655
           ]
         },
         {
@@ -713,9 +713,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2580,
+            2655,
             2550,
-            2655
+            2730
           ]
         },
         {
@@ -727,9 +727,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2655,
+            2730,
             2550,
-            2730
+            2805
           ]
         },
         {
@@ -743,9 +743,9 @@
           ],
           "row_bbox": [
             1279,
-            2730,
+            2805,
             2550,
-            2805
+            2880
           ]
         },
         {
@@ -757,9 +757,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2805,
+            2880,
             2550,
-            2880
+            2954
           ]
         },
         {
@@ -771,9 +771,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2880,
+            2954,
             2550,
-            2954
+            3030
           ]
         },
         {
@@ -785,9 +785,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            2954,
+            3030,
             2550,
-            3030
+            3105
           ]
         },
         {
@@ -799,28 +799,14 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            3030,
-            2550,
-            3105
-          ]
-        },
-        {
-          "row_index": 11,
-          "raw_text": "Glenn Miller - In the Mood",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1279,
             3105,
             2550,
             3180
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Jerry Reed - Amos Moses (Have A Nice Day Vol. 3)",
+          "row_index": 11,
+          "raw_text": "Glenn Miller - In the Mood",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -833,8 +819,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Raunch Hands - Whap - A-Dang",
+          "row_index": 12,
+          "raw_text": "Jerry Reed - Amos Moses (Have A Nice Day Vol. 3)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -847,8 +833,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Cramps - Mama-Oo-Pow-Pow",
+          "row_index": 13,
+          "raw_text": "Raunch Hands - Whap - A-Dang",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -861,8 +847,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "Prefab Sprout - Horsin' Around",
+          "row_index": 14,
+          "raw_text": "Cramps - Mama-Oo-Pow-Pow",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -875,8 +861,8 @@
           ]
         },
         {
-          "row_index": 16,
-          "raw_text": "Stone Roses - Fool's Gold",
+          "row_index": 15,
+          "raw_text": "Prefab Sprout - Horsin' Around",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -886,6 +872,20 @@
             3481,
             2550,
             3555
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Stone Roses - Fool's Gold",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
+            3555,
+            2550,
+            3631
           ]
         }
       ],

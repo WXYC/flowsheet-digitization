@@ -521,9 +521,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2255,
+            2430,
             1266,
-            2430
+            2656
           ]
         },
         {
@@ -535,9 +535,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2430,
+            2656,
             1266,
-            2656
+            2732
           ]
         },
         {
@@ -549,9 +549,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2656,
+            2732,
             1266,
-            2732
+            2881
           ]
         },
         {
@@ -563,9 +563,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2732,
+            2881,
             1266,
-            2881
+            2956
           ]
         },
         {
@@ -577,9 +577,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2881,
+            2956,
             1266,
-            2956
+            3035
           ]
         },
         {
@@ -594,9 +594,9 @@
           ],
           "row_bbox": [
             0,
-            2956,
+            3035,
             1266,
-            3035
+            3106
           ]
         },
         {
@@ -608,9 +608,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3035,
+            3106,
             1266,
-            3106
+            3184
           ]
         },
         {
@@ -624,9 +624,9 @@
           ],
           "row_bbox": [
             0,
-            3106,
+            3184,
             1266,
-            3184
+            3259
           ]
         },
         {
@@ -638,28 +638,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3184,
-            1266,
-            3259
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "SPARKS - Eaten By The Monster of Love",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3259,
             1266,
             3334
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "LAST POETS - New York N.Y.",
+          "row_index": 9,
+          "raw_text": "SPARKS - Eaten By The Monster of Love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -672,6 +658,20 @@
           ]
         },
         {
+          "row_index": 10,
+          "raw_text": "LAST POETS - New York N.Y.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3409,
+            1266,
+            3486
+          ]
+        },
+        {
           "row_index": 11,
           "raw_text": "COURTNEY PINE - Just You, Just Me",
           "confidence": "high",
@@ -680,9 +680,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3409,
+            3486,
             1266,
-            3486
+            3562
           ]
         },
         {
@@ -694,9 +694,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3486,
+            3562,
             1266,
-            3562
+            3636
           ]
         }
       ],

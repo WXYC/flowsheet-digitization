@@ -386,9 +386,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
+            2352,
             1282,
-            2352
+            2427
           ]
         },
         {
@@ -402,9 +402,9 @@
           ],
           "row_bbox": [
             0,
-            2352,
+            2427,
             1282,
-            2427
+            2502
           ]
         },
         {
@@ -416,30 +416,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2427,
-            1282,
-            2502
-          ]
-        },
-        {
-          "row_index": 3,
-          "raw_text": "Chris Knox - Uncle Tom's Cabin",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [
-            "The type-column circle has an 'X' drawn inside it."
-          ],
-          "row_bbox": [
-            0,
             2502,
             1282,
             2577
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Grant Hart - All of My Senses",
+          "row_index": 3,
+          "raw_text": "Chris Knox - Uncle Tom's Cabin",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -454,6 +438,22 @@
           ]
         },
         {
+          "row_index": 4,
+          "raw_text": "Grant Hart - All of My Senses",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The type-column circle has an 'X' drawn inside it."
+          ],
+          "row_bbox": [
+            0,
+            2653,
+            1282,
+            2728
+          ]
+        },
+        {
           "row_index": 5,
           "raw_text": "Bongwater - He Loved the Weather",
           "confidence": "high",
@@ -462,9 +462,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2653,
+            2728,
             1282,
-            2728
+            2803
           ]
         },
         {
@@ -476,9 +476,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2728,
+            2803,
             1282,
-            2803
+            2878
           ]
         },
         {
@@ -490,9 +490,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2803,
+            2878,
             1282,
-            2878
+            2953
           ]
         },
         {
@@ -504,9 +504,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2878,
+            2953,
             1282,
-            2953
+            3028
           ]
         },
         {
@@ -520,9 +520,9 @@
           ],
           "row_bbox": [
             0,
-            2953,
+            3028,
             1282,
-            3028
+            3104
           ]
         },
         {
@@ -534,9 +534,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3028,
+            3104,
             1282,
-            3104
+            3178
           ]
         },
         {
@@ -548,9 +548,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3104,
+            3178,
             1282,
-            3178
+            3253
           ]
         }
       ],
@@ -576,9 +576,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2152,
+            2352,
             2550,
-            2427
+            2502
           ]
         },
         {
@@ -590,9 +590,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2427,
+            2502,
             2550,
-            2502
+            2728
           ]
         },
         {
@@ -604,9 +604,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2502,
+            2728,
             2550,
-            2803
+            2878
           ]
         },
         {
@@ -618,9 +618,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2803,
+            2878,
             2550,
-            2878
+            2953
           ]
         },
         {
@@ -632,9 +632,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2878,
+            2953,
             2550,
-            2953
+            3028
           ]
         },
         {
@@ -646,9 +646,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2953,
+            3028,
             2550,
-            3028
+            3104
           ]
         },
         {
@@ -660,9 +660,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3028,
+            3104,
             2550,
-            3104
+            3178
           ]
         },
         {
@@ -674,9 +674,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3104,
+            3178,
             2550,
-            3178
+            3253
           ]
         },
         {
@@ -688,9 +688,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3178,
+            3253,
             2550,
-            3253
+            3329
           ]
         },
         {
@@ -702,28 +702,14 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3253,
-            2550,
-            3404
-          ]
-        },
-        {
-          "row_index": 13,
-          "raw_text": "Bob Dylan - Outlaw Blues",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1282,
-            3404,
+            3329,
             2550,
             3479
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "AC/DC - Whole Lotta Rosie",
+          "row_index": 13,
+          "raw_text": "Bob Dylan - Outlaw Blues",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -736,6 +722,20 @@
           ]
         },
         {
+          "row_index": 14,
+          "raw_text": "AC/DC - Whole Lotta Rosie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            3554,
+            2550,
+            3629
+          ]
+        },
+        {
           "row_index": 15,
           "raw_text": "Billie Holiday - Reaching For the Moon.",
           "confidence": "high",
@@ -744,9 +744,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3554,
+            3629,
             2550,
-            3629
+            3706
           ]
         }
       ],

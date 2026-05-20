@@ -441,28 +441,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
-            1286,
-            2352
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Los Thugs- Lost In the Suburbs",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2352,
             1286,
             2427
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "faith no more - from out of nowhere",
+          "row_index": 1,
+          "raw_text": "Los Thugs- Lost In the Suburbs",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -475,6 +461,20 @@
           ]
         },
         {
+          "row_index": 2,
+          "raw_text": "faith no more - from out of nowhere",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2503,
+            1286,
+            2578
+          ]
+        },
+        {
           "row_index": 3,
           "raw_text": "Lush - Thought forms",
           "confidence": "high",
@@ -483,9 +483,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2503,
+            2578,
             1286,
-            2578
+            2654
           ]
         },
         {
@@ -497,28 +497,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2578,
-            1286,
-            2654
-          ]
-        },
-        {
-          "row_index": 5,
-          "raw_text": "nick Cave - Hard on for love",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2654,
             1286,
             2729
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Doughboys- waiting away",
+          "row_index": 5,
+          "raw_text": "nick Cave - Hard on for love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -531,8 +517,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Huxton Creepers - life is for living",
+          "row_index": 6,
+          "raw_text": "Doughboys- waiting away",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -545,6 +531,20 @@
           ]
         },
         {
+          "row_index": 7,
+          "raw_text": "Huxton Creepers - life is for living",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2878,
+            1286,
+            2953
+          ]
+        },
+        {
           "row_index": 8,
           "raw_text": "Silas - Porque no",
           "confidence": "high",
@@ -553,9 +553,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2878,
+            2953,
             1286,
-            2953
+            3029
           ]
         },
         {
@@ -567,9 +567,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2953,
+            3029,
             1286,
-            3029
+            3104
           ]
         },
         {
@@ -583,9 +583,9 @@
           ],
           "row_bbox": [
             0,
-            3029,
+            3104,
             1286,
-            3104
+            3179
           ]
         },
         {
@@ -599,9 +599,9 @@
           ],
           "row_bbox": [
             0,
-            3104,
+            3179,
             1286,
-            3179
+            3253
           ]
         },
         {
@@ -613,9 +613,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3179,
+            3253,
             1286,
-            3253
+            3328
           ]
         },
         {
@@ -627,9 +627,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3253,
+            3328,
             1286,
-            3403
+            3479
           ]
         },
         {
@@ -641,9 +641,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3403,
+            3479,
             1286,
-            3479
+            3554
           ]
         },
         {
@@ -655,9 +655,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3479,
+            3554,
             1286,
-            3554
+            3629
           ]
         },
         {
@@ -669,9 +669,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3554,
+            3629,
             1286,
-            3629
+            3706
           ]
         }
       ],
@@ -699,9 +699,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2252,
+            2352,
             2550,
-            2352
+            2427
           ]
         },
         {
@@ -713,9 +713,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2352,
+            2427,
             2550,
-            2427
+            2503
           ]
         },
         {
@@ -727,9 +727,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2427,
+            2503,
             2550,
-            2503
+            2578
           ]
         },
         {
@@ -741,9 +741,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2503,
+            2578,
             2550,
-            2578
+            2654
           ]
         },
         {
@@ -755,9 +755,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2578,
+            2654,
             2550,
-            2654
+            2729
           ]
         },
         {
@@ -769,9 +769,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2654,
+            2729,
             2550,
-            2729
+            2803
           ]
         },
         {
@@ -783,9 +783,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2729,
+            2803,
             2550,
-            2803
+            2878
           ]
         },
         {
@@ -797,28 +797,14 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            2803,
-            2550,
-            2878
-          ]
-        },
-        {
-          "row_index": 8,
-          "raw_text": "Lloyd Cole - Undressed",
-          "confidence": "high",
-          "type_raw": "H",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1286,
             2878,
             2550,
             2953
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "PE - Polly wanna cracka",
+          "row_index": 8,
+          "raw_text": "Lloyd Cole - Undressed",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -831,6 +817,20 @@
           ]
         },
         {
+          "row_index": 9,
+          "raw_text": "PE - Polly wanna cracka",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1286,
+            3029,
+            2550,
+            3104
+          ]
+        },
+        {
           "row_index": 10,
           "raw_text": "The Embarrassment - I'm a Don Juan",
           "confidence": "high",
@@ -839,9 +839,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3029,
+            3104,
             2550,
-            3104
+            3179
           ]
         },
         {
@@ -853,9 +853,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3104,
+            3179,
             2550,
-            3179
+            3253
           ]
         },
         {
@@ -869,9 +869,9 @@
           ],
           "row_bbox": [
             1286,
-            3179,
+            3253,
             2550,
-            3253
+            3328
           ]
         },
         {
@@ -883,9 +883,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3253,
+            3328,
             2550,
-            3328
+            3403
           ]
         },
         {
@@ -897,9 +897,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3328,
+            3403,
             2550,
-            3403
+            3479
           ]
         },
         {
@@ -911,9 +911,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3403,
+            3479,
             2550,
-            3479
+            3554
           ]
         },
         {
@@ -925,9 +925,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3479,
+            3554,
             2550,
-            3554
+            3629
           ]
         },
         {
@@ -939,9 +939,9 @@
           "oddities": [],
           "row_bbox": [
             1286,
-            3554,
+            3629,
             2550,
-            3629
+            3706
           ]
         }
       ],

@@ -525,9 +525,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
+            2352,
             1280,
-            2352
+            2427
           ]
         },
         {
@@ -539,9 +539,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2352,
+            2427,
             1280,
-            2427
+            2502
           ]
         },
         {
@@ -553,9 +553,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2427,
+            2502,
             1280,
-            2502
+            2578
           ]
         },
         {
@@ -567,9 +567,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2502,
+            2578,
             1280,
-            2578
+            2653
           ]
         },
         {
@@ -581,9 +581,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2578,
+            2653,
             1280,
-            2653
+            2728
           ]
         },
         {
@@ -595,9 +595,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2653,
+            2728,
             1280,
-            2728
+            2803
           ]
         },
         {
@@ -611,28 +611,14 @@
           ],
           "row_bbox": [
             0,
-            2728,
-            1280,
-            2803
-          ]
-        },
-        {
-          "row_index": 7,
-          "raw_text": "EDGAR BLANCHARD - LAWdy MAMA",
-          "confidence": "high",
-          "type_raw": "o",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2803,
             1280,
             2877
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "ALVIN LEE - AIN'T NOTHIN SHAKIN",
+          "row_index": 7,
+          "raw_text": "EDGAR BLANCHARD - LAWdy MAMA",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -645,6 +631,20 @@
           ]
         },
         {
+          "row_index": 8,
+          "raw_text": "ALVIN LEE - AIN'T NOTHIN SHAKIN",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2953,
+            1280,
+            3028
+          ]
+        },
+        {
           "row_index": 9,
           "raw_text": "TEMPTATIONS - GET READY",
           "confidence": "high",
@@ -653,9 +653,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2953,
+            3028,
             1280,
-            3028
+            3103
           ]
         },
         {
@@ -667,9 +667,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3028,
+            3103,
             1280,
-            3103
+            3178
           ]
         },
         {
@@ -681,9 +681,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3103,
+            3178,
             1280,
-            3178
+            3252
           ]
         },
         {
@@ -695,9 +695,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3178,
+            3252,
             1280,
-            3252
+            3328
           ]
         },
         {
@@ -709,9 +709,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3252,
+            3328,
             1280,
-            3328
+            3403
           ]
         },
         {
@@ -723,9 +723,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3328,
+            3403,
             1280,
-            3403
+            3479
           ]
         }
       ],
@@ -751,9 +751,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2252,
+            2352,
             2550,
-            2352
+            2427
           ]
         },
         {
@@ -765,9 +765,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2352,
+            2427,
             2550,
-            2427
+            2502
           ]
         },
         {
@@ -779,9 +779,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2427,
+            2502,
             2550,
-            2502
+            2578
           ]
         },
         {
@@ -793,9 +793,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2502,
+            2578,
             2550,
-            2578
+            2653
           ]
         },
         {
@@ -809,9 +809,9 @@
           ],
           "row_bbox": [
             1280,
-            2578,
+            2653,
             2550,
-            2653
+            2728
           ]
         },
         {
@@ -823,9 +823,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2653,
+            2728,
             2550,
-            2728
+            2803
           ]
         },
         {
@@ -837,28 +837,14 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2728,
-            2550,
-            2803
-          ]
-        },
-        {
-          "row_index": 7,
-          "raw_text": "Social Distortion Pretty Thing",
-          "confidence": "high",
-          "type_raw": "o",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1280,
             2803,
             2550,
             2877
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Phantom Tollbooth white out",
+          "row_index": 7,
+          "raw_text": "Social Distortion Pretty Thing",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -871,6 +857,20 @@
           ]
         },
         {
+          "row_index": 8,
+          "raw_text": "Phantom Tollbooth white out",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1280,
+            2953,
+            2550,
+            3028
+          ]
+        },
+        {
           "row_index": 9,
           "raw_text": "Bad Religion No Control",
           "confidence": "high",
@@ -879,9 +879,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2953,
+            3028,
             2550,
-            3028
+            3103
           ]
         },
         {
@@ -893,9 +893,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3028,
+            3103,
             2550,
-            3103
+            3178
           ]
         },
         {
@@ -907,9 +907,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3103,
+            3178,
             2550,
-            3178
+            3252
           ]
         },
         {
@@ -921,9 +921,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3178,
+            3252,
             2550,
-            3252
+            3328
           ]
         },
         {
@@ -935,9 +935,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3252,
+            3328,
             2550,
-            3328
+            3403
           ]
         },
         {
@@ -949,9 +949,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3328,
+            3403,
             2550,
-            3403
+            3479
           ]
         }
       ],

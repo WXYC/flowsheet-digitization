@@ -556,28 +556,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2247,
-            1282,
-            2347
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Lil Anthony - Never Again",
-          "confidence": "medium",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2347,
             1282,
             2422
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Moses Mchunu - Qwahililale",
+          "row_index": 1,
+          "raw_text": "Lil Anthony - Never Again",
           "confidence": "medium",
           "type_raw": "O",
           "notes": null,
@@ -590,6 +576,20 @@
           ]
         },
         {
+          "row_index": 2,
+          "raw_text": "Moses Mchunu - Qwahililale",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2497,
+            1282,
+            2572
+          ]
+        },
+        {
           "row_index": 3,
           "raw_text": "Lush - de-luxe",
           "confidence": "high",
@@ -598,9 +598,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2497,
+            2572,
             1282,
-            2572
+            2648
           ]
         },
         {
@@ -612,9 +612,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2572,
+            2648,
             1282,
-            2648
+            2723
           ]
         },
         {
@@ -626,9 +626,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2648,
+            2723,
             1282,
-            2723
+            2798
           ]
         },
         {
@@ -642,9 +642,9 @@
           ],
           "row_bbox": [
             0,
-            2723,
+            2798,
             1282,
-            2798
+            2872
           ]
         },
         {
@@ -656,9 +656,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2798,
+            2872,
             1282,
-            2947
+            3023
           ]
         },
         {
@@ -670,9 +670,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2947,
+            3023,
             1282,
-            3023
+            3097
           ]
         },
         {
@@ -684,9 +684,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3023,
+            3097,
             1282,
-            3097
+            3173
           ]
         },
         {
@@ -698,9 +698,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3097,
+            3173,
             1282,
-            3173
+            3247
           ]
         },
         {
@@ -712,9 +712,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3173,
+            3247,
             1282,
-            3247
+            3322
           ]
         },
         {
@@ -726,9 +726,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3247,
+            3322,
             1282,
-            3322
+            3398
           ]
         },
         {
@@ -740,9 +740,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3322,
+            3398,
             1282,
-            3473
+            3548
           ]
         },
         {
@@ -754,9 +754,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3473,
+            3548,
             1282,
-            3548
+            3624
           ]
         },
         {
@@ -768,9 +768,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3548,
+            3624,
             1282,
-            3624
+            3701
           ]
         },
         {
@@ -782,9 +782,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3624,
+            3701,
             1282,
-            3701
+            3777
           ]
         },
         {
@@ -796,9 +796,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3701,
+            3777,
             1282,
-            3777
+            3852
           ]
         }
       ],
@@ -826,9 +826,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2247,
+            2347,
             2550,
-            2347
+            2422
           ]
         },
         {
@@ -840,9 +840,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2347,
+            2422,
             2550,
-            2422
+            2497
           ]
         },
         {
@@ -854,28 +854,14 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2422,
-            2550,
-            2497
-          ]
-        },
-        {
-          "row_index": 3,
-          "raw_text": "Soul Asylum - Cartoon",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1282,
             2497,
             2550,
             2572
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Hank Williams - Lovesick Blues",
+          "row_index": 3,
+          "raw_text": "Soul Asylum - Cartoon",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -888,6 +874,20 @@
           ]
         },
         {
+          "row_index": 4,
+          "raw_text": "Hank Williams - Lovesick Blues",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1282,
+            2648,
+            2550,
+            2723
+          ]
+        },
+        {
           "row_index": 5,
           "raw_text": "Airport Conv. - Reno Nevada",
           "confidence": "high",
@@ -896,9 +896,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2648,
+            2723,
             2550,
-            2723
+            2798
           ]
         },
         {
@@ -910,9 +910,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2723,
+            2798,
             2550,
-            2798
+            2872
           ]
         },
         {
@@ -924,9 +924,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2798,
+            2872,
             2550,
-            2872
+            2947
           ]
         },
         {
@@ -938,9 +938,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2872,
+            2947,
             2550,
-            2947
+            3023
           ]
         },
         {
@@ -952,9 +952,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            2947,
+            3023,
             2550,
-            3023
+            3097
           ]
         },
         {
@@ -966,9 +966,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3023,
+            3097,
             2550,
-            3097
+            3173
           ]
         },
         {
@@ -980,9 +980,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3097,
+            3173,
             2550,
-            3173
+            3247
           ]
         },
         {
@@ -994,9 +994,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3173,
+            3247,
             2550,
-            3247
+            3322
           ]
         },
         {
@@ -1008,9 +1008,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3247,
+            3322,
             2550,
-            3398
+            3473
           ]
         },
         {
@@ -1022,9 +1022,9 @@
           "oddities": [],
           "row_bbox": [
             1282,
-            3398,
+            3473,
             2550,
-            3473
+            3548
           ]
         },
         {
@@ -1038,9 +1038,9 @@
           ],
           "row_bbox": [
             1282,
-            3473,
+            3548,
             2550,
-            3548
+            3624
           ]
         }
       ],

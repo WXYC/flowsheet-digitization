@@ -597,28 +597,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
-            1270,
-            2353
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Chieftains - Boil the Breakfast Early",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2353,
             1270,
             2428
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Gary Clail - Vegetarian Dance Song",
+          "row_index": 1,
+          "raw_text": "Chieftains - Boil the Breakfast Early",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -631,9 +617,9 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "The Chipmonks - Lulup/X",
-          "confidence": "low",
+          "row_index": 2,
+          "raw_text": "Gary Clail - Vegetarian Dance Song",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -645,9 +631,9 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Robin Hitchcock - Clean Store",
-          "confidence": "medium",
+          "row_index": 3,
+          "raw_text": "The Chipmonks - Lulup/X",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -659,9 +645,9 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Visage - Love Glove",
-          "confidence": "high",
+          "row_index": 4,
+          "raw_text": "Robin Hitchcock - Clean Store",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -673,8 +659,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Clannad - In a lifetime",
+          "row_index": 5,
+          "raw_text": "Visage - Love Glove",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -687,8 +673,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "The Popes - She's You",
+          "row_index": 6,
+          "raw_text": "Clannad - In a lifetime",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -701,8 +687,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "King Missile - Sensitive Artist",
+          "row_index": 7,
+          "raw_text": "The Popes - She's You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -715,8 +701,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "REM - Turn u inside out",
+          "row_index": 8,
+          "raw_text": "King Missile - Sensitive Artist",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -729,8 +715,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Billie Holiday - God Bless the Child",
+          "row_index": 9,
+          "raw_text": "REM - Turn u inside out",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -743,8 +729,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Virgin Prunes - \"Baby Turns Blue\"",
+          "row_index": 10,
+          "raw_text": "Billie Holiday - God Bless the Child",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -757,8 +743,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Gavin Friday - Dazzle and Delight",
+          "row_index": 11,
+          "raw_text": "Virgin Prunes - \"Baby Turns Blue\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -771,8 +757,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Big Wheel \"Bang, Bang, Bang\"",
+          "row_index": 12,
+          "raw_text": "Gavin Friday - Dazzle and Delight",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -785,8 +771,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Woody Guthrie \"Vigilante Man\"",
+          "row_index": 13,
+          "raw_text": "Big Wheel \"Bang, Bang, Bang\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -799,6 +785,20 @@
           ]
         },
         {
+          "row_index": 14,
+          "raw_text": "Woody Guthrie \"Vigilante Man\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3404,
+            1270,
+            3480
+          ]
+        },
+        {
           "row_index": 15,
           "raw_text": "Nurse with Wound \"Pleasant Banjo\" Intro w/ irritating sound",
           "confidence": "high",
@@ -807,9 +807,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3404,
+            3480,
             1270,
-            3630
+            3708
           ]
         },
         {
@@ -823,28 +823,14 @@
           ],
           "row_bbox": [
             0,
-            3630,
-            1270,
-            3708
-          ]
-        },
-        {
-          "row_index": 19,
-          "raw_text": "The Cult - Sun King",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3708,
             1270,
             3783
           ]
         },
         {
-          "row_index": 20,
-          "raw_text": "Dexter - Dexter's Lament",
+          "row_index": 19,
+          "raw_text": "The Cult - Sun King",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -857,8 +843,8 @@
           ]
         },
         {
-          "row_index": 21,
-          "raw_text": "John Lee Hooker - Mad Man Blues",
+          "row_index": 20,
+          "raw_text": "Dexter - Dexter's Lament",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -868,6 +854,20 @@
             3858,
             1270,
             3961
+          ]
+        },
+        {
+          "row_index": 21,
+          "raw_text": "John Lee Hooker - Mad Man Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3961,
+            1270,
+            4013
           ]
         }
       ],

@@ -258,14 +258,28 @@
           "oddities": [],
           "row_bbox": [
             1263,
+            -237,
+            2550,
+            152
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Traffic - Low Spark",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1263,
             152,
             2550,
             541
           ]
         },
         {
-          "row_index": 1,
-          "raw_text": "Traffic - Low Spark",
+          "row_index": 2,
+          "raw_text": "Big Star - Thirteen",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -278,8 +292,8 @@
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Big Star - Thirteen",
+          "row_index": 3,
+          "raw_text": "Don't Lie To Me",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -292,8 +306,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Don't Lie To Me",
+          "row_index": 4,
+          "raw_text": "The India Song",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -306,8 +320,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "The India Song",
+          "row_index": 5,
+          "raw_text": "Pell Mell - Spy VS. Spy",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -320,20 +334,6 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Pell Mell - Spy VS. Spy",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1263,
-            2097,
-            2550,
-            2305
-          ]
-        },
-        {
           "row_index": 6,
           "raw_text": "Sammy Davis Jr - Please Don't Talk About Me",
           "confidence": "high",
@@ -342,7 +342,7 @@
           "oddities": [],
           "row_bbox": [
             1263,
-            2305,
+            2097,
             2550,
             2305
           ]

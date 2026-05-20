@@ -475,9 +475,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2250,
+            2351,
             1260,
-            2351
+            2426
           ]
         },
         {
@@ -489,9 +489,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2351,
+            2426,
             1260,
-            2426
+            2502
           ]
         },
         {
@@ -503,9 +503,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2426,
+            2502,
             1260,
-            2502
+            2577
           ]
         },
         {
@@ -519,28 +519,14 @@
           ],
           "row_bbox": [
             0,
-            2502,
-            1260,
-            2577
-          ]
-        },
-        {
-          "row_index": 4,
-          "raw_text": "Couch Flambeau Just Kidding",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2577,
             1260,
             2652
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Minutemen The cheerleaders",
+          "row_index": 4,
+          "raw_text": "Couch Flambeau Just Kidding",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -553,8 +539,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Lloyd Cole sweetheart",
+          "row_index": 5,
+          "raw_text": "Minutemen The cheerleaders",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -567,8 +553,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Robyn Hitchcock Flesh Cartoons",
+          "row_index": 6,
+          "raw_text": "Lloyd Cole sweetheart",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -581,8 +567,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "The Church City",
+          "row_index": 7,
+          "raw_text": "Robyn Hitchcock Flesh Cartoons",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -595,8 +581,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Joy Division Digital",
+          "row_index": 8,
+          "raw_text": "The Church City",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -609,8 +595,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Blind Boy Fuller No stranger Now",
+          "row_index": 9,
+          "raw_text": "Joy Division Digital",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -623,8 +609,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Cristina Whats a girl to do",
+          "row_index": 10,
+          "raw_text": "Blind Boy Fuller No stranger Now",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -637,8 +623,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Dash Rip Rock Operator",
+          "row_index": 11,
+          "raw_text": "Cristina Whats a girl to do",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -648,6 +634,20 @@
             3252,
             1260,
             3327
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Dash Rip Rock Operator",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3327,
+            1260,
+            3403
           ]
         },
         {
@@ -661,9 +661,9 @@
           ],
           "row_bbox": [
             0,
-            3327,
+            3403,
             1260,
-            3403
+            3478
           ]
         },
         {
@@ -675,9 +675,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3403,
+            3478,
             1260,
-            3478
+            3556
           ]
         },
         {
@@ -689,9 +689,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3478,
+            3556,
             1260,
-            3556
+            3631
           ]
         },
         {
@@ -705,9 +705,9 @@
           ],
           "row_bbox": [
             0,
-            3556,
+            3631,
             1260,
-            3631
+            3709
           ]
         }
       ],
@@ -735,9 +735,9 @@
           ],
           "row_bbox": [
             1260,
-            2250,
+            2351,
             2550,
-            2351
+            2426
           ]
         },
         {
@@ -749,9 +749,9 @@
           "oddities": [],
           "row_bbox": [
             1260,
-            2351,
+            2426,
             2550,
-            2426
+            2502
           ]
         },
         {
@@ -763,9 +763,9 @@
           "oddities": [],
           "row_bbox": [
             1260,
-            2426,
+            2502,
             2550,
-            2502
+            2577
           ]
         },
         {
@@ -779,28 +779,14 @@
           ],
           "row_bbox": [
             1260,
-            2502,
-            2550,
-            2577
-          ]
-        },
-        {
-          "row_index": 4,
-          "raw_text": "Residents - Boy in Love",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1260,
             2577,
             2550,
             2652
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Les Negresses Vertes - C'est pas la mer a boire",
+          "row_index": 4,
+          "raw_text": "Residents - Boy in Love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -813,6 +799,20 @@
           ]
         },
         {
+          "row_index": 5,
+          "raw_text": "Les Negresses Vertes - C'est pas la mer a boire",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2728,
+            2550,
+            2802
+          ]
+        },
+        {
           "row_index": 6,
           "raw_text": "Moses Rascoe - Must Jesus bear this cross alone",
           "confidence": "high",
@@ -821,28 +821,14 @@
           "oddities": [],
           "row_bbox": [
             1260,
-            2728,
-            2550,
-            2876
-          ]
-        },
-        {
-          "row_index": 8,
-          "raw_text": "Cramps - Muleskinner Blues",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1260,
-            2876,
+            2802,
             2550,
             2952
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Neats - Monkeys Head",
+          "row_index": 8,
+          "raw_text": "Cramps - Muleskinner Blues",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -855,8 +841,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Nomeans No - Metronome",
+          "row_index": 9,
+          "raw_text": "Neats - Monkeys Head",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -869,6 +855,20 @@
           ]
         },
         {
+          "row_index": 10,
+          "raw_text": "Nomeans No - Metronome",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3102,
+            2550,
+            3177
+          ]
+        },
+        {
           "row_index": 11,
           "raw_text": "Memphis Slim - Ain't nothin but a texas boogie on a harpsichord",
           "confidence": "high",
@@ -877,28 +877,14 @@
           "oddities": [],
           "row_bbox": [
             1260,
-            3102,
-            2550,
-            3252
-          ]
-        },
-        {
-          "row_index": 13,
-          "raw_text": "Mickey Dread - The Source of your divorce",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1260,
-            3252,
+            3177,
             2550,
             3327
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Red Temple Spirits - Dreamings End",
+          "row_index": 13,
+          "raw_text": "Mickey Dread - The Source of your divorce",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -911,8 +897,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "Pogues - Don't leave me alone",
+          "row_index": 14,
+          "raw_text": "Red Temple Spirits - Dreamings End",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -925,8 +911,8 @@
           ]
         },
         {
-          "row_index": 16,
-          "raw_text": "Christian Death - Face",
+          "row_index": 15,
+          "raw_text": "Pogues - Don't leave me alone",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -936,6 +922,20 @@
             3478,
             2550,
             3549
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Christian Death - Face",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3549,
+            2550,
+            4057
           ]
         }
       ],

@@ -289,9 +289,9 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            587,
+            662,
             2550,
-            662
+            885
           ]
         },
         {
@@ -303,9 +303,9 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            662,
+            885,
             2550,
-            885
+            1036
           ]
         }
       ],
@@ -331,28 +331,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2259,
-            1285,
-            2360
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Moonglows - Blue Velvet",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2360,
             1285,
             2435
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Honeymoon in Red -",
+          "row_index": 1,
+          "raw_text": "Moonglows - Blue Velvet",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -365,8 +351,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Roy Orbison - In Dreams",
+          "row_index": 2,
+          "raw_text": "Honeymoon in Red -",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -379,8 +365,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Virginia Astley - Waiting to fall",
+          "row_index": 3,
+          "raw_text": "Roy Orbison - In Dreams",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -393,8 +379,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Dark Arts - These are made of love",
+          "row_index": 4,
+          "raw_text": "Virginia Astley - Waiting to fall",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -407,8 +393,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Tom Waits - Swordfishtrombone",
+          "row_index": 5,
+          "raw_text": "Dark Arts - These are made of love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -421,8 +407,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Depeche Mode - Memphisto",
+          "row_index": 6,
+          "raw_text": "Tom Waits - Swordfishtrombone",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -435,8 +421,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "E. Neubauten - Adler Kommt sp\u00e4ter",
+          "row_index": 7,
+          "raw_text": "Depeche Mode - Memphisto",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -449,8 +435,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Siouxsie - An Execution",
+          "row_index": 8,
+          "raw_text": "E. Neubauten - Adler Kommt sp\u00e4ter",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -460,6 +446,20 @@
             2961,
             1285,
             3036
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Siouxsie - An Execution",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3036,
+            1285,
+            3111
           ]
         },
         {
@@ -473,28 +473,14 @@
           ],
           "row_bbox": [
             0,
-            3036,
-            1285,
-            3111
-          ]
-        },
-        {
-          "row_index": 11,
-          "raw_text": "Cure - Lament",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3111,
             1285,
             3186
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Swans - Anything for you",
+          "row_index": 11,
+          "raw_text": "Cure - Lament",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -507,8 +493,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Cindytalk - In this world",
+          "row_index": 12,
+          "raw_text": "Swans - Anything for you",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -521,8 +507,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "A bunch of stuff for awhile",
+          "row_index": 13,
+          "raw_text": "Cindytalk - In this world",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -532,6 +518,20 @@
             3335,
             1285,
             3411
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "A bunch of stuff for awhile",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3411,
+            1285,
+            3486
           ]
         }
       ],

@@ -285,9 +285,9 @@
           ],
           "row_bbox": [
             1278,
-            573,
+            652,
             2550,
-            652
+            878
           ]
         },
         {
@@ -299,9 +299,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            652,
+            878,
             2550,
-            878
+            953
           ]
         },
         {
@@ -313,9 +313,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            878,
+            953,
             2550,
-            953
+            1024
           ]
         },
         {
@@ -329,28 +329,14 @@
           ],
           "row_bbox": [
             1278,
-            953,
-            2550,
-            1024
-          ]
-        },
-        {
-          "row_index": 4,
-          "raw_text": "Jah Lion - Columbia Colly",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
             1024,
             2550,
             1103
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Cab Calloway - Shotgun Boogie",
+          "row_index": 4,
+          "raw_text": "Jah Lion - Columbia Colly",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -363,6 +349,20 @@
           ]
         },
         {
+          "row_index": 5,
+          "raw_text": "Cab Calloway - Shotgun Boogie",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1178,
+            2550,
+            1251
+          ]
+        },
+        {
           "row_index": 6,
           "raw_text": "John Cale - Dead or Alive",
           "confidence": "high",
@@ -371,9 +371,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            1178,
+            1251,
             2550,
-            1251
+            1401
           ]
         },
         {
@@ -387,9 +387,9 @@
           ],
           "row_bbox": [
             1278,
-            1251,
+            1401,
             2550,
-            1401
+            1480
           ]
         },
         {
@@ -401,9 +401,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            1401,
+            1480,
             2550,
-            1480
+            1552
           ]
         },
         {
@@ -415,9 +415,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            1480,
+            1552,
             2550,
-            1552
+            1777
           ]
         },
         {
@@ -429,9 +429,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            1552,
+            1777,
             2550,
-            1777
+            1927
           ]
         },
         {
@@ -443,9 +443,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            1777,
+            1927,
             2550,
-            1927
+            2078
           ]
         },
         {
@@ -457,9 +457,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            1927,
+            2078,
             2550,
-            2078
+            2152
           ]
         }
       ],
@@ -488,9 +488,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
+            2353,
             1278,
-            2353
+            2427
           ]
         },
         {
@@ -502,9 +502,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2353,
+            2427,
             1278,
-            2427
+            2502
           ]
         },
         {
@@ -516,9 +516,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2427,
+            2502,
             1278,
-            2502
+            2579
           ]
         },
         {
@@ -532,9 +532,9 @@
           ],
           "row_bbox": [
             0,
-            2502,
+            2579,
             1278,
-            2579
+            2654
           ]
         },
         {
@@ -546,9 +546,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2579,
+            2654,
             1278,
-            2654
+            2729
           ]
         },
         {
@@ -560,9 +560,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2654,
+            2729,
             1278,
-            2729
+            2804
           ]
         },
         {
@@ -576,9 +576,9 @@
           ],
           "row_bbox": [
             0,
-            2729,
+            2804,
             1278,
-            2804
+            2879
           ]
         },
         {
@@ -590,9 +590,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2804,
+            2879,
             1278,
-            2879
+            2953
           ]
         },
         {
@@ -604,9 +604,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2879,
+            2953,
             1278,
-            2953
+            3029
           ]
         },
         {
@@ -618,9 +618,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2953,
+            3029,
             1278,
-            3029
+            3104
           ]
         },
         {
@@ -632,9 +632,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3029,
+            3104,
             1278,
-            3104
+            3179
           ]
         },
         {
@@ -646,9 +646,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3104,
+            3179,
             1278,
-            3179
+            3253
           ]
         },
         {
@@ -660,9 +660,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3179,
+            3253,
             1278,
-            3253
+            3328
           ]
         },
         {
@@ -674,9 +674,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3253,
+            3328,
             1278,
-            3328
+            3404
           ]
         },
         {
@@ -688,9 +688,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3328,
+            3404,
             1278,
-            3404
+            3479
           ]
         }
       ],
@@ -716,9 +716,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2252,
+            2353,
             2550,
-            2353
+            2427
           ]
         },
         {
@@ -730,9 +730,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2353,
+            2427,
             2550,
-            2427
+            2502
           ]
         },
         {
@@ -744,9 +744,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2427,
+            2502,
             2550,
-            2502
+            2579
           ]
         },
         {
@@ -760,9 +760,9 @@
           ],
           "row_bbox": [
             1278,
-            2502,
+            2579,
             2550,
-            2579
+            2654
           ]
         },
         {
@@ -774,9 +774,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2579,
+            2654,
             2550,
-            2654
+            2729
           ]
         },
         {
@@ -788,9 +788,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2654,
+            2729,
             2550,
-            2729
+            2804
           ]
         },
         {
@@ -802,9 +802,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2729,
+            2804,
             2550,
-            2804
+            2879
           ]
         },
         {
@@ -816,9 +816,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2804,
+            2879,
             2550,
-            2879
+            2953
           ]
         },
         {
@@ -832,28 +832,14 @@
           ],
           "row_bbox": [
             1278,
-            2879,
-            2550,
-            2953
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "Derek + the Dominos I am yours",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
             2953,
             2550,
             3029
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Motorhead - Motorhead",
+          "row_index": 9,
+          "raw_text": "Derek + the Dominos I am yours",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -866,9 +852,9 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Rankin Scroo + Ginger - Nuh Du Dat",
-          "confidence": "medium",
+          "row_index": 10,
+          "raw_text": "Motorhead - Motorhead",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -880,6 +866,20 @@
           ]
         },
         {
+          "row_index": 11,
+          "raw_text": "Rankin Scroo + Ginger - Nuh Du Dat",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3179,
+            2550,
+            3253
+          ]
+        },
+        {
           "row_index": 12,
           "raw_text": "Dub Syndicate - Chapter & Verse",
           "confidence": "high",
@@ -888,9 +888,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            3179,
+            3253,
             2550,
-            3253
+            3328
           ]
         },
         {
@@ -902,9 +902,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            3253,
+            3328,
             2550,
-            3328
+            3404
           ]
         },
         {
@@ -916,9 +916,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            3328,
+            3404,
             2550,
-            3404
+            3479
           ]
         },
         {
@@ -932,9 +932,9 @@
           ],
           "row_bbox": [
             1278,
-            3404,
+            3479,
             2550,
-            3479
+            3555
           ]
         }
       ],

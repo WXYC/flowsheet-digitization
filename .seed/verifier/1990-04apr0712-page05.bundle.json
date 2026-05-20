@@ -428,9 +428,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
+            2357,
             1256,
-            2357
+            2432
           ]
         },
         {
@@ -442,9 +442,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2357,
+            2432,
             1256,
-            2432
+            2503
           ]
         },
         {
@@ -458,9 +458,9 @@
           ],
           "row_bbox": [
             0,
-            2432,
+            2503,
             1256,
-            2503
+            2580
           ]
         },
         {
@@ -475,9 +475,9 @@
           ],
           "row_bbox": [
             0,
-            2503,
+            2580,
             1256,
-            2580
+            2655
           ]
         },
         {
@@ -492,9 +492,9 @@
           ],
           "row_bbox": [
             0,
-            2580,
+            2655,
             1256,
-            2655
+            2730
           ]
         },
         {
@@ -506,28 +506,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2655,
-            1256,
-            2808
-          ]
-        },
-        {
-          "row_index": 6,
-          "raw_text": "PLASTICLAND - DONT ANTAGONIZE ME",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
-            2808,
+            2730,
             1256,
             2876
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "SEARCHERS - LOVE POTION #9",
+          "row_index": 6,
+          "raw_text": "PLASTICLAND - DONT ANTAGONIZE ME",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -540,8 +526,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "SMACK - PRIMITIVE",
+          "row_index": 7,
+          "raw_text": "SEARCHERS - LOVE POTION #9",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -551,6 +537,20 @@
             2882,
             1256,
             2958
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "SMACK - PRIMITIVE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2958,
+            1256,
+            3033
           ]
         },
         {
@@ -564,9 +564,9 @@
           ],
           "row_bbox": [
             0,
-            2958,
+            3033,
             1256,
-            3033
+            3108
           ]
         },
         {
@@ -581,9 +581,9 @@
           ],
           "row_bbox": [
             0,
-            3033,
+            3108,
             1256,
-            3108
+            3183
           ]
         },
         {
@@ -595,9 +595,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3108,
+            3183,
             1256,
-            3183
+            3255
           ]
         },
         {
@@ -611,9 +611,9 @@
           ],
           "row_bbox": [
             0,
-            3183,
+            3255,
             1256,
-            3255
+            3333
           ]
         },
         {
@@ -627,9 +627,9 @@
           ],
           "row_bbox": [
             0,
-            3255,
+            3333,
             1256,
-            3333
+            3408
           ]
         },
         {
@@ -641,9 +641,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3333,
+            3408,
             1256,
-            3408
+            3485
           ]
         },
         {
@@ -657,9 +657,9 @@
           ],
           "row_bbox": [
             0,
-            3408,
+            3485,
             1256,
-            3485
+            3634
           ]
         }
       ],

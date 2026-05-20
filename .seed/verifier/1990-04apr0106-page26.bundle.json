@@ -487,28 +487,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2245,
-            1278,
-            2348
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "MICHAEL ...",
-          "confidence": "low",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2348,
             1278,
             2423
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "DIVE ...",
+          "row_index": 1,
+          "raw_text": "MICHAEL ...",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -521,6 +507,20 @@
           ]
         },
         {
+          "row_index": 2,
+          "raw_text": "DIVE ...",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2498,
+            1278,
+            2573
+          ]
+        },
+        {
           "row_index": 3,
           "raw_text": "...",
           "confidence": "low",
@@ -529,9 +529,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2498,
+            2573,
             1278,
-            2573
+            2649
           ]
         },
         {
@@ -543,9 +543,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2573,
+            2649,
             1278,
-            2649
+            2723
           ]
         },
         {
@@ -557,28 +557,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2649,
-            1278,
-            2723
-          ]
-        },
-        {
-          "row_index": 6,
-          "raw_text": "MAGIC ... OUT OF ALBERT",
-          "confidence": "low",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2723,
             1278,
             2799
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "... PIMPLY",
+          "row_index": 6,
+          "raw_text": "MAGIC ... OUT OF ALBERT",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -591,8 +577,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "... ON",
+          "row_index": 7,
+          "raw_text": "... PIMPLY",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -605,9 +591,9 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "HUSKERS TERMITES",
-          "confidence": "medium",
+          "row_index": 8,
+          "raw_text": "... ON",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -619,9 +605,9 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "HENRY KAISER BALLAD OF SHANE MACGOWAN",
-          "confidence": "high",
+          "row_index": 9,
+          "raw_text": "HUSKERS TERMITES",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -633,8 +619,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "JEFFERSON AIRPLANE WE CAN BE TOGETHER",
+          "row_index": 10,
+          "raw_text": "HENRY KAISER BALLAD OF SHANE MACGOWAN",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -647,8 +633,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "SILOS I'M OVER YOU",
+          "row_index": 11,
+          "raw_text": "JEFFERSON AIRPLANE WE CAN BE TOGETHER",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -658,6 +644,20 @@
             3173,
             1278,
             3248
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "SILOS I'M OVER YOU",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3248,
+            1278,
+            3323
           ]
         }
       ],
@@ -683,9 +683,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2250,
+            2348,
             2550,
-            2348
+            2423
           ]
         },
         {
@@ -697,9 +697,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2348,
+            2423,
             2550,
-            2423
+            2498
           ]
         },
         {
@@ -713,9 +713,9 @@
           ],
           "row_bbox": [
             1278,
-            2423,
+            2498,
             2550,
-            2498
+            2573
           ]
         },
         {
@@ -727,9 +727,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2498,
+            2573,
             2550,
-            2573
+            2649
           ]
         },
         {
@@ -743,9 +743,9 @@
           ],
           "row_bbox": [
             1278,
-            2573,
+            2649,
             2550,
-            2649
+            2723
           ]
         },
         {
@@ -757,9 +757,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2649,
+            2723,
             2550,
-            2723
+            2799
           ]
         },
         {
@@ -771,9 +771,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2723,
+            2799,
             2550,
-            2799
+            2874
           ]
         },
         {
@@ -785,9 +785,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2799,
+            2874,
             2550,
-            2874
+            2948
           ]
         },
         {
@@ -799,9 +799,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2874,
+            2948,
             2550,
-            2948
+            3024
           ]
         },
         {
@@ -813,28 +813,14 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2948,
-            2550,
-            3099
-          ]
-        },
-        {
-          "row_index": 11,
-          "raw_text": "Renegade Soundwave \"Biting My Lips\"",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
-            3099,
+            3024,
             2550,
             3173
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Tackhead \"Body to Burn\" +",
+          "row_index": 11,
+          "raw_text": "Renegade Soundwave \"Biting My Lips\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -847,8 +833,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Cypress City \"Cajun Pop Song\"",
+          "row_index": 12,
+          "raw_text": "Tackhead \"Body to Burn\" +",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -861,8 +847,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "PE \"All is a joke\"",
+          "row_index": 13,
+          "raw_text": "Cypress City \"Cajun Pop Song\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -872,6 +858,20 @@
             3323,
             2550,
             3399
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "PE \"All is a joke\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3399,
+            2550,
+            3474
           ]
         },
         {
@@ -885,9 +885,9 @@
           ],
           "row_bbox": [
             1278,
-            3399,
+            3474,
             2550,
-            3474
+            3549
           ]
         },
         {
@@ -899,9 +899,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            3474,
+            3549,
             2550,
-            3549
+            3624
           ]
         },
         {
@@ -913,9 +913,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            3549,
+            3624,
             2550,
-            3624
+            3701
           ]
         }
       ],

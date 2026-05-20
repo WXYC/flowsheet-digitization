@@ -496,28 +496,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2251,
-            1278,
-            2352
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "marine girls - honey",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2352,
             1278,
             2426
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "toinho de alagous - carater duro",
+          "row_index": 1,
+          "raw_text": "marine girls - honey",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -530,8 +516,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "follow for now",
+          "row_index": 2,
+          "raw_text": "toinho de alagous - carater duro",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -544,8 +530,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "pure joy - pieces",
+          "row_index": 3,
+          "raw_text": "follow for now",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -558,8 +544,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "bad checks - do me right",
+          "row_index": 4,
+          "raw_text": "pure joy - pieces",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -572,8 +558,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "tom waits - emotional weather report",
+          "row_index": 5,
+          "raw_text": "bad checks - do me right",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -586,8 +572,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "nina simone - little girl blue",
+          "row_index": 6,
+          "raw_text": "tom waits - emotional weather report",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -600,8 +586,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Sarah vaugh n- the one and only (what am i gonna do)",
+          "row_index": 7,
+          "raw_text": "nina simone - little girl blue",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -614,8 +600,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "jesus lizard - chrome",
+          "row_index": 8,
+          "raw_text": "Sarah vaugh n- the one and only (what am i gonna do)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -628,8 +614,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "hossam ramzy- fallah",
+          "row_index": 9,
+          "raw_text": "jesus lizard - chrome",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -639,6 +625,20 @@
             3028,
             1278,
             3103
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "hossam ramzy- fallah",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3103,
+            1278,
+            3177
           ]
         },
         {
@@ -652,28 +652,14 @@
           ],
           "row_bbox": [
             0,
-            3103,
-            1278,
-            3177
-          ]
-        },
-        {
-          "row_index": 12,
-          "raw_text": "the felt - i cant make to to you anymore",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3177,
             1278,
             3252
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "black uhuru - thinking about you",
+          "row_index": 12,
+          "raw_text": "the felt - i cant make to to you anymore",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -686,8 +672,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "caetano veloso- este amor",
+          "row_index": 13,
+          "raw_text": "black uhuru - thinking about you",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -700,8 +686,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "Little John - Who Beg Not Get",
+          "row_index": 14,
+          "raw_text": "caetano veloso- este amor",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -714,8 +700,8 @@
           ]
         },
         {
-          "row_index": 16,
-          "raw_text": "Al Green - Love and Happiness",
+          "row_index": 15,
+          "raw_text": "Little John - Who Beg Not Get",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -725,6 +711,20 @@
             3479,
             1278,
             3556
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Al Green - Love and Happiness",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3556,
+            1278,
+            3631
           ]
         }
       ],
@@ -750,28 +750,14 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2251,
-            2550,
-            2352
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Jennifer Lara - Hand to Mouth",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
             2352,
             2550,
             2426
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Blue Aeroplanes - Careful Boy",
+          "row_index": 1,
+          "raw_text": "Jennifer Lara - Hand to Mouth",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -784,8 +770,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Sinead O'Connor - Emperor's New Clothes (R)",
+          "row_index": 2,
+          "raw_text": "Blue Aeroplanes - Careful Boy",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -798,8 +784,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Bert Lee - Amnesia",
+          "row_index": 3,
+          "raw_text": "Sinead O'Connor - Emperor's New Clothes (R)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -812,8 +798,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Housemartins - Happy Hour",
+          "row_index": 4,
+          "raw_text": "Bert Lee - Amnesia",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -826,8 +812,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Bongwater - One So Black",
+          "row_index": 5,
+          "raw_text": "Housemartins - Happy Hour",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -840,8 +826,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Mary Hopkin - Show Business",
+          "row_index": 6,
+          "raw_text": "Bongwater - One So Black",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -854,8 +840,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "The Chills - Tied Up in Chain",
+          "row_index": 7,
+          "raw_text": "Mary Hopkin - Show Business",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -868,8 +854,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "The Slits - Spend, Spend, Spend",
+          "row_index": 8,
+          "raw_text": "The Chills - Tied Up in Chain",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -882,9 +868,9 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Miles Davis - Bess You Is My W Now",
-          "confidence": "medium",
+          "row_index": 9,
+          "raw_text": "The Slits - Spend, Spend, Spend",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -896,9 +882,9 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Mind Sirens - Song X",
-          "confidence": "high",
+          "row_index": 10,
+          "raw_text": "Miles Davis - Bess You Is My W Now",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -910,8 +896,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Chris Cacavas - I didn't mean that",
+          "row_index": 11,
+          "raw_text": "Mind Sirens - Song X",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -924,8 +910,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Daddy Dewdrop - Chick-a-Boom",
+          "row_index": 12,
+          "raw_text": "Chris Cacavas - I didn't mean that",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -938,8 +924,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Urban Edge - Tuesday's Garden",
+          "row_index": 13,
+          "raw_text": "Daddy Dewdrop - Chick-a-Boom",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -949,6 +935,20 @@
             3327,
             2550,
             3402
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Urban Edge - Tuesday's Garden",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3402,
+            2550,
+            3479
           ]
         }
       ],

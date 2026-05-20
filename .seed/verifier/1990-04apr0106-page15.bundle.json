@@ -33,28 +33,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            574,
-            1267,
-            649
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Trouble Funk Grip It",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             649,
             1267,
             723
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Naked City James Bond Theme",
+          "row_index": 1,
+          "raw_text": "Trouble Funk Grip It",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -67,8 +53,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Throbbing Gristle Hamburger Lady",
+          "row_index": 2,
+          "raw_text": "Naked City James Bond Theme",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -81,8 +67,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Jr. Walker Love Hangover",
+          "row_index": 3,
+          "raw_text": "Throbbing Gristle Hamburger Lady",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -95,8 +81,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Hypnotics Soul Trader",
+          "row_index": 4,
+          "raw_text": "Jr. Walker Love Hangover",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -109,8 +95,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Black Sabbath Into the Void",
+          "row_index": 5,
+          "raw_text": "Hypnotics Soul Trader",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -123,8 +109,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Buffalo Springfield - For What It's Worth",
+          "row_index": 6,
+          "raw_text": "Black Sabbath Into the Void",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -134,6 +120,20 @@
             1098,
             1267,
             1174
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Buffalo Springfield - For What It's Worth",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1174,
+            1267,
+            1249
           ]
         },
         {
@@ -147,28 +147,14 @@
           ],
           "row_bbox": [
             0,
-            1174,
-            1267,
-            1249
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "MC 900 FT - Real Black Angel",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             1249,
             1267,
             1325
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "S. O'Conner - Nothing Compares To You",
+          "row_index": 9,
+          "raw_text": "MC 900 FT - Real Black Angel",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -181,8 +167,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Lloyd Cole - Perfect Skin",
+          "row_index": 10,
+          "raw_text": "S. O'Conner - Nothing Compares To You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -195,9 +181,9 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Angels Of Epistomd - Response",
-          "confidence": "medium",
+          "row_index": 11,
+          "raw_text": "Lloyd Cole - Perfect Skin",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -206,6 +192,20 @@
             1475,
             1267,
             1551
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Angels Of Epistomd - Response",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1551,
+            1267,
+            1854
           ]
         }
       ],

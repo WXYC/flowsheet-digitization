@@ -34,28 +34,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            576,
-            1259,
-            651
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Barry Polisar - Don't Wake the Baby",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             651,
             1259,
             726
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Gregory Isaacs - Tumbling Tears",
+          "row_index": 1,
+          "raw_text": "Barry Polisar - Don't Wake the Baby",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -68,8 +54,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Roger Manning - The Serious Blues",
+          "row_index": 2,
+          "raw_text": "Gregory Isaacs - Tumbling Tears",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -82,8 +68,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "John Hall - How Much Longer",
+          "row_index": 3,
+          "raw_text": "Roger Manning - The Serious Blues",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -96,8 +82,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Canned Heat - Time Was",
+          "row_index": 4,
+          "raw_text": "John Hall - How Much Longer",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -110,8 +96,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Kevin Kinney - Not Afraid To Die",
+          "row_index": 5,
+          "raw_text": "Canned Heat - Time Was",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -124,8 +110,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "? and The Mysterians - 96 Tears (Live)",
+          "row_index": 6,
+          "raw_text": "Kevin Kinney - Not Afraid To Die",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -138,8 +124,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Dreams So Real - Golden",
+          "row_index": 7,
+          "raw_text": "? and The Mysterians - 96 Tears (Live)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -152,8 +138,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Volcano Suns - Color My World",
+          "row_index": 8,
+          "raw_text": "Dreams So Real - Golden",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -166,8 +152,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Daniel Johnston - Don't Play Cards w/Satan",
+          "row_index": 9,
+          "raw_text": "Volcano Suns - Color My World",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -180,8 +166,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Cramps - Journey to the Center of a Girl",
+          "row_index": 10,
+          "raw_text": "Daniel Johnston - Don't Play Cards w/Satan",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -194,8 +180,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Leadbelly - National Defense Blues",
+          "row_index": 11,
+          "raw_text": "Cramps - Journey to the Center of a Girl",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -205,6 +191,20 @@
             1478,
             1259,
             1553
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Leadbelly - National Defense Blues",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1553,
+            1259,
+            2004
           ]
         }
       ],
@@ -654,9 +654,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2347,
+            1894,
             2550,
-            2800
+            2347
           ]
         },
         {
@@ -668,14 +668,28 @@
           "oddities": [],
           "row_bbox": [
             1259,
+            2347,
+            2550,
+            2800
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "COC - Hungry Child",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1259,
             2800,
             2550,
             3253
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "COC - Hungry Child",
+          "row_index": 3,
+          "raw_text": "Mighty Diamonds - Revolution",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -688,20 +702,6 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Mighty Diamonds - Revolution",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1259,
-            3706,
-            2550,
-            4074
-          ]
-        },
-        {
           "row_index": 4,
           "raw_text": "Black Crowes - Hard to Handle",
           "confidence": "high",
@@ -710,7 +710,7 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            4074,
+            3706,
             2550,
             4074
           ]

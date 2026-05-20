@@ -460,9 +460,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
+            2357,
             1284,
-            2357
+            2430
           ]
         },
         {
@@ -474,9 +474,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2357,
+            2430,
             1284,
-            2430
+            2507
           ]
         },
         {
@@ -490,9 +490,9 @@
           ],
           "row_bbox": [
             0,
-            2430,
+            2507,
             1284,
-            2583
+            2659
           ]
         },
         {
@@ -504,9 +504,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2583,
+            2659,
             1284,
-            2659
+            2733
           ]
         },
         {
@@ -518,9 +518,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2659,
+            2733,
             1284,
-            2733
+            2808
           ]
         },
         {
@@ -532,9 +532,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2733,
+            2808,
             1284,
-            2808
+            2884
           ]
         },
         {
@@ -546,9 +546,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2808,
+            2884,
             1284,
-            2884
+            2957
           ]
         },
         {
@@ -560,28 +560,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2884,
-            1284,
-            2957
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "Nils Lofgren - Moon tears",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2957,
             1284,
             3033
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Bill Nelson - Empire of the Senses",
+          "row_index": 9,
+          "raw_text": "Nils Lofgren - Moon tears",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -594,6 +580,20 @@
           ]
         },
         {
+          "row_index": 10,
+          "raw_text": "Bill Nelson - Empire of the Senses",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3108,
+            1284,
+            3181
+          ]
+        },
+        {
           "row_index": 11,
           "raw_text": "Fall -> Popcorn dbl Feature",
           "confidence": "high",
@@ -602,9 +602,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3108,
+            3181,
             1284,
-            3181
+            3254
           ]
         },
         {
@@ -616,9 +616,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3181,
+            3254,
             1284,
-            3254
+            3260
           ]
         },
         {
@@ -632,9 +632,9 @@
           ],
           "row_bbox": [
             0,
-            3254,
+            3260,
             1284,
-            3408
+            3483
           ]
         },
         {
@@ -646,9 +646,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3408,
+            3483,
             1284,
-            3483
+            3935
           ]
         }
       ],
@@ -674,9 +674,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            2346,
+            2417,
             2550,
-            2417
+            2490
           ]
         },
         {
@@ -688,9 +688,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            2417,
+            2490,
             2550,
-            2490
+            2566
           ]
         },
         {
@@ -704,9 +704,9 @@
           ],
           "row_bbox": [
             1284,
-            2490,
+            2566,
             2550,
-            2566
+            2643
           ]
         },
         {
@@ -720,9 +720,9 @@
           ],
           "row_bbox": [
             1284,
-            2566,
+            2643,
             2550,
-            2643
+            2720
           ]
         },
         {
@@ -734,9 +734,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            2643,
+            2720,
             2550,
-            2720
+            2790
           ]
         },
         {
@@ -748,9 +748,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            2720,
+            2790,
             2550,
-            2798
+            2866
           ]
         },
         {
@@ -762,9 +762,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            2798,
+            2866,
             2550,
-            2947
+            3018
           ]
         },
         {
@@ -776,9 +776,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            2947,
+            3018,
             2550,
-            3018
+            3173
           ]
         },
         {
@@ -790,28 +790,14 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            3018,
-            2550,
-            3241
-          ]
-        },
-        {
-          "row_index": 12,
-          "raw_text": "Wolfgang Press \"Lira\"",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1284,
-            3241,
+            3173,
             2550,
             3247
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Wonder Stuff",
+          "row_index": 12,
+          "raw_text": "Wolfgang Press \"Lira\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -824,6 +810,20 @@
           ]
         },
         {
+          "row_index": 13,
+          "raw_text": "Wonder Stuff",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3317,
+            2550,
+            3397
+          ]
+        },
+        {
           "row_index": 14,
           "raw_text": "The Mission \"Paradise\"",
           "confidence": "high",
@@ -832,9 +832,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            3317,
+            3397,
             2550,
-            3397
+            3465
           ]
         },
         {
@@ -846,9 +846,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            3397,
+            3465,
             2550,
-            3465
+            3471
           ]
         }
       ],

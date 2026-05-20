@@ -226,6 +226,28 @@ def test_assign_row_bboxes_does_not_prepend_when_first_line_close_to_top() -> No
     assert rows[0] == (0, 550, 500, 625)
 
 
+def test_assign_row_bboxes_drops_misattributed_lines_before_quad_top() -> None:
+    """`partition_row_lines_by_quadrant`'s reattribution pass sometimes
+    moves a line from the body-midline gap into the bottom quadrant. That
+    line sits BEFORE the quadrant body top — using it as the row 0 anchor
+    puts the printed line in the middle of the crop instead of at the row
+    boundary. Drop such lines before computing row strips."""
+    quad_bbox = (0, 2352, 500, 4070)
+    # 2256 sits before y1=2352; drop it. The remaining lines [2357, 2433, 2505]
+    # have gaps of 76 each. After the drop the gap from y1 to lines[0]=2357
+    # is only 5px, which is too small for a real Hour/Jock cell — infer a
+    # missing line at 2357-76=2281 so row 0 lands on the actual handwriting.
+    rows = _assign_row_bboxes(
+        quad_bbox,
+        lines=[2256, 2357, 2433, 2505],
+        spans=[1, 1, 1, 1],
+    )
+    assert rows[0] == (0, 2281, 500, 2357)
+    assert rows[1] == (0, 2357, 500, 2433)
+    assert rows[2] == (0, 2433, 500, 2509)
+    assert rows[3] == (0, 2509, 500, 2585)
+
+
 def test_assign_row_bboxes_fallback_clamps_to_quadrant_bottom() -> None:
     """If entries extend past the quadrant body bottom, the last bbox is
     clamped — better a short crop than a crop that overshoots the page."""

@@ -535,9 +535,9 @@
           ],
           "row_bbox": [
             0,
-            2253,
+            2353,
             1260,
-            2353
+            2428
           ]
         },
         {
@@ -549,9 +549,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2353,
+            2428,
             1260,
-            2428
+            2504
           ]
         },
         {
@@ -563,9 +563,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2428,
+            2504,
             1260,
-            2504
+            2579
           ]
         },
         {
@@ -577,9 +577,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2504,
+            2579,
             1260,
-            2579
+            2654
           ]
         },
         {
@@ -591,9 +591,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2579,
+            2654,
             1260,
-            2654
+            2730
           ]
         },
         {
@@ -605,28 +605,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2654,
-            1260,
-            2730
-          ]
-        },
-        {
-          "row_index": 6,
-          "raw_text": "Skin Yard - Start At The Top",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2730,
             1260,
             2804
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "John Cale - The Philosopher",
+          "row_index": 6,
+          "raw_text": "Skin Yard - Start At The Top",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -639,6 +625,20 @@
           ]
         },
         {
+          "row_index": 7,
+          "raw_text": "John Cale - The Philosopher",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2879,
+            1260,
+            3104
+          ]
+        },
+        {
           "row_index": 8,
           "raw_text": "That Petrol Emotion - Snow Mark",
           "confidence": "high",
@@ -647,9 +647,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2879,
+            3104,
             1260,
-            3104
+            3182
           ]
         },
         {
@@ -661,9 +661,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3104,
+            3182,
             1260,
-            3182
+            3254
           ]
         },
         {
@@ -675,9 +675,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3182,
+            3254,
             1260,
-            3254
+            3332
           ]
         },
         {
@@ -689,9 +689,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3254,
+            3332,
             1260,
-            3332
+            3407
           ]
         },
         {
@@ -703,9 +703,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3332,
+            3407,
             1260,
-            3407
+            3483
           ]
         },
         {
@@ -717,9 +717,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3407,
+            3483,
             1260,
-            3483
+            3558
           ]
         },
         {
@@ -731,9 +731,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3483,
+            3558,
             1260,
-            3558
+            3633
           ]
         },
         {
@@ -745,9 +745,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3558,
+            3633,
             1260,
-            3633
+            3712
           ]
         },
         {
@@ -759,9 +759,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3633,
+            3712,
             1260,
-            3712
+            3788
           ]
         },
         {
@@ -773,9 +773,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3712,
+            3788,
             1260,
-            3788
+            3863
           ]
         }
       ],

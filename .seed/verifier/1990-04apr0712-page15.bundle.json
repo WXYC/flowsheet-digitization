@@ -275,9 +275,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            574,
+            649,
             2550,
-            649
+            724
           ]
         },
         {
@@ -289,9 +289,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            649,
+            724,
             2550,
-            724
+            798
           ]
         },
         {
@@ -303,9 +303,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            724,
+            798,
             2550,
-            798
+            873
           ]
         },
         {
@@ -317,28 +317,14 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            798,
-            2550,
-            873
-          ]
-        },
-        {
-          "row_index": 4,
-          "raw_text": "J Richman - Important in Your Life",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1257,
             873,
             2550,
             949
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Biff Bang Pow - Love's Going Out of Fashion",
+          "row_index": 4,
+          "raw_text": "J Richman - Important in Your Life",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -351,6 +337,20 @@
           ]
         },
         {
+          "row_index": 5,
+          "raw_text": "Biff Bang Pow - Love's Going Out of Fashion",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            1023,
+            2550,
+            1099
+          ]
+        },
+        {
           "row_index": 6,
           "raw_text": "(Peel Sessions) New Order - Dreams Never End",
           "confidence": "high",
@@ -359,9 +359,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1023,
+            1099,
             2550,
-            1099
+            1175
           ]
         },
         {
@@ -373,9 +373,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1099,
+            1175,
             2550,
-            1175
+            1250
           ]
         },
         {
@@ -387,9 +387,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1175,
+            1250,
             2550,
-            1250
+            1326
           ]
         },
         {
@@ -401,9 +401,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1250,
+            1326,
             2550,
-            1326
+            1401
           ]
         },
         {
@@ -415,9 +415,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1326,
+            1401,
             2550,
-            1401
+            1477
           ]
         },
         {
@@ -429,9 +429,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1401,
+            1477,
             2550,
-            1552
+            1627
           ]
         },
         {
@@ -443,9 +443,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1552,
+            1627,
             2550,
-            1627
+            1702
           ]
         },
         {
@@ -457,9 +457,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1627,
+            1702,
             2550,
-            1702
+            1777
           ]
         },
         {
@@ -471,9 +471,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1702,
+            1777,
             2550,
-            1777
+            1852
           ]
         }
       ],
@@ -499,9 +499,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
+            2352,
             1257,
-            2427
+            2503
           ]
         },
         {
@@ -513,9 +513,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2427,
+            2503,
             1257,
-            2503
+            2578
           ]
         },
         {
@@ -527,9 +527,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2503,
+            2578,
             1257,
-            2578
+            2653
           ]
         },
         {
@@ -541,9 +541,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2578,
+            2653,
             1257,
-            2653
+            2729
           ]
         },
         {
@@ -555,9 +555,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2653,
+            2729,
             1257,
-            2729
+            2804
           ]
         },
         {
@@ -569,9 +569,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2729,
+            2804,
             1257,
-            2879
+            2954
           ]
         },
         {
@@ -583,9 +583,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2879,
+            2954,
             1257,
-            2954
+            3029
           ]
         },
         {
@@ -597,9 +597,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2954,
+            3029,
             1257,
-            3029
+            3104
           ]
         },
         {
@@ -611,9 +611,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3029,
+            3104,
             1257,
-            3104
+            3179
           ]
         },
         {
@@ -625,9 +625,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3104,
+            3179,
             1257,
-            3179
+            3254
           ]
         },
         {
@@ -639,9 +639,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3179,
+            3254,
             1257,
-            3254
+            3329
           ]
         },
         {
@@ -653,9 +653,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3254,
+            3329,
             1257,
-            3329
+            3404
           ]
         },
         {
@@ -667,9 +667,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3329,
+            3404,
             1257,
-            3404
+            3480
           ]
         },
         {
@@ -683,9 +683,9 @@
           ],
           "row_bbox": [
             0,
-            3404,
+            3480,
             1257,
-            3480
+            3555
           ]
         },
         {
@@ -697,9 +697,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3480,
+            3555,
             1257,
-            3555
+            3630
           ]
         }
       ],
@@ -725,9 +725,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2252,
+            2352,
             2550,
-            2352
+            2427
           ]
         },
         {
@@ -739,9 +739,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2352,
+            2427,
             2550,
-            2427
+            2503
           ]
         },
         {
@@ -753,9 +753,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2427,
+            2503,
             2550,
-            2503
+            2578
           ]
         },
         {
@@ -767,28 +767,14 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2503,
-            2550,
-            2578
-          ]
-        },
-        {
-          "row_index": 4,
-          "raw_text": "Volcano Suns - Sounds Like Bucks",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1257,
             2578,
             2550,
             2653
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Marty Robbins - Streets of Laredo",
+          "row_index": 4,
+          "raw_text": "Volcano Suns - Sounds Like Bucks",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -801,6 +787,20 @@
           ]
         },
         {
+          "row_index": 5,
+          "raw_text": "Marty Robbins - Streets of Laredo",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
+            2729,
+            2550,
+            2804
+          ]
+        },
+        {
           "row_index": 6,
           "raw_text": "Cowboy",
           "confidence": "high",
@@ -809,9 +809,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2729,
+            2804,
             2550,
-            2804
+            2879
           ]
         },
         {
@@ -823,9 +823,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2804,
+            2879,
             2550,
-            2954
+            3029
           ]
         },
         {
@@ -837,9 +837,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            2954,
+            3029,
             2550,
-            3104
+            3179
           ]
         },
         {
@@ -851,9 +851,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            3104,
+            3179,
             2550,
-            3179
+            3254
           ]
         },
         {
@@ -865,9 +865,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            3179,
+            3254,
             2550,
-            3254
+            3329
           ]
         }
       ],

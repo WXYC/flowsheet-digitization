@@ -500,28 +500,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
-            1280,
-            2353
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Bo Diddly - Roadrunner",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2353,
             1280,
             2429
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "3rd Bass - The Gas face",
+          "row_index": 1,
+          "raw_text": "Bo Diddly - Roadrunner",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -534,6 +520,20 @@
           ]
         },
         {
+          "row_index": 2,
+          "raw_text": "3rd Bass - The Gas face",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2504,
+            1280,
+            2579
+          ]
+        },
+        {
           "row_index": 3,
           "raw_text": "Bongwater - Teena Setony/The End",
           "confidence": "medium",
@@ -542,9 +542,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2504,
+            2579,
             1280,
-            2579
+            2655
           ]
         },
         {
@@ -556,9 +556,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2579,
+            2655,
             1280,
-            2655
+            2729
           ]
         },
         {
@@ -570,9 +570,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2655,
+            2729,
             1280,
-            2729
+            2804
           ]
         },
         {
@@ -584,9 +584,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2729,
+            2804,
             1280,
-            2804
+            2879
           ]
         },
         {
@@ -600,9 +600,9 @@
           ],
           "row_bbox": [
             0,
-            2804,
+            2879,
             1280,
-            2879
+            2954
           ]
         },
         {
@@ -614,9 +614,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2879,
+            2954,
             1280,
-            2954
+            3105
           ]
         },
         {
@@ -628,9 +628,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2954,
+            3105,
             1280,
-            3105
+            3333
           ]
         },
         {
@@ -642,9 +642,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3105,
+            3333,
             1280,
-            3333
+            3408
           ]
         },
         {
@@ -656,9 +656,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3333,
+            3408,
             1280,
-            3484
+            3559
           ]
         },
         {
@@ -670,9 +670,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3484,
+            3559,
             1280,
-            3559
+            3634
           ]
         },
         {
@@ -684,9 +684,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3559,
+            3634,
             1280,
-            3634
+            3712
           ]
         }
       ],
@@ -712,28 +712,14 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2252,
-            2550,
-            2353
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Miracle Legion - The Backyard",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1280,
             2353,
             2550,
             2429
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "George Jones - feelin single seein double",
+          "row_index": 1,
+          "raw_text": "Miracle Legion - The Backyard",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -746,9 +732,9 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "B.O.T.M. - Boat of the Musesic pt. 1",
-          "confidence": "medium",
+          "row_index": 2,
+          "raw_text": "George Jones - feelin single seein double",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -757,6 +743,20 @@
             2504,
             2550,
             2579
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "B.O.T.M. - Boat of the Musesic pt. 1",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1280,
+            2579,
+            2550,
+            2655
           ]
         },
         {
@@ -770,9 +770,9 @@
           ],
           "row_bbox": [
             1280,
-            2579,
+            2655,
             2550,
-            2655
+            2729
           ]
         },
         {
@@ -786,28 +786,14 @@
           ],
           "row_bbox": [
             1280,
-            2655,
-            2550,
-            2729
-          ]
-        },
-        {
-          "row_index": 6,
-          "raw_text": "Everly Bros - So Sad",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1280,
             2729,
             2550,
             2804
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Jad Fair & Kramer - What I've been waiting for",
+          "row_index": 6,
+          "raw_text": "Everly Bros - So Sad",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -820,9 +806,9 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Woody Guthrie - California Blues",
-          "confidence": "medium",
+          "row_index": 7,
+          "raw_text": "Jad Fair & Kramer - What I've been waiting for",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -834,6 +820,20 @@
           ]
         },
         {
+          "row_index": 8,
+          "raw_text": "Woody Guthrie - California Blues",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1280,
+            2954,
+            2550,
+            3029
+          ]
+        },
+        {
           "row_index": 9,
           "raw_text": "Loop - Afterglow",
           "confidence": "high",
@@ -842,9 +842,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            2954,
+            3029,
             2550,
-            3029
+            3105
           ]
         },
         {
@@ -856,9 +856,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3029,
+            3105,
             2550,
-            3105
+            3179
           ]
         },
         {
@@ -870,9 +870,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3105,
+            3179,
             2550,
-            3179
+            3253
           ]
         },
         {
@@ -884,9 +884,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3179,
+            3253,
             2550,
-            3253
+            3327
           ]
         },
         {
@@ -898,9 +898,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3253,
+            3327,
             2550,
-            3327
+            3402
           ]
         },
         {
@@ -912,9 +912,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3327,
+            3402,
             2550,
-            3402
+            3477
           ]
         },
         {
@@ -926,9 +926,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3402,
+            3477,
             2550,
-            3477
+            3552
           ]
         },
         {
@@ -940,9 +940,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3477,
+            3552,
             2550,
-            3552
+            3626
           ]
         },
         {
@@ -954,9 +954,9 @@
           "oddities": [],
           "row_bbox": [
             1280,
-            3552,
+            3626,
             2550,
-            3626
+            3705
           ]
         }
       ],

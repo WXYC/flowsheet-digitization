@@ -303,28 +303,14 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            651,
-            2550,
-            726
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Celtic Thunder - Linda's Favorite",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
             726,
             2550,
             873
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Big Star - Feel",
+          "row_index": 1,
+          "raw_text": "Celtic Thunder - Linda's Favorite",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -337,8 +323,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Mthembu Queens - Phansi kamthunzi",
+          "row_index": 2,
+          "raw_text": "Big Star - Feel",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -351,8 +337,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Nanci Griffith - Marilyn Monroe/Neon & Waltzes",
+          "row_index": 3,
+          "raw_text": "Mthembu Queens - Phansi kamthunzi",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -365,8 +351,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Fletcher Henderson - My Sweet Tooth Says I Wanna But my wisdom tooth says No",
+          "row_index": 4,
+          "raw_text": "Nanci Griffith - Marilyn Monroe/Neon & Waltzes",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -379,8 +365,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Isley Bros. - It's Your Thing",
+          "row_index": 5,
+          "raw_text": "Fletcher Henderson - My Sweet Tooth Says I Wanna But my wisdom tooth says No",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -393,8 +379,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Sinead O Connor - I Do Not Want What I Haven't Got",
+          "row_index": 6,
+          "raw_text": "Isley Bros. - It's Your Thing",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -407,8 +393,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "TAR - Mel's",
+          "row_index": 7,
+          "raw_text": "Sinead O Connor - I Do Not Want What I Haven't Got",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -421,8 +407,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Rockin' Sidney - Jalapeno Lena",
+          "row_index": 8,
+          "raw_text": "TAR - Mel's",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -435,8 +421,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "NEWS",
+          "row_index": 9,
+          "raw_text": "Rockin' Sidney - Jalapeno Lena",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -449,8 +435,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Muszikas - Hajnali N\u00f3ta",
+          "row_index": 10,
+          "raw_text": "NEWS",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -463,8 +449,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Soul Asylum - Take It To the Root",
+          "row_index": 11,
+          "raw_text": "Muszikas - Hajnali N\u00f3ta",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -477,8 +463,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Queen Latifah - Dance for me",
+          "row_index": 12,
+          "raw_text": "Soul Asylum - Take It To the Root",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -491,8 +477,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Bevis Frond - The Score of England",
+          "row_index": 13,
+          "raw_text": "Queen Latifah - Dance for me",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -502,6 +488,20 @@
             1851,
             2550,
             1926
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bevis Frond - The Score of England",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1926,
+            2550,
+            2001
           ]
         }
       ],
@@ -527,9 +527,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2250,
+            2350,
             1278,
-            2350
+            2425
           ]
         },
         {
@@ -543,28 +543,14 @@
           ],
           "row_bbox": [
             0,
-            2350,
-            1278,
-            2425
-          ]
-        },
-        {
-          "row_index": 2,
-          "raw_text": "Age of Chance - Crush Collision",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2425,
             1278,
             2501
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Jefferson Handkerchief - I'm Allergic To Flowers",
+          "row_index": 2,
+          "raw_text": "Age of Chance - Crush Collision",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -577,8 +563,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Bad Religion - It Must look Pretty Appealing",
+          "row_index": 3,
+          "raw_text": "Jefferson Handkerchief - I'm Allergic To Flowers",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -591,11 +577,11 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Maman - La Flamme - Planteur",
+          "row_index": 4,
+          "raw_text": "Bad Religion - It Must look Pretty Appealing",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -605,11 +591,11 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Brazil Forro - Gosto Puro - Toinho de Alagoas",
+          "row_index": 5,
+          "raw_text": "Maman - La Flamme - Planteur",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "crossed_out",
           "oddities": [],
           "row_bbox": [
             0,
@@ -619,8 +605,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Poi Dog - Bury Me Deep",
+          "row_index": 6,
+          "raw_text": "Brazil Forro - Gosto Puro - Toinho de Alagoas",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -633,8 +619,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Walkabouts - The Anvil Song",
+          "row_index": 7,
+          "raw_text": "Poi Dog - Bury Me Deep",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -647,8 +633,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Honor Role - Go Places",
+          "row_index": 8,
+          "raw_text": "Walkabouts - The Anvil Song",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -661,8 +647,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "No Means No - Revenge",
+          "row_index": 9,
+          "raw_text": "Honor Role - Go Places",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -675,8 +661,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "News Carrier & Well Pleased & Satisfied",
+          "row_index": 10,
+          "raw_text": "No Means No - Revenge",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -689,8 +675,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Byrds - Set You Free this Time",
+          "row_index": 11,
+          "raw_text": "News Carrier & Well Pleased & Satisfied",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -703,8 +689,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "J & M Chain - The Hardest Walk",
+          "row_index": 12,
+          "raw_text": "Byrds - Set You Free this Time",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -717,6 +703,20 @@
           ]
         },
         {
+          "row_index": 13,
+          "raw_text": "J & M Chain - The Hardest Walk",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3327,
+            1278,
+            3402
+          ]
+        },
+        {
           "row_index": 14,
           "raw_text": "King Missile - The Fish that played the Ponies",
           "confidence": "high",
@@ -725,9 +725,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3327,
+            3402,
             1278,
-            3478
+            3553
           ]
         },
         {
@@ -739,9 +739,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3478,
+            3553,
             1278,
-            3553
+            3628
           ]
         }
       ],
@@ -769,28 +769,14 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            2250,
-            2550,
-            2350
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Consolidated - Assasinate the Infancts",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
             2350,
             2550,
             2425
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Caterwaul - Innerlooped",
+          "row_index": 1,
+          "raw_text": "Consolidated - Assasinate the Infancts",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -803,8 +789,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Art Tatum - On the Sunny Side of the Street",
+          "row_index": 2,
+          "raw_text": "Caterwaul - Innerlooped",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -817,8 +803,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "John Rebourn + Stefa Grossman - Catwalk",
+          "row_index": 3,
+          "raw_text": "Art Tatum - On the Sunny Side of the Street",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -831,8 +817,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Savage Republic - Sucker Punch",
+          "row_index": 4,
+          "raw_text": "John Rebourn + Stefa Grossman - Catwalk",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -845,8 +831,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Red Hot Chili Peppers - Show Me Your Soul",
+          "row_index": 5,
+          "raw_text": "Savage Republic - Sucker Punch",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -859,8 +845,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "B. Dylan - I am a lonesome Hobo",
+          "row_index": 6,
+          "raw_text": "Red Hot Chili Peppers - Show Me Your Soul",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -873,11 +859,11 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Wolfgang Press - Swing Like A Baby",
+          "row_index": 7,
+          "raw_text": "B. Dylan - I am a lonesome Hobo",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1278,
@@ -887,11 +873,11 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Tube Bar - pepe Roni & Hal JaliKakiCk",
+          "row_index": 8,
+          "raw_text": "Wolfgang Press - Swing Like A Baby",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "crossed_out",
           "oddities": [],
           "row_bbox": [
             1278,
@@ -901,8 +887,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Nice Strong Arm - Lost Sleep",
+          "row_index": 9,
+          "raw_text": "Tube Bar - pepe Roni & Hal JaliKakiCk",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -915,8 +901,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Art Pepper - Straight Life",
+          "row_index": 10,
+          "raw_text": "Nice Strong Arm - Lost Sleep",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -929,8 +915,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Johnny Cash - San Quentin",
+          "row_index": 11,
+          "raw_text": "Art Pepper - Straight Life",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -943,8 +929,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Christine lavin - Fly On A Plane",
+          "row_index": 12,
+          "raw_text": "Johnny Cash - San Quentin",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -957,8 +943,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Buffalo Tom - Slushy Stars",
+          "row_index": 13,
+          "raw_text": "Christine lavin - Fly On A Plane",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -971,6 +957,20 @@
           ]
         },
         {
+          "row_index": 14,
+          "raw_text": "Buffalo Tom - Slushy Stars",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3402,
+            2550,
+            3478
+          ]
+        },
+        {
           "row_index": 15,
           "raw_text": "Tom Waits - the Piano Has Been Drinking Not Me",
           "confidence": "high",
@@ -979,9 +979,9 @@
           "oddities": [],
           "row_bbox": [
             1278,
-            3402,
+            3478,
             2550,
-            3553
+            3628
           ]
         }
       ],

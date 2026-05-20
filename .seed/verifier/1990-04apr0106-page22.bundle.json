@@ -514,9 +514,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2252,
+            2352,
             1275,
-            2427
+            2502
           ]
         },
         {
@@ -528,9 +528,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2427,
+            2502,
             1275,
-            2502
+            2577
           ]
         },
         {
@@ -542,9 +542,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2502,
+            2577,
             1275,
-            2653
+            2728
           ]
         },
         {
@@ -556,9 +556,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2653,
+            2728,
             1275,
-            2728
+            2802
           ]
         },
         {
@@ -570,9 +570,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2728,
+            2802,
             1275,
-            2802
+            2877
           ]
         }
       ],
@@ -598,28 +598,14 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2252,
-            2550,
-            2352
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "the embarrassment - after the disco",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1275,
             2352,
             2550,
             2427
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "sade - fear",
+          "row_index": 1,
+          "raw_text": "the embarrassment - after the disco",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -632,8 +618,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "they might be giants - kiss me, son of god",
+          "row_index": 2,
+          "raw_text": "sade - fear",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -646,8 +632,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "beat happening - drive car girl",
+          "row_index": 3,
+          "raw_text": "they might be giants - kiss me, son of god",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -660,8 +646,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "midnight a go go",
+          "row_index": 4,
+          "raw_text": "beat happening - drive car girl",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -674,8 +660,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "psychic tv - only love can break your heart",
+          "row_index": 5,
+          "raw_text": "midnight a go go",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -688,8 +674,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "gene pitney - town without pity",
+          "row_index": 6,
+          "raw_text": "psychic tv - only love can break your heart",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -702,8 +688,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "the veldt - it's over",
+          "row_index": 7,
+          "raw_text": "gene pitney - town without pity",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -716,8 +702,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "the fluid - tomorrow",
+          "row_index": 8,
+          "raw_text": "the veldt - it's over",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -730,8 +716,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "phantom tollbooth - ohm on the range",
+          "row_index": 9,
+          "raw_text": "the fluid - tomorrow",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -744,8 +730,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "syd barrett - lanky (part 1)",
+          "row_index": 10,
+          "raw_text": "phantom tollbooth - ohm on the range",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -758,8 +744,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "brave combo - polka",
+          "row_index": 11,
+          "raw_text": "syd barrett - lanky (part 1)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -772,6 +758,20 @@
           ]
         },
         {
+          "row_index": 12,
+          "raw_text": "brave combo - polka",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3252,
+            2550,
+            3327
+          ]
+        },
+        {
           "row_index": 13,
           "raw_text": "breakdancing - malcolm mclaren - buffalo gals",
           "confidence": "high",
@@ -780,9 +780,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            3252,
+            3327,
             2550,
-            3403
+            3479
           ]
         },
         {
@@ -796,9 +796,9 @@
           ],
           "row_bbox": [
             1275,
-            3403,
+            3479,
             2550,
-            3479
+            3554
           ]
         },
         {
@@ -810,9 +810,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            3479,
+            3554,
             2550,
-            3554
+            3630
           ]
         }
       ],

@@ -256,9 +256,9 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            579,
+            655,
             2550,
-            655
+            730
           ]
         },
         {
@@ -272,28 +272,14 @@
           ],
           "row_bbox": [
             1285,
-            655,
-            2550,
-            730
-          ]
-        },
-        {
-          "row_index": 2,
-          "raw_text": "Denim T.V. - It's A Privilege",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1285,
             730,
             2550,
             883
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Saccharine Trust - Speak",
+          "row_index": 2,
+          "raw_text": "Denim T.V. - It's A Privilege",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -306,9 +292,9 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Sabroso! - De Kokinde A Kunene (En S\u00f3lo Pueblo)",
-          "confidence": "medium",
+          "row_index": 3,
+          "raw_text": "Saccharine Trust - Speak",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -320,9 +306,9 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Chapter Two - Be You",
-          "confidence": "high",
+          "row_index": 4,
+          "raw_text": "Sabroso! - De Kokinde A Kunene (En S\u00f3lo Pueblo)",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -334,8 +320,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "The Wolfgang Press - Kansas",
+          "row_index": 5,
+          "raw_text": "Chapter Two - Be You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -348,8 +334,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Siglo XX - Vanity Lane",
+          "row_index": 6,
+          "raw_text": "The Wolfgang Press - Kansas",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -362,8 +348,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Cecil Taylor - Leaf Taken Horn",
+          "row_index": 7,
+          "raw_text": "Siglo XX - Vanity Lane",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -376,8 +362,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Hugo Largo - Halfway Knowing",
+          "row_index": 8,
+          "raw_text": "Cecil Taylor - Leaf Taken Horn",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -387,6 +373,20 @@
             1406,
             2550,
             1556
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Hugo Largo - Halfway Knowing",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            1556,
+            2550,
+            1784
           ]
         },
         {
@@ -400,28 +400,14 @@
           ],
           "row_bbox": [
             1285,
-            1556,
-            2550,
-            1784
-          ]
-        },
-        {
-          "row_index": 11,
-          "raw_text": "Johnny Cash - Without Love",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1285,
             1784,
             2550,
             1860
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Dub Syndicate - Hawaii",
+          "row_index": 11,
+          "raw_text": "Johnny Cash - Without Love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -434,8 +420,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Thrill Kill Kult - Easy Girl",
+          "row_index": 12,
+          "raw_text": "Dub Syndicate - Hawaii",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -445,6 +431,20 @@
             1934,
             2550,
             2006
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Thrill Kill Kult - Easy Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2006,
+            2550,
+            2082
           ]
         }
       ],
@@ -470,28 +470,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
-            1285,
-            2503
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Boogie Down Productions - Why Is That",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2503,
             1285,
             2579
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Polkacide - Helena",
+          "row_index": 1,
+          "raw_text": "Boogie Down Productions - Why Is That",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -504,8 +490,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Naked City - Batman",
+          "row_index": 2,
+          "raw_text": "Polkacide - Helena",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -518,8 +504,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Jackson Browne - Cocaine",
+          "row_index": 3,
+          "raw_text": "Naked City - Batman",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -532,8 +518,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "The Fluid - Tin Top Toy",
+          "row_index": 4,
+          "raw_text": "Jackson Browne - Cocaine",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -546,8 +532,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "The Church - Russian Autumn Heart",
+          "row_index": 5,
+          "raw_text": "The Fluid - Tin Top Toy",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -560,8 +546,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Turtle Island String Quartet - Jaco",
+          "row_index": 6,
+          "raw_text": "The Church - Russian Autumn Heart",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -574,8 +560,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Live Skull - Bootcamp",
+          "row_index": 7,
+          "raw_text": "Turtle Island String Quartet - Jaco",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -588,8 +574,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Muzsikas - Regen volt, soka lesz",
+          "row_index": 8,
+          "raw_text": "Live Skull - Bootcamp",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -602,8 +588,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Big Daddy Kane - On the Move",
+          "row_index": 9,
+          "raw_text": "Muzsikas - Regen volt, soka lesz",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -616,6 +602,20 @@
           ]
         },
         {
+          "row_index": 10,
+          "raw_text": "Big Daddy Kane - On the Move",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3181,
+            1285,
+            3256
+          ]
+        },
+        {
           "row_index": 11,
           "raw_text": "illegible",
           "confidence": "low",
@@ -624,9 +624,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3181,
+            3256,
             1285,
-            3256
+            3332
           ]
         },
         {
@@ -640,28 +640,14 @@
           ],
           "row_bbox": [
             0,
-            3256,
-            1285,
-            3332
-          ]
-        },
-        {
-          "row_index": 13,
-          "raw_text": "Souled American - Dwarte's Hornpipe",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3332,
             1285,
             3407
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "The Stooges - Loose",
+          "row_index": 13,
+          "raw_text": "Souled American - Dwarte's Hornpipe",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -674,8 +660,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "Public Enemy - 911 is A JOKE",
+          "row_index": 14,
+          "raw_text": "The Stooges - Loose",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -688,8 +674,8 @@
           ]
         },
         {
-          "row_index": 16,
-          "raw_text": "Blast - Sometimes",
+          "row_index": 15,
+          "raw_text": "Public Enemy - 911 is A JOKE",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -699,6 +685,20 @@
             3558,
             1285,
             3633
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Blast - Sometimes",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3633,
+            1285,
+            3710
           ]
         }
       ],
@@ -724,28 +724,14 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            2259,
-            2550,
-            2357
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "The Silos - Caroline",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1285,
             2357,
             2550,
             2431
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Fiddler On the Roof - If I Were A Rich Man",
+          "row_index": 1,
+          "raw_text": "The Silos - Caroline",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -758,8 +744,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Pailhead - I Will Refuse",
+          "row_index": 2,
+          "raw_text": "Fiddler On the Roof - If I Were A Rich Man",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -772,8 +758,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Band of Susans - Tourniquet",
+          "row_index": 3,
+          "raw_text": "Pailhead - I Will Refuse",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -786,8 +772,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Luka Bloom - Gone to Pablo",
+          "row_index": 4,
+          "raw_text": "Band of Susans - Tourniquet",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -797,6 +783,20 @@
             2660,
             2550,
             2735
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Luka Bloom - Gone to Pablo",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            2735,
+            2550,
+            2807
           ]
         },
         {
@@ -810,9 +810,9 @@
           ],
           "row_bbox": [
             1285,
-            2735,
+            2807,
             2550,
-            2807
+            2881
           ]
         },
         {
@@ -824,9 +824,9 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            2807,
+            2881,
             2550,
-            2881
+            2955
           ]
         },
         {
@@ -838,28 +838,14 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            2881,
-            2550,
-            2955
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "Culture - Money Girl",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1285,
             2955,
             2550,
             3181
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Pain Teens - Preppy Killer",
+          "row_index": 9,
+          "raw_text": "Culture - Money Girl",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -872,8 +858,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Digital Underground - Underwater RIME'S",
+          "row_index": 10,
+          "raw_text": "Pain Teens - Preppy Killer",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -886,8 +872,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Circle Jerks - Under the Gun",
+          "row_index": 11,
+          "raw_text": "Digital Underground - Underwater RIME'S",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -900,8 +886,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Flaming Lips - After the Goldrush",
+          "row_index": 12,
+          "raw_text": "Circle Jerks - Under the Gun",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -914,8 +900,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Bud Powell - Cherokee",
+          "row_index": 13,
+          "raw_text": "Flaming Lips - After the Goldrush",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -925,6 +911,20 @@
             3483,
             2550,
             3558
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bud Powell - Cherokee",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
+            3558,
+            2550,
+            3633
           ]
         }
       ],

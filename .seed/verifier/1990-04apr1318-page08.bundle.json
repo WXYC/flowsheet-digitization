@@ -486,9 +486,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
+            2352,
             1264,
-            2352
+            2502
           ]
         },
         {
@@ -500,28 +500,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2352,
-            1264,
-            2502
-          ]
-        },
-        {
-          "row_index": 2,
-          "raw_text": "Sacred Miracle Cave Summertime",
-          "confidence": "high",
-          "type_raw": "H",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2502,
             1264,
             2656
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Naked City a Shot in the Dark",
+          "row_index": 2,
+          "raw_text": "Sacred Miracle Cave Summertime",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -534,6 +520,20 @@
           ]
         },
         {
+          "row_index": 3,
+          "raw_text": "Naked City a Shot in the Dark",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2803,
+            1264,
+            2877
+          ]
+        },
+        {
           "row_index": 4,
           "raw_text": "Sinead O'Connor The Emperor's New Clothes",
           "confidence": "high",
@@ -542,9 +542,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2803,
+            2877,
             1264,
-            2877
+            2953
           ]
         },
         {
@@ -556,9 +556,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2877,
+            2953,
             1264,
-            2953
+            3103
           ]
         },
         {
@@ -570,28 +570,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2953,
-            1264,
-            3103
-          ]
-        },
-        {
-          "row_index": 7,
-          "raw_text": "Fugazi Bad Mouth",
-          "confidence": "high",
-          "type_raw": "o",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3103,
             1264,
             3178
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Marvin Gaye + Tammi Terrell The Onion Song",
+          "row_index": 7,
+          "raw_text": "Fugazi Bad Mouth",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -604,6 +590,20 @@
           ]
         },
         {
+          "row_index": 8,
+          "raw_text": "Marvin Gaye + Tammi Terrell The Onion Song",
+          "confidence": "high",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3256,
+            1264,
+            3331
+          ]
+        },
+        {
           "row_index": 9,
           "raw_text": "Enya Sail Away",
           "confidence": "high",
@@ -612,9 +612,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3256,
+            3331,
             1264,
-            3331
+            3407
           ]
         },
         {
@@ -626,9 +626,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3331,
+            3407,
             1264,
-            3407
+            3483
           ]
         },
         {
@@ -640,9 +640,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3407,
+            3483,
             1264,
-            3483
+            3559
           ]
         },
         {
@@ -654,9 +654,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3483,
+            3559,
             1264,
-            3559
+            3634
           ]
         },
         {
@@ -668,9 +668,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3559,
+            3634,
             1264,
-            3634
+            3711
           ]
         },
         {
@@ -682,9 +682,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3634,
+            3711,
             1264,
-            3711
+            3789
           ]
         }
       ],

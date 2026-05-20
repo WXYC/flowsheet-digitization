@@ -71,9 +71,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2251,
+            2353,
             2550,
-            2353
+            2427
           ]
         },
         {
@@ -85,9 +85,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2353,
+            2427,
             2550,
-            2502
+            2578
           ]
         },
         {
@@ -99,9 +99,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2502,
+            2578,
             2550,
-            2578
+            2653
           ]
         },
         {
@@ -113,9 +113,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2578,
+            2653,
             2550,
-            2653
+            2728
           ]
         },
         {
@@ -127,9 +127,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2653,
+            2728,
             2550,
-            2728
+            2804
           ]
         },
         {
@@ -143,9 +143,9 @@
           ],
           "row_bbox": [
             1275,
-            2728,
+            2804,
             2550,
-            2804
+            2878
           ]
         },
         {
@@ -157,9 +157,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2804,
+            2878,
             2550,
-            2878
+            2953
           ]
         },
         {
@@ -171,28 +171,14 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            2878,
-            2550,
-            2953
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "Fats Waller - Ain't Misbehavin",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1275,
             2953,
             2550,
             3028
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Sam Rivers - Precis",
+          "row_index": 9,
+          "raw_text": "Fats Waller - Ain't Misbehavin",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -205,8 +191,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Courtney Pine - The Vision",
+          "row_index": 10,
+          "raw_text": "Sam Rivers - Precis",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -216,6 +202,20 @@
             3103,
             2550,
             3178
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Courtney Pine - The Vision",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1275,
+            3178,
+            2550,
+            3253
           ]
         },
         {
@@ -229,9 +229,9 @@
           ],
           "row_bbox": [
             1275,
-            3178,
+            3253,
             2550,
-            3253
+            3328
           ]
         },
         {
@@ -243,9 +243,9 @@
           "oddities": [],
           "row_bbox": [
             1275,
-            3253,
+            3328,
             2550,
-            3328
+            3403
           ]
         }
       ],

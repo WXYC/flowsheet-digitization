@@ -505,28 +505,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2250,
-            1260,
-            2349
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Nu Bowie - LATIFA : FAME '90",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             2349,
             1260,
             2499
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "TACKHEAD : TICKING THE TIMEBOMB",
+          "row_index": 1,
+          "raw_text": "Nu Bowie - LATIFA : FAME '90",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -539,9 +525,9 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "MOOZEEKASH : VETETTEM VIOLAT",
-          "confidence": "low",
+          "row_index": 2,
+          "raw_text": "TACKHEAD : TICKING THE TIMEBOMB",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -553,9 +539,9 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "FLAMIN LIPS : ODE TO CC PT 1",
-          "confidence": "high",
+          "row_index": 3,
+          "raw_text": "MOOZEEKASH : VETETTEM VIOLAT",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -564,6 +550,20 @@
             2650,
             1260,
             2725
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "FLAMIN LIPS : ODE TO CC PT 1",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2725,
+            1260,
+            2800
           ]
         },
         {
@@ -577,9 +577,9 @@
           ],
           "row_bbox": [
             0,
-            2725,
+            2800,
             1260,
-            2800
+            2878
           ]
         },
         {
@@ -591,9 +591,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2800,
+            2878,
             1260,
-            2878
+            3026
           ]
         },
         {
@@ -607,9 +607,9 @@
           ],
           "row_bbox": [
             0,
-            2878,
+            3026,
             1260,
-            3026
+            3101
           ]
         },
         {
@@ -621,9 +621,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3026,
+            3101,
             1260,
-            3101
+            3178
           ]
         },
         {
@@ -635,28 +635,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3101,
-            1260,
-            3178
-          ]
-        },
-        {
-          "row_index": 10,
-          "raw_text": "REV JACK VAN IMPE : DEMONS AND EXORCISM",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             3178,
             1260,
             3253
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "NICK CAVE : SHIP SONG",
+          "row_index": 10,
+          "raw_text": "REV JACK VAN IMPE : DEMONS AND EXORCISM",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -669,8 +655,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "ROGER MILLER : KANSAS CITY STAR",
+          "row_index": 11,
+          "raw_text": "NICK CAVE : SHIP SONG",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -680,6 +666,20 @@
             3328,
             1260,
             3404
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "ROGER MILLER : KANSAS CITY STAR",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3404,
+            1260,
+            3480
           ]
         }
       ],

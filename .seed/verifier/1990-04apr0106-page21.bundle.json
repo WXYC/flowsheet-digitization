@@ -34,28 +34,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            574,
-            1265,
-            649
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "PE - Hey Venus",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             649,
             1265,
             724
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "The Fluid - Tomorrow",
+          "row_index": 1,
+          "raw_text": "PE - Hey Venus",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -68,8 +54,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "The Fall - And there is",
+          "row_index": 2,
+          "raw_text": "The Fluid - Tomorrow",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -79,6 +65,20 @@
             798,
             1265,
             873
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "The Fall - And there is",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            873,
+            1265,
+            949
           ]
         },
         {
@@ -92,28 +92,14 @@
           ],
           "row_bbox": [
             0,
-            873,
-            1265,
-            949
-          ]
-        },
-        {
-          "row_index": 5,
-          "raw_text": "Turbines - Hangin Tough",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             949,
             1265,
             1023
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Lyle Lovett - Why I don't know",
+          "row_index": 5,
+          "raw_text": "Turbines - Hangin Tough",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -126,8 +112,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Buddy Guy - My mother",
+          "row_index": 6,
+          "raw_text": "Lyle Lovett - Why I don't know",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -140,9 +126,9 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Savage Republic - Mapia",
-          "confidence": "medium",
+          "row_index": 7,
+          "raw_text": "Buddy Guy - My mother",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -154,9 +140,9 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Morris Pert - Marrakesh",
-          "confidence": "high",
+          "row_index": 8,
+          "raw_text": "Savage Republic - Mapia",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -168,8 +154,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Magnolias - Don't see that girl",
+          "row_index": 9,
+          "raw_text": "Morris Pert - Marrakesh",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -182,9 +168,9 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Mind Siren - What are you doing",
-          "confidence": "medium",
+          "row_index": 10,
+          "raw_text": "Magnolias - Don't see that girl",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -196,9 +182,9 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Cynics - cry cry cry",
-          "confidence": "high",
+          "row_index": 11,
+          "raw_text": "Mind Siren - What are you doing",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -210,8 +196,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "PE - 911 is a joke",
+          "row_index": 12,
+          "raw_text": "Cynics - cry cry cry",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -224,8 +210,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Bongwater - Too much sleep",
+          "row_index": 13,
+          "raw_text": "PE - 911 is a joke",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -238,8 +224,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "Fundamentals - Sincere",
+          "row_index": 14,
+          "raw_text": "Bongwater - Too much sleep",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -249,6 +235,20 @@
             1702,
             1265,
             1776
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Fundamentals - Sincere",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1776,
+            1265,
+            1852
           ]
         }
       ],
@@ -514,9 +514,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2253,
+            2352,
             1265,
-            2328
+            2427
           ]
         },
         {
@@ -528,9 +528,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2328,
+            2427,
             1265,
-            2403
+            2502
           ]
         },
         {
@@ -542,9 +542,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2403,
+            2502,
             1265,
-            2478
+            2577
           ]
         },
         {
@@ -556,9 +556,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2478,
+            2577,
             1265,
-            2553
+            2652
           ]
         },
         {
@@ -570,9 +570,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2553,
+            2652,
             1265,
-            2628
+            2727
           ]
         },
         {
@@ -586,9 +586,9 @@
           ],
           "row_bbox": [
             0,
-            2628,
+            2727,
             1265,
-            2703
+            2802
           ]
         },
         {
@@ -600,9 +600,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2703,
+            2802,
             1265,
-            2778
+            2877
           ]
         },
         {
@@ -616,9 +616,9 @@
           ],
           "row_bbox": [
             0,
-            2778,
+            2877,
             1265,
-            2853
+            2952
           ]
         },
         {
@@ -630,9 +630,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2853,
+            2952,
             1265,
-            3003
+            3102
           ]
         },
         {
@@ -646,9 +646,9 @@
           ],
           "row_bbox": [
             0,
-            3003,
+            3102,
             1265,
-            3078
+            3177
           ]
         },
         {
@@ -660,9 +660,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3078,
+            3177,
             1265,
-            3228
+            3327
           ]
         },
         {
@@ -676,9 +676,9 @@
           ],
           "row_bbox": [
             0,
-            3228,
+            3327,
             1265,
-            3303
+            3402
           ]
         },
         {
@@ -690,9 +690,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3303,
+            3402,
             1265,
-            3378
+            3477
           ]
         },
         {
@@ -704,9 +704,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3378,
+            3477,
             1265,
-            3453
+            3552
           ]
         },
         {
@@ -718,9 +718,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3453,
+            3552,
             1265,
-            3528
+            3627
           ]
         },
         {
@@ -732,9 +732,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3528,
+            3627,
             1265,
-            3678
+            3777
           ]
         }
       ],
@@ -760,9 +760,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2247,
+            2352,
             2550,
-            2323
+            2427
           ]
         },
         {
@@ -774,9 +774,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2323,
+            2427,
             2550,
-            2399
+            2502
           ]
         },
         {
@@ -788,9 +788,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2399,
+            2502,
             2550,
-            2475
+            2577
           ]
         },
         {
@@ -802,9 +802,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2475,
+            2577,
             2550,
-            2551
+            2652
           ]
         },
         {
@@ -816,9 +816,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2551,
+            2652,
             2550,
-            2627
+            2727
           ]
         },
         {
@@ -832,9 +832,9 @@
           ],
           "row_bbox": [
             1265,
-            2627,
+            2727,
             2550,
-            2703
+            2802
           ]
         },
         {
@@ -848,9 +848,9 @@
           ],
           "row_bbox": [
             1265,
-            2703,
+            2802,
             2550,
-            2779
+            2877
           ]
         },
         {
@@ -862,9 +862,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2779,
+            2877,
             2550,
-            2855
+            2952
           ]
         },
         {
@@ -878,9 +878,9 @@
           ],
           "row_bbox": [
             1265,
-            2855,
+            2952,
             2550,
-            2931
+            3027
           ]
         },
         {
@@ -892,9 +892,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            2931,
+            3027,
             2550,
-            3007
+            3102
           ]
         },
         {
@@ -908,9 +908,9 @@
           ],
           "row_bbox": [
             1265,
-            3007,
+            3102,
             2550,
-            3083
+            3177
           ]
         },
         {
@@ -922,9 +922,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            3083,
+            3177,
             2550,
-            3159
+            3252
           ]
         },
         {
@@ -938,9 +938,9 @@
           ],
           "row_bbox": [
             1265,
-            3159,
+            3252,
             2550,
-            3235
+            3327
           ]
         },
         {
@@ -952,9 +952,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            3235,
+            3327,
             2550,
-            3311
+            3402
           ]
         },
         {
@@ -966,9 +966,9 @@
           "oddities": [],
           "row_bbox": [
             1265,
-            3311,
+            3402,
             2550,
-            3387
+            3477
           ]
         }
       ],

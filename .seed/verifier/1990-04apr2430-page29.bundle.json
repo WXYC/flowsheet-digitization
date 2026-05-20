@@ -514,9 +514,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2152,
+            4012,
             1281,
-            4012
+            4017
           ]
         },
         {
@@ -528,9 +528,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4012,
+            4017,
             1281,
-            4070
+            4022
           ]
         },
         {
@@ -544,9 +544,9 @@
           ],
           "row_bbox": [
             0,
-            4070,
+            4022,
             1281,
-            4070
+            4027
           ]
         },
         {
@@ -558,9 +558,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4027,
             1281,
-            4070
+            4032
           ]
         },
         {
@@ -572,9 +572,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4032,
             1281,
-            4070
+            4037
           ]
         },
         {
@@ -586,9 +586,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4037,
             1281,
-            4070
+            4042
           ]
         },
         {
@@ -600,9 +600,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4042,
             1281,
-            4070
+            4047
           ]
         },
         {
@@ -614,9 +614,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4047,
             1281,
-            4070
+            4052
           ]
         },
         {
@@ -628,9 +628,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4052,
             1281,
-            4070
+            4057
           ]
         },
         {
@@ -642,9 +642,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            4070,
+            4057,
             1281,
-            4070
+            4062
           ]
         }
       ],
@@ -672,28 +672,14 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            2261,
-            2550,
-            2360
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Bowie Sense of Doubt, Moss Garden",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1281,
             2360,
             2550,
             2436
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Toxic Mulatto My Mother",
+          "row_index": 1,
+          "raw_text": "Bowie Sense of Doubt, Moss Garden",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -706,8 +692,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Freedy Johnston No Violins",
+          "row_index": 2,
+          "raw_text": "Toxic Mulatto My Mother",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -720,9 +706,9 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Einstoerzende Neubauten Prolog",
-          "confidence": "medium",
+          "row_index": 3,
+          "raw_text": "Freedy Johnston No Violins",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -734,9 +720,9 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Kate Bush Love & Anger",
-          "confidence": "high",
+          "row_index": 4,
+          "raw_text": "Einstoerzende Neubauten Prolog",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -748,8 +734,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Digital Underground The Humpty Dance",
+          "row_index": 5,
+          "raw_text": "Kate Bush Love & Anger",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -762,8 +748,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Scrawl Enough",
+          "row_index": 6,
+          "raw_text": "Digital Underground The Humpty Dance",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -776,8 +762,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "The Mighty Diamonds Struggling",
+          "row_index": 7,
+          "raw_text": "Scrawl Enough",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -790,8 +776,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Trapezoid Little Billy Wilson",
+          "row_index": 8,
+          "raw_text": "The Mighty Diamonds Struggling",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -804,8 +790,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "The Sundays I Kicked a Boy",
+          "row_index": 9,
+          "raw_text": "Trapezoid Little Billy Wilson",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -818,8 +804,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Butthole Surfers Bong Water",
+          "row_index": 10,
+          "raw_text": "The Sundays I Kicked a Boy",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -832,8 +818,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Tom Waits More Than Rain",
+          "row_index": 11,
+          "raw_text": "Butthole Surfers Bong Water",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -846,8 +832,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Clockwork Orange Overture to the Sun",
+          "row_index": 12,
+          "raw_text": "Tom Waits More Than Rain",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -860,8 +846,8 @@
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "MC 900ft Jesus Truth is out of Style",
+          "row_index": 13,
+          "raw_text": "Clockwork Orange Overture to the Sun",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -871,6 +857,20 @@
             3866,
             2550,
             3968
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "MC 900ft Jesus Truth is out of Style",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            3968,
+            2550,
+            4020
           ]
         }
       ],

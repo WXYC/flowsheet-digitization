@@ -569,9 +569,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2251,
+            2351,
             1261,
-            2351
+            2426
           ]
         },
         {
@@ -583,9 +583,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2351,
+            2426,
             1261,
-            2426
+            2501
           ]
         },
         {
@@ -599,9 +599,9 @@
           ],
           "row_bbox": [
             0,
-            2426,
+            2501,
             1261,
-            2501
+            2577
           ]
         },
         {
@@ -613,9 +613,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2501,
+            2577,
             1261,
-            2577
+            2652
           ]
         },
         {
@@ -627,9 +627,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2577,
+            2652,
             1261,
-            2652
+            2727
           ]
         },
         {
@@ -641,9 +641,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2652,
+            2727,
             1261,
-            2727
+            2803
           ]
         },
         {
@@ -655,9 +655,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2727,
+            2803,
             1261,
-            2803
+            2877
           ]
         },
         {
@@ -671,9 +671,9 @@
           ],
           "row_bbox": [
             0,
-            2803,
+            2877,
             1261,
-            2877
+            2951
           ]
         },
         {
@@ -685,9 +685,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2877,
+            2951,
             1261,
-            2951
+            3027
           ]
         },
         {
@@ -699,9 +699,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2951,
+            3027,
             1261,
-            3027
+            3177
           ]
         },
         {
@@ -713,9 +713,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3027,
+            3177,
             1261,
-            3177
+            3252
           ]
         },
         {
@@ -727,9 +727,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3177,
+            3252,
             1261,
-            3252
+            3327
           ]
         },
         {
@@ -741,9 +741,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3252,
+            3327,
             1261,
-            3327
+            3402
           ]
         },
         {
@@ -755,9 +755,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3327,
+            3402,
             1261,
-            3402
+            3479
           ]
         },
         {
@@ -769,9 +769,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3402,
+            3479,
             1261,
-            3479
+            3556
           ]
         }
       ],
@@ -797,9 +797,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2251,
+            2351,
             2550,
-            2351
+            2393
           ]
         },
         {
@@ -811,28 +811,14 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2351,
-            2550,
-            2393
-          ]
-        },
-        {
-          "row_index": 2,
-          "raw_text": "Harry Nilsson - Think about your troubles",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": "crossed_out",
-          "oddities": [],
-          "row_bbox": [
-            1261,
             2393,
             2550,
             2402
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Chet Baker - My Funny Valentine",
+          "row_index": 2,
+          "raw_text": "Harry Nilsson - Think about your troubles",
           "confidence": "high",
           "type_raw": null,
           "notes": "crossed_out",
@@ -845,11 +831,11 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Patti Smith - Redondo Beach",
+          "row_index": 3,
+          "raw_text": "Chet Baker - My Funny Valentine",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "crossed_out",
           "oddities": [],
           "row_bbox": [
             1261,
@@ -859,8 +845,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Snatches of Pink - Goin down",
+          "row_index": 4,
+          "raw_text": "Patti Smith - Redondo Beach",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -873,6 +859,20 @@
           ]
         },
         {
+          "row_index": 5,
+          "raw_text": "Snatches of Pink - Goin down",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1261,
+            2501,
+            2550,
+            2577
+          ]
+        },
+        {
           "row_index": 6,
           "raw_text": "Chet Baker - My Funny Valentine",
           "confidence": "high",
@@ -881,9 +881,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2501,
+            2577,
             2550,
-            2577
+            2652
           ]
         },
         {
@@ -895,9 +895,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2577,
+            2652,
             2550,
-            2652
+            2727
           ]
         },
         {
@@ -909,9 +909,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2652,
+            2727,
             2550,
-            2727
+            2803
           ]
         },
         {
@@ -923,28 +923,14 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2727,
-            2550,
-            2803
-          ]
-        },
-        {
-          "row_index": 10,
-          "raw_text": "Swell maps - Blenheim shots",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1261,
             2803,
             2550,
             2877
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Johnny Cash - Born to Lose",
+          "row_index": 10,
+          "raw_text": "Swell maps - Blenheim shots",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -957,8 +943,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Flaming Groovies - Tallahassee Lassie",
+          "row_index": 11,
+          "raw_text": "Johnny Cash - Born to Lose",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -971,6 +957,20 @@
           ]
         },
         {
+          "row_index": 12,
+          "raw_text": "Flaming Groovies - Tallahassee Lassie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1261,
+            2933,
+            2550,
+            2940
+          ]
+        },
+        {
           "row_index": 13,
           "raw_text": "Agitpop - Recovery Road",
           "confidence": "high",
@@ -979,9 +979,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2933,
+            2940,
             2550,
-            2940
+            2951
           ]
         },
         {
@@ -993,28 +993,14 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            2940,
-            2550,
-            2951
-          ]
-        },
-        {
-          "row_index": 15,
-          "raw_text": "Emmylou Harris - Jordan",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1261,
             2951,
             2550,
             3027
           ]
         },
         {
-          "row_index": 16,
-          "raw_text": "Heartbeat of Soweto - Usuthu",
+          "row_index": 15,
+          "raw_text": "Emmylou Harris - Jordan",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -1027,8 +1013,8 @@
           ]
         },
         {
-          "row_index": 17,
-          "raw_text": "John Lee Hooker - Leave my wife alone",
+          "row_index": 16,
+          "raw_text": "Heartbeat of Soweto - Usuthu",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -1041,8 +1027,8 @@
           ]
         },
         {
-          "row_index": 18,
-          "raw_text": "Sundays - heres where the story ends",
+          "row_index": 17,
+          "raw_text": "John Lee Hooker - Leave my wife alone",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -1055,6 +1041,20 @@
           ]
         },
         {
+          "row_index": 18,
+          "raw_text": "Sundays - heres where the story ends",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1261,
+            3252,
+            2550,
+            3327
+          ]
+        },
+        {
           "row_index": 19,
           "raw_text": "Morrissey - everyday is like sunday",
           "confidence": "high",
@@ -1063,9 +1063,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            3252,
+            3327,
             2550,
-            3327
+            3402
           ]
         },
         {
@@ -1077,9 +1077,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            3327,
+            3402,
             2550,
-            3402
+            3479
           ]
         },
         {
@@ -1091,9 +1091,9 @@
           "oddities": [],
           "row_bbox": [
             1261,
-            3402,
+            3479,
             2550,
-            3479
+            3550
           ]
         }
       ],

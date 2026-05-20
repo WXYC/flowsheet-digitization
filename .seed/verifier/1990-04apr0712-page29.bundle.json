@@ -34,28 +34,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            577,
-            1290,
-            652
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Ice-T - Freedom of Speech",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             652,
             1290,
             727
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Maureen Tucker - Spam Again",
+          "row_index": 1,
+          "raw_text": "Ice-T - Freedom of Speech",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -68,8 +54,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "King Crimson - 3 of A perfect Pair",
+          "row_index": 2,
+          "raw_text": "Maureen Tucker - Spam Again",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -82,10 +68,10 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "That Petrol Emotion - Sweet shiverBurn",
+          "row_index": 3,
+          "raw_text": "King Crimson - 3 of A perfect Pair",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -96,10 +82,10 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "24-7 Spyz - Spill My Guts",
+          "row_index": 4,
+          "raw_text": "That Petrol Emotion - Sweet shiverBurn",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -110,8 +96,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Mighty Diamonds - Idler's Corner",
+          "row_index": 5,
+          "raw_text": "24-7 Spyz - Spill My Guts",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -124,8 +110,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Red Temple Spirits - Set the Controls",
+          "row_index": 6,
+          "raw_text": "Mighty Diamonds - Idler's Corner",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -138,6 +124,20 @@
           ]
         },
         {
+          "row_index": 7,
+          "raw_text": "Red Temple Spirits - Set the Controls",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1178,
+            1290,
+            1254
+          ]
+        },
+        {
           "row_index": 8,
           "raw_text": "Agitpop - Crack in her heart",
           "confidence": "high",
@@ -146,9 +146,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1178,
+            1254,
             1290,
-            1254
+            1329
           ]
         },
         {
@@ -160,9 +160,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1254,
+            1329,
             1290,
-            1329
+            1404
           ]
         },
         {
@@ -174,9 +174,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1329,
+            1404,
             1290,
-            1404
+            1554
           ]
         },
         {
@@ -188,28 +188,14 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1404,
-            1290,
-            1554
-          ]
-        },
-        {
-          "row_index": 12,
-          "raw_text": "The Frogs - I've got drugs",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
             1554,
             1290,
             1630
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "The Damned - Fish",
+          "row_index": 12,
+          "raw_text": "The Frogs - I've got drugs",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -222,6 +208,20 @@
           ]
         },
         {
+          "row_index": 13,
+          "raw_text": "The Damned - Fish",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1705,
+            1290,
+            1780
+          ]
+        },
+        {
           "row_index": 14,
           "raw_text": "Gn R - One in a million",
           "confidence": "high",
@@ -230,9 +230,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1705,
+            1780,
             1290,
-            1780
+            1855
           ]
         },
         {
@@ -244,9 +244,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1780,
+            1855,
             1290,
-            1855
+            1930
           ]
         },
         {
@@ -258,9 +258,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1855,
+            1930,
             1290,
-            1930
+            2081
           ]
         }
       ],
@@ -501,9 +501,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2257,
+            2358,
             1290,
-            2332
+            2433
           ]
         },
         {
@@ -515,9 +515,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2332,
+            2433,
             1290,
-            2407
+            2508
           ]
         },
         {
@@ -529,9 +529,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2407,
+            2508,
             1290,
-            2482
+            2583
           ]
         },
         {
@@ -543,9 +543,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2482,
+            2583,
             1290,
-            2557
+            2658
           ]
         },
         {
@@ -557,9 +557,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2557,
+            2658,
             1290,
-            2632
+            2733
           ]
         },
         {
@@ -571,9 +571,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2632,
+            2733,
             1290,
-            2707
+            2808
           ]
         },
         {
@@ -585,9 +585,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2707,
+            2808,
             1290,
-            2782
+            2883
           ]
         },
         {
@@ -599,9 +599,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2782,
+            2883,
             1290,
-            2857
+            2958
           ]
         },
         {
@@ -613,9 +613,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2857,
+            2958,
             1290,
-            2932
+            3033
           ]
         },
         {
@@ -629,9 +629,9 @@
           ],
           "row_bbox": [
             0,
-            2932,
+            3033,
             1290,
-            3007
+            3108
           ]
         },
         {
@@ -645,9 +645,9 @@
           ],
           "row_bbox": [
             0,
-            3007,
+            3108,
             1290,
-            3082
+            3183
           ]
         },
         {
@@ -659,9 +659,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3082,
+            3183,
             1290,
-            3157
+            3258
           ]
         },
         {
@@ -673,9 +673,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3157,
+            3258,
             1290,
-            3232
+            3333
           ]
         },
         {
@@ -687,9 +687,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3232,
+            3333,
             1290,
-            3382
+            3483
           ]
         }
       ],
@@ -715,9 +715,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2151,
+            2351,
             2550,
-            2351
+            2427
           ]
         },
         {
@@ -729,9 +729,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2351,
+            2427,
             2550,
-            2427
+            2502
           ]
         },
         {
@@ -745,9 +745,9 @@
           ],
           "row_bbox": [
             1290,
-            2427,
+            2502,
             2550,
-            2502
+            2578
           ]
         },
         {
@@ -759,9 +759,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2502,
+            2578,
             2550,
-            2578
+            2653
           ]
         },
         {
@@ -773,9 +773,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2578,
+            2653,
             2550,
-            2653
+            2728
           ]
         },
         {
@@ -787,9 +787,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2653,
+            2728,
             2550,
-            2728
+            2803
           ]
         },
         {
@@ -801,9 +801,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2728,
+            2803,
             2550,
-            2803
+            2878
           ]
         },
         {
@@ -815,9 +815,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2803,
+            2878,
             2550,
-            2878
+            2952
           ]
         },
         {
@@ -831,9 +831,9 @@
           ],
           "row_bbox": [
             1290,
-            2878,
+            2952,
             2550,
-            2952
+            3028
           ]
         },
         {
@@ -845,9 +845,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            2952,
+            3028,
             2550,
-            3028
+            3104
           ]
         },
         {
@@ -859,9 +859,9 @@
           "oddities": [],
           "row_bbox": [
             1290,
-            3028,
+            3104,
             2550,
-            3104
+            3252
           ]
         }
       ],
