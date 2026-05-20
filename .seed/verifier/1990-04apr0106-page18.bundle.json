@@ -34,14 +34,28 @@
           "oddities": [],
           "row_bbox": [
             0,
+            576,
+            1259,
+            651
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Barry Polisar - Don't Wake the Baby",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
             651,
             1259,
             726
           ]
         },
         {
-          "row_index": 1,
-          "raw_text": "Barry Polisar - Don't Wake the Baby",
+          "row_index": 2,
+          "raw_text": "Gregory Isaacs - Tumbling Tears",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -54,8 +68,8 @@
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Gregory Isaacs - Tumbling Tears",
+          "row_index": 3,
+          "raw_text": "Roger Manning - The Serious Blues",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -68,8 +82,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Roger Manning - The Serious Blues",
+          "row_index": 4,
+          "raw_text": "John Hall - How Much Longer",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -82,8 +96,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "John Hall - How Much Longer",
+          "row_index": 5,
+          "raw_text": "Canned Heat - Time Was",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -96,8 +110,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Canned Heat - Time Was",
+          "row_index": 6,
+          "raw_text": "Kevin Kinney - Not Afraid To Die",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -110,8 +124,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Kevin Kinney - Not Afraid To Die",
+          "row_index": 7,
+          "raw_text": "? and The Mysterians - 96 Tears (Live)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -124,8 +138,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "? and The Mysterians - 96 Tears (Live)",
+          "row_index": 8,
+          "raw_text": "Dreams So Real - Golden",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -138,8 +152,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Dreams So Real - Golden",
+          "row_index": 9,
+          "raw_text": "Volcano Suns - Color My World",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -152,8 +166,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Volcano Suns - Color My World",
+          "row_index": 10,
+          "raw_text": "Daniel Johnston - Don't Play Cards w/Satan",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -166,8 +180,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Daniel Johnston - Don't Play Cards w/Satan",
+          "row_index": 11,
+          "raw_text": "Cramps - Journey to the Center of a Girl",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -180,8 +194,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Cramps - Journey to the Center of a Girl",
+          "row_index": 12,
+          "raw_text": "Leadbelly - National Defense Blues",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -191,20 +205,6 @@
             1478,
             1259,
             1553
-          ]
-        },
-        {
-          "row_index": 12,
-          "raw_text": "Leadbelly - National Defense Blues",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
-            1553,
-            1259,
-            2004
           ]
         }
       ],
@@ -428,7 +428,7 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2206,
+            2256,
             1259,
             2331
           ]
@@ -444,7 +444,7 @@
             0,
             2331,
             1259,
-            2455
+            2406
           ]
         },
         {
@@ -456,9 +456,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2455,
+            2406,
             1259,
-            2580
+            2481
           ]
         },
         {
@@ -470,9 +470,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2580,
+            2481,
             1259,
-            2704
+            2556
           ]
         },
         {
@@ -484,9 +484,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2704,
+            2556,
             1259,
-            2829
+            2631
           ]
         },
         {
@@ -498,9 +498,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2829,
+            2631,
             1259,
-            2953
+            2706
           ]
         },
         {
@@ -512,9 +512,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2953,
+            2706,
             1259,
-            3078
+            2781
           ]
         },
         {
@@ -526,9 +526,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3078,
+            2781,
             1259,
-            3202
+            2856
           ]
         },
         {
@@ -540,9 +540,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3202,
+            2856,
             1259,
-            3327
+            2931
           ]
         },
         {
@@ -554,9 +554,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3327,
+            2931,
             1259,
-            3451
+            3006
           ]
         },
         {
@@ -568,9 +568,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3451,
+            3006,
             1259,
-            3576
+            3081
           ]
         },
         {
@@ -582,9 +582,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3576,
+            3081,
             1259,
-            3700
+            3156
           ]
         },
         {
@@ -596,9 +596,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3700,
+            3156,
             1259,
-            3825
+            3231
           ]
         },
         {
@@ -610,9 +610,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3825,
+            3231,
             1259,
-            3949
+            3306
           ]
         },
         {
@@ -624,9 +624,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3949,
+            3306,
             1259,
-            4074
+            3381
           ]
         }
       ],
@@ -654,9 +654,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2206,
+            2347,
             2550,
-            2310
+            2800
           ]
         },
         {
@@ -668,9 +668,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2310,
+            2800,
             2550,
-            2414
+            3253
           ]
         },
         {
@@ -682,9 +682,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2414,
+            3253,
             2550,
-            2517
+            3706
           ]
         },
         {
@@ -696,9 +696,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2517,
+            3706,
             2550,
-            2621
+            4074
           ]
         },
         {
@@ -710,9 +710,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2621,
+            4074,
             2550,
-            2725
+            4074
           ]
         },
         {
@@ -724,9 +724,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2725,
+            4074,
             2550,
-            2829
+            4074
           ]
         },
         {
@@ -738,9 +738,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2829,
+            4074,
             2550,
-            2932
+            4074
           ]
         },
         {
@@ -752,9 +752,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            2932,
+            4074,
             2550,
-            3036
+            4074
           ]
         },
         {
@@ -766,9 +766,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3036,
+            4074,
             2550,
-            3140
+            4074
           ]
         },
         {
@@ -780,9 +780,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3140,
+            4074,
             2550,
-            3244
+            4074
           ]
         },
         {
@@ -794,9 +794,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3244,
+            4074,
             2550,
-            3348
+            4074
           ]
         },
         {
@@ -808,9 +808,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3348,
+            4074,
             2550,
-            3451
+            4074
           ]
         },
         {
@@ -822,9 +822,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3451,
+            4074,
             2550,
-            3555
+            4074
           ]
         },
         {
@@ -836,9 +836,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3555,
+            4074,
             2550,
-            3659
+            4074
           ]
         },
         {
@@ -850,9 +850,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3659,
+            4074,
             2550,
-            3763
+            4074
           ]
         },
         {
@@ -864,9 +864,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3763,
+            4074,
             2550,
-            3866
+            4074
           ]
         },
         {
@@ -878,9 +878,9 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3866,
+            4074,
             2550,
-            3970
+            4074
           ]
         },
         {
@@ -892,7 +892,7 @@
           "oddities": [],
           "row_bbox": [
             1259,
-            3970,
+            4074,
             2550,
             4074
           ]

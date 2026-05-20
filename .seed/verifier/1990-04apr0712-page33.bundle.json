@@ -1,0 +1,875 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page33",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-33.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 33,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:01:48.191145+00:00",
+  "page_date_raw": "Thur 12 Apr 90",
+  "comments_raw": null,
+  "oddities": [
+    "The text 'Salt N Pepa: Push It' is written at the top right above the WXYC address block.",
+    "A weather note is written below the WXYC address block reading: '7:07 58\u00b0 cold frost 60\u00b0 tomorrow'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        473,
+        1278,
+        2302
+      ],
+      "hour_raw": "6pm",
+      "jock_raw": "Etha",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Muzsikas - Vetettem Violat",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn arrow pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            548,
+            1278,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Saffire - Three Time loser",
+          "confidence": "high",
+          "type_raw": "N1's",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn back-arrow near the type circle"
+          ],
+          "row_bbox": [
+            0,
+            650,
+            1278,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Embarrassment - Career",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            725,
+            1278,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Down the Tube Station At Midnight Jam",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            800,
+            1278,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Blue Aeroplanes - Jacket Hangs",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            875,
+            1278,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Hot Tuna - Funky #7",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            950,
+            1278,
+            1025
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Dexter Gordon - 3 o'clock in the Morning",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1025,
+            1278,
+            1100
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Cowboy Junkies - Rock and Bird",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1100,
+            1278,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "3 Japanese - Moving to Burn",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1176,
+            1278,
+            1251
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Ian Hunter - Irene Wilde",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1251,
+            1278,
+            1327
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Bricks - Drilling",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "the text 'Local Cart' is written over and near the type column circle"
+          ],
+          "row_bbox": [
+            0,
+            1327,
+            1278,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Thin White Rope - Yoo Doo Right",
+          "confidence": "high",
+          "type_raw": "PPB",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1402,
+            1278,
+            1477
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Savage Republic - Mvopia",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1477,
+            1278,
+            1552
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1278,
+        473,
+        2550,
+        2302
+      ],
+      "hour_raw": "8pm",
+      "jock_raw": "j k weston",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Greater Than One - Peace",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            548,
+            2550,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "M - Transmission",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            650,
+            2550,
+            725
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Area - 25 w/ Louise",
+          "confidence": "high",
+          "type_raw": "Std?",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            725,
+            2550,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Killing Joke - Let's All Go (To the Fire Dance)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "type column circle is completely scribbled out"
+          ],
+          "row_bbox": [
+            1278,
+            800,
+            2550,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Bevis Frond - Lord Plentiful Reflects",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            875,
+            2550,
+            950
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Chemical People - Devil's House",
+          "confidence": "high",
+          "type_raw": "PRB",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            950,
+            2550,
+            1025
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Buzzcocks - What Do I Get?",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1025,
+            2550,
+            1100
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Baclea - Tell Me",
+          "confidence": "medium",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1100,
+            2550,
+            1176
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Naked City - James Bond Theme",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [
+            "the 'Std' in the type column is crossed out"
+          ],
+          "row_bbox": [
+            1278,
+            1176,
+            2550,
+            1251
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Daniel Johnston / Jad Fair - TNK",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1251,
+            2550,
+            1327
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Violent Femmes/HofD - BlackGirls",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1327,
+            2550,
+            1402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "PsycheFunkapus - Young Love Is A Bitch",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1402,
+            2550,
+            1477
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "That Pet. Emot - Sweet Shiver Burn",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1477,
+            2550,
+            1552
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Tones On Tail - Instrumental",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1552,
+            2550,
+            1627
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Yo La Tengo - Asparagus Song",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1627,
+            2550,
+            1702
+          ]
+        }
+      ],
+      "oddities": [
+        "the text 'John Zorn+ Violent Femme' is written in the right margin spanning rows 7 and 8"
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2302,
+        1278,
+        4061
+      ],
+      "hour_raw": "7",
+      "jock_raw": "Etha",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Bongwater - The Drum",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2252,
+            1278,
+            2352
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Roy Acuff - Sweep Around Your Own Back Door",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [
+            "left margin has a hand-drawn arrow pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            2352,
+            1278,
+            2503
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Stump - Charlton Heston",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2503,
+            1278,
+            2578
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "MC 900 ft Jesus - Truth is Out of Style",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2578,
+            1278,
+            2653
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Standells - Try It",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2653,
+            1278,
+            2728
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Swallow - Foetus",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2728,
+            1278,
+            2803
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Lava Love - I Dig, You Dig",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2803,
+            1278,
+            2878
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Brian Jackson & Gil Scott-Heron H2Ogate Blues/ Peace Go w/ You",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2878,
+            1278,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jad Fair - I Want to be loved",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn arrow pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            3029,
+            1278,
+            3103
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Dub Syndicate - Je T'aime",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3103,
+            1278,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Swell Maps - Blam!",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3179,
+            1278,
+            3253
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Felt - Get Out of My Mirror",
+          "confidence": "high",
+          "type_raw": "m",
+          "notes": null,
+          "oddities": [
+            "left margin has a hand-drawn arrow pointing to this row"
+          ],
+          "row_bbox": [
+            0,
+            3253,
+            1278,
+            3328
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Herbie Hancock - Hang up Your Hang Ups",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3328,
+            1278,
+            3479
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1278,
+        2302,
+        2550,
+        4061
+      ],
+      "hour_raw": null,
+      "jock_raw": "j k weston",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Mighty Lemon Drops - On My Mind",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2252,
+            2550,
+            2352
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Death Of Sam - Do It",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2352,
+            2550,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Triffids - Undertow",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2427,
+            2550,
+            2503
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Chills - Submarine Bells",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2503,
+            2550,
+            2578
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "M. Franks - Popsicle Toes",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2578,
+            2550,
+            2653
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Angels of Epistemology - The Charm",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2653,
+            2550,
+            2728
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Salt N Pepa - Push It+",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2728,
+            2550,
+            2803
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Glass Eye - Obvion",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2803,
+            2550,
+            2878
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lush - De-luxe",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2878,
+            2550,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Terrible Funk - Say What?",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2954,
+            2550,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Flatt + Scruggs - Down The Road",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3029,
+            2550,
+            3103
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Wrecks - Solid X",
+          "confidence": "medium",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3103,
+            2550,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Sonic Youth - Teenage Riot",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3179,
+            2550,
+            3253
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Helios Creed - The Bridge",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3253,
+            2550,
+            3328
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Cde for/ Chilton - S. A. Man",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3328,
+            2550,
+            3403
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

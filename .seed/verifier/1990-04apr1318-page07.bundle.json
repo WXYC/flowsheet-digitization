@@ -1,0 +1,898 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr1318-page07",
+  "image_path": "../pages/1990/April 1990/1990-04apr1318/page-07.png",
+  "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
+  "page_number": 7,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:04:10.549261+00:00",
+  "page_date_raw": "Saturday 14 April 90",
+  "comments_raw": null,
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1274,
+        2352
+      ],
+      "hour_raw": "2AM",
+      "jock_raw": "Scott Landis",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Boogie Down Prod. - You must learn",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            544,
+            1274,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "MITHer May Queens - THICA",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "the word 'singabala' is written small below the title"
+          ],
+          "row_bbox": [
+            0,
+            647,
+            1274,
+            723
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Timbuk 3 - standard white Jesus",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            723,
+            1274,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Barbra Streisand - NY state of mind",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            797,
+            1274,
+            871
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Charlie Parker - I'll Remember April",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            871,
+            1274,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "5ive Aeroplanes - Your age",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            948,
+            1274,
+            1022
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "THE Germs - MANIMAL",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1022,
+            1274,
+            1097
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "The Feelies - High Road",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1097,
+            1274,
+            1173
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "THE CHURCH - CITY",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1173,
+            1274,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Chet Baker - Solar",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1248,
+            1274,
+            1324
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "CAPITOL STEPS - Just linna",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1324,
+            1274,
+            1400
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "NAVI-UPS - SHE SAYS",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1400,
+            1274,
+            1475
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Exene - COCKTAIL TREE",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1475,
+            1274,
+            1550
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "King Crimson - 3 of a Perfect Pair",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1550,
+            1274,
+            1625
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Judas Priest - Breaking the law",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "an illegible word is written small below the end of this entry"
+          ],
+          "row_bbox": [
+            0,
+            1625,
+            1274,
+            1700
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Savage Republic -",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": "crossed_out",
+          "oddities": [
+            "the track title is completely crossed out and illegible"
+          ],
+          "row_bbox": [
+            0,
+            1700,
+            1274,
+            1775
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "IDIT PUP - Radio Allahwil",
+          "confidence": "low",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1775,
+            1274,
+            1851
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1274,
+        470,
+        2550,
+        2352
+      ],
+      "hour_raw": "4AM",
+      "jock_raw": "Scott Landis",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Lou Reed - Romeo Had Juliette",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            544,
+            2550,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Bongwater - Teen Stars rustine",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            647,
+            2550,
+            723
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Nivn Harvey - Last song of middle there",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            723,
+            2550,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "UTOPIA - Princess of Universe",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            797,
+            2550,
+            871
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "FALL - The Littlest Rebel",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            871,
+            2550,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "EARL KLUGH - Since You've Gone",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "the name 'George Benson-' is written small above the start of this line"
+          ],
+          "row_bbox": [
+            1274,
+            948,
+            2550,
+            1022
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Lloyd Cole - No Blue Skies",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1022,
+            2550,
+            1097
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Jason & Scorchers - Absolutely Sweet Marie",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1097,
+            2550,
+            1173
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "The Miss... - lovely",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1173,
+            2550,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Buffalo Tom - Sunflower Suit",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1248,
+            2550,
+            1324
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "MC5 - Looking at You",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1324,
+            2550,
+            1400
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bobby Darin - Queen of the Hop",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1400,
+            2550,
+            1475
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "CHILLS - Familiarity Breeds contempt",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            1475,
+            2550,
+            1550
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2352,
+        1274,
+        4074
+      ],
+      "hour_raw": "3AM",
+      "jock_raw": "Scott Landis",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Sade - Your love is king",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2252,
+            1274,
+            2328
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Herman's Hermits - Mrs Brown",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2328,
+            1274,
+            2404
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Public Enemy - fear of a black planet",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2404,
+            1274,
+            2480
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "John Hiatt - Smite on the ...",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2480,
+            1274,
+            2556
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Christine Lavin - Sensitive New Age",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2556,
+            1274,
+            2632
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Ted Nugent - Hey Baby",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2632,
+            1274,
+            2708
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Mighty Lemon Drops - Beautiful SHAME",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2708,
+            1274,
+            2784
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Screamin' Jay Hawkins - Blues",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "the word 'Constipation' is written above 'Blues'"
+          ],
+          "row_bbox": [
+            0,
+            2784,
+            1274,
+            2860
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Bricks - Mountain Guest...",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2860,
+            1274,
+            2936
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Bobby Sherman - Julie Do You Love Me",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2936,
+            1274,
+            3012
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Isley Bros - Please Let me be...",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3012,
+            1274,
+            3088
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "H.P. Zinker - Hurdles in my way",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3088,
+            1274,
+            3164
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Blasters - Marie Marie",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3164,
+            1274,
+            3240
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Madonna - Cherish",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [
+            "the type column designation 'Hit' is written out instead of a single letter in the circle"
+          ],
+          "row_bbox": [
+            0,
+            3240,
+            1274,
+            3316
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "MC 900 Ft Jesus w/DJ Zero - truth is out of style",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3316,
+            1274,
+            3392
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1274,
+        2352,
+        2550,
+        4074
+      ],
+      "hour_raw": "5AM",
+      "jock_raw": "Scott Landis",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Carpenters - Sing",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2347,
+            2550,
+            2423
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Walkabouts - Anvil Song",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2423,
+            2550,
+            2499
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Meat Puppets - Tumblin' Tumbleweeds",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2499,
+            2550,
+            2575
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Ella Fitzgerald - Love for SALE",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2575,
+            2550,
+            2651
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "The House of Love - Beatles + Stones",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2651,
+            2550,
+            2727
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "B.B. King - Why I Sing The Blues",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2727,
+            2550,
+            2803
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "David Freud - Head on a Pike",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2803,
+            2550,
+            2879
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Kate Smiths - Reel Around The Fountain",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "the word 'The' is crossed out and 'Kate' is written over it"
+          ],
+          "row_bbox": [
+            1274,
+            2879,
+            2550,
+            2955
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Funkadelic - One Nation Under a Groove",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            2955,
+            2550,
+            3031
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "CHRIS CACAVAS - Junkyard Lullabye",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3031,
+            2550,
+            3107
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": "illegible",
+          "oddities": [
+            "entry is completely crossed out and unreadable"
+          ],
+          "row_bbox": [
+            1274,
+            3107,
+            2550,
+            3183
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Clancy Bros. - Courtin in the kitchen",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3183,
+            2550,
+            3259
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "LOOP - Arc-Lite (sonar)",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1274,
+            3259,
+            2550,
+            3335
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

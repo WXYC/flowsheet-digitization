@@ -56,11 +56,47 @@ async function loadBundleFromUrlParam() {
     const r = await fetch(path);
     if (!r.ok) throw new Error(`fetch ${path}: ${r.status}`);
     const bundle = await r.json();
+    // If a verified.json exists alongside the bundle, overlay its data so
+    // the volunteer's previously-saved edits appear pre-populated. Without
+    // this, /api/save persists files on disk but the UI re-renders the
+    // original Gemini output on every reload — edits "don't save."
+    const verifiedPath = path.replace(/\.bundle\.json$/, ".verified.json");
+    try {
+      const vr = await fetch(verifiedPath);
+      if (vr.ok) {
+        const verified = await vr.json();
+        applyVerifiedToBundle(bundle, verified);
+      }
+    } catch (e) {
+      console.warn("verified.json fetch failed; using model output as-is", e);
+    }
     await initBundle(bundle, { bundleUrl: path });
     return true;
   } catch (err) {
     setStatus(`Failed to load bundle: ${err.message}`, "error");
     return false;
+  }
+}
+
+// Overlay a saved PageResult ("verified.json") onto the bundle so the UI
+// shows the volunteer's prior edits as the starting state. The bundle's
+// per-entry `row_bbox` is geometry (computed from the page image) and is
+// preserved by matching entries on `row_index`; added rows get null.
+function applyVerifiedToBundle(bundle, verified) {
+  bundle.page_date_raw = verified.page_date_raw ?? null;
+  bundle.comments_raw = verified.comments_raw ?? null;
+  bundle.oddities = Array.isArray(verified.oddities) ? verified.oddities : [];
+  for (const vq of verified.quadrants ?? []) {
+    const bq = bundle.quadrants.find(q => q.position === vq.position);
+    if (!bq) continue;
+    bq.hour_raw = vq.hour_raw ?? null;
+    bq.jock_raw = vq.jock_raw ?? null;
+    bq.oddities = Array.isArray(vq.oddities) ? vq.oddities : [];
+    const bboxByIndex = new Map(bq.entries.map(e => [e.row_index, e.row_bbox]));
+    bq.entries = (vq.entries ?? []).map(e => ({
+      ...e,
+      row_bbox: bboxByIndex.get(e.row_index) ?? null,
+    }));
   }
 }
 

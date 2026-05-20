@@ -147,16 +147,97 @@ def test_assign_row_bboxes_falls_back_to_even_spacing_when_no_lines() -> None:
     ]
 
 
-def test_assign_row_bboxes_falls_back_to_even_spacing_when_too_few_lines() -> None:
-    """When detected lines don't cover the total physical row count, even-
-    spacing fallback divides the quadrant by entry count (not physical
-    count) — uniform strips are better UX than mis-paired pinned rows."""
+def test_assign_row_bboxes_falls_back_to_line_anchored_spacing_when_too_few_lines() -> None:
+    """When detected lines don't cover the total physical row count, anchor
+    each entry's bbox to the first detected line and use the median gap
+    between detected lines as the per-row height.
+
+    Why this beats the old "even-space the whole quadrant" fallback: the
+    quadrant body includes the Hour/Jock header band at the top, so even-
+    spacing put entry 0's crop on top of the header instead of the first
+    handwritten row. Anchoring to lines[0] skips that header band, and
+    median-gap row heights stay aligned with the printed grid even when
+    the model over-emits past the line count."""
     quad_bbox = (0, 100, 500, 700)
-    rows = _assign_row_bboxes(quad_bbox, lines=[100, 300], spans=[1, 1, 1])
+    rows = _assign_row_bboxes(quad_bbox, lines=[150, 250, 350], spans=[1, 1, 1, 1, 1])
+    # First line is at 150 (skipping the 50px header band between 100 and 150).
+    # Median gap is 100. Each entry is 100 tall. Entries past the last
+    # detected line continue at the same cadence until they hit y2 = 700.
     assert rows == [
-        (0, 100, 500, 300),
-        (0, 300, 500, 500),
-        (0, 500, 500, 700),
+        (0, 150, 500, 250),
+        (0, 250, 500, 350),
+        (0, 350, 500, 450),
+        (0, 450, 500, 550),
+        (0, 550, 500, 650),
+    ]
+
+
+def test_assign_row_bboxes_fallback_respects_span_lengths() -> None:
+    """A double_height (span=2) entry gets a row strip twice the median gap."""
+    quad_bbox = (0, 100, 500, 800)
+    rows = _assign_row_bboxes(quad_bbox, lines=[150, 250, 350], spans=[2, 1, 1, 1])
+    # Median gap 100. Entry 0 covers 2 row heights from the first line.
+    assert rows == [
+        (0, 150, 500, 350),
+        (0, 350, 500, 450),
+        (0, 450, 500, 550),
+        (0, 550, 500, 650),
+    ]
+
+
+def test_assign_row_bboxes_prepends_inferred_first_line_for_bottom_quadrant() -> None:
+    """The bottom-quadrant line detector sometimes misses the line just
+    below the Hour/Jock cell on the page where it's broken by handwriting
+    or noise. That makes `lines[0]` row 0's BOTTOM rather than its TOP,
+    shifting every crop up one row. When the gap from the quadrant body
+    top to `lines[0]` is much larger than the median spacing between
+    detected lines, infer the missing line and prepend it."""
+    quad_bbox = (0, 2200, 500, 4070)
+    # lines have gaps of 75 each, so median = 75.
+    # Gap from y1=2200 to lines[0]=2350 is 150, ~2× the median.
+    # Infer a missing line at 2350-75=2275 and treat it as the new lines[0].
+    rows = _assign_row_bboxes(
+        quad_bbox,
+        lines=[2350, 2425, 2500],
+        spans=[1, 1, 1, 1],
+    )
+    assert rows == [
+        (0, 2275, 500, 2350),
+        (0, 2350, 500, 2425),
+        (0, 2425, 500, 2500),
+        # Entry 3 extends past detected lines using median-gap cadence.
+        (0, 2500, 500, 2575),
+    ]
+
+
+def test_assign_row_bboxes_does_not_prepend_when_first_line_close_to_top() -> None:
+    """If `lines[0]` is already close to the quadrant body top (within
+    ~1 median gap), the first row line was detected normally — no
+    inference needed."""
+    quad_bbox = (0, 475, 500, 2205)
+    # Lines have gaps of 75 each (median = 75). Gap from y1=475 to
+    # lines[0]=550 is 75 — exactly one median. Don't prepend.
+    rows = _assign_row_bboxes(
+        quad_bbox,
+        lines=[550, 625, 700],
+        spans=[1, 1, 1, 1],
+    )
+    # Median-gap fallback anchors entry 0 at lines[0]=550, no prepended line.
+    assert rows[0] == (0, 550, 500, 625)
+
+
+def test_assign_row_bboxes_fallback_clamps_to_quadrant_bottom() -> None:
+    """If entries extend past the quadrant body bottom, the last bbox is
+    clamped — better a short crop than a crop that overshoots the page."""
+    quad_bbox = (0, 100, 500, 400)
+    rows = _assign_row_bboxes(quad_bbox, lines=[150, 250], spans=[1, 1, 1, 1])
+    # Median gap 100. Entries 0, 1, 2 fit (150-250, 250-350, 350-400).
+    # Entry 3 would start at 400 = y2: clamped to a zero-height bbox at y2.
+    assert rows == [
+        (0, 150, 500, 250),
+        (0, 250, 500, 350),
+        (0, 350, 500, 400),
+        (0, 400, 500, 400),
     ]
 
 

@@ -1,0 +1,900 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr1318-page05",
+  "image_path": "../pages/1990/April 1990/1990-04apr1318/page-05.png",
+  "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
+  "page_number": 5,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:03:58.313562+00:00",
+  "page_date_raw": "Fri 13 Apr 90",
+  "comments_raw": "Bu Jany\nFishbone",
+  "oddities": [],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1270,
+        2304
+      ],
+      "hour_raw": "6pm",
+      "jock_raw": "Don Blanchette",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "The Jam- The Bitterest Pill",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            545,
+            1270,
+            648
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sinead O'Connor - Jump In the River",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            648,
+            1270,
+            723
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Sparks- Angst In My Pants",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            723,
+            1270,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Brazil:Forro- Banda de Assis",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The track name 'Banda de Assis' is struck through with a horizontal line."
+          ],
+          "row_bbox": [
+            0,
+            797,
+            1270,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Jos\u00e9 Orlando",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            872,
+            1270,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Waterboys- When Will We Be Married",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The word 'The' is written very small above the line in the left margin."
+          ],
+          "row_bbox": [
+            0,
+            948,
+            1270,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Waxing Poetics- Iodine",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1023,
+            1270,
+            1098
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Joe Jackson- Friday",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1098,
+            1270,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "C.O.C - Hungry Child",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The words 'Concert box' are written in the left margin next to the type circle."
+          ],
+          "row_bbox": [
+            0,
+            1174,
+            1270,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Fishbone - Boning in the Boneyard",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1249,
+            1270,
+            1325
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Stone Roses - Fools Gold",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "There is a small scribble or '@' symbol next to the 'H' in the type circle."
+          ],
+          "row_bbox": [
+            0,
+            1325,
+            1270,
+            1400
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Rolly Gray & SunFire - All the Tea In China",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The words 'Concert box' are written in the left margin next to the type circle."
+          ],
+          "row_bbox": [
+            0,
+            1400,
+            1270,
+            1476
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Muzsik\u00e1s - Morning Song",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1476,
+            1270,
+            1550
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Joan Jett - Bad Reputation",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1550,
+            1270,
+            1626
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Robert Plant - Your Mama Said You",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1626,
+            1270,
+            1701
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Leap of Faith - Hold On cried In Your Song",
+          "confidence": "low",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "The phrase 'cried In Your Song' is written below the main text line but within the same row cell."
+          ],
+          "row_bbox": [
+            0,
+            1701,
+            1270,
+            1776
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1270,
+        470,
+        2550,
+        2304
+      ],
+      "hour_raw": "8pm",
+      "jock_raw": "R - H",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Harry Partch The Dreamer That Remains",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            545,
+            2550,
+            648
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Helios Creed Mustard Dog",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            648,
+            2550,
+            723
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Birdsongs Interview",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            723,
+            2550,
+            797
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "MC 900 Real Black Angel",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            797,
+            2550,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Stupids Terrordome",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            872,
+            2550,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Billy Bragg Strang",
+          "confidence": "medium",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            948,
+            2550,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Lloyd Cole Church",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1023,
+            2550,
+            1098
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Rev Sister Mary Live Judgment Day",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1098,
+            2550,
+            1174
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Barney Love Monitor Returns",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1174,
+            2550,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Pages of E",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            1249,
+            2550,
+            1325
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2304,
+        1270,
+        4074
+      ],
+      "hour_raw": "7pm",
+      "jock_raw": "Dan Blanchette",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Goose Creek Symphony- T'Rase",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1270,
+            2329
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "The Mthembu Queens- Mijindini Mts, &",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2329,
+            1270,
+            2405
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Christian Death - When I Was Bed",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2405,
+            1270,
+            2481
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Half Japanese- Another World",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2481,
+            1270,
+            2557
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Blue Aeroplanes- World View Blue",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2557,
+            1270,
+            2633
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Lyle Lovett - No One Knows",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2633,
+            1270,
+            2709
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Loudon Wainwright III - No",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The artist's name was corrected with 'Wain' written over a crossed-out 'Wayne'."
+          ],
+          "row_bbox": [
+            0,
+            2709,
+            1270,
+            2785
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Lava Love - GO!",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2785,
+            1270,
+            2861
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Roger Waters - Going To Live In L.A.",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2861,
+            1270,
+            2937
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Savage Republic- Mapia",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2937,
+            1270,
+            3013
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Percy Sledge- When A Man Loves A Woman",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3013,
+            1270,
+            3089
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bad Checks- Crimes Of Passion",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3089,
+            1270,
+            3165
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Jesus & Mary Chain - Some Candy Talking",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3165,
+            1270,
+            3241
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Pretty Things - Mrs Fey Regrets",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3241,
+            1270,
+            3317
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Nikki Meets The Hibachi - Differently",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3317,
+            1270,
+            3393
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1270,
+        2304,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "SCOTS Viva De La Santo",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [
+            "The abbreviation 'SCOTS' is written in stylized blocky letters."
+          ],
+          "row_bbox": [
+            1270,
+            2148,
+            2550,
+            2224
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Angels Torta De Los Muerta",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2224,
+            2550,
+            2300
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Pointer Sis Salt Penis",
+          "confidence": "medium",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2300,
+            2550,
+            2376
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "25 Rifles WW III",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2376,
+            2550,
+            2452
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Toto/Dolls Africa",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2452,
+            2550,
+            2528
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Styx Missamerica",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2528,
+            2550,
+            2604
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Bongwater No Trespassing",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2604,
+            2550,
+            2680
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Rites of Spring All Thru a Life",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2680,
+            2550,
+            2756
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Giant Sand Bloodstone",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2756,
+            2550,
+            2832
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Crimpshrine Tomorrow",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2832,
+            2550,
+            2908
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "UnK. Nobman",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2908,
+            2550,
+            2984
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Chills Oncoming Day",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            2984,
+            2550,
+            3060
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Haydn Symph # 96",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            3060,
+            2550,
+            3136
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Psyche Funkapus Jesus Krispies",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            3136,
+            2550,
+            3212
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Smiths Please\u00b3",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "The word 'Please' has a small superscript '3' indicating repetition."
+          ],
+          "row_bbox": [
+            1270,
+            3212,
+            2550,
+            3288
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Poppes Shes You",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            3288,
+            2550,
+            3364
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "John Cage/Lou Harrison Double Music",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1270,
+            3364,
+            2550,
+            3440
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

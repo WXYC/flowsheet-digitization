@@ -1,0 +1,899 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr1318-page03",
+  "image_path": "../pages/1990/April 1990/1990-04apr1318/page-03.png",
+  "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
+  "page_number": 3,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:03:03.183899+00:00",
+  "page_date_raw": "Fri 13 Apr 90",
+  "comments_raw": null,
+  "oddities": [
+    "a weather note is written near the WXYC logo: 'Hi: 60 Loo Clear Nav: 63'",
+    "the word 'Prong' is written at the very bottom edge of the page below the comments area"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        473,
+        1268,
+        2352
+      ],
+      "hour_raw": "10AM",
+      "jock_raw": "MELTON",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "ROLLING STONES - 2000 LIGHT YEARS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            547,
+            1268,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "CATERWAUL - STUMPED",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            650,
+            1268,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "NICE STRONG ARM - AMNESIA",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            726,
+            1268,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "ICE T - Acappela Hunted Child",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            801,
+            1268,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Colors soundtrack - Six Gun",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            875,
+            1268,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "PUBLIC ENERMY - BURN Hollywood",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            951,
+            1268,
+            1025
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "L 7 - SHOVE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1025,
+            1268,
+            1100
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "BABES IN TOYLAND - FLESH CRAWL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1100,
+            1268,
+            1175
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "SYLVIA JUNCOSA - FRIEND",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1175,
+            1268,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "BRAZIL : FORRO - LUNDA",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1250,
+            1268,
+            1326
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "SHEILA CHANDRA - DA",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1326,
+            1268,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "ERIC B.+RAKIM - NEVER SCARED",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1401,
+            1268,
+            1477
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "DIGITAL U. - SEX PACKETS",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1477,
+            1268,
+            1552
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "24-7 SPYZ - JUNGLE BOOGIE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1552,
+            1268,
+            1628
+          ]
+        }
+      ],
+      "oddities": [
+        "a long diagonal line is drawn across the remaining empty rows"
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1268,
+        473,
+        2550,
+        2352
+      ],
+      "hour_raw": "12Pm",
+      "jock_raw": "Keith L Kegler",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Janes Addiction \"Up the Beach\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            547,
+            2550,
+            650
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sam + Dave \"Wrap it Up\"",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            650,
+            2550,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Blue Aeroplanes \"... and Stones\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            726,
+            2550,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Lilac Time \"Rockland\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            801,
+            2550,
+            875
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "\"Wreck\" Lac Du Flambeau",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            875,
+            2550,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Greater Than One \"Now is the time\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            951,
+            2550,
+            1025
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Bullet LaVolta \"Birth of Death\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1025,
+            2550,
+            1100
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Prong \"Beg to Differ\"",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1100,
+            2550,
+            1175
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lloyd Cole \"Loveless\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1175,
+            2550,
+            1250
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Terrance Simien \"Turn on your lovelight\"",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1250,
+            2550,
+            1326
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Billy Holiday \"Now They Call it Swing\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1326,
+            2550,
+            1401
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Savage Republic \"Resonus First EP\"",
+          "confidence": "low",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1401,
+            2550,
+            1477
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2352,
+        1268,
+        4074
+      ],
+      "hour_raw": "11AM",
+      "jock_raw": "MELTON",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "VOLCANO SUNS - NEEDLE IN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2254,
+            1268,
+            2329
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "VENOMOUS VIOLENT EYES",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2329,
+            1268,
+            2404
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "SHONEN KNIFE - Parrot Polynesia",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2404,
+            1268,
+            2479
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "DON'T MEAN MAYBE-BUFFG+JAM",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2479,
+            1268,
+            2554
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "AEROSMITH - SIGHT FOR SORE EYES",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2554,
+            1268,
+            2629
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "KING MISSILE - ROCK+ ROLL",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2629,
+            1268,
+            2704
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "BIRDLAND - WANTED",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "an arrow curves from row 8 (BAUHAUS) pointing to the type circle of this row"
+          ],
+          "row_bbox": [
+            0,
+            2704,
+            1268,
+            2779
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "FOUR TOPS - 7 ROOMS OF GLOOM",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2779,
+            1268,
+            2854
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "BAUHAUS - SPY IN CAB",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "multiple straight lines are drawn over the left margin area near this row"
+          ],
+          "row_bbox": [
+            0,
+            2854,
+            1268,
+            2929
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "JOE JACKSON - MEMPHIS",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2929,
+            1268,
+            3004
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "BOTTLE MERCHANTS - SMALL TOWN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3004,
+            1268,
+            3079
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "IMTHEMBU QUEENS - ENDLINI",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3079,
+            1268,
+            3154
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "MUZIKAS - MBI",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3154,
+            1268,
+            3229
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "DINOSAUR JR - JUST LIKE HEAVEN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3229,
+            1268,
+            3304
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "STEAM - NA HEY KISS GOODBYE",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3304,
+            1268,
+            3379
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "JAM - BEAT SURRENDER",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3379,
+            1268,
+            3454
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "EAT - FAT MAN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3454,
+            1268,
+            3529
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "FELT - NEW DAY DAWNING",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3529,
+            1268,
+            3604
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "LEROY SMART- JAHOVIAH",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3604,
+            1268,
+            3679
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "HORACE ANDY - GIRL I LOVE YA",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3679,
+            1268,
+            3754
+          ]
+        }
+      ],
+      "oddities": [
+        "the text 'CHANNEL ONE comp.' is written in the left margin next to the last three entries"
+      ]
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1268,
+        2352,
+        2550,
+        4074
+      ],
+      "hour_raw": null,
+      "jock_raw": "Keith Kegler",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Guadalcanal Diary \"Litany\"",
+          "confidence": "high",
+          "type_raw": "R Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2350,
+            2550,
+            2426
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Pink Floyd \"Careful with that Axe Eugene\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2426,
+            2550,
+            2502
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "The Church \"Grind\"",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2502,
+            2550,
+            2578
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Thin White Rope \"Mother\"",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "tiny annotation 'From the new' in the right margin"
+          ],
+          "row_bbox": [
+            1268,
+            2578,
+            2550,
+            2654
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Reverend Avalance \"Not Another Day\"",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "tiny annotation 'the roker bucket' in the right margin"
+          ],
+          "row_bbox": [
+            1268,
+            2654,
+            2550,
+            2730
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Chills \"Don't Be - Memory\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "tiny annotation 'foot of Prin...' in the right margin"
+          ],
+          "row_bbox": [
+            1268,
+            2730,
+            2550,
+            2806
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Bad Mutha Goose \"Be Somebody\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2806,
+            2550,
+            2882
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "The Marshmellow Overcoat \"Out Of Our Minds\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2882,
+            2550,
+            2958
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Bongwater \"Mr. + Mrs. Hell\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2958,
+            2550,
+            3034
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "A.C. 900 ft Jesus \"UFO's are Real\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            3034,
+            2550,
+            3110
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jungle Brothers \"Sunshine\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            3110,
+            2550,
+            3186
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Green On Red \"The Drifter\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            3186,
+            2550,
+            3262
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

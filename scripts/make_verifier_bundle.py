@@ -136,6 +136,29 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
     return result
 
 
+# When the gap from the quadrant body top to the first detected row line
+# exceeds this multiple of the median inter-line gap, treat it as evidence
+# that the page's "below Hour/Jock cell" line failed detection (broken by
+# handwriting or noise) and infer it at `lines[0] - median_gap`. The
+# bottom-quadrant detector already has a separate reattribution heuristic
+# in `core.page_layout.partition_row_lines_by_quadrant`, but it only fires
+# when the misattributed line is still hiding in the TOP quadrant's tail.
+# This second heuristic catches the orthogonal case where the line is
+# missing from both quadrants.
+_MISSING_FIRST_LINE_RATIO = 1.5
+
+
+def _maybe_prepend_missing_first_line(quad_bbox: BBox, lines: list[int]) -> list[int]:
+    if len(lines) < 2:
+        return lines
+    y1 = quad_bbox[1]
+    gaps = sorted(b - a for a, b in zip(lines, lines[1:], strict=False))
+    median_gap = gaps[len(gaps) // 2]
+    if median_gap > 0 and (lines[0] - y1) > _MISSING_FIRST_LINE_RATIO * median_gap:
+        return [lines[0] - median_gap, *lines]
+    return lines
+
+
 def _assign_row_bboxes(
     quad_bbox: BBox,
     lines: list[int],
@@ -152,17 +175,21 @@ def _assign_row_bboxes(
         according to each entry's span. Entry i's bbox spans from `lines[j]`
         to `lines[j + spans[i]]`, with `j` advancing by `spans[i]` between
         entries. Trailing lines (beyond what spans require) are ignored.
-      - Otherwise, even-spacing fallback: divide the quadrant height into
-        `len(spans)` equal strips, one per logical entry, ignoring the
-        physical-row count.
+      - When some lines are detected but not enough for clean pairing,
+        anchor each bbox to `lines[0]` and step by the median gap between
+        successive detected lines. Anchoring skips the Hour/Jock header
+        band (which sits between `quad_bbox.y1` and the first printed row
+        line), and a constant row height stays aligned with the printed
+        grid even when the model over-emits past the line count.
+      - When no lines are detected at all, divide the full quadrant height
+        evenly across `len(spans)` strips.
 
-    The fallback uses entry count, not physical row count, because uniform
-    strips are better UX than partial pairing (which would leave the tail
-    of the quadrant uncropped on entries with wider spans).
+    All paths clamp the final y to `quad_bbox.y2`.
     """
     if not spans:
         return []
     x1, y1, x2, y2 = quad_bbox
+    lines = _maybe_prepend_missing_first_line(quad_bbox, lines)
     total_physical_rows = sum(spans)
     if len(lines) >= total_physical_rows + 1:
         rows: list[BBox] = []
@@ -171,13 +198,29 @@ def _assign_row_bboxes(
             rows.append((x1, lines[j], x2, lines[j + span]))
             j += span
         return rows
-    height = y2 - y1
+
     n_entries = len(spans)
-    step = height / n_entries
-    return [
-        (x1, y1 + int(round(i * step)), x2, y1 + int(round((i + 1) * step)))
-        for i in range(n_entries)
-    ]
+    if lines:
+        y_top = lines[0]
+        if len(lines) >= 2:
+            gaps = sorted(b - a for a, b in zip(lines, lines[1:], strict=False))
+            row_height = gaps[len(gaps) // 2]
+        else:
+            row_height = max(1, (y2 - y_top) // n_entries)
+    else:
+        # No detected lines — even-space the full body. Same as the old
+        # fallback, kept so quadrants where line detection fails entirely
+        # still produce visible (if approximate) crops.
+        y_top = y1
+        row_height = max(1, (y2 - y1) // n_entries)
+
+    rows = []
+    y_cursor = y_top
+    for span in spans:
+        y_end = min(y2, y_cursor + row_height * span)
+        rows.append((x1, y_cursor, x2, y_end))
+        y_cursor = y_end
+    return rows
 
 
 def make_bundle(

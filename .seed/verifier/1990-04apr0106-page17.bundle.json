@@ -256,9 +256,9 @@
           "oddities": [],
           "row_bbox": [
             1285,
-            655,
+            579,
             2550,
-            730
+            655
           ]
         },
         {
@@ -272,14 +272,28 @@
           ],
           "row_bbox": [
             1285,
+            655,
+            2550,
+            730
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Denim T.V. - It's A Privilege",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
             730,
             2550,
             883
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Denim T.V. - It's A Privilege",
+          "row_index": 3,
+          "raw_text": "Saccharine Trust - Speak",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -292,9 +306,9 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Saccharine Trust - Speak",
-          "confidence": "high",
+          "row_index": 4,
+          "raw_text": "Sabroso! - De Kokinde A Kunene (En S\u00f3lo Pueblo)",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -306,9 +320,9 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Sabroso! - De Kokinde A Kunene (En S\u00f3lo Pueblo)",
-          "confidence": "medium",
+          "row_index": 5,
+          "raw_text": "Chapter Two - Be You",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -320,8 +334,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Chapter Two - Be You",
+          "row_index": 6,
+          "raw_text": "The Wolfgang Press - Kansas",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -334,8 +348,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "The Wolfgang Press - Kansas",
+          "row_index": 7,
+          "raw_text": "Siglo XX - Vanity Lane",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -348,8 +362,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Siglo XX - Vanity Lane",
+          "row_index": 8,
+          "raw_text": "Cecil Taylor - Leaf Taken Horn",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -362,8 +376,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "Cecil Taylor - Leaf Taken Horn",
+          "row_index": 9,
+          "raw_text": "Hugo Largo - Halfway Knowing",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -373,20 +387,6 @@
             1406,
             2550,
             1556
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "Hugo Largo - Halfway Knowing",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1285,
-            1556,
-            2550,
-            1784
           ]
         },
         {
@@ -400,14 +400,28 @@
           ],
           "row_bbox": [
             1285,
+            1556,
+            2550,
+            1784
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Johnny Cash - Without Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1285,
             1784,
             2550,
             1860
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Johnny Cash - Without Love",
+          "row_index": 12,
+          "raw_text": "Dub Syndicate - Hawaii",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -420,8 +434,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Dub Syndicate - Hawaii",
+          "row_index": 13,
+          "raw_text": "Thrill Kill Kult - Easy Girl",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -431,20 +445,6 @@
             1934,
             2550,
             2006
-          ]
-        },
-        {
-          "row_index": 13,
-          "raw_text": "Thrill Kill Kult - Easy Girl",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1285,
-            2006,
-            2550,
-            2082
           ]
         }
       ],

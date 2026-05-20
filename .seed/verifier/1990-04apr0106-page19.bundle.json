@@ -247,9 +247,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            653,
+            578,
             2550,
-            806
+            653
           ]
         },
         {
@@ -261,9 +261,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            806,
+            653,
             2550,
-            878
+            806
           ]
         },
         {
@@ -277,14 +277,28 @@
           ],
           "row_bbox": [
             1284,
-            878,
+            806,
             2550,
-            1028
+            954
           ]
         },
         {
           "row_index": 4,
           "raw_text": "BLUE AEROPLANES - THE APPLICANT",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            954,
+            2550,
+            1028
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "SONNY & CHER - WHEN YOU SAY LOVE",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -297,20 +311,6 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "SONNY & CHER - WHEN YOU SAY LOVE",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1284,
-            1103,
-            2550,
-            1179
-          ]
-        },
-        {
           "row_index": 6,
           "raw_text": "TOOTS HIBBERT - LOVE & HAPPINESS",
           "confidence": "high",
@@ -319,14 +319,28 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            1179,
+            1103,
             2550,
-            1331
+            1254
           ]
         },
         {
           "row_index": 8,
           "raw_text": "ALEX CHILTON - BANGKOK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1254,
+            2550,
+            1331
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "FREAKS - INSIDE OF MY MIND",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -339,20 +353,6 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "FREAKS - INSIDE OF MY MIND",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1284,
-            1405,
-            2550,
-            1480
-          ]
-        },
-        {
           "row_index": 10,
           "raw_text": "NICE STRONG ARM - DESERT BEAUTY BLOOM",
           "confidence": "high",
@@ -361,9 +361,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            1480,
+            1405,
             2550,
-            1631
+            1555
           ]
         },
         {
@@ -375,9 +375,9 @@
           "oddities": [],
           "row_bbox": [
             1284,
-            1631,
+            1555,
             2550,
-            1706
+            1631
           ]
         },
         {
@@ -391,14 +391,28 @@
           ],
           "row_bbox": [
             1284,
+            1631,
+            2550,
+            1706
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Royal Trux - Love Is",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
             1706,
             2550,
             1781
           ]
         },
         {
-          "row_index": 14,
-          "raw_text": "Royal Trux - Love Is",
+          "row_index": 15,
+          "raw_text": "The Elastik Band - Spazz",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -411,8 +425,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "The Elastik Band - Spazz",
+          "row_index": 16,
+          "raw_text": "MC Hammer - This Is What We Do",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -425,8 +439,8 @@
           ]
         },
         {
-          "row_index": 16,
-          "raw_text": "MC Hammer - This Is What We Do",
+          "row_index": 17,
+          "raw_text": "House of Love - I Don't Why I love You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -436,20 +450,6 @@
             1931,
             2550,
             2005
-          ]
-        },
-        {
-          "row_index": 17,
-          "raw_text": "House of Love - I Don't Why I love You",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1284,
-            2005,
-            2550,
-            2081
           ]
         }
       ],

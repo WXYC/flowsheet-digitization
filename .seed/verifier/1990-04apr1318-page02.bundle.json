@@ -1,0 +1,886 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr1318-page02",
+  "image_path": "../pages/1990/April 1990/1990-04apr1318/page-02.png",
+  "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
+  "page_number": 2,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:02:49.191030+00:00",
+  "page_date_raw": "Fri 13 Apr 90",
+  "comments_raw": "Gil 5-44",
+  "oddities": [
+    "Several handwritten notes appear around the top WXYC logo, including 'Miracle Legion', 'B52s Rome', 'Planet Report', 'Beatles', and 'Talking Heads - Take Me to the River'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        468,
+        1260,
+        2298
+      ],
+      "hour_raw": "6AM",
+      "jock_raw": "Krishna Carey",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "REM - Pretty Persuasion",
+          "confidence": "high",
+          "type_raw": "request STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            543,
+            1260,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Chills Don't be Memory",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            647,
+            1260,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Metronome - Double Date",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            721,
+            1260,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Brave Combo - Seven Steps",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            796,
+            1260,
+            870
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Anja Garbarek - True Words were Never Spoken",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            870,
+            1260,
+            946
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Sinead O'Connor - The Emperor's New Clothes",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            946,
+            1260,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "MC 900 FT JESUS - Truth is Out of Style",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1021,
+            1260,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Talking Heads - Take Me to the River",
+          "confidence": "high",
+          "type_raw": "STD request",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1096,
+            1260,
+            1171
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Patsy Cline - Seven Lonely Days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1171,
+            1260,
+            1247
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Seikito Matsumoto - Someone to love",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1247,
+            1260,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Led Zeppelin - Dancing Days",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1323,
+            1260,
+            1397
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bevis Frond - Legendary",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1397,
+            1260,
+            1473
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Miracle Legion - A Heart Disease Called Love",
+          "confidence": "high",
+          "type_raw": "request",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1473,
+            1260,
+            1548
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1260,
+        468,
+        2550,
+        2298
+      ],
+      "hour_raw": "8Am",
+      "jock_raw": "Jim Pettyjohn",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "P. Smith - Gloria",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            543,
+            2550,
+            647
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Giant Sand - searchlight",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            647,
+            2550,
+            721
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Sir Douglas Quintet - She's About a Mover",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            721,
+            2550,
+            870
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Luka Bloom - Gone to Pablo",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            870,
+            2550,
+            946
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Cure - Pictures of You",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            946,
+            2550,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Dub Syndicate - ch & Verse",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1021,
+            2550,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Djivan Gasparyan - Dle Yaman",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1096,
+            2550,
+            1171
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Prunes - Dissolve To...",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1171,
+            2550,
+            1247
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Walkabouts - Wreck of the old #9",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1247,
+            2550,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Searchers - When You Walk in the Room",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The word 'You' is written heavily over another word in the track title."
+          ],
+          "row_bbox": [
+            1260,
+            1323,
+            2550,
+            1397
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "R.L. Jones - Under the Boardwalk",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1397,
+            2550,
+            1473
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "J L Pierce - Love + Desperation",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1473,
+            2550,
+            1548
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Naked City - The Sicilian Clan",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The word 'The' is heavily scribbled out in the track title."
+          ],
+          "row_bbox": [
+            1260,
+            1548,
+            2550,
+            1623
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Fields of the Nephilim - Preacher Man",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            1623,
+            2550,
+            1698
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2298,
+        1260,
+        4063
+      ],
+      "hour_raw": "7",
+      "jock_raw": "Krishna Carey",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Tannahill Weavers - Wild Mountain Thyme",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2248,
+            1260,
+            2499
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Angels - Charm",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "A tiny 'The' is written above 'Angels'."
+          ],
+          "row_bbox": [
+            0,
+            2499,
+            1260,
+            2574
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Cab Calloway - Bugle Call Rag",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2574,
+            1260,
+            2649
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Bad Checks - Johnny why don't you bring yr girlfriend",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [
+            "The word 'girlfriend' is written below the rest of the track title."
+          ],
+          "row_bbox": [
+            0,
+            2649,
+            1260,
+            2725
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Spacemen 3 - Rollercoaster",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'Loop' is written and heavily crossed out before 'Spacemen 3'."
+          ],
+          "row_bbox": [
+            0,
+            2725,
+            1260,
+            2800
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Kentucky Headhunters - Oh Lonesome Me",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2800,
+            1260,
+            2950
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Loop - The Nail Will Burn.",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2950,
+            1260,
+            3103
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Prince - Darlin Nikki",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A word is heavily crossed out before 'Prince'."
+          ],
+          "row_bbox": [
+            0,
+            3103,
+            1260,
+            3175
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Queen Latifah - Come Into My House",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3175,
+            1260,
+            3252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Box Tops - Choo Choo Train",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3252,
+            1260,
+            3328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Metallica - Master of Puppets",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3328,
+            1260,
+            3402
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Whitstein Brothers - Sinner You'd Better get ready",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [
+            "The word 'ready' is written tiny below the line at the end."
+          ],
+          "row_bbox": [
+            0,
+            3402,
+            1260,
+            3554
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "That Petrol Emotion - Scum Surfin'",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3554,
+            1260,
+            3629
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "H.P. Zinker - Dancing Days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3629,
+            1260,
+            3706
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Five Blind Boys - When God Dips his Pen of Love in",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3706,
+            1260,
+            3783
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Sonny + Cher - Got You Babe",
+          "confidence": "high",
+          "type_raw": "HIT!!!",
+          "notes": null,
+          "oddities": [
+            "The left margin has a note reading 'and what a hit!'"
+          ],
+          "row_bbox": [
+            0,
+            3783,
+            1260,
+            3859
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1260,
+        2298,
+        2550,
+        4063
+      ],
+      "hour_raw": "9AM",
+      "jock_raw": "Jim Pettyjohn",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Sacred MC - Summer Time (Troggs)",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2248,
+            2550,
+            2348
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "T-Rex - Telegram Sam",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2348,
+            2550,
+            2423
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "G.Scott-Heron + Brian Jackson - H2OGate Blues / & go w/ you Brother",
+          "confidence": "high",
+          "type_raw": "R->O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2423,
+            2550,
+            2574
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Miriam Makeba - Umam' Uyabjula",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2574,
+            2550,
+            2649
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Thin White Rope - Every body Has Been Burned (Byrds trib)",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2649,
+            2550,
+            2800
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Cowboy Junkies - 'Cause Cheap is How I Feel",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2800,
+            2550,
+            2873
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lightnin' Hopkins - Shine on Moon",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2873,
+            2550,
+            2950
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Roky Erikson - John Lawman",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            2950,
+            2550,
+            3024
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Silos - Take My Country Back",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3024,
+            2550,
+            3097
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Jacobites - If I Leave You",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3097,
+            2550,
+            3175
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Rod McDonald - I'm Wondering Why (Fast Folk)",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3175,
+            2550,
+            3245
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Soul Asylum - Cartoon",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3245,
+            2550,
+            3321
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Seeds - Pushin' Too Hard",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3321,
+            2550,
+            3396
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Robyn Hitchcock - Raining Twilight Coast",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1260,
+            3396,
+            2550,
+            3474
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

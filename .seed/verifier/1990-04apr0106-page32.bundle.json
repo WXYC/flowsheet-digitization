@@ -303,14 +303,28 @@
           "oddities": [],
           "row_bbox": [
             1278,
+            651,
+            2550,
+            726
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Celtic Thunder - Linda's Favorite",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
             726,
             2550,
             873
           ]
         },
         {
-          "row_index": 1,
-          "raw_text": "Celtic Thunder - Linda's Favorite",
+          "row_index": 2,
+          "raw_text": "Big Star - Feel",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -323,8 +337,8 @@
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Big Star - Feel",
+          "row_index": 3,
+          "raw_text": "Mthembu Queens - Phansi kamthunzi",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -337,8 +351,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Mthembu Queens - Phansi kamthunzi",
+          "row_index": 4,
+          "raw_text": "Nanci Griffith - Marilyn Monroe/Neon & Waltzes",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -351,8 +365,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Nanci Griffith - Marilyn Monroe/Neon & Waltzes",
+          "row_index": 5,
+          "raw_text": "Fletcher Henderson - My Sweet Tooth Says I Wanna But my wisdom tooth says No",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -365,8 +379,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Fletcher Henderson - My Sweet Tooth Says I Wanna But my wisdom tooth says No",
+          "row_index": 6,
+          "raw_text": "Isley Bros. - It's Your Thing",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -379,8 +393,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Isley Bros. - It's Your Thing",
+          "row_index": 7,
+          "raw_text": "Sinead O Connor - I Do Not Want What I Haven't Got",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -393,8 +407,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Sinead O Connor - I Do Not Want What I Haven't Got",
+          "row_index": 8,
+          "raw_text": "TAR - Mel's",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -407,8 +421,8 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "TAR - Mel's",
+          "row_index": 9,
+          "raw_text": "Rockin' Sidney - Jalapeno Lena",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -421,8 +435,8 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Rockin' Sidney - Jalapeno Lena",
+          "row_index": 10,
+          "raw_text": "NEWS",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -435,8 +449,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "NEWS",
+          "row_index": 11,
+          "raw_text": "Muszikas - Hajnali N\u00f3ta",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -449,8 +463,8 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Muszikas - Hajnali N\u00f3ta",
+          "row_index": 12,
+          "raw_text": "Soul Asylum - Take It To the Root",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -463,8 +477,8 @@
           ]
         },
         {
-          "row_index": 12,
-          "raw_text": "Soul Asylum - Take It To the Root",
+          "row_index": 13,
+          "raw_text": "Queen Latifah - Dance for me",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -477,8 +491,8 @@
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Queen Latifah - Dance for me",
+          "row_index": 14,
+          "raw_text": "Bevis Frond - The Score of England",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -488,20 +502,6 @@
             1851,
             2550,
             1926
-          ]
-        },
-        {
-          "row_index": 14,
-          "raw_text": "Bevis Frond - The Score of England",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1278,
-            1926,
-            2550,
-            2001
           ]
         }
       ],

@@ -14,17 +14,22 @@ set -euo pipefail
 
 mkdir -p "$DATA_ROOT/verifier" "$DATA_ROOT/pages"
 
-# Seed bundles if the volume's verifier/ has none yet. Page PNGs are
-# seeded independently — they're append-only and don't conflict with
-# corrections.json / verified.json the volunteer writes.
-if [ -d /seed/verifier ] && [ -z "$(ls -A "$DATA_ROOT/verifier" 2>/dev/null || true)" ]; then
-  echo "[entrypoint] seeding $DATA_ROOT/verifier from /seed/verifier"
-  cp -r /seed/verifier/. "$DATA_ROOT/verifier/"
+# Bundle JSONs and page PNGs are deploy-time artifacts — overlay them on
+# every boot so geometry/bbox fixes in a new build reach the live volume.
+# Volunteer state (.verified.json, .corrections.json) lives at distinct
+# filename suffixes in the same directory and is never touched.
+if [ -d /seed/verifier ]; then
+  bundle_count=$(find /seed/verifier -maxdepth 1 -name '*.bundle.json' | wc -l | tr -d ' ')
+  if [ "$bundle_count" -gt 0 ]; then
+    echo "[entrypoint] overlaying $bundle_count bundle JSONs onto $DATA_ROOT/verifier"
+    cp -f /seed/verifier/*.bundle.json "$DATA_ROOT/verifier/" 2>/dev/null || true
+  fi
 fi
 
-if [ -d /seed/pages ] && [ -z "$(ls -A "$DATA_ROOT/pages" 2>/dev/null || true)" ]; then
-  echo "[entrypoint] seeding $DATA_ROOT/pages from /seed/pages"
-  cp -r /seed/pages/. "$DATA_ROOT/pages/"
+if [ -d /seed/pages ]; then
+  echo "[entrypoint] overlaying /seed/pages onto $DATA_ROOT/pages (newer files only)"
+  # -u: copy only when source is newer or destination is missing.
+  cp -ru /seed/pages/. "$DATA_ROOT/pages/"
 fi
 
 export DATA_ROOT VERIFIER_HOST

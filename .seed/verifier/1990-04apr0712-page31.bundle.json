@@ -1,0 +1,872 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page31",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-31.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 31,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:01:10.535424+00:00",
+  "page_date_raw": "Thur 12 Apr 90",
+  "comments_raw": null,
+  "oddities": [
+    "A weather note in the top right margin reads: '55\u00b0 P/C Cool \u2191 55 Frost/Freeze Low 25\u00b0'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1284,
+        2299
+      ],
+      "hour_raw": "10AM",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "downey mildew - misfortune",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            545,
+            1284,
+            648
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "caterwaul-manna and quail",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            648,
+            1284,
+            723
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "bill pritchard - we we lovess",
+          "confidence": "medium",
+          "type_raw": "o",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            723,
+            1284,
+            798
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "House of Love-Hedonist",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            798,
+            1284,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "working week-rodrigo bay",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            872,
+            1284,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "silos - i'm over you",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            948,
+            1284,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "pail head-iwill refuse",
+          "confidence": "high",
+          "type_raw": "R O",
+          "notes": null,
+          "oddities": [
+            "The type column contains both a circled R and an O."
+          ],
+          "row_bbox": [
+            0,
+            1023,
+            1284,
+            1098
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "petetownsendninasimone/fast food",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1098,
+            1284,
+            1173
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "life in the blender - stinking of the wilderness",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1173,
+            1284,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "birdland - sleep with me",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1249,
+            1284,
+            1324
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "bad checks- hey little girl",
+          "confidence": "high",
+          "type_raw": "R O",
+          "notes": null,
+          "oddities": [
+            "The type column contains both a circled R and an O."
+          ],
+          "row_bbox": [
+            0,
+            1324,
+            1284,
+            1399
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "stancampbell-you'll never know",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1399,
+            1284,
+            1475
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "muzsikas-Harom Arva",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1475,
+            1284,
+            1550
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1284,
+        470,
+        2550,
+        2299
+      ],
+      "hour_raw": "12pm",
+      "jock_raw": "PHIL HAMMOND III",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Proclaimers- Sky takes a Soul",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The letter in the type column circle is struck through with a diagonal line."
+          ],
+          "row_bbox": [
+            1284,
+            545,
+            2550,
+            648
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "MC 900-Truth",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "This entry is squeezed in between two printed rows, with its own hand-drawn type circle."
+          ],
+          "row_bbox": [
+            1284,
+            648,
+            2550,
+            723
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Marine Girls - A Place in the Sun",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            723,
+            2550,
+            798
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Savage Republic - The Birds of Pink",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            798,
+            2550,
+            872
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Mighty Diamonds- Stoned Out of My Mind",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            872,
+            2550,
+            948
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Bauhaus- Dark Entries (Live)",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            948,
+            2550,
+            1023
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Richard Hell- Down at the Rock Club",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1023,
+            2550,
+            1098
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "db's - Love is For Lovers",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1098,
+            2550,
+            1173
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Cheb Khaled & Safy Boutella- Barud",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1173,
+            2550,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Cecil Taylor- Leaf Taken Horn",
+          "confidence": "medium",
+          "type_raw": "IN",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1249,
+            2550,
+            1324
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Legendary Stardust Cowboy- Paralyzed",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1324,
+            2550,
+            1399
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bad Religion- Give You Nothing",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1399,
+            2550,
+            1475
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Bongwater- Teena Stays the Same",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1475,
+            2550,
+            1550
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "B-52's-Give Me Back My Man",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            1550,
+            2550,
+            1625
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Area - Our Coming Corner Drowning",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The word 'Coming' is struck through."
+          ],
+          "row_bbox": [
+            1284,
+            1625,
+            2550,
+            1700
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2299,
+        1284,
+        4064
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "los van van - y que tu crees",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2350,
+            1284,
+            2425
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "dub syndicate - Hay Ho",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2425,
+            1284,
+            2501
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "blue nile - tinseltown in the rain",
+          "confidence": "high",
+          "type_raw": "R O",
+          "notes": null,
+          "oddities": [
+            "The type column contains both a circled R and an O."
+          ],
+          "row_bbox": [
+            0,
+            2501,
+            1284,
+            2576
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "blue aeroplanes - love come round",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2576,
+            1284,
+            2651
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "jam - private hell",
+          "confidence": "high",
+          "type_raw": "R O",
+          "notes": null,
+          "oddities": [
+            "The type column contains both a circled R and an O."
+          ],
+          "row_bbox": [
+            0,
+            2651,
+            1284,
+            2727
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "gin blossoms - found out about ya",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2727,
+            1284,
+            2801
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "david byrne (last emperor sdtk) - picking a bride",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2801,
+            1284,
+            2876
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "soul II soul - keep on movin",
+          "confidence": "medium",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2876,
+            1284,
+            2951
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "everything but the girl - my baby dont love me",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2951,
+            1284,
+            3026
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Bottle merchants - Suicidaltown",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3026,
+            1284,
+            3101
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "digital underground - underwater remix",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'remix' is written in smaller text slightly above the end of the line."
+          ],
+          "row_bbox": [
+            0,
+            3101,
+            1284,
+            3176
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "bevis frond - these dark days",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3176,
+            1284,
+            3251
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1284,
+        2299,
+        2550,
+        4064
+      ],
+      "hour_raw": "1PM",
+      "jock_raw": "Phil Hammond III",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "The Jonses- Chip Away",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2249,
+            2550,
+            2350
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Naked City - A bunch of short screaming bits",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2350,
+            2550,
+            2501
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Beasts of Bourbon - The Day Marty Robbins Died",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2501,
+            2550,
+            2651
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "That Petrol Emotion - Blue to Black",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2651,
+            2550,
+            2727
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Eric B. & Rakim - Lyrics of Fury",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2727,
+            2550,
+            2801
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Major Handy - Tee Ni Nee Ni Nu",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2801,
+            2550,
+            2876
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lou Reed - The Children",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2876,
+            2550,
+            2951
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Walkabouts- The Anvil Song",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2951,
+            2550,
+            3026
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Stump Wizards - Horse to Fly",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3026,
+            2550,
+            3101
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Rich Kids- Ghosts of Princes in Towers",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3101,
+            2550,
+            3176
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Tanya Tucker- Delta Dawn",
+          "confidence": "high",
+          "type_raw": "HIT",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3176,
+            2550,
+            3251
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Wolfgang Press- Hammer The Halo",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3251,
+            2550,
+            3323
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Leadbelly - National Defense Blues",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3323,
+            2550,
+            3400
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "111 - Depression",
+          "confidence": "medium",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3400,
+            2550,
+            3473
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Hypnolovewheel - Nature's Little Sunshine",
+          "confidence": "medium",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3473,
+            2550,
+            3548
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Boo Yaa - Pickin' Up Metal",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            3548,
+            2550,
+            3701
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

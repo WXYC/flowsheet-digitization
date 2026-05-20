@@ -245,14 +245,28 @@
           "oddities": [],
           "row_bbox": [
             1279,
+            654,
+            2550,
+            729
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Silos - Commodore Peter",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
             729,
             2550,
             876
           ]
         },
         {
-          "row_index": 1,
-          "raw_text": "Silos - Commodore Peter",
+          "row_index": 2,
+          "raw_text": "Sarah Vaughn - Black Coffee",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -265,8 +279,8 @@
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Sarah Vaughn - Black Coffee",
+          "row_index": 3,
+          "raw_text": "Martha & the Muffins - World w/o Borders",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -279,8 +293,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Martha & the Muffins - World w/o Borders",
+          "row_index": 4,
+          "raw_text": "Gin Blossoms - Found out about You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -293,8 +307,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Gin Blossoms - Found out about You",
+          "row_index": 5,
+          "raw_text": "Romantics - What I Like About You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -307,9 +321,9 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Romantics - What I Like About You",
-          "confidence": "high",
+          "row_index": 6,
+          "raw_text": "Muzsikas - Vetetiem Viol\u00e1t",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -321,9 +335,9 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Muzsikas - Vetetiem Viol\u00e1t",
-          "confidence": "medium",
+          "row_index": 7,
+          "raw_text": "Wishbone Ash - Vas Dis",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -335,8 +349,8 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Wishbone Ash - Vas Dis",
+          "row_index": 8,
+          "raw_text": "That Petrol Emotion - Hey Venus",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -346,20 +360,6 @@
             1329,
             2550,
             1403
-          ]
-        },
-        {
-          "row_index": 8,
-          "raw_text": "That Petrol Emotion - Hey Venus",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1279,
-            1403,
-            2550,
-            1479
           ]
         },
         {
@@ -373,14 +373,28 @@
           ],
           "row_bbox": [
             1279,
+            1403,
+            2550,
+            1479
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Jazz Butcher - Drink",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1279,
             1479,
             2550,
             1554
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "Jazz Butcher - Drink",
+          "row_index": 11,
+          "raw_text": "Church - You're Still Beautiful",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -393,20 +407,6 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Church - You're Still Beautiful",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1279,
-            1629,
-            2550,
-            1705
-          ]
-        },
-        {
           "row_index": 12,
           "raw_text": "Dub Syndicate - In The Man For You Easy",
           "confidence": "high",
@@ -415,9 +415,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            1705,
+            1629,
             2550,
-            1854
+            1780
           ]
         },
         {
@@ -429,9 +429,9 @@
           "oddities": [],
           "row_bbox": [
             1279,
-            1854,
+            1780,
             2550,
-            2004
+            1929
           ]
         }
       ],

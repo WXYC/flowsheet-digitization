@@ -275,9 +275,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            649,
+            574,
             2550,
-            724
+            649
           ]
         },
         {
@@ -289,9 +289,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            724,
+            649,
             2550,
-            798
+            724
           ]
         },
         {
@@ -303,9 +303,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            798,
+            724,
             2550,
-            873
+            798
           ]
         },
         {
@@ -317,14 +317,28 @@
           "oddities": [],
           "row_bbox": [
             1257,
+            798,
+            2550,
+            873
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "J Richman - Important in Your Life",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1257,
             873,
             2550,
             949
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "J Richman - Important in Your Life",
+          "row_index": 5,
+          "raw_text": "Biff Bang Pow - Love's Going Out of Fashion",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -337,20 +351,6 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Biff Bang Pow - Love's Going Out of Fashion",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1257,
-            1023,
-            2550,
-            1099
-          ]
-        },
-        {
           "row_index": 6,
           "raw_text": "(Peel Sessions) New Order - Dreams Never End",
           "confidence": "high",
@@ -359,9 +359,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1099,
+            1023,
             2550,
-            1175
+            1099
           ]
         },
         {
@@ -373,9 +373,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1175,
+            1099,
             2550,
-            1250
+            1175
           ]
         },
         {
@@ -387,9 +387,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1250,
+            1175,
             2550,
-            1326
+            1250
           ]
         },
         {
@@ -401,9 +401,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1326,
+            1250,
             2550,
-            1401
+            1326
           ]
         },
         {
@@ -415,9 +415,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1401,
+            1326,
             2550,
-            1477
+            1401
           ]
         },
         {
@@ -429,9 +429,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1477,
+            1401,
             2550,
-            1627
+            1552
           ]
         },
         {
@@ -443,9 +443,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1627,
+            1552,
             2550,
-            1702
+            1627
           ]
         },
         {
@@ -457,9 +457,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1702,
+            1627,
             2550,
-            1777
+            1702
           ]
         },
         {
@@ -471,9 +471,9 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            1777,
+            1702,
             2550,
-            1852
+            1777
           ]
         }
       ],

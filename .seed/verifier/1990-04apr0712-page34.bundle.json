@@ -1,0 +1,742 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page34",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-34.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 34,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:01:38.346314+00:00",
+  "page_date_raw": "Thur 12 Apr '90",
+  "comments_raw": null,
+  "oddities": [
+    "Header has 'W.Nelson Closing Time' written diagonally over the station logo.",
+    "Header includes weather notes: '45\u00b0 Clear / C Frost M/S 60\u00b0'.",
+    "Header has 'Yaz - Only You' written on the right side.",
+    "Far right margin contains stacked names: 'Gang of 4', 'Dik/Con', 'Destroy All Monsters', 'Hugh Cornwell'.",
+    "Far left margin near bottom-left quadrant contains stacked names: 'Firehose', 'L.C.', 'Stealers wheel'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        468,
+        1283,
+        2352
+      ],
+      "hour_raw": "10pm",
+      "jock_raw": "jk weston",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "C. de Forrest/Chilton - Sec As Man",
+          "confidence": "medium",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            571,
+            1283,
+            646
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sad Lovers + Giants - On Another Day",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            646,
+            1283,
+            722
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Paul Mc - Another Day",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            722,
+            1283,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Lloyd Cole - A Long Way Down",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            796,
+            1283,
+            870
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Triffids - Estuary Bed",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            870,
+            1283,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Wire - Strange",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            947,
+            1283,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Loop - Be Here Now",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "'9:23' is written in the left margin next to this row."
+          ],
+          "row_bbox": [
+            0,
+            1021,
+            1283,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Golden Earring - Vanilla Queen",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "'Radar Love' is heavily scribbled out beneath the song title 'Vanilla Queen'."
+          ],
+          "row_bbox": [
+            0,
+            1096,
+            1283,
+            1172
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Soul American - Twist And Shout",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1172,
+            1283,
+            1247
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "6 feet of Snow",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1247,
+            1283,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Youngbloods - Get Together",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [
+            "Heavy scribbling in the type column area before 'Hit'."
+          ],
+          "row_bbox": [
+            0,
+            1323,
+            1283,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Meat Puppets - Plateau",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1398,
+            1283,
+            1474
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1283,
+        468,
+        2550,
+        2352
+      ],
+      "hour_raw": "12Am",
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "LW3 - This Year",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            542,
+            2550,
+            646
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Zevon - lawyer's",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            646,
+            2550,
+            722
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "firehose - Captain",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            722,
+            2550,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Fall - Bill's Dead",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            796,
+            2550,
+            870
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Thin White Rope - Napkin Song/American",
+          "confidence": "medium",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            870,
+            2550,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Popes - She's You",
+          "confidence": "medium",
+          "type_raw": "Local",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            947,
+            2550,
+            1021
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Willie - Sun Comes Around",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1021,
+            2550,
+            1096
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Miracle Leg - Heart Disease",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1096,
+            2550,
+            1172
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Windbreakers - Our Little War",
+          "confidence": "high",
+          "type_raw": "U",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1172,
+            2550,
+            1247
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Mingus - Better Get It in Your Soul",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Type column has an equals sign or two horizontal lines."
+          ],
+          "row_bbox": [
+            1283,
+            1247,
+            2550,
+            1323
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Hiatt - Your Dad Did",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1323,
+            2550,
+            1398
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Marty Wilson Piper - Tip Tongue",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1398,
+            2550,
+            1474
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Kinks - I'm On An Island",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1474,
+            2550,
+            1548
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Gin Blossoms - Lost Horizons",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            1548,
+            2550,
+            1624
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2352,
+        1283,
+        4066
+      ],
+      "hour_raw": "11P",
+      "jock_raw": "Bill Curry",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Chills - Sub Bells",
+          "confidence": "high",
+          "type_raw": "LP",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2250,
+            1283,
+            2352
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "D. Johansen - In Style",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2352,
+            1283,
+            2499
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Frogs - Hades High School",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2499,
+            1283,
+            2728
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Silo's - Here 2 U",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2728,
+            1283,
+            2803
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "3 Dog Night - Out In The Country",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2803,
+            1283,
+            2878
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Tom WAITS - Bad LVer of A Broken Heart",
+          "confidence": "medium",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2878,
+            1283,
+            2953
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Giant Sand - Drum & Guitar",
+          "confidence": "medium",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2953,
+            1283,
+            3029
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "T Bone Walker - Flower Blues",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3029,
+            1283,
+            3104
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1283,
+        2352,
+        2550,
+        4066
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Frightwig - Big Bang",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2346,
+            2550,
+            2423
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Joy Division - Shadowplay",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2423,
+            2550,
+            2499
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Abba - Train Bound",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2499,
+            2550,
+            2574
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Cramps - Journey to the Center of a Girl",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2574,
+            2550,
+            2650
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Beatles - Strawberry",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2650,
+            2550,
+            2722
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Kate Bush - Ken",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2722,
+            2550,
+            2797
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Outlaws - Green Grass",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2797,
+            2550,
+            2872
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Gang of 4 - Anthrax",
+          "confidence": "high",
+          "type_raw": "Req",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2872,
+            2550,
+            2946
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Hugh Cornwell - All The Tea in China",
+          "confidence": "high",
+          "type_raw": "O Req",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            2946,
+            2550,
+            3022
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Big Dipper - Love Barge",
+          "confidence": "high",
+          "type_raw": "NuV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            3022,
+            2550,
+            3097
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Church - Mon Morning",
+          "confidence": "medium",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            3097,
+            2550,
+            3172
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Leadbelly - We Shall Be Free",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            3172,
+            2550,
+            3246
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Sidewinders - Sara's Not Sober",
+          "confidence": "high",
+          "type_raw": "NuV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1283,
+            3246,
+            2550,
+            3322
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

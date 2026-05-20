@@ -1,0 +1,944 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page26",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-26.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 26,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:00:26.141473+00:00",
+  "page_date_raw": "Wed 11 Apr 90",
+  "comments_raw": "c/u",
+  "oddities": [
+    "A note above the station logo reads: 'mail w/ Thin white Rope'.",
+    "Weather notes in the top right read: '62 Becoming cloudy & wdy 68 clear cold 35'.",
+    "A phone number '404-876-8436' is written near the top right.",
+    "A drawing of a pointing hand is in the right margin, pointing towards the bottom right quadrant."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        470,
+        1278,
+        2302
+      ],
+      "hour_raw": "2pm",
+      "jock_raw": "Bill Graves",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Mike Oldfield Tubular Bells",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            545,
+            1278,
+            646
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Cowboy Junkies Witches",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            0,
+            646,
+            1278,
+            722
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Nice Strong arm lost sleep",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            0,
+            722,
+            1278,
+            796
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Gary Numan Metal",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            796,
+            1278,
+            871
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Go Go's Automatic",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            871,
+            1278,
+            947
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Mthembu Queens Thina Siyajabula",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            947,
+            1278,
+            1024
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Ella Fitzgerald Smooth sailing",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1024,
+            1278,
+            1097
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Brian Eno / D Byrne Mea Culpa",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1097,
+            1278,
+            1172
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Stone Roses Fools Gold",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            0,
+            1172,
+            1278,
+            1325
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Don Dixon Heart in a box",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            0,
+            1325,
+            1278,
+            1401
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Bo Diddley Say Man",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1401,
+            1278,
+            1474
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Louis Armstrong St James Infirmary",
+          "confidence": "medium",
+          "type_raw": "Ro",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1474,
+            1278,
+            1627
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Toots + The Maytals Funky Kingston",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1627,
+            1278,
+            1702
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Beatnigs Television",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1702,
+            1278,
+            1777
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Velvet Monkeys Favorite day",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1777,
+            1278,
+            1852
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "<-",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "An arrow pointing left is drawn in the row."
+          ],
+          "row_bbox": [
+            0,
+            1852,
+            1278,
+            1927
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1278,
+        470,
+        2550,
+        2302
+      ],
+      "hour_raw": "4PM",
+      "jock_raw": "Jamey Censon",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Marta Sebestyen - Teresmentes",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The word 'Muzsika' is written above the artist name."
+          ],
+          "row_bbox": [
+            1278,
+            573,
+            2550,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Black Sabbath - Children of the Grave",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            652,
+            2550,
+            878
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Sukay - Torra Barroso",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            878,
+            2550,
+            953
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "* Savage Republic - Mapia",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "An asterisk is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            1278,
+            953,
+            2550,
+            1024
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Jah Lion - Columbia Colly",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1024,
+            2550,
+            1103
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Cab Calloway - Shotgun Boogie",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1103,
+            2550,
+            1178
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "John Cale - Dead or Alive",
+          "confidence": "high",
+          "type_raw": "R Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1178,
+            2550,
+            1251
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Sinead O'Connor - I am Stretched on your grave",
+          "confidence": "medium",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [
+            "An asterisk is drawn to the left of the type circle."
+          ],
+          "row_bbox": [
+            1278,
+            1251,
+            2550,
+            1401
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "House of Freaks - Right Down...",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1401,
+            2550,
+            1480
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Yngwie Malmsteen - Liar white folks blood",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1480,
+            2550,
+            1552
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Queen D - Queen D's world",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1552,
+            2550,
+            1777
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Naked City - A shot in the dark",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1777,
+            2550,
+            1927
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Cova Cove - Caveman",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            1927,
+            2550,
+            2078
+          ]
+        }
+      ],
+      "oddities": [
+        "A column of names (John, Sublate, Reed, Olive) is written in the right margin next to rows 6-9.",
+        "The words 'Chili Peppers' are written in the right margin next to row 12."
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2302,
+        1278,
+        4062
+      ],
+      "hour_raw": null,
+      "jock_raw": "Bill",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Robert Palmer Johnny + Mary",
+          "confidence": "medium",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2252,
+            1278,
+            2353
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Unity 2 shirlee",
+          "confidence": "medium",
+          "type_raw": "Nu",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2353,
+            1278,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Bongwater Talent is a vampire",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2427,
+            1278,
+            2502
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "That petrol Emotion Scumsurfin",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            0,
+            2502,
+            1278,
+            2579
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Mekons Club Mekon",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2579,
+            1278,
+            2654
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Teardrop explodes Bent out of shape",
+          "confidence": "high",
+          "type_raw": "std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2654,
+            1278,
+            2729
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Veldt its over",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "A check mark is drawn to the left of the entry."
+          ],
+          "row_bbox": [
+            0,
+            2729,
+            1278,
+            2804
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Schooley D its Like dope",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2804,
+            1278,
+            2879
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "V N Akaulkeeri The Secret",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2879,
+            1278,
+            2953
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Roland Alphonso Christeen Keeler",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2953,
+            1278,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Christeen Lavin Sensitive new age guys",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3029,
+            1278,
+            3104
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Kool moe dee They want money",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3104,
+            1278,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "The Selecter Cool Blue Lady",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3179,
+            1278,
+            3253
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Burbonese Qualk under the city",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3253,
+            1278,
+            3328
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "MC 900 ft Jesus Spaceman",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3328,
+            1278,
+            3404
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1278,
+        2302,
+        2550,
+        4062
+      ],
+      "hour_raw": "5",
+      "jock_raw": "Jamey",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Volcano Suns - Soft hit",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2252,
+            2550,
+            2353
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Angels of Epistemology - The Charm",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2353,
+            2550,
+            2427
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Hot Lips Page + His Orchestra - St James Infirmary",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2427,
+            2550,
+            2502
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Pete Townsend - Ronnie Lane - A heart to hang on to",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The words 'on to' wrap below the main line."
+          ],
+          "row_bbox": [
+            1278,
+            2502,
+            2550,
+            2579
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "KMFDM - Murder",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2579,
+            2550,
+            2654
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Janis Joplin - Down on Me",
+          "confidence": "high",
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2654,
+            2550,
+            2729
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "House of Love - Se Dest.",
+          "confidence": "medium",
+          "type_raw": "m",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2729,
+            2550,
+            2804
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Gregory Isaacs - Poor Millionaire",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2804,
+            2550,
+            2879
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Luka Bloom - Gone to Pablo",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [
+            "A large check mark is drawn over the type circle."
+          ],
+          "row_bbox": [
+            1278,
+            2879,
+            2550,
+            2953
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Derek + the Dominos I am yours",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            2953,
+            2550,
+            3029
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Motorhead - Motorhead",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3029,
+            2550,
+            3104
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Rankin Scroo + Ginger - Nuh Du Dat",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3104,
+            2550,
+            3179
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Dub Syndicate - Chapter & Verse",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3179,
+            2550,
+            3253
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Camper Van Beethoven - Ambiguity Song",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3253,
+            2550,
+            3328
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Fluid - Tin Top Toy",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1278,
+            3328,
+            2550,
+            3404
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "The Ophelias - New Society Mr. Rabbit",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "The title 'New Society' is crossed out and 'Mr. Rabbit' is written after it."
+          ],
+          "row_bbox": [
+            1278,
+            3404,
+            2550,
+            3479
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

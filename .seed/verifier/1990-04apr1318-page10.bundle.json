@@ -1,0 +1,960 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr1318-page10",
+  "image_path": "../pages/1990/April 1990/1990-04apr1318/page-10.png",
+  "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
+  "page_number": 10,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:07:57.657373+00:00",
+  "page_date_raw": "Sat 14 Apr 90",
+  "comments_raw": "Raw Humanity Ultra",
+  "oddities": [
+    "Handwritten notes in the top margin read: 'chy show 50%str w 53 cdy-mng - Pc w 70 playbox 70% 30%'"
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        476,
+        1266,
+        2305
+      ],
+      "hour_raw": "2PM",
+      "jock_raw": "McLaren",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "J. BROWN - Sex Machine",
+          "confidence": "medium",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [
+            "The word 'Hit' is written in the space usually reserved for the type circle.",
+            "'J. BROWN' is written above 'Sex Machine'."
+          ],
+          "row_bbox": [
+            0,
+            550,
+            1266,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "LEE SCRATCH PERRY - Conga Man",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            652,
+            1266,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "DUB SYNDICATE - J.A. Minor",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            727,
+            1266,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "BOOGIE DOWN PRODUCTIONS",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            801,
+            1266,
+            863
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "SEAWEED - Inside",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            863,
+            1266,
+            877
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "CHOWDER SHOOTERS - Amazing",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            877,
+            1266,
+            952
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "BOB BROZMAN - Wipe 'Em Off",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            952,
+            1266,
+            1027
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "CHURCH - You're Still Beautiful",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1027,
+            1266,
+            1103
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "MADONNA - Material \u2640",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A female symbol is used instead of the word 'Girl'."
+          ],
+          "row_bbox": [
+            0,
+            1103,
+            1266,
+            1178
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "+ XYC",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1178,
+            1266,
+            1253
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Velvet Underground - Hey Mr. Rain",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1253,
+            1266,
+            1329
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "BILL MONROE - Travelin This Lonesome Road",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1329,
+            1266,
+            1480
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "TACK HEAD",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1480,
+            1266,
+            1555
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "WINGY MANONE & HIS ORCHES. - The Isle of Capri",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1555,
+            1266,
+            1705
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "SISTER CAROL - Wicked Collar",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1705,
+            1266,
+            1781
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "3rd BASS - Brooklyn Queens",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1781,
+            1266,
+            1856
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "TACKHEAD - Demolition House",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1856,
+            1266,
+            1930
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1266,
+        476,
+        2550,
+        2305
+      ],
+      "hour_raw": "4PM",
+      "jock_raw": "Todd",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Troggs - w/ a girl like You",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [
+            "The word 'Hit' is written in the space usually reserved for the type circle."
+          ],
+          "row_bbox": [
+            1266,
+            550,
+            2550,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Pure Joy - Skin Deer",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [
+            "Annotation 'an Drame Musicale - Instantane - 1/1' appears in the right margin."
+          ],
+          "row_bbox": [
+            1266,
+            652,
+            2550,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Follow For Now - Holy Moses",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            727,
+            2550,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Bomb The Bass - Beat Dis",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A word is crossed out after 'Beat'."
+          ],
+          "row_bbox": [
+            1266,
+            801,
+            2550,
+            877
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Muzikas - Misi's Szeki Dance",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            877,
+            2550,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Mighty Diamonds - One Brother Short",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            952,
+            2550,
+            1027
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Blue Aeroplanes - Jacket Hangs",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1027,
+            2550,
+            1103
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "MoFungo - Sold Again",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1103,
+            2550,
+            1178
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lemonheads - Hate Your Friends",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1178,
+            2550,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Descendents - I'm not a loser",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1253,
+            2550,
+            1329
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Bad Religion - I want to Conquer the World",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1329,
+            2550,
+            1404
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "(Aide Memoire)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1404,
+            2550,
+            1480
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Van Morrison - Cyprus Avenue",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1480,
+            2550,
+            1555
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Brazil : Forro -",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            1555,
+            2550,
+            1630
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Birdsongs of the Mesozoic - I Don't Need No Crystal Ball",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [
+            "'Ball' is written below the end of the line."
+          ],
+          "row_bbox": [
+            1266,
+            1630,
+            2550,
+            1705
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2305,
+        1266,
+        4070
+      ],
+      "hour_raw": "3",
+      "jock_raw": "McLaren",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "LENNY KRAVITZ - Let love Rule",
+          "confidence": "high",
+          "type_raw": "P",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2255,
+            1266,
+            2430
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "ROBYN HITCHCOCK - Executioner",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2430,
+            1266,
+            2656
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "NAKED CITY - Chinatown",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2656,
+            1266,
+            2732
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "FLYING BURRITO BROS - Sin City",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2732,
+            1266,
+            2881
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "CHRISTINE LAVIN - Sensitive",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2881,
+            1266,
+            2956
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "CHILLS - Kaledescope Pink Frost",
+          "confidence": "medium",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [
+            "The word 'Kaledescope' is crossed out.",
+            "Annotation 'New Age of' appears near the end of the line."
+          ],
+          "row_bbox": [
+            0,
+            2956,
+            1266,
+            3035
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "The DELMONAS - Can't Sit Down",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3035,
+            1266,
+            3106
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "PRIMAL SCREAM - Loaded",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "A word before 'PRIMAL' is crossed out."
+          ],
+          "row_bbox": [
+            0,
+            3106,
+            1266,
+            3184
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "MIDNIGHT OIL - Stars of Warburton",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3184,
+            1266,
+            3259
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "SPARKS - Eaten By The Monster of Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3259,
+            1266,
+            3334
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "LAST POETS - New York N.Y.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3334,
+            1266,
+            3409
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "COURTNEY PINE - Just You, Just Me",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3409,
+            1266,
+            3486
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Buffalo Tom - 500,000 Warnings",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3486,
+            1266,
+            3562
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1266,
+        2305,
+        2550,
+        4070
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "House of Love - Hedonist",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2355,
+            2550,
+            2430
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Gangstarr - Here's the Proof",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2430,
+            2550,
+            2505
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Angels of Epistemology - Response",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2505,
+            2550,
+            2580
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "fall - Arms Control Poseur",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2580,
+            2550,
+            2656
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Chick Corea / Anthony Braxton - Duet for Clarinet & Piano no. 1.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2656,
+            2550,
+            2806
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Redd Kross - Jesus Loves You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2806,
+            2550,
+            2956
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Ultra Vivid Scene - Staring at the Sun",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            2956,
+            2550,
+            3029
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Red Clay Ramblers - Way Long Gone",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3029,
+            2550,
+            3106
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Mthembu Queens",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3106,
+            2550,
+            3178
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Scrawl - Breaker Breaker",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3178,
+            2550,
+            3253
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Savage Republic - Sucker Punch",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3253,
+            2550,
+            3328
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Tom Waits - Come longside",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3328,
+            2550,
+            3403
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Betty Wright - Clean Up Woman",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3403,
+            2550,
+            3479
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "3rd Bass - Brooklyn Queens",
+          "confidence": "high",
+          "type_raw": "Nu",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3479,
+            2550,
+            3553
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "LOOP - THIS IS WHERE YOU END",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3553,
+            2550,
+            3705
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "J. LONDON - GEE BABY AIN'T I GOOD TO YOU",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1266,
+            3705,
+            2550,
+            3858
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "FLAT DUO JETS - DREAMS DONT GOT A THING",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "'DREAMS DONT' is written above 'GOT A THING'."
+          ],
+          "row_bbox": [
+            1266,
+            3858,
+            2550,
+            3961
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

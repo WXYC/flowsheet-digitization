@@ -1,0 +1,940 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page32",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-32.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 32,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:01:38.276227+00:00",
+  "page_date_raw": "Thur 12 Apr 90",
+  "comments_raw": "sweetPiglen\nfrostfree plenum\nH 58\u00b0\nL 28 pcoud",
+  "oddities": [
+    "The text 'dec', a boxed 'Slip it In', and 'Beatnigs' are written above the top-right quadrant.",
+    "The text 'Flinstones theme' is written vertically in the middle left margin.",
+    "The text 'Comp Ener' is written vertically in the bottom left margin."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        473,
+        1288,
+        2305
+      ],
+      "hour_raw": "2Pm",
+      "jock_raw": "PHIL HAMMOND III",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Angels - Response",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            552,
+            1288,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Thin White Rope - Hidden Lants",
+          "confidence": "medium",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            652,
+            1288,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Helen Merrill w/ the Quincy Jones Orch. - You'd Be So Nice to Come Home To",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            727,
+            1288,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "The Chills - Familiarity...",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            952,
+            1288,
+            1027
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "King Missile - Lou",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1027,
+            1288,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Leap of Faith - Hold On",
+          "confidence": "high",
+          "type_raw": "LOCAL",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1102,
+            1288,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Husker Du - Too Far Down",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1177,
+            1288,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "The Seers - You Keep Me Praying",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1253,
+            1288,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Holy Modal Rounders - Moving Sounds",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1288,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "John Cale - Do Not Go Gentle Into That Good Night",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1403,
+            1288,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Loop - Breathe Into Me",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1554,
+            1288,
+            1629
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bad Checks - Do Me Right",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1629,
+            1288,
+            1705
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Michigan & Smiley - Sugar Daddy",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1705,
+            1288,
+            1780
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Inca Babies - Big Jugular",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1780,
+            1288,
+            1855
+          ]
+        }
+      ],
+      "oddities": [
+        "A hand-drawn arrow connects the type column of row 8 down to row 9."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1288,
+        473,
+        2550,
+        2305
+      ],
+      "hour_raw": "4Pm",
+      "jock_raw": "Shannon O'Kani",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Front 242 - Headhunter V. Paradise",
+          "confidence": "high",
+          "type_raw": "S",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            547,
+            2550,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "PE \"welcome 2 the terrordome\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            652,
+            2550,
+            727
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Robyn Hitchcock \"flash cartoons\"",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [
+            "The printed circle for the type column has heavily inked black dots inside."
+          ],
+          "row_bbox": [
+            1288,
+            727,
+            2550,
+            802
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Kate Bush \"this woman's work\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            802,
+            2550,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "theme from flinstones\"",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            876,
+            2550,
+            952
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "the MthembouQueens \"wadiliza",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            952,
+            2550,
+            1027
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "new umuzi\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'new' is written in tiny lettering slightly above 'umuzi'."
+          ],
+          "row_bbox": [
+            1288,
+            1027,
+            2550,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "BooYaTribe \"Funky nation\"",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            1102,
+            2550,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Pixies \"Louis\"",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            1177,
+            2550,
+            1253
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Royal C Mob \"Corporation Enema\"",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            1253,
+            2550,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Fall \"I'm Frank\"",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            1328,
+            2550,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Big Dipper \"Girl who lives on the Hill\"",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            1403,
+            2550,
+            1479
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Nirvana \"About a Girl\"",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            1479,
+            2550,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "David Sandborn \"JT F J\"",
+          "confidence": "medium",
+          "type_raw": "JB",
+          "notes": null,
+          "oddities": [
+            "A small hand-drawn smiley face appears at the end of the entry text."
+          ],
+          "row_bbox": [
+            1288,
+            1554,
+            2550,
+            1629
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2305,
+        1288,
+        4069
+      ],
+      "hour_raw": null,
+      "jock_raw": null,
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Meat Puppets - In a Car",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2256,
+            1288,
+            2331
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Plimsouls - Oldest Story in the World",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2331,
+            1288,
+            2481
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Lloyd God Cole - A Long Way Down",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "The word 'God' is written slightly above the line, inserted between 'Lloyd' and 'Cole'."
+          ],
+          "row_bbox": [
+            0,
+            2481,
+            1288,
+            2556
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Gavin Friday - You Take Away The Sun",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2556,
+            1288,
+            2706
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Nice Strong Arm - Neighborhood Voyeur",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2706,
+            1288,
+            2856
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "1/2 Jap - ~",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2856,
+            1288,
+            2931
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Blackgirls - devil's garden",
+          "confidence": "high",
+          "type_raw": "concert",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2931,
+            1288,
+            3006
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Green Rio - My Town This Town",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "double_height",
+          "oddities": [
+            "The words 'My Town' are struck through with a line."
+          ],
+          "row_bbox": [
+            0,
+            3006,
+            1288,
+            3156
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "G'master Flash - The Message",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3156,
+            1288,
+            3231
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "The Fluid - Tin Top Toy",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3231,
+            1288,
+            3306
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Hawkwind - Down Thru the Night",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3306,
+            1288,
+            3381
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Giant Sand - Sandman",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3381,
+            1288,
+            3456
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Slip it in",
+          "confidence": "high",
+          "type_raw": "R STD",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3456,
+            1288,
+            3531
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Beatnigs - Burritos",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3531,
+            1288,
+            3606
+          ]
+        },
+        {
+          "row_index": 18,
+          "raw_text": "Beatnigs - TV",
+          "confidence": "high",
+          "type_raw": "C",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3606,
+            1288,
+            3681
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "FOC - Show Boy",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3681,
+            1288,
+            3756
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1288,
+        2305,
+        2550,
+        4069
+      ],
+      "hour_raw": "5PM",
+      "jock_raw": "Shannon O'Kani",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Red Hot's \"show me UR soul\"",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2250,
+            2550,
+            2354
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Elektronika \"sensee party\"",
+          "confidence": "high",
+          "type_raw": "Force",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2354,
+            2550,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Fabu 4 Flow \"Time\"",
+          "confidence": "medium",
+          "type_raw": "C",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2428,
+            2550,
+            2503
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "the Church \"you're still beautiful\"",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2503,
+            2550,
+            2580
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "KokoTayo \"whatever Jam you made me\"",
+          "confidence": "high",
+          "type_raw": "Blues",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2580,
+            2550,
+            2730
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "\"Forro da Minha Terra\" (Duda Da Passira)",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2730,
+            2550,
+            2877
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "the Cure \"Pictures of You\"",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2877,
+            2550,
+            2952
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Consolidated \"Consolidated\"",
+          "confidence": "medium",
+          "type_raw": "Y",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            2952,
+            2550,
+            3026
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Silos \"don't Look that way\"",
+          "confidence": "high",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3026,
+            2550,
+            3101
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Soundgarden \"Fopp\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3101,
+            2550,
+            3176
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Soul Asylum \"Take it to the Past\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3176,
+            2550,
+            3251
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Adam Baumann \"decisions, need",
+          "confidence": "high",
+          "type_raw": "OCS",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3251,
+            2550,
+            3326
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "\"Baritone Umi / chalis fang\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3326,
+            2550,
+            3405
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Midnight Oil \"Blue Sky Mine\"",
+          "confidence": "medium",
+          "type_raw": "L",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3405,
+            2550,
+            3478
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Beastie Boys",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3478,
+            2550,
+            3551
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "\"Some dumb Cop Gave me 2 tickets\"",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": "double_height",
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3551,
+            2550,
+            3782
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "White Flag \"zerox\"",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1288,
+            3782,
+            2550,
+            3858
+          ]
+        }
+      ],
+      "oddities": []
+    }
+  ]
+}

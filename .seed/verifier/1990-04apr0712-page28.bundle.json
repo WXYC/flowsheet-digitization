@@ -1,0 +1,751 @@
+{
+  "schema_version": 2,
+  "stem": "1990-04apr0712-page28",
+  "image_path": "../pages/1990/April 1990/1990-04apr0712/page-28.png",
+  "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
+  "page_number": 28,
+  "model_version": "gemini-3.1-pro-preview",
+  "extracted_at": "2026-05-13T03:00:06.593542+00:00",
+  "page_date_raw": "Wedn. 11 Apr 90",
+  "comments_raw": "Mould Brazilan",
+  "oddities": [
+    "The top right corner has a boxed 'Buffalo Tom' and handwritten notes reading 'Marvin Brooks from Harvey', 'Zappa then us', and '\"Stevie Spanky\"'."
+  ],
+  "quadrants": [
+    {
+      "position": "top_left",
+      "bbox": [
+        0,
+        474,
+        1281,
+        2303
+      ],
+      "hour_raw": "10PM",
+      "jock_raw": "Spot",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Fats Waller - I Can't Give You",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            549,
+            1281,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Anything But Love, Baby",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            652,
+            1281,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Muzsikas - H\u00e1rom \u00c1rva",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            726,
+            1281,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Suicide - Frankie Teardrop",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            801,
+            1281,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Police - Masoko Tanga",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            876,
+            1281,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Primal Scream - I'm Losing",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            951,
+            1281,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "More Than I'll Ever Have",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1026,
+            1281,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "LL Cool J - I'm That Type Of Guy",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1102,
+            1281,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Bill Nelson - The Bride of Christ",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1177,
+            1281,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "In Autumn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1252,
+            1281,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Narx - World w/o End",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1328,
+            1281,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bongwater - Talent Is A Vampire",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1403,
+            1281,
+            1478
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Bob Mould - Brasilia Crossed",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1478,
+            1281,
+            1554
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "w/ Trenton",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1554,
+            1281,
+            1629
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Bad Checks - Crimes of Passion",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1629,
+            1281,
+            1704
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Souled American - you Doggy Di",
+          "confidence": "low",
+          "type_raw": "O",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1704,
+            1281,
+            1779
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "Nick Cave - The Ship Song",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1779,
+            1281,
+            1854
+          ]
+        }
+      ],
+      "oddities": [
+        "A note reading 'Shitty Show' is written in the left margin next to the bottom rows."
+      ]
+    },
+    {
+      "position": "top_right",
+      "bbox": [
+        1281,
+        474,
+        2550,
+        2303
+      ],
+      "hour_raw": "12AM",
+      "jock_raw": "P.J.",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Sex Pistols - The Great RnR Swindle",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            549,
+            2550,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Replacements - Cruella de Ville",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            652,
+            2550,
+            726
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Angels of Epist. - Torta de Las Muertos",
+          "confidence": "medium",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            726,
+            2550,
+            801
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Kraftwerk - Trans Europe Express",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            801,
+            2550,
+            876
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Eno - Var. On Pachelbel's Canon in D Maj.",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            876,
+            2550,
+            951
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "All sorts of stuff",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            951,
+            2550,
+            1026
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "}",
+          "confidence": "low",
+          "type_raw": null,
+          "notes": "illegible",
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            1026,
+            2550,
+            1102
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "New Order - Doubts even here",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            1102,
+            2550,
+            1177
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Lesley Gore - Look of Love",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            1177,
+            2550,
+            1252
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Moonglows - This Love",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            1252,
+            2550,
+            1328
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "The Diamonds - Beggar for your kisses",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            1328,
+            2550,
+            1403
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Bevis Frond - These Dark Days",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            1403,
+            2550,
+            1478
+          ]
+        }
+      ],
+      "oddities": [
+        "Rows 5 to 7 contain wavy vertical lines indicating some grouping or continuation."
+      ]
+    },
+    {
+      "position": "bottom_left",
+      "bbox": [
+        0,
+        2303,
+        1281,
+        4062
+      ],
+      "hour_raw": null,
+      "jock_raw": "Pat Johnson",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "DUB SYNDICATE",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2253,
+            1281,
+            2354
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Lee \"Scratch\" Perry - Jacko",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2354,
+            1281,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Ultravox - Dangerous Rhythm",
+          "confidence": "high",
+          "type_raw": "STD",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2428,
+            1281,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Pale Saints - you tear the world in two",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2504,
+            1281,
+            2580
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Smiths - Reel Around the Fountain",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2580,
+            1281,
+            2655
+          ]
+        }
+      ],
+      "oddities": []
+    },
+    {
+      "position": "bottom_right",
+      "bbox": [
+        1281,
+        2303,
+        2550,
+        4062
+      ],
+      "hour_raw": null,
+      "jock_raw": "PJ",
+      "entries": [
+        {
+          "row_index": 0,
+          "raw_text": "Buffalo Tom - Impossible",
+          "confidence": "high",
+          "type_raw": "R CC",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2253,
+            2550,
+            2354
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Sonic Youth - Master DiK",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2354,
+            2550,
+            2428
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Tube Bar",
+          "confidence": "high",
+          "type_raw": "NV",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2428,
+            2550,
+            2504
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Paris - Break the Grip of Shame",
+          "confidence": "high",
+          "type_raw": "NU",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2504,
+            2550,
+            2580
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "Legendary Stardust Cowboy - Paralysed",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2580,
+            2550,
+            2655
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "Justin Wilson - Several tales",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2655,
+            2550,
+            2730
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Henry Thomas - Don't Leave me here",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2730,
+            2550,
+            2805
+          ]
+        },
+        {
+          "row_index": 7,
+          "raw_text": "Hot shot Love - Wolf Call Boogie",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2805,
+            2550,
+            2880
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Zappa - Stevie's Spanking",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2880,
+            2550,
+            2954
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Marc Almond - Man in Black",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2954,
+            2550,
+            3030
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Red Hot CP's - American Ghost",
+          "confidence": "high",
+          "type_raw": "R",
+          "notes": "crossed_out",
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            3030,
+            2550,
+            3105
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Hollywood",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            3105,
+            2550,
+            3180
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Jesus Lizard - Chrome",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            3180,
+            2550,
+            3255
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Hetch Hetchy - Bow Song",
+          "confidence": "high",
+          "type_raw": "NU",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            3255,
+            2550,
+            3330
+          ]
+        }
+      ],
+      "oddities": [
+        "A note in the right margin reads '\"Texas Flood\" Jon Blues Explosion'.",
+        "An arrow points from row 8 down to row 9."
+      ]
+    }
+  ]
+}

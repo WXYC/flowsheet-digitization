@@ -33,14 +33,28 @@
           "oddities": [],
           "row_bbox": [
             0,
+            574,
+            1267,
+            649
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Trouble Funk Grip It",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
             649,
             1267,
             723
           ]
         },
         {
-          "row_index": 1,
-          "raw_text": "Trouble Funk Grip It",
+          "row_index": 2,
+          "raw_text": "Naked City James Bond Theme",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -53,8 +67,8 @@
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "Naked City James Bond Theme",
+          "row_index": 3,
+          "raw_text": "Throbbing Gristle Hamburger Lady",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -67,8 +81,8 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "Throbbing Gristle Hamburger Lady",
+          "row_index": 4,
+          "raw_text": "Jr. Walker Love Hangover",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -81,8 +95,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "Jr. Walker Love Hangover",
+          "row_index": 5,
+          "raw_text": "Hypnotics Soul Trader",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -95,8 +109,8 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Hypnotics Soul Trader",
+          "row_index": 6,
+          "raw_text": "Black Sabbath Into the Void",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -109,8 +123,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Black Sabbath Into the Void",
+          "row_index": 7,
+          "raw_text": "Buffalo Springfield - For What It's Worth",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -120,20 +134,6 @@
             1098,
             1267,
             1174
-          ]
-        },
-        {
-          "row_index": 7,
-          "raw_text": "Buffalo Springfield - For What It's Worth",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
-            1174,
-            1267,
-            1249
           ]
         },
         {
@@ -147,14 +147,28 @@
           ],
           "row_bbox": [
             0,
+            1174,
+            1267,
+            1249
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "MC 900 FT - Real Black Angel",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
             1249,
             1267,
             1325
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "MC 900 FT - Real Black Angel",
+          "row_index": 10,
+          "raw_text": "S. O'Conner - Nothing Compares To You",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -167,8 +181,8 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "S. O'Conner - Nothing Compares To You",
+          "row_index": 11,
+          "raw_text": "Lloyd Cole - Perfect Skin",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -181,20 +195,6 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Lloyd Cole - Perfect Skin",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
-            1475,
-            1267,
-            1551
-          ]
-        },
-        {
           "row_index": 12,
           "raw_text": "Angels Of Epistomd - Response",
           "confidence": "medium",
@@ -203,9 +203,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            1551,
+            1475,
             1267,
-            1854
+            1551
           ]
         }
       ],
@@ -443,9 +443,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2254,
+            2355,
             1267,
-            2361
+            2430
           ]
         },
         {
@@ -457,9 +457,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2361,
+            2430,
             1267,
-            2468
+            2505
           ]
         },
         {
@@ -471,9 +471,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2468,
+            2505,
             1267,
-            2575
+            2580
           ]
         },
         {
@@ -485,9 +485,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2575,
+            2580,
             1267,
-            2682
+            2655
           ]
         },
         {
@@ -499,9 +499,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2682,
+            2655,
             1267,
-            2789
+            2730
           ]
         },
         {
@@ -513,9 +513,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2789,
+            2730,
             1267,
-            2896
+            2805
           ]
         },
         {
@@ -527,9 +527,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            2896,
+            2805,
             1267,
-            3003
+            2880
           ]
         },
         {
@@ -541,9 +541,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3003,
+            2880,
             1267,
-            3110
+            2955
           ]
         },
         {
@@ -555,9 +555,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3110,
+            2955,
             1267,
-            3218
+            3030
           ]
         },
         {
@@ -569,9 +569,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3218,
+            3030,
             1267,
-            3325
+            3105
           ]
         },
         {
@@ -583,9 +583,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3325,
+            3105,
             1267,
-            3432
+            3180
           ]
         },
         {
@@ -597,9 +597,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3432,
+            3180,
             1267,
-            3539
+            3255
           ]
         },
         {
@@ -611,9 +611,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3539,
+            3255,
             1267,
-            3646
+            3330
           ]
         },
         {
@@ -627,9 +627,9 @@
           ],
           "row_bbox": [
             0,
-            3646,
+            3330,
             1267,
-            3753
+            3405
           ]
         },
         {
@@ -641,9 +641,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3753,
+            3405,
             1267,
-            3860
+            3480
           ]
         },
         {
@@ -655,9 +655,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3860,
+            3480,
             1267,
-            3967
+            3555
           ]
         },
         {
@@ -669,9 +669,9 @@
           "oddities": [],
           "row_bbox": [
             0,
-            3967,
+            3555,
             1267,
-            4074
+            3630
           ]
         }
       ],
@@ -697,9 +697,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            2254,
+            2347,
             2550,
-            2361
+            2423
           ]
         },
         {
@@ -711,9 +711,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            2361,
+            2423,
             2550,
-            2468
+            2499
           ]
         },
         {
@@ -727,9 +727,9 @@
           ],
           "row_bbox": [
             1267,
-            2468,
+            2499,
             2550,
-            2575
+            2651
           ]
         },
         {
@@ -741,9 +741,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            2575,
+            2651,
             2550,
-            2682
+            2727
           ]
         },
         {
@@ -757,9 +757,9 @@
           ],
           "row_bbox": [
             1267,
-            2682,
+            2727,
             2550,
-            2789
+            2803
           ]
         },
         {
@@ -771,9 +771,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            2789,
+            2803,
             2550,
-            2896
+            2955
           ]
         },
         {
@@ -785,9 +785,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            2896,
+            2955,
             2550,
-            3003
+            3031
           ]
         },
         {
@@ -799,9 +799,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3003,
+            3031,
             2550,
-            3110
+            3107
           ]
         },
         {
@@ -813,9 +813,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3110,
+            3107,
             2550,
-            3218
+            3183
           ]
         },
         {
@@ -827,9 +827,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3218,
+            3183,
             2550,
-            3325
+            3259
           ]
         },
         {
@@ -841,9 +841,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3325,
+            3259,
             2550,
-            3432
+            3335
           ]
         },
         {
@@ -855,9 +855,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3432,
+            3335,
             2550,
-            3539
+            3411
           ]
         },
         {
@@ -869,9 +869,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3539,
+            3411,
             2550,
-            3646
+            3487
           ]
         },
         {
@@ -883,9 +883,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3646,
+            3487,
             2550,
-            3753
+            3639
           ]
         },
         {
@@ -897,9 +897,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3753,
+            3639,
             2550,
-            3860
+            3715
           ]
         },
         {
@@ -911,9 +911,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3860,
+            3715,
             2550,
-            3967
+            3867
           ]
         },
         {
@@ -925,9 +925,9 @@
           "oddities": [],
           "row_bbox": [
             1267,
-            3967,
+            3867,
             2550,
-            4074
+            3943
           ]
         }
       ],
