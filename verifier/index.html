@@ -4,7 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flowsheet verifier</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- ?v= query bumped whenever app.js or styles.css change in a way the
+       volunteer's cached copy must not stick to. FastAPI's StaticFiles
+       sends ETag/Last-Modified but no explicit Cache-Control, so browsers
+       can hold a heuristically-fresh stale copy for tens of minutes;
+       bumping the query forces a fresh URL. -->
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <!-- Index-mode header (shown when no ?bundle= is set). -->
@@ -141,6 +146,6 @@
     </div>
   </template>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

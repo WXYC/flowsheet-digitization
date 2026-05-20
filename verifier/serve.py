@@ -417,7 +417,29 @@ def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str
 # relative (`../pages/.../page-NN.png`), and the UI fetches relative to
 # the bundle URL. `/data` honors the same DATA_ROOT override that writes
 # use so the read and write sides stay in sync when DATA_ROOT is moved.
-app.mount("/verifier", StaticFiles(directory=REPO_ROOT / "verifier", html=True), name="verifier")
+class _NoCacheStaticFiles(StaticFiles):
+    """`StaticFiles` that forces revalidation on every request.
+
+    Default StaticFiles sends ETag + Last-Modified but no Cache-Control, so
+    browsers can hold a heuristically-fresh stale copy of the SPA's HTML
+    or JS for tens of minutes after a deploy. A volunteer who's mid-session
+    keeps running the old code and looks like the new fix didn't ship.
+    With `no-cache` the browser still gets to use its cached copy, but it
+    MUST revalidate against the ETag, which always returns the latest
+    after a deploy.
+    """
+
+    async def get_response(self, path: str, scope):  # type: ignore[no-untyped-def]
+        response = await super().get_response(path, scope)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
+
+
+app.mount(
+    "/verifier",
+    _NoCacheStaticFiles(directory=REPO_ROOT / "verifier", html=True),
+    name="verifier",
+)
 app.mount("/data", StaticFiles(directory=DATA_ROOT, check_dir=False), name="data")
 # tests/ is dev-only (golden fixtures). Mount it conditionally so the
 # Docker runtime image — which excludes tests/ — doesn't crash at boot.
