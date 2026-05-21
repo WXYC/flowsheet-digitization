@@ -1042,8 +1042,54 @@ function installKeyboardShortcuts() {
 
 // ---- wiring --------------------------------------------------------------
 
+// ---- in-app deploy detector ---------------------------------------------
+
+// Captured on load; if /api/version drifts from this we surface the banner.
+let INITIAL_APP_VERSION = null;
+const VERSION_POLL_MS = 60_000;
+
+async function fetchAppVersion() {
+  try {
+    const r = await fetch("/api/version", { cache: "no-store" });
+    if (!r.ok) return null;
+    const body = await r.json();
+    return body.version ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function showUpdateBanner() {
+  if (document.getElementById("update-banner")) return;
+  const banner = document.createElement("div");
+  banner.id = "update-banner";
+  banner.innerHTML =
+    '<span>A new version is available. Your saved work is preserved on the server.</span>' +
+    '<button type="button" id="update-banner-reload">Reload now</button>';
+  document.body.appendChild(banner);
+  document.getElementById("update-banner-reload").addEventListener("click", () => {
+    location.reload();
+  });
+}
+
+async function checkForUpdate() {
+  if (INITIAL_APP_VERSION === null) return;
+  const current = await fetchAppVersion();
+  if (current && current !== INITIAL_APP_VERSION) {
+    showUpdateBanner();
+  }
+}
+
+async function startVersionWatch() {
+  INITIAL_APP_VERSION = await fetchAppVersion();
+  if (!INITIAL_APP_VERSION) return;
+  setInterval(checkForUpdate, VERSION_POLL_MS);
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   installKeyboardShortcuts();
+  // Fire-and-forget — must not block bundle loading.
+  startVersionWatch().catch(() => {});
   const params = new URLSearchParams(location.search);
   const hasBundle = !!params.get("bundle");
   if (!hasBundle) {

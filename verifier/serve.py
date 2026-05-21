@@ -158,6 +158,27 @@ def _atomic_write_text(path: Path, content: str) -> None:
     os.replace(tmp, path)
 
 
+@app.get("/api/version")
+async def api_version() -> JSONResponse:
+    """Version tag the JS can poll to detect a new deploy.
+
+    The volunteer might keep the verifier open for hours. Without a way
+    to notice a deploy mid-session, browser-cached JS keeps running stale
+    code (cache headers force revalidation on reload, but not while a
+    page is sitting still). The JS polls this endpoint every minute; if
+    the tag changes from what it captured at load, it surfaces a
+    "reload to get the latest" banner.
+
+    Uses `app.js`'s mtime as the tag — cheap, accurate, no build step.
+    """
+    js_path = REPO_ROOT / "verifier" / "app.js"
+    try:
+        mtime = int(js_path.stat().st_mtime)
+    except FileNotFoundError:
+        mtime = 0
+    return JSONResponse({"version": str(mtime)})
+
+
 @app.post("/api/lookup")
 async def lookup(request: Request) -> JSONResponse:
     """Same-origin proxy to request-o-matic's /request endpoint.

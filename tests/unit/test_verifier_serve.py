@@ -556,6 +556,22 @@ async def test_list_bundles_malformed_bundle_doesnt_break_index(serve_app, tmp_p
     assert by_stem["good"]["page_date_raw"] == "ok"
 
 
+# -- /api/version (deploy detector) ---------------------------------------
+
+
+async def test_api_version_returns_app_js_mtime(serve_app) -> None:
+    """`/api/version` returns the mtime of verifier/app.js as a string —
+    the JS uses it to poll for new deploys mid-session."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get("/api/version")
+    assert r.status_code == 200
+    body = r.json()
+    assert "version" in body
+    assert isinstance(body["version"], str)
+    # Must look like a unix timestamp (digits only).
+    assert body["version"].isdigit()
+
+
 # -- HTTP Basic Auth (Railway deploy) --------------------------------------
 
 

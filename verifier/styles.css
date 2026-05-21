@@ -508,3 +508,37 @@ section h2 {
   background: #f0f4fa;
   border-style: solid;
 }
+
+/* Surfaced by app.js's version watcher when /api/version drifts from the
+   one captured at load. Sits above everything (including the page-view
+   side panel) so the volunteer can't miss it. */
+#update-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 300;
+  background: #2a5fb0;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+  max-width: 380px;
+}
+
+#update-banner button {
+  background: white;
+  color: #2a5fb0;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#update-banner button:hover {
+  background: #f0f4fa;
+}
