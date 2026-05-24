@@ -53,7 +53,11 @@ async function loadBundleFromUrlParam() {
   const path = params.get("bundle");
   if (!path) return false;
   try {
-    const r = await fetch(path);
+    // No-store: bundle JSONs are refreshed by the entrypoint on every
+    // deploy (see scripts/railway_entrypoint.sh's overlay step). A
+    // browser cache hit on a stale bundle would silently feed the old
+    // bbox + entries into the UI.
+    const r = await fetch(path, { cache: "no-store" });
     if (!r.ok) throw new Error(`fetch ${path}: ${r.status}`);
     const bundle = await r.json();
     // If a verified.json exists alongside the bundle, overlay its data so
@@ -63,7 +67,13 @@ async function loadBundleFromUrlParam() {
     const verifiedPath = path.replace(/\.bundle\.json$/, ".verified.json");
     let overlaidFrom = null;  // timestamp string when overlay applied
     try {
-      const vr = await fetch(verifiedPath);
+      // `cache: "no-store"` is load-bearing: this file is rewritten on
+      // every save (`POST /api/save`), and the `/data` static mount sends
+      // ETag/Last-Modified but no Cache-Control. Without `no-store` the
+      // browser will happily reuse a pre-save copy on the next page load,
+      // which displays the OLD value and looks like the save never
+      // happened.
+      const vr = await fetch(verifiedPath, { cache: "no-store" });
       if (vr.ok) {
         const verified = await vr.json();
         applyVerifiedToBundle(bundle, verified);
@@ -182,7 +192,9 @@ function finishInit() {
 // ---- nav + status pill --------------------------------------------------
 
 async function fetchBundleList() {
-  const r = await fetch("/api/bundles");
+  // No-store: status changes on every save and the index list / pill
+  // must reflect that immediately. Tiny payload, no reason to cache.
+  const r = await fetch("/api/bundles", { cache: "no-store" });
   if (!r.ok) throw new Error(`/api/bundles ${r.status}`);
   const data = await r.json();
   state.bundleList = data.bundles || [];
