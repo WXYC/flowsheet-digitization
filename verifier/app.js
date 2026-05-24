@@ -61,16 +61,26 @@ async function loadBundleFromUrlParam() {
     // this, /api/save persists files on disk but the UI re-renders the
     // original Gemini output on every reload — edits "don't save."
     const verifiedPath = path.replace(/\.bundle\.json$/, ".verified.json");
+    let overlaidFrom = null;  // timestamp string when overlay applied
     try {
       const vr = await fetch(verifiedPath);
       if (vr.ok) {
         const verified = await vr.json();
         applyVerifiedToBundle(bundle, verified);
+        const lm = vr.headers.get("last-modified");
+        overlaidFrom = lm || verified.extracted_at || "unknown";
       }
     } catch (e) {
       console.warn("verified.json fetch failed; using model output as-is", e);
     }
     await initBundle(bundle, { bundleUrl: path });
+    if (overlaidFrom) {
+      // Visible cue so the volunteer can tell at a glance whether their
+      // prior edits were restored — if this message is missing on a page
+      // they remember saving, the overlay path failed and Save would
+      // appear "not to persist."
+      setStatus(`Restored your saved edits (last saved ${overlaidFrom}).`);
+    }
     return true;
   } catch (err) {
     setStatus(`Failed to load bundle: ${err.message}`, "error");
