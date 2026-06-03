@@ -8,43 +8,60 @@ of accuracy, header-miss count, and elapsed time per page.
 The pure scoring logic lives in `core/calibration.py` and is unit-tested.
 This file is the CLI + adapter wiring.
 
+Production vs. research adapters:
+
+  Production extraction goes through Gemini (`core/gemini.py`). The
+  Modal adapters below (`modal-churro`, `modal-qwen-vl`,
+  `modal-qwen-vl-quad`) and the local Qwen/Churro adapters are kept
+  here as RESEARCH adapters — they're calibration regression alarms,
+  not a candidate production path. The best Modal adapter scored
+  50/76 matched rows on the 5-golden set; Gemini 3 Pro scored 68/76 on
+  the same set. Any cost band quoted below for a Modal adapter is
+  research/exploration spend if calibrated at corpus scale, not a
+  planned production spend.
+
 Models:
 
   gemini-stored    Read previously-saved Gemini results from `data/results/`.
                    No API call. Use this as the baseline to compare against.
                    Maps `<stem>.png` to `data/results/**/<stem>.json` when
                    the stem encodes `<pdf-stem>-page<NN>` (the convention
-                   the golden README documents).
+                   the golden README documents). Production parity check.
 
-  churro           Run stanford-oval/churro-3B locally via transformers.
-                   Requires: `pip install transformers torch pillow`.
-                   ~3B params, fp16 ≈ 6-8GB RAM/VRAM.
+  churro           [research] Run stanford-oval/churro-3B locally via
+                   transformers. Requires: `pip install transformers torch
+                   pillow`. ~3B params, fp16 ≈ 6-8GB RAM/VRAM.
 
-  qwen-vl          Run Qwen2.5-VL-7B-Instruct locally via transformers.
-                   Requires: `pip install transformers torch pillow`.
-                   For 4-bit quantized variants, use `--qwen-model` to
-                   point at an Unsloth checkpoint.
+  qwen-vl          [research] Run Qwen2.5-VL-7B-Instruct locally via
+                   transformers. Requires: `pip install transformers torch
+                   pillow`. For 4-bit quantized variants, use `--qwen-model`
+                   to point at an Unsloth checkpoint.
 
-  modal-churro     Same as `churro` but the inference runs on a remote
-                   A100 via Modal. ~30-60s per page, no local RAM use.
-                   Requires: `pip install modal && modal token new`.
+  modal-churro     [research] Same as `churro` but the inference runs on a
+                   remote A100 via Modal. ~30-60s per page, no local RAM use.
+                   Requires: `pip install modal && modal token new`. Scored
+                   36/76 on the 5 goldens vs Gemini's 68/76.
 
-  modal-qwen-vl    Same as `qwen-vl`, on Modal A100. Pricing reference:
-                   one golden page ~$0.01-0.02; full 18K-page corpus
-                   run ~$100-200.
+  modal-qwen-vl    [research] Same as `qwen-vl`, on Modal A100. Per-page
+                   spend reference: ~$0.01-0.02. Quality: scored 24/76
+                   pre-grammar, 50/76 with grammar-constrained decoding
+                   (still below Gemini's 68/76).
 
   modal-qwen-vl-quad
-                   Per-quadrant Qwen-VL on Modal: crops the page into
-                   4 sub-images plus a header strip and a footer strip,
+                   [research] Per-quadrant Qwen-VL on Modal: crops the page
+                   into 4 sub-images plus a header strip and a footer strip,
                    calls the model 6x per page, assembles a PageResult
                    locally. Eliminates cross-quadrant content placement
                    errors that the single-shot `modal-qwen-vl` adapter
-                   still suffers. ~6x cost (~$0.06-0.12/page); full
-                   corpus ~$1200-1800.
+                   still suffers. ~6x cost (~$0.06-0.12/page). Quality:
+                   50/76 on the 5 goldens, still below Gemini's 68/76 —
+                   the structural fix didn't close the gap. An 18K-page
+                   corpus run would cost ~$1200-1800 of *exploration*
+                   spend; this is not a planned spend.
 
   local-quadrant-smoke
-                   Local-only crop-quality smoke check: runs Churro
-                   (already on disk) per quadrant on the SAME crops
+                   [research] Local-only crop-quality smoke check: runs
+                   Churro (already on disk) per quadrant on the SAME crops
                    `modal-qwen-vl-quad` produces, then wraps each crop's
                    raw OCR text into the matching `Quadrant`. Pair with
                    --check-row-counts to fail fast on broken cropping
