@@ -361,14 +361,21 @@ def partition_row_lines_by_quadrant(
     # Correction pass: on some pages `_detect_body_mid_y` lands BELOW the
     # bottom-block hour-jock-cell baseline (the anchor at 0.55h prefers the
     # gap below the cell over the true inter-block gap above it). The
-    # baseline line then gets misattributed to the top quadrant, and the
+    # baseline line then gets attributed only to the top quadrant, and the
     # bottom quadrant's first detected line is row 0's BOTTOM rather than
-    # its top — shifting every row crop up by one.
+    # its top — shifting every bottom-quadrant row crop up by one.
     #
     # Signal: the top quadrant's last spacing is significantly larger than
     # the median row spacing across all detected lines (a normal sequence
     # has consistent spacing; an anomalous jump at the end means the last
-    # line belongs to a different sequence — the bottom block).
+    # line is the printed grid line at the inter-block boundary).
+    #
+    # Resolution: that boundary line bounds BOTH bands and must appear in
+    # both partitions. Add it to the bottom quadrant WITHOUT removing it
+    # from the top: the top-quadrant cropper needs it as row N-1's bottom
+    # endpoint (without it, clean-pairing falls back to median-gap stepping
+    # anchored to lines[0], which on pages with a tall first row drifts
+    # below the true grid by half a row per step — Alex's page-34 report).
     if len(all_lines) >= 2:
         median_spacing = float(np.median(np.diff(np.asarray(all_lines))))
         if median_spacing > 0:
@@ -380,6 +387,6 @@ def partition_row_lines_by_quadrant(
                 if len(top_lines) >= 2:
                     last_spacing = top_lines[-1] - top_lines[-2]
                     if last_spacing > _BOTTOM_BASELINE_REATTRIBUTION_RATIO * median_spacing:
-                        moved = top_lines.pop()
-                        out[bottom_pos].insert(0, moved)  # type: ignore[index]
+                        shared = top_lines[-1]
+                        out[bottom_pos].insert(0, shared)  # type: ignore[index]
     return out
