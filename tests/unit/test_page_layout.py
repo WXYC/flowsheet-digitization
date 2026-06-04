@@ -299,31 +299,49 @@ def test_partition_row_lines_finds_content_in_top_band(
     assert total_top > 0, f"{stem}: no row lines detected in top band"
 
 
-def test_partition_row_lines_reattributes_misclassified_bottom_baseline() -> None:
-    """When the top quadrant's last spacing is anomalously large (the line
-    is actually the hour-jock baseline of the bottom block, misattributed
-    because body_mid_y landed below it), it gets moved to the corresponding
-    bottom quadrant.
+def test_partition_row_lines_shares_boundary_line_with_bottom_block() -> None:
+    """When the top quadrant's last spacing is anomalously large, the trailing
+    line is the printed grid line that sits between row N of the top block
+    and the hour-jock cell of the bottom block. That same printed line
+    bounds BOTH bands and must appear in both partitions:
 
-    Pages 20 and 25 of the 1990-04 golden set exhibit this: top_left's last
-    spacing is 100px vs median 75. The fix moves y≈2251 (page25) from
-    top_left to bottom_left.
+      - It is bottom_left's first line (where row 0's bbox needs it as its
+        top edge — without it, the bottom-quadrant crop slides up by one row).
+      - It also remains top_left's LAST line (where row N-1's bbox needs it
+        as its bottom edge — without it, every top-quadrant crop slides up
+        by half a row because clean-pairing falls back to median-gap
+        stepping anchored to lines[0], which on tall first-row pages produces
+        a fixed-step grid that drifts below the true row boundaries).
+
+    Pages 20 and 25 of the 1990-04 golden set show this geometry: top_left's
+    last spacing is 100px vs median 75. The shared-line invariant must hold
+    on both sides.
     """
     stem = "1990-04apr0106-page25"
     image = Image.open(GOLDEN_DIR / f"{stem}.png")
     layout = detect_page_layout(image)
     partitions = partition_row_lines_by_quadrant(image, layout)
-    # bottom_left must start with a line ABOVE body_mid_y (the reattributed
-    # hour-jock baseline). The original first line below body_mid_y was 2352;
-    # after reattribution, ~2251 should now be the new first line.
-    assert partitions["bottom_left"][0] < layout.body_mid_y, (
-        f"expected first bottom_left line to be reattributed above body_mid_y, "
-        f"got {partitions['bottom_left'][0]} vs body_mid_y={layout.body_mid_y}"
+    # bottom_left must start with a line ABOVE body_mid_y (the shared
+    # boundary line). The original first line below body_mid_y was 2352;
+    # the shared line ~2251 should now be the new first line.
+    bottom_first = partitions["bottom_left"][0]
+    assert bottom_first < layout.body_mid_y, (
+        f"expected first bottom_left line to be the shared boundary line above "
+        f"body_mid_y, got {bottom_first} vs body_mid_y={layout.body_mid_y}"
     )
-    # And the spacing from the new first line to the next should be ~one row,
+    # And the spacing from the shared line to the next should be ~one row,
     # accounting for the hour-jock cell baseline at the top.
-    diff = partitions["bottom_left"][1] - partitions["bottom_left"][0]
+    diff = partitions["bottom_left"][1] - bottom_first
     assert 90 < diff < 115, f"unexpected first-row span: {diff}"
+
+    # The same y MUST also remain as top_left's last line — otherwise the
+    # top-quadrant cropper loses an endpoint and falls back to a fixed-step
+    # grid that drifts below the true row boundaries (the page-34
+    # misalignment Alex flagged in the bbox-pathology sweep).
+    assert partitions["top_left"][-1] == bottom_first, (
+        f"expected top_left's last line to be the shared boundary line "
+        f"{bottom_first}, got {partitions['top_left'][-1]}"
+    )
 
 
 def test_partition_row_lines_handles_blank_image() -> None:
