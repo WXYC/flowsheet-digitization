@@ -343,6 +343,43 @@ def test_merge_with_spans_empty_input() -> None:
     assert _merge_with_spans([]) == []
 
 
+def test_merge_with_spans_drops_crossed_out_tag() -> None:
+    """Empirical precision of Gemini's `crossed_out` is ~22% (8 false
+    positives per 11 emits, measured n=20 on 1990-04apr0106 and reproduced
+    on 1990-04apr1318). Stripping the tag at bake time eliminates the
+    false-positive review action; Alex marks the few true positives
+    himself by toggling the dropdown. The raw_text is preserved verbatim —
+    only the notes value is reset."""
+    entries = [
+        Entry(row_index=0, raw_text="Pixies - Debaser", confidence="high", notes="crossed_out"),
+        Entry(row_index=1, raw_text="Sonic Youth - Sugar Kane", confidence="high"),
+    ]
+    result = _merge_with_spans(entries)
+    assert len(result) == 2
+    merged_first, span_first = result[0]
+    assert merged_first.notes is None, "expected crossed_out to be stripped from the bundle output"
+    assert merged_first.raw_text == "Pixies - Debaser"
+    assert span_first == 1
+
+
+def test_merge_with_spans_drops_crossed_out_before_continuation_merge() -> None:
+    """`crossed_out` stripping must happen before the continuation merge,
+    so a crossed_out predecessor doesn't suppress the merge or carry the
+    tag onto a logically-multi-row entry."""
+    entries = [
+        Entry(row_index=0, raw_text="Galaxie 500 -", confidence="high", notes="crossed_out"),
+        Entry(row_index=1, raw_text="Tugboat", confidence="medium", notes="continuation"),
+    ]
+    result = _merge_with_spans(entries)
+    assert len(result) == 1
+    merged, span = result[0]
+    assert merged.raw_text == "Galaxie 500 - Tugboat"
+    assert span == 2
+    # The merged predecessor's tag should be `double_height` from the merge
+    # rule, NOT `crossed_out` (which we just stripped).
+    assert merged.notes == "double_height"
+
+
 # -- make_bundle ------------------------------------------------------------
 
 

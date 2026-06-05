@@ -41,30 +41,19 @@ def test_prompt_lists_every_phase1_notes_tag(tag: str) -> None:
     assert tag in PAGE_EXTRACTION_PROMPT
 
 
-def test_prompt_double_height_emits_single_entry_on_upper_row() -> None:
-    """Drift observed 2026-06-04: fresh Gemini was splitting a 2-grid-row
-    handwritten entry into two Entries and tagging the second one
-    `continuation`, instead of emitting one Entry tagged `double_height`.
-    The prompt must explicitly direct against the split shape — a single
-    `double_height` definition without the negation reproduces the drift."""
+def test_prompt_continuation_describes_split_shape_for_wraps() -> None:
+    """For multi-line wraps, the model should emit the wrap as a separate
+    Entry tagged `continuation` (the natural split shape). The bundle baker
+    merges those into the prior row at write time, so the prompt must NOT
+    ask the model to inline the wrap itself — that would suppress the
+    second printed line's text on cases the model can't visually classify
+    as one-vs-two entries."""
     text = PAGE_EXTRACTION_PROMPT
-    assert "SINGLE Entry" in text
-    # The negation: do not also emit a row on the lower line. Allow either
-    # "separate" or "second" wording — both are valid phrasings of the rule.
-    # Normalise whitespace because the prompt is wrapped.
-    normalised = " ".join(text.lower().split())
-    assert "do not also emit a separate entry on the lower" in normalised or (
-        "do not also emit a second entry on the lower" in normalised
-    )
-
-
-def test_prompt_continuation_definition_excludes_tall_handwriting() -> None:
-    """`continuation` is for the SEPARATE-fragment case (visible arrow /
-    re-write below). The wording must steer the model away from using
-    `continuation` for tall handwriting that spans two grid rows — that
-    case belongs to `double_height`."""
-    # The directive: tall handwriting routes to double_height, not continuation.
-    assert 'use "double_height" instead' in PAGE_EXTRACTION_PROMPT
+    # The wrap-fragment-as-its-own-Entry directive.
+    assert "its own Entry on the lower" in text
+    # The "don't inline" negation that prevents the iter-1 truncation regression.
+    lowered = " ".join(text.lower().split())
+    assert "do not try to inline the wrap" in lowered
 
 
 def test_prompt_crossed_out_excludes_margin_marks() -> None:
@@ -234,17 +223,14 @@ def test_quadrant_template_lists_every_phase1_notes_tag(tag: str) -> None:
     assert tag in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
 
 
-def test_quadrant_template_double_height_emits_single_entry_on_upper_row() -> None:
+def test_quadrant_template_continuation_describes_split_shape_for_wraps() -> None:
+    """Parallel of the PAGE version: wraps emit as their own Entry tagged
+    `continuation`, and the prompt must NOT ask the model to inline the
+    wrap into the prior row."""
     text = QUADRANT_EXTRACTION_PROMPT_TEMPLATE
-    assert "SINGLE Entry" in text
-    normalised = " ".join(text.lower().split())
-    assert "do not also emit a separate entry on the lower" in normalised or (
-        "do not also emit a second entry on the lower" in normalised
-    )
-
-
-def test_quadrant_template_continuation_excludes_tall_handwriting() -> None:
-    assert 'use "double_height" instead' in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+    assert "its own Entry on the lower" in text
+    lowered = " ".join(text.lower().split())
+    assert "do not try to inline the wrap" in lowered
 
 
 def test_quadrant_template_crossed_out_excludes_margin_marks() -> None:

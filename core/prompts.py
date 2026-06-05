@@ -70,30 +70,21 @@ For every row, return:
     ONLY when the visual cue is unambiguous. Read each definition before
     choosing a tag.
 
-      * "double_height" — ONE handwritten entry that visually spans two
-        printed grid rows. The DJ wrote a single song's text but the
-        handwriting is tall, or the artist/track text flows from the upper
-        printed line down into the lower printed line as one continuous
-        piece of writing. Emit a SINGLE Entry on the UPPER printed grid
-        row, with raw_text containing the whole song's text, and tag it
-        "double_height". Do NOT also emit a separate Entry on the lower
-        printed grid row for the same handwritten content — that produces
-        a phantom duplicate row. Example: the artist "Buffy Sainte-Marie"
-        is written on the printed row N and the track "God is Alive,
-        Magic is Afoot" continues on printed row N+1 as one piece of
-        handwriting → emit one Entry with row_index=N, raw_text="Buffy
-        Sainte-Marie - God is Alive, Magic is Afoot", notes="double_height".
+      * "double_height" — a single handwritten entry whose handwriting
+        is tall enough to occupy two printed grid rows but is written as
+        one continuous piece. Emit a SINGLE Entry on the upper printed
+        grid row with the whole song's text in raw_text and notes set to
+        "double_height". (If the entry instead reads as two visually
+        distinct fragments — e.g. the artist on the upper row and a
+        clearly separate track-name fragment on the lower row — use the
+        continuation tag below instead.)
 
-      * "continuation" — RARE in this corpus. Use ONLY when the lower
-        printed grid row contains a SEPARATE handwritten fragment that
-        completes a song started on the row above (different ink stroke,
-        an explicit arrow or bracket carrying the text down, or the DJ
-        clearly ran out of room and re-wrote the tail of the entry below).
-        Emit it as its own Entry on the lower grid row, with the
-        continuation fragment as raw_text and notes="continuation".
-        If you find yourself wanting to use "continuation" because the
-        handwriting itself is tall and flows visually across two rows,
-        use "double_height" instead — that is the same-entry case.
+      * "continuation" — the entry's text wraps onto the next printed
+        grid row. Emit it as its own Entry on the lower printed grid
+        row, with that wrap-fragment as raw_text and notes set to
+        "continuation". A downstream baker merges these into the prior
+        row at write time, so transcribe both rows verbatim — do not
+        try to inline the wrap into the prior entry yourself.
 
       * "crossed_out" — a clear horizontal line (or angry scribble) drawn
         THROUGH the artist/track text, indicating the DJ retracted the
@@ -211,30 +202,21 @@ For every row, return:
     ONLY when the visual cue is unambiguous. Read each definition before
     choosing a tag.
 
-      * "double_height" — ONE handwritten entry that visually spans two
-        printed grid rows. The DJ wrote a single song's text but the
-        handwriting is tall, or the artist/track text flows from the upper
-        printed line down into the lower printed line as one continuous
-        piece of writing. Emit a SINGLE Entry on the UPPER printed grid
-        row, with raw_text containing the whole song's text, and tag it
-        "double_height". Do NOT also emit a separate Entry on the lower
-        printed grid row for the same handwritten content — that produces
-        a phantom duplicate row. Example: the artist "Buffy Sainte-Marie"
-        is written on the printed row N and the track "God is Alive,
-        Magic is Afoot" continues on printed row N+1 as one piece of
-        handwriting → emit one Entry with row_index=N, raw_text="Buffy
-        Sainte-Marie - God is Alive, Magic is Afoot", notes="double_height".
+      * "double_height" — a single handwritten entry whose handwriting
+        is tall enough to occupy two printed grid rows but is written as
+        one continuous piece. Emit a SINGLE Entry on the upper printed
+        grid row with the whole song's text in raw_text and notes set to
+        "double_height". (If the entry instead reads as two visually
+        distinct fragments — e.g. the artist on the upper row and a
+        clearly separate track-name fragment on the lower row — use the
+        continuation tag below instead.)
 
-      * "continuation" — RARE in this corpus. Use ONLY when the lower
-        printed grid row contains a SEPARATE handwritten fragment that
-        completes a song started on the row above (different ink stroke,
-        an explicit arrow or bracket carrying the text down, or the DJ
-        clearly ran out of room and re-wrote the tail of the entry below).
-        Emit it as its own Entry on the lower grid row, with the
-        continuation fragment as raw_text and notes="continuation".
-        If you find yourself wanting to use "continuation" because the
-        handwriting itself is tall and flows visually across two rows,
-        use "double_height" instead — that is the same-entry case.
+      * "continuation" — the entry's text wraps onto the next printed
+        grid row. Emit it as its own Entry on the lower printed grid
+        row, with that wrap-fragment as raw_text and notes set to
+        "continuation". A downstream baker merges these into the prior
+        row at write time, so transcribe both rows verbatim — do not
+        try to inline the wrap into the prior entry yourself.
 
       * "crossed_out" — a clear horizontal line (or angry scribble) drawn
         THROUGH the artist/track text, indicating the DJ retracted the

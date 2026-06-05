@@ -103,6 +103,12 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
       - notes="continuation": folds into the previous logical entry's raw_text
         (verbatim with the existing merge rules) and adds 1 to its span.
       - notes="double_height": stays as a single logical entry but spans 2 rows.
+      - notes="crossed_out": stripped to None before any further processing.
+        Empirical precision of Gemini's `crossed_out` is ~22% on the
+        verified corpus; surfacing the tag generates more false-positive
+        review work than true-positive value. The raw_text is preserved
+        verbatim — only the notes value is reset, so Alex can mark genuine
+        strike-throughs by toggling the dropdown.
       - All others: span 1.
 
     A leading "continuation" with nothing above it is preserved as-is with
@@ -112,7 +118,15 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
     a verifier-geometry concern. The on-disk pipeline doesn't need it.
     """
     result: list[tuple[Entry, int]] = []
-    for entry in entries:
+    for raw_entry in entries:
+        # Strip unreliable `crossed_out` tags before any merge / span logic.
+        # Done first so a stripped crossed_out predecessor can still absorb
+        # a following continuation row instead of blocking the merge.
+        entry = (
+            raw_entry.model_copy(update={"notes": None})
+            if raw_entry.notes == "crossed_out"
+            else raw_entry
+        )
         if entry.notes == "continuation" and result:
             prior, prior_span = result[-1]
             joined = f"{prior.raw_text.rstrip()} {entry.raw_text.lstrip()}".strip()
