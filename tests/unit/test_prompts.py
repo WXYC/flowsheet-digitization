@@ -41,6 +41,46 @@ def test_prompt_lists_every_phase1_notes_tag(tag: str) -> None:
     assert tag in PAGE_EXTRACTION_PROMPT
 
 
+def test_prompt_double_height_emits_single_entry_on_upper_row() -> None:
+    """Drift observed 2026-06-04: fresh Gemini was splitting a 2-grid-row
+    handwritten entry into two Entries and tagging the second one
+    `continuation`, instead of emitting one Entry tagged `double_height`.
+    The prompt must explicitly direct against the split shape — a single
+    `double_height` definition without the negation reproduces the drift."""
+    text = PAGE_EXTRACTION_PROMPT
+    assert "SINGLE Entry" in text
+    # The negation: do not also emit a row on the lower line. Allow either
+    # "separate" or "second" wording — both are valid phrasings of the rule.
+    # Normalise whitespace because the prompt is wrapped.
+    normalised = " ".join(text.lower().split())
+    assert "do not also emit a separate entry on the lower" in normalised or (
+        "do not also emit a second entry on the lower" in normalised
+    )
+
+
+def test_prompt_continuation_definition_excludes_tall_handwriting() -> None:
+    """`continuation` is for the SEPARATE-fragment case (visible arrow /
+    re-write below). The wording must steer the model away from using
+    `continuation` for tall handwriting that spans two grid rows — that
+    case belongs to `double_height`."""
+    # The directive: tall handwriting routes to double_height, not continuation.
+    assert 'use "double_height" instead' in PAGE_EXTRACTION_PROMPT
+
+
+def test_prompt_crossed_out_excludes_margin_marks() -> None:
+    """`crossed_out` was at 27% precision; the prompt must enumerate the
+    common false-positive shapes (margin doodles, asterisks, arrows,
+    underlines, type-column-only marks) so the model recognises them as
+    non-crossed-out."""
+    text = PAGE_EXTRACTION_PROMPT.lower()
+    assert "through the artist/track text" in text
+    false_positives = ["doodle", "asterisk", "arrow", "underline", "type column"]
+    found = sum(1 for fp in false_positives if fp in text)
+    assert found >= 3, (
+        f"expected at least 3 of {false_positives} in the crossed_out clause, found {found}"
+    )
+
+
 @pytest.mark.parametrize("confidence", ["high", "medium", "low"])
 def test_prompt_lists_every_confidence_value(confidence: str) -> None:
     assert f'"{confidence}"' in PAGE_EXTRACTION_PROMPT
@@ -192,6 +232,27 @@ def test_quadrant_template_names_every_entry_field(field: str) -> None:
 @pytest.mark.parametrize("tag", ["continuation", "double_height", "crossed_out", "illegible"])
 def test_quadrant_template_lists_every_phase1_notes_tag(tag: str) -> None:
     assert tag in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+
+
+def test_quadrant_template_double_height_emits_single_entry_on_upper_row() -> None:
+    text = QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+    assert "SINGLE Entry" in text
+    normalised = " ".join(text.lower().split())
+    assert "do not also emit a separate entry on the lower" in normalised or (
+        "do not also emit a second entry on the lower" in normalised
+    )
+
+
+def test_quadrant_template_continuation_excludes_tall_handwriting() -> None:
+    assert 'use "double_height" instead' in QUADRANT_EXTRACTION_PROMPT_TEMPLATE
+
+
+def test_quadrant_template_crossed_out_excludes_margin_marks() -> None:
+    text = QUADRANT_EXTRACTION_PROMPT_TEMPLATE.lower()
+    assert "through the artist/track text" in text
+    false_positives = ["doodle", "asterisk", "arrow", "underline", "type column"]
+    found = sum(1 for fp in false_positives if fp in text)
+    assert found >= 3
 
 
 @pytest.mark.parametrize("confidence", ["high", "medium", "low"])
