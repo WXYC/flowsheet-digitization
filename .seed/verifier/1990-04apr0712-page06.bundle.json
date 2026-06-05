@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-06.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 6,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:12:16.267802+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:32.798000+00:00",
   "page_date_raw": "SAT 4/7/90",
-  "comments_raw": "Silos-\n11/45 f&fl Clear Cold 25-30\nS 62\nFair/Cold 35 M: MS 65-70",
+  "comments_raw": "Silos-\nF&FL Clear Cold 25-30\nS 62\nFair/Cold 35\nM: MS 65-70",
   "oddities": [
-    "A circled '4E\u00b0' or '45\u00b0' is written in the upper-left margin."
+    "A doodle with '4E*' is in a circle in the top left corner margin above the quadrants"
   ],
   "quadrants": [
     {
@@ -20,14 +20,14 @@
         1258,
         2299
       ],
-      "hour_raw": "10 PM",
+      "hour_raw": "10PM",
       "jock_raw": "Jeff & Will",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Cosmic Psychos - Puby Disc",
-          "confidence": "medium",
-          "type_raw": "C",
+          "confidence": "high",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -39,9 +39,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Bootsteppers - Socks Baby",
-          "confidence": "medium",
-          "type_raw": "R",
+          "raw_text": "Bootstrappers - Spiders Baby",
+          "confidence": "high",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -53,8 +53,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Stone Roses - What the World is Waiting For",
-          "confidence": "high",
+          "raw_text": "Stone Roses - Where The World is Exciting For",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -69,7 +69,7 @@
           "row_index": 3,
           "raw_text": "Boozoo Chavis - Zydeco Hee Haw",
           "confidence": "high",
-          "type_raw": "C",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -83,7 +83,7 @@
           "row_index": 4,
           "raw_text": "Wiseblood - Stumbo",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -97,7 +97,7 @@
           "row_index": 5,
           "raw_text": "Mistress Mix - Wicked",
           "confidence": "high",
-          "type_raw": "NJ",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -123,9 +123,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Shawn's Scene From Psycho - White Rabbit",
-          "confidence": "medium",
-          "type_raw": "O",
+          "raw_text": "Shower Scene From Psycho - White Rabbit",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -137,7 +137,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "XTC - This is Pop",
+          "raw_text": "XTC - This Is Pop",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -167,7 +167,7 @@
           "row_index": 10,
           "raw_text": "Kid Creole - I'm Corrupt",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "O.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -180,7 +180,7 @@
         {
           "row_index": 11,
           "raw_text": "Savage Republic - Mapia",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -277,10 +277,10 @@
         },
         {
           "row_index": 4,
-          "raw_text": "[illegible]",
-          "confidence": "low",
+          "raw_text": "Henry Kaiser - Words",
+          "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1258,
@@ -307,10 +307,10 @@
           "row_index": 6,
           "raw_text": "Henry Kaiser - Dark Star",
           "confidence": "medium",
-          "type_raw": "M",
+          "type_raw": "L",
           "notes": null,
           "oddities": [
-            "Part of the track name is crossed out before 'Dark Star'."
+            "the word before Dark Star is crossed out"
           ],
           "row_bbox": [
             1258,
@@ -323,7 +323,7 @@
           "row_index": 7,
           "raw_text": "Jan & Dean - Little Old Lady From Pasadena",
           "confidence": "high",
-          "type_raw": "Hit",
+          "type_raw": "hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -435,7 +435,7 @@
           "row_index": 3,
           "raw_text": "Silos - Porque No",
           "confidence": "high",
-          "type_raw": "RR",
+          "type_raw": "R R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -461,7 +461,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Thee Hypnotics - Preachin' & Ramblin'",
+          "raw_text": "Thee Hypnotics - Preachin & Ramblin",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -589,7 +589,7 @@
           "row_index": 0,
           "raw_text": "Johnny Mathis - Chances Are",
           "confidence": "high",
-          "type_raw": "Hit",
+          "type_raw": "hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -616,7 +616,7 @@
         {
           "row_index": 2,
           "raw_text": "Pagans - Haven't Got the Time",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "C",
           "notes": null,
           "oddities": [],
@@ -657,8 +657,8 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Meters - Handclapping Song/Batches",
-          "confidence": "medium",
+          "raw_text": "Meters - Hand clapping Song/Butches",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -671,9 +671,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Nick Lowe - You Got the Look I like",
+          "raw_text": "Nick Lowe - You Got The Look I Like",
           "confidence": "high",
-          "type_raw": "nv",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -685,35 +685,91 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Tackhead - Demolition House / Free So. Africa Ticking Time Bomb",
+          "raw_text": "Tackhead - Demolition House / Free So. Africa",
           "confidence": "high",
-          "type_raw": "C",
+          "type_raw": "L",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             1258,
             2876,
             2550,
+            3026
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Ticking Time Bomb",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3026,
+            2550,
             3101
           ]
         },
         {
           "row_index": 10,
-          "raw_text": "Lazy Cowgirls - Lose'n Yr Mind Meat Shop Carbona Not Glue Know Yr Product",
+          "raw_text": "Lazy Cowgirls - Lose'n Yr Mind",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1258,
             3101,
+            2550,
+            3176
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Meat Shop",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3176,
+            2550,
+            3250
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "Carbona Not Glue",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3250,
+            2550,
+            3326
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Know Yr Product",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3326,
             2550,
             3400
           ]
         },
         {
           "row_index": 14,
-          "raw_text": "Watermelon Men - Still I'm Dressed In Blue",
+          "raw_text": "Watermelon Men - Still I'm Dressed in Blue",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -727,14 +783,28 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Sam Bush - Last Letter Home \" \" - Norman & Nancy",
+          "raw_text": "Sam Bush - Last Letter Home",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1258,
             3476,
+            2550,
+            3551
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "\" \" - Norman & Nancy",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1258,
+            3551,
             2550,
             3623
           ]

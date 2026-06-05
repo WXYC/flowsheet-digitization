@@ -4,8 +4,8 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-23.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 23,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:17:06.905332+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:36:31.114953+00:00",
   "page_date_raw": "Wed 11 Apr 90",
   "comments_raw": null,
   "oddities": [],
@@ -23,7 +23,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Stewart Copeland - Kojak (O Pollik)",
+          "raw_text": "Stewart Copeland - Kojak (O Pelile)",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -37,13 +37,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Nirvana - Blew What It Is",
-          "confidence": "medium",
+          "raw_text": "Nirvana - Blew",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "The word 'Blew' is struck through and 'What It Is' is written to its right."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             645,
@@ -53,12 +51,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Blue Aeroplanes - ________",
-          "confidence": "medium",
+          "raw_text": "Blue Aeroplanes - What It Is",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The track name is heavily scribbled out and illegible."
+            "the original track name was heavily scribbled out and 'What It Is' is written above it"
           ],
           "row_bbox": [
             0,
@@ -69,7 +67,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Lionel Hampton - The Lady Is A Tramp",
+          "raw_text": "Lionel Hampton - the Lady Is A Tramp",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -83,7 +81,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Sinead O'Connor - Jump in the River",
+          "raw_text": "Sinead O Connor - Jump in the River",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -97,8 +95,8 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Brave Combo - O Holy Night Cha cha cha",
-          "confidence": "high",
+          "raw_text": "Bova Combo - c'Mon N' do tha chacha",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -111,7 +109,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Public Enemy - Pollywanacraka",
+          "raw_text": "Public Enemy - Pellywoocruka",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -169,7 +167,7 @@
           "row_index": 10,
           "raw_text": "Faith No More - Epic",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -181,9 +179,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "The Mission U.K. - Sea of Love",
+          "raw_text": "The Mission U.K - Sea of Love",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -195,7 +193,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Chet Atkins - A Mouse In the House",
+          "raw_text": "Chet Atkins - A Mouse In The House",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -239,7 +237,7 @@
           "row_index": 0,
           "raw_text": "Loop - Afterglow",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -253,7 +251,7 @@
           "row_index": 1,
           "raw_text": "Alice Donut - Lisa's Father (Waka's Baby)",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -265,12 +263,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Buffalo Tom - Sunflower Suit",
-          "confidence": "medium",
-          "type_raw": null,
-          "notes": "crossed_out",
+          "raw_text": "(oops,- wrong stereotype)",
+          "confidence": "high",
+          "type_raw": "com",
+          "notes": null,
           "oddities": [
-            "Small text '(Oops - Wrong Stereotype)' is written just above this entry."
+            "the type column has 'com' written in it"
           ],
           "row_bbox": [
             1281,
@@ -281,9 +279,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Coleman Hawkins - Flyin' Hawk",
+          "raw_text": "Buffalo Tom - Sunflower Suit",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -295,7 +293,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Voodoo Gearshift - China Wall",
+          "raw_text": "Coleman Hawkins - Flyin' Hawk",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -309,9 +307,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Lloyd Cole - No Blue Skies",
+          "raw_text": "Voodoo Gearshift - China Wall",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -323,9 +321,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Brazil Forr\u00f3 : Jose Orlando - Menina do Pelourinho",
-          "confidence": "medium",
-          "type_raw": "H",
+          "raw_text": "Lloyd Cole - No Blue Skies",
+          "confidence": "high",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -337,9 +335,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Blue Oyster Cult - E.T.I.",
-          "confidence": "high",
-          "type_raw": "O",
+          "raw_text": "Brazil Forro: Jose Orlando - Meren do Pele",
+          "confidence": "medium",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -351,13 +349,11 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Clint Eastwood & General Saint - Stop That Train",
+          "raw_text": "Blue Oyster Cult - E.T.I.",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "The word 'Train' drops to the next physical line on the grid."
-          ],
+          "oddities": [],
           "row_bbox": [
             1281,
             1853,
@@ -367,37 +363,25 @@
         },
         {
           "row_index": 9,
-          "raw_text": "The Johnson Mtn. Boys - Are You Afraid To Die",
+          "raw_text": "Clint Eastwood + General Saint - Stop that Train",
           "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
+          "type_raw": "std",
+          "notes": "double_height",
+          "oddities": [
+            "the text is written below the main line but above the next printed grid row"
+          ],
           "row_bbox": [
             1281,
             1928,
-            2550,
-            2003
-          ]
-        },
-        {
-          "row_index": 10,
-          "raw_text": "Yo La Tengo - Clunk",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1281,
-            2003,
             2550,
             2078
           ]
         },
         {
           "row_index": 11,
-          "raw_text": "Asson Garden - Armistice",
+          "raw_text": "The Johnson Mtn. Boys - Are You Afraid To die",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -409,9 +393,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "The House of Love - Hedonist",
+          "raw_text": "Yo La Tengo - Clunk",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -423,9 +407,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Schooly D - Gucci Again",
+          "raw_text": "Asson Garden - Armistice",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -437,6 +421,34 @@
         },
         {
           "row_index": 14,
+          "raw_text": "The House of Love - Hedonist",
+          "confidence": "high",
+          "type_raw": "M",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2302,
+            2550,
+            2302
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Schooly D - Gucci Again",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2302,
+            2550,
+            2302
+          ]
+        },
+        {
+          "row_index": 16,
           "raw_text": "The Pandoras - It's About Time",
           "confidence": "high",
           "type_raw": "O",
@@ -465,8 +477,8 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "The Chills - Dead Web",
-          "confidence": "high",
+          "raw_text": "The Chills - Part Past",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -479,9 +491,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Pailhead - I Will Refuse",
+          "raw_text": "Radiohead - I Will Praise",
           "confidence": "medium",
-          "type_raw": "O",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -493,8 +505,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Judy Mowatt - Thank",
-          "confidence": "medium",
+          "raw_text": "Judy Mowatt - Think",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -509,11 +521,9 @@
           "row_index": 3,
           "raw_text": "The Replacements - Color Me Impressed",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "std",
           "notes": null,
-          "oddities": [
-            "The label 'Std' is written to the upper left, outside the type circle."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2577,
@@ -523,12 +533,12 @@
         },
         {
           "row_index": 4,
-          "raw_text": "The Silos - Commodore",
+          "raw_text": "The Silos - Courage Pete",
           "confidence": "medium",
-          "type_raw": "H",
+          "type_raw": "M",
           "notes": null,
           "oddities": [
-            "The track name 'Commodore' is written over a scribbled-out word."
+            "part of track title crossed out"
           ],
           "row_bbox": [
             0,
@@ -583,10 +593,10 @@
           "row_index": 8,
           "raw_text": "Toadstool - Nothing But Teeth",
           "confidence": "high",
-          "type_raw": "*",
+          "type_raw": "New Vinyl",
           "notes": null,
           "oddities": [
-            "The text 'Nu.Vinyl' is written above the type circle."
+            "the type column has 'New Vinyl' written over the type-column circle"
           ],
           "row_bbox": [
             0,
@@ -597,14 +607,30 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Ivo Papasov - Mamo Mori Mamo His Bulgarian wedding band",
+          "raw_text": "Ivo Papasov - Marno Mamo Mamo",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             3028,
+            1281,
+            3086
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "This Belgium wedding band",
+          "confidence": "medium",
+          "type_raw": "New Vinyl",
+          "notes": null,
+          "oddities": [
+            "the type column has 'New Vinyl' written over the type-column circle"
+          ],
+          "row_bbox": [
+            0,
+            3086,
             1281,
             3100
           ]
@@ -612,11 +638,11 @@
         {
           "row_index": 11,
           "raw_text": "Super Hits of the 70's",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [
-            "The label 'Nu.Vinyl' is written vertically in the left margin next to this struck-through section."
+            "a small text fragment \"K-Tel TV drop Click + The\" is visible and partly crossed out between this and the next row"
           ],
           "row_bbox": [
             0,
@@ -655,7 +681,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Tar Babies - Stool Pigeon",
+          "raw_text": "Radiohead - Stop Whispering",
           "confidence": "medium",
           "type_raw": "L",
           "notes": null,
@@ -670,7 +696,7 @@
         {
           "row_index": 15,
           "raw_text": "T-Bone Walker - Cold Hearted Woman",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -711,7 +737,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "The Bevis Frond - Olde Worlde",
+          "raw_text": "The Devil's Front - Old + Boulder",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -725,8 +751,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Sun Ra's Pygmees - Upon His Death",
-          "confidence": "medium",
+          "raw_text": "Swanee's Pygmies - Upon My Death",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -739,12 +765,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Fela Ransome Kuti - Egbe M. O (Olinga)",
-          "confidence": "high",
+          "raw_text": "Fela Ransome Kuti - Egbe M O (Carry Me I Want To Die",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "Faint text reading 'I went to w-' is written below the track name."
+            "track title wraps and is written slightly below the main line"
           ],
           "row_bbox": [
             1281,
@@ -757,10 +783,10 @@
           "row_index": 4,
           "raw_text": "The Stump Wizards - I Got A Way",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "Nu Vinyl",
           "notes": null,
           "oddities": [
-            "The text 'Nu.Vinyl' is written to the left of the type circle."
+            "the type column has 'Nu Vinyl' written over the type-column circle"
           ],
           "row_bbox": [
             1281,
@@ -771,9 +797,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Nice Strong Arm - White Wonder",
+          "raw_text": "Nice Strong Arm - While Wanton",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -813,12 +839,12 @@
         },
         {
           "row_index": 8,
-          "raw_text": "101 Proof Zydeco - Johnny Can't Dance",
-          "confidence": "medium",
+          "raw_text": "101 Pier Zydeco - Johnny Can't Dance (Clifton Chenier)",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "The name '(Clifton Chenier)' is written slightly below the end of this entry."
+            "(Clifton Chenier) is written below the main line"
           ],
           "row_bbox": [
             1281,
@@ -829,8 +855,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Tooth & Icepick - Robutussin Peg",
-          "confidence": "high",
+          "raw_text": "Isotally Icepick - Peb Toss a Peg",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -843,8 +869,8 @@
         },
         {
           "row_index": 10,
-          "raw_text": "The Mthembu Queens - Wozilisa Umuzi",
-          "confidence": "medium",
+          "raw_text": "The Mthembu Queens - Wadeliva Umozi",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -857,7 +883,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Bad Checks - Look At The Moon",
+          "raw_text": "Bad Checks - Look At the Moon",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -871,9 +897,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Duke Ellington - Take the A Train",
+          "raw_text": "Duke Ellington - Take the A' Train",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -899,12 +925,12 @@
         },
         {
           "row_index": 14,
-          "raw_text": "The Whitstein Bros - Meaning of the Word",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "The Whitstein Bros. - Manna on the Hill",
+          "confidence": "high",
+          "type_raw": "Ni Uyl",
           "notes": null,
           "oddities": [
-            "The label 'Nu.Vinyl' is written over the space where the type circle would be."
+            "the type column has 'Ni Uyl' written over the type-column circle"
           ],
           "row_bbox": [
             1281,
@@ -915,9 +941,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Redhead Kingpin and the F.B.I. - Do the Right Thing",
+          "raw_text": "Redhead Kingpin and the F.B.I - Do the Right Thang",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [

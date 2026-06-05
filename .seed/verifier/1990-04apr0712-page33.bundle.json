@@ -4,13 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-33.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 33,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:01:48.191145+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:38:12.561211+00:00",
   "page_date_raw": "Thur 12 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "The text 'Salt N Pepa: Push It' is written at the top right above the WXYC address block.",
-    "A weather note is written below the WXYC address block reading: '7:07 58\u00b0 cold frost 60\u00b0 tomorrow'."
+    "handwritten text 'Salt N Pepa : Push It' in top right margin",
+    "handwritten note about weather '7:07 58\u00b0 cold frost 60\u00b0 tomorrow' in top right margin below station address"
   ],
   "quadrants": [
     {
@@ -22,16 +22,17 @@
         2302
       ],
       "hour_raw": "6pm",
-      "jock_raw": "Etha",
+      "jock_raw": "Ethan",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Muzsikas - Vetettem Violat",
-          "confidence": "medium",
+          "raw_text": "Muzikas - Vetellam Violat",
+          "confidence": "low",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "left margin has a hand-drawn arrow pointing to this row"
+            "arrow drawn pointing to the row above this quadrant",
+            "circle is drawn in left margin"
           ],
           "row_bbox": [
             0,
@@ -44,11 +45,9 @@
           "row_index": 1,
           "raw_text": "Saffire - Three Time loser",
           "confidence": "high",
-          "type_raw": "N1's",
+          "type_raw": "N/S",
           "notes": null,
-          "oddities": [
-            "left margin has a hand-drawn back-arrow near the type circle"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             650,
@@ -58,8 +57,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Embarrassment - Career",
-          "confidence": "high",
+          "raw_text": "Eminriassment - Ciseen",
+          "confidence": "low",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -72,7 +71,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Down the Tube Station At Midnight Jam",
+          "raw_text": "Down the Tube Station at Midnight Jam",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -142,7 +141,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "3 Japanese - Moving to Burn",
+          "raw_text": "3 Japanese - Money to Burn",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -175,7 +174,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "the text 'Local Cart' is written over and near the type column circle"
+            "annotation 'local cart' near type circle"
           ],
           "row_bbox": [
             0,
@@ -186,9 +185,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Thin White Rope - Yoo Doo Right",
+          "raw_text": "Thin White Rope - You Do Right",
           "confidence": "high",
-          "type_raw": "PPB",
+          "type_raw": "PRB",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -200,8 +199,8 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Savage Republic - Mvopia",
-          "confidence": "medium",
+          "raw_text": "Savage Republic - Muppia",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -256,7 +255,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Area - 25 w/ Louise",
+          "raw_text": "Area-25 W/ Louise",
           "confidence": "high",
           "type_raw": "Std?",
           "notes": null,
@@ -272,11 +271,9 @@
           "row_index": 3,
           "raw_text": "Killing Joke - Let's All Go (To the Fire Dance)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "type column circle is completely scribbled out"
-          ],
+          "oddities": [],
           "row_bbox": [
             1278,
             800,
@@ -328,11 +325,13 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Baclea - Tell Me",
-          "confidence": "medium",
+          "raw_text": "Bangles - Tell Me",
+          "confidence": "high",
           "type_raw": "Std",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "annotation 'John Zorn' in right margin"
+          ],
           "row_bbox": [
             1278,
             1100,
@@ -347,7 +346,7 @@
           "type_raw": "Std",
           "notes": null,
           "oddities": [
-            "the 'Std' in the type column is crossed out"
+            "annotation 'Violent Femmes' in right margin"
           ],
           "row_bbox": [
             1278,
@@ -358,7 +357,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Daniel Johnston / Jad Fair - TNK",
+          "raw_text": "Daniel Johnston/Jad Fair - TNK",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -372,7 +371,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Violent Femmes/HofD - BlackGirls",
+          "raw_text": "Violent Femmes/Hof D - Black Girls",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -386,7 +385,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "PsycheFunkapus - Young Love Is A Bitch",
+          "raw_text": "PsycheFunKapus - Young Love Is A Bitch",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -400,7 +399,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "That Pet. Emot - Sweet Shiver Burn",
+          "raw_text": "That Pet Emot - Sweet Shivers Burn",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -428,7 +427,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Yo La Tengo - Asparagus Song",
+          "raw_text": "Yo La Tengo - Asparagas Song",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -441,9 +440,7 @@
           ]
         }
       ],
-      "oddities": [
-        "the text 'John Zorn+ Violent Femme' is written in the right margin spanning rows 7 and 8"
-      ]
+      "oddities": []
     },
     {
       "position": "bottom_left",
@@ -454,7 +451,7 @@
         4061
       ],
       "hour_raw": "7",
-      "jock_raw": "Etha",
+      "jock_raw": "Ethan",
       "entries": [
         {
           "row_index": 0,
@@ -472,13 +469,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Roy Acuff - Sweep Around Your Own Back Door",
+          "raw_text": "Ray Ault - Sweep Around Your Own Back Door",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
-          "oddities": [
-            "left margin has a hand-drawn arrow pointing to this row"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2427,
@@ -488,7 +483,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Stump - Charlton Heston",
+          "raw_text": "Stumps - Charlton Heston",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -502,7 +497,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "MC 900 ft Jesus - Truth is Out of Style",
+          "raw_text": "MC 900 Ft Jesus - Truth is Out of Style",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -545,7 +540,7 @@
         {
           "row_index": 7,
           "raw_text": "Lava Love - I Dig, You Dig",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -558,7 +553,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Brian Jackson & Gil Scott-Heron H2Ogate Blues/ Peace Go w/ You",
+          "raw_text": "Brian Jackson & Gil Scott-Heron 1970 gate Blues / Peace Go w/ You",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -576,9 +571,7 @@
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "left margin has a hand-drawn arrow pointing to this row"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3103,
@@ -616,13 +609,11 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Felt - Get Out of My Mirror",
+          "raw_text": "Felt - Get Out Of My Mirror",
           "confidence": "high",
-          "type_raw": "m",
+          "type_raw": "M",
           "notes": null,
-          "oddities": [
-            "left margin has a hand-drawn arrow pointing to this row"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3328,
@@ -632,7 +623,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Herbie Hancock - Hang up Your Hang Ups",
+          "raw_text": "Herbie Hancock - Hang Up Your Hang Ups",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -656,7 +647,7 @@
         4061
       ],
       "hour_raw": null,
-      "jock_raw": "j k weston",
+      "jock_raw": "jkweston",
       "entries": [
         {
           "row_index": 0,
@@ -674,8 +665,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Death Of Sam - Do It",
-          "confidence": "medium",
+          "raw_text": "Death of Sam - Do It",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -744,7 +735,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Salt N Pepa - Push It+",
+          "raw_text": "Salt N Pepa - Push It",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
@@ -814,8 +805,8 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Wrecks - Solid X",
-          "confidence": "medium",
+          "raw_text": "Wrecks - Soul X",
+          "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [],

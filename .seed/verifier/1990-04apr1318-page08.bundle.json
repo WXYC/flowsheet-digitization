@@ -4,8 +4,8 @@
   "image_path": "../pages/1990/April 1990/1990-04apr1318/page-08.png",
   "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
   "page_number": 8,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:04:15.307456+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T12:58:52.536583+00:00",
   "page_date_raw": "Saturd 14 Apr 90",
   "comments_raw": null,
   "oddities": [],
@@ -18,14 +18,14 @@
         1264,
         2302
       ],
-      "hour_raw": "6 Am",
+      "hour_raw": "6Am",
       "jock_raw": "Mary Beth Ross",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "That Petrol Emotion Another Day",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -112,7 +112,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "the type column circle is heavily scribbled over"
+            "circle contains a scribbled mark"
           ],
           "row_bbox": [
             0,
@@ -125,7 +125,7 @@
           "row_index": 7,
           "raw_text": "Thin White Rope The Napkin Song",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "X",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -137,7 +137,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Scrawl I Can't Relax",
+          "raw_text": "Scrawl I Cant Relax",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -169,7 +169,9 @@
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "text 'Slow Bus Movin'' written in small letters above main line"
+          ],
           "row_bbox": [
             0,
             1326,
@@ -209,7 +211,7 @@
           "row_index": 13,
           "raw_text": "The Silos Caroline",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -221,9 +223,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Luka Bloom An Irishman in Chinatown",
-          "confidence": "high",
-          "type_raw": "L",
+          "raw_text": "Luka Bloom an Irishman in Chinatown",
+          "confidence": "medium",
+          "type_raw": "(L)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -263,7 +265,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Bob Marley - Wake Up & Live",
+          "raw_text": "Bob Marley - Wake Up + Live",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -307,7 +309,7 @@
           "row_index": 3,
           "raw_text": "Bad Checks - Look At That Moon",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "(M)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -320,11 +322,11 @@
         {
           "row_index": 4,
           "raw_text": "Golden Palominos - Animal",
-          "confidence": "high",
-          "type_raw": "std",
+          "confidence": "medium",
+          "type_raw": "std O",
           "notes": null,
           "oddities": [
-            "the text in the type column is crossed out"
+            "type circle has 'std' with a heavy 'O' written over it"
           ],
           "row_bbox": [
             1264,
@@ -337,10 +339,10 @@
           "row_index": 5,
           "raw_text": "Birdland - Wanted",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [
-            "a horizontal line extends into the right margin off the edge of the page"
+            "thick black marker line drawn next to entry extending into right margin"
           ],
           "row_bbox": [
             1264,
@@ -351,7 +353,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "P Bones - Super Freak y",
+          "raw_text": "FBones - Super Freaky",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -409,10 +411,10 @@
           "row_index": 10,
           "raw_text": "Odetta - Children Go Where I Send Thee",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "(L)",
           "notes": null,
           "oddities": [
-            "marginal annotation 'Fest Folk' to the right of the entry"
+            "annotation 'Fast Folk' in right margin"
           ],
           "row_bbox": [
             1264,
@@ -438,8 +440,8 @@
         {
           "row_index": 12,
           "raw_text": "Muzikas - Vetettem Violat",
-          "confidence": "medium",
-          "type_raw": "H",
+          "confidence": "high",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -453,7 +455,7 @@
           "row_index": 13,
           "raw_text": "Nice Strong Arm - White Wonder",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -479,7 +481,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Fleetwood Mac Secondhand News",
+          "raw_text": "Fleetwood Mac Second Hand News",
           "confidence": "high",
           "type_raw": "hit",
           "notes": null,
@@ -493,7 +495,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Feelies Everybody's Got Something to Hide (Except Me & My Monkey)",
+          "raw_text": "Follies Everybody's Got Something to Hide Except Me & My Monkey",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -509,7 +511,7 @@
           "row_index": 2,
           "raw_text": "Sacred Miracle Cave Summertime",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -521,9 +523,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Naked City a Shot in the Dark",
+          "raw_text": "Naked City A Shot in the Dark",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -537,7 +539,7 @@
           "row_index": 4,
           "raw_text": "Sinead O'Connor The Emperor's New Clothes",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "(M)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -565,7 +567,7 @@
           "row_index": 6,
           "raw_text": "Robyn Hitchcock Flesh Cartoons",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -633,9 +635,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Arson Garden Two Sisters (Lace All Around Them)",
+          "raw_text": "Arson Garden Two Sisters (Have all Around Them)",
           "confidence": "medium",
-          "type_raw": "L",
+          "type_raw": "(L)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -647,9 +649,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Cecil Taylor Pathways & Abyss",
+          "raw_text": "Cecil Taylor Pethro Y pitting the abyss",
           "confidence": "medium",
-          "type_raw": "M",
+          "type_raw": "(M)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -731,8 +733,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Lavern Baker - Manana",
-          "confidence": "medium",
+          "raw_text": "LaVern Baker - Jim Dandy",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -761,7 +763,7 @@
           "row_index": 4,
           "raw_text": "Flat Duo Jets - Chiquita",
           "confidence": "medium",
-          "type_raw": "PRO",
+          "type_raw": "PAB",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -787,9 +789,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Giant Sand - Drums & Guitars",
+          "raw_text": "Giant Sand - Drums & Guitar",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "(M)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -801,11 +803,13 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Nick Lowe - I Don't Know Why You Keep Me By",
-          "confidence": "high",
+          "raw_text": "Nick Lowe - I Don't Know Why Keep Me ()",
+          "confidence": "medium",
           "type_raw": "NUV",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "text runs off edge of page in right margin"
+          ],
           "row_bbox": [
             1264,
             2884,
@@ -831,7 +835,7 @@
           "row_index": 9,
           "raw_text": "Caterwaul - Small Things in Heaven",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "(L)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -843,7 +847,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Beat Farmers - Ridin",
+          "raw_text": "Beat Farmers - Ridin'",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -857,9 +861,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Blue Aeroplanes - . . And Stones",
+          "raw_text": "Blue Aeroplanes - ... And stones",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -885,7 +889,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Rubettes - Rock Is Dead",
+          "raw_text": "Rubettes - Rock is Dead",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -901,7 +905,7 @@
           "row_index": 14,
           "raw_text": "Who - Long Live Rock",
           "confidence": "high",
-          "type_raw": "hit",
+          "type_raw": "Hot",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -914,7 +918,7 @@
         {
           "row_index": 15,
           "raw_text": "Groovy Goolies - Look For You",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -929,10 +933,10 @@
           "row_index": 16,
           "raw_text": "Toinho De Alagoas - Sonho De Amor",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [
-            "annotation 'Forro Brasil' extends upward into the empty right margin of the previous line"
+            "annotation 'Forro Brazil' in right margin"
           ],
           "row_bbox": [
             1264,
@@ -944,8 +948,8 @@
         {
           "row_index": 17,
           "raw_text": "Mthembu Queens - Wadiliza Umuzi",
-          "confidence": "medium",
-          "type_raw": "H",
+          "confidence": "high",
+          "type_raw": "(H)",
           "notes": null,
           "oddities": [],
           "row_bbox": [

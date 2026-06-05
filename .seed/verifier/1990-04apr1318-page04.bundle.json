@@ -4,13 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr1318/page-04.png",
   "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
   "page_number": 4,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:03:08.363358+00:00",
-  "page_date_raw": "Fri. 13 Apr 90 Erectus Mastae beside KFC 10pm",
-  "comments_raw": "Today: hi MS 60\u00b0\nTonight lo: Fair lo 35-40\u00b0\nTom. hi M Cloud chance\nmid 60's 30% rain\nelvis Costello -\nSweet\nDrea",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T12:59:34.044020+00:00",
+  "page_date_raw": "Fri 13 Apr 90",
+  "comments_raw": "Massacre - Exploited\nToday: hi MS 60\u00b0\nTonight lo: Fair to 35-40\u00b0\nTom: hi MCloud chnce\nmid 60's 30% rain\nelvis costello - Sweet Drea",
   "oddities": [
-    "A block of scribbled text at the top right includes 'Batmen - Poison', 'Exploited Massix', 'Frank Zappa In France', 'The Fluid Tin Top Toy', 'Broad + Main in Durham', and 'John Lee Hooker Wobbling Baby'.",
-    "Diagonal note 'maggi - Exploited' with an arrow pointing up is written across the bottom-left corner."
+    "The top margin contains several messy scribbles including 'JohnLeeHooker Wobbling Baby', 'Frank Zappa In France', 'Erectus Mustae beside KFC 10p', and other crossed-out words."
   ],
   "quadrants": [
     {
@@ -22,7 +21,7 @@
         2303
       ],
       "hour_raw": "2PM",
-      "jock_raw": "Behe",
+      "jock_raw": "Bebe",
       "entries": [
         {
           "row_index": 0,
@@ -54,7 +53,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Angels - The Charm of Epistemology",
+          "raw_text": "Angels - The Charm / of Epistemology",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -68,7 +67,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Whitstein Bros - There's An Open Door Waiting",
+          "raw_text": "Whitstein Bros - There's An Open / Door Waiting",
           "confidence": "high",
           "type_raw": "NV",
           "notes": "double_height",
@@ -180,8 +179,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Dead Boys - Caught w/ Meat in Mo.",
-          "confidence": "medium",
+          "raw_text": "Dead Boys - Caught w/ Meat in Yo.",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -194,13 +193,11 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Jello Biafra/No Means No - Falling Space",
+          "raw_text": "Jello Biafra / NoMeansNo - Falling Space Junk",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "Text 'Mat-Club' is written in the right margin spanning this row and the next."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1627,
@@ -225,8 +222,8 @@
         {
           "row_index": 16,
           "raw_text": "King Crimson - Thela Hun Ginjeet",
-          "confidence": "medium",
-          "type_raw": "Std",
+          "confidence": "high",
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -238,7 +235,7 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Bevis Frond - Lord Plantiful Reflects",
+          "raw_text": "Bevis Frond - Lord Plentiful Reflects",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -275,12 +272,12 @@
         2550,
         2303
       ],
-      "hour_raw": "4PM",
-      "jock_raw": "1/led fizz",
+      "hour_raw": "4pm",
+      "jock_raw": "1/lid hinge",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Black Sun Ensemble Bleeding Heart",
+          "raw_text": "Black Sun Ensemble - Bleeding Heart",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -294,7 +291,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Das Damen Riding On the Rocket",
+          "raw_text": "Das Damen - Riding On the Rocket",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -308,7 +305,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Sylvia Juncosa 1 in 3",
+          "raw_text": "Sylvia Juncosa - 1 in 3",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -322,7 +319,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Silos We'll Go Out of Town",
+          "raw_text": "Silos - We'll Go Out of Town",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -336,7 +333,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Billy Syndrome Tell the Truth",
+          "raw_text": "Billy Syndrome - Tell the Truth",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -350,7 +347,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Gunsels & Zealots Hard World",
+          "raw_text": "Gunsels & Zealots - Hard World",
           "confidence": "high",
           "type_raw": "LC",
           "notes": null,
@@ -364,13 +361,11 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Frank Zappa In France",
+          "raw_text": "Frank Zappa - In France",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
-          "oddities": [
-            "There is a small C inside a circle next to the Std mark."
-          ],
+          "oddities": [],
           "row_bbox": [
             1260,
             1024,
@@ -380,7 +375,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "The Fluid Tin Top Toy",
+          "raw_text": "The Fluid - Tin Top Toy",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -394,12 +389,12 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Barry Reid The System",
+          "raw_text": "Barry Reid - The System",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
           "oddities": [
-            "A note in parenthesis '(Augustus Pablo Rocker's Story)' is written to the right of this entry."
+            "marginal note '(Augustus Pablo Rocker's Story)' next to entry"
           ],
           "row_bbox": [
             1260,
@@ -410,7 +405,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Midnight Oil King of the Mountain",
+          "raw_text": "Midnight Oil - King of the Mountain",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -424,12 +419,12 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Chocolate Watchband Sweet Young Thing",
+          "raw_text": "Shoes Chocolate Watchband - Sweet Young Thing",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "The word 'The' before 'Chocolate' is crossed out."
+            "the word 'Shoes' is crossed out"
           ],
           "row_bbox": [
             1260,
@@ -440,9 +435,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "John Lee Hooker Wobbling Baby",
+          "raw_text": "John Lee Hooker - Wobbling Baby",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "O R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -454,7 +449,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Naked City Batman",
+          "raw_text": "Naked City - Batman",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -468,7 +463,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Vanilla Trainwreck Naked on A Train",
+          "raw_text": "Vanilla Trainwreck - Naked on a Train",
           "confidence": "high",
           "type_raw": "LC",
           "notes": null,
@@ -482,7 +477,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Daniel Johnston Careless Soul/Funeral Home",
+          "raw_text": "Daniel Johnston - Careless Soul / Funeral Home",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -496,7 +491,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "House of Love Hedonist",
+          "raw_text": "House of Love - Hedonist",
           "confidence": "high",
           "type_raw": "m",
           "notes": null,
@@ -509,9 +504,7 @@
           ]
         }
       ],
-      "oddities": [
-        "The text 'finge' is written above the Jock name '1/led fizz'."
-      ]
+      "oddities": []
     },
     {
       "position": "bottom_left",
@@ -522,7 +515,7 @@
         4068
       ],
       "hour_raw": null,
-      "jock_raw": "Behe",
+      "jock_raw": "Bebe",
       "entries": [
         {
           "row_index": 0,
@@ -530,9 +523,7 @@
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
-          "oddities": [
-            "The letter K at the end has a circle drawn around it."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2353,
@@ -542,7 +533,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Sonic Youth - Catholic Block",
+          "raw_text": "Sonic Youth - Catholic block",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -556,9 +547,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Heart - Bebe Le Strange",
+          "raw_text": "Heart - Bebe le Strange",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -584,7 +575,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Furry Lewis - Good Looking Girl Blues",
+          "raw_text": "Furry Lewis - Good looking Girl Blues",
           "confidence": "high",
           "type_raw": "Blues 1927",
           "notes": null,
@@ -600,7 +591,7 @@
           "row_index": 5,
           "raw_text": "Soul Asylum - Ship of Fools",
           "confidence": "high",
-          "type_raw": "Std/O",
+          "type_raw": "Std/o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -669,8 +660,8 @@
         {
           "row_index": 10,
           "raw_text": "Bongos - #'s w/ wing",
-          "confidence": "high",
-          "type_raw": "Std",
+          "confidence": "medium",
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -682,7 +673,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Lush - Leaves Me Cold",
+          "raw_text": "Lush - leaves me cold",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -696,10 +687,10 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Dub Syndicate - [illegible]",
-          "confidence": "low",
+          "raw_text": "Dub Syndicate - Stoned Immaculate",
+          "confidence": "high",
           "type_raw": "H",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -710,7 +701,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Roof Um Baff",
+          "raw_text": "Boof Vm Baff",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -754,7 +745,7 @@
           "row_index": 16,
           "raw_text": "Fall - Hilary",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "N",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -766,7 +757,7 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Skunk - Good to Your Earhole",
+          "raw_text": "Skunk - Good to your Earhole",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -794,13 +785,11 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Mighty Diamonds Pass the Koutchie",
+          "raw_text": "Mighty Diamonds - Pass the Koutchie",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "c Std",
           "notes": null,
-          "oddities": [
-            "There is a small C inside a circle next to the Std mark."
-          ],
+          "oddities": [],
           "row_bbox": [
             1260,
             2353,
@@ -810,7 +799,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Kiss I Stole Your Love",
+          "raw_text": "Kiss - I Stole Your Love",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -824,9 +813,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Bob Mould Poison Years",
+          "raw_text": "Bob Mould - Poison Years",
           "confidence": "high",
-          "type_raw": "P",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -838,7 +827,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Public Enemy Who Stole the Soul",
+          "raw_text": "Public Enemy - Who Stole the Soul",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -852,7 +841,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Sister Carol Potential",
+          "raw_text": "Sister Carol - Potential",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -866,7 +855,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Cop Shoot Cop Discone #666",
+          "raw_text": "Cop Shoot Cop - Discome No 666",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -880,7 +869,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Cecil Taylor In Florescence",
+          "raw_text": "Cecil Taylor - In Florescence",
           "confidence": "high",
           "type_raw": "m",
           "notes": null,
@@ -894,7 +883,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Porn Orchard No Time To Hide",
+          "raw_text": "Porn Orchard - No Time To Hide",
           "confidence": "high",
           "type_raw": "C",
           "notes": null,
@@ -908,7 +897,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Robyn Hitchcock Agony of Pleasure",
+          "raw_text": "Robyn Hitchcock - Agony of Pleasure",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -922,7 +911,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Mamas Madam Bozo",
+          "raw_text": "Mamon - Madam Bozo",
           "confidence": "high",
           "type_raw": "C",
           "notes": null,
@@ -936,7 +925,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Sheila Chandra Shanti Shanti Shanti",
+          "raw_text": "Sheila Chadra - Shanti Shanti Shanti",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -950,7 +939,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Pure Joy Dead",
+          "raw_text": "Pure Joy - Dead",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -964,13 +953,11 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Scrawl Rocky Top",
+          "raw_text": "Scrawl - Rocky Top",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "C Std",
           "notes": null,
-          "oddities": [
-            "There is a small C inside a circle next to the Std mark."
-          ],
+          "oddities": [],
           "row_bbox": [
             1260,
             3254,
@@ -980,7 +967,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Reverend Gary Davis I'll Be All Right Some Day",
+          "raw_text": "Reverend Gary Davis - I'll Be All Right Some Day",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -994,7 +981,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Nice Strong Arm Stress City",
+          "raw_text": "Nice Strong Arm - Stress City",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -1008,7 +995,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "King Missile The Sandbox",
+          "raw_text": "King Missile - The Sandbox",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -1022,7 +1009,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Underdogs Love's Gone Bad",
+          "raw_text": "Underdogs - Love's Gone Bad",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,

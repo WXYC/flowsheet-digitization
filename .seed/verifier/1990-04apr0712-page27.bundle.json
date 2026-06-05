@@ -4,13 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-27.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 27,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:18:56.044577+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:37:39.477581+00:00",
   "page_date_raw": "Wednesday 11 April 90",
-  "comments_raw": "50\u00b0 Clear Cold  235\nPCC + Cool H55\nThanx ova Steve's Spinning",
+  "comments_raw": "50\u00b0 Clear Cold 2 35\nP C C + lool H S S\nThank you Steve's Sputnik",
   "oddities": [
-    "A weather note is written top center: '60\u00b0 cold 35\u00b0 c'.",
-    "Crossed-out text and arrows in the top right margin read '-> @foot' and 'Over for today'."
+    "Handwritten weather notes at the top right of the page: '60\u00b0 cold 35\u00b0' and '-> overcast -> clear for today'."
   ],
   "quadrants": [
     {
@@ -26,7 +25,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "PE - fear of a black planet",
+          "raw_text": "PE - Fear of a black planet",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -40,7 +39,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "BAD - Stone Thames",
+          "raw_text": "BAD. - Stone Thayers",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -54,8 +53,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Psychafunkapus-tixx",
-          "confidence": "medium",
+          "raw_text": "Psychafunkapus - tixx",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -68,8 +67,8 @@
         },
         {
           "row_index": 3,
-          "raw_text": "-chills part past part fiction",
-          "confidence": "medium",
+          "raw_text": "Chills past past past fiction",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -82,7 +81,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "-turtles - Sand Asleep",
+          "raw_text": "Turtles - Sound Asleep",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -97,7 +96,7 @@
         {
           "row_index": 5,
           "raw_text": "JWA - Goddess",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -110,12 +109,12 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Hopper - Girl who lives on heaven hill",
-          "confidence": "low",
-          "type_raw": "nV",
+          "raw_text": "Girl who lives on heaven hill",
+          "confidence": "medium",
+          "type_raw": "nv",
           "notes": null,
           "oddities": [
-            "Artist name is heavily scribbled out with 'pper' written above."
+            "The artist name at the beginning of the line is heavily scribbled out."
           ],
           "row_bbox": [
             0,
@@ -140,9 +139,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Lifeboat- Queens for a day",
+          "raw_text": "Lifeboat - Queens for a day",
           "confidence": "high",
-          "type_raw": "R =>",
+          "type_raw": "R\u21d2",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -182,7 +181,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Bad Manners- Inner London Violence",
+          "raw_text": "Bad Manners - Inner london violence",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -196,7 +195,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Digital underground - Do what ya like",
+          "raw_text": "Digital Underground Do what ya like",
           "confidence": "high",
           "type_raw": "M",
           "notes": "double_height",
@@ -234,11 +233,11 @@
         2302
       ],
       "hour_raw": "8PM",
-      "jock_raw": "SpoTT",
+      "jock_raw": "Spott",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Julie London - Don't Smoke In Bed",
+          "raw_text": "Julie London - Don't Smoke in Bed",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -252,8 +251,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Emming Bay Winsm - She Brought Life Back To The Dead",
-          "confidence": "low",
+          "raw_text": "Sonny Boy Williamson - She Brought Life Back To The Dead",
+          "confidence": "high",
           "type_raw": null,
           "notes": "double_height",
           "oddities": [],
@@ -282,7 +281,7 @@
           "row_index": 4,
           "raw_text": "Thin White Rope - Yoo Doo Right",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -322,7 +321,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "The Front - Head on a pole",
+          "raw_text": "The Frond - Head on a pole",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -352,7 +351,7 @@
           "row_index": 9,
           "raw_text": "Nice Strong Arm - Stress City",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -392,9 +391,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "B. hole Surfers - Sweat Loaf",
-          "confidence": "high",
-          "type_raw": "Std",
+          "raw_text": "B. Hole Surfers - Sweat Loaf",
+          "confidence": "medium",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -406,8 +405,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Beatnigs - Rooticussperatious",
-          "confidence": "medium",
+          "raw_text": "Beatnigs - Rootincusporatious",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -419,7 +418,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A hand-drawn bracket in the right margin connects the Thin White Rope entry to the T.W. Rope interview entry."
+      ]
     },
     {
       "position": "bottom_left",
@@ -434,7 +435,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Blondie Dreaming",
+          "raw_text": "Blondie - Dreaming",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -448,7 +449,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Los Thugs- Lost In the Suburbs",
+          "raw_text": "Les Thugs - Lost In the Suburbs",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -462,7 +463,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "faith no more - from out of nowhere",
+          "raw_text": "Faith No More - from out of nowhere",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -504,7 +505,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "nick Cave - Hard on for love",
+          "raw_text": "nick cave - Hard on for love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -518,8 +519,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Doughboys- waiting away",
-          "confidence": "high",
+          "raw_text": "Doughboys - waiting away",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -532,7 +533,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Huxton Creepers - life is for living",
+          "raw_text": "Huxton Creepers - Life of a friday",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -560,11 +561,13 @@
         },
         {
           "row_index": 9,
-          "raw_text": "ultra vivid scene - staring at the",
+          "raw_text": "Utra vivid scene - staring at the sun",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'sun' is written above the end of the line."
+          ],
           "row_bbox": [
             0,
             3029,
@@ -574,12 +577,12 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Talk Talk- living in another sun",
+          "raw_text": "Talk Talk - living in another world",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "tiny annotation 'sun' appears at end of line"
+            "The word 'world' is written above the end of the line."
           ],
           "row_bbox": [
             0,
@@ -590,12 +593,12 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Oncar Dhu - se\u00f1ales en el world",
-          "confidence": "high",
+          "raw_text": "Oncar Dhu - Se\u00f1ales en el cielo",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "tiny annotation 'world' appears at end of line"
+            "The word 'cielo' is written above the end of the line."
           ],
           "row_bbox": [
             0,
@@ -608,8 +611,8 @@
           "row_index": 12,
           "raw_text": "Robyn Hitchcock - Beautiful girl",
           "confidence": "high",
-          "type_raw": "H",
-          "notes": "crossed_out",
+          "type_raw": "M",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -622,7 +625,7 @@
           "row_index": 13,
           "raw_text": "Tribe called Quest - I left my wallet in el segundo",
           "confidence": "high",
-          "type_raw": "nV",
+          "type_raw": "nv",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -648,11 +651,13 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Pop defect- live w/ this",
+          "raw_text": "pop defect - live w/ this",
           "confidence": "high",
-          "type_raw": "R=>",
+          "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "A large hand-drawn arrow in the left margin points to this entry."
+          ],
           "row_bbox": [
             0,
             3554,
@@ -662,7 +667,7 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Hellas Creed - Mustard Dog",
+          "raw_text": "Hell's Creed - Mustard Dog",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -675,9 +680,7 @@
           ]
         }
       ],
-      "oddities": [
-        "A hand-drawn line with an arrow starts in the left margin at row 16 and points up to row 12."
-      ]
+      "oddities": []
     },
     {
       "position": "bottom_right",
@@ -687,13 +690,13 @@
         2550,
         4062
       ],
-      "hour_raw": "9PM",
-      "jock_raw": "SpoTT",
+      "hour_raw": "9pm",
+      "jock_raw": "Spott",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Sun City Girls - A Different Kinda...",
-          "confidence": "high",
+          "raw_text": "Sun City Girls - A Different K.O. It's A...",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -706,8 +709,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Jimmy Makem - The Land I Love Whose",
-          "confidence": "high",
+          "raw_text": "Tiajuana Mak... - The Land I Love whose...",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -720,8 +723,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "MThemba Queens - Funds N Saney",
-          "confidence": "medium",
+          "raw_text": "M Themba Queens - Funda Njaner will...",
+          "confidence": "low",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -734,9 +737,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "The Freaks - Succumbis",
-          "confidence": "high",
-          "type_raw": "O",
+          "raw_text": "The Freaks - Succumbus janer",
+          "confidence": "medium",
+          "type_raw": "X",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -762,9 +765,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Tony Rice - Salty Dang Blues",
+          "raw_text": "Tony Rice - Salty Dog Blues",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -776,8 +779,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "13111 - My Bible Is The latest TV Guide",
-          "confidence": "high",
+          "raw_text": "B 111 - My Bible Is The Latest TV Guide",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -846,9 +849,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Yardbirds - Over, Under, Sideways, Down",
+          "raw_text": "Yard Birds - Over, Under, Sideways, Down",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -860,12 +863,12 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Kim Fowley - The Trip Pebbles",
-          "confidence": "high",
+          "raw_text": "Kim Fowley - The Trip Pebbles vol 3",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "tiny annotation 'VOL 1' appears at the end of the line"
+            "The album title 'Pebbles vol 3' is written far to the right."
           ],
           "row_bbox": [
             1286,
@@ -876,8 +879,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Barbecue Bob - Well Pleased & Satisfied",
-          "confidence": "medium",
+          "raw_text": "Barberman Bowliz - Well Please & Satisfied",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -890,7 +893,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Is - Always A Girl",
+          "raw_text": "X - Always A Girl",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -904,8 +907,8 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Walter Horton - Hard Hearted Q",
-          "confidence": "medium",
+          "raw_text": "Walter Horton - Hard Hearted f",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -920,7 +923,7 @@
           "row_index": 16,
           "raw_text": "Robyn Hitchcock - I Watch The Cars",
           "confidence": "high",
-          "type_raw": "81",
+          "type_raw": "'81",
           "notes": null,
           "oddities": [],
           "row_bbox": [

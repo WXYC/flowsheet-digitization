@@ -4,13 +4,11 @@
   "image_path": "../pages/1990/April 1990/1990-04apr2430/page-23.png",
   "pdf_path": "1990/April 1990/1990-04apr2430.pdf",
   "page_number": 23,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:18:57.745832+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:39:09.818677+00:00",
   "page_date_raw": "Saturday 28 Apr 90",
-  "comments_raw": null,
-  "oddities": [
-    "The Comments field at the bottom of the page contains several handwritten band and track names, some of which are heavily crossed out."
-  ],
+  "comments_raw": "this town - go-gos fools gold - Stone roses\nDig. Underground Poques - Ya-ya-ya\nSex Packets or Dowhatca Like\nother bright wild flowers\nwhiskey bottle",
+  "oddities": [],
   "quadrants": [
     {
       "position": "top_left",
@@ -20,14 +18,14 @@
         1264,
         2304
       ],
-      "hour_raw": "2Am",
+      "hour_raw": "2AM",
       "jock_raw": "Kath Anderson",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Let's Active - Every Word Means No",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -39,9 +37,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Muzsikas - Feffettem Love just Ono",
+          "raw_text": "Muzsikas - Fettatam Love just One",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -55,7 +53,7 @@
           "row_index": 3,
           "raw_text": "Brenda Lee - Johnny One Time",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -69,7 +67,7 @@
           "row_index": 4,
           "raw_text": "Tackhead - stealing",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -81,9 +79,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "M Thembu Queens - Thina Siyajabula",
+          "raw_text": "Mthembu Queens - Thina Siyajabula",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -97,7 +95,7 @@
           "row_index": 7,
           "raw_text": "Buck Clayton - Out of Nowhere",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -111,7 +109,7 @@
           "row_index": 8,
           "raw_text": "Sinead O'Connor - I am stretched on your grave",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -125,10 +123,10 @@
           "row_index": 10,
           "raw_text": "Go-Go's - This Town",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [
-            "The abbreviation 'std' is written to the left of the type column."
+            "The word 'Std' is written in the left margin next to the type circle."
           ],
           "row_bbox": [
             0,
@@ -141,10 +139,10 @@
           "row_index": 11,
           "raw_text": "Stone Roses - Fools Gold",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [
-            "An 'X' is drawn over the letter 'R' in the type column."
+            "A circled 'X' is drawn in the left margin next to the type circle."
           ],
           "row_bbox": [
             0,
@@ -157,7 +155,7 @@
           "row_index": 12,
           "raw_text": "Flour - Rain Reign",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -171,7 +169,7 @@
           "row_index": 13,
           "raw_text": "Other Bright Colors - In Whiskey Bottle",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -185,7 +183,7 @@
           "row_index": 14,
           "raw_text": "Freedy Johnston - No Violins",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -197,12 +195,12 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Rob Base & D.J. E-Z Rock - - It Takes Two",
+          "raw_text": "Rob Base & D.J. E.Z. Rock - It Takes Two",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": "double_height",
           "oddities": [
-            "The abbreviation 'std' is written to the left of the type column."
+            "The text 'std?' is written in the left margin next to the type circle."
           ],
           "row_bbox": [
             0,
@@ -215,7 +213,7 @@
           "row_index": 17,
           "raw_text": "Otis Redding - I've Been Loving You Too Long",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -236,17 +234,17 @@
         2550,
         2304
       ],
-      "hour_raw": "4Am",
+      "hour_raw": "4AM",
       "jock_raw": "R. Anderson",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Felt - Mobile Shack",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [
-            "An asterisk is written at the very end of the line."
+            "An asterisk is written at the end of the line."
           ],
           "row_bbox": [
             1264,
@@ -259,7 +257,7 @@
           "row_index": 1,
           "raw_text": "Skinny Puppy - Tin Omen",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -273,7 +271,7 @@
           "row_index": 2,
           "raw_text": "The Hummingbirds - Word Gets Around",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -287,10 +285,10 @@
           "row_index": 3,
           "raw_text": "Liquid Pink - Danelectro",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "An asterisk is written at the very end of the line."
+            "An asterisk is drawn above the 'e' in 'Danelectro'."
           ],
           "row_bbox": [
             1264,
@@ -303,7 +301,7 @@
           "row_index": 4,
           "raw_text": "The Whitstein Bros - Sinner You'd Better Get Ready",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -317,7 +315,7 @@
           "row_index": 6,
           "raw_text": "Bel Canto - The Glassmaker",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -331,7 +329,7 @@
           "row_index": 7,
           "raw_text": "Peggy Lee - You let My Love Get Cold",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -345,7 +343,7 @@
           "row_index": 8,
           "raw_text": "Naked City - Saigon PickUp",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -359,7 +357,7 @@
           "row_index": 9,
           "raw_text": "Ray Bryant - Take the \"A\" Train",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -373,7 +371,7 @@
           "row_index": 10,
           "raw_text": "The Mission - The grip of disease",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -387,7 +385,7 @@
           "row_index": 11,
           "raw_text": "Rev. Gary Davis There's a Table Sittin' in Heaven",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -401,7 +399,7 @@
           "row_index": 13,
           "raw_text": "The Chills - Heavenly Pop Hit",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -413,9 +411,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "King Blank - BlindBox",
+          "raw_text": "King Blank - Blind Box",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -429,7 +427,7 @@
           "row_index": 15,
           "raw_text": "Royal Crescent Mob - Nanana",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -441,9 +439,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Bong Water - He loved the weather",
+          "raw_text": "Bongwater - He Loved the Weather",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -469,13 +467,11 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Johnny Cash - Ring Of Fire",
+          "raw_text": "Johnny Cash - Ring of Fire",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
-          "oddities": [
-            "The word 'Hit' and an arrow are written in the left margin pointing to the type column."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2355,
@@ -485,11 +481,13 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Robyn Hitchcock & Cynthia Mask",
+          "raw_text": "Robyn Hitchcock - Cynthia Mask",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "double_height",
-          "oddities": [],
+          "oddities": [
+            "A hand-drawn arrow in the left margin points to this row."
+          ],
           "row_bbox": [
             0,
             2430,
@@ -501,7 +499,7 @@
           "row_index": 3,
           "raw_text": "Parliament - Little Ole Country Boy",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -513,9 +511,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "erasure - who needs love like that",
+          "raw_text": "erasure - Who needs love like that",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -529,9 +527,11 @@
           "row_index": 5,
           "raw_text": "Digital Underground - Do whatcha like",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "A circled 'm' is drawn in the left margin next to the type circle."
+          ],
           "row_bbox": [
             0,
             2730,
@@ -543,7 +543,7 @@
           "row_index": 6,
           "raw_text": "Eubie Blake - Charleston Rag",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -557,7 +557,7 @@
           "row_index": 7,
           "raw_text": "Luka Bloom - Gone To Pablo",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -569,9 +569,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "They Might Be Giants - James B.",
+          "raw_text": "They Might Be Giants - James K.",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -585,10 +585,10 @@
           "row_index": 9,
           "raw_text": "Fred Astaire - Cheek to Cheek Polk",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "The word 'Polk' at the end of the line belongs to the previous track but is squeezed here."
+            "An arrow is drawn from the margin pointing towards the type circle."
           ],
           "row_bbox": [
             0,
@@ -601,7 +601,7 @@
           "row_index": 10,
           "raw_text": "Inca Babies - evil hour",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -615,11 +615,9 @@
           "row_index": 11,
           "raw_text": "Psychefunkapus - We Are the Young",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Concert",
           "notes": null,
-          "oddities": [
-            "The word 'Concert' is written in the left margin next to the type column."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3180,
@@ -629,13 +627,11 @@
         },
         {
           "row_index": 12,
-          "raw_text": "PiL - Rise",
+          "raw_text": "PiL. - Rise",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
-          "oddities": [
-            "The abbreviation 'std' is written in the left margin next to the type column."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3255,
@@ -647,7 +643,7 @@
           "row_index": 13,
           "raw_text": "PE - 911 Is A Joke",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -661,7 +657,7 @@
           "row_index": 14,
           "raw_text": "Living Colour - Broken Hearts",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -673,9 +669,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "George Benson - A Change Is Gonna Come",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "George Benson - A Changels Gonna Come",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -703,7 +699,7 @@
           "row_index": 0,
           "raw_text": "the Sundays - here's where the story ends",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -717,7 +713,7 @@
           "row_index": 1,
           "raw_text": "Nick Lowe - All Men Are Liars",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -729,9 +725,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Jungle Brothers - What U Waitin for",
+          "raw_text": "Jungle Brothers - What U Waitin For",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -743,9 +739,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Icy Jayne - Its just a girl thing",
+          "raw_text": "Icey Jayne - Its just a girl thing",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -759,7 +755,7 @@
           "row_index": 4,
           "raw_text": "4-Tops - I'm In a Different World",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -773,7 +769,7 @@
           "row_index": 5,
           "raw_text": "Scrawl - enough",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -787,10 +783,10 @@
           "row_index": 6,
           "raw_text": "seaweed - insides",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [
-            "The letters 'MAD' are written over the type column letters."
+            "The type circle is heavily scribbled over."
           ],
           "row_bbox": [
             1264,
@@ -803,7 +799,7 @@
           "row_index": 7,
           "raw_text": "XTC - Summer's cauldron",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -817,7 +813,7 @@
           "row_index": 8,
           "raw_text": "Everly Brothers - That's Old Fashioned",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -829,9 +825,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Red Hot Chili Peppers - Show Me Your Soul",
+          "raw_text": "Red Hot Chili Peppers - Show me your soul",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "X",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -843,9 +839,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "the walkabouts - the anvil song",
+          "raw_text": "The Walkabouts - the anvil song",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -857,13 +853,11 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Lloyd Cole - What Do You Know About Love?",
+          "raw_text": "Lloyd Cole - What Do You Know About",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The word 'Love?' is wrapped and squeezed onto the far right edge slightly below the line."
-          ],
+          "oddities": [],
           "row_bbox": [
             1264,
             3173,
@@ -873,13 +867,11 @@
         },
         {
           "row_index": 12,
-          "raw_text": "The Gil Evans Orchestra - Stratusphunk",
+          "raw_text": "The Gil Evans Orchestra - Stratusphunk Love?",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "The word 'Orchestra' is written in small letters below 'Evans'."
-          ],
+          "oddities": [],
           "row_bbox": [
             1264,
             3248,
@@ -889,9 +881,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Prong - lost & Found",
+          "raw_text": "Prong - Lost & Found",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -905,7 +897,7 @@
           "row_index": 14,
           "raw_text": "Dillon Fence - Something for you",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [

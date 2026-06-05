@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-20.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 20,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:15:39.970687+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:36:28.400115+00:00",
   "page_date_raw": "Tue 10 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "A note in the top right corner outside the grid says: 'Butterfield - Woman'"
+    "A handwritten note 'Butterfield - Woman' appears at the top right below the station address."
   ],
   "quadrants": [
     {
@@ -39,7 +39,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "TRex- Electric Slim & The Factory Hen",
+          "raw_text": "TRex-Electric Slim & The Factory Hen",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -67,16 +67,32 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Home + Garden: Marco Polo The Home of Kin Sai City",
+          "raw_text": "Home + Garden - Marco Polo",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [
-            "The word 'Home' is crossed out and 'City' is written below it"
+            "The circle in the type column is heavily scribbled over."
           ],
           "row_bbox": [
             0,
             1476,
+            1285,
+            1702
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "The House of Kin Sai",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "The word 'House' is crossed out, with 'city' written underneath it."
+          ],
+          "row_bbox": [
+            0,
+            1702,
             1285,
             1928
           ]
@@ -88,7 +104,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "'Stress City' is written in the left margin pointing to this entry"
+            "The left margin contains the text 'Stress City' with a hand-drawn line pointing to this row."
           ],
           "row_bbox": [
             0,
@@ -99,7 +115,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "DOS - P. C. H.",
+          "raw_text": "DOS - P.C.H.",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -132,7 +148,7 @@
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "A vertical line separates 'Plastic' and 'Love'"
+            "A vertical line is drawn separating 'Plastic' and 'Love'."
           ],
           "row_bbox": [
             0,
@@ -145,7 +161,7 @@
           "row_index": 9,
           "raw_text": "Wasted Youth- Jealousy",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -157,7 +173,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Dinah Washington - Teach Me Tonight",
+          "raw_text": "Dinah Washington- Teach Me Tonight",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -204,7 +220,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "'Paul B.' is written in the left margin next to this entry"
+            "The text 'Paul B.' is written in the left margin next to this row."
           ],
           "row_bbox": [
             0,
@@ -217,7 +233,7 @@
           "row_index": 15,
           "raw_text": "Landscape - Norman Bates",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -271,7 +287,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "My Dad is Dead - A Man Possesed",
+          "raw_text": "My Dad is Dead - A Man Possessed",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -285,9 +301,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Elliot Goldenthal - Bobs new life",
+          "raw_text": "Elliot Goldenthal - Bob's New life",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -299,8 +315,8 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Bad Hats - Show me your Soul",
-          "confidence": "high",
+          "raw_text": "Rad Hots - Show me your Soul",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -315,7 +331,7 @@
           "row_index": 5,
           "raw_text": "Charlie Parker - I love Paris",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -327,12 +343,12 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Led Zepplin over the hills & Far away",
+          "raw_text": "Led Zepplin over the hills & Faraway",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
           "oddities": [
-            "The code 'Std' in the left margin is crossed out"
+            "The type column circle is heavily scribbled out."
           ],
           "row_bbox": [
             1285,
@@ -343,7 +359,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Marta Sebyestan - Mesezi Dance",
+          "raw_text": "Marta Sebyestar - Meszeg Dance",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -376,7 +392,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "'Seems Unreal' is crossed out within the entry"
+            "The words 'Seems Unreal' are crossed out with a single line."
           ],
           "row_bbox": [
             1285,
@@ -387,12 +403,12 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Sinead O'Connor - I am streched on your grave",
+          "raw_text": "Sinead O'Connor - I am streatched on your grave",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [
-            "The word 'grave' is written on the line below at the end"
+            "The word 'grave' wraps slightly below the line at the far right."
           ],
           "row_bbox": [
             1285,
@@ -403,7 +419,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Dub Syndicate - Je t'aime",
+          "raw_text": "Dub Syndicate - Je T'aime",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -445,7 +461,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "JPSE - Inside & Out",
+          "raw_text": "JPSE- Inside + Out",
           "confidence": "high",
           "type_raw": "PPB",
           "notes": null,
@@ -464,7 +480,7 @@
           "type_raw": "Std",
           "notes": null,
           "oddities": [
-            "The word 'Bob' appears to be written heavily over another word"
+            "The word 'Bob' appears to be written over another word."
           ],
           "row_bbox": [
             0,
@@ -490,7 +506,7 @@
         {
           "row_index": 4,
           "raw_text": "Alligator Shear - Balkan Red Alert",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -559,7 +575,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "That Petrol Emotion - Scum Surfin'",
+          "raw_text": "That Petrol Emotion - Scum Surfin",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -573,13 +589,11 @@
         },
         {
           "row_index": 10,
-          "raw_text": "The Mighty Lem Drops - Sometimes Good Guys",
-          "confidence": "medium",
+          "raw_text": "The Mighty Lem Drops - Sometimes Good",
+          "confidence": "high",
           "type_raw": "CON",
           "notes": null,
-          "oddities": [
-            "'Guys' is written very small beneath 'Good'"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3848,
@@ -589,11 +603,13 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Able Tansman - What was That Thing?",
-          "confidence": "medium",
+          "raw_text": "Able Tansman - What Was That Guys Thing?",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'Guys' is inserted above the line."
+          ],
           "row_bbox": [
             0,
             3997,
@@ -617,8 +633,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Tim Buckley - Moulon Rogue",
-          "confidence": "medium",
+          "raw_text": "Tim Buckley - Moulin Rogue",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -636,7 +652,7 @@
           "type_raw": "R",
           "notes": null,
           "oddities": [
-            "'woman' is written below the main line at the end"
+            "The word 'woman' is written below 'Life' at the end of the line."
           ],
           "row_bbox": [
             0,
@@ -648,7 +664,7 @@
         {
           "row_index": 15,
           "raw_text": "JB Hutto & The New Hawks - New Hawk Walk",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": null,
           "notes": "double_height",
           "oddities": [],
@@ -689,12 +705,12 @@
         },
         {
           "row_index": 1,
-          "raw_text": "The Mthembu queens - kusleka Mahanjke",
+          "raw_text": "The Fm Thembu queens - kusleka Mahamjke",
           "confidence": "low",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The word 'Them' is crossed out before 'Mthembu'"
+            "The letters 'Fm' or similar are crossed out before the word 'Thembu'."
           ],
           "row_bbox": [
             1285,
@@ -720,7 +736,7 @@
         {
           "row_index": 3,
           "raw_text": "Cecil Taylor - Charles and thee",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [],
@@ -747,8 +763,8 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Greater then One - I Don't need God",
-          "confidence": "high",
+          "raw_text": "Gratter then One - I Don't need God",
+          "confidence": "medium",
           "type_raw": "Std",
           "notes": null,
           "oddities": [],
@@ -761,7 +777,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Kid Creole - The sex of it",
+          "raw_text": "Kid Creole - The Sex of It",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -790,7 +806,7 @@
         {
           "row_index": 8,
           "raw_text": "LAVACOUS - Juke Jubilee",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -817,12 +833,13 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Dodge City Royal Tax Love is 2 tickets",
-          "confidence": "medium",
+          "raw_text": "Dodge City Royal Tax Love is 2 tickets already",
+          "confidence": "low",
           "type_raw": "H",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [
-            "'2 tickets already' is written at the end of the line, bleeding into the margin and the next row"
+            "The first part of the entry ('Dodge City Royal') is heavily crossed out.",
+            "The word 'already' wraps down to the right of the next line."
           ],
           "row_bbox": [
             1285,
@@ -833,12 +850,12 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Frank Motley and his Motley Crew - Honkin at midnight",
-          "confidence": "high",
+          "raw_text": "Frank Motley an his Motley Crew - Honkin at midnight",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "The word 'midnight' is written below the main line at the end"
+            "The word 'midnight' wraps down at the right margin."
           ],
           "row_bbox": [
             1285,
@@ -849,9 +866,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "B-52's - Girl from Ipanema",
+          "raw_text": "B-52's - Girl From Ipanema",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [

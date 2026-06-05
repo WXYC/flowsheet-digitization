@@ -4,13 +4,11 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-28.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 28,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:09:37.177677+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:31:45.443433+00:00",
   "page_date_raw": "Thurs 4/5/90",
-  "comments_raw": "David Thrower         Boxcars",
-  "oddities": [
-    "Typed text at the top left adds a custom legend for 'types'."
-  ],
+  "comments_raw": "David Thrower           Boners",
+  "oddities": [],
   "quadrants": [
     {
       "position": "top_left",
@@ -29,7 +27,9 @@
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "type indicator 'NV' is written above a crossed-out circle"
+          ],
           "row_bbox": [
             0,
             548,
@@ -39,7 +39,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Nancy Griffith - Gulf Coast Highway",
+          "raw_text": "Nanci Griffith - Gulf Coast Highway",
           "confidence": "high",
           "type_raw": "R O",
           "notes": null,
@@ -55,7 +55,7 @@
           "row_index": 2,
           "raw_text": "Husker Du - Could You Be The One",
           "confidence": "high",
-          "type_raw": "R o",
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -109,7 +109,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Mhlathini Queens - Thina Siyajabula",
+          "raw_text": "Mthlenhe Queens - Thina Siyajabula",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -125,7 +125,7 @@
           "row_index": 7,
           "raw_text": "Zeitgeist - Atlantic City",
           "confidence": "high",
-          "type_raw": "R o",
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -137,9 +137,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "REM - Carnival of Sorts (Box Cars)",
+          "raw_text": "REM - Carnival of Sorts (Boxcars)",
           "confidence": "high",
-          "type_raw": "R o",
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -155,7 +155,9 @@
           "confidence": "high",
           "type_raw": "Hit",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "type indicator 'Hit' is written to the left without a circle"
+          ],
           "row_bbox": [
             0,
             1251,
@@ -166,10 +168,12 @@
         {
           "row_index": 10,
           "raw_text": "Mistress Mix - Je T'Aime",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "type indicator 'NV' is written to the left without a circle"
+          ],
           "row_bbox": [
             0,
             1326,
@@ -179,7 +183,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Marta Sebestyen & Musikas - Vetettem Violat",
+          "raw_text": "Marta Sebestyen & Muzsikas- Vetettem Violat",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -207,7 +211,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Robbie Basho - The Grail & The Lotus",
+          "raw_text": "Robbie Basho - the Grail & the Lotus",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -235,11 +239,13 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "P. Dog Pondering - Bury Me Deep",
+          "raw_text": "P.Dog - Poundery - Bury Me Deep",
           "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "type indicator 'NV' is written above a scribbled-out circle"
+          ],
           "row_bbox": [
             1280,
             949,
@@ -291,13 +297,11 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Angels of Epistemology - Angels death",
+          "raw_text": "Angels of Epistemology - Angels of death",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
-          "oddities": [
-            "the word 'Song' is written at the end of the line"
-          ],
+          "oddities": [],
           "row_bbox": [
             1280,
             1249,
@@ -307,11 +311,13 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Tom Lehrer - Poisoning Pigeons",
-          "confidence": "high",
+          "raw_text": "Tom Lehrer - Poisoning Pigeons Tanto debos Song muerte",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "small, messy handwriting at the end of the line wraps above and below the main text"
+          ],
           "row_bbox": [
             1280,
             1324,
@@ -323,9 +329,11 @@
           "row_index": 6,
           "raw_text": "Butthole Surfers - Bong Song",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "left margin circle is completely filled in with black ink"
+          ],
           "row_bbox": [
             1280,
             1399,
@@ -419,7 +427,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Bongwater - Too Much Sleep",
+          "raw_text": "Bong Water - Too Much Sleep",
           "confidence": "high",
           "type_raw": "R-H",
           "notes": null,
@@ -433,7 +441,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "My Dad Is Dead - Nothing",
+          "raw_text": "my Dad is Dead - Nothing",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -475,12 +483,12 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Funky Reggae Crew - What's gone wrong",
+          "raw_text": "Funky Reggae Crew - What's going wrong",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "the word 'wrong' is written below 'gone' at the end of the line"
+            "the word 'wrong' wraps down into the space below the printed row"
           ],
           "row_bbox": [
             1280,
@@ -504,9 +512,7 @@
           ]
         }
       ],
-      "oddities": [
-        "marginal note 'Tanto debos muerto' written near the ends of rows 4 and 5"
-      ]
+      "oddities": []
     },
     {
       "position": "bottom_left",
@@ -516,13 +522,13 @@
         1280,
         4061
       ],
-      "hour_raw": "11pm",
+      "hour_raw": "11PM",
       "jock_raw": "Jerry Cooley",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Inside Track - SILes",
-          "confidence": "medium",
+          "raw_text": "Inside Track - Siles",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -534,7 +540,7 @@
           ]
         },
         {
-          "row_index": 9,
+          "row_index": 10,
           "raw_text": "Chills - I Soar",
           "confidence": "high",
           "type_raw": "H",
@@ -548,7 +554,7 @@
           ]
         },
         {
-          "row_index": 10,
+          "row_index": 11,
           "raw_text": "Bags - Joyride",
           "confidence": "high",
           "type_raw": "O",
@@ -562,13 +568,13 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Hypnolovewheel - grandma house",
-          "confidence": "medium",
-          "type_raw": null,
+          "row_index": 12,
+          "raw_text": "Hypnolovewheel - grandmas house",
+          "confidence": "high",
+          "type_raw": "L",
           "notes": null,
           "oddities": [
-            "the word 'house' is written below 'grandma'"
+            "the word 'house' wraps down into the space below the printed row"
           ],
           "row_bbox": [
             0,
@@ -578,12 +584,14 @@
           ]
         },
         {
-          "row_index": 12,
+          "row_index": 13,
           "raw_text": "Steve Key - B/W trans",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "type indicator 'NV' is written beside a scribbled-out circle"
+          ],
           "row_bbox": [
             0,
             2653,
@@ -592,9 +600,9 @@
           ]
         },
         {
-          "row_index": 13,
+          "row_index": 14,
           "raw_text": "Savage Republic - Mapla",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -607,7 +615,7 @@
         }
       ],
       "oddities": [
-        "a large vertical arrow is drawn pointing down through the middle rows"
+        "a large hand-drawn vertical arrow spans rows 1 through 9, pointing downwards"
       ]
     },
     {
@@ -618,17 +626,17 @@
         2550,
         4061
       ],
-      "hour_raw": "1 am",
+      "hour_raw": "1am",
       "jock_raw": "Jerry Cooley",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Lubricated goat - Funeral on a spit",
-          "confidence": "medium",
+          "raw_text": "lubricated goat - funereal on a spit",
+          "confidence": "high",
           "type_raw": "R",
           "notes": null,
           "oddities": [
-            "the phrase 'on a spit' drops down below the main line"
+            "the phrase 'on a spit' drops down into the far right of the row below"
           ],
           "row_bbox": [
             1280,
@@ -654,7 +662,7 @@
         {
           "row_index": 2,
           "raw_text": "Amn Music Club - Hula Maiden",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -672,7 +680,7 @@
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "the phrase 'at all' drops down below the main line"
+            "the phrase 'at all' drops down into the far right of the row below"
           ],
           "row_bbox": [
             1280,
@@ -684,7 +692,7 @@
         {
           "row_index": 4,
           "raw_text": "Grant Hart - You're the victim",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],

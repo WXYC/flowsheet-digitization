@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-21.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 21,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:15:54.302876+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:36:53.450950+00:00",
   "page_date_raw": "Tue 10 Apr 90",
-  "comments_raw": "Naked City ZZ Top Eldislo Cowboy Junkie TOAD",
+  "comments_raw": "Naked City ZZ Top el disco Cowboy\nJunkies\nTOAD",
   "oddities": [
-    "Text 'REM Flowers' is written in the top margin next to the station logo."
+    "Top right of the page has 'REM Flowers' written near the logo."
   ],
   "quadrants": [
     {
@@ -21,7 +21,7 @@
         2261
       ],
       "hour_raw": "10Am",
-      "jock_raw": "Andie Peterson",
+      "jock_raw": "Andre Peterson",
       "entries": [
         {
           "row_index": 0,
@@ -67,7 +67,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "JC Houserockers - Saints + Sinners",
+          "raw_text": "JC House rockers - Saints + Sinners",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -109,12 +109,12 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Scruffy The Cat - My Baby She's Alright",
+          "raw_text": "Scruffy The Cat - My Baby She's All...",
           "confidence": "high",
           "type_raw": "C",
           "notes": null,
           "oddities": [
-            "Text 'Th 26r' is written in the left margin next to this entry."
+            "Annotation 'th 26T' in left margin next to this row"
           ],
           "row_bbox": [
             0,
@@ -125,7 +125,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Python - Brrr",
+          "raw_text": "Python - Bruces",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -167,12 +167,12 @@
         },
         {
           "row_index": 10,
-          "raw_text": "REM - Flowers Of Guatemala",
-          "confidence": "high",
+          "raw_text": "REM - Flowers Of Guatamala",
+          "confidence": "medium",
           "type_raw": "std",
           "notes": null,
           "oddities": [
-            "An encircled 'R' is drawn in the left margin."
+            "Circled R in left margin outside the type column"
           ],
           "row_bbox": [
             0,
@@ -197,12 +197,12 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Naked City - Shot In the Dark",
+          "raw_text": "Naked City - Shot In The Dark",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "A checkmark is drawn in the left margin next to the type circle."
+            "Check mark in left margin outside the type column"
           ],
           "row_bbox": [
             0,
@@ -218,7 +218,7 @@
           "type_raw": "o",
           "notes": null,
           "oddities": [
-            "An encircled 'R' is drawn in the left margin."
+            "Circled R in left margin outside the type column"
           ],
           "row_bbox": [
             0,
@@ -234,7 +234,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "The word 'Cass' is written directly above the type circle."
+            "Annotation 'Cass' written above the type circle"
           ],
           "row_bbox": [
             0,
@@ -254,12 +254,12 @@
         2550,
         2261
       ],
-      "hour_raw": "12PM",
+      "hour_raw": "12 PM",
       "jock_raw": "VAN DE VOORT",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "PE - BOOTLEG / GONNA WORK IT OUT",
+          "raw_text": "PE - BROTHERS GONNA WORK IT OUT",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -273,12 +273,12 @@
         },
         {
           "row_index": 1,
-          "raw_text": "BUFFALO TOM - THE BRINK",
-          "confidence": "high",
+          "raw_text": "BUFFALO TOM - THE BLANK",
+          "confidence": "medium",
           "type_raw": "C",
           "notes": null,
           "oddities": [
-            "Text 'MON 16TH' is written directly above the type circle."
+            "Annotation 'MON 16TH' above the type circle"
           ],
           "row_bbox": [
             1281,
@@ -303,7 +303,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "MILT JACKSON - BUGHANIA",
+          "raw_text": "MILT JACKSON - BUSHANIA",
           "confidence": "medium",
           "type_raw": "o",
           "notes": null,
@@ -318,7 +318,7 @@
         {
           "row_index": 4,
           "raw_text": "SOUL BROTHERS - PHUMA LAYIKHAYA",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -331,9 +331,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "MEAT BEAT MANIFESTO - ROCKSTAR MAN",
-          "confidence": "medium",
-          "type_raw": "U",
+          "raw_text": "MEAT BEAT MANIFESTO - DOGSTAR MAN",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -345,9 +345,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "LAPELS - DE LUXE",
-          "confidence": "medium",
-          "type_raw": "L",
+          "raw_text": "LAPEL - DE LUXE",
+          "confidence": "low",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -373,9 +373,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "SYLVIA TYSON - PEBLES MILL",
-          "confidence": "medium",
-          "type_raw": "O",
+          "raw_text": "SYLVIA TYSON - PEPPER'S MILL",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -388,7 +388,7 @@
         {
           "row_index": 9,
           "raw_text": "GRAPES OF WRATH - MISUNDERSTANDING",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -467,7 +467,7 @@
         4076
       ],
       "hour_raw": "11a",
-      "jock_raw": "Andie Pete",
+      "jock_raw": "Andre Pete-",
       "entries": [
         {
           "row_index": 0,
@@ -569,7 +569,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Kd Lang - 3 Cigs In An Ashtray",
+          "raw_text": "K.d Lang - 3 Cigs In An Ashtray",
           "confidence": "high",
           "type_raw": "hit",
           "notes": null,
@@ -584,11 +584,11 @@
         {
           "row_index": 8,
           "raw_text": "Barracudas - Very Last Day",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "Text 'Bucket of Brains' is written in the left margin with an arrow pointing to this entry."
+            "Annotation 'Bucket of Brains =>' in left margin pointing to this row"
           ],
           "row_bbox": [
             0,
@@ -671,7 +671,7 @@
           "row_index": 14,
           "raw_text": "Am. Music Club - United Kingdom",
           "confidence": "high",
-          "type_raw": "X",
+          "type_raw": "x",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -683,7 +683,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "CUB - Colonel Adulfo Bermudez",
+          "raw_text": "CVB - Colonel Adolfo Bermudez",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -721,13 +721,13 @@
         4076
       ],
       "hour_raw": "1",
-      "jock_raw": "V",
+      "jock_raw": "V -",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "ELVIS COSTELLO - HAND IN HAND",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -767,26 +767,40 @@
         },
         {
           "row_index": 3,
-          "raw_text": "BEASTIE BOYS - SHADRACH... AND WHTA YOU GIVE IS WHAT YOU GET",
-          "confidence": "medium",
+          "raw_text": "PLASTIC BOYS - BIRDBATH - AND WITH YOU",
+          "confidence": "high",
           "type_raw": "NV",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1281,
             2577,
+            2550,
+            2652
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "LOVE IS WHAT YOU GET",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            2652,
             2550,
             2727
           ]
         },
         {
           "row_index": 5,
-          "raw_text": "THE BOYS FROM - ENGLAND",
+          "raw_text": "THE BOYS FROM - THIS CORNER OF ENGLAND",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The phrase 'THIS CORNER OF' is inserted above the line between 'FROM' and 'ENGLAND'."
+            "The text 'THIS CORNER OF ENGLAND' is written stacked on the right side of the row."
           ],
           "row_bbox": [
             1281,
@@ -797,9 +811,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "BAABA MAAL & MANSOUR SECK - SALMINANAM",
+          "raw_text": "BABA MAAL & MANSOUR SECK - SALMINANAM",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -811,9 +825,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "BILL LEE / DO THE RIGHT THING - RIOT",
+          "raw_text": "BILL LEE & DO THE RIGHT THING - RIOT",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -839,12 +853,12 @@
         },
         {
           "row_index": 9,
-          "raw_text": "3RD BASS - BROOKLYN QUEENS",
+          "raw_text": "3RD BASE - BROOKLYN QUEENS (MORE STUFF)",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [
-            "The words '(MORE)' and '(OVER)' are written stacked at the far right of the row."
+            "Crossed-out text 'DANCE MIX STUFF' written directly below this row"
           ],
           "row_bbox": [
             1281,
@@ -855,23 +869,37 @@
         },
         {
           "row_index": 10,
-          "raw_text": "LLOYD COLE - I HATE TO SEE YOU BABY DOING THAT STUFF",
+          "raw_text": "LLOYD COLE - I HATE TO SEE YOU BABY",
           "confidence": "high",
-          "type_raw": "H",
-          "notes": "double_height",
+          "type_raw": "O",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1281,
             3102,
+            2550,
+            3177
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "BEAUTIFUL SOUTH - WOMAN IN THE WALL",
+          "confidence": "high",
+          "type_raw": "X",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1281,
+            3177,
             2550,
             3252
           ]
         },
         {
           "row_index": 12,
-          "raw_text": "BEAUTIFUL SOUTH - WOMAN IN THE WALL",
+          "raw_text": "3 MUSTAPHAS - SELVER",
           "confidence": "high",
-          "type_raw": "X",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -883,9 +911,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "3 MUSTAPHAS - SELVER",
+          "raw_text": "HELENO DOS OITO BANJOS - FAUSTA E SAL",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -897,12 +925,12 @@
         },
         {
           "row_index": 14,
-          "raw_text": "HELENO DOS OITO BAIXOS - ENTRA E SAI",
-          "confidence": "medium",
-          "type_raw": "H",
+          "raw_text": "AMAZING RHYTHM ACES - 3RD RATE ROMANCE (IN AND OUT)",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "The text '(IN AND OUT)' is written at the far right of the row."
+            "Artist name appears to be written over heavily scribbled-out text"
           ],
           "row_bbox": [
             1281,
@@ -913,13 +941,11 @@
         },
         {
           "row_index": 15,
-          "raw_text": "AMAZING RHYTHM ACES - 3RD RATE ROMANCE",
+          "raw_text": "RADIO BLUE - LOVE TORNADOS",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
-          "oddities": [
-            "A bracket/arrow is drawn in the text area pointing up to the previous row."
-          ],
+          "oddities": [],
           "row_bbox": [
             1281,
             3477,
@@ -929,20 +955,6 @@
         },
         {
           "row_index": 16,
-          "raw_text": "RADIO BLUE - LOVE TORNADOS",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1281,
-            3552,
-            2550,
-            3627
-          ]
-        },
-        {
-          "row_index": 17,
           "raw_text": "BILLY SYNDROME - MUSIC BUSINESS MASSACRE",
           "confidence": "high",
           "type_raw": "N",
@@ -950,9 +962,9 @@
           "oddities": [],
           "row_bbox": [
             1281,
-            3627,
+            3552,
             2550,
-            3777
+            3702
           ]
         }
       ],

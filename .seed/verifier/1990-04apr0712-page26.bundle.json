@@ -4,15 +4,15 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-26.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 26,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:00:26.141473+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:37:42.703380+00:00",
   "page_date_raw": "Wed 11 Apr 90",
   "comments_raw": "c/u",
   "oddities": [
-    "A note above the station logo reads: 'mail w/ Thin white Rope'.",
-    "Weather notes in the top right read: '62 Becoming cloudy & wdy 68 clear cold 35'.",
-    "A phone number '404-876-8436' is written near the top right.",
-    "A drawing of a pointing hand is in the right margin, pointing towards the bottom right quadrant."
+    "Top right header has handwritten notes: 'mod w/ Thin white Rope'.",
+    "Top right header has handwritten weather notes: '62 Becoming cloudy & wdg 68' and 'clear cold 35'.",
+    "Top right header has a handwritten phone number: '404-876-8436'.",
+    "There is a hand-drawn pointing finger in the middle right margin."
   ],
   "quadrants": [
     {
@@ -23,12 +23,12 @@
         1278,
         2302
       ],
-      "hour_raw": "2pm",
-      "jock_raw": "Bill Graves",
+      "hour_raw": "2PM",
+      "jock_raw": "Bill Eaves",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Mike Oldfield Tubular Bells",
+          "raw_text": "Mike Oldfield Tabular Bells",
           "confidence": "high",
           "type_raw": "Hit",
           "notes": null,
@@ -46,9 +46,7 @@
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
-          "oddities": [
-            "A check mark is drawn to the left of the entry."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             646,
@@ -59,11 +57,11 @@
         {
           "row_index": 2,
           "raw_text": "Nice Strong arm lost sleep",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "A check mark is drawn to the left of the entry."
+            "left margin has a check mark next to the type circle"
           ],
           "row_bbox": [
             0,
@@ -103,7 +101,7 @@
         {
           "row_index": 5,
           "raw_text": "The Mthembu Queens Thina Siyajabula",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -116,8 +114,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Ella Fitzgerald Smooth sailing",
-          "confidence": "medium",
+          "raw_text": "Ella Fitzgerald Smooth Sailing",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -149,7 +147,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "A check mark is drawn to the left of the entry."
+            "left margin has a check mark next to the type circle"
           ],
           "row_bbox": [
             0,
@@ -164,9 +162,7 @@
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "A check mark is drawn to the left of the entry."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1325,
@@ -190,9 +186,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Louis Armstrong St James Infirmary",
-          "confidence": "medium",
-          "type_raw": "Ro",
+          "raw_text": "Luis Armstrong St James Infirmary",
+          "confidence": "high",
+          "type_raw": "Bo",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -204,7 +200,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Toots + The Maytals Funky Kingston",
+          "raw_text": "Toots & the Maytals Funky Kingston",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -233,31 +229,17 @@
         {
           "row_index": 14,
           "raw_text": "Velvet Monkeys Favorite day",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "a hand-drawn arrow points left underneath this entry"
+          ],
           "row_bbox": [
             0,
             1777,
             1278,
             1852
-          ]
-        },
-        {
-          "row_index": 15,
-          "raw_text": "<-",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [
-            "An arrow pointing left is drawn in the row."
-          ],
-          "row_bbox": [
-            0,
-            1852,
-            1278,
-            1927
           ]
         }
       ],
@@ -276,13 +258,11 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Marta Sebestyen - Teresmentes",
+          "raw_text": "Muzsika Marta Sebestyen - Tesementes",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The word 'Muzsika' is written above the artist name."
-          ],
+          "oddities": [],
           "row_bbox": [
             1278,
             652,
@@ -306,8 +286,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Sukay - Torra Barroso",
-          "confidence": "medium",
+          "raw_text": "Sukay - Torro Barroso",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -320,12 +300,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "* Savage Republic - Mapia",
+          "raw_text": "Savage Republic - Mapia",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "An asterisk is drawn to the left of the entry."
+            "asterisk before artist name"
           ],
           "row_bbox": [
             1278,
@@ -378,12 +358,12 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Sinead O'Connor - I am Stretched on your grave",
-          "confidence": "medium",
+          "raw_text": "Sinead O'Connor - I am stretched on your grave",
+          "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [
-            "An asterisk is drawn to the left of the type circle."
+            "asterisk in left margin outside type circle"
           ],
           "row_bbox": [
             1278,
@@ -394,10 +374,10 @@
         },
         {
           "row_index": 8,
-          "raw_text": "House of Freaks - Right Down...",
-          "confidence": "medium",
+          "raw_text": "House of Freaks - The Righteous Will White folks blood",
+          "confidence": "high",
           "type_raw": "O",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1278,
@@ -408,8 +388,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Yngwie Malmsteen - Liar white folks blood",
-          "confidence": "low",
+          "raw_text": "Yngwie Malmsteen - Liar",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -438,7 +418,7 @@
           "row_index": 11,
           "raw_text": "Naked City - A shot in the dark",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "HD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -464,8 +444,7 @@
         }
       ],
       "oddities": [
-        "A column of names (John, Sublate, Reed, Olive) is written in the right margin next to rows 6-9.",
-        "The words 'Chili Peppers' are written in the right margin next to row 12."
+        "A vertical column of words is written in the right margin: 'John', 'Cale', 'Dead', 'or', 'Alive', 'Blood', 'Chili', 'Peppers'."
       ]
     },
     {
@@ -481,8 +460,8 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Robert Palmer Johnny + Mary",
-          "confidence": "medium",
+          "raw_text": "Robert Palmer Johnny & Mary",
+          "confidence": "high",
           "type_raw": "Hit",
           "notes": null,
           "oddities": [],
@@ -495,8 +474,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Unity 2 shirlee",
-          "confidence": "medium",
+          "raw_text": "Unity 2 Shirlee",
+          "confidence": "high",
           "type_raw": "Nu",
           "notes": null,
           "oddities": [],
@@ -509,8 +488,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Bongwater Talent is a vampire",
-          "confidence": "medium",
+          "raw_text": "Bongwater Talent is a vampire /",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -523,12 +502,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "That petrol Emotion Scumsurfin",
-          "confidence": "medium",
+          "raw_text": "That Petrol Emotion Scumsurfin",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "A check mark is drawn to the left of the entry."
+            "left margin has a check mark next to the type circle"
           ],
           "row_bbox": [
             0,
@@ -554,7 +533,7 @@
         {
           "row_index": 5,
           "raw_text": "Teardrop explodes Bent out of shape",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "std",
           "notes": null,
           "oddities": [],
@@ -572,7 +551,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "A check mark is drawn to the left of the entry."
+            "left margin has a check mark next to the type circle"
           ],
           "row_bbox": [
             0,
@@ -583,8 +562,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Schooley D its Like dope",
-          "confidence": "medium",
+          "raw_text": "Schooly D its Likedope",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -597,7 +576,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "V N Akaulkeeri The Secret",
+          "raw_text": "V N Akaukleen The secret",
           "confidence": "low",
           "type_raw": "O",
           "notes": null,
@@ -612,7 +591,7 @@
         {
           "row_index": 9,
           "raw_text": "Roland Alphonso Christeen Keeler",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -640,7 +619,7 @@
         {
           "row_index": 11,
           "raw_text": "Kool moe dee They want money",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -653,7 +632,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "The Selecter Cool Blue Lady",
+          "raw_text": "The Selector cool Blue Lady",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -667,8 +646,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Burbonese Qualk under the city",
-          "confidence": "medium",
+          "raw_text": "Bourbonese Qualk under the city",
+          "confidence": "low",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -710,7 +689,7 @@
         {
           "row_index": 0,
           "raw_text": "Volcano Suns - Soft hit",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -724,7 +703,7 @@
         {
           "row_index": 1,
           "raw_text": "Angels of Epistemology - The Charm",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -737,7 +716,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Hot Lips Page + His Orchestra - St James Infirmary",
+          "raw_text": "Hot Lips Page & His Orchestra - St James Infirmary",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -751,12 +730,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Pete Townsend - Ronnie Lane - A heart to hang on to",
+          "raw_text": "Pete Townsend - Romie Cone - A heart to hang",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "The words 'on to' wrap below the main line."
+            "The end of the track title wraps to the right margin of the line below it with 'on to'."
           ],
           "row_bbox": [
             1278,
@@ -781,9 +760,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Janis Joplin - Down on Me",
+          "raw_text": "Janis Joplin - Down on me",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -796,7 +775,7 @@
         {
           "row_index": 6,
           "raw_text": "House of Love - Se Dest.",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "m",
           "notes": null,
           "oddities": [],
@@ -828,7 +807,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "A large check mark is drawn over the type circle."
+            "asterisk in left margin outside type circle"
           ],
           "row_bbox": [
             1278,
@@ -839,7 +818,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Derek + the Dominos I am yours",
+          "raw_text": "Derek & the Dominos I am yours",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -867,7 +846,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Rankin Scroo + Ginger - Nuh Du Dat",
+          "raw_text": "Rankin Scroo & Ginger - Nuh Du Dat",
           "confidence": "medium",
           "type_raw": "O",
           "notes": null,
@@ -881,7 +860,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Dub Syndicate - Chapter & Verse",
+          "raw_text": "Dub Syndicate - Chapter + Verse",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -923,13 +902,11 @@
         },
         {
           "row_index": 15,
-          "raw_text": "The Ophelias - New Society Mr. Rabbit",
-          "confidence": "medium",
+          "raw_text": "The Ophelias - New Society Mr Rabbit",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "The title 'New Society' is crossed out and 'Mr. Rabbit' is written after it."
-          ],
+          "oddities": [],
           "row_bbox": [
             1278,
             3479,

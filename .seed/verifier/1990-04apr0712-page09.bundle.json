@@ -4,10 +4,10 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-09.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 9,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:12:47.855642+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:34:10.335897+00:00",
   "page_date_raw": "Mon 9 Apr 90",
-  "comments_raw": "58 Sun\nH 63 F & cold\nL 36",
+  "comments_raw": "SB Sun\nH 63 F & cold\nL 36",
   "oddities": [
     "The name 'JAY DEWAYNE' is written diagonally in the bottom right margin."
   ],
@@ -20,7 +20,7 @@
         1275,
         2302
       ],
-      "hour_raw": "10AM",
+      "hour_raw": "10 Am",
       "jock_raw": null,
       "entries": [],
       "oddities": []
@@ -33,7 +33,7 @@
         2550,
         2302
       ],
-      "hour_raw": "12pm",
+      "hour_raw": "12 pm",
       "jock_raw": null,
       "entries": [],
       "oddities": []
@@ -59,8 +59,8 @@
         2550,
         4063
       ],
-      "hour_raw": "1pm",
-      "jock_raw": "SCOTT",
+      "hour_raw": "1 pm",
+      "jock_raw": "Scott",
       "entries": [
         {
           "row_index": 0,
@@ -94,9 +94,11 @@
           "row_index": 3,
           "raw_text": "Giant Sand - It's Long 'Bout Now",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The type column circle contains an illegible scribble instead of a letter."
+          ],
           "row_bbox": [
             1275,
             2578,
@@ -121,8 +123,8 @@
         {
           "row_index": 5,
           "raw_text": "Egberto Gismonti - Bianca",
-          "confidence": "medium",
-          "type_raw": "C",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -139,7 +141,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "checkmark in the left margin"
+            "A large checkmark overlaps the beginning of the text."
           ],
           "row_bbox": [
             1275,
@@ -178,7 +180,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Fats Waller - Ain't Misbehavin",
+          "raw_text": "Fats Waller - Ain't Misbehavin'",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -225,7 +227,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "checkmark in the left margin"
+            "A checkmark overlaps the beginning of the text."
           ],
           "row_bbox": [
             1275,

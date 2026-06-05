@@ -4,10 +4,10 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-34.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 34,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:10:48.399713+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:21.120953+00:00",
   "page_date_raw": "FRIDAY 4/6/90",
-  "comments_raw": "Replacements - Zed \"chart\"",
+  "comments_raw": "Replacements - Zev \"ebot\"",
   "oddities": [],
   "quadrants": [
     {
@@ -18,14 +18,14 @@
         1282,
         2297
       ],
-      "hour_raw": "10pm",
-      "jock_raw": "Juliette H/Ege",
+      "hour_raw": "10PM",
+      "jock_raw": "Juliette H / Eg",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Boy? Fall Out",
+          "raw_text": "Booji? Falos",
           "confidence": "low",
-          "type_raw": "v",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -37,7 +37,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Jose Orlando - Linda Niena",
+          "raw_text": "Jose Orlando Linda nienina",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -52,7 +52,7 @@
         {
           "row_index": 2,
           "raw_text": "Seaweed Inside",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -67,7 +67,7 @@
           "row_index": 3,
           "raw_text": "The Selecter On My Radio",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -81,7 +81,7 @@
           "row_index": 4,
           "raw_text": "Thelonious Monk Monk's Dream",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -93,10 +93,10 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Bakter (...) Star",
+          "raw_text": "Babe, the",
           "confidence": "low",
-          "type_raw": "L",
-          "notes": "crossed_out",
+          "type_raw": null,
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -107,12 +107,12 @@
         },
         {
           "row_index": 6,
-          "raw_text": "PLA Revolutionaries",
+          "raw_text": "PLA Revolution aics",
           "confidence": "medium",
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "marginal note 'channel One comp' written to the left of this entry"
+            "Marginal note 'Channel One comp' to the left of this entry."
           ],
           "row_bbox": [
             0,
@@ -123,8 +123,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Bricks Girl w/ The Relatives",
-          "confidence": "low",
+          "raw_text": "Bricks Girl w/ the Cards/she",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -137,7 +137,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Chemistry Set Look Over Yr Shoulder",
+          "raw_text": "Chemisky Set Look Over Yr Shoulder",
           "confidence": "medium",
           "type_raw": "O",
           "notes": null,
@@ -151,9 +151,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Int'l Sweethearts of Rhythm Jump Children",
-          "confidence": "medium",
-          "type_raw": "O/S",
+          "raw_text": "Int'l Sweethearts of Rhythm Jump children",
+          "confidence": "high",
+          "type_raw": "acs",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -193,8 +193,8 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Boosheer - Some Dumb Cop",
-          "confidence": "low",
+          "raw_text": "Booshe Roys - Sone Dumbbop",
+          "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -207,8 +207,8 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Dave Orton House Of Borgia",
-          "confidence": "medium",
+          "raw_text": "Dave Orton House of Borgia",
+          "confidence": "high",
           "type_raw": "std",
           "notes": null,
           "oddities": [],
@@ -221,8 +221,8 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Ignitors Going To Be",
-          "confidence": "medium",
+          "raw_text": "Ignitos Going To Be",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -235,7 +235,7 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Cramps Bop Pills",
+          "raw_text": "Champs Bop Pills",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -249,11 +249,13 @@
         },
         {
           "row_index": 18,
-          "raw_text": "Luis Russel Give Me Your",
-          "confidence": "medium",
+          "raw_text": "Luis Russell Give Me Your",
+          "confidence": "high",
           "type_raw": "O",
-          "notes": "crossed_out",
-          "oddities": [],
+          "notes": null,
+          "oddities": [
+            "Small note 'Tele. #' written below the end of this entry."
+          ],
           "row_bbox": [
             0,
             1921,
@@ -263,13 +265,11 @@
         },
         {
           "row_index": 19,
-          "raw_text": "tele. #",
-          "confidence": "low",
-          "type_raw": null,
+          "raw_text": "King Tee Act A Foo",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "small annotation written inside the line boundary below the previous crossed-out entry"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1996,
@@ -279,9 +279,9 @@
         },
         {
           "row_index": 20,
-          "raw_text": "King Tee Act A Foo",
+          "raw_text": "Huayucaltia San Juanito",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -290,24 +290,11 @@
             1282,
             2146
           ]
-        },
-        {
-          "row_index": 21,
-          "raw_text": "Huayucaltia San Juanito",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
-            2146,
-            1282,
-            2247
-          ]
         }
       ],
       "oddities": [
-        "a vertical line with an upward-pointing arrow is drawn in the left margin spanning rows 2-4"
+        "An arrow is drawn from row 3 up to row 1 in the left margin.",
+        "A large line points from the type column of row 10 down to row 12."
       ]
     },
     {
@@ -323,9 +310,9 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Tackhead - Ticky Timebomb",
+          "raw_text": "Tackhead - Ticking Timebomb",
           "confidence": "medium",
-          "type_raw": "P/I",
+          "type_raw": "P(T)",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -337,13 +324,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "10,000 Maniacs - Planned Obsolesce",
+          "raw_text": "10,000 Maniacs - Planned Obsolence",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "E",
           "notes": null,
-          "oddities": [
-            "scribble drawn over the letter in the type column circle"
-          ],
+          "oddities": [],
           "row_bbox": [
             1282,
             643,
@@ -395,7 +380,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Brubeck 4tet - Blue Rondo",
+          "raw_text": "Brubeck 4-tet - Blue Rondo",
           "confidence": "high",
           "type_raw": "Jazz",
           "notes": null,
@@ -411,7 +396,7 @@
           "row_index": 6,
           "raw_text": "David Byrne - Dirty old town",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -423,8 +408,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Rev Stronde - Olde World",
-          "confidence": "low",
+          "raw_text": "Revis/Fronkie - Olde World",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -467,7 +452,7 @@
           "row_index": 10,
           "raw_text": "XTC - Pink Thing",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -479,9 +464,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Miracle Legion - Old + New",
-          "confidence": "medium",
-          "type_raw": "O",
+          "raw_text": "Miracle Legion - Old & New",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -493,9 +478,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Savage Republic - The World @ our Fingertips",
+          "raw_text": "Savage Republic - The world @ our fingertips",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "A",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -507,9 +492,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "P.E. - Rev. Generations -",
-          "confidence": "high",
-          "type_raw": "NV",
+          "raw_text": "P.E. - Rev. Generations",
+          "confidence": "medium",
+          "type_raw": "NVV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -545,7 +530,7 @@
         4056
       ],
       "hour_raw": "11p",
-      "jock_raw": "MR Bill WILLIAMS",
+      "jock_raw": "MR BILL WILLIAMS",
       "entries": [
         {
           "row_index": 0,
@@ -564,8 +549,8 @@
         {
           "row_index": 1,
           "raw_text": "Lil Anthony - Never Again",
-          "confidence": "medium",
-          "type_raw": "O",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -579,7 +564,7 @@
           "row_index": 2,
           "raw_text": "Moses Mchunu - Qwahililale",
           "confidence": "medium",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -607,7 +592,7 @@
           "row_index": 4,
           "raw_text": "Durutti Column - Spent Time",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -621,7 +606,7 @@
           "row_index": 5,
           "raw_text": "Minutemen - The Anchor",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -635,10 +620,10 @@
           "row_index": 6,
           "raw_text": "SPSE - Mothers",
           "confidence": "high",
-          "type_raw": "R",
-          "notes": "crossed_out",
+          "type_raw": null,
+          "notes": null,
           "oddities": [
-            "a second type circle containing a crossed-out 'O' appears next to the main 'R' circle"
+            "Large circled R drawn in the left margin next to this entry."
           ],
           "row_bbox": [
             0,
@@ -665,7 +650,7 @@
           "row_index": 9,
           "raw_text": "Bo Diddley - Hey Bo Diddley",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -677,7 +662,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Elvis - I love You Because",
+          "raw_text": "Elvis - T Loverboy B-cause",
           "confidence": "high",
           "type_raw": "Hit",
           "notes": null,
@@ -693,7 +678,7 @@
           "row_index": 11,
           "raw_text": "Pankow - Gimme More",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -705,8 +690,8 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Mthembu Queens - Jiliqwa",
-          "confidence": "low",
+          "raw_text": "Mthembu Queens - Juluka",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -719,7 +704,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Bauhaus - Party of the",
+          "raw_text": "Bauhaus - Party in The",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
@@ -733,9 +718,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Die Kreuzen - First part I magne a light",
+          "raw_text": "Die Kreuzen - First part Imagine a light",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -747,9 +732,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Close Lobsters - gutache",
+          "raw_text": "Close Lobsters - Gutaiche",
           "confidence": "medium",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -761,7 +746,7 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Bad Checks - Do the Right",
+          "raw_text": "Bad Checks - Do The Right",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -777,7 +762,7 @@
           "row_index": 18,
           "raw_text": "Style Council - Fairy Tales",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -789,9 +774,9 @@
         },
         {
           "row_index": 19,
-          "raw_text": "Packets - Packet Preludes -",
-          "confidence": "medium",
-          "type_raw": "O",
+          "raw_text": "5 Packets - Packet prelude",
+          "confidence": "high",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -803,7 +788,7 @@
         }
       ],
       "oddities": [
-        "rows 1 and 2 are grouped together with a handwritten curly brace in the left margin"
+        "Rows 1 and 2 are bracketed together with a curly brace in the left margin."
       ]
     },
     {
@@ -833,7 +818,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Lost Boys - Under water Moonlight",
+          "raw_text": "Dirt boys - Under water Moonlight",
           "confidence": "high",
           "type_raw": "P",
           "notes": null,
@@ -875,9 +860,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Hank Williams - Lovesick Blues",
+          "raw_text": "Hank Williams - lovesick Blues",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -889,9 +874,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Airport Conv. - Reno Nevada",
+          "raw_text": "Airport Conv - Reno Nevada",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -931,8 +916,8 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Lemonheads - Second chance",
-          "confidence": "medium",
+          "raw_text": "Lemonheads - second chance",
+          "confidence": "high",
           "type_raw": "R",
           "notes": null,
           "oddities": [],
@@ -959,9 +944,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Chesterfield Kings - 60 sec Symp",
+          "raw_text": "Auste/Brick Boys-60 sec Sumps",
           "confidence": "medium",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -973,7 +958,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Dub Syndicate - Je t'aime",
+          "raw_text": "Dubsyndicate - Je t'aime",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -988,8 +973,8 @@
         {
           "row_index": 12,
           "raw_text": "John Coltrane - Acknowl",
-          "confidence": "medium",
-          "type_raw": "O",
+          "confidence": "high",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -1001,50 +986,36 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Nize Strong Arm - Front edge",
-          "confidence": "medium",
+          "raw_text": "Nize Strong Arm - From the edge",
+          "confidence": "high",
           "type_raw": "H",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1282,
             3322,
             2550,
-            3473
+            3398
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "Larry Davis - Spec. Friend",
-          "confidence": "low",
-          "type_raw": "O",
+          "row_index": 14,
+          "raw_text": "Larry Davis - Spec. Fx",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
             1282,
-            3473,
+            3398,
             2550,
-            3548
-          ]
-        },
-        {
-          "row_index": 16,
-          "raw_text": "A",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [
-            "stray letter A written alone on this line"
-          ],
-          "row_bbox": [
-            1282,
-            3548,
-            2550,
-            3624
+            3473
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A large capital A is drawn in the empty rows at the bottom of the quadrant."
+      ]
     }
   ]
 }

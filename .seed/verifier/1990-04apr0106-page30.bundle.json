@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-30.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 30,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:09:33.268807+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:32:25.657583+00:00",
   "page_date_raw": "FRIDAY 4/6/90",
   "comments_raw": null,
   "oddities": [
-    "A note written in the top center above the WXYC logo says 'Tex + the Horsehead'."
+    "There is handwritten text above the WXYC logo reading 'Tex + the Horsehead'."
   ],
   "quadrants": [
     {
@@ -20,7 +20,7 @@
         1277,
         2302
       ],
-      "hour_raw": "6 AM",
+      "hour_raw": "6Am",
       "jock_raw": "Kristina Carey",
       "entries": [
         {
@@ -29,9 +29,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The phrase 'Prairie Ramblers' is written slightly above the main line."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             548,
@@ -55,8 +53,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Live Skull - Wind",
-          "confidence": "medium",
+          "raw_text": "Live Skull - Word",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -69,7 +67,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Souled American - Luggy Di",
+          "raw_text": "Souled American - Buggy Di",
           "confidence": "medium",
           "type_raw": "L",
           "notes": null,
@@ -97,7 +95,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "THE FLUID - TOMORROW",
+          "raw_text": "The Fluid - TOMORROW",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -111,11 +109,13 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Queen Latifah - The Evil That Men Do",
+          "raw_text": "QueenLatifah - The Evil That Men Do",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The type circle contains an X drawn over what appears to be an R."
+          ],
           "row_bbox": [
             0,
             1026,
@@ -125,8 +125,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Delevantes - Uncle Willy",
-          "confidence": "medium",
+          "raw_text": "Delmonas - Uncle Willy",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -140,7 +140,7 @@
         {
           "row_index": 8,
           "raw_text": "Fleshtones - Screaming Skull",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -181,7 +181,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Shocking Blue - Venus",
+          "raw_text": "Shocking Blue Venus",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -279,7 +279,7 @@
         }
       ],
       "oddities": [
-        "A hand-drawn curly brace in the left margin groups the entries for Fetchin' Bones, Shocking Blue, and L7."
+        "A curly brace in the left margin connects rows 10 and 11."
       ]
     },
     {
@@ -291,7 +291,7 @@
         2302
       ],
       "hour_raw": "8AM",
-      "jock_raw": "Jim Petty Jr",
+      "jock_raw": "Jim Petty",
       "entries": [
         {
           "row_index": 0,
@@ -337,7 +337,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Carter Family - Michael Rowed The Boat Ashore",
+          "raw_text": "Carter Family - Michael Rowed the Boat Ashore",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -397,9 +397,7 @@
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "The 'O' in the type column has a small horizontal line drawn over it."
-          ],
+          "oddities": [],
           "row_bbox": [
             1277,
             1177,
@@ -414,7 +412,7 @@
           "type_raw": "X",
           "notes": null,
           "oddities": [
-            "The type column mark is surrounded by a hand-drawn square box instead of a circle."
+            "The type circle has a square drawn over it with an X inside."
           ],
           "row_bbox": [
             1277,
@@ -466,7 +464,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A long descender from the DJ's name crosses downwards through the type circles of rows 0, 1, 2, and 3."
+      ]
     },
     {
       "position": "bottom_left",
@@ -477,7 +477,7 @@
         4062
       ],
       "hour_raw": "7",
-      "jock_raw": "Inter",
+      "jock_raw": "Kristen",
       "entries": [
         {
           "row_index": 0,
@@ -495,8 +495,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Michael Doucet & Cajun Brew - Wooley Bully",
-          "confidence": "high",
+          "raw_text": "Michael Doucet & Cajun Brew - Votin', Drinkin'",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -523,9 +523,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Tex & the Horseheads - Clean the Dirt",
+          "raw_text": "Tex + the Horseheads - Clean the Dirt",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -555,7 +555,9 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The type circle in the left margin is scribbled out."
+          ],
           "row_bbox": [
             0,
             2733,
@@ -565,8 +567,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Bari Checks - Do Me Right",
-          "confidence": "medium",
+          "raw_text": "Bad Checks - Do Me Right",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -579,7 +581,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "The Lushes - Drunken Guitar",
+          "raw_text": "(The Lushes Drinkin Guitar)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -607,12 +609,12 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Big Star - Morpha Too / I'm In Love w/a Girl",
+          "raw_text": "Big Star - Morpha Too / I'm In Love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The words 'w/a Girl' are written very small beneath 'In Love'."
+            "The end of the track name 'with A Girl' drops down into the space of the row below."
           ],
           "row_bbox": [
             0,
@@ -679,7 +681,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Cecil Taylor - ell Ontoving Track",
+          "raw_text": "Cecil Taylor - Ell Moving Track",
           "confidence": "medium",
           "type_raw": "M",
           "notes": null,
@@ -693,8 +695,8 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Camper Van Beethoven - 2 Step Go to Egypt",
-          "confidence": "high",
+          "raw_text": "Camper Van Beethoven - L Top Go to Egypt",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -707,7 +709,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Abba - S.o.s.",
+          "raw_text": "Abba - S.O.S.",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -721,7 +723,7 @@
         }
       ],
       "oddities": [
-        "Multiple hand-drawn curly braces in the left margin group pairs of rows together (rows 3-4, rows 5-6, rows 7-8)."
+        "A large curly brace in the left margin groups rows 3 through 7."
       ]
     },
     {
@@ -732,7 +734,7 @@
         2550,
         4062
       ],
-      "hour_raw": "9 am",
+      "hour_raw": "9am",
       "jock_raw": "Jim Petty",
       "entries": [
         {
@@ -751,7 +753,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "MThendy Queens - We are Happy",
+          "raw_text": "Mthembu Queens - We Are Happy",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -849,8 +851,8 @@
         },
         {
           "row_index": 8,
-          "raw_text": "J&M Chain - Cherry Came Too",
-          "confidence": "high",
+          "raw_text": "J A M Chain - Cherry Came Too",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -946,7 +948,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A long descender from the DJ's name drops down and crosses through the text of rows 0 and 1."
+      ]
     }
   ]
 }

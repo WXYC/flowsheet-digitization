@@ -4,13 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-03.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 3,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:11:55.646526+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:01.982403+00:00",
   "page_date_raw": "SAT 4/7/90",
-  "comments_raw": "Macedonia\nTarBabies - Rock Head",
+  "comments_raw": "Macedonia\nTar Babies - Rock Head",
   "oddities": [
-    "Top right corner contains weather notes 'Foster Fre sun 50 ton 25-3 sun-sun low 60s' and 'Billie Holiday - Fine mellow'.",
-    "Below the comments band, handwritten text reads 'Harry Nilsson ocean bubbles' followed by mostly illegible text."
+    "A note written in the top right corner says 'Foster Fre Sun 50 ton 25-3 sun-sun low 60s'.",
+    "A note written in the top right corner reads 'Billie Holiday - Fine Mellow'.",
+    "A note written across the bottom of the page says 'Harry Nilsson Ocean bubbles'."
   ],
   "quadrants": [
     {
@@ -21,12 +22,12 @@
         1261,
         2301
       ],
-      "hour_raw": "10 AM",
+      "hour_raw": "10AM",
       "jock_raw": "Billy McAllister",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Killing Joke - Fire Dances",
+          "raw_text": "Killing Joke - fire Dances",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -40,7 +41,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Muddy Waters - Just to be w/ you",
+          "raw_text": "Muddy Waters - just to be w/ you",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -54,7 +55,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "House of love - 32nd Floor",
+          "raw_text": "House of love - 32nd floor",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -68,8 +69,8 @@
         },
         {
           "row_index": 3,
-          "raw_text": "- Big Dipper - Love Barge",
-          "confidence": "medium",
+          "raw_text": "Big Dipper - love Barge",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -83,7 +84,7 @@
         {
           "row_index": 4,
           "raw_text": "Ultra Vivid Scene -",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -98,7 +99,7 @@
           "row_index": 5,
           "raw_text": "Silos - Caroline",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "4",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -110,7 +111,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "StraightJacket Fits - Fabulous Things",
+          "raw_text": "Straightjacket Fits - fabulous things",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -138,21 +139,35 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Lefty Frizzell - If you've got the Money I've got the time",
+          "raw_text": "lefty Frizzell - It you've got the Money",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             1173,
+            1261,
+            1248
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "I've got the time",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1248,
             1261,
             1322
           ]
         },
         {
           "row_index": 10,
-          "raw_text": "MC 900FT Jesus - UFOs are Real",
+          "raw_text": "MC 900 FT Jesus - UFO'S are Real",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -180,7 +195,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "George Clinton - Get Dressed",
+          "raw_text": "George Clinton Get Dressed",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -194,8 +209,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Hylolovewheel - Nature's little Sunshine",
-          "confidence": "medium",
+          "raw_text": "Hollolove wheel Nature's little sunshine",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -208,7 +223,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "TarBabies - Rock head",
+          "raw_text": "Tarbabies - Rock head",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
@@ -222,7 +237,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "PaleFace - Galaxie 500 / Party Songs",
+          "raw_text": "Pale face - Galaxie 500 Party Songs",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -259,8 +274,8 @@
         2550,
         2301
       ],
-      "hour_raw": "12 PM",
-      "jock_raw": "Pat OBrien",
+      "hour_raw": "12PM",
+      "jock_raw": "Dat O'Brien",
       "entries": [
         {
           "row_index": 0,
@@ -278,13 +293,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Shocking Blue (band) - Venus (Song)",
-          "confidence": "high",
+          "raw_text": "Shocking Blue (band) - Venus (song)",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "'(band)' and '(Song)' are written very small above the main text."
-          ],
+          "oddities": [],
           "row_bbox": [
             1261,
             648,
@@ -308,7 +321,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Sailed American - Six feet of snow",
+          "raw_text": "Soled American - Six feet of snow",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -336,8 +349,8 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Vic Chesnutt - soft picasso",
-          "confidence": "medium",
+          "raw_text": "Fred Frith - crack in the concrete",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -350,7 +363,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Fred Frith - crack in the concrete",
+          "raw_text": "Galaxii 500 - cold night",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -364,7 +377,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Galaxie 500 - cold night",
+          "raw_text": "Nirvana - Stain",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -378,8 +391,8 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Nirvana - Stain",
-          "confidence": "high",
+          "raw_text": "E",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -392,10 +405,10 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Fish - Leaves me cold",
+          "raw_text": "y",
           "confidence": "low",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -406,10 +419,10 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Yo La Tengo -",
-          "confidence": "low",
-          "type_raw": null,
-          "notes": "crossed_out",
+          "raw_text": "Lush - leaves me cold",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -420,9 +433,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Lush - Leaves me cold",
+          "raw_text": "Yo la tengo - Livin in the country",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -434,7 +447,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Yo La Tengo - Livin in the country",
+          "raw_text": "James - SomeOne",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -448,28 +461,14 @@
         },
         {
           "row_index": 13,
-          "raw_text": "James - Someone",
+          "raw_text": "Billy Bragg - A13 Trunk road to the sea",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             1261,
             1475,
-            2550,
-            1550
-          ]
-        },
-        {
-          "row_index": 14,
-          "raw_text": "Billy Bragg - A13 Trunk road",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1261,
-            1550,
             2550,
             1626
           ]
@@ -480,9 +479,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The phrase 'to the sea' is written just above the end of this line."
-          ],
+          "oddities": [],
           "row_bbox": [
             1261,
             1626,
@@ -492,7 +489,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Elvis - dont be cruel",
+          "raw_text": "ELvis - dont be cruel",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -506,10 +503,10 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Billie Holliday - my man loves me when a woman loves a man",
+          "raw_text": "Billie Holliday - when a man loves a woman",
           "confidence": "low",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -520,8 +517,8 @@
         },
         {
           "row_index": 18,
-          "raw_text": "(A [scribble]) digital underground - humpty dance",
-          "confidence": "low",
+          "raw_text": "digital underground - The humpty dance",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -562,8 +559,8 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Zegloviss - television",
-          "confidence": "medium",
+          "raw_text": "Zeiglass television",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -576,7 +573,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Dirty Dozen Brass Band - its all over now",
+          "raw_text": "Dirty Dozen Brass Band It's all over Now",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -590,13 +587,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Jungle Bros - what u waiting 4?",
+          "raw_text": "Jungle Bros- What U waiting 4?",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": null,
           "notes": null,
-          "oddities": [
-            "A hand-drawn arrow points from the left margin down to the row below it."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2501,
@@ -606,7 +601,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Bongwater - Dorkweed / Sleep",
+          "raw_text": "Bongwater - Domicile Steep",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -636,7 +631,7 @@
           "row_index": 5,
           "raw_text": "Cramps-shortnin Bread",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -648,8 +643,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Vic Chesnutt - valerie",
-          "confidence": "high",
+          "raw_text": "Die Haut & Cave - Valerie",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -662,13 +657,11 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Ministry - Breathe",
+          "raw_text": "Ministry Breathe",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "Part of the text between Ministry and Breathe is heavily crossed out."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2877,
@@ -678,7 +671,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Robyn Hitchcock -",
+          "raw_text": "Robyn Hitchcock",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -692,7 +685,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "King Missile - Jesus was way cool",
+          "raw_text": "King Missle - Jesus was way cool",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
@@ -706,7 +699,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Luka Bloom - Over the Moon",
+          "raw_text": "Luka bloom - Over the Moon",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -720,8 +713,8 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Black stringband Music Apple Blossom",
-          "confidence": "low",
+          "raw_text": "Black String bird music Apple blossom",
+          "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -734,7 +727,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Yung Wu - Empty Pool",
+          "raw_text": "Yung Wu - Empty pool",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -748,7 +741,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Loop - Shot with a Diamond",
+          "raw_text": "Loop- Straight Diamond",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -762,7 +755,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Alice & John Coltrane - The sun",
+          "raw_text": "Alice & John Coltrane The sun",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -821,7 +814,7 @@
           "raw_text": "Harry Nilsson - Think about your troubles",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -832,10 +825,10 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Chet Baker - My Funny Valentine",
+          "raw_text": "Chet Baker My Funny valentine",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -877,7 +870,7 @@
           "raw_text": "Chet Baker - My Funny Valentine",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -902,7 +895,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "The Fluid - tomorrow",
+          "raw_text": "the Fluid - tomorrow",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -916,10 +909,10 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Flaming Groovies - Tallahassee Lassie",
+          "raw_text": "Flaming Groovies Tallahassee Lassie",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1261,
@@ -944,7 +937,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Johnny Cash - Born to Lose",
+          "raw_text": "Johnny cash - Born to Lose",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -1014,7 +1007,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Heartbeat of Soweto - Usuthu",
+          "raw_text": "Heartbeat of Soweto - usutha",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -1058,7 +1051,7 @@
           "row_index": 19,
           "raw_text": "Morrissey - everyday is like sunday",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "B",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -1070,8 +1063,8 @@
         },
         {
           "row_index": 20,
-          "raw_text": "Aclano dos Oito baixos - entrade sol",
-          "confidence": "low",
+          "raw_text": "Belano dos oito baixos - entra de sal.",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],

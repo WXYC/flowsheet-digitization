@@ -4,8 +4,8 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-08.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 8,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:13:39.821146+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:42:37.697208+00:00",
   "page_date_raw": "Mon 9 Apr 90",
   "comments_raw": null,
   "oddities": [],
@@ -26,7 +26,7 @@
           "raw_text": "Dexter Gordon Society Red",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -42,7 +42,7 @@
           "type_raw": null,
           "notes": "double_height",
           "oddities": [
-            "entry is crossed out"
+            "A small connecting line is drawn from the previous row to this one."
           ],
           "row_bbox": [
             0,
@@ -53,10 +53,10 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Speed the Plough River Street",
+          "raw_text": "Speed the Plough - River Street",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -81,7 +81,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Felt - Cant Make Love to You Anymore",
+          "raw_text": "Felt - Can't Make Love to You Anymo",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -95,7 +95,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Kingston Trio M.T.A.",
+          "raw_text": "Kingston Trio - M.T.A.",
           "confidence": "high",
           "type_raw": "Hit",
           "notes": null,
@@ -112,7 +112,7 @@
           "raw_text": "Black Flag - Black Coffee",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -123,13 +123,11 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Wire - Ex Lion Tamer",
-          "confidence": "high",
+          "raw_text": "Wire - I Ex Lion Tamer",
+          "confidence": "medium",
           "type_raw": "Std",
-          "notes": "crossed_out",
-          "oddities": [
-            "type circle has a line drawn through it"
-          ],
+          "notes": null,
+          "oddities": [],
           "row_bbox": [
             0,
             1171,
@@ -139,7 +137,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Wire - 40 versions",
+          "raw_text": "Wire - 40 Versions",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -239,11 +237,9 @@
           "row_index": 1,
           "raw_text": "Grant Hart - Now That You Know Me",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "type circle has an X drawn through it"
-          ],
+          "oddities": [],
           "row_bbox": [
             1263,
             646,
@@ -297,11 +293,9 @@
           "row_index": 5,
           "raw_text": "Monkees - I'm a Believer",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "R Hit",
           "notes": null,
-          "oddities": [
-            "'Hit' is written next to the type circle"
-          ],
+          "oddities": [],
           "row_bbox": [
             1263,
             947,
@@ -311,13 +305,12 @@
         },
         {
           "row_index": 6,
-          "raw_text": "3rd Bass - The Gas Face",
+          "raw_text": "3rd Bass - Stepping to the A.M. The Gas Face",
           "confidence": "medium",
-          "type_raw": null,
-          "notes": "crossed_out",
+          "type_raw": "H",
+          "notes": null,
           "oddities": [
-            "type circle has a scribble in it",
-            "track name is scribbled out and rewritten in the right margin"
+            "The text 'Stepping to the A.M.' is crossed out and 'The Gas Face' is written to its right."
           ],
           "row_bbox": [
             1263,
@@ -347,7 +340,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "a filled black square is drawn next to the type circle"
+            "A box is drawn over the 'L' type character."
           ],
           "row_bbox": [
             1263,
@@ -388,10 +381,10 @@
           "row_index": 11,
           "raw_text": "They Might Be Giants - Your Racist Friend",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "type circle has an X drawn through it"
+            "An 'X' is drawn over the type column circle."
           ],
           "row_bbox": [
             1263,
@@ -475,7 +468,7 @@
           "raw_text": "Nick Lowe - All Men Are Liars",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -490,9 +483,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": "double_height",
-          "oddities": [
-            "entry is crossed out"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2425,
@@ -507,7 +498,7 @@
           "type_raw": null,
           "notes": "double_height",
           "oddities": [
-            "entry is crossed out"
+            "The strike-through line from the previous row continues through this text."
           ],
           "row_bbox": [
             0,
@@ -521,7 +512,7 @@
           "raw_text": "Horseflies - Jenny on the Railroad",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -532,10 +523,10 @@
         },
         {
           "row_index": 6,
-          "raw_text": "King Missile - Jesus was way Cool",
+          "raw_text": "King Missle - Jesus was way Cool",
           "confidence": "high",
           "type_raw": "R",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -549,7 +540,7 @@
           "raw_text": "T-Bone Burnett - Hefner & Disney",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -560,10 +551,10 @@
         },
         {
           "row_index": 8,
-          "raw_text": "k.d. lang - Luck in my Eye",
+          "raw_text": "K D Lang - Luck in my Eye",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -576,8 +567,8 @@
           "row_index": 9,
           "raw_text": "The Fall - I'm Frank",
           "confidence": "high",
-          "type_raw": "H",
-          "notes": "crossed_out",
+          "type_raw": "O",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -590,8 +581,8 @@
           "row_index": 10,
           "raw_text": "King Crimson - 3 of a perfect pair",
           "confidence": "high",
-          "type_raw": "R",
-          "notes": "crossed_out",
+          "type_raw": "O",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -602,10 +593,10 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Leadbelly - Jean Harlow",
+          "raw_text": "Leadbelly - Ten Gallon",
           "confidence": "low",
           "type_raw": "O",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -619,7 +610,7 @@
           "raw_text": "The Jam - That's Entertainment",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -633,7 +624,7 @@
           "raw_text": "The Jam - Thick as Thieves",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -647,7 +638,7 @@
           "raw_text": "Jackson 5 - I Want You Back",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -661,7 +652,7 @@
           "raw_text": "Tom Lehrer - New Math",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -675,7 +666,7 @@
           "raw_text": "Hot Rize - Hear Jerusalem Moan",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -689,7 +680,7 @@
           "raw_text": "Solomon Burke - The Price",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -704,9 +695,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": "double_height",
-          "oddities": [
-            "entry is crossed out"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3717,
@@ -725,17 +714,17 @@
         2550,
         4066
       ],
-      "hour_raw": "9 AM",
+      "hour_raw": "9AM",
       "jock_raw": "Brian L.",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Jerry Reed - When You're Hot...",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [
-            "type circle contains a scribble, 'NV' is written above it, and 'Hit' is written next to it"
+            "A small hand-drawn circle with letters inside is annotated directly to the left of the type column."
           ],
           "row_bbox": [
             1263,
@@ -776,11 +765,9 @@
           "row_index": 3,
           "raw_text": "The Who - Rough Boys",
           "confidence": "high",
-          "type_raw": "NV",
+          "type_raw": "NV Std",
           "notes": null,
-          "oddities": [
-            "'Std' is written next to the type circle"
-          ],
+          "oddities": [],
           "row_bbox": [
             1263,
             2574,
@@ -822,10 +809,7 @@
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
-          "oddities": [
-            "type circle has an X drawn through it",
-            "an arrow is drawn from this row pointing to the next row"
-          ],
+          "oddities": [],
           "row_bbox": [
             1263,
             2799,
@@ -923,9 +907,7 @@
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "'(alt. version)' is written small and stacked at the end of the line"
-          ],
+          "oddities": [],
           "row_bbox": [
             1263,
             3324,
@@ -938,19 +920,17 @@
           "raw_text": "Mighty Diamonds - Stoned Out of My Mind",
           "confidence": "high",
           "type_raw": "L",
-          "notes": null,
-          "oddities": [
-            "a filled black circle is drawn next to the type circle"
-          ],
+          "notes": "double_height",
+          "oddities": [],
           "row_bbox": [
             1263,
             3399,
             2550,
-            3474
+            3549
           ]
         },
         {
-          "row_index": 15,
+          "row_index": 16,
           "raw_text": "Bob Dylan - John Wesley Harding",
           "confidence": "high",
           "type_raw": "O",
@@ -958,13 +938,15 @@
           "oddities": [],
           "row_bbox": [
             1263,
-            3474,
+            3549,
             2550,
-            3699
+            3774
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A zig-zag arrow in the right margin connects rows 6 and 7."
+      ]
     }
   ]
 }

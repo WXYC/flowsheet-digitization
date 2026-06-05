@@ -4,16 +4,16 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-34.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 34,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:01:38.346314+00:00",
-  "page_date_raw": "Thur 12 Apr '90",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:39:01.823456+00:00",
+  "page_date_raw": "Thur 12 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "Header has 'W.Nelson Closing Time' written diagonally over the station logo.",
-    "Header includes weather notes: '45\u00b0 Clear / C Frost M/S 60\u00b0'.",
-    "Header has 'Yaz - Only You' written on the right side.",
-    "Far right margin contains stacked names: 'Gang of 4', 'Dik/Con', 'Destroy All Monsters', 'Hugh Cornwell'.",
-    "Far left margin near bottom-left quadrant contains stacked names: 'Firehose', 'L.C.', 'Stealers wheel'."
+    "Note written diagonally above the WXYC logo reads: W Nelson Closing Time.",
+    "Weather annotations near the WXYC logo read: 45\u00b0, Clear /c Frost, M/s 60\u00b0.",
+    "A note written to the right of the date reads: Yaz - Only You.",
+    "The left margin near the bottom quadrant contains a vertical list of artist names: Firehose, EC, Stealers wheel.",
+    "The right margin near the bottom quadrant contains a vertical list of artist names: Gang of 4, Dik Carna, Dating All Monsters, Hugh Cornwell."
   ],
   "quadrants": [
     {
@@ -24,12 +24,12 @@
         1283,
         2352
       ],
-      "hour_raw": "10pm",
+      "hour_raw": "10PM",
       "jock_raw": "jk weston",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "C. de Forrest/Chilton - Sec As Man",
+          "raw_text": "C. de Forrest / Chilton - Sec As Man",
           "confidence": "medium",
           "type_raw": "Std",
           "notes": null,
@@ -44,7 +44,7 @@
         {
           "row_index": 1,
           "raw_text": "Sad Lovers + Giants - On Another Day",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -72,9 +72,9 @@
         {
           "row_index": 3,
           "raw_text": "Lloyd Cole - A Long Way Down",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -118,7 +118,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "'9:23' is written in the left margin next to this row."
+            "Left margin contains annotation '9:23' next to this row."
           ],
           "row_bbox": [
             0,
@@ -134,7 +134,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "'Radar Love' is heavily scribbled out beneath the song title 'Vanilla Queen'."
+            "Track name 'Radar Love' is heavily crossed out and replaced with 'Vanilla Queen' written directly above it."
           ],
           "row_bbox": [
             0,
@@ -145,10 +145,10 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Soul American - Twist And Shout",
+          "raw_text": "Soul American - Twist",
           "confidence": "medium",
-          "type_raw": "O",
-          "notes": "crossed_out",
+          "type_raw": "C",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -159,7 +159,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "6 feet of Snow",
+          "raw_text": "6 feet of snow",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -174,12 +174,10 @@
         {
           "row_index": 10,
           "raw_text": "Youngbloods - Get Together",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "Hit",
           "notes": null,
-          "oddities": [
-            "Heavy scribbling in the type column area before 'Hit'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1398,
@@ -231,9 +229,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Zevon - lawyer's",
+          "raw_text": "Zevon - Lawyer's",
           "confidence": "high",
-          "type_raw": "STD",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -245,7 +243,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "firehose - Captain",
+          "raw_text": "Firehose - Captain",
           "confidence": "high",
           "type_raw": "STD",
           "notes": null,
@@ -259,9 +257,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Fall - Bill's Dead",
+          "raw_text": "Fall - Bill Is Dead",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -274,8 +272,8 @@
         {
           "row_index": 4,
           "raw_text": "Thin White Rope - Napkin Song/American",
-          "confidence": "medium",
-          "type_raw": "X",
+          "confidence": "high",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -288,7 +286,7 @@
         {
           "row_index": 5,
           "raw_text": "Popes - She's You",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "Local",
           "notes": null,
           "oddities": [],
@@ -331,7 +329,7 @@
           "row_index": 8,
           "raw_text": "Windbreakers - Our Little War",
           "confidence": "high",
-          "type_raw": "U",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -343,13 +341,11 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Mingus - Better Get It in Your Soul",
+          "raw_text": "Mingus - Better Get It In Your Soul",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "Type column has an equals sign or two horizontal lines."
-          ],
+          "oddities": [],
           "row_bbox": [
             1283,
             1247,
@@ -374,7 +370,7 @@
         {
           "row_index": 11,
           "raw_text": "Marty Wilson Piper - Tip Tongue",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -473,7 +469,7 @@
           "row_index": 3,
           "raw_text": "Silo's - Here 2 U",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -500,7 +496,7 @@
         {
           "row_index": 5,
           "raw_text": "Tom WAITS - Bad LVer of A Broken Heart",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "R",
           "notes": null,
           "oddities": [],
@@ -583,7 +579,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Abba - Train Bound",
+          "raw_text": "Alla - Train Bound",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -653,7 +649,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Gang of 4 - Anthrax",
+          "raw_text": "Gans of 4 - Anthrax",
           "confidence": "high",
           "type_raw": "Req",
           "notes": null,
@@ -696,7 +692,7 @@
         {
           "row_index": 10,
           "raw_text": "Church - Mon Morning",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [],

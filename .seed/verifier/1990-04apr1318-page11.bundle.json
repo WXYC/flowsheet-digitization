@@ -4,14 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr1318/page-11.png",
   "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
   "page_number": 11,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:05:51.122166+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T12:59:48.232178+00:00",
   "page_date_raw": "Sat 14 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "Weather notes written at the top right: '67\u00b0 pt. cloudy showers likely pos thsr.' and 'Sunday Cl. showers chance t storms. hi 70\u00b0'.",
-    "Text 'wishing well Pub' is written diagonally near the top right and crossed out.",
-    "A thick hand-drawn line runs vertically down the center margin, occasionally crossing into the left quadrants."
+    "A heavy vertical black line is drawn down the middle of the entire page.",
+    "Weather notes and a DJ-handoff message are written above the date at the top right.",
+    "A hand-drawn arrow points from the top-left quadrant ('RUN WESTY RUN') across the center line into the top-right quadrant."
   ],
   "quadrants": [
     {
@@ -22,7 +22,7 @@
         1268,
         2199
       ],
-      "hour_raw": "6PM",
+      "hour_raw": "6pm",
       "jock_raw": "SAAED",
       "entries": [
         {
@@ -32,7 +32,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The words 'OF WITHER' are written above 'SEASONS'."
+            "Far left margin has annotation 'PB L'."
           ],
           "row_bbox": [
             0,
@@ -45,10 +45,10 @@
           "row_index": 1,
           "raw_text": "H.P. ZINKER - HURDLES ON MY WAY",
           "confidence": "high",
-          "type_raw": "PBD",
+          "type_raw": "L",
           "notes": null,
           "oddities": [
-            "The word 'FRIEND' is struck through below 'WAY'."
+            "Far left margin has annotation 'PB'."
           ],
           "row_bbox": [
             0,
@@ -59,7 +59,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "VAGRANTS - I CAN'T MAKE A FRIEND",
+          "raw_text": "VAGRANTS - I CANT MAKE A FRIEND",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -73,12 +73,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "MC900FT JESUS - TRUTH IS OUT OF STYLE",
+          "raw_text": "hell with lid off MC 900 FT JESUS - TRUTH IS OUT OF STYLE",
           "confidence": "high",
-          "type_raw": "PBH",
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The phrase 'Hell with lid off' is written above 'TRUTH IS OUT'."
+            "Far left margin has annotation 'PB'."
           ],
           "row_bbox": [
             0,
@@ -89,12 +89,12 @@
         },
         {
           "row_index": 4,
-          "raw_text": "CECIL TAYLOR - ENTITY",
+          "raw_text": "In Florence CECIL TAYLOR - ENTITY",
           "confidence": "high",
-          "type_raw": "PBH",
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The phrase 'IN FLORESCENCE' is written above 'ENTITY'."
+            "Far left margin has annotation 'PB'."
           ],
           "row_bbox": [
             0,
@@ -106,10 +106,12 @@
         {
           "row_index": 5,
           "raw_text": "PAIN TEENS - BANNOY",
-          "confidence": "high",
-          "type_raw": "NV",
+          "confidence": "medium",
+          "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Far left margin has annotation 'NV'."
+          ],
           "row_bbox": [
             0,
             945,
@@ -123,9 +125,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "A long arrow from the center vertical line points to this row."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1019,
@@ -135,13 +135,11 @@
         },
         {
           "row_index": 7,
-          "raw_text": "JOHN MAYALL - MY TIME",
+          "raw_text": "JOHN MAYALL - GOING TO TAKE MY TIME",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The phrase 'GOING TO TAKE' is written above 'MY TIME'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1094,
@@ -165,12 +163,12 @@
         },
         {
           "row_index": 9,
-          "raw_text": "BONGWATER - ONE SO BLACK",
+          "raw_text": "cross too much sleep BONGWATER - ONE SO BLACK",
           "confidence": "high",
-          "type_raw": "PBM",
+          "type_raw": "R",
           "notes": null,
           "oddities": [
-            "The phrase 'Too much sleep' is written above 'ONE SO BLACK'."
+            "Far left margin has annotation 'PB'."
           ],
           "row_bbox": [
             0,
@@ -181,11 +179,13 @@
         },
         {
           "row_index": 10,
-          "raw_text": "NICE STRONG ARM - CAKEWALK",
+          "raw_text": "cheesy MICE STRONG ARM - CAKEWALK",
           "confidence": "high",
-          "type_raw": "PBM",
+          "type_raw": "M",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Far left margin has annotation 'PB'."
+          ],
           "row_bbox": [
             0,
             1320,
@@ -195,12 +195,12 @@
         },
         {
           "row_index": 11,
-          "raw_text": "HELLO CREED - WREAKNDS",
+          "raw_text": "super catholic poper HELIOS CREED - WEEKENDS",
           "confidence": "high",
-          "type_raw": "PBL",
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "The phrase 'roman catholic angel' is written above 'WREAKNDS'."
+            "Far left margin has annotation 'PB'."
           ],
           "row_bbox": [
             0,
@@ -211,13 +211,11 @@
         },
         {
           "row_index": 12,
-          "raw_text": "BABES IN TOYLAND - THROAT",
+          "raw_text": "BABES IN TOYLAND - FORK DOWN THROAT",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The phrase 'PORK DOWN' is written above 'THROAT'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1471,
@@ -243,10 +241,10 @@
           "row_index": 14,
           "raw_text": "3 - SWANN STREET",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": null,
           "notes": null,
           "oddities": [
-            "The 'O' in the type circle is scribbled over."
+            "Printed circle contains a scribble."
           ],
           "row_bbox": [
             0,
@@ -266,40 +264,26 @@
         2550,
         2199
       ],
-      "hour_raw": "8PM",
-      "jock_raw": "8:30pm Kim Osborne",
+      "hour_raw": "8pm",
+      "jock_raw": "8:30pm Kim Ebone",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Chills - Heavenly Pop Hit",
+          "raw_text": "Chills Heavenly Pop Hit",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             1268,
             541,
             2550,
-            644
+            719
           ]
         },
         {
           "row_index": 1,
           "raw_text": "HENDRIX - STAR SPANGLED BANNER",
-          "confidence": "high",
-          "type_raw": "Std",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1268,
-            644,
-            2550,
-            719
-          ]
-        },
-        {
-          "row_index": 2,
-          "raw_text": "B-Surfers - AMERICAN WOMAN",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -312,10 +296,10 @@
           ]
         },
         {
-          "row_index": 3,
-          "raw_text": "H\u00fcsker D\u00fc - TURN ON the NEWS",
+          "row_index": 2,
+          "raw_text": "B-SURFERS - AMERICAN WOMAN",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -326,8 +310,8 @@
           ]
         },
         {
-          "row_index": 4,
-          "raw_text": "MINOR THREAT - LOOK BACK + LAUGH",
+          "row_index": 3,
+          "raw_text": "HUSKER DU - TURN ON the NEWS",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -340,10 +324,10 @@
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "Eugene Chadbourne - OLIE'S Play House",
+          "row_index": 4,
+          "raw_text": "MINOR THREAT - LOOK BACK & LAUGH",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -354,8 +338,8 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "Hoodoo Gurus - MARS NEEDS GUITARS",
+          "row_index": 5,
+          "raw_text": "Eugene Chadbourne - Olie's Play House",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -368,10 +352,10 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Beat Happening - Black Candy",
+          "row_index": 6,
+          "raw_text": "Hoodoo Gurus - Mars Needs Guitars",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -382,10 +366,10 @@
           ]
         },
         {
-          "row_index": 8,
-          "raw_text": "The Walkabouts - Last Ditch",
+          "row_index": 7,
+          "raw_text": "Beat Happening - Black Candy",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -396,10 +380,10 @@
           ]
         },
         {
-          "row_index": 9,
-          "raw_text": "Loop - Blood",
+          "row_index": 8,
+          "raw_text": "The Walkabouts - Last Ditch",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -410,10 +394,10 @@
           ]
         },
         {
-          "row_index": 10,
-          "raw_text": "LAVA Love - What's Your Sigh?",
+          "row_index": 9,
+          "raw_text": "Loop - Blood",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -424,17 +408,35 @@
           ]
         },
         {
-          "row_index": 11,
-          "raw_text": "Conway Twitty - Rocky Top",
+          "row_index": 10,
+          "raw_text": "LAVA LOVE - What's Your Sign?",
           "confidence": "high",
-          "type_raw": "PBH",
+          "type_raw": "R",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Circle has a slash drawn through it."
+          ],
           "row_bbox": [
             1268,
             1396,
             2550,
             1471
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Conway Twitty - Rocky Top",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [
+            "Left margin has annotation 'P.H.' next to the circle."
+          ],
+          "row_bbox": [
+            1268,
+            1471,
+            2550,
+            1547
           ]
         },
         {
@@ -446,9 +448,9 @@
           "oddities": [],
           "row_bbox": [
             1268,
-            1471,
+            1547,
             2550,
-            1547
+            1622
           ]
         }
       ],
@@ -467,13 +469,11 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "HELICOPTER RAMPUN BLUES",
+          "raw_text": "LITTLE HELIOS CREED - RAMBLIN' BONES",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The word 'HELICOPTER' is heavily struck through, and 'LITTLE' is written above it."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2249,
@@ -483,13 +483,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "FREAKS - FREAK OUT IN THE HOLE",
+          "raw_text": "FREAKS - FREAK OUT IN A HOLE",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
-          "oddities": [
-            "The word 'FREAK' is written above 'OUT IN THE'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2327,
@@ -499,13 +497,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "GROOVE GHOULIES - POP GOES THE WORLD",
-          "confidence": "high",
+          "raw_text": "GROOVIE GHOULIES - POP GOES THE WORLD",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The word 'THE' is written above 'WORLD'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2405,
@@ -520,7 +516,7 @@
           "type_raw": "R",
           "notes": null,
           "oddities": [
-            "The word 'kinda' is written in the left margin with an arrow pointing to the type circle."
+            "Left margin has annotation 'Kinda' next to the circle."
           ],
           "row_bbox": [
             0,
@@ -531,12 +527,12 @@
         },
         {
           "row_index": 4,
-          "raw_text": "GIANT SAND - DRUM & GUITAR",
+          "raw_text": "long stem rant GIANT SAND - DRUM & GUITAR",
           "confidence": "high",
-          "type_raw": "PBM",
+          "type_raw": "M",
           "notes": null,
           "oddities": [
-            "The phrase 'long stem rant' is written above 'DRUM & GUITAR'."
+            "Left margin has annotation 'PBM'."
           ],
           "row_bbox": [
             0,
@@ -547,12 +543,12 @@
         },
         {
           "row_index": 5,
-          "raw_text": "PUBLIC ENEMY - BURN HOLLYWOOD BURN",
+          "raw_text": "BURN PUBLIC ENEMY - BURN HOLLYWOOD BURN",
           "confidence": "high",
-          "type_raw": "PBM",
+          "type_raw": "N",
           "notes": null,
           "oddities": [
-            "The final 'BURN' is written above the line."
+            "Left margin has annotation 'PB N'."
           ],
           "row_bbox": [
             0,
@@ -605,13 +601,11 @@
         },
         {
           "row_index": 9,
-          "raw_text": "REPLACEMENTS - CRUELLA DE VILLE",
+          "raw_text": "DE VILLE REPLACEMENTS - CRUELLA DE VILLE",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "'DE VILLE' is written beneath 'CRUELLA'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2951,
@@ -621,9 +615,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "B MARO - WISHING WELL",
+          "raw_text": "B. MARO - WISHING WELL",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -640,7 +634,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The text 'NV' is written in the left margin with an arrow pointing to this entry."
+            "Left margin has annotation 'NV' and a hand-drawn arrow pointing to this entry."
           ],
           "row_bbox": [
             0,
@@ -656,7 +650,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The text 'CRADLE MAMI' is written in the left margin with an arrow pointing to this entry."
+            "Left margin has annotation 'CRADLE MAMI' and arrows pointing to this entry and the one above."
           ],
           "row_bbox": [
             0,
@@ -671,9 +665,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The phrase 'OF RHYTHM' is written beneath 'SWEETHEARTS'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3263,
@@ -683,12 +675,12 @@
         },
         {
           "row_index": 14,
-          "raw_text": "BEVIS FROND - SOMEWHERE ELSE",
-          "confidence": "high",
-          "type_raw": "PBH",
+          "raw_text": "any gas faces BEMS BROND - SOMEWHERE ELSE",
+          "confidence": "medium",
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The phrase 'any gas today' is written above 'SOMEWHERE ELSE'."
+            "Left margin has annotation 'PB'."
           ],
           "row_bbox": [
             0,
@@ -717,7 +709,9 @@
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "An arrow points from the end of this entry to the right margin."
+          ],
           "row_bbox": [
             1268,
             2345,
@@ -727,7 +721,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "JAMES BLOOD ULMER - River",
+          "raw_text": "JAMES BLOOD ULMER - RIVER",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -741,7 +735,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Where did All The Girls Come from",
+          "raw_text": "Where did All the Girls Come from",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -758,32 +752,18 @@
           "raw_text": "Springhouse",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             1268,
             3026,
             2550,
-            3253
+            3480
           ]
         },
         {
           "row_index": 4,
           "raw_text": "NYC",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1268,
-            3253,
-            2550,
-            3480
-          ]
-        },
-        {
-          "row_index": 5,
-          "raw_text": "hooked you / NYC",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -796,9 +776,9 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "hooked up / Bob Mould",
-          "confidence": "medium",
+          "row_index": 5,
+          "raw_text": "hooked you / NYC",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -810,9 +790,9 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "EP comex",
-          "confidence": "medium",
+          "row_index": 6,
+          "raw_text": "hooked you / Bob Mould",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -824,9 +804,23 @@
           ]
         },
         {
+          "row_index": 7,
+          "raw_text": "EP climax",
+          "confidence": "medium",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            4074,
+            2550,
+            4074
+          ]
+        },
+        {
           "row_index": 8,
-          "raw_text": "JACK RABBIT",
-          "confidence": "high",
+          "raw_text": "JACK RADIP",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -839,10 +833,10 @@
         },
         {
           "row_index": 9,
-          "raw_text": "~~~~~~~~~~~~~~~~~~~~",
+          "raw_text": "unreadable scribble",
           "confidence": "low",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
@@ -853,7 +847,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "jusa",
+          "raw_text": "just",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -881,7 +875,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Cowboy Junkies - Where Are You",
+          "raw_text": "COWBOY JUNKIES - Where Are You",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -895,7 +889,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Camper Van Beet - Tonight?",
+          "raw_text": "Camper Van Beet - TONIGHT?",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -911,7 +905,7 @@
           "row_index": 14,
           "raw_text": "The Day Lassie Went to the Moon",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "+",
           "notes": null,
           "oddities": [],
           "row_bbox": [

@@ -4,8 +4,8 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-10.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 10,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:12:31.302801+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:54.418804+00:00",
   "page_date_raw": "Mon 9 Apr 90",
   "comments_raw": null,
   "oddities": [],
@@ -18,7 +18,7 @@
         1265,
         2303
       ],
-      "hour_raw": "2PM",
+      "hour_raw": "2pm",
       "jock_raw": null,
       "entries": [],
       "oddities": []
@@ -31,7 +31,7 @@
         2550,
         2303
       ],
-      "hour_raw": "4PM",
+      "hour_raw": "4pm",
       "jock_raw": null,
       "entries": [],
       "oddities": []

@@ -4,13 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-33.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 33,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:09:30.314851+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:32:18.593610+00:00",
   "page_date_raw": "FRIDAY 4/6/90",
-  "comments_raw": "Roth-sho's only 17\nfinal week veldt\nRutles - Livin at tune",
+  "comments_raw": "Roth-stos only 17\nfinal week we/H\nRutles o Livin at time",
   "oddities": [
-    "a thick black cross is drawn over the printed WXYC logo",
-    "handwritten stats in the top right corner read: 'L38 40% / pot 56 / Dale L 26 / msn H63'"
+    "Above the top right quadrant, there's handwritten text 'L38 70% spot L26 msa #63'.",
+    "A drawing of a star is visible under the WXYC logo."
   ],
   "quadrants": [
     {
@@ -40,9 +40,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "J. MANSFIELD - THAT MAKES IT",
-          "confidence": "high",
-          "type_raw": "std",
+          "raw_text": "MANSFIELD - THAT MAKES IT",
+          "confidence": "medium",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -55,7 +55,7 @@
         {
           "row_index": 2,
           "raw_text": "CECIL TAYLOR - ANAST",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "M",
           "notes": null,
           "oddities": [],
@@ -82,10 +82,10 @@
         },
         {
           "row_index": 4,
-          "raw_text": "TRIP-PREFACE/CIGARETTE",
-          "confidence": "high",
+          "raw_text": "TRIP - PREFACE / CIGARETTE",
+          "confidence": "medium",
           "type_raw": "O",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -110,9 +110,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "J G WATSON -",
-          "confidence": "high",
-          "type_raw": "o",
+          "raw_text": "J.G. WATSON -",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -126,7 +126,7 @@
           "row_index": 7,
           "raw_text": "B. GUY - LEAVE MY GIRL ALONE",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -154,8 +154,8 @@
           "row_index": 9,
           "raw_text": "UB40 - FOOD 4 THOUGHT",
           "confidence": "high",
-          "type_raw": "o",
-          "notes": "crossed_out",
+          "type_raw": "O",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -166,8 +166,8 @@
         },
         {
           "row_index": 10,
-          "raw_text": "BLUE AEROPLANES - & STONES",
-          "confidence": "medium",
+          "raw_text": "BLUE AEROPLANES - E. STONES",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -180,10 +180,10 @@
         },
         {
           "row_index": 11,
-          "raw_text": "AWKWARD - FABLE OF A FAILED RACE",
-          "confidence": "high",
-          "type_raw": "o",
-          "notes": "crossed_out",
+          "raw_text": "HAWKWIND - FABLE OF A FAILED RACE",
+          "confidence": "medium",
+          "type_raw": "O",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -194,8 +194,8 @@
         },
         {
           "row_index": 12,
-          "raw_text": "CHAPTER 2 - F A",
-          "confidence": "medium",
+          "raw_text": "CHAPTER 2 - FA",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -208,9 +208,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "THESE NAUGHTY LUMPS - IGGY POP'S JACKET",
+          "raw_text": "THOSE NAUGHTY LUMPS - IGGY POP'S JACKET",
           "confidence": "medium",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -222,9 +222,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "IGGY POP - THAT BABY",
-          "confidence": "high",
-          "type_raw": "o",
+          "raw_text": "PEGGY PP- THAT BABY",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -235,7 +235,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "Many rows have a straight line drawn through the text, presumably crossing it out."
+      ]
     },
     {
       "position": "top_right",
@@ -246,13 +248,13 @@
         2302
       ],
       "hour_raw": "8PM",
-      "jock_raw": "Juliette & Page",
+      "jock_raw": "Gillette / Page",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Poi Dog Pondering Bury Me Deep",
           "confidence": "high",
-          "type_raw": "n/v",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -264,7 +266,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "JD Crowe, Tony Rice et al One Tear",
+          "raw_text": "J D Crowe, Tony Rice et al One Tear",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -280,7 +282,7 @@
           "row_index": 2,
           "raw_text": "Mudhoney You Got It",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -292,7 +294,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Loop Breathe Into Me (A Gilded Eternity)",
+          "raw_text": "Loop Breathe Into Me (AGildedEternity)",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -308,7 +310,7 @@
           "row_index": 4,
           "raw_text": "Queen Latifah Evil That Men Do",
           "confidence": "high",
-          "type_raw": "std/o",
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -376,9 +378,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Quid Retribuan - Jesus & Mary (Choral Group)",
-          "confidence": "medium",
-          "type_raw": "nv",
+          "raw_text": "Quid Retribuan - Jesus & Mary Choral Group",
+          "confidence": "high",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -391,8 +393,8 @@
         {
           "row_index": 10,
           "raw_text": "Tube Bar (nothing obscene) well, one \"fuck\"",
-          "confidence": "high",
-          "type_raw": "nv",
+          "confidence": "medium",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -404,7 +406,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Phil Ochs - White Boots Marchin In A Yellow Land",
+          "raw_text": "Phil Coles - White Birds Marching i A Yellow Land",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -432,8 +434,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Robyn Hitchcock Raining Twik",
-          "confidence": "medium",
+          "raw_text": "Robyn Hitchcock Raining Twig",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -446,7 +448,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Five Go Down To The Sea 8 Of 'Em",
+          "raw_text": "Five Go Down To The Sea 8 Athen",
           "confidence": "medium",
           "type_raw": "o",
           "notes": null,
@@ -460,7 +462,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Max Roach Just One of Those Things",
+          "raw_text": "Max Roach Just One Of Those Regs",
           "confidence": "medium",
           "type_raw": "o/s",
           "notes": null,
@@ -474,9 +476,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Butthole Surfers Moving To Florida",
-          "confidence": "medium",
-          "type_raw": "s",
+          "raw_text": "Butthole Surfers Moving to Florida",
+          "confidence": "high",
+          "type_raw": "S",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -488,9 +490,9 @@
         },
         {
           "row_index": 17,
-          "raw_text": "The Marmalade Reflections Of My Life",
+          "raw_text": "Marmalade Reflections Of My Life",
           "confidence": "high",
-          "type_raw": "70s",
+          "type_raw": "70's",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -502,7 +504,7 @@
         }
       ],
       "oddities": [
-        "a handwritten note at the bottom of the quadrant says: 'sorry I did not play all playbox but I make up for it next 2 hrs oK Thankx'"
+        "A note under the last entry says 'sorry I did not play all playbox but I make up for it next 2 hrs oK Thank'."
       ]
     },
     {
@@ -518,7 +520,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "K BUSH - SENSUAL WORLD",
+          "raw_text": "KBUSH- SENSUAL WORLD",
           "confidence": "high",
           "type_raw": "std?",
           "notes": null,
@@ -532,7 +534,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "PRINCE - SIGN O' TIMES",
+          "raw_text": "PRINCE- SIGN O' TIMES",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -546,7 +548,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "JELLO & NO MEANS NO - FALLING SPACE JUNK",
+          "raw_text": "JELLO BIAFRA MEANS NO - FALLING SPACE JUNK",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -560,8 +562,8 @@
         },
         {
           "row_index": 3,
-          "raw_text": "LAIBACH - I'VE GOT A FEELING",
-          "confidence": "high",
+          "raw_text": "LAVALY- I'VE GOT A FEELING",
+          "confidence": "medium",
           "type_raw": "o",
           "notes": null,
           "oddities": [],
@@ -574,8 +576,8 @@
         },
         {
           "row_index": 4,
-          "raw_text": "F MANNING - SERIOUS BLUES #19",
-          "confidence": "medium",
+          "raw_text": "R MANNING - SERIOUS BLUES #19",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -588,9 +590,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "ART BLAKEY - RIGHT DOWN FRONT",
+          "raw_text": "ART BLAKEY- RIGHT DOWN FRONT",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -603,12 +605,10 @@
         {
           "row_index": 6,
           "raw_text": "JOHN ZORN",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "an arrow is drawn from this entry pointing up to row 5"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2803,
@@ -618,9 +618,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "EDGAR BLANCHARD - LAWdy MAMA",
+          "raw_text": "EDGAR BLANCHARD- LAWdy MAMA",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -634,7 +634,7 @@
           "row_index": 8,
           "raw_text": "ALVIN LEE - AIN'T NOTHIN SHAKIN",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -646,7 +646,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "TEMPTATIONS - GET READY",
+          "raw_text": "TEMPTATIONS- GET READY",
           "confidence": "high",
           "type_raw": "hit",
           "notes": null,
@@ -660,7 +660,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "SILOS - MAYBE EVERYTHING",
+          "raw_text": "SILOS- MAYBE EVERYTHING",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -674,9 +674,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "COLOR ME GONE - LOSE CONTROL",
+          "raw_text": "COLOR ME GONE LOSE CONTROL",
           "confidence": "high",
-          "type_raw": "o",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -702,7 +702,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "CARLA BLEY - WALKING BATTERIEWOMAN",
+          "raw_text": "CARLA BLEY- WALKING BATERIE WOMAN",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -716,8 +716,8 @@
         },
         {
           "row_index": 14,
-          "raw_text": "900FT JESUS - SHUT UP",
-          "confidence": "high",
+          "raw_text": "900ft JESUS - shut up",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -729,7 +729,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A bracket links row 5 and row 6 in the left margin."
+      ]
     },
     {
       "position": "bottom_right",
@@ -740,13 +742,13 @@
         4061
       ],
       "hour_raw": "9?",
-      "jock_raw": "Juliette & Page",
+      "jock_raw": "Gillette & Page",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Oaktown 3.5.7 Stupid Def Y'all",
+          "raw_text": "Oaktown 3.5.7 Stupid Def Yall",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -758,7 +760,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Cowboy J's Witches",
+          "raw_text": "Cowboy Js Witches",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -772,7 +774,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "The Only Ones Trouble In the World",
+          "raw_text": "The Only Ones Trouble in the World",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -801,12 +803,10 @@
         {
           "row_index": 4,
           "raw_text": "Clock DVA Sonology of Sex",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "o",
           "notes": null,
-          "oddities": [
-            "a word is heavily scribbled out between the artist and track name"
-          ],
+          "oddities": [],
           "row_bbox": [
             1280,
             2653,
@@ -816,7 +816,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Mae West Frankie & Johnny",
+          "raw_text": "Mae West Frankie + Johnny",
           "confidence": "high",
           "type_raw": "o/s",
           "notes": null,
@@ -844,7 +844,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Social Distortion Pretty Thing",
+          "raw_text": "Social Distortion Pretty Drug",
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
@@ -886,7 +886,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "PE Revolution of Generation",
+          "raw_text": "PE Revolution on Generation",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -914,8 +914,8 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Sad Lovers & Giants The \u0394",
-          "confidence": "medium",
+          "raw_text": "Sad Lovers & Giants The A",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -942,7 +942,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "House of Love Blind",
+          "raw_text": "House Of Love Blind",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -955,10 +955,7 @@
           ]
         }
       ],
-      "oddities": [
-        "rows 0 and 1 are bracketed together in the left margin",
-        "rows 6-8 are grouped with a curly brace on the right margin"
-      ]
+      "oddities": []
     }
   ]
 }

@@ -4,12 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-24.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 24,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:16:41.957620+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:36:25.351741+00:00",
   "page_date_raw": "Wed 11 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "Several handwritten artist names, track fragments, and random notes are scattered in the header space above the date and main grid."
+    "Various names and band names are scrawled near the top margin, including 'Pablo Picasso', 'Jonathan Richman', 'Lee Weeks', 'Billie Holiday - Reaching For the Moon', 'Anastasia Screams - Sun Celebration', and '7 seconds - Sumthing in the Air - we breathe it every day - 1st song of newer LP'.",
+    "Near the top edge, handwritten numbers include 'Clerg Wendy', '61', '168', and '35', with '10,000 Maniacs' partly cut off."
   ],
   "quadrants": [
     {
@@ -72,7 +73,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The type-column circle has an 'X' drawn inside it."
+            "the letter inside the circle appears to be a crossed-out 'O'"
           ],
           "row_bbox": [
             0,
@@ -102,7 +103,7 @@
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "There is a checkmark drawn to the left of the type-column circle."
+            "a small handwritten 'O' is directly to the left of the printed type circle"
           ],
           "row_bbox": [
             0,
@@ -113,7 +114,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Jimi Hendrix - In From The Storm (live)",
+          "raw_text": "Jimi Hendrix - In From the Storm (live)",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -141,7 +142,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Captain Beefheart - KandyKorn!!",
+          "raw_text": "Captain Beefheart - Kandy Korn!!",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -157,7 +158,7 @@
           "row_index": 9,
           "raw_text": "Jello/D.O.A. - That's Progress",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -198,7 +199,7 @@
         {
           "row_index": 1,
           "raw_text": "Ritchie Valens - Oh Donna",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "R",
           "notes": null,
           "oddities": [],
@@ -225,7 +226,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "7 Seconds - Satyagraha",
+          "raw_text": "7 seconds - Satyagraha",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
@@ -254,7 +255,7 @@
         {
           "row_index": 5,
           "raw_text": "Anastasia Screamed - Sun Celebration",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "R",
           "notes": null,
           "oddities": [],
@@ -281,8 +282,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Muzsikas - Fijnaka Fellegek",
-          "confidence": "medium",
+          "raw_text": "Muzsikas - Eijinaka Fellegek",
+          "confidence": "low",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -309,7 +310,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "The Fall - Never Let You Go",
+          "raw_text": "The Felt - Never let You Go",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -324,8 +325,8 @@
         {
           "row_index": 10,
           "raw_text": "Beastie Boys - And What You Give is What You Get",
-          "confidence": "high",
-          "type_raw": "N/V",
+          "confidence": "medium",
+          "type_raw": "NW",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -351,7 +352,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Savage Republic - Song for Atilans.",
+          "raw_text": "Savage Republic - Song for Hubris",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -374,7 +375,7 @@
         1282,
         4062
       ],
-      "hour_raw": "7 AM",
+      "hour_raw": "7Am",
       "jock_raw": "Mike Partridge",
       "entries": [
         {
@@ -398,7 +399,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The type-column circle has an 'X' drawn inside it."
+            "the letter inside the circle appears to be a crossed-out 'O'"
           ],
           "row_bbox": [
             0,
@@ -428,7 +429,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The type-column circle has an 'X' drawn inside it."
+            "the letter inside the circle appears to be a crossed-out 'O'"
           ],
           "row_bbox": [
             0,
@@ -444,7 +445,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The type-column circle has an 'X' drawn inside it."
+            "the letter inside the circle appears to be a crossed-out 'O'"
           ],
           "row_bbox": [
             0,
@@ -455,7 +456,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Bongwater - He Loved the Weather",
+          "raw_text": "Bongwater - He Loved The Weather",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -470,7 +471,7 @@
         {
           "row_index": 6,
           "raw_text": "Cecil Taylor - Pethro",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [],
@@ -499,7 +500,7 @@
           "row_index": 8,
           "raw_text": "Roger Manning - Pearly Blues",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -516,7 +517,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The type-column circle has an 'X' drawn inside it."
+            "the letter inside the circle appears to be a crossed-out 'O'"
           ],
           "row_bbox": [
             0,
@@ -599,7 +600,7 @@
           "row_index": 3,
           "raw_text": "MC 900 Ft Jesus - I'm Goin Straight to Heaven",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "NW",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -611,9 +612,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Jimmy Cliff - You Can Get It",
+          "raw_text": "T-my L\u00fctf - You Can Get It",
           "confidence": "medium",
-          "type_raw": "Std.",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -627,9 +628,11 @@
           "row_index": 6,
           "raw_text": "Bad Checks - Do Me Right",
           "confidence": "high",
-          "type_raw": "R, M",
+          "type_raw": "M",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "the letter 'R' is written immediately left of the margin line next to the type circle"
+          ],
           "row_bbox": [
             1282,
             2953,
@@ -667,8 +670,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Bricks - The Girl in the Carrot Skin.",
-          "confidence": "high",
+          "raw_text": "Bricks - The Girl in the Carrot Skin-",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -695,7 +698,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Drivin + Cryin - Bring Home the Bacon",
+          "raw_text": "Drivin + Cryin - Bully House The Bacon",
           "confidence": "high",
           "type_raw": "R",
           "notes": "double_height",
@@ -737,7 +740,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Billie Holiday - Reaching For the Moon.",
+          "raw_text": "Billie Holiday - Reaching For The Moon",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,

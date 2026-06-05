@@ -4,14 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-21.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 21,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:17:02.907922+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:31:11.128561+00:00",
   "page_date_raw": "WED 4/4/90",
-  "comments_raw": null,
+  "comments_raw": "Rave Ups (new)\nAgit pop\n56\u00b0 P.C.C. L 40",
   "oddities": [
-    "Top right corner contains handwritten text: 'Glenn-mocha', 'Vini-dacha' and a crossed out phrase 'magical mystery boy'.",
-    "Weather annotations near the top center read '61 degrees 40 pt/cl'.",
-    "Bottom margin contains text: 'Rave Ups (new) Agitpop 56 degrees Ptcl L 40'."
+    "Note at top center reads: 'Glenn-Mocha 8AM'",
+    "Note at top right reads: 'Vomitous Megadeth Dan' (partially crossed out)",
+    "Note near WXYC logo reads: '61\u00b0 40, p/c'"
   ],
   "quadrants": [
     {
@@ -22,7 +22,7 @@
         1265,
         2302
       ],
-      "hour_raw": "6PM",
+      "hour_raw": "6AM",
       "jock_raw": "Cheryl Parker",
       "entries": [
         {
@@ -43,7 +43,7 @@
           "row_index": 1,
           "raw_text": "PE - Hey Venus",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -55,9 +55,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "The Fluid - Tomorrow",
+          "raw_text": "The fluid - Tomorrow",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -71,7 +71,7 @@
           "row_index": 3,
           "raw_text": "The Fall - And there is",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -87,9 +87,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The word 'park' is written below the end of the line."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             949,
@@ -99,7 +97,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Turbines - Hangin Tough",
+          "raw_text": "Turbines - Hang Tough",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -113,7 +111,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Lyle Lovett - Why I don't know",
+          "raw_text": "Lyle lovett - Why I don't know",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -143,7 +141,7 @@
           "row_index": 8,
           "raw_text": "Savage Republic - Mapia",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -169,9 +167,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Magnolias - Don't see that girl",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Mamalioes - Don't see that girl",
+          "confidence": "medium",
+          "type_raw": "R-",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -183,9 +181,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Mind Siren - What are you doing",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Mind Sirens - what are you doing",
+          "confidence": "high",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -199,7 +197,7 @@
           "row_index": 12,
           "raw_text": "Cynics - cry cry cry",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "x",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -213,7 +211,7 @@
           "row_index": 13,
           "raw_text": "PE - 911 is a joke",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -227,7 +225,7 @@
           "row_index": 14,
           "raw_text": "Bongwater - Too much sleep",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -297,7 +295,7 @@
           "row_index": 2,
           "raw_text": "Chapter 2 - Be You",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -325,7 +323,7 @@
           "row_index": 4,
           "raw_text": "Arson Garden - 2 Sisters",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -339,7 +337,7 @@
           "row_index": 5,
           "raw_text": "Led Zeppelin - Immigrant Song",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -367,7 +365,7 @@
           "row_index": 7,
           "raw_text": "Dub Syndicate - Mafia",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -381,7 +379,7 @@
           "row_index": 8,
           "raw_text": "Rave Ups - Respectfully King of Rain",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -407,9 +405,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "AGITPOP - Reading All About It",
+          "raw_text": "A.GIT POP - Reading All About It",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "B/B",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -421,7 +419,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Voodoo GEARSHIFT - 3 IN A Row",
+          "raw_text": "VOODOO GEARSHIFT - 3 IN A ROW",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -435,13 +433,11 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Giant Sand - Patsy Does Dylan/It's long About Now",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Giant Sand - Patsy Does Dylan / It's long About Now",
+          "confidence": "high",
+          "type_raw": "M",
           "notes": null,
-          "oddities": [
-            "The words 'About Now' are squeezed in below the end of the line."
-          ],
+          "oddities": [],
           "row_bbox": [
             1265,
             1476,
@@ -467,7 +463,7 @@
           "row_index": 15,
           "raw_text": "Silos - Porque No",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -521,7 +517,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Dogmatics - King size cigarette",
+          "raw_text": "Dogmatics - king size cigarette",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -551,7 +547,7 @@
           "row_index": 3,
           "raw_text": "Popes - Don't expect",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R-",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -563,9 +559,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Chills - familiarity breeds contempt",
+          "raw_text": "Chills - Familiarity breeds contempt",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -581,9 +577,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The words 'lose you' are wrapped below the rest of the track name."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2727,
@@ -607,13 +601,11 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Queen latifah - Queen of Royal badness",
+          "raw_text": "Queen Latifah - Queen of Royal badness",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "x",
           "notes": null,
-          "oddities": [
-            "The word 'badness' is wrapped below the rest of the track name."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2877,
@@ -623,9 +615,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "MC 900 ft. Jesus & DJ zero - I'm going straight to heaven",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "mc 900 ft. Jesus & DJ zero - I'm going straight to heaven",
+          "confidence": "high",
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -637,13 +629,11 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Mary Marg. O'Hara - My friends have",
-          "confidence": "medium",
+          "raw_text": "Mary Marg. O'hara - my friends have",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The word 'have' is wrapped below the rest of the track name."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3102,
@@ -653,7 +643,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Trotsky Icepick - Mar vista bustop",
+          "raw_text": "Trotsky Icepick - mas vista bustup",
           "confidence": "high",
           "type_raw": null,
           "notes": "double_height",
@@ -667,13 +657,11 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Nice Strong arm - neighborhood whore",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Nice strong arm - neighborhood of your",
+          "confidence": "high",
+          "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The word 'whore' is wrapped below the rest of the track name."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3327,
@@ -697,9 +685,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Felt - Cartoon Sky",
+          "raw_text": "felt - cartoon Sky",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -711,9 +699,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Mission - Into the blue",
+          "raw_text": "mission - Into the blue",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -748,14 +736,14 @@
         2550,
         4074
       ],
-      "hour_raw": "9PM",
+      "hour_raw": "9AM",
       "jock_raw": "Scott",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Ted Nugent - Free For All",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -767,8 +755,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "House of Large Sizes - Edison human",
-          "confidence": "medium",
+          "raw_text": "House of large Sizes - Eisanhowar",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -809,7 +797,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Bill Monroe - Can't You Hear me Callin'",
+          "raw_text": "Bill Monroe - Can't You Hear Me Callin'",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -823,13 +811,11 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Ilene Weiss - No Baby",
+          "raw_text": "Ilene Weiss - No Baby [Folk]",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "Bracketed annotation '[Fast Folk]' in right margin."
-          ],
+          "oddities": [],
           "row_bbox": [
             1265,
             2727,
@@ -839,13 +825,11 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Tom Clark - Blisters + Smoke",
+          "raw_text": "Tom Clark - Blisters & Smoke [Anti-Folk]",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "Bracketed annotation '[Anti-folk]' in right margin."
-          ],
+          "oddities": [],
           "row_bbox": [
             1265,
             2802,
@@ -855,9 +839,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Loop - Shot w/ A Diamond",
+          "raw_text": "Loop - Spot w/ A Diamond",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -869,12 +853,12 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Marvin Gaye / T. Terrell - You're All I Need 2 Get By",
+          "raw_text": "Marvin Gaye / T. Terrell - You're All I Need",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The words '2 Get By' are wrapped below the end of the line."
+            "The words '2 Get By' wrap below the end of this line."
           ],
           "row_bbox": [
             1265,
@@ -899,13 +883,11 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Red Allen - Sometime some day",
-          "confidence": "high",
+          "raw_text": "Red Allen - Somethingsomeday",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "Artist name is preceded by a crossed-out word."
-          ],
+          "oddities": [],
           "row_bbox": [
             1265,
             3102,
@@ -929,12 +911,12 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Primal Scream - I'm Losing More Than I'll Ever Have",
+          "raw_text": "Primal Scream - I'm Losing More Than I'll",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The words 'Ever Have' are wrapped below the end of the line."
+            "The words 'Ever Have' wrap below the end of this line."
           ],
           "row_bbox": [
             1265,
@@ -947,7 +929,7 @@
           "row_index": 13,
           "raw_text": "Cowboy Junkies - Where Are You Tonight?",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [

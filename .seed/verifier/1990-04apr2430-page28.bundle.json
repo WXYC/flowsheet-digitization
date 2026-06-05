@@ -4,13 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr2430/page-28.png",
   "pdf_path": "1990/April 1990/1990-04apr2430.pdf",
   "page_number": 28,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:18:11.249733+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:39:16.930621+00:00",
   "page_date_raw": "Sat 28 Apr 90",
-  "comments_raw": null,
+  "comments_raw": "Magazine - Permafrost - Pause-",
   "oddities": [
-    "The number '74\u00b0' is written in the top left corner of the page above the printed 'Hour' label.",
-    "The 'Comments:' field at the bottom of the page contains the text 'Magazine - Perm Frost - Paisa~'."
+    "A handwritten '74\u00b0' appears in the top left above the Hour label."
   ],
   "quadrants": [
     {
@@ -21,14 +20,14 @@
         1285,
         2309
       ],
-      "hour_raw": "11pm",
-      "jock_raw": "Jesse Walker",
+      "hour_raw": "10PM",
+      "jock_raw": "JESSE Walker",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "A Tribe Called Quest - Can I Kick It?",
+          "raw_text": "A Tribe Called Quest - (Can I) Kick It?",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -42,7 +41,7 @@
           "row_index": 1,
           "raw_text": "Anita Lane - Lost in Music",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -54,9 +53,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "The Mthembu Queens - As of today",
+          "raw_text": "The Mthembo Queens - As of today",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -70,7 +69,7 @@
           "row_index": 3,
           "raw_text": "Robyn Hitchcock - Eye Satellite",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -84,7 +83,7 @@
           "row_index": 4,
           "raw_text": "Nirvana - Love Buzz",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -98,7 +97,7 @@
           "row_index": 5,
           "raw_text": "Nurse w/ Wound - Nil By Mouth",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -112,7 +111,7 @@
           "row_index": 6,
           "raw_text": "Lou Reed - Metal Machine Music",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -126,7 +125,7 @@
           "row_index": 7,
           "raw_text": "B-52's - Deadbeat Club",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -140,7 +139,7 @@
           "row_index": 8,
           "raw_text": "Fugazi - Reprovisional",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R-M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -152,9 +151,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Ac Temple - Up To Here w/ You",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "AC Temple - Up To Here w/ You",
+          "confidence": "high",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -166,13 +165,11 @@
         },
         {
           "row_index": 10,
-          "raw_text": "The Aquanettas - Love letters Proper Stranger",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "The Aquanettas - Love with a Proper Stranger",
+          "confidence": "high",
+          "type_raw": "M",
           "notes": null,
-          "oddities": [
-            "The phrase 'Love letters' is crossed out and 'Proper Stranger' is written over/below it."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1334,
@@ -184,7 +181,7 @@
           "row_index": 11,
           "raw_text": "Magazine - Permafrost",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R-O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -198,7 +195,7 @@
           "row_index": 12,
           "raw_text": "Sandmen - Western Blood",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R->O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -210,9 +207,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Phil Hammond - Sluglillies",
+          "raw_text": "Phil Hammond - Slugs & Flies",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -224,9 +221,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Greater Than 1 - Peace",
+          "raw_text": "Greater Than I - Peace",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -238,9 +235,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Dave Bowie - Up The Hill Backwards",
+          "raw_text": "David Bowie - Up The Hill Backwards",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -252,9 +249,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Jungle Bros - What U waitin 4",
+          "raw_text": "Jungle Bros - What U Waitin 4",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -266,7 +263,7 @@
         }
       ],
       "oddities": [
-        "A hand-drawn curly brace in the left margin groups rows 0 through 11, with an arrow pointing outward."
+        "A bracket in the left margin groups rows 4 through 7."
       ]
     },
     {
@@ -277,7 +274,7 @@
         2550,
         2309
       ],
-      "hour_raw": "12am",
+      "hour_raw": "12 AM",
       "jock_raw": "P. J.",
       "entries": [
         {
@@ -295,10 +292,10 @@
           ]
         },
         {
-          "row_index": 9,
+          "row_index": 13,
           "raw_text": "Savage Republic - Song for Adonis",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -320,13 +317,13 @@
         4068
       ],
       "hour_raw": null,
-      "jock_raw": "Pat Nolan",
+      "jock_raw": "Pat John",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Nicolas Cave - Sunday's Child",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -340,7 +337,7 @@
           "row_index": 1,
           "raw_text": "Moonglows - Blue Velvet",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -408,7 +405,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Tom Waits - Swordfishtrombone",
+          "raw_text": "Tom Waits - Swordfish trombone",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -436,7 +433,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "E. Neubauten - Adler Kommt sp\u00e4ter",
+          "raw_text": "E. Neubauten - Adler Kommt Sp\u00e4ter",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -468,9 +465,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "This entry acts as a modifier for the previous row and is written indented without an artist or track separation."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3111,
@@ -555,7 +550,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "There is a scribbled circle or symbol between 'John' and 'Coltrane'."
+            "There is a doodle resembling an '@' symbol or a circled letter between 'John' and 'Coltrane'."
           ],
           "row_bbox": [
             1285,

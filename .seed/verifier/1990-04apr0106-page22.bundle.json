@@ -4,13 +4,11 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-22.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 22,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:16:32.330638+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:31:06.656303+00:00",
   "page_date_raw": "WED 4/4/90",
-  "comments_raw": null,
-  "oddities": [
-    "Comments section at the bottom contains multiple lines of notes: '540 PCL L40 MCL H70' and 'C8+ jane says velvet'."
-  ],
+  "comments_raw": "54\u00b0\nP Cl L 40\nM Cl H 70\nc & t.\njane says\nveldt",
+  "oddities": [],
   "quadrants": [
     {
       "position": "top_left",
@@ -20,12 +18,12 @@
         1275,
         2302
       ],
-      "hour_raw": "10 PM",
-      "jock_raw": "Spot",
+      "hour_raw": "10PM",
+      "jock_raw": "SPOT",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Dusty Springfield - Wishin + Hopin",
+          "raw_text": "Dusty Springfield - Wishin & Hopin",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -39,9 +37,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Robyn Hitchcock - Glass Hotel",
+          "raw_text": "Robyn Hitchcock - GlassHotel",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -53,14 +51,28 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Daniel Johnston - Don't Let The Su- Go Down On Your Grievances",
+          "raw_text": "Daniel Johnston - Don't let The Su-",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             725,
+            1275,
+            800
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Go Down On Your Grievances",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            800,
             1275,
             874
           ]
@@ -69,7 +81,7 @@
           "row_index": 4,
           "raw_text": "Bad Checks - Do Me Right",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -81,7 +93,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Killdozer - Hamburger Martyr",
+          "raw_text": "K'ill dozer - Hamburger Martyr",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -95,9 +107,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Nurse w/ Wound - 1 + 1 Just Ain't So (slight return)",
+          "raw_text": "Nurse w/ Wound - It Just Ain't So (slight return)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -109,8 +121,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Hank Packed - let me tangle in",
-          "confidence": "low",
+          "raw_text": "Hank Packard - let me Tangle in",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -123,13 +135,11 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Souled American - Luggage",
+          "raw_text": "Souled American - Luggy D, Your Vines",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "Text 'Your Vines' is squeezed in above the right side of this entry, belonging to the previous row."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1174,
@@ -139,9 +149,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Angels of Epis. - Vilest Disgusting / Wm. Campbell",
+          "raw_text": "Angels of Epis. - Vile & Disgusting / Wm. Campbell",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -156,7 +166,7 @@
           "raw_text": "Pere Ubu - We Have The Technology",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -167,8 +177,8 @@
         },
         {
           "row_index": 12,
-          "raw_text": "T21 - Smile",
-          "confidence": "medium",
+          "raw_text": "Tall - Smile",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -181,11 +191,13 @@
         },
         {
           "row_index": 13,
-          "raw_text": "1971 Hugo Montenegro - Moog Power",
+          "raw_text": "Hugo Montenegro - Moog Power",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The number '1971' is written in the left margin next to this row."
+          ],
           "row_bbox": [
             0,
             1552,
@@ -197,7 +209,7 @@
           "row_index": 14,
           "raw_text": "Christine Lavin - Fly On A Plane",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -237,9 +249,9 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Am. Music Club - Dreamsville Gone",
+          "raw_text": "Am. Music Club - Dreamers Gone",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -337,9 +349,11 @@
           "row_index": 4,
           "raw_text": "the mthembu queens - let's go",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Left margin has 'PB' written next to the circle."
+          ],
           "row_bbox": [
             1275,
             874,
@@ -349,7 +363,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "dogbowl - obsessed with girls oklahoma",
+          "raw_text": "dogbowl - obsessed with girls, oklahoma",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -363,7 +377,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "the shangri-la's - out in the street",
+          "raw_text": "the shangri-la's - out in the streets",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -407,7 +421,7 @@
           "row_index": 9,
           "raw_text": "captain & tennille - muskrat love",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -435,9 +449,11 @@
           "row_index": 11,
           "raw_text": "leadbelly - good, good, good / we shall walk",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Left margin has 'PB' written next to the circle."
+          ],
           "row_bbox": [
             1275,
             1401,
@@ -449,11 +465,9 @@
           "row_index": 12,
           "raw_text": "jane's addiction - jane says",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
-          "oddities": [
-            "Text 'through the valley)' appears in the right margin on this line, continuing the leadbelly entry from above."
-          ],
+          "oddities": [],
           "row_bbox": [
             1275,
             1477,
@@ -467,7 +481,9 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'heart' completing this entry wraps onto the far right side of the next printed row."
+          ],
           "row_bbox": [
             1275,
             1552,
@@ -477,13 +493,11 @@
         },
         {
           "row_index": 14,
-          "raw_text": "the velvet underground",
+          "raw_text": "the embarrassmen",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
-          "oddities": [
-            "Text 'heart' appears in the right margin on this line, continuing the supremes entry from above."
-          ],
+          "notes": null,
+          "oddities": [],
           "row_bbox": [
             1275,
             1627,
@@ -492,7 +506,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "The right margin next to rows 11 and 12 has the lyrics 'we shall walk / through the / valley' wrapping across multiple lines."
+      ]
     },
     {
       "position": "bottom_left",
@@ -507,22 +523,36 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "inside track - savage republic - customs -",
+          "raw_text": "inside track - savage republic",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             2352,
             1275,
+            2427
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "- customs -",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2427,
+            1275,
             2502
           ]
         },
         {
-          "row_index": 2,
-          "raw_text": "the ordinaires - dance of the coconuts",
-          "confidence": "medium",
+          "row_index": 3,
+          "raw_text": "the ordinaires - dance of the cocoamps",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -534,7 +564,7 @@
           ]
         },
         {
-          "row_index": 3,
+          "row_index": 4,
           "raw_text": "redhead kingpin & the f.b.i. - do the right thing",
           "confidence": "high",
           "type_raw": null,
@@ -548,12 +578,14 @@
           ]
         },
         {
-          "row_index": 5,
+          "row_index": 6,
           "raw_text": "the flat duo jets - baby",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Left margin has 'Q R' written."
+          ],
           "row_bbox": [
             0,
             2728,
@@ -562,12 +594,14 @@
           ]
         },
         {
-          "row_index": 6,
-          "raw_text": "christian death - of the wound",
-          "confidence": "medium",
+          "row_index": 7,
+          "raw_text": "christian death - of the wave",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Left margin has 'R' written."
+          ],
           "row_bbox": [
             0,
             2802,
@@ -635,7 +669,7 @@
           "row_index": 3,
           "raw_text": "they might be giants - kiss me, son of god",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -705,9 +739,11 @@
           "row_index": 8,
           "raw_text": "the veldt - it's over",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The circle has a hand-drawn arrow pointing to the right."
+          ],
           "row_bbox": [
             1275,
             2952,
@@ -719,9 +755,11 @@
           "row_index": 9,
           "raw_text": "the fluid - tomorrow",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Left margin has 'PB' written next to the circle."
+          ],
           "row_bbox": [
             1275,
             3027,
@@ -789,10 +827,10 @@
           "row_index": 15,
           "raw_text": "the jesus lizard - chrome",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The word 'the' is written small directly above the word 'jesus'."
+            "Left margin has 'PB' written next to the circle."
           ],
           "row_bbox": [
             1275,

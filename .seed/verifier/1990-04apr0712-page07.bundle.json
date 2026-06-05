@@ -4,13 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-07.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 7,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:12:25.129143+00:00",
-  "page_date_raw": "Sunday 8 April 90",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:54.425759+00:00",
+  "page_date_raw": "Sunday 8 Monday 9 April 90",
   "comments_raw": null,
   "oddities": [
-    "Words 'Pere Ubu', 'Sonic Youth', 'Police', and 'Red Hots' are written in cursive across the top margin area.",
-    "The printed text 'Monday 9' in the date is crossed out with 'Sunday 8' written above."
+    "header notes crossed out above the date read 'Pere Ubu', 'Sonic Youth S', 'Police H', 'Red Hots', and two other illegible scribbles"
   ],
   "quadrants": [
     {
@@ -21,7 +20,7 @@
         1268,
         2297
       ],
-      "hour_raw": "2AM",
+      "hour_raw": "2 AM",
       "jock_raw": "Ray Honeycutt",
       "entries": [
         {
@@ -29,7 +28,7 @@
           "raw_text": "Ray Honeycutt",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -43,7 +42,7 @@
           "raw_text": "Big Show",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -54,14 +53,28 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Royal Crescent mob - Big Show",
+          "raw_text": "Royal Crescent mob -",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             719,
+            1268,
+            793
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Big Show",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            793,
             1268,
             869
           ]
@@ -83,7 +96,7 @@
         {
           "row_index": 5,
           "raw_text": "Deutschland - Polarlicht",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -110,14 +123,28 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Crime & the City Solution - Untouchable",
+          "raw_text": "Crime & the City Solution -",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             1095,
+            1268,
+            1171
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "Untouchable",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1171,
             1268,
             1246
           ]
@@ -194,28 +221,56 @@
         },
         {
           "row_index": 14,
-          "raw_text": "The Blue Aeroplanes - Anti-Pretty",
+          "raw_text": "The Blue Aeroplanes -",
           "confidence": "high",
           "type_raw": "H",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             1623,
+            1268,
+            1698
+          ]
+        },
+        {
+          "row_index": 15,
+          "raw_text": "Anti-Pretty",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1698,
             1268,
             1773
           ]
         },
         {
           "row_index": 16,
-          "raw_text": "Red Hot Chili Peppers - Brothers Cup",
+          "raw_text": "Red Hot Chili Peppers -",
           "confidence": "high",
           "type_raw": "r",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             1773,
+            1268,
+            1848
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Brothers Cup",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            1848,
             1268,
             1923
           ]
@@ -259,7 +314,7 @@
         2550,
         2297
       ],
-      "hour_raw": "4AM",
+      "hour_raw": "4 AM",
       "jock_raw": "Ray Honeycutt",
       "entries": [
         {
@@ -278,7 +333,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Nanci Griffith - Radio Fragite",
+          "raw_text": "Nanci Griffith - Radio Fragile",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -292,28 +347,56 @@
         },
         {
           "row_index": 2,
-          "raw_text": "George Jones - Am I that Easy to Forget",
+          "raw_text": "George Jones - Am I that",
           "confidence": "high",
           "type_raw": "Hit",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             799,
+            2550,
+            874
+          ]
+        },
+        {
+          "row_index": 3,
+          "raw_text": "Easy to Forget",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            874,
             2550,
             949
           ]
         },
         {
           "row_index": 4,
-          "raw_text": "Patsy Cline - Stop the World & Let me Off",
+          "raw_text": "Patsy Cline - Stop the World",
           "confidence": "high",
           "type_raw": "Hit",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             949,
+            2550,
+            1024
+          ]
+        },
+        {
+          "row_index": 5,
+          "raw_text": "& Let me Off",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1024,
             2550,
             1099
           ]
@@ -362,42 +445,84 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Bongwater - Khomeni Died Tonight & One So Black",
+          "raw_text": "Bongwater - Khomein Died Tonight",
           "confidence": "high",
           "type_raw": "H",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             1324,
+            2550,
+            1399
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "& One So Black",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1399,
             2550,
             1474
           ]
         },
         {
           "row_index": 11,
-          "raw_text": "Clyde Edgerton - A Distant Land to Roam",
+          "raw_text": "Clyde Edgerton - A Distant Land",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             1474,
+            2550,
+            1549
+          ]
+        },
+        {
+          "row_index": 12,
+          "raw_text": "to Roam",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1549,
             2550,
             1624
           ]
         },
         {
           "row_index": 13,
-          "raw_text": "The Irish Rovers - The wind that Shakes the Corn",
+          "raw_text": "The Irish Rovers - The Wind that",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             1624,
+            2550,
+            1699
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Shakes the Corn",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            1699,
             2550,
             1774
           ]
@@ -418,7 +543,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Bela Fleck - Tonnino",
+          "raw_text": "Bela Fleck - Tonning",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -460,14 +585,28 @@
         },
         {
           "row_index": 19,
-          "raw_text": "Bricks - The Mountain Goes to Mohammed",
+          "raw_text": "Bricks - The Mountain",
           "confidence": "high",
           "type_raw": "H",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             2074,
+            2550,
+            2149
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "Goes to Mohammed",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2149,
             2550,
             2224
           ]
@@ -483,7 +622,7 @@
         1268,
         4059
       ],
-      "hour_raw": "3AM",
+      "hour_raw": "3 AM",
       "jock_raw": "Ray Honeycutt",
       "entries": [
         {
@@ -502,14 +641,28 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Sheila Chandra - All You Want Is More",
+          "raw_text": "Sheila Chandra - All You",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             2423,
+            1268,
+            2498
+          ]
+        },
+        {
+          "row_index": 2,
+          "raw_text": "Want Is more",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2498,
             1268,
             2574
           ]
@@ -530,7 +683,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Chaha Fadela - Dja Yadhak",
+          "raw_text": "Chaba Fadela - Dja Yadhak",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -558,7 +711,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Mory Kante - Ye Ke Ye Ke",
+          "raw_text": "Mory Kante - Y\u00e9 K\u00e9 Y\u00e9 K\u00e9",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -586,42 +739,84 @@
         },
         {
           "row_index": 8,
-          "raw_text": "The Meditations - Bourgeois Game",
+          "raw_text": "The Meditations - Bourgeois",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             2949,
+            1268,
+            3025
+          ]
+        },
+        {
+          "row_index": 9,
+          "raw_text": "Game",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3025,
             1268,
             3100
           ]
         },
         {
           "row_index": 10,
-          "raw_text": "Jesus With DJ Zero - Place of Loneliness",
+          "raw_text": "Jesus With DJ Zero -",
           "confidence": "high",
           "type_raw": "H",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             3100,
+            1268,
+            3175
+          ]
+        },
+        {
+          "row_index": 11,
+          "raw_text": "Place of Loneliness",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3175,
             1268,
             3249
           ]
         },
         {
           "row_index": 12,
-          "raw_text": "Hot Rize - Hear Jerusalem moan",
+          "raw_text": "Hot Rize - Hear Jerusalem",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             3249,
+            1268,
+            3325
+          ]
+        },
+        {
+          "row_index": 13,
+          "raw_text": "Moan",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3325,
             1268,
             3399
           ]
@@ -642,14 +837,30 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Dead Kennedy's - Holiday In Cambodia",
+          "raw_text": "Dead Kennedy's - Holiday",
           "confidence": "high",
-          "type_raw": "std O",
-          "notes": "double_height",
-          "oddities": [],
+          "type_raw": "Std",
+          "notes": null,
+          "oddities": [
+            "the type_raw is 'Std', 'O', or an illegible doodle, possibly struck through"
+          ],
           "row_bbox": [
             0,
             3476,
+            1268,
+            3551
+          ]
+        },
+        {
+          "row_index": 16,
+          "raw_text": "In Cambodia",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3551,
             1268,
             3626
           ]
@@ -674,9 +885,7 @@
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "the word 'wierd' is written at the end of the entry text"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3703,
@@ -686,14 +895,30 @@
         },
         {
           "row_index": 19,
-          "raw_text": "Channel One - Things & Time",
+          "raw_text": "Channel One - Things &",
           "confidence": "high",
           "type_raw": "L",
-          "notes": "double_height",
-          "oddities": [],
+          "notes": null,
+          "oddities": [
+            "the text 'weird' is written very small above the '&'"
+          ],
           "row_bbox": [
             0,
             3779,
+            1268,
+            3855
+          ]
+        },
+        {
+          "row_index": 20,
+          "raw_text": "Time",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3855,
             1268,
             3956
           ]
@@ -709,7 +934,7 @@
         2550,
         4059
       ],
-      "hour_raw": "5AM",
+      "hour_raw": "5 AM",
       "jock_raw": "Ray Honeycutt",
       "entries": [
         {
@@ -728,7 +953,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "The Jesus Lizard - 7 vs. 8",
+          "raw_text": "The Jesus Lizard - 7 Vs. 8",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -770,7 +995,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Loop- Vapour",
+          "raw_text": "Loop-Vapour",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -784,14 +1009,28 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Djivan Gasparyan - Your Strong Mind",
+          "raw_text": "Djivan Gasparyan - Your Strong",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1268,
             2724,
+            2550,
+            2800
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "Mind",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1268,
+            2800,
             2550,
             2875
           ]
