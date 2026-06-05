@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr1318/page-02.png",
   "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
   "page_number": 2,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:02:49.191030+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T12:59:23.959810+00:00",
   "page_date_raw": "Fri 13 Apr 90",
   "comments_raw": "Gil 5-44",
   "oddities": [
-    "Several handwritten notes appear around the top WXYC logo, including 'Miracle Legion', 'B52s Rome', 'Planet Report', 'Beatles', and 'Talking Heads - Take Me to the River'."
+    "Several handwritten notes appear at the top right of the page: 'b) Miracle Legion', 'B52s Rome', 'Planet Report', 'Beatles', and 'Talking Heads - Take Me to the River'."
   ],
   "quadrants": [
     {
@@ -27,9 +27,11 @@
           "row_index": 0,
           "raw_text": "REM - Pretty Persuasion",
           "confidence": "high",
-          "type_raw": "request STD",
+          "type_raw": "STD",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'request' is written above the type-column circle."
+          ],
           "row_bbox": [
             0,
             543,
@@ -39,8 +41,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Chills Don't be Memory",
-          "confidence": "high",
+          "raw_text": "Chills - Don't be Memory",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -67,7 +69,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Brave Combo - Seven Steps",
+          "raw_text": "Brave Combo - Seven Step",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -81,8 +83,8 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Anja Garbarek - True Words were Never Spoken",
-          "confidence": "medium",
+          "raw_text": "Avant Garde - True Words were Never Spoken",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -125,9 +127,11 @@
           "row_index": 7,
           "raw_text": "Talking Heads - Take Me to the River",
           "confidence": "high",
-          "type_raw": "STD request",
+          "type_raw": "Std",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'request' is written over or next to the type-column circle."
+          ],
           "row_bbox": [
             0,
             1096,
@@ -151,8 +155,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Seikito Matsumoto - Someone to love",
-          "confidence": "medium",
+          "raw_text": "Seikito Motamoto - Someone to love",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -216,8 +220,8 @@
         2550,
         2298
       ],
-      "hour_raw": "8Am",
-      "jock_raw": "Jim Pettyjohn",
+      "hour_raw": "8AM",
+      "jock_raw": "Jim Betty Jr",
       "entries": [
         {
           "row_index": 0,
@@ -235,7 +239,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Giant Sand - searchlight",
+          "raw_text": "Giant Sand - Searchlight",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -291,8 +295,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Dub Syndicate - ch & Verse",
-          "confidence": "high",
+          "raw_text": "Dub Syndicate - ch & verse",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -305,7 +309,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Djivan Gasparyan - Dle Yaman",
+          "raw_text": "Djivan Gasparian - Dle Yaman",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -319,7 +323,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Prunes - Dissolve To...",
+          "raw_text": "Prunes - Dissolve to...",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -333,7 +337,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Walkabouts - Wreck of the old #9",
+          "raw_text": "Walkabouts - Wreck Of the old #9",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -348,11 +352,11 @@
         {
           "row_index": 10,
           "raw_text": "Searchers - When You Walk in the Room",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The word 'You' is written heavily over another word in the track title."
+            "The word 'Room' is squeezed below the rest of the text into the gap above the next entry."
           ],
           "row_bbox": [
             1260,
@@ -363,7 +367,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "R.L. Jones - Under the Boardwalk",
+          "raw_text": "R. L. Jones - Under the Boardwalk",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -391,12 +395,12 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Naked City - The Sicilian Clan",
-          "confidence": "medium",
+          "raw_text": "Naked City - The Sicillian Clan",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The word 'The' is heavily scribbled out in the track title."
+            "A word before 'Sicillian' is heavily scribbled out."
           ],
           "row_bbox": [
             1260,
@@ -454,7 +458,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "A tiny 'The' is written above 'Angels'."
+            "The word 'The' is written very small above the word 'Angels'."
           ],
           "row_bbox": [
             0,
@@ -479,12 +483,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Bad Checks - Johnny why don't you bring yr girlfriend",
+          "raw_text": "Bad Checks - Johnny why don't you bring your girlfriend",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [
-            "The word 'girlfriend' is written below the rest of the track title."
+            "The word 'girlfriend' is tucked below the line."
           ],
           "row_bbox": [
             0,
@@ -500,7 +504,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The word 'Loop' is written and heavily crossed out before 'Spacemen 3'."
+            "A word before 'Spacemen' is heavily scribbled out."
           ],
           "row_bbox": [
             0,
@@ -511,7 +515,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Kentucky Headhunters - Oh Lonesome Me",
+          "raw_text": "Kentucky Headhunters - O Lonesome Me",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -525,7 +529,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Loop - The Nail Will Burn.",
+          "raw_text": "Loop - The Nail Will Burn",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -544,7 +548,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "A word is heavily crossed out before 'Prince'."
+            "A word before 'Prince' is crossed out."
           ],
           "row_bbox": [
             0,
@@ -602,7 +606,7 @@
           "type_raw": "NV",
           "notes": null,
           "oddities": [
-            "The word 'ready' is written tiny below the line at the end."
+            "The word 'ready' is tucked underneath the rest of the text."
           ],
           "row_bbox": [
             0,
@@ -641,7 +645,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Five Blind Boys - When God Dips his Pen of Love in",
+          "raw_text": "Five Blind Boys - When God Dips his Pen of Love...",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -655,12 +659,12 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Sonny + Cher - Got You Babe",
+          "raw_text": "Sonny + Cher - I Got You Babe",
           "confidence": "high",
           "type_raw": "HIT!!!",
           "notes": null,
           "oddities": [
-            "The left margin has a note reading 'and what a hit!'"
+            "The left margin contains the annotation 'and what a hit!' with an exclamation point and an arrow pointing to the row."
           ],
           "row_bbox": [
             0,
@@ -681,11 +685,11 @@
         4063
       ],
       "hour_raw": "9AM",
-      "jock_raw": "Jim Pettyjohn",
+      "jock_raw": "Jim Betty Jr",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Sacred MC - Summer Time (Troggs)",
+          "raw_text": "Sacred MC - Summertime (Troggs)",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -713,7 +717,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "G.Scott-Heron + Brian Jackson - H2OGate Blues / & go w/ you Brother",
+          "raw_text": "G. Scott-Heron + Brian Jackson - H2O Gate Blues / Ego go w/ you Brother",
           "confidence": "high",
           "type_raw": "R->O",
           "notes": "double_height",
@@ -727,7 +731,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Miriam Makeba - Umam' Uyabjula",
+          "raw_text": "Miriam Makeba - Umam' Uyajabula",
           "confidence": "medium",
           "type_raw": "O",
           "notes": null,
@@ -741,7 +745,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Thin White Rope - Every body Has Been Burned (Byrds trib)",
+          "raw_text": "Thin White Rope - Everybody Has Been Burned (Byrds trib)",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -755,7 +759,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Cowboy Junkies - 'Cause Cheap is How I Feel",
+          "raw_text": "Cowboy Junkies - 'Cause Cheap is How it Feels",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -771,7 +775,7 @@
           "row_index": 8,
           "raw_text": "Lightnin' Hopkins - Shine on Moon",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -797,7 +801,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Silos - Take My Country Back",
+          "raw_text": "Silo's - Take My Country Back",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -812,7 +816,7 @@
         {
           "row_index": 11,
           "raw_text": "Jacobites - If I Leave You",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [],
@@ -826,10 +830,12 @@
         {
           "row_index": 12,
           "raw_text": "Rod McDonald - I'm Wondering Why (Fast Folk)",
-          "confidence": "high",
-          "type_raw": "O",
+          "confidence": "medium",
+          "type_raw": "E",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Type column contains a letter that looks like a cursive E."
+          ],
           "row_bbox": [
             1260,
             3245,
@@ -869,7 +875,7 @@
           "row_index": 15,
           "raw_text": "Robyn Hitchcock - Raining Twilight Coast",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "A",
           "notes": null,
           "oddities": [],
           "row_bbox": [

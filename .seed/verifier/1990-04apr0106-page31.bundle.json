@@ -4,14 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-31.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 31,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T05:06:12.787393+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:32:29.097418+00:00",
   "page_date_raw": "FRIDAY 4/6/90",
   "comments_raw": null,
   "oddities": [
-    "Weather and traffic notes are written in the top right corner above the header line.",
-    "The name 'Tim' is crossed out next to the top-left jock name.",
-    "Large vertical text 'SHONEN KNIFE' is written in the lower left margin."
+    "Text in top right corner: 'Traffic John Byles can Must Die'.",
+    "Weather notes near header: '72 74\u00b0 Clearer Sheen +showers Today & Tonight'.",
+    "Word 'Tim' written above the top-left hour label."
   ],
   "quadrants": [
     {
@@ -27,11 +27,13 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Savage Republic-Mapia",
+          "raw_text": "Savage Republic - Mapia",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "An arrow is drawn from this row's type column down to the type column of the next row."
+          ],
           "row_bbox": [
             0,
             547,
@@ -43,7 +45,7 @@
           "row_index": 1,
           "raw_text": "King Blank-Upright",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -55,9 +57,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "PIVOT FOOTs- I'VE SEEN",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "PIVOT FOOTS- IVE SEEN",
+          "confidence": "medium",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -69,12 +71,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "LED ZEPPLIN - NOBODY'S FAULTS",
+          "raw_text": "LED ZEPPLIN - NOBODY'S FAULT",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "A small arrow head is drawn pointing to this row on the left side."
+            "An arrow drawn in the left margin points to this row."
           ],
           "row_bbox": [
             0,
@@ -101,7 +103,7 @@
           "row_index": 5,
           "raw_text": "NICE STRONG ARM - DESERT BEAUTY",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -113,9 +115,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "MISSION UK - DELIVERANCE",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "MISSION VK - DELIVERANCE",
+          "confidence": "medium",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -127,11 +129,13 @@
         },
         {
           "row_index": 7,
-          "raw_text": "BABES IN TOYLAND- FLESHCRAWL",
+          "raw_text": "BABES IN TOYLAND - FLESHCRAWL",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "A small arrow is drawn at the end of the text pointing right."
+          ],
           "row_bbox": [
             0,
             1099,
@@ -141,8 +145,8 @@
         },
         {
           "row_index": 8,
-          "raw_text": "PETER HOOK ) REKOU",
-          "confidence": "low",
+          "raw_text": "PETER HOOK   REKON",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -155,9 +159,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "DUB SYNDICATE- MAFIA",
+          "raw_text": "DUB SYNDICATE - MAFIA",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -172,10 +176,8 @@
           "raw_text": "ICE T - YOU PLAYED YOURSELF",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
-          "oddities": [
-            "The line crossing out this row swoops up to touch row 9."
-          ],
+          "notes": null,
+          "oddities": [],
           "row_bbox": [
             0,
             1325,
@@ -185,7 +187,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "LOVE/HATE - BLACK OUT IN RED ROOM",
+          "raw_text": "LOVE \\ HATE - BLACK OUT IN RED ROOM",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -199,9 +201,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "COWBOY JUNKIES - POWDER FINGER",
+          "raw_text": "COWBOY JUNKIES - POWDERFINGER",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -213,8 +215,7 @@
         }
       ],
       "oddities": [
-        "A long curved arrow from the top left corner points to row 1.",
-        "A curved arrow in the left margin points from row 6 up to row 1."
+        "Scribbles and curved lines are drawn in the left margin connecting rows 5 through 7."
       ]
     },
     {
@@ -226,13 +227,13 @@
         2301
       ],
       "hour_raw": "12P",
-      "jock_raw": "Mich higg",
+      "jock_raw": "Mich higgs",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Velvet Monkeys Favorite Day",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -246,7 +247,7 @@
           "row_index": 1,
           "raw_text": "Big Dipper San Quentin",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -260,7 +261,7 @@
           "row_index": 2,
           "raw_text": "Scott Joplin Ragtime Dance",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -274,10 +275,10 @@
           "row_index": 3,
           "raw_text": "John Hall Story of Willie",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Annotation in the right margin reads '(Anti-folk)'."
+            "The annotation '(Acst. folk)' is written in the right margin."
           ],
           "row_bbox": [
             1276,
@@ -288,9 +289,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Suzi Linger Crewd of Ghosts",
-          "confidence": "low",
-          "type_raw": null,
+          "raw_text": "Suzi Linger Crew of Ghosts",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -304,7 +305,7 @@
           "row_index": 5,
           "raw_text": "Temptations Ball of Confusion",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -316,9 +317,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Lee Harvey Oswald Band Setting Suns & d/w the Vampires",
-          "confidence": "low",
-          "type_raw": null,
+          "raw_text": "Lee Harvey Oswald Band Setting Suns + dLw/ the Vampires",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -330,9 +331,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Bozoo Chavis Suzy Q",
+          "raw_text": "Boozoo Chavis Suzy Q",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -344,11 +345,13 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Odetta Children Go Where I Send Thee (Anti Folk)",
+          "raw_text": "Odetta Children Go Where I Send Thee",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The annotation '(cont. folk)' is written in the right margin."
+          ],
           "row_bbox": [
             1276,
             1325,
@@ -358,9 +361,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Les Negresses Vertes La Faim De L'Hericats",
+          "raw_text": "Les Negresses Vertes La Faim Des Hericots",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -372,9 +375,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Bruce Springsteen Does this Bus Stop at 82nd St.",
+          "raw_text": "Bruce Springsteen Does This Bus Stop at 82nd St.",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -388,7 +391,7 @@
           "row_index": 11,
           "raw_text": "Bobby Day Little Bitty Pretty One",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -400,11 +403,13 @@
         },
         {
           "row_index": 12,
-          "raw_text": "MC 900 Ft Jesus Place of Lonliness",
+          "raw_text": "MC 900Ft Jesus Place of Lonliness",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The type column has an 'R' crossed out with an 'H' written next to it."
+          ],
           "row_bbox": [
             1276,
             1627,
@@ -414,9 +419,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "DOA No Productivity",
+          "raw_text": "DOA Nonproductivity",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -428,9 +433,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Felt Get out of My Mirror",
+          "raw_text": "Felt Get Out of My Mirror",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -443,8 +448,8 @@
         {
           "row_index": 15,
           "raw_text": "BONGWATER One Hand on the Road",
-          "confidence": "medium",
-          "type_raw": null,
+          "confidence": "high",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -458,7 +463,7 @@
           "row_index": 16,
           "raw_text": "Lester Young Dickie's Dream",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -470,9 +475,9 @@
         },
         {
           "row_index": 17,
-          "raw_text": "George Abdo Raks Lakali El Chark",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "George Abdo Raks Layati El Chark",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -484,9 +489,9 @@
         },
         {
           "row_index": 18,
-          "raw_text": "Big Daddy Kane JVS is Big Daddy Thing",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Big Daddy Kane It Is A Big Daddy Thing",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -512,13 +517,11 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "CHAPTER TWO - SHOOT YOU DOWN",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "CHAPTER TWO - SHOOT DOWN YOU",
+          "confidence": "medium",
+          "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The word 'YOU' is written slightly above the word 'DOWN'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2352,
@@ -530,7 +533,7 @@
           "row_index": 1,
           "raw_text": "SOLOS - CAROLINE",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -558,7 +561,7 @@
           "row_index": 3,
           "raw_text": "ARSON GARDEN - SOLITAIRES",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -570,11 +573,13 @@
         },
         {
           "row_index": 4,
-          "raw_text": "STONE ROSES- FOOLS GOLD",
+          "raw_text": "STONE ROSES - FOOLS GOLD",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "A curved line connects this row to the one below it in the left margin."
+          ],
           "row_bbox": [
             0,
             2653,
@@ -586,7 +591,7 @@
           "row_index": 5,
           "raw_text": "CRAMPS - BOP PILLS",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -598,7 +603,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "RYVICHI SAKIMOTO- DO YOU",
+          "raw_text": "RYVICHI SAKIMOTO - DO YOU",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -630,7 +635,9 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Three arrows are drawn in the left margin pointing to this row."
+          ],
           "row_bbox": [
             0,
             2952,
@@ -640,7 +647,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "L 7 - BLOOD STAINS",
+          "raw_text": "L7 - BLOOD STAINS",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -654,7 +661,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "FUGAZI - SONG # 1",
+          "raw_text": "FUGAZI - SONG #1",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -668,11 +675,13 @@
         },
         {
           "row_index": 11,
-          "raw_text": "CHIRIGUAS - ICECREAM CITY",
-          "confidence": "medium",
+          "raw_text": "CHIRKNAS - ICE CREAM CITY",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "An arrow drawn from the vertical margin text points to this row."
+          ],
           "row_bbox": [
             0,
             3178,
@@ -682,9 +691,7 @@
         }
       ],
       "oddities": [
-        "A large hand-drawn arrow on the left points from row 5 up to row 4.",
-        "An arrow points from the left margin directly to row 8.",
-        "An arrow points from the large vertical text in the margin toward row 11."
+        "The words 'SHONEN KNIFE' are written vertically in large letters in the left margin spanning the bottom half of the quadrant."
       ]
     },
     {
@@ -696,15 +703,17 @@
         4060
       ],
       "hour_raw": "1pm",
-      "jock_raw": "Mich higg",
+      "jock_raw": "Mich higgs",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "COC An Eye for An Eye",
+          "raw_text": "C O C An Eye for An Eye",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The type column has 'NV U' written just outside the circle."
+          ],
           "row_bbox": [
             1276,
             2352,
@@ -715,8 +724,8 @@
         {
           "row_index": 1,
           "raw_text": "Marty Robbins Maria",
-          "confidence": "high",
-          "type_raw": null,
+          "confidence": "medium",
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -728,9 +737,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Carp The Devil Will Burn",
+          "raw_text": "Loop The Nail Will Burn",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -743,8 +752,8 @@
         {
           "row_index": 3,
           "raw_text": "Creation Rebel Creative Incoherents",
-          "confidence": "high",
-          "type_raw": null,
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -756,9 +765,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Gibson Bros. Skull + Crossbones",
+          "raw_text": "Gibson Bros. Skull & Crossbones",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -770,9 +779,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Chieftains Ballydow + Spike",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Chieftains Ballydowse+Spikie",
+          "confidence": "low",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -786,7 +795,7 @@
           "row_index": 6,
           "raw_text": "Robyn Hitchcock Aquarium",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -798,9 +807,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Stevie Wonder Fingertips part II",
+          "raw_text": "Stevie Wonder Fingertips Part II",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -814,7 +823,7 @@
           "row_index": 8,
           "raw_text": "Soundgarden Head Injury",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -826,9 +835,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Boiled In Lead Guns of the Magnificent 7",
+          "raw_text": "Boiled In Lead Cons of a Magnificant 7",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -842,7 +851,7 @@
           "row_index": 10,
           "raw_text": "Fall Arms Control Poseur",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -856,7 +865,7 @@
           "row_index": 11,
           "raw_text": "Earl Hines Cavernism",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -868,9 +877,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Chills Familiarity Breeds Contempt",
+          "raw_text": "Chills Familiarity Breed, Contempt",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -884,7 +893,7 @@
           "row_index": 13,
           "raw_text": "Dumptruck Night",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -898,7 +907,7 @@
           "row_index": 14,
           "raw_text": "Leadbelly National Defense Blues",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -912,7 +921,7 @@
           "row_index": 15,
           "raw_text": "Gregory Isaacs Jailer",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -926,7 +935,7 @@
           "row_index": 16,
           "raw_text": "Scorpions Blackout",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [

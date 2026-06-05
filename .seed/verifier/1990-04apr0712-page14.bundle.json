@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-14.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 14,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:14:24.416191+00:00",
-  "page_date_raw": "SUNDAY 4/8/90 Mon 4/9/90",
-  "comments_raw": "50 Sun W 68-70\nChurch Dash Rip Operator M 40's 45 South 10 mph\nTues P.C. Breez 70's Shwrs\nTrio Drivin 7 seconds Ecology Southern Cul Blue Nile Hats",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:35:26.150958+00:00",
+  "page_date_raw": "Mon 4/9/90",
+  "comments_raw": "Church DashRip Operator\nTrio 7seconds\nDrivin Ecology Southern Cultur\nBlue Nile Hats\n50 Sun W 68-70\nNite 40's 45 South 10 mph\nTues pt Breez 70's Shwrs",
   "oddities": [
-    "The date 'SUNDAY 4/8/90' is crossed out with 'Mon 4/9/90' written next to it."
+    "The printed date 'SUNDAY 4/8/90' is crossed out and 'Mon 4/9/90' is written next to it."
   ],
   "quadrants": [
     {
@@ -21,12 +21,12 @@
         2310
       ],
       "hour_raw": "6AM",
-      "jock_raw": "R. Osborne",
+      "jock_raw": "R Osborne",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "O.L.T. (The sheep Sees) Two Worlds",
-          "confidence": "high",
+          "raw_text": "O U T (the Sheep Sees) Two Worlds",
+          "confidence": "medium",
           "type_raw": "X",
           "notes": null,
           "oddities": [],
@@ -39,7 +39,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Boy Dirt CAR - A Side Sample",
+          "raw_text": "Boy DiRT CAR - A Side Sample",
           "confidence": "high",
           "type_raw": "Nu",
           "notes": null,
@@ -53,7 +53,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Einsturz Neubauten - Partymucke",
+          "raw_text": "Einstur Neubauten - Partymucke",
           "confidence": "high",
           "type_raw": "Nu",
           "notes": null,
@@ -86,7 +86,8 @@
           "type_raw": "Std",
           "notes": "double_height",
           "oddities": [
-            "Left margin has an arrow pointing to this row."
+            "Left margin has a hand-drawn arrow pointing to this row.",
+            "Left margin has a hand-drawn arrow pointing to this row."
           ],
           "row_bbox": [
             0,
@@ -101,9 +102,7 @@
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
-          "oddities": [
-            "Left margin has an arrow pointing to this row."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1039,
@@ -141,7 +140,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Steve Kilbey - TYRANT",
+          "raw_text": "Steve Kilby - TYRANT",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -169,7 +168,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Cecil Taylor - Morning of Departure",
+          "raw_text": "CECIL TAYLOR - Morning Of Departure",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -183,7 +182,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Elizabeth Cotton - Graduation March",
+          "raw_text": "Elizabeth Cotten - Graduation March",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -202,7 +201,7 @@
           "type_raw": "R",
           "notes": null,
           "oddities": [
-            "Left margin says 'Bucket O Brains' with an arrow pointing to this row."
+            "Left margin has 'Bucket 'O Brains'' with a hand-drawn arrow pointing to this row."
           ],
           "row_bbox": [
             0,
@@ -218,7 +217,7 @@
           "type_raw": "Std",
           "notes": null,
           "oddities": [
-            "Left margin has an arrow pointing to this row."
+            "Left margin has a hand-drawn arrow pointing to this row."
           ],
           "row_bbox": [
             0,
@@ -229,7 +228,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Laura Nyro - Beads of Sweat",
+          "raw_text": "LAURA NYRO - Beads OF Sweat",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -243,12 +242,12 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Legendary Pink Dots - Hanging Gardens",
-          "confidence": "medium",
+          "raw_text": "SPAN Legendary Pink Dots - Hanging Gardens",
+          "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
           "oddities": [
-            "First word of entry is heavily crossed out and illegible."
+            "The word 'SPAN' at the beginning of the entry is crossed out."
           ],
           "row_bbox": [
             0,
@@ -492,8 +491,8 @@
         1277,
         4074
       ],
-      "hour_raw": "7 AM",
-      "jock_raw": "R. Osborne",
+      "hour_raw": "7AM",
+      "jock_raw": "R Osborne",
       "entries": [
         {
           "row_index": 0,
@@ -511,7 +510,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "A Certain Ratio - Lucinda",
+          "raw_text": "A Certain Ratio - LUCINDA",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -525,12 +524,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "The Blue Aeroplanes - And Stones",
+          "raw_text": "The Blue Aeroplanes - ...And Stones",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Left margin has an arrow pointing to this row."
+            "Left margin has a hand-drawn arrow pointing to this row."
           ],
           "row_bbox": [
             0,
@@ -541,7 +540,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Marta Sebestyen - Love Just One",
+          "raw_text": "MARTA Sebestyen - Love Just One",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -555,7 +554,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Renaissance - Carpet of the Sun",
+          "raw_text": "RENAISSANCE - Carpet of The Sun",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -585,7 +584,7 @@
           "row_index": 7,
           "raw_text": "Loop - From Center to Wave",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -597,7 +596,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Dave Bromberg - Mrs DeKous Lament",
+          "raw_text": "Dave Bromberg - Mrs Delions Lament",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -653,7 +652,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "The Fall - No Xmas For John Quays",
+          "raw_text": "The Fall - No Xmas for John Quays",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -672,7 +671,7 @@
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "A word is heavily crossed out before 'Shoes'."
+            "There is a heavily scribbled out word between 'My' and 'Shoes'."
           ],
           "row_bbox": [
             0,
@@ -697,7 +696,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Led Zep - In The Evening",
+          "raw_text": "Led zep - In The Evening",
           "confidence": "high",
           "type_raw": "STD",
           "notes": null,
@@ -753,9 +752,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "7 Seconds - Tribute Freeda Landscape",
-          "confidence": "high",
-          "type_raw": "N O",
+          "raw_text": "7 Seconds - Tribute Freedom Landscape",
+          "confidence": "medium",
+          "type_raw": "N/O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -769,7 +768,7 @@
           "row_index": 5,
           "raw_text": "The Church - Russian Autumn Heart",
           "confidence": "high",
-          "type_raw": "M O",
+          "type_raw": "M/O",
           "notes": null,
           "oddities": [],
           "row_bbox": [

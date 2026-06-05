@@ -4,13 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-24.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 24,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:17:15.438540+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:30:42.344287+00:00",
   "page_date_raw": "Thurs 4/5/90",
-  "comments_raw": null,
+  "comments_raw": "NMA",
   "oddities": [
-    "Comments field at the bottom contains 'NMA'.",
-    "A long vertical arrow is drawn down the center dividing line between the left and right quadrants."
+    "The vertical dividing line between the left and right quadrants has been reinforced with a heavy pen line for the bottom half of the page."
   ],
   "quadrants": [
     {
@@ -28,7 +27,7 @@
           "row_index": 0,
           "raw_text": "Iggy Pop / Real Wild Child",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -42,7 +41,7 @@
           "row_index": 1,
           "raw_text": "Green River / Ozzie",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -56,7 +55,7 @@
           "row_index": 2,
           "raw_text": "Pub. Enemy / 911 is a Joke",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -70,7 +69,7 @@
           "row_index": 3,
           "raw_text": "John Prine / Angel From Mont.",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -84,7 +83,7 @@
           "row_index": 4,
           "raw_text": "Cecil Taylor / Leaf Taken Horn",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -98,7 +97,7 @@
           "row_index": 5,
           "raw_text": "Peter Hook / Jesus, I love U.",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -110,9 +109,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Genesis / I Know What I Like(in your...)",
+          "raw_text": "Genesis / I Know What I Like(inyour...)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -124,9 +123,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "MTHEMBU QUEENS / Thina Siyo Jabula",
+          "raw_text": "MTHEMBU QUEENS/ Thina Siyo Jabula",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -152,12 +151,12 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Love @ Large Sndtrk / Ain't No Cure For Love",
+          "raw_text": "Love @ Large Sndtrk/ Ain't No Cure For Love",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "Left margin has 'YAWN!' with an arrow pointing to this entry."
+            "left margin has the word 'YAWN!' with an arrow pointing to this row"
           ],
           "row_bbox": [
             0,
@@ -198,7 +197,7 @@
           "row_index": 12,
           "raw_text": "Lava Love / Juke Jubilee",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -210,7 +209,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Jerry Niewood / Joy",
+          "raw_text": "Jerry Niewood/ Joy",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -234,13 +233,13 @@
         2304
       ],
       "hour_raw": "8Am",
-      "jock_raw": "Kendrick",
+      "jock_raw": "Jendren",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Poto Doudongo - Bolingo",
+          "raw_text": "POTO DOUDOUGO - BOLINGO",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -252,9 +251,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Silos - Commodore Peter",
+          "raw_text": "SILOS - COMMODORE PETER",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -266,9 +265,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Sarah Vaughn - Black Coffee",
+          "raw_text": "SARAH VAUGHN - BLACK COFFEE",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -280,9 +279,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Martha & the Muffins - World w/o Borders",
+          "raw_text": "MARTHA & THE MUFFINS - WORLD W/O BORDERS",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -294,9 +293,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Gin Blossoms - Found out about You",
+          "raw_text": "GIN BLOSSOMS - FOUND OUT ABOUT YOU",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -308,9 +307,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Romantics - What I Like About You",
+          "raw_text": "ROMANTICS - WHAT I LIKE ABOUT YOU",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "HIT",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -322,9 +321,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Muzsikas - Vetetiem Viol\u00e1t",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "MUZSIKAS - VETETIEM VIOL\u00c1T",
+          "confidence": "high",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -336,9 +335,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Wishbone Ash - Vas Dis",
+          "raw_text": "WISHBONE ASH - VAS DIS",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -350,9 +349,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "That Petrol Emotion - Hey Venus",
+          "raw_text": "THAT PETROL EMOTION - HEY VENUS",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -364,12 +363,12 @@
         },
         {
           "row_index": 9,
-          "raw_text": "\"In the Hall of the Mountain King\" (\"Peer Gynt Suite\")",
+          "raw_text": "\"IN THE HALL OF THE MOUNTAIN KING\" (\"PEER GYNT SUITE)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "Small text 'E. Cincinn. Pops Orch.*' is written below the entry."
+            "right margin has a note 'E.CINCINN. POPS ORCH.'"
           ],
           "row_bbox": [
             1279,
@@ -380,9 +379,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Jazz Butcher - Drink",
+          "raw_text": "JAZZ BUTCHER - DRINK",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -394,9 +393,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Church - You're Still Beautiful",
+          "raw_text": "CHURCH - YOURE STILL BEAUTIFUL",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -408,9 +407,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Dub Syndicate - In The Man For You Easy",
+          "raw_text": "DUB SYNDICATE - IN THE MAN FOR YOU EASY",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -422,9 +421,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Stranglers - The European Female (In Celebration)",
+          "raw_text": "STRANGLERS - THE EUROPEAN FEMALE (IN CELEBRATION)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -452,7 +451,7 @@
           "row_index": 0,
           "raw_text": "Glass Bottle / Ain't Got Time Anymore",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -478,13 +477,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Ben Vaughn / Too Sensitive 4 this World",
-          "confidence": "high",
+          "raw_text": "Ben Vaughn /",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The track name is written below heavily crossed-out text, with an arrow pointing down to it."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2504,
@@ -494,11 +491,13 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Rockin' Dopsie / Dopsie's Boogie",
+          "raw_text": "Too Sensitive 4 this World",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "an arrow is drawn from this entry pointing to the row above"
+          ],
           "row_bbox": [
             0,
             2580,
@@ -508,7 +507,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Pretty Things / Road Runner",
+          "raw_text": "Rockin' Dopsie/ Dopsie's Boogie",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -522,9 +521,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Boo Yaa Tribe / Pickin' up Metal",
+          "raw_text": "Pretty Things / Road Runner",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -536,7 +535,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Scott Merritt / Blue Field",
+          "raw_text": "Boo Yaa Tribe/ Pickin' up Metal",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -550,7 +549,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Lucie Blue Tremblay / Jour Apr\u00e9s Jour",
+          "raw_text": "Scott Merr.tt / Blue Field",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -564,7 +563,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "House of Love / Beatles & Stones",
+          "raw_text": "Lucie Blue Tremblay/ Jour Apr\u00e9s Jour",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -578,9 +577,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "New Model Army / Heroes",
+          "raw_text": "House of Love/ Beatles & Stones",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -592,7 +591,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Carmen McRae / I'm Coming Home Again",
+          "raw_text": "New Model Army / Heroes",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -606,13 +605,11 @@
         },
         {
           "row_index": 11,
-          "raw_text": "H.P. Zinker / Dancing Days",
+          "raw_text": "Carmen McRae / I'm Coming Home Again",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "Left margin has 'Cool ->' pointing to this entry."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3180,
@@ -622,11 +619,13 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Jungle Bros. / What U Waitin' 4",
+          "raw_text": "H.P. Zinker / Dancing Days",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "left margin has the word 'Cool' with an arrow pointing to this row"
+          ],
           "row_bbox": [
             0,
             3254,
@@ -636,7 +635,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Free / All Rt. Now",
+          "raw_text": "Jungle Bros. / what U Waitin' 4",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -646,6 +645,20 @@
             3329,
             1279,
             3405
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Free / All Rt. Now",
+          "confidence": "high",
+          "type_raw": "Hit",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            3405,
+            1279,
+            3481
           ]
         }
       ],
@@ -659,15 +672,15 @@
         2550,
         4064
       ],
-      "hour_raw": "9am",
-      "jock_raw": "Ken Shu",
+      "hour_raw": "9Am",
+      "jock_raw": "Jendren",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Mekons - Hey Susan",
+          "raw_text": "MEKONS - HEY SUSAN",
           "confidence": "high",
-          "type_raw": null,
-          "notes": "crossed_out",
+          "type_raw": "O",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1279,
@@ -678,9 +691,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Loop - Blood",
+          "raw_text": "LOOP - BLOOD",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -692,9 +705,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Jackie Wilson - You Don't Know What it means",
+          "raw_text": "JACKIE WILSON - YOU DONT KNOW WHAT IT MEANS",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -706,9 +719,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Pentangle - Circle The Moon",
+          "raw_text": "PENTANGLE - CIRCLE THE MOON",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -720,9 +733,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "John S Hall (Broome Closet) - How Much Linger",
+          "raw_text": "JOHN SMALL (BROOME CLOSET) - HOW MUCH LINGER",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -734,12 +747,12 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Frank Zappa - G. Spot Tornado",
+          "raw_text": "FRANK ZAPPA - G-SPOT TORNADO",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "An arrow from the right margin points to this entry with the word 'OOPS' written nearby."
+            "right margin has the word 'OOPS' with an arrow pointing to this row"
           ],
           "row_bbox": [
             1279,
@@ -750,9 +763,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Johnny Ace - The Clock",
+          "raw_text": "JOHNNY ACE - THE CLOCK",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -764,9 +777,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Hell Fire (Channel 1) - Show Us The Way",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "HELL FIRE (CHANNEL 1) - SHOW US THE WAY",
+          "confidence": "high",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -778,9 +791,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Buddy Rich - Bein Green",
+          "raw_text": "BUDDY RICH - BEIN GREEN",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -792,9 +805,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Ein St\u00fcrzende Neubauten - Feurio",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "EINSTURZENDE \"NEUBAUTEN - FEURIO",
+          "confidence": "high",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -806,9 +819,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Glenn Miller - In the Mood",
+          "raw_text": "GLENN MILLER - IN THE MOOD",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -820,9 +833,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Jerry Reed - Amos Moses (Have A Nice Day Vol. 3)",
+          "raw_text": "JERRY REED - AMOS MOSES (HAVE A NICE DAY VOL.3)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -834,9 +847,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Raunch Hands - Whap - A-Dang",
+          "raw_text": "RAUNCH HANDS - WHAP - A - DANG",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -848,9 +861,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Cramps - Mama-Oo-Pow-Pow",
+          "raw_text": "CRAMPS - MAMA - OO - POW - POW",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -862,9 +875,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Prefab Sprout - Horsin' Around",
+          "raw_text": "PREFAB SPROUT - HORSEIN' AROUND",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -876,9 +889,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Stone Roses - Fool's Gold",
+          "raw_text": "STONE ROSES - FOOL'S GOLD",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [

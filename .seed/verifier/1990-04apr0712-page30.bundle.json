@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-30.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 30,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:00:27.452904+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:38:04.990609+00:00",
   "page_date_raw": "Thur. 12 Apr 90",
-  "comments_raw": "33\u00b0 Clear PC today ^ 55\u00b0 MS Fri ^ 60 Sat ^ 70 %. Shwrs\nLow Ton 28\u00b0 Frost warning Sun %. Th. Stroms",
+  "comments_raw": "33\u00b0 Clear | PC today ^ 55\u00b0 MS Fri ^ 60 Sat ^ 70 w/ Shwrs\nLow Ton 28\u00b0 Frost warning Sun w/ Th. Shwrs",
   "oddities": [
-    "The name 'Tannahill' is written in the bottom right corner outside the grid and comments box."
+    "The word 'Tannahill' is written in the bottom right corner of the page outside the bounds of the flowsheet."
   ],
   "quadrants": [
     {
@@ -58,7 +58,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "left margin has a diagonal slash mark"
+            "There is a slash mark in the far left margin."
           ],
           "row_bbox": [
             0,
@@ -69,11 +69,13 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Snatches o' Pink / Travis",
+          "raw_text": "Snatches o' Pink/Travis",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "There is a slash mark in the far left margin."
+          ],
           "row_bbox": [
             0,
             874,
@@ -97,13 +99,13 @@
         },
         {
           "row_index": 5,
-          "raw_text": "The Embarrassment/What a Beautiful DAY.",
+          "raw_text": "The Embarrassment/What a Beautiful",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "left margin has a diagonal slash mark",
-            "the word 'DAY.' is written below the end of the line"
+            "There is a slash mark in the far left margin.",
+            "The word 'DAY' is written in small letters below 'Beautiful' at the end of the line."
           ],
           "row_bbox": [
             0,
@@ -114,11 +116,13 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Leg. Pink Dots / Surprise, Surprise",
+          "raw_text": "Leg. Pink Dots/Surprise, Surprise",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "There is a slash mark in the far left margin."
+          ],
           "row_bbox": [
             0,
             1100,
@@ -128,7 +132,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Pink Floyd / Run Like Hell",
+          "raw_text": "Pink Floyd/Run Like Hell",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -142,13 +146,11 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Luka Bloom / Dreams in America",
+          "raw_text": "Luka Bloom/Dreams in America",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "left margin has a diagonal slash mark"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1251,
@@ -158,7 +160,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Moses Roscoe / John Henry",
+          "raw_text": "Moses Roscoe/John Henry",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -182,13 +184,13 @@
         2302
       ],
       "hour_raw": "8Am",
-      "jock_raw": "Hendricks",
+      "jock_raw": "J Hendrick",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Eric Dolphy - Miss Ann",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -228,9 +230,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "BOOK OF LOVE - TUBULAR BELLS (REMIX)",
+          "raw_text": "BOOK OF LOVE - TUBULAR BELLS(REMIX)",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -243,8 +245,8 @@
         {
           "row_index": 4,
           "raw_text": "B52s - MOON 83",
-          "confidence": "medium",
-          "type_raw": "O",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -312,9 +314,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "INT'L SWEETHEARTS OF RHYTHM - LADY BE GOOD",
+          "raw_text": "INT L SWEETHEARTS OF RHYTHM - LADY BE GOOD",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -328,7 +330,7 @@
           "row_index": 11,
           "raw_text": "LUCIE BLUE TREMBLAY - JUSTE UNE AVENTURE",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -342,7 +344,7 @@
           "row_index": 12,
           "raw_text": "ERASURE - CRY SO EASY",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -370,7 +372,7 @@
           "row_index": 14,
           "raw_text": "BESSIE SMITH - BLEEDING HEARTED BLUES",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -410,7 +412,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Area / All There Is",
+          "raw_text": "Area/ All There Is",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -424,13 +426,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "David Thomas & Wooden Birds / Valikovsky 2-step",
+          "raw_text": "David Thomas & Wooden Birds/Velikovsky 2-step",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "left margin has a diagonal slash mark"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2431,
@@ -444,7 +444,9 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "There is a slash mark in the far left margin."
+          ],
           "row_bbox": [
             0,
             2506,
@@ -454,7 +456,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Tannahill Weavers / Mrs. McPherson of Inveran",
+          "raw_text": "Tannahill Weavers/Mrs. McPherson of Inveran",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -468,12 +470,12 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Laurie Anderson / Song from America on the move.",
+          "raw_text": "Laurie Anderson/Song from America on the",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "the word 'move.' is written below the line"
+            "The word 'move.' is written below 'on the'."
           ],
           "row_bbox": [
             0,
@@ -503,7 +505,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "left margin has a diagonal slash mark"
+            "There is a slash mark in the far left margin."
           ],
           "row_bbox": [
             0,
@@ -514,7 +516,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Tackhead / Stealing",
+          "raw_text": "Tackhead/Stealing",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -528,7 +530,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "F.E.L.T. / New Day Dawning",
+          "raw_text": "FELT/New Day Dawning",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -547,7 +549,8 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "the word 'You' is written slightly below the line"
+            "There is a slash mark in the far left margin.",
+            "A closing parenthesis ')' is drawn after the word 'Do'."
           ],
           "row_bbox": [
             0,
@@ -577,7 +580,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "left margin has a diagonal slash mark"
+            "There is a slash mark in the far left margin."
           ],
           "row_bbox": [
             0,
@@ -598,13 +601,13 @@
         4068
       ],
       "hour_raw": "9Am",
-      "jock_raw": "Hendricks",
+      "jock_raw": "J Hendrick",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "BERNIE KRAUSE - JUNGLE SHOES",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -632,7 +635,7 @@
           "row_index": 2,
           "raw_text": "CJ CHENIER - MY BBY DONT WEAR NO SHOES",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -658,9 +661,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "NORMAN + NANCY BLAKE - 50 MILES OF ELBOW ROOM",
-          "confidence": "medium",
-          "type_raw": "O",
+          "raw_text": "NORMAN & NANCY BLAKE - 50 MILES OF ELBOW ROOM",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -686,7 +689,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "DELMONAS - BLACK LUDELA",
+          "raw_text": "DELMONAS - BLACK LUDOIA",
           "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
@@ -700,13 +703,11 @@
         },
         {
           "row_index": 9,
-          "raw_text": "REVOLTING COCKS - WE SHALL CLEANSE THE WORLD",
+          "raw_text": "REVOLTING COCKS - WE SHALL CLEANSE THE",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
-          "oddities": [
-            "the word 'WORLD' is written slightly below the line at the end"
-          ],
+          "oddities": [],
           "row_bbox": [
             1291,
             3025,
@@ -721,7 +722,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "there is a scribbled-out word at the end of the entry"
+            "The word 'WORLD' is written to the right with strike-through scribbles over it."
           ],
           "row_bbox": [
             1291,
@@ -734,7 +735,7 @@
           "row_index": 11,
           "raw_text": "RUFUS THOMAS - ALL NIGHT WORKER",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -748,7 +749,7 @@
           "row_index": 12,
           "raw_text": "GRASS ROOTS - WHERE WERE YOU...",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -776,7 +777,7 @@
           "row_index": 14,
           "raw_text": "IGGY POP - SHAKE APPEAL",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -804,7 +805,7 @@
           "row_index": 16,
           "raw_text": "NANA MOUSKOURI - DE COLORES",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -818,7 +819,7 @@
           "row_index": 17,
           "raw_text": "MIMI & RICHARD FARINA - RENO NEVADA",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -843,9 +844,7 @@
           ]
         }
       ],
-      "oddities": [
-        "A curved line connects row 3 up to the end of row 2."
-      ]
+      "oddities": []
     }
   ]
 }

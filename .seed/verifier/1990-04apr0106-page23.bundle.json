@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-23.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 23,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:17:26.637005+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:30:47.108658+00:00",
   "page_date_raw": "Thursday 4/5/90",
   "comments_raw": null,
   "oddities": [
-    "Handwritten notes appear in the top right margin outside the grid, listing a few band names and tracks."
+    "Handwritten notes appear in the top right header space: 'My Dad is Dead - Hill of Beans', 'Alice Donought - Lisa's Father', and 'ook's wrang stereo R'."
   ],
   "quadrants": [
     {
@@ -20,14 +20,14 @@
         1274,
         2307
       ],
-      "hour_raw": "2 AM",
+      "hour_raw": "2AM",
       "jock_raw": null,
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Concrete Blond- Your Haunted Head",
+          "raw_text": "Concrete Blond- Your haunted Head",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -41,65 +41,49 @@
           "row_index": 1,
           "raw_text": "Sinead O'Conner- I do not want what I havn't got",
           "confidence": "high",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [
-            "The words 'havn't got' wrap to the space below the entry line."
-          ],
-          "row_bbox": [
-            0,
-            656,
-            1274,
-            730
-          ]
-        },
-        {
-          "row_index": 2,
-          "raw_text": "Lemonheads - Hate Your Friends",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": null,
+          "type_raw": "M",
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             0,
-            730,
+            656,
             1274,
             802
           ]
         },
         {
           "row_index": 3,
-          "raw_text": "Helga dos oito Baixos - Entra E sai(In+out)",
+          "raw_text": "Lemonheads - Hate Your Friends",
           "confidence": "high",
-          "type_raw": null,
-          "notes": "double_height",
+          "type_raw": "Hit",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
             802,
             1274,
-            955
+            877
           ]
         },
         {
-          "row_index": 5,
-          "raw_text": "LL Cool J - Jingling Baby",
+          "row_index": 4,
+          "raw_text": "Helga dos oito Baixos - Entra E Sai (In & out)",
           "confidence": "high",
-          "type_raw": null,
-          "notes": null,
+          "type_raw": "H",
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             0,
-            955,
+            877,
             1274,
             1029
           ]
         },
         {
           "row_index": 6,
-          "raw_text": "Alice Donought - Lisa's Father (Waka Baby)",
+          "raw_text": "LL Cool J - Jingling Baby",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -111,11 +95,13 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Hypnolovewheel - Jesus in Colorization",
+          "raw_text": "Alice Donought - Lisa's Father (Waka Baby)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "r",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'Donought' has light scratch marks through it."
+          ],
           "row_bbox": [
             0,
             1105,
@@ -125,9 +111,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "The Byrds - Why",
+          "raw_text": "Hypnolovewheel - Jesus in Colorization",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -139,9 +125,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Miss. John Hurt - Sliding Delta",
+          "raw_text": "The Byrds - Why",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -153,9 +139,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "The Walkabouts - The Anvil Song",
+          "raw_text": "Miss. John Hurt - Sliding Delta",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -167,9 +153,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Camper Van- I was born in a Laundromat",
+          "raw_text": "The Walkabouts - the anvil Song",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -181,9 +167,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Talking Heads - Making Flippy Floppy",
+          "raw_text": "Camper Van- I was born in a Laundromat",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "r",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -195,9 +181,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Mad Matters - Arboretum Jewel",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Talking Heads - Making Flippy Floppy",
+          "confidence": "high",
+          "type_raw": "std.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -209,9 +195,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Prong - Dying Breed",
+          "raw_text": "Had Matters - Arboretum Jewel",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -223,9 +209,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Public Enemy - Revolutionary Generation",
+          "raw_text": "Prong - Dying Breed",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -237,13 +223,11 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Cab Calloway - Btwn. The Devil + The Deep Blue Sea",
+          "raw_text": "Public Enemy - Revolutionary Generation",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
-          "oddities": [
-            "The words 'Blue Sea' wrap to the space below the entry line."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1782,
@@ -253,18 +237,32 @@
         },
         {
           "row_index": 17,
-          "raw_text": "The Bevis Frond - These Dark Days",
+          "raw_text": "Cab Calloway - Btwn. The Devil & the Deep Blue Sea",
           "confidence": "high",
           "type_raw": null,
-          "notes": null,
+          "notes": "double_height",
           "oddities": [
-            "A hand-drawn arrow starts here and points down into the bottom-left quadrant."
+            "A long line is drawn from this entry down into the bottom-left quadrant."
           ],
           "row_bbox": [
             0,
             1858,
             1274,
-            1932
+            2007
+          ]
+        },
+        {
+          "row_index": 19,
+          "raw_text": "The Bevis Frond - These Dark Days",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            0,
+            2007,
+            1274,
+            2084
           ]
         }
       ],
@@ -278,14 +276,14 @@
         2550,
         2307
       ],
-      "hour_raw": "4 AM",
+      "hour_raw": "4AM",
       "jock_raw": null,
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Bongwater - He loved the weather",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -299,7 +297,7 @@
           "row_index": 1,
           "raw_text": "The Jeff Beck group - Going Down",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -313,7 +311,7 @@
           "row_index": 2,
           "raw_text": "House of Love - Never",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -327,7 +325,7 @@
           "row_index": 3,
           "raw_text": "Alien Sex Fiend - Alien",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -341,7 +339,7 @@
           "row_index": 4,
           "raw_text": "Jo Jo Reed - Wild Thing Zydeco",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -355,7 +353,7 @@
           "row_index": 5,
           "raw_text": "The Partridge Family - Come on Get Happy",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -369,7 +367,7 @@
           "row_index": 6,
           "raw_text": "The Stump Wizards - Firemine",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -381,9 +379,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Film + The BB's - Midnight Crossing",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Film & The DB's - Midnight Crossing",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -397,7 +395,7 @@
           "row_index": 8,
           "raw_text": "The Nothing Hillbillies - Feel Like Going Home",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -411,7 +409,7 @@
           "row_index": 9,
           "raw_text": "The Chills - Don't Be- Memory",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -423,12 +421,12 @@
         },
         {
           "row_index": 10,
-          "raw_text": "King Missle - Cheesecake Truck + Equivaleng",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "King Missle - Cheesecake Truck & Equivalency",
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "Several words in the track name are heavily crossed out before 'Cheesecake Truck'."
+            "A word before 'Cheesecake' is heavily scribbled out."
           ],
           "row_bbox": [
             1274,
@@ -441,7 +439,7 @@
           "row_index": 11,
           "raw_text": "Bill Cosby & Friends - Mouth of the Blowfish",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -453,10 +451,10 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Meatbea",
-          "confidence": "low",
+          "raw_text": "Meat Beat",
+          "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1274,
@@ -483,9 +481,11 @@
           "row_index": 0,
           "raw_text": "-> Cab",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "An arrow line drawn from the top-left quadrant points to this entry."
+          ],
           "row_bbox": [
             0,
             2358,
@@ -497,7 +497,7 @@
           "row_index": 1,
           "raw_text": "Larry Carlton - Room 335",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -509,9 +509,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Bad Brains - She's Calling You",
+          "raw_text": "Bad Brains <- She's Calling You",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "std.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -523,9 +523,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "My Dad is Dead - Hill O' Beans",
+          "raw_text": "My Dad is Dead - Hill o' Beans",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "r",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -539,7 +539,7 @@
           "row_index": 4,
           "raw_text": "Naked City - Reanimator",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -551,9 +551,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Israel Vibration - Perfect Love + Understandi",
+          "raw_text": "Israel Vibration - Perfect Love & Understand",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -581,7 +581,7 @@
           "row_index": 7,
           "raw_text": "Eight Eyes - Groovy Cellar",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -593,9 +593,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Poi Dog Pondering - Bury Me Deep",
+          "raw_text": "Poi Dog Pondering - Bury Me deep",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -607,9 +607,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "->",
+          "raw_text": "The Blue Aeroplanes - World View Blue",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -621,9 +621,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "The Blue Aeroplanes - World View Blue",
+          "raw_text": "Bob Dylan - I Ain't Got No Home",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -635,9 +635,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Bob Dylan - I Ain't Got No Home",
+          "raw_text": "COC - Technocracy",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -649,9 +649,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "CoC - Technocracy",
+          "raw_text": "digital underground - underwater rimes",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -663,9 +663,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "digital underground - underwater rimes",
+          "raw_text": "Kingston Trio - Tom Dooley",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "std.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -677,9 +677,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Kingston Trio - Tom Dooley",
+          "raw_text": "Red Temple Spirits - Set the Controls...",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -691,36 +691,21 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Red Temple Spirits - set the Controls...",
+          "raw_text": "Lloyd Cole & the Commotions - Jennifer She said",
           "confidence": "high",
-          "type_raw": null,
-          "notes": null,
+          "type_raw": "O",
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             0,
             3484,
             1274,
-            3559
-          ]
-        },
-        {
-          "row_index": 16,
-          "raw_text": "Lloyd Cole + the Commotions - Jennifer she said",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": "double_height",
-          "oddities": [],
-          "row_bbox": [
-            0,
-            3559,
-            1274,
-            3712
+            3634
           ]
         }
       ],
       "oddities": [
-        "An arrow from the quadrant above points into the empty Jock field.",
-        "A hand-drawn arrow connects row 2 down to row 6."
+        "Thick scribbled bracket lines and arrows in the left margin connect rows 6 through 9."
       ]
     },
     {
@@ -731,14 +716,14 @@
         2550,
         4067
       ],
-      "hour_raw": "6 AM",
+      "hour_raw": "6AM",
       "jock_raw": "Tom Fancy",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Meat Beat Manifesto - Dog Star Man",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -750,9 +735,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "The Cynics - What you Get",
+          "raw_text": "The Cynics - What You Get",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "PP",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -766,7 +751,7 @@
           "row_index": 2,
           "raw_text": "Mc 900 foot Jesus - Spaceman",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "A",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -780,7 +765,7 @@
           "row_index": 3,
           "raw_text": "Bessie Smith - St. Louis Blues",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "std.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -794,7 +779,7 @@
           "row_index": 4,
           "raw_text": "Allen Ginsberg - The Lion For Real",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -808,7 +793,7 @@
           "row_index": 5,
           "raw_text": "Caterwaul - Interlooped",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -822,7 +807,7 @@
           "row_index": 6,
           "raw_text": "Nasa - UFO over Cairo",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -836,7 +821,7 @@
           "row_index": 7,
           "raw_text": "Sugarloaf - Green-Eyed Lady",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "std.",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -850,7 +835,7 @@
           "row_index": 8,
           "raw_text": "8 or 9 feet - Never Come Down",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -864,7 +849,7 @@
           "row_index": 9,
           "raw_text": "Ornette Coleman - Free Jazz",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -876,9 +861,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Nice Strong Arm - Autumn Green",
+          "raw_text": "Nice strong Arm - Autumn Green",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -892,7 +877,7 @@
           "row_index": 11,
           "raw_text": "Robert Plant - Nirvana",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -906,7 +891,7 @@
           "row_index": 12,
           "raw_text": "Chapter 2 - Just Having Fun",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -920,7 +905,7 @@
           "row_index": 13,
           "raw_text": "Chuck Berry - Promised Land",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "std",
           "notes": null,
           "oddities": [],
           "row_bbox": [

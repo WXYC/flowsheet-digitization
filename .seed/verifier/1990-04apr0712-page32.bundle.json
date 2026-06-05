@@ -4,14 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-32.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 32,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:01:38.276227+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:39:39.996695+00:00",
   "page_date_raw": "Thur 12 Apr 90",
-  "comments_raw": "sweetPiglen\nfrostfree plenum\nH 58\u00b0\nL 28 pcoud",
+  "comments_raw": "H 59\u00b0\nL 28% PC good\nsweet listen\nfrostbite - plea",
   "oddities": [
-    "The text 'dec', a boxed 'Slip it In', and 'Beatnigs' are written above the top-right quadrant.",
-    "The text 'Flinstones theme' is written vertically in the middle left margin.",
-    "The text 'Comp Ener' is written vertically in the bottom left margin."
+    "Annotations 'Slip it In', 'Beatnigs', and 'del' are written outside the quadrants in the upper right.",
+    "Vertical text 'Flinstones theme' is written in the left margin next to the bottom-left quadrant.",
+    "Vertical text 'Camp Enero' is written in the left margin near the bottom of the page."
   ],
   "quadrants": [
     {
@@ -22,8 +22,8 @@
         1288,
         2305
       ],
-      "hour_raw": "2Pm",
-      "jock_raw": "PHIL HAMMOND III",
+      "hour_raw": "2pm",
+      "jock_raw": "PHIL HAMmOND III",
       "entries": [
         {
           "row_index": 0,
@@ -55,7 +55,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Helen Merrill w/ the Quincy Jones Orch. - You'd Be So Nice to Come Home To",
+          "raw_text": "Helen Merrill w/ The Quincy Jones Orch. - You'd Be So Nice To Come Home To",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -111,7 +111,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Husker Du - Too Far Down",
+          "raw_text": "Husker D\u00fc - Too Far Down",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -139,8 +139,8 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Holy Modal Rounders - Moving Sounds",
-          "confidence": "medium",
+          "raw_text": "Holy Modal Rounders - Moving Day",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -223,7 +223,7 @@
         }
       ],
       "oddities": [
-        "A hand-drawn arrow connects the type column of row 8 down to row 9."
+        "A hand-drawn double-headed arrow in the left margin links rows 9 and 10, indicating a swap in playback order."
       ]
     },
     {
@@ -235,13 +235,13 @@
         2305
       ],
       "hour_raw": "4Pm",
-      "jock_raw": "Shannon O'Kani",
+      "jock_raw": "Shannon O'Keeffe",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Front 242 - Headhunter V. Paradise",
+          "raw_text": "Front 242 - Welcome 2 Paradise",
           "confidence": "high",
-          "type_raw": "S",
+          "type_raw": "SD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -267,12 +267,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Robyn Hitchcock \"flash cartoons\"",
-          "confidence": "high",
-          "type_raw": "R",
+          "raw_text": "Robyn Hitchcock - \"fleshcartoons\"",
+          "confidence": "medium",
+          "type_raw": "H/O",
           "notes": null,
           "oddities": [
-            "The printed circle for the type column has heavily inked black dots inside."
+            "The type circle is heavily scribbled out or contains multiple superimposed letters."
           ],
           "row_bbox": [
             1288,
@@ -311,7 +311,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "the MthembouQueens \"wadiliza",
+          "raw_text": "The MThembu Queens \"wadiliza",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -326,12 +326,10 @@
         {
           "row_index": 6,
           "raw_text": "new umuzi\"",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The word 'new' is written in tiny lettering slightly above 'umuzi'."
-          ],
+          "oddities": [],
           "row_bbox": [
             1288,
             1027,
@@ -341,8 +339,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "BooYaTribe \"Funky nation\"",
-          "confidence": "high",
+          "raw_text": "Bogyactive \"Funky nation\"",
+          "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -355,7 +353,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Pixies \"Louis\"",
+          "raw_text": "Purify \"louis\"",
           "confidence": "medium",
           "type_raw": "L",
           "notes": null,
@@ -369,8 +367,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Royal C Mob \"Corporation Enema\"",
-          "confidence": "high",
+          "raw_text": "Royal Mob \"corporation drama\"",
+          "confidence": "medium",
           "type_raw": "R",
           "notes": null,
           "oddities": [],
@@ -383,7 +381,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "The Fall \"I'm Frank\"",
+          "raw_text": "the Fall \"I'm Frank\"",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -397,7 +395,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Big Dipper \"Girl who lives on the Hill\"",
+          "raw_text": "Big Dipper \"Girl who lives on the hill\"",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -411,7 +409,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Nirvana \"About a Girl\"",
+          "raw_text": "Nirvana \"Blew\"",
           "confidence": "high",
           "type_raw": "C",
           "notes": null,
@@ -425,13 +423,11 @@
         },
         {
           "row_index": 13,
-          "raw_text": "David Sandborn \"JT F J\"",
-          "confidence": "medium",
+          "raw_text": "David Sandborn \"?? ??\"",
+          "confidence": "low",
           "type_raw": "JB",
-          "notes": null,
-          "oddities": [
-            "A small hand-drawn smiley face appears at the end of the entry text."
-          ],
+          "notes": "illegible",
+          "oddities": [],
           "row_bbox": [
             1288,
             1554,
@@ -470,7 +466,7 @@
         {
           "row_index": 1,
           "raw_text": "Plimsouls - Oldest Story in the World",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
@@ -483,13 +479,11 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Lloyd God Cole - A Long Way Down",
+          "raw_text": "Lloyd Cole - A Long Way Down",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The word 'God' is written slightly above the line, inserted between 'Lloyd' and 'Cole'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2579,
@@ -499,7 +493,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Gavin Friday - You Take Away The Sun",
+          "raw_text": "Gavin Friday - You Take Away the Sun",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -527,11 +521,13 @@
         },
         {
           "row_index": 8,
-          "raw_text": "1/2 Jap - ~",
+          "raw_text": "1/2 Jap - ~~~~~",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "A wavy line is drawn in place of the track name."
+          ],
           "row_bbox": [
             0,
             2954,
@@ -542,8 +538,8 @@
         {
           "row_index": 9,
           "raw_text": "Blackgirls - devil's garden",
-          "confidence": "high",
-          "type_raw": "concert",
+          "confidence": "medium",
+          "type_raw": "conged",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -560,7 +556,7 @@
           "type_raw": "O",
           "notes": "double_height",
           "oddities": [
-            "The words 'My Town' are struck through with a line."
+            "The track name 'My Town' is crossed out."
           ],
           "row_bbox": [
             0,
@@ -630,7 +626,7 @@
           "raw_text": "Slip it in",
           "confidence": "high",
           "type_raw": "R STD",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -644,7 +640,7 @@
           "raw_text": "Beatnigs - Burritos",
           "confidence": "high",
           "type_raw": "O",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -658,7 +654,7 @@
           "raw_text": "Beatnigs - TV",
           "confidence": "high",
           "type_raw": "C",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -692,12 +688,12 @@
         2550,
         4069
       ],
-      "hour_raw": "5PM",
-      "jock_raw": "Shannon O'Kani",
+      "hour_raw": "5pm",
+      "jock_raw": "Shannon O'Keeffe",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Red Hot's \"show me UR soul\"",
+          "raw_text": "Red Hots \"show me UR soul\"",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -711,9 +707,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Elektronika \"sensee party\"",
-          "confidence": "high",
-          "type_raw": "Force",
+          "raw_text": "Ebn Ozn \"Sensee party\"",
+          "confidence": "medium",
+          "type_raw": "Revue",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -725,8 +721,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Fabu 4 Flow \"Time\"",
-          "confidence": "medium",
+          "raw_text": "Pabst 4 low \"Time\"",
+          "confidence": "low",
           "type_raw": "C",
           "notes": null,
           "oddities": [],
@@ -739,7 +735,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "the Church \"you're still beautiful\"",
+          "raw_text": "the Church \"You're still Beautiful\"",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -753,7 +749,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "KokoTayo \"whatever Jam you made me\"",
+          "raw_text": "Koko taylor \"whatever I am you made me\"",
           "confidence": "high",
           "type_raw": "Blues",
           "notes": "double_height",
@@ -767,8 +763,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "\"Forro da Minha Terra\" (Duda Da Passira)",
-          "confidence": "high",
+          "raw_text": "\"Forro da Minha Terra\" (DUda Da Passara)",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
@@ -781,7 +777,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "the Cure \"Pictures of You\"",
+          "raw_text": "the Cure \"Pictures of you\"",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -796,8 +792,8 @@
         {
           "row_index": 9,
           "raw_text": "Consolidated \"Consolidated\"",
-          "confidence": "medium",
-          "type_raw": "Y",
+          "confidence": "high",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -809,7 +805,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Silos \"don't Look that way\"",
+          "raw_text": "Silos \"don't look that wg\"",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -837,7 +833,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Soul Asylum \"Take it to the Past\"",
+          "raw_text": "Soul Asylum \"take it to the past\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -851,8 +847,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Adam Baumann \"decisions, need",
-          "confidence": "high",
+          "raw_text": "Ahm boy mann \"decision...\"",
+          "confidence": "low",
           "type_raw": "OCS",
           "notes": null,
           "oddities": [],
@@ -865,8 +861,8 @@
         },
         {
           "row_index": 14,
-          "raw_text": "\"Baritone Umi / chalis fang\"",
-          "confidence": "high",
+          "raw_text": "\"Pastorius, m j chale & fang\"",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -879,8 +875,8 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Midnight Oil \"Blue Sky Mine\"",
-          "confidence": "medium",
+          "raw_text": "midnight oil \"Blue sky mine\"",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -907,9 +903,9 @@
         },
         {
           "row_index": 17,
-          "raw_text": "\"Some dumb Cop Gave me 2 tickets\"",
+          "raw_text": "\"Some dumb cop gave me 2 tix already\"",
           "confidence": "high",
-          "type_raw": "NV",
+          "type_raw": "NU",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -921,9 +917,9 @@
         },
         {
           "row_index": 19,
-          "raw_text": "White Flag \"zerox\"",
+          "raw_text": "white flag \"zerox\"",
           "confidence": "high",
-          "type_raw": "NV",
+          "type_raw": "NU",
           "notes": null,
           "oddities": [],
           "row_bbox": [

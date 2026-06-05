@@ -4,14 +4,14 @@
   "image_path": "../pages/1990/August 1990/1990-08aug0106/page-24.png",
   "pdf_path": "1990/August 1990/1990-08aug0106.pdf",
   "page_number": 24,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:18:55.103293+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:39:50.092330+00:00",
   "page_date_raw": "Sat 8/4/90",
-  "comments_raw": null,
+  "comments_raw": "Nick Cave\nWanted Man\nBroome sem spoken word\n9 inch\nRanda\nI/F genres\nDay After Day\n84\nClea 68\n30 90\nHusker Never Talking\nBrand Nubian\nFairground Att\nPatsy Cline\nUptones\nSounds From\nS.\nTom Waits\nDown to Train",
   "oddities": [
-    "Comments section at bottom contains illegible crossed out text alongside scattered words like 9 inch Nails, Fairground Attr., Patsy Cline",
-    "Numbers '82' and '68 PC 30 90' appear in right margin near bottom right quadrant",
-    "Words 'Big Star 13' and 'Cult' with illegible text below them appear in left margin near bottom left quadrant"
+    "Left margin next to bottom-left quadrant contains handwritten note 'Big Star 13'.",
+    "Left margin next to bottom-left quadrant contains handwritten notes 'Cult Electric Little Devil'.",
+    "Right margin next to bottom-right quadrant contains handwritten numbers '82' and '68 PC 30 90'."
   ],
   "quadrants": [
     {
@@ -23,13 +23,13 @@
         2305
       ],
       "hour_raw": "10pm",
-      "jock_raw": "Galin Hudson",
+      "jock_raw": "Galen Hudson",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Slicker Boys - You've Got What It Takes",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Slickee Boys - You've Got What It Takes",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -43,7 +43,7 @@
           "row_index": 1,
           "raw_text": "Prince - Thieves In The Temple",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -57,7 +57,7 @@
           "row_index": 2,
           "raw_text": "Brand Nubians - Brand Nubians",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -71,7 +71,7 @@
           "row_index": 3,
           "raw_text": "Fairground Attraction - A Smile In A Whisper",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -85,7 +85,7 @@
           "row_index": 5,
           "raw_text": "Treacherous Jaywalkers - Sand",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -99,7 +99,7 @@
           "row_index": 6,
           "raw_text": "Holy Rollers - Freedom Asking",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -113,7 +113,7 @@
           "row_index": 7,
           "raw_text": "My Bloody Valentine - Strawberry Wine",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -127,7 +127,7 @@
           "row_index": 8,
           "raw_text": "Marvin Gaye - Inner City Blues",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -139,9 +139,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Neville Bros. - Yellow Moon",
+          "raw_text": "Neville Bros - Yellow Moon",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -155,7 +155,7 @@
           "row_index": 10,
           "raw_text": "Eric B & Rakim - No Omega",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -169,7 +169,7 @@
           "row_index": 11,
           "raw_text": "Patsy Cline - Foolin' Round",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -183,7 +183,7 @@
           "row_index": 12,
           "raw_text": "Uptones - Sounds From The Sidelines",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -197,7 +197,7 @@
           "row_index": 13,
           "raw_text": "Tom Waits - Downtown Train",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -209,9 +209,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Sonny Boy Williamson - When the Lights went Out",
+          "raw_text": "Sonny Boy Williamson - When The Lights Went Out",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -225,7 +225,7 @@
           "row_index": 16,
           "raw_text": "Samite - Ani Oyo",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -247,13 +247,13 @@
         2305
       ],
       "hour_raw": "12 AM",
-      "jock_raw": "Galin Hudson",
+      "jock_raw": "Galen Hudson",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Poor Righteous Teachers - Strictly Ghetto",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -267,7 +267,7 @@
           "row_index": 1,
           "raw_text": "Traffic - Low Spark",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -281,7 +281,7 @@
           "row_index": 2,
           "raw_text": "Big Star - Thirteen",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -321,9 +321,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Pell Mell - Spy VS. Spy",
+          "raw_text": "Pell Mell - Spy vs. Spy",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -337,7 +337,7 @@
           "row_index": 6,
           "raw_text": "Sammy Davis Jr - Please Don't Talk About Me",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -351,7 +351,7 @@
           "row_index": 7,
           "raw_text": "S Wonder - For Once In My Life / When I'm Gone",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -363,9 +363,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Ray Charles - Yes Indeed!",
+          "raw_text": "Ray Charles - Yesterdays",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -379,7 +379,7 @@
           "row_index": 9,
           "raw_text": "Staple Singers - The Weight",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -393,10 +393,10 @@
           "row_index": 10,
           "raw_text": "Ras Michael - Born In The Ghetto",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "Word 'Before' crossed out before track name"
+            "Word crossed out between artist and track title."
           ],
           "row_bbox": [
             1263,
@@ -409,7 +409,7 @@
           "row_index": 11,
           "raw_text": "Jawbreaker - Incomplete",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -423,7 +423,7 @@
           "row_index": 12,
           "raw_text": "McCartney - Venus & Mars / Rock Show / Jet",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -444,14 +444,14 @@
         1263,
         4069
       ],
-      "hour_raw": "11 PM",
+      "hour_raw": "11p",
       "jock_raw": "GH again...",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Brian Wilson - Melt Away",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -463,9 +463,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "9 Inch Nails - Randa & Want To",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "9 Inch Nails - Randa I Want To",
+          "confidence": "medium",
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -477,9 +477,9 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Dead Kennedys - Hor. Of The Jet Set",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Dead Kennedys - Hoc of the Jet Set",
+          "confidence": "medium",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -493,7 +493,7 @@
           "row_index": 3,
           "raw_text": "Nick Cave - Wanted Man",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R STD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -507,7 +507,7 @@
           "row_index": 4,
           "raw_text": "Dylan - Pretty Peggy-O",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -519,9 +519,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Maggie Estep - Paradise LOST",
+          "raw_text": "Maggie Estep - Paradise Lost",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -535,7 +535,7 @@
           "row_index": 6,
           "raw_text": "Husker Du - Never Talkin To You Again",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -549,7 +549,7 @@
           "row_index": 7,
           "raw_text": "Roy Eldridge - When I Grow Too Old To Dream",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -563,7 +563,7 @@
           "row_index": 9,
           "raw_text": "Horace Andy - Every Tongue Shall Tell",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -575,9 +575,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Jack Endino - Folk's Let's Nebulite",
+          "raw_text": "Jack Endino - Folks Let's Nebulize",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -591,7 +591,7 @@
           "row_index": 11,
           "raw_text": "Yo La Tengo - You Tore Me Down",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -605,7 +605,7 @@
           "row_index": 12,
           "raw_text": "Byrds - Eight Miles High",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -617,9 +617,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Funkadelic - Free Your Mind...",
+          "raw_text": "Funkadelic - Free Your Mind ---",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -633,7 +633,7 @@
           "row_index": 14,
           "raw_text": "Cult - Lil Devil",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -647,7 +647,7 @@
           "row_index": 15,
           "raw_text": "Sonic Boom - Lonely Avenue",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -659,9 +659,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "A Priori - Too Much To Hope For",
+          "raw_text": "A prior - Too Much To Hope For",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -682,14 +682,14 @@
         2550,
         4069
       ],
-      "hour_raw": "1 A",
+      "hour_raw": "1A",
       "jock_raw": "GH - RUSS BARNES",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Zappa - We're Only In It For The Money",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "CD",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -706,7 +706,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "Hand drawn lines extending from artist and track toward next row."
+            "Written slightly below the previous line on the left side."
           ],
           "row_bbox": [
             1263,
@@ -745,9 +745,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Chris Burke - The Hat Makes the Man",
+          "raw_text": "Chris Burke - The Hat Makes The Man",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -761,7 +761,7 @@
           "row_index": 5,
           "raw_text": "His Name Is Alive - Darkest Dreams",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -773,7 +773,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Loop - Shot With a Diamond",
+          "raw_text": "Loop - Shot With A Diamond",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -789,7 +789,7 @@
           "row_index": 7,
           "raw_text": "Lee Perry - African Hitchiker",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -801,7 +801,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Youssou N'Dour - Immigres / Bitte Rew",
+          "raw_text": "Youssou N'dour - Immigr\u00e9s/Bitik Rew",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -817,7 +817,7 @@
           "row_index": 9,
           "raw_text": "Jerry Lee Lewis - Drinkin' Wine Spo-Dee-O-Dee",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -859,10 +859,10 @@
           "row_index": 12,
           "raw_text": "Swamp Zombies - Rodentia",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Part of track name crossed out"
+            "Word crossed out between artist and track."
           ],
           "row_bbox": [
             1263,
@@ -875,7 +875,7 @@
           "row_index": 13,
           "raw_text": "Rancid Hell Spawn - Surgery Games",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -901,7 +901,7 @@
         }
       ],
       "oddities": [
-        "First three lines are Zappa / Mothers / Lumpy Gravy separated by drawn lines rather than standard dashes"
+        "Lines are drawn connecting 'Zappa' to 'Mothers' and 'We're Only In It For The Money' to 'Lumpy Gravy' across the first three rows."
       ]
     }
   ]

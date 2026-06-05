@@ -4,8 +4,8 @@
   "image_path": "../pages/1990/August 1990/1990-08aug0106/page-25.png",
   "pdf_path": "1990/August 1990/1990-08aug0106.pdf",
   "page_number": 25,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:19:45.771554+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:40:03.178971+00:00",
   "page_date_raw": "Sunday 8/5/90",
   "comments_raw": null,
   "oddities": [],
@@ -18,14 +18,14 @@
         1261,
         2256
       ],
-      "hour_raw": "2 AM",
+      "hour_raw": "2Am",
       "jock_raw": "Russ",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "22-Pistepirkko - Bare Bone Nest",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -38,12 +38,10 @@
         {
           "row_index": 1,
           "raw_text": "Bob Guccione, Jr. - We Did It",
-          "confidence": "high",
-          "type_raw": null,
+          "confidence": "medium",
+          "type_raw": "NV",
           "notes": null,
-          "oddities": [
-            "Left margin contains 'NV' instead of a standard type code."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             726,
@@ -55,7 +53,7 @@
           "row_index": 2,
           "raw_text": "Toadstool - Last Thing Right",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -81,7 +79,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Kaos & Mystro - Trapped (Victims of a Plan)",
+          "raw_text": "Kaos & Mystro - Trapped(Victims of a Plan)",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -111,10 +109,10 @@
           "row_index": 6,
           "raw_text": "A Priori - Too Much to Hope For",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Left margin contains a circled '45' alongside the 'H'."
+            "Left margin has '45' circled next to the type column."
           ],
           "row_bbox": [
             0,
@@ -140,7 +138,7 @@
         {
           "row_index": 8,
           "raw_text": "MU - Ain't No Blues",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -169,7 +167,7 @@
           "row_index": 10,
           "raw_text": "Bobby Bland & B.B. King - Let the Good Times Roll",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -196,8 +194,8 @@
         {
           "row_index": 12,
           "raw_text": "The Country Gentlemen - Paul & Sila",
-          "confidence": "medium",
-          "type_raw": null,
+          "confidence": "high",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -211,7 +209,7 @@
           "row_index": 13,
           "raw_text": "Material - Equation",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -232,18 +230,16 @@
         2550,
         2256
       ],
-      "hour_raw": "4 AM",
+      "hour_raw": "4Am",
       "jock_raw": "Russ",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Mark Lanegan - Where Did You Sleep Last Night?",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "X",
           "notes": null,
-          "oddities": [
-            "Left margin contains a circled 'X' instead of a standard type code."
-          ],
+          "oddities": [],
           "row_bbox": [
             1261,
             541,
@@ -255,11 +251,9 @@
           "row_index": 1,
           "raw_text": "Johnny Quest - The Heisman",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "LC",
           "notes": null,
-          "oddities": [
-            "Left margin contains a circled 'LC' instead of a standard type code."
-          ],
+          "oddities": [],
           "row_bbox": [
             1261,
             645,
@@ -271,7 +265,7 @@
           "row_index": 2,
           "raw_text": "Ophiuchus - The Cajun Stomp",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -285,7 +279,7 @@
           "row_index": 3,
           "raw_text": "Dread Zeppelin - Heartbreaker (At the End of Lonely Street)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -313,7 +307,7 @@
           "row_index": 5,
           "raw_text": "Little Lenny - Teach Reality",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -381,13 +375,11 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Baby Fatt - Manopener",
-          "confidence": "medium",
+          "raw_text": "(Cadillac Heights - Baby Fatt - Manopener)",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "Row begins with heavily crossed-out text, possibly reading 'Cat Butt'."
-          ],
+          "oddities": [],
           "row_bbox": [
             1261,
             1322,
@@ -399,11 +391,9 @@
           "row_index": 11,
           "raw_text": "Zen Frisbee - Spaghetti Park",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "LO",
           "notes": null,
-          "oddities": [
-            "Left margin contains a circled 'LO' instead of a standard type code."
-          ],
+          "oddities": [],
           "row_bbox": [
             1261,
             1396,
@@ -415,7 +405,7 @@
           "row_index": 12,
           "raw_text": "Ultra Vivid Scene - Beauty #2",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -429,7 +419,7 @@
           "row_index": 13,
           "raw_text": "Shonen Knife - Miracles",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -451,13 +441,13 @@
         4074
       ],
       "hour_raw": null,
-      "jock_raw": "\"",
+      "jock_raw": "''",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "King Missile - Fourthly",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -471,10 +461,10 @@
           "row_index": 1,
           "raw_text": "The Three Wize Men - Sgt. Pepper's Lonely Hearts Club Band",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [
-            "The end of the track name 'Hearts Club Band' is written on a second line within the same row space."
+            "The phrase 'Hearts Club Band' dips below the printed line."
           ],
           "row_bbox": [
             0,
@@ -487,7 +477,7 @@
           "row_index": 2,
           "raw_text": "Lou Reed - Sally Can't Dance",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -499,10 +489,10 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Drummers of Burundi - Tora",
-          "confidence": "high",
+          "raw_text": "Drummers of Rurundi - Toro",
+          "confidence": "medium",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -515,7 +505,7 @@
           "row_index": 4,
           "raw_text": "Ali Farka Toure - Devele Wague",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -529,7 +519,7 @@
           "row_index": 5,
           "raw_text": "Thompson Twins - Lies",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -543,7 +533,7 @@
           "row_index": 6,
           "raw_text": "David J - Little Star",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -557,11 +547,9 @@
           "row_index": 7,
           "raw_text": "Pixies - Gigantic",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Hit",
           "notes": null,
-          "oddities": [
-            "Left margin contains the word 'Hit' instead of a single letter code."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2882,
@@ -587,7 +575,7 @@
           "row_index": 9,
           "raw_text": "Jellyfish Kiss - Off the Floor",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -601,7 +589,7 @@
           "row_index": 10,
           "raw_text": "Green on Red - Hold the Line",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -615,7 +603,7 @@
           "row_index": 11,
           "raw_text": "Dr. John - I Been Hoodood",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -629,7 +617,7 @@
           "row_index": 12,
           "raw_text": "Robert Wiseman - Bhopal (Driftnet Plan)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -643,7 +631,7 @@
           "row_index": 13,
           "raw_text": "Allman Bros. - Leave My Blues At Home",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -669,7 +657,7 @@
         }
       ],
       "oddities": [
-        "A hand-drawn arrow in the left margin points from the 'Allman Bros.' row up to the 'Robert Wiseman' row."
+        "A double-headed arrow drawn in the left margin indicates a swap between rows 12 and 13."
       ]
     },
     {
@@ -681,7 +669,7 @@
         4074
       ],
       "hour_raw": "5A",
-      "jock_raw": "\"",
+      "jock_raw": "''",
       "entries": [
         {
           "row_index": 0,
@@ -699,9 +687,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "MotorCity 4 - Finish",
+          "raw_text": "MegaCity 4 - Finish",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -715,10 +703,10 @@
           "row_index": 2,
           "raw_text": "My Dad Is Dead - Babe in the Woods",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "X",
           "notes": null,
           "oddities": [
-            "Left margin contains a circled '45' and a circled 'X'."
+            "Left margin has '45' written next to the type circle."
           ],
           "row_bbox": [
             1261,
@@ -759,10 +747,10 @@
           "row_index": 5,
           "raw_text": "Fifteen - Sweet Valentine",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Left margin contains a '45' alongside the 'H'."
+            "Left margin has '45' written next to the type circle."
           ],
           "row_bbox": [
             1261,
@@ -775,7 +763,7 @@
           "row_index": 6,
           "raw_text": "24-7 Spyz - New Super Hero Worship",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -787,9 +775,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Eric B. & RAKIM - Let the Rhythm Hit 'Em",
+          "raw_text": "ERIC B. & RAKIM - Let the Rhythm Hit 'Em",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -803,7 +791,7 @@
           "row_index": 8,
           "raw_text": "Peppermint Harris - The President's Lawyer",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -817,7 +805,7 @@
           "row_index": 9,
           "raw_text": "Sonny Boy Williamson - the Sky Is Crying",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -831,7 +819,7 @@
           "row_index": 10,
           "raw_text": "Clash - Jimmy Jazz",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -843,9 +831,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Henry Kaiser - Needle & the Damage Done / Tonight's the Night",
+          "raw_text": "Henry Kaiser - Needle & the Damage Done/Tonight's the Night",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [

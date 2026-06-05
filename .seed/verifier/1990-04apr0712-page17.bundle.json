@@ -4,12 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-17.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 17,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:14:45.322597+00:00",
-  "page_date_raw": "MON SUN 4/8/90",
-  "comments_raw": "RHCP - Show me your soul\nRomantics - Thats What I Like About You\nRave up\nChickasaw Mudpuppies",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:35:56.158434+00:00",
+  "page_date_raw": "MON 4/9/90",
+  "comments_raw": "RHCP - Show me Your Soul\nRomantics - Thats what I Like About You\nRave up\nChickasaw Mudpuppies.",
   "oddities": [
-    "The numbers '66' and 'PC 45' are written at the top center of the page."
+    "A small note at the top center reads '66 PC 45'.",
+    "In the date section, 'SUN' is crossed out with 'MON' written above, and the '8' in '4/8/90' is overwritten with a '9'."
   ],
   "quadrants": [
     {
@@ -30,7 +31,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "This entry is squeezed in above the first printed line."
+            "Entry is written floating above the first printed row line."
           ],
           "row_bbox": [
             0,
@@ -41,7 +42,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Alive+Kicking - Tighter, tighter",
+          "raw_text": "Alive + Kicking - Tighter, tighter",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -97,7 +98,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Space Negros - I wanna be your dog",
+          "raw_text": "Space Negros - I wannabe your dog",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -129,9 +130,7 @@
           "confidence": "high",
           "type_raw": "M",
           "notes": "double_height",
-          "oddities": [
-            "A checkmark is drawn below this entry in the left margin."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1175,
@@ -253,7 +252,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Law Justice - Ways to be Wicked",
+          "raw_text": "Lone Justice - Ways to be Wicked",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -351,7 +350,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Birdland - Sleep W/ Me",
+          "raw_text": "Birdland - Sleep w/ Me",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -422,7 +421,7 @@
         {
           "row_index": 14,
           "raw_text": "Savage Republic - Mapia",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -435,12 +434,12 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Triffids - Good Morning",
+          "raw_text": "Triffids - Good Morning 2",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "A small superscript '2' is written at the end of the entry."
+            "The number 2 at the end of the entry is circled."
           ],
           "row_bbox": [
             1267,
@@ -479,7 +478,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Brooooce - I wanna marry you",
+          "raw_text": "Broooocce - I wanna marry you",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -493,12 +492,12 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Judy Garland - Easter Parade",
+          "raw_text": "Judy Garland + Mickey Rooney - Easter Parade",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The words '+ Mickey Rooney' are written small above the artist name."
+            "The text '+ Mickey Rooney' is inserted with a caret above the main line."
           ],
           "row_bbox": [
             0,
@@ -565,8 +564,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "That Petrol Emotion - Head Staggered",
-          "confidence": "high",
+          "raw_text": "That Petrol Emotion - Head staggered",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
@@ -607,7 +606,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Bill Nelson - Portrait of Jan with Moon & Stars",
+          "raw_text": "Bill Nelson - Portrait of Jan with moon & Stars",
           "confidence": "high",
           "type_raw": null,
           "notes": "double_height",
@@ -677,28 +676,14 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Marta Sebestyen (Muzsikas) -",
+          "raw_text": "Marta Sebestyen (Muzsikas) - Szeress Egyet, S Legyen Sz\u00e9p",
           "confidence": "high",
           "type_raw": "H",
-          "notes": null,
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             1267,
             2352,
-            2550,
-            2427
-          ]
-        },
-        {
-          "row_index": 1,
-          "raw_text": "Szeress Egyet, S Legyen Sz\u00e9p",
-          "confidence": "medium",
-          "type_raw": null,
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1267,
-            2427,
             2550,
             2502
           ]
@@ -709,7 +694,9 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The word 'Interview' is written across the left margin, extending into the entry."
+          ],
           "row_bbox": [
             1267,
             2502,
@@ -722,7 +709,7 @@
           "raw_text": "Dub Syndicate - Shout It Out",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1267,
@@ -764,7 +751,7 @@
           "raw_text": "Dub Syndicate - Shout it out",
           "confidence": "high",
           "type_raw": "H",
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1267,
@@ -845,7 +832,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Pagans - What's This Shit",
+          "raw_text": "Pagans - Whats This Shit",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -860,7 +847,7 @@
         {
           "row_index": 15,
           "raw_text": "Caterwaul - Big Ox Laying",
-          "confidence": "low",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -873,12 +860,12 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Flat Duo Jets - Millers Don't Mean a thing",
+          "raw_text": "Flat Duo Jets - Millions Don't Mean a thing",
           "confidence": "medium",
           "type_raw": null,
           "notes": "double_height",
           "oddities": [
-            "There is a crossed out word 'Mean' written above the word 'Mean' in the text."
+            "The word 'Mean' is written over another crossed-out word."
           ],
           "row_bbox": [
             1267,
@@ -902,9 +889,7 @@
           ]
         }
       ],
-      "oddities": [
-        "The word 'Interview' is written vertically across the type column area for rows 2 through 4."
-      ]
+      "oddities": []
     }
   ]
 }

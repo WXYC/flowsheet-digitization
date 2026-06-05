@@ -4,8 +4,8 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-01.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 1,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:10:59.607975+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:54.675366+00:00",
   "page_date_raw": "SATURDAY 4/7/90",
   "comments_raw": "Bob Mould",
   "oddities": [],
@@ -19,7 +19,7 @@
         2303
       ],
       "hour_raw": "2AM",
-      "jock_raw": "Ruth Anderson",
+      "jock_raw": "Ruth! Anderson",
       "entries": [
         {
           "row_index": 0,
@@ -28,7 +28,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "the type column circle contains a horizontal line or dash"
+            "Type column circle contains a wavy scribble rather than a letter."
           ],
           "row_bbox": [
             0,
@@ -39,8 +39,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Plastic Aeroplanes - Jacket Hangs",
-          "confidence": "high",
+          "raw_text": "Polar Aeroplanes - Jacket Honeys",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
@@ -97,7 +97,7 @@
           "row_index": 6,
           "raw_text": "Earl Hines - Out of Nowhere",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -109,7 +109,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Chico Buarque - Ca\u00e7ada (Brazil classics 1)",
+          "raw_text": "Chico Buarque - Ca\u00e7ada (Brazil Classics 1)",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -128,7 +128,7 @@
           "type_raw": "X",
           "notes": null,
           "oddities": [
-            "there is a scribbled-out circle immediately preceding the title"
+            "There is a scribbled-out symbol (possibly an @) before 'Only'."
           ],
           "row_bbox": [
             0,
@@ -144,7 +144,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "the type column circle contains a horizontal line or dash"
+            "Type column circle contains a heavily scribbled-out mark."
           ],
           "row_bbox": [
             0,
@@ -158,34 +158,52 @@
           "raw_text": "Rebel MC + Double the Trouble - Street Tuff",
           "confidence": "high",
           "type_raw": "NV",
-          "notes": "double_height",
-          "oddities": [],
+          "notes": null,
+          "oddities": [
+            "Track name 'Street Tuff' is written small and stacked at the end of the line."
+          ],
           "row_bbox": [
             0,
             1403,
             1262,
-            1555
+            1479
           ]
         },
         {
-          "row_index": 13,
-          "raw_text": "Young Fresh Fellows - My Boyfriend's In Killdozer",
+          "row_index": 12,
+          "raw_text": "Young Fresh Fellows - My Boyfriend's In Killdozier",
           "confidence": "high",
           "type_raw": "X",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             0,
-            1555,
+            1479,
+            1262,
+            1630
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "The Popes - Charmless",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Left margin has 'Concert' written near the type column."
+          ],
+          "row_bbox": [
+            0,
+            1630,
             1262,
             1704
           ]
         },
         {
           "row_index": 15,
-          "raw_text": "The Popes - Charmless",
+          "raw_text": "Bob Mould - Wishing Well",
           "confidence": "high",
-          "type_raw": "Concert",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -197,9 +215,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Bob Mould - Wishing Well",
+          "raw_text": "The Henry Kaiser Band - The Loner",
           "confidence": "high",
-          "type_raw": "R",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -211,48 +229,40 @@
         },
         {
           "row_index": 17,
-          "raw_text": "The Henry Kaiser Band - The Loner",
+          "raw_text": "Roger Manning - The Serious Blues (#18)",
           "confidence": "high",
-          "type_raw": "L",
-          "notes": null,
-          "oddities": [],
+          "type_raw": "H",
+          "notes": "double_height",
+          "oddities": [
+            "Type column circle contains a hash/pound symbol (#) written over the H."
+          ],
           "row_bbox": [
             0,
             1854,
             1262,
-            1929
+            2004
           ]
         },
         {
-          "row_index": 18,
-          "raw_text": "Roger Manning - The Serious Blues (#18)",
-          "confidence": "high",
-          "type_raw": "#",
-          "notes": "double_height",
-          "oddities": [],
-          "row_bbox": [
-            0,
-            1929,
-            1262,
-            2080
-          ]
-        },
-        {
-          "row_index": 20,
-          "raw_text": "Broome Closet Anti Folk sessions",
+          "row_index": 19,
+          "raw_text": "Broome Closet Anti Folk Sessions",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "This entry spans across the whole row without artist/track separation."
+          ],
           "row_bbox": [
             0,
-            2080,
+            2004,
             1262,
-            2154
+            2080
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "The jock name 'Ruth! Anderson' appears to have 'Ruth!' written heavily over or next to the 'R'."
+      ]
     },
     {
       "position": "top_right",
@@ -262,30 +272,44 @@
         2550,
         2303
       ],
-      "hour_raw": "4 AM",
+      "hour_raw": "4AM",
       "jock_raw": "R Anderson",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Sinead O'Connor - I do not want 1, haven't got",
+          "raw_text": "Sin\u00e9ad O'Connor - I do not want what I haven't got",
           "confidence": "high",
           "type_raw": "M",
-          "notes": "double_height",
+          "notes": null,
           "oddities": [
-            "the words 'what I' are inserted above the end of this line"
+            "Track name words 'haven't got' wrap down slightly into the space of the next row at the end."
           ],
           "row_bbox": [
             1262,
             549,
+            2550,
+            652
+          ]
+        },
+        {
+          "row_index": 1,
+          "raw_text": "Game Theory - I've tried Subtlety",
+          "confidence": "high",
+          "type_raw": "O",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1262,
+            652,
             2550,
             726
           ]
         },
         {
           "row_index": 2,
-          "raw_text": "Game Theory - I've tried subtlety",
+          "raw_text": "Robyn Hitchcock - Raining Twilight Coast",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -297,9 +321,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Robyn Hitchcock - Raining Twilight Coast",
+          "raw_text": "Pixies - Winterlong",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -311,9 +335,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Pixies - Winterlong",
+          "raw_text": "Jam - The Bitterest Pill",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -325,11 +349,13 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Jam - The Bitterest Pill",
+          "raw_text": "Scott Joplin - Country Club (Ragtime",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "The album info '(Ragtime 2-step)' wraps down into the next row space at the end."
+          ],
           "row_bbox": [
             1262,
             952,
@@ -339,9 +365,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Scott Joplin - Country Club (Ragtime",
+          "raw_text": "Loop - Shot with a Diamond",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -353,13 +379,11 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Loop - Shot with A Diamond",
+          "raw_text": "The Replacements - Swinging Party",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "'2-step)' is written in the right margin bridging this row and the previous row"
-          ],
+          "oddities": [],
           "row_bbox": [
             1262,
             1102,
@@ -369,50 +393,38 @@
         },
         {
           "row_index": 8,
-          "raw_text": "The Replacements - Swinging Party",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1262,
-            1177,
-            2550,
-            1252
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "Eleventh Dream Day (Bucketfull - Between Here & There of Brains)",
+          "raw_text": "Eleventh Dream Day (Bucketfull of Brains) - Between Here + There",
           "confidence": "high",
           "type_raw": "L",
           "notes": "double_height",
           "oddities": [
-            "the text 'of Brains)' is written on the far right completing the bracket from the previous line"
+            "Album name '(Bucketfull of Brains)' is written large and spans two lines in height on the right side."
           ],
           "row_bbox": [
             1262,
-            1252,
+            1177,
+            2550,
+            1329
+          ]
+        },
+        {
+          "row_index": 10,
+          "raw_text": "Johnny Cash - One Piece At A Time",
+          "confidence": "high",
+          "type_raw": "Lit",
+          "notes": null,
+          "oddities": [
+            "Type column designation 'Lit' is written over the circle."
+          ],
+          "row_bbox": [
+            1262,
+            1329,
             2550,
             1403
           ]
         },
         {
           "row_index": 11,
-          "raw_text": "Johnny Cash - One Piece At A Time",
-          "confidence": "high",
-          "type_raw": "Lit",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1262,
-            1403,
-            2550,
-            1479
-          ]
-        },
-        {
-          "row_index": 12,
           "raw_text": "Charles Mingus - The Shoes of the Fisherman's Wife Are Some Jive Ass Slippers",
           "confidence": "high",
           "type_raw": "O",
@@ -420,13 +432,13 @@
           "oddities": [],
           "row_bbox": [
             1262,
-            1479,
+            1403,
             2550,
-            1704
+            1630
           ]
         },
         {
-          "row_index": 15,
+          "row_index": 14,
           "raw_text": "Jos\u00e9 Orlando - Linda Menina Brazil: Forr\u00f3",
           "confidence": "high",
           "type_raw": "H",
@@ -434,9 +446,9 @@
           "oddities": [],
           "row_bbox": [
             1262,
-            1704,
+            1630,
             2550,
-            1854
+            1779
           ]
         }
       ],
@@ -450,12 +462,12 @@
         1262,
         4070
       ],
-      "hour_raw": "3 AM",
+      "hour_raw": "3AM",
       "jock_raw": "R Anderson",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "M C 900 ft. Jesus - Truth Is Out of Style",
+          "raw_text": "MC 900 ft. Jesus - Truth is Out of Style",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -474,7 +486,7 @@
           "type_raw": "NV",
           "notes": null,
           "oddities": [
-            "'70s' is written above 'Wadsworth Mansion' with an arrow pointing to it"
+            "Has '70s' written above the artist name with a small arrow pointing down."
           ],
           "row_bbox": [
             0,
@@ -501,7 +513,7 @@
           "row_index": 4,
           "raw_text": "Miles Davis - Come Get It",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -527,7 +539,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Silos - Take My Country Back (We'll Go) Out Of Town",
+          "raw_text": "Silos - Take My Country Back (We'll Go) Out of Town",
           "confidence": "high",
           "type_raw": "L",
           "notes": "double_height",
@@ -569,11 +581,13 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Gladys Knight & the Pips - the Tracks of My Tears",
+          "raw_text": "Gladys Knight + the Pips - the Tracks of My Tears",
           "confidence": "high",
           "type_raw": "Hit",
           "notes": "double_height",
-          "oddities": [],
+          "oddities": [
+            "Type column mark 'Hit' is written over the circle."
+          ],
           "row_bbox": [
             0,
             3180,
@@ -610,7 +624,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "The hour label '3' appears to have been written heavily over another number or scribbled."
+      ]
     },
     {
       "position": "bottom_right",
@@ -620,14 +636,14 @@
         2550,
         4070
       ],
-      "hour_raw": "5 AM",
+      "hour_raw": "5AM",
       "jock_raw": "R Anderson",
       "entries": [
         {
           "row_index": 0,
           "raw_text": "Joe Jackson - Evil Empire",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -695,8 +711,8 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Dr Fluid - Tin Top Toy",
-          "confidence": "high",
+          "raw_text": "Dr. Fluid - Tin Top Toy",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -723,8 +739,8 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Einsturzende Neubauten - Feurio",
-          "confidence": "high",
+          "raw_text": "Einst\u00fcrzende Neubauten - Feurio",
+          "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -825,9 +841,7 @@
           "confidence": "high",
           "type_raw": "X",
           "notes": "double_height",
-          "oddities": [
-            "the word 'Prayer' is written on the far right and seems to complete the title from the previous row"
-          ],
+          "oddities": [],
           "row_bbox": [
             1262,
             3479,

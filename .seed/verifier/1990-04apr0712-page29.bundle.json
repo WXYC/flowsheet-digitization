@@ -4,14 +4,15 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-29.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 29,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:00:03.822172+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:37:50.363150+00:00",
   "page_date_raw": "Thursday 12 April 90",
   "comments_raw": null,
   "oddities": [
-    "Various band and song names, along with a short weather report, are written at the very top of the page above the header.",
-    "A multi-day weather forecast is written vertically down the right margin.",
-    "Several disjointed phrases, band names, and song titles are written vertically down the left margin."
+    "The header contains several artist and track reminders written above the logo, including 'King Crimson 3 of a perfect pair' and 'Red Temple Set Controls'.",
+    "A short weather report is written in the top right header space.",
+    "The left margin contains extensive vertical annotations spanning the page, including 'Cradle Wed April 18', 'Lyrics By Guest', and 'Rock Lobster B-52's 1st'.",
+    "The right margin contains a vertical handwritten weather forecast for the upcoming week."
   ],
   "quadrants": [
     {
@@ -23,7 +24,7 @@
         2304
       ],
       "hour_raw": "2 AM",
-      "jock_raw": "Tom Laney",
+      "jock_raw": "Tom Lamey",
       "entries": [
         {
           "row_index": 0,
@@ -57,7 +58,7 @@
           "row_index": 2,
           "raw_text": "Maureen Tucker - Spam Again",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -83,7 +84,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "That Petrol Emotion - Sweet shiverBurn",
+          "raw_text": "That Petrol Emotion - Sweet Shiver Burn",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -127,7 +128,7 @@
           "row_index": 7,
           "raw_text": "Red Temple Spirits - Set the Controls",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -223,7 +224,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Gn R - One in a million",
+          "raw_text": "Gn R - One in a Million",
           "confidence": "high",
           "type_raw": "Hit",
           "notes": null,
@@ -253,7 +254,7 @@
           "row_index": 16,
           "raw_text": "Beastie Boys - Car Thief",
           "confidence": "high",
-          "type_raw": "NV",
+          "type_raw": "NW",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -335,7 +336,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Janes Addiction - I Would For You",
+          "raw_text": "Janes Addiction - I would For You",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -365,7 +366,7 @@
           "row_index": 6,
           "raw_text": "Hendrix - Like A Rolling Stone",
           "confidence": "high",
-          "type_raw": "Std.",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -391,12 +392,12 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Chris Cacavas - Angel on",
-          "confidence": "high",
+          "raw_text": "Chris Cacavas - Kangaroo Angel on A Mattress Spring",
+          "confidence": "medium",
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "A heavily crossed-out word precedes 'Angel'."
+            "the word 'Kangaroo' is crossed out"
           ],
           "row_bbox": [
             1290,
@@ -477,8 +478,7 @@
         }
       ],
       "oddities": [
-        "Row 15 has a scribbled-out type circle and no text.",
-        "Row 16 is empty except for a hand-drawn downward arrow."
+        "Row 15 has a scribble in the type column and a hand-drawn downward pointing arrow instead of text."
       ]
     },
     {
@@ -552,7 +552,7 @@
           "row_index": 4,
           "raw_text": "Alice Donut - Windshield of Love",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -606,7 +606,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Joy Divison - Transmission",
+          "raw_text": "Joy Division - Transmission",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -620,12 +620,12 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Doors - L.A. Women",
+          "raw_text": "Doors - L.A. Woman",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
           "oddities": [
-            "An upward-pointing arrow is drawn just before the band name."
+            "an upward pointing arrow is drawn before the band name"
           ],
           "row_bbox": [
             0,
@@ -641,7 +641,7 @@
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "A downward-pointing arrow is drawn just before the band name."
+            "a downward pointing arrow is drawn before the band name"
           ],
           "row_bbox": [
             0,
@@ -680,7 +680,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "The Chills - sweet times & submarine Bells",
+          "raw_text": "The Chills - sweet times or submarine bells",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -722,7 +722,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Bootsy Collins - Subliminal Seduction(Funk Me Dirt",
+          "raw_text": "Bootsy Collins - Subliminal seduction (Funk Me Dirty)",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -736,13 +736,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Monty Python - Novel writing",
-          "confidence": "medium",
+          "raw_text": "Monty Python - Novel Writing",
+          "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "The word 'Python' appears to be scribbled over."
-          ],
+          "oddities": [],
           "row_bbox": [
             1290,
             2502,
@@ -767,7 +765,7 @@
         {
           "row_index": 4,
           "raw_text": "Arson Garden - Armistace",
-          "confidence": "high",
+          "confidence": "medium",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -780,7 +778,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Bill Cosby & Friends - 4 Kings & A Queen",
+          "raw_text": "Bill Cosby + Friends - 4 Kings + A Queen",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -822,12 +820,12 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Shakey Horton - Wrinkles",
-          "confidence": "high",
+          "raw_text": "Shakey Horton - Deceased Wrinkles",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "A word before 'Wrinkles' is crossed out."
+            "the word 'Deceased' is heavily crossed out"
           ],
           "row_bbox": [
             1290,

@@ -4,12 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-13.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 13,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:13:23.183616+00:00",
-  "page_date_raw": "Monday 4/9/90",
-  "comments_raw": null,
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:35:20.460081+00:00",
+  "page_date_raw": "Monday 4/8/90",
+  "comments_raw": "(H) Chills \"Heavenly Pop Hit\"\n(O) David Johansen \"Heart of Gold\"",
   "oddities": [
-    "a note in the top right margin contains a weather forecast '38 deg / low clear / 40 deg 34 deg / high 70 deg Mon.'"
+    "The word SUNDAY is crossed out in the date field and replaced with Monday.",
+    "A weather note in the top right corner reads '38\u00b0 low 40\u00b0 34\u00b0 clear high 70\u00b0 Mon.'."
   ],
   "quadrants": [
     {
@@ -39,7 +40,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Pink Floyd \"Us & them\"",
+          "raw_text": "Pink Floyd \"Us & Them\"",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -81,7 +82,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Fugazi \"Song # 1\"",
+          "raw_text": "fugazi \"Song # 1\"",
           "confidence": "high",
           "type_raw": "PP",
           "notes": null,
@@ -123,8 +124,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "John Cougar \"Void In my Heart\"",
-          "confidence": "medium",
+          "raw_text": "John Cougar \"Void In My Heart\"",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -179,7 +180,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Public Enemy \"Fear of A Black Planet\"",
+          "raw_text": "Public Enemy \"Fear Of A Black Planet\"",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -230,7 +231,7 @@
         2550,
         2302
       ],
-      "hour_raw": "4AM",
+      "hour_raw": "4 AM",
       "jock_raw": "JK",
       "entries": [
         {
@@ -291,7 +292,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Proff Longhair \"Bye Bye Baby\"",
+          "raw_text": "Proff. Longhair \"Bye Bye Baby\"",
           "confidence": "high",
           "type_raw": "Blues",
           "notes": "double_height",
@@ -347,7 +348,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Original Concept \"Can U Feel It?\"",
+          "raw_text": "Original Concept \"Can U Feel It ?\"",
           "confidence": "high",
           "type_raw": "Var",
           "notes": null,
@@ -361,7 +362,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Zha Zha I Hate... They're Stupid\"",
+          "raw_text": "Zha Zha I Hate... They're Stupid",
           "confidence": "high",
           "type_raw": "cart",
           "notes": null,
@@ -389,7 +390,7 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Mojo Nixon Rat Music Vol III \"I Ain't Gonna Piss In No Jar\"",
+          "raw_text": "Mojo Nixon Rat Music Vol. III \"I Ain't Gonna Piss In No Jar\"",
           "confidence": "high",
           "type_raw": "Var",
           "notes": "double_height",
@@ -487,7 +488,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Scruffy The Cat \"Love Song # 9\"",
+          "raw_text": "Scruffy the Cat \"Love Song # 9\"",
           "confidence": "high",
           "type_raw": "PP",
           "notes": "double_height",
@@ -515,7 +516,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Fetchin Bones \"Kitchen Of Life\"",
+          "raw_text": "Fetchin Bones \"Kitchen of Life\"",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -529,7 +530,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Lush \"De-luxe\"",
+          "raw_text": "Lush \"De-Luxe\"",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -557,7 +558,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Johnny Quest \"...Unnatural Woman\"",
+          "raw_text": "Johnny Quest \"...Unnatural, Woman\"",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -572,7 +573,7 @@
         {
           "row_index": 13,
           "raw_text": "Huayucaltia \"You Are Leaving\"",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
           "oddities": [],
@@ -641,7 +642,7 @@
         },
         {
           "row_index": 20,
-          "raw_text": "Whole Lava Love \"Juke Jubilee",
+          "raw_text": "Whole Lava Love \"Juke Jubilee\"",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -655,7 +656,7 @@
         },
         {
           "row_index": 21,
-          "raw_text": "Angels Of Epistemology \"Angels Death Song\"",
+          "raw_text": "Angels of Epistemology \"Angels Death Song \"",
           "confidence": "high",
           "type_raw": "H",
           "notes": "double_height",
@@ -663,20 +664,6 @@
           "row_bbox": [
             0,
             3927,
-            1288,
-            4061
-          ]
-        },
-        {
-          "row_index": 23,
-          "raw_text": "Chills \"Heavenly Pop Hit\"",
-          "confidence": "high",
-          "type_raw": "H",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            0,
-            4061,
             1288,
             4061
           ]
@@ -711,7 +698,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "New Orleans R&B Myles & Dupont \"Loudmouth Annie\"",
+          "raw_text": "New Orleans R&B Myles & Dupont \"Loud Mouth Annie\"",
           "confidence": "high",
           "type_raw": "Var",
           "notes": "double_height",
@@ -739,7 +726,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Nuggets -- The Cyrkle \"Turn Down Day\"",
+          "raw_text": "Nuggets - The Cirkle \"Turn Down Day\"",
           "confidence": "high",
           "type_raw": "Var",
           "notes": "double_height",
@@ -799,9 +786,7 @@
           "confidence": "high",
           "type_raw": "Var",
           "notes": "double_height",
-          "oddities": [
-            "the right margin has circled text that says 'still great!'"
-          ],
+          "oddities": [],
           "row_bbox": [
             1288,
             3103,
@@ -815,7 +800,9 @@
           "confidence": "high",
           "type_raw": "PP",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Right margin note 'still great!' points to this entry with an arrow."
+          ],
           "row_bbox": [
             1288,
             3328,
@@ -853,7 +840,7 @@
         },
         {
           "row_index": 18,
-          "raw_text": "Psyche funk a pus \"Jesus Crispies\"",
+          "raw_text": "Psychefunkapus \"Jesus Crispies\"",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -905,20 +892,6 @@
             3858,
             2550,
             3960
-          ]
-        },
-        {
-          "row_index": 22,
-          "raw_text": "David Johansen \"Heart Of Gold\"",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1288,
-            3960,
-            2550,
-            4013
           ]
         }
       ],

@@ -4,13 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-15.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 15,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:14:13.734816+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:36:00.391358+00:00",
   "page_date_raw": "SUN 1/8/90",
   "comments_raw": null,
   "oddities": [
-    "A crossed-out '12' appears before the date at the top of the page.",
-    "Weather notes written in the top right corner read: 'Sinead Mostly 64 Warmer 68 P/C low 45'."
+    "A scribbled out word appears before 'SUN' in the date field.",
+    "A weather note in the top right reads: 'Sunny Mostly Warmer 64 68 P/C low 45'."
   ],
   "quadrants": [
     {
@@ -26,7 +26,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "REO - Ridin the Storm Out !!",
+          "raw_text": "REO - Ridin the Storm Out!!",
           "confidence": "high",
           "type_raw": "HIT",
           "notes": null,
@@ -59,7 +59,7 @@
           "type_raw": "O",
           "notes": null,
           "oddities": [
-            "left margin has a hand-drawn arrow curving up from row 4"
+            "a curved arrow is drawn in the left margin from this row pointing down to row 4"
           ],
           "row_bbox": [
             0,
@@ -70,7 +70,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "ANGELS OF - TORTA DE LOS MUSIRIOS",
+          "raw_text": "ANGELS OF EP - TORTA DE LOS MUSICAS",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -103,7 +103,7 @@
           "type_raw": "CART",
           "notes": null,
           "oddities": [
-            "left margin has a hand-drawn arrow curving up from row 7"
+            "a curved arrow is drawn in the left margin from this row pointing down to row 6"
           ],
           "row_bbox": [
             0,
@@ -171,9 +171,9 @@
         {
           "row_index": 10,
           "raw_text": "GREEN RIVER - SWALLOW MY PRIDE",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": "crossed_out",
+          "confidence": "low",
+          "type_raw": "XX",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -198,7 +198,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "CHILLS - DEAD WEB",
+          "raw_text": "CHILLS - DEAD WEBS",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -213,7 +213,7 @@
         {
           "row_index": 13,
           "raw_text": "LUKA BLOOM - THE HILL OF ALEN",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -230,7 +230,9 @@
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "the 'O' in the left margin type column is heavily shaded in"
+          ],
           "row_bbox": [
             0,
             1627,
@@ -240,8 +242,8 @@
         },
         {
           "row_index": 15,
-          "raw_text": "BEVIS FROUD - OLD SEA DOG",
-          "confidence": "medium",
+          "raw_text": "BEVIS FROND - OLD SEA DOG",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -424,7 +426,7 @@
           "row_index": 11,
           "raw_text": "Mighty Lemon Drops - Sometimes Good Guys Don't Wear White",
           "confidence": "high",
-          "type_raw": "concert",
+          "type_raw": "Concert",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -435,7 +437,7 @@
           ]
         },
         {
-          "row_index": 13,
+          "row_index": 14,
           "raw_text": "MC 900 Foot Jesus - Truth is Out of Style",
           "confidence": "high",
           "type_raw": "H",
@@ -449,7 +451,7 @@
           ]
         },
         {
-          "row_index": 14,
+          "row_index": 15,
           "raw_text": "Descendents - Xmas Vacation",
           "confidence": "high",
           "type_raw": "O",
@@ -463,8 +465,8 @@
           ]
         },
         {
-          "row_index": 15,
-          "raw_text": "The Standells - Try It",
+          "row_index": 16,
+          "raw_text": "The Standells - Try it",
           "confidence": "high",
           "type_raw": "HIT",
           "notes": null,
@@ -487,12 +489,12 @@
         1257,
         4063
       ],
-      "hour_raw": "11 A",
-      "jock_raw": "Joe CaParo",
+      "hour_raw": "1 A",
+      "jock_raw": "Joe CaPaRo",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "FUNKADELIC - WHO SAYS A FUNK BAND CANT PLAY ROCK?",
+          "raw_text": "FUNKADELIC - WHO SAYS A FUNK BAND CAN'T PLAY ROCK?",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
@@ -538,7 +540,9 @@
           "confidence": "high",
           "type_raw": "STD",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "an arrow is drawn pointing right from the 'STD' type to the text"
+          ],
           "row_bbox": [
             0,
             2653,
@@ -604,7 +608,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "JALI MUSA JAWARA - CASKIF",
+          "raw_text": "JALI MUSA JAWARA - CHERIF",
           "confidence": "high",
           "type_raw": "REGGAE",
           "notes": null,
@@ -618,7 +622,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "FREAKS - LOST & FOUND (ZONY)",
+          "raw_text": "FREAKS - LOST & FOUND (TONY)",
           "confidence": "high",
           "type_raw": "X",
           "notes": null,
@@ -660,46 +664,46 @@
         },
         {
           "row_index": 14,
-          "raw_text": "MTHLUMBU QUEENS - FUNELA NAANSAO",
+          "raw_text": "MTHUMBU QUEENS - FUNELA NDAGISISO",
           "confidence": "medium",
           "type_raw": "H",
-          "notes": null,
+          "notes": "double_height",
           "oddities": [],
           "row_bbox": [
             0,
             3404,
-            1257,
-            3480
-          ]
-        },
-        {
-          "row_index": 15,
-          "raw_text": "POI DOG - BURY ME DEEP",
-          "confidence": "high",
-          "type_raw": "MV",
-          "notes": null,
-          "oddities": [
-            "left margin has a hand-drawn arrow curving up from row 17"
-          ],
-          "row_bbox": [
-            0,
-            3480,
             1257,
             3555
           ]
         },
         {
           "row_index": 16,
-          "raw_text": "JOSE ORLANDO - YU TAMBIEN QUIERO BESAR",
+          "raw_text": "POI DOG - BURY ME DEEP",
+          "confidence": "high",
+          "type_raw": "MV",
+          "notes": null,
+          "oddities": [
+            "a hand-drawn arrow in the left margin points from this row down to the next row"
+          ],
+          "row_bbox": [
+            0,
+            3555,
+            1257,
+            3630
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "JOSE ORLANDO - EUTAMBEM QUIRO BEJAR",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
-            3555,
+            3630,
             1257,
-            3630
+            3707
           ]
         }
       ],
@@ -815,49 +819,21 @@
           ]
         },
         {
-          "row_index": 7,
-          "raw_text": "Rave - ups",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": "double_height",
-          "oddities": [],
-          "row_bbox": [
-            1257,
-            2879,
-            2550,
-            3029
-          ]
-        },
-        {
-          "row_index": 8,
-          "raw_text": "Interview",
-          "confidence": "high",
-          "type_raw": null,
-          "notes": "double_height",
-          "oddities": [],
-          "row_bbox": [
-            1257,
-            3029,
-            2550,
-            3179
-          ]
-        },
-        {
-          "row_index": 9,
-          "raw_text": "- Respectable Pig of The",
-          "confidence": "low",
+          "row_index": 11,
+          "raw_text": "- Respectfull Rip off Tex",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
             1257,
-            3179,
+            2879,
             2550,
-            3254
+            2954
           ]
         },
         {
-          "row_index": 10,
+          "row_index": 12,
           "raw_text": "Cosmic Psychos - She's Cracking Up",
           "confidence": "high",
           "type_raw": "X",
@@ -865,14 +841,14 @@
           "oddities": [],
           "row_bbox": [
             1257,
-            3254,
+            2954,
             2550,
-            3329
+            3029
           ]
         }
       ],
       "oddities": [
-        "rows 8-11 are overlaid with a large hand-drawn diamond containing the words 'Rave - ups Interview'"
+        "A large hand-drawn diamond containing the text 'Rave-Ups Interview' spans rows 7 to 10."
       ]
     }
   ]

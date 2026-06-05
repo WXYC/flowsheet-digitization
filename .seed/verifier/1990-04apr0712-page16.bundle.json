@@ -4,12 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-16.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 16,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:14:25.347795+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:34:42.636098+00:00",
   "page_date_raw": "SUN 4/8/90",
-  "comments_raw": "Red Hot Chili David\nRevolutionary generation Fears Black Planet whole Hole\nNew Order Forks Pixies Doolittle",
+  "comments_raw": "Red Hot Chili David\nRevolutionary generation Fear Black Planet w/u i stole\nNew Rayon Fades\nPrice Doolittle",
   "oddities": [
-    "Text written above the header reads: 'Greg Raleigh Vanilla Trainwreck Japan Talking Islands The Fall Jusano's 15th'."
+    "Names 'Greg Raleigh', 'Vanilla Trainwreck', 'Japan', 'Taking Islands' are written above the date",
+    "List of 'The Fall Insano's 15th' is written above the right column",
+    "Under 'Red Hot Chili' in comments, the word 'Peppers' appears to be heavily crossed out"
   ],
   "quadrants": [
     {
@@ -21,11 +23,11 @@
         2305
       ],
       "hour_raw": "2PM",
-      "jock_raw": "Sillmon",
+      "jock_raw": "Sillman",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "SR Vaughn - Couldnt Stand the weather",
+          "raw_text": "SR Vaughn- Couldnt Stand the weather",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -39,7 +41,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Doug Orton - House of Bajia",
+          "raw_text": "Doug Orton - House of Bagla",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -53,7 +55,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "The Blue Aeroplanes - Cat-scan History",
+          "raw_text": "The Blue Aeroplanes -> cat scan History",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -67,7 +69,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "VU - Black Angel's Death Song",
+          "raw_text": "VU-Black Angel's Death Song",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -81,7 +83,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Souled American - Will dawg",
+          "raw_text": "Souled American - Wild Dang",
           "confidence": "medium",
           "type_raw": "L",
           "notes": null,
@@ -95,7 +97,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Cocteau Twins - Fluffy Tufts",
+          "raw_text": "Cocteau Twins- Fluffy Tufts",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -114,7 +116,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "the word 'Hungary' is written in the left margin next to this entry"
+            "Left margin says 'Hungary'"
           ],
           "row_bbox": [
             0,
@@ -125,7 +127,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Kinks - phenomenal cat",
+          "raw_text": "Kinks- phenomenal cat",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -139,7 +141,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Queen latifah - Ladies 1st",
+          "raw_text": "Queen latifah- Ladies 1st",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -167,7 +169,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "De La Soul - Says no go",
+          "raw_text": "DeLaSoul - Say no go",
           "confidence": "high",
           "type_raw": "Std",
           "notes": null,
@@ -181,7 +183,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Roberta Flack - Oasis",
+          "raw_text": "Roberta Flack- Oasis",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -195,7 +197,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Christine Lavin - Attainable Love",
+          "raw_text": "Christine lavin - Attainable Love",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -209,7 +211,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Meat Puppets - Upon the Sun",
+          "raw_text": "Meat Puppets-Upon The Sun",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -220,11 +222,25 @@
             1284,
             1936
           ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "Fear of a Black Planet",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "This text is written on the bottom border separating this quadrant from the next"
+          ],
+          "row_bbox": [
+            0,
+            1936,
+            1284,
+            2012
+          ]
         }
       ],
-      "oddities": [
-        "the text 'Fear of a Black Planet' is written between the last entry and the 3pm hour line"
-      ]
+      "oddities": []
     },
     {
       "position": "top_right",
@@ -235,7 +251,7 @@
         2305
       ],
       "hour_raw": "4PM",
-      "jock_raw": "Keith Pyle",
+      "jock_raw": "Keith Kyle",
       "entries": [
         {
           "row_index": 0,
@@ -253,7 +269,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Miracle Room \"There are my Friends\"",
+          "raw_text": "Miracle Room \"These are my Friend\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -267,13 +283,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Agitpop \"Adult Playpen\"",
+          "raw_text": "Agitpop \"Adult Playpen\" Stick",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "tiny annotation 'stick' at end of line"
-          ],
+          "oddities": [],
           "row_bbox": [
             1284,
             796,
@@ -311,7 +325,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Controlled Bleeding \"The Groan\"",
+          "raw_text": "Controlled Bleeding \"The Green\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -326,7 +340,7 @@
         {
           "row_index": 6,
           "raw_text": "Jimi Hendrix \"Peace in Missippi\"",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -339,7 +353,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Naked City \"Saigon Pickup\"",
+          "raw_text": "Naked City \"Saison Pickup\"",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -353,8 +367,8 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Funkadelic \"Inb You\"",
-          "confidence": "low",
+          "raw_text": "Funkadelic \"Int You\"",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -367,8 +381,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Ed Haynes \"Mikial\"",
-          "confidence": "medium",
+          "raw_text": "Ed Haynes \"Mikal\"",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -395,8 +409,8 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Bud Powell Trio \"Cherokee\"",
-          "confidence": "high",
+          "raw_text": "Bud Powell Trio \"Cherrolee\"",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -414,7 +428,7 @@
           "type_raw": "R",
           "notes": null,
           "oddities": [
-            "curly bracket points from the type circle to the entry"
+            "Hand-drawn curly brace points from 'R' in left margin to this row"
           ],
           "row_bbox": [
             1284,
@@ -449,11 +463,11 @@
         4076
       ],
       "hour_raw": "3pm",
-      "jock_raw": "Sillmon",
+      "jock_raw": "Sillman",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Daniel Johnston - God",
+          "raw_text": "Daniel Johnston-God",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -481,12 +495,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Gary Burton & Stephane Grapelli Falling Grace",
+          "raw_text": "Gary Burton & St\u00e9phane Grapelli Falling Grace",
           "confidence": "high",
           "type_raw": "O",
           "notes": "double_height",
           "oddities": [
-            "an arrow points up from this row to the previous row"
+            "Arrow drawn below left margin pointing from entry 4 to entry 3"
           ],
           "row_bbox": [
             0,
@@ -513,7 +527,7 @@
           "row_index": 5,
           "raw_text": "Byrds - its all over now",
           "confidence": "high",
-          "type_raw": "std",
+          "type_raw": "Std",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -525,7 +539,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "H.P. Zinker - Hurdles on my way",
+          "raw_text": "H.P. Zinker-Hurdes on my way",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -539,7 +553,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Godfathers - when am I coming down",
+          "raw_text": "Godfathers- When am I coming down",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -567,7 +581,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Nils Lofgren - Moon tears",
+          "raw_text": "Nils Lofgren- Moon Tears",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -581,7 +595,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Bill Nelson - Empire of the Senses",
+          "raw_text": "Bill Nelson- Empire of The Senses",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -623,23 +637,37 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Taking Islands in Africa JAPAN",
+          "raw_text": "Taking Islands in Africa",
           "confidence": "high",
           "type_raw": "R",
-          "notes": "double_height",
-          "oddities": [
-            "an arrow points from the word JAPAN to the previous entry"
-          ],
+          "notes": null,
+          "oddities": [],
           "row_bbox": [
             0,
             3260,
+            1284,
+            3408
+          ]
+        },
+        {
+          "row_index": 14,
+          "raw_text": "JAPAN",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "Hand-drawn arrow points from this row to the line above"
+          ],
+          "row_bbox": [
+            0,
+            3408,
             1284,
             3483
           ]
         },
         {
           "row_index": 15,
-          "raw_text": "Jesus Lizard - 77 vs. 8",
+          "raw_text": "Jesus Lizard -> 7 vs. 8",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -663,7 +691,7 @@
         4076
       ],
       "hour_raw": null,
-      "jock_raw": "Keith Pyle",
+      "jock_raw": "Keith Kyle",
       "entries": [
         {
           "row_index": 0,
@@ -695,13 +723,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "King Sunny Ade \"Mo Beru Agba\"",
+          "raw_text": "King Sunny Ade \"Mo Beru Agba\" April",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "annotation 'April' at end of line"
-          ],
+          "oddities": [],
           "row_bbox": [
             1284,
             2566,
@@ -711,13 +737,11 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Thin White Rope \"You Doo Right\"",
+          "raw_text": "Thin White Rope \"You Do Right\" GG",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "annotation '66' at end of line"
-          ],
+          "oddities": [],
           "row_bbox": [
             1284,
             2643,
@@ -741,28 +765,56 @@
         },
         {
           "row_index": 5,
-          "raw_text": "The Colorblind James Experience \" AD: Pleasant Bob\"",
+          "raw_text": "The Colorblind James Experience",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1284,
             2790,
+            2550,
+            2798
+          ]
+        },
+        {
+          "row_index": 6,
+          "raw_text": "\"\" AD: Fervent Bob\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2798,
             2550,
             2866
           ]
         },
         {
           "row_index": 7,
-          "raw_text": "Nikki Sudden & the Jacobites \" Groove\"",
+          "raw_text": "Nikki Sudden",
           "confidence": "high",
           "type_raw": null,
-          "notes": "double_height",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1284,
             2866,
+            2550,
+            2947
+          ]
+        },
+        {
+          "row_index": 8,
+          "raw_text": "\"\" Groove\"",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1284,
+            2947,
             2550,
             3018
           ]
@@ -797,7 +849,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Wolfgang Press \"Lira\"",
+          "raw_text": "Wolfgang Press \"Lisa\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -811,7 +863,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Wonder Stuff",
+          "raw_text": "Wonderstuff",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -827,7 +879,7 @@
           "row_index": 14,
           "raw_text": "The Mission \"Paradise\"",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [

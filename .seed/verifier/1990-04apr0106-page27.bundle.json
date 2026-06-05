@@ -4,12 +4,12 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-27.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 27,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:09:30.750588+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:31:44.120857+00:00",
   "page_date_raw": "Thurs 4/5/90",
   "comments_raw": "Nikki Husker 10:00\nTMBG Could You Be\nModern English -",
   "oddities": [
-    "A note in the top right margin reads '74\u00b0 low 48\u00b0 / Peggy Lee / TPOH Is That'."
+    "Weather notes and scribbles at the top right read: '74\u00b0 low 48\u00b0', 'TPOH', 'Peggy Lee Is that'."
   ],
   "quadrants": [
     {
@@ -25,12 +25,12 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Billy Syndrome - Broome Closet - Falling Star",
+          "raw_text": "Billy Syndrome - Broome Closet -",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The words 'Falling Star' are written above the line at the end of the entry."
+            "tiny annotation 'Falling Stair' above end of line"
           ],
           "row_bbox": [
             0,
@@ -139,7 +139,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Bert Jansch - Give Me The Time",
+          "raw_text": "Bert Jansch - Give Me the Time",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -153,7 +153,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Peggy Lee - That's What a Woman is For",
+          "raw_text": "Peggy Lee - That's What a Woman Is For",
           "confidence": "high",
           "type_raw": "R",
           "notes": null,
@@ -169,7 +169,7 @@
           "row_index": 10,
           "raw_text": "House of Love - Hedonist",
           "confidence": "high",
-          "type_raw": "m",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -181,7 +181,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Delmonas - Farmer John",
+          "raw_text": "DelMonas - Farmer John",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -195,7 +195,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Viv Akhauldren - Is This It",
+          "raw_text": "Viv Akauldren - Is This It",
           "confidence": "medium",
           "type_raw": "O",
           "notes": null,
@@ -295,7 +295,7 @@
           "row_index": 3,
           "raw_text": "Nikki Meets - Words & Paper",
           "confidence": "high",
-          "type_raw": "RO",
+          "type_raw": "R O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -323,7 +323,7 @@
           "row_index": 5,
           "raw_text": "They Might Be Giants - Nothing's Gonna Change My Clothes",
           "confidence": "high",
-          "type_raw": "OR",
+          "type_raw": "O R",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -337,7 +337,7 @@
           "row_index": 7,
           "raw_text": "Nathan Abshire - Pinegrove Blues",
           "confidence": "high",
-          "type_raw": "ORS",
+          "type_raw": "Ors",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -351,7 +351,7 @@
           "row_index": 8,
           "raw_text": "Bongwater - Too Much Sleep",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -364,11 +364,11 @@
         {
           "row_index": 9,
           "raw_text": "Sarah Vaughan - Black Coffee",
-          "confidence": "medium",
-          "type_raw": null,
+          "confidence": "high",
+          "type_raw": "O",
           "notes": null,
           "oddities": [
-            "A faint '66' or 'bb' is written in the right margin."
+            "annotation 'u' at end of line"
           ],
           "row_bbox": [
             1282,
@@ -409,7 +409,7 @@
           "row_index": 12,
           "raw_text": "Freaks - Green Slime",
           "confidence": "high",
-          "type_raw": "L",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -519,7 +519,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Memphis Slim - Three-in-One Boogie",
+          "raw_text": "Memphis Slim - Three-in One Boogie",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -593,9 +593,7 @@
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "A word is crossed out between 'Midnight' and 'Oil'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3023,
@@ -606,7 +604,7 @@
         {
           "row_index": 10,
           "raw_text": "Church - City",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "vh",
           "notes": null,
           "oddities": [],
@@ -619,7 +617,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Conjunto Los Karachi",
+          "raw_text": "Conjunto los Karachi",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -675,7 +673,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Los - Number 6",
+          "raw_text": "Dos - Number 6",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -691,11 +689,10 @@
           "row_index": 2,
           "raw_text": "Michigan & Smiley - Diseases",
           "confidence": "high",
-          "type_raw": "PPB",
+          "type_raw": null,
           "notes": null,
           "oddities": [
-            "The type column entry is crossed out.",
-            "The word 'papa' is written above 'Michigan'."
+            "tiny annotation 'papa' above Michigan"
           ],
           "row_bbox": [
             1282,
@@ -734,7 +731,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "MC 900 FT Jesus - I'm Going Straight to Heaven",
+          "raw_text": "MC 900 FT Jesus - I'm Going Straight To Heaven",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -792,7 +789,7 @@
           "row_index": 9,
           "raw_text": "Modern English - Carry Me Down",
           "confidence": "high",
-          "type_raw": "Std",
+          "type_raw": "STND",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -806,7 +803,7 @@
           "row_index": 10,
           "raw_text": "Traffic - Hidden Treasure",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [

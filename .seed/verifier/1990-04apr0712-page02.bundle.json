@@ -4,10 +4,10 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-02.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 2,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:10:37.063601+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:21.761720+00:00",
   "page_date_raw": "SATURDAY 4/7/90",
-  "comments_raw": "weather 41\u00b0\nrain\nclean aite...\n48\u00b0\n?\u00b0\nSouled\nAmerican\n6 ft of snow",
+  "comments_raw": "weather 41\u00b0\nrain\nclean aite...\n48\u00b0\nSouled\nAmerican\n6ft of snow",
   "oddities": [],
   "quadrants": [
     {
@@ -37,9 +37,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Sini Kindile Nganeziyamhia no Khamhxlemvalesdisa",
-          "confidence": "medium",
-          "type_raw": "O",
+          "raw_text": "Sini Lindile Nganeziyambo no Khambalomvaladise",
+          "confidence": "high",
+          "type_raw": "o",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -65,7 +65,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Lou Reed I Wanna Be Black",
+          "raw_text": "Lou Reed I WannaBe Black",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -95,7 +95,7 @@
           "row_index": 6,
           "raw_text": "Sister Carol Ah No Me Name Peggy",
           "confidence": "high",
-          "type_raw": "X",
+          "type_raw": "x",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -107,12 +107,12 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Paul Rugierro Human Pride",
-          "confidence": "high",
-          "type_raw": "X",
+          "raw_text": "Paul Rusoens Human Pride",
+          "confidence": "medium",
+          "type_raw": "x",
           "notes": null,
           "oddities": [
-            "The phrase 'Fast Folk' is written in the left margin next to this row."
+            "Left margin has an annotation 'Fast Folk' pointing to this row"
           ],
           "row_bbox": [
             0,
@@ -179,13 +179,11 @@
         },
         {
           "row_index": 12,
-          "raw_text": "sky sunlight saxon Blueberry Frosting",
-          "confidence": "high",
+          "raw_text": "Sky sunlight Saxon Blueberry Frosting",
+          "confidence": "medium",
           "type_raw": "o",
           "notes": null,
-          "oddities": [
-            "The artist name is split, with 'sky sunlight' written slightly above 'saxon'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             1478,
@@ -251,7 +249,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Eddie Davis / J Griffin - Billi's Bounce",
+          "raw_text": "Eddie Davis/J Griffin - Billie's Bounce",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -279,10 +277,10 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Metallica",
+          "raw_text": "",
           "confidence": "low",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1254,
@@ -307,7 +305,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Fugazi - Waitin Room",
+          "raw_text": "Fugazi - waiting Room",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -337,7 +335,7 @@
           "row_index": 6,
           "raw_text": "Nick Cave - New Morning",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -349,7 +347,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Dylan - \"",
+          "raw_text": "Dylan - \" \"",
           "confidence": "high",
           "type_raw": "std",
           "notes": null,
@@ -379,7 +377,7 @@
           "row_index": 9,
           "raw_text": "Don Pullen - Rejoice",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -449,7 +447,7 @@
           "row_index": 14,
           "raw_text": "Bobby Fuller - Nancy Jean",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -463,7 +461,7 @@
           "row_index": 15,
           "raw_text": "Steve Reich - Fast",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -484,12 +482,12 @@
         1254,
         4074
       ],
-      "hour_raw": "7am",
+      "hour_raw": "7AM",
       "jock_raw": "MaryBeth Ross",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "D Mob C'mon+Get My Love",
+          "raw_text": "D Mob C'mon + Get My Love",
           "confidence": "high",
           "type_raw": "hit",
           "notes": null,
@@ -561,7 +559,7 @@
           "row_index": 6,
           "raw_text": "american Music Club Animal Pen",
           "confidence": "high",
-          "type_raw": "X",
+          "type_raw": "x",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -578,7 +576,7 @@
           "type_raw": "o",
           "notes": null,
           "oddities": [
-            "A large black ink blot partially obscures 'Duke', which is written above 'Ellington'."
+            "The word 'Duke' is heavily scribbled out and rewritten."
           ],
           "row_bbox": [
             0,
@@ -589,13 +587,11 @@
         },
         {
           "row_index": 8,
-          "raw_text": "The Mthembu Queens Wadileya ilmunyi",
+          "raw_text": "The Mthembu Queens Wadileya umuyi",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "'Queens' is written in smaller text beneath 'The Mthembu'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3029,
@@ -609,9 +605,7 @@
           "confidence": "high",
           "type_raw": "o",
           "notes": null,
-          "oddities": [
-            "'Fighting' is written beneath 'White City'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3104,
@@ -651,10 +645,10 @@
           "row_index": 12,
           "raw_text": "Pulp Little Girl",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The type column contains an 'O' that has been scribbled out."
+            "The letter H in the type column is scribbled over."
           ],
           "row_bbox": [
             0,
@@ -665,12 +659,12 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Bad Checks The Gas Faces Do Me Right",
-          "confidence": "high",
+          "raw_text": "Bad Checks The Good Guys Do Me Right",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "The words 'The Gas Faces' are struck through, with 'Do Me Right' written above them."
+            "The words 'The Good Guys' are crossed out in the middle of the entry, with 'Do Me Right' added."
           ],
           "row_bbox": [
             0,
@@ -683,7 +677,7 @@
           "row_index": 14,
           "raw_text": "3rd Bass The Gas Face",
           "confidence": "high",
-          "type_raw": "X",
+          "type_raw": "x",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -723,10 +717,10 @@
         },
         {
           "row_index": 17,
-          "raw_text": "SF",
+          "raw_text": "",
           "confidence": "low",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -755,9 +749,7 @@
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The word 'Swagger' is written slightly above the end of the line."
-          ],
+          "oddities": [],
           "row_bbox": [
             1254,
             2353,
@@ -772,7 +764,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "'Velvet Its Over' is crossed out."
+            "The words 'Velvet Its Over' at the start of the line are crossed out."
           ],
           "row_bbox": [
             1254,
@@ -797,21 +789,35 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Baaba Maal + Mansour Seck - muudo Hormo Djam Leelii",
+          "raw_text": "Baaba Maal + Mansour Seck - Muudo Hormo Djam Leelii",
           "confidence": "high",
-          "type_raw": "O",
-          "notes": "double_height",
+          "type_raw": "o",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             1254,
             2579,
+            2550,
+            2654
+          ]
+        },
+        {
+          "row_index": 4,
+          "raw_text": "RH Chili Peppers - Show Me Your Soul 4:20",
+          "confidence": "high",
+          "type_raw": "H",
+          "notes": null,
+          "oddities": [],
+          "row_bbox": [
+            1254,
+            2654,
             2550,
             2727
           ]
         },
         {
           "row_index": 5,
-          "raw_text": "RH Chili Peppers - Show Me Your Soul 4:20",
+          "raw_text": "Chapter Two - The Day I Nailed My Heart To Your Frat Door",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -825,9 +831,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Chapter Two - The Day I Nailed My Heart To You",
+          "raw_text": "100 Proof Aged In Soul - Somebody's Been Sleepin'",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -839,13 +845,11 @@
         },
         {
           "row_index": 7,
-          "raw_text": "100 Proof Aged in Soul - Somebody's Been Sleepin' Frat Door",
+          "raw_text": "Boo-Yaa Tribe - New Funky Nation",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "NuV",
           "notes": null,
-          "oddities": [
-            "'Frat Door' is written slightly above the track name."
-          ],
+          "oddities": [],
           "row_bbox": [
             1254,
             2880,
@@ -855,9 +859,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Boo-Yaa Tribe - New Funky Nation",
+          "raw_text": "Sade - Hold On To Your Love",
           "confidence": "high",
-          "type_raw": "NuV",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -869,9 +873,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Sade - Hold On To Your Love",
+          "raw_text": "Souled American - Cup a Coffee",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -883,9 +887,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Souled American - Cup a Coffee",
+          "raw_text": "Nick Lowe - Who Was That Man?",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "NuV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -897,9 +901,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Nick Lowe - Who Was That Man?",
+          "raw_text": "Fall - Arms Control Poseur",
           "confidence": "high",
-          "type_raw": "NuV",
+          "type_raw": "m",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -911,9 +915,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Fall - Arms Control Poseur",
+          "raw_text": "Joe Hughes - Shoe Shy",
           "confidence": "high",
-          "type_raw": "m",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -925,9 +929,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Joe Hughes - Shoe Shy",
+          "raw_text": "Denny Brown - I Didn't Know",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "o",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -935,20 +939,6 @@
             3326,
             2550,
             3402
-          ]
-        },
-        {
-          "row_index": 14,
-          "raw_text": "Denny Brown - I Didn't Know",
-          "confidence": "high",
-          "type_raw": "O",
-          "notes": null,
-          "oddities": [],
-          "row_bbox": [
-            1254,
-            3402,
-            2550,
-            3478
           ]
         }
       ],

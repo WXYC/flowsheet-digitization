@@ -4,14 +4,15 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-04.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 4,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:11:50.550878+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:33:46.196369+00:00",
   "page_date_raw": "SAT 4/7/90",
   "comments_raw": "N. Hagen - Russian Reggae",
   "oddities": [
-    "The top margin contains scattered sports scores and weather notes, such as 'Tarheels - Beat J.H', 'Frost, Freezing - Continues', and 'Sunny hi 62'.",
-    "The left margin has sideways writing including 'Jon 9 Fact', 'Jeff Hart & The Ruins', and 'Jack Hickman'.",
-    "The top right corner has some scribbled out text that appears to say 'FM 11m'."
+    "Above the WXYC logo, notes read '2 types' and 'Tarheels - Beat J.H', 'lacrosse 11-6 in Baltimore'.",
+    "Right of the logo, weather notes read 'Frost, Freezing - continues', 'clear/cold 25-30', 'Sunny hi 62', 'clear cold 30/15', 'M: MS, hi 67'.",
+    "In the left margin next to the bottom-left quadrant, text written sideways reads 'Bon 9 Fact', 'Jeff Hart & The Ruins', 'Jack Hickman'.",
+    "Top right corner has a small scratched-out note starting with 'FM'."
   ],
   "quadrants": [
     {
@@ -31,9 +32,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "The text 'Blues in' is written slightly above the main line."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             544,
@@ -101,7 +100,7 @@
           "row_index": 7,
           "raw_text": "KMFDM - Rip the System",
           "confidence": "high",
-          "type_raw": "M",
+          "type_raw": null,
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -113,7 +112,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Monica's Interval - Your Imagination",
+          "raw_text": "Monicas Interval - Your Imagination",
           "confidence": "high",
           "type_raw": null,
           "notes": "double_height",
@@ -155,8 +154,8 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Bel Canto - The Glassmaker",
-          "confidence": "high",
+          "raw_text": "Bel Canto - The Glasmaker",
+          "confidence": "medium",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -169,7 +168,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Rickie Lee Jones - The Horses",
+          "raw_text": "Rickie Lee Jones - The horses",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -248,7 +247,7 @@
         2550,
         2299
       ],
-      "hour_raw": "4PM",
+      "hour_raw": "4Pm",
       "jock_raw": "Todd",
       "entries": [
         {
@@ -281,13 +280,11 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Christine Lavin - Shopping Cart of Love: The Play",
+          "raw_text": "Christine Lavin - Shopping Cart of Love: The play",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
-          "oddities": [
-            "A word before 'Shopping' is heavily scribbled out."
-          ],
+          "oddities": [],
           "row_bbox": [
             1258,
             721,
@@ -316,7 +313,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "The text 'Hope vs. Hope' is written in the right margin near this row."
+            "the phrase 'Hopes vs. Hope' is written tiny at the end of the line"
           ],
           "row_bbox": [
             1258,
@@ -369,13 +366,11 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Pink Syndicate - 1/5",
+          "raw_text": "Perb Syndicate - 1/5",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "The H in the left margin type circle is scribbled over."
-          ],
+          "oddities": [],
           "row_bbox": [
             1258,
             1171,
@@ -441,7 +436,7 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Blue Aeroplanes - ... and Stones",
+          "raw_text": "Blue Aeroplanes - ...and Stones",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -497,8 +492,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Treponem Pal - Silico",
-          "confidence": "high",
+          "raw_text": "Trep ovem Pal - Silico",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -515,9 +510,7 @@
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
-          "oddities": [
-            "The word 'Tower' is crossed out and 'hungry' is inserted above 'as the hunter'."
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2499,
@@ -527,7 +520,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Hot Rize - The Golden Rocket",
+          "raw_text": "Hot Rize - The Golden Ticket",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -541,7 +534,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Bad Checks - Do Me Right",
+          "raw_text": "Bad Checks - Do Me right",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -583,7 +576,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Stone Roses - Fools Gold",
+          "raw_text": "Stone Roses - Fools gold",
           "confidence": "high",
           "type_raw": "CD",
           "notes": null,
@@ -710,7 +703,7 @@
         {
           "row_index": 1,
           "raw_text": "Cecil Taylor - Saita",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "M",
           "notes": null,
           "oddities": [],
@@ -765,7 +758,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Jello + D.O.A. - That's Progress",
+          "raw_text": "Jello & D.O.A. - That's Progress",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -779,7 +772,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "MC 900 Ft Jesus - A Place of Loneliness",
+          "raw_text": "MC 900 ft Jesus - A Place of loneliness",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -835,12 +828,12 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Thin White Rope - The Imperial American",
+          "raw_text": "Breaking Circus - The Imperial American",
           "confidence": "high",
-          "type_raw": "C",
+          "type_raw": null,
           "notes": null,
           "oddities": [
-            "This row has complicated corrections: 'Breaking Circus' and 'The Map...' are struck out, and an arrow points to 'The Imperial American'."
+            "an arrow points from the artist portion of the text to the title written squeezed in on the right"
           ],
           "row_bbox": [
             1258,
@@ -851,9 +844,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Silos - We'll Go (Out of Town)",
+          "raw_text": "Thin White Rope - The Map From",
           "confidence": "high",
-          "type_raw": "H",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -865,9 +858,9 @@
         },
         {
           "row_index": 14,
-          "raw_text": "Romanovsky & Phillips - Cat & Mouse",
+          "raw_text": "Silos - We'll Go (Out of Town)",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -879,13 +872,11 @@
         },
         {
           "row_index": 15,
-          "raw_text": "The Others - I Can't Stand This Love",
+          "raw_text": "Romanovsky & Phillips - Cat & Mouse",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "A circled 'vol 8' is written to the right of this entry."
-          ],
+          "oddities": [],
           "row_bbox": [
             1258,
             3474,
@@ -895,16 +886,32 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Marnou - 2/1",
+          "raw_text": "The Others - I Can't Stand this Love (vol 8)",
+          "confidence": "high",
+          "type_raw": null,
+          "notes": null,
+          "oddities": [
+            "vol 8 is circled at the end of the line"
+          ],
+          "row_bbox": [
+            1258,
+            3549,
+            2550,
+            3624
+          ]
+        },
+        {
+          "row_index": 17,
+          "raw_text": "Mamou - 2/1",
           "confidence": "high",
           "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
             1258,
-            3549,
+            3624,
             2550,
-            3624
+            3699
           ]
         }
       ],

@@ -4,13 +4,14 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0106/page-26.png",
   "pdf_path": "1990/April 1990/1990-04apr0106.pdf",
   "page_number": 26,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-06T04:18:14.386978+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:30:35.786794+00:00",
   "page_date_raw": "Thurs 4/5/90",
   "comments_raw": null,
   "oddities": [
-    "Temperature and weather '74\u00b0 Cloud L48' written in top right corner.",
-    "Vertical text in the bottom left margin says 'Acka front d'assel Sana Vagn D'antino'."
+    "Top right corner has handwritten text '74\u00b0 Cloud L48'",
+    "Left margin has vertically written notes 'Sarah Vagn' and 'D'antine'",
+    "Left margin has vertically written note with a heart, possibly 'Nikki don't ask'"
   ],
   "quadrants": [
     {
@@ -22,11 +23,11 @@
         2299
       ],
       "hour_raw": "2PM",
-      "jock_raw": "Bob Yeguel",
+      "jock_raw": "Bob Yeagle",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "STUMP WIZARDS ARE YOU DOWN UNDER",
+          "raw_text": "STUMP WIZARDS THE WAY DOWN UNDER",
           "confidence": "medium",
           "type_raw": null,
           "notes": null,
@@ -40,8 +41,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "MISSISSIPPI JOHN HURT MOONSHINE",
-          "confidence": "medium",
+          "raw_text": "MISSISSIPPI JOHN HURT MOONSHIN",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -56,7 +57,7 @@
           "row_index": 2,
           "raw_text": "MC 900 FT JESUS SPACEMAN",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -68,7 +69,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "... AL",
+          "raw_text": "PIG FUCKERS CAR",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -82,7 +83,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "... MAC MACIA",
+          "raw_text": "A BLIND MACAQUE",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -96,9 +97,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "... ASYLUM",
+          "raw_text": "DILS A L",
           "confidence": "low",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -110,8 +111,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "JERRY GOODMAN WINNING COLORS",
-          "confidence": "medium",
+          "raw_text": "MARC GOODMAN IRON",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -124,7 +125,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "JAMES COLLINS ...",
+          "raw_text": "JAMES COLLECTION",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -138,7 +139,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "GANG GREEN WE'LL GIVE IT TO YOU",
+          "raw_text": "CANDY CANE WALKMAN",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -152,8 +153,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "JANE'S ADDICTION OCEAN SIZE",
-          "confidence": "medium",
+          "raw_text": "JANE'S ADDICTION",
+          "confidence": "low",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -166,9 +167,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "H.R. YOU DOWN",
+          "raw_text": "F L 2 TEAR YOU DOWN",
           "confidence": "low",
-          "type_raw": null,
+          "type_raw": "O",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -180,9 +181,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "SEX PISTOLS ANARCHY IN THE U.K.",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "SEX PISTOLS",
+          "confidence": "low",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -194,11 +195,13 @@
         },
         {
           "row_index": 12,
-          "raw_text": "BAD CHECKS ... MOON",
-          "confidence": "low",
-          "type_raw": null,
+          "raw_text": "BAD CHECKS NEW MOON",
+          "confidence": "medium",
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Has an 'R' circled outside the type column"
+          ],
           "row_bbox": [
             0,
             1770,
@@ -208,9 +211,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "HELIOS CREED COOLIN TAR",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "HELIOS CREED COOLING STAR",
+          "confidence": "high",
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -231,12 +234,12 @@
         2550,
         2299
       ],
-      "hour_raw": "4Pm",
-      "jock_raw": "GiavonnashBeern",
+      "hour_raw": "4PM",
+      "jock_raw": "Shannon O'Breen",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Redd Kross \"Love doll superstar\"",
+          "raw_text": "Reddkross \"Love doll Superstar\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -250,8 +253,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Thelonious Monster \"Veg. Life...tonite\"",
-          "confidence": "high",
+          "raw_text": "Thelonious Monster \"Vegtalie..tori\"",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -264,12 +267,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Psychofunkapus \"Slutchid\"",
+          "raw_text": "Psychefunkapus \"Slutchild\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [
-            "Asterisk drawn at the end of the line."
+            "Asterisk drawn in the right margin"
           ],
           "row_bbox": [
             1278,
@@ -280,9 +283,9 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Dub Syndicate \"Chapter & Verse\"",
+          "raw_text": "Dub Syndicate \"chapter&Verse+\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -294,13 +297,11 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Human Rights \"Life after death\"",
+          "raw_text": "Human Rights \"Life afterdeath\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Reggae",
           "notes": null,
-          "oddities": [
-            "The word 'Reggae' is written in the left margin next to this row."
-          ],
+          "oddities": [],
           "row_bbox": [
             1278,
             951,
@@ -312,7 +313,7 @@
           "row_index": 5,
           "raw_text": "Toadstool \"Jelly Belly\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -324,8 +325,8 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Greenriver \"Women in love\"",
-          "confidence": "high",
+          "raw_text": "Green river \"Comeon flee\"",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -338,12 +339,12 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Loop \"The Nail Will Burn\"",
+          "raw_text": "Loop \"The nailwill Burn\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Asterisk drawn at the end of the line."
+            "Asterisk drawn in the right margin"
           ],
           "row_bbox": [
             1278,
@@ -354,11 +355,13 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Savage \"SomoCaria\" ~+",
+          "raw_text": "Savage \"SomoCaria\"",
           "confidence": "medium",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Plus sign drawn in the right margin"
+          ],
           "row_bbox": [
             1278,
             1251,
@@ -384,7 +387,7 @@
           "row_index": 10,
           "raw_text": "the Blackgirls \"Devil's Garden\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -396,9 +399,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Peace & Quiet \"Biafra\"",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Peace&Quiet \"Daispro\"",
+          "confidence": "medium",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -410,9 +413,9 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Cecil Taylor \"Morning Departure\"",
+          "raw_text": "Cecil Taylor \"Morning Departures\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -424,9 +427,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Melanie & Edwin Hawkins Sngrs. Lay down (Candles in the Rain)",
+          "raw_text": "Melanie& Edwin Hawkins Sngrs Lay down(candles in the Rain\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -438,9 +441,9 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Lene Lovich \"New Toy\"",
+          "raw_text": "LeneLovich \"New toy\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -452,9 +455,9 @@
         },
         {
           "row_index": 16,
-          "raw_text": "Revenge \"I love you too\"",
+          "raw_text": "Revenge \"I love You too\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -476,11 +479,11 @@
         4056
       ],
       "hour_raw": "3PM",
-      "jock_raw": "Bob Yeguel",
+      "jock_raw": "Bob Yeagle",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "HAL SNOW ...",
+          "raw_text": "FIRE",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -494,7 +497,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "MICHAEL ...",
+          "raw_text": "MIKE",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -508,7 +511,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "DIVE ...",
+          "raw_text": "DIVINYLS",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -522,10 +525,10 @@
         },
         {
           "row_index": 3,
-          "raw_text": "...",
+          "raw_text": "PAUL",
           "confidence": "low",
           "type_raw": null,
-          "notes": "illegible",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -536,9 +539,9 @@
         },
         {
           "row_index": 4,
-          "raw_text": "... LAC DU FLAMBEAU",
+          "raw_text": "(AC DU RAMBEAU)",
           "confidence": "low",
-          "type_raw": null,
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -550,9 +553,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "...",
+          "raw_text": "",
           "confidence": "low",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": "illegible",
           "oddities": [],
           "row_bbox": [
@@ -564,9 +567,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "MAGIC ... OUT OF ALBERT",
+          "raw_text": "RAGE FISH OF B KNOT",
           "confidence": "low",
-          "type_raw": null,
+          "type_raw": "CT",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -578,7 +581,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "... PIMPLY",
+          "raw_text": "MAXWELL FAMILY",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -592,7 +595,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "... ON",
+          "raw_text": "DOG ON",
           "confidence": "low",
           "type_raw": null,
           "notes": null,
@@ -606,9 +609,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "HUSKERS TERMITES",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "MUSEKAS TERMITE 3",
+          "confidence": "low",
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -620,9 +623,9 @@
         },
         {
           "row_index": 10,
-          "raw_text": "HENRY KAISER BALLAD OF SHANE MACGOWAN",
+          "raw_text": "HENRY KAISER BALLAD OF SHANE MASCALIN",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -636,7 +639,7 @@
           "row_index": 11,
           "raw_text": "JEFFERSON AIRPLANE WE CAN BE TOGETHER",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "R",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -650,7 +653,7 @@
           "row_index": 12,
           "raw_text": "SILOS I'M OVER YOU",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -676,9 +679,9 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Harry Belafonte \"Day O\"",
+          "raw_text": "Harry Belafonte \"DayO\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Doo",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -690,9 +693,9 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Count Basie \"Shoeshine Boy\"",
+          "raw_text": "Count Basie \"ShoeshineBoy\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "Jazz",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -704,12 +707,12 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Red Hots \"Show me you Soul\"",
+          "raw_text": "Red Hots \"show me you care\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Star symbol drawn at end of line."
+            "Asterisk drawn in the right margin"
           ],
           "row_bbox": [
             1278,
@@ -720,7 +723,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "James Brown \"Body Heat\"",
+          "raw_text": "James Brown \"Body heat\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -736,10 +739,10 @@
           "row_index": 4,
           "raw_text": "Robyn Hitchcock \"Agony of Pleasure\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Heart symbol drawn at end of line."
+            "Heart drawn in the right margin"
           ],
           "row_bbox": [
             1278,
@@ -750,9 +753,9 @@
         },
         {
           "row_index": 5,
-          "raw_text": "the Woodt \"It's Over\"",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "the Woodt \"Its over\"",
+          "confidence": "high",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -764,9 +767,9 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Giant Sand \"Anthem\"",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Gart Sand \"Anthem\"",
+          "confidence": "medium",
+          "type_raw": "M",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -778,9 +781,9 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Social Distortion \"Prestegirl\"",
-          "confidence": "medium",
-          "type_raw": null,
+          "raw_text": "Social Distortion \"Presley the\"",
+          "confidence": "high",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -792,9 +795,9 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Volcano Suns \"Bumper Crop\"",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Volcano Suns \"Bumpercrop\"",
+          "confidence": "medium",
+          "type_raw": "C",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -806,9 +809,9 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Angels Of Epist \"lite & August / William Campbell",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Angels of Epist \"rite of Aguste\" William campbell",
+          "confidence": "medium",
+          "type_raw": "H",
           "notes": "double_height",
           "oddities": [],
           "row_bbox": [
@@ -820,9 +823,9 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Renegade Soundwave \"Biting My Lips\"",
+          "raw_text": "Renegade Soundwave \"BitingMy lip\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "X",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -834,11 +837,13 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Tackhead \"Body to Burn\" +",
+          "raw_text": "Tackhead \"Body to Burn\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "L",
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Plus sign drawn in the right margin"
+          ],
           "row_bbox": [
             1278,
             3248,
@@ -848,9 +853,9 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Cypress City \"Cajun Pop Song\"",
+          "raw_text": "Cypress city \"Cajun Pop song\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "80s",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -864,7 +869,7 @@
           "row_index": 14,
           "raw_text": "PE \"All is a joke\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -876,12 +881,12 @@
         },
         {
           "row_index": 15,
-          "raw_text": "Seaweed \"Stargirl\"",
+          "raw_text": "Seaweed \"stargirl\"",
           "confidence": "high",
-          "type_raw": null,
+          "type_raw": "H",
           "notes": null,
           "oddities": [
-            "Star symbol drawn at end of line."
+            "Asterisk drawn in the right margin"
           ],
           "row_bbox": [
             1278,
@@ -892,7 +897,7 @@
         },
         {
           "row_index": 16,
-          "raw_text": "'mats \"w/in ur reach\"",
+          "raw_text": "mats \"w/in UReach\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -906,9 +911,9 @@
         },
         {
           "row_index": 17,
-          "raw_text": "Partridge Family \"I think I l u\"",
-          "confidence": "high",
-          "type_raw": null,
+          "raw_text": "Partridge Family \"I think I ly\"",
+          "confidence": "medium",
+          "type_raw": "NV",
           "notes": null,
           "oddities": [],
           "row_bbox": [

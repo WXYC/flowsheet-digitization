@@ -4,13 +4,13 @@
   "image_path": "../pages/1990/April 1990/1990-04apr1318/page-03.png",
   "pdf_path": "1990/April 1990/1990-04apr1318.pdf",
   "page_number": 3,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T03:03:03.183899+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T12:59:04.223593+00:00",
   "page_date_raw": "Fri 13 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "a weather note is written near the WXYC logo: 'Hi: 60 Loo Clear Nav: 63'",
-    "the word 'Prong' is written at the very bottom edge of the page below the comments area"
+    "Weather note at top right: 'Hi: 60 Los Clear Now: 63'.",
+    "Handwritten word 'Prong' at the bottom edge of the page outside the comments field."
   ],
   "quadrants": [
     {
@@ -26,7 +26,7 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "ROLLING STONES - 2000 LIGHT YEARS",
+          "raw_text": "ROLLING STONES - 2000 LIGHTYEARS",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -68,7 +68,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "ICE T - Acappela Hunted Child",
+          "raw_text": "ICE T - Acappela Hunted CHIlD",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -110,7 +110,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "L 7 - SHOVE",
+          "raw_text": "L7 - SHOVE",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -138,7 +138,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "SYLVIA JUNCOSA - FRIEND",
+          "raw_text": "SYLVIA JUNCUOSA - FRIEND",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -152,11 +152,13 @@
         },
         {
           "row_index": 9,
-          "raw_text": "BRAZIL : FORRO - LUNDA",
+          "raw_text": "BRAZIL:FORRO - LUNDA",
           "confidence": "medium",
           "type_raw": "H",
-          "notes": "crossed_out",
-          "oddities": [],
+          "notes": null,
+          "oddities": [
+            "Scribble before the track name."
+          ],
           "row_bbox": [
             0,
             1250,
@@ -180,7 +182,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "ERIC B.+RAKIM - NEVER SCARED",
+          "raw_text": "ERIC B. + RAKIM - NEVER SCARED",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -222,7 +224,7 @@
         }
       ],
       "oddities": [
-        "a long diagonal line is drawn across the remaining empty rows"
+        "Diagonal line drawn through the empty rows at the bottom."
       ]
     },
     {
@@ -233,12 +235,12 @@
         2550,
         2352
       ],
-      "hour_raw": "12Pm",
-      "jock_raw": "Keith L Kegler",
+      "hour_raw": "12PM",
+      "jock_raw": "Matt L'Mille",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Janes Addiction \"Up the Beach\"",
+          "raw_text": "Jane's Addiction \"Up the Beach\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -252,7 +254,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Sam + Dave \"Wrap it Up\"",
+          "raw_text": "Sam & Dave \"Wrap It Up\"",
           "confidence": "medium",
           "type_raw": "H",
           "notes": null,
@@ -266,8 +268,8 @@
         },
         {
           "row_index": 2,
-          "raw_text": "The Blue Aeroplanes \"... and Stones\"",
-          "confidence": "high",
+          "raw_text": "The Blue Herons \"Sticks and Stones\"",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -322,7 +324,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Bullet LaVolta \"Birth of Death\"",
+          "raw_text": "Bullet Lavolta \"Birth of Death\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -364,8 +366,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Terrance Simien \"Turn on your lovelight\"",
-          "confidence": "medium",
+          "raw_text": "Terrence Simien \"Turn on your lovelight\"",
+          "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [],
@@ -378,7 +380,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Billy Holiday \"Now They Call it Swing\"",
+          "raw_text": "Billy Holiday \"Now they Call it Swing\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -392,8 +394,8 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Savage Republic \"Resonus First EP\"",
-          "confidence": "low",
+          "raw_text": "Savage Republic \"Desperous First EP\"",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -434,10 +436,10 @@
         },
         {
           "row_index": 1,
-          "raw_text": "VENOMOUS VIOLENT EYES",
-          "confidence": "medium",
+          "raw_text": "VENUS WOLFTICK",
+          "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -448,7 +450,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "SHONEN KNIFE - Parrot Polynesia",
+          "raw_text": "SHONEN KNIFE - Parrot PolyNESIA",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -462,11 +464,13 @@
         },
         {
           "row_index": 3,
-          "raw_text": "DON'T MEAN MAYBE-BUFFG+JAM",
-          "confidence": "medium",
+          "raw_text": "I DON'T MEAN MAYBE - BUFF+JAM",
+          "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
-          "oddities": [],
+          "notes": null,
+          "oddities": [
+            "Scribble over the first letter of the entry."
+          ],
           "row_bbox": [
             0,
             2506,
@@ -490,7 +494,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "KING MISSILE - ROCK+ ROLL",
+          "raw_text": "KING MISSLE - ROCK + ROLL",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -509,7 +513,7 @@
           "type_raw": "H",
           "notes": null,
           "oddities": [
-            "an arrow curves from row 8 (BAUHAUS) pointing to the type circle of this row"
+            "Arrow drawn from left margin pointing to this row."
           ],
           "row_bbox": [
             0,
@@ -539,7 +543,7 @@
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "multiple straight lines are drawn over the left margin area near this row"
+            "Scribbled underline drawn beneath this row."
           ],
           "row_bbox": [
             0,
@@ -579,7 +583,7 @@
         {
           "row_index": 11,
           "raw_text": "IMTHEMBU QUEENS - ENDLINI",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -593,10 +597,12 @@
         {
           "row_index": 12,
           "raw_text": "MUZIKAS - MBI",
-          "confidence": "medium",
-          "type_raw": "H",
+          "confidence": "high",
+          "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "Illegible mark in the left-margin type circle."
+          ],
           "row_bbox": [
             0,
             3181,
@@ -620,11 +626,13 @@
         },
         {
           "row_index": 14,
-          "raw_text": "STEAM - NA HEY KISS GOODBYE",
-          "confidence": "medium",
+          "raw_text": "BANANASTEAM - NA HEY KISS GOODBYE",
+          "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
-          "oddities": [],
+          "notes": null,
+          "oddities": [
+            "First word of artist name is crossed out."
+          ],
           "row_bbox": [
             0,
             3331,
@@ -676,10 +684,10 @@
         },
         {
           "row_index": 18,
-          "raw_text": "LEROY SMART- JAHOVIAH",
+          "raw_text": "LEROY SMART - JAH JAH",
           "confidence": "high",
           "type_raw": null,
-          "notes": "crossed_out",
+          "notes": null,
           "oddities": [],
           "row_bbox": [
             0,
@@ -704,7 +712,7 @@
         }
       ],
       "oddities": [
-        "the text 'CHANNEL ONE comp.' is written in the left margin next to the last three entries"
+        "Left margin has bracket and text 'CHANNEL ONE compo' with arrows pointing to rows 17, 18, and 19."
       ]
     },
     {
@@ -716,7 +724,7 @@
         4074
       ],
       "hour_raw": null,
-      "jock_raw": "Keith Kegler",
+      "jock_raw": "Keith Kepler",
       "entries": [
         {
           "row_index": 0,
@@ -734,7 +742,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Pink Floyd \"Careful with that Axe Eugene\"",
+          "raw_text": "Pink Floyd \"Carefull with that Axe Eugne\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -767,7 +775,7 @@
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "tiny annotation 'From the new' in the right margin"
+            "Annotation in right margin: 'Theme from the Joker'."
           ],
           "row_bbox": [
             1268,
@@ -778,12 +786,12 @@
         },
         {
           "row_index": 4,
-          "raw_text": "Reverend Avalance \"Not Another Day\"",
-          "confidence": "medium",
+          "raw_text": "Relaxed Avalance \"Not Another Day\"",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "tiny annotation 'the roker bucket' in the right margin"
+            "Annotation in right margin: 'Bucket full of Pri'."
           ],
           "row_bbox": [
             1268,
@@ -798,9 +806,7 @@
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "tiny annotation 'foot of Prin...' in the right margin"
-          ],
+          "oddities": [],
           "row_bbox": [
             1268,
             2804,
@@ -824,7 +830,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "The Marshmellow Overcoat \"Out Of Our Minds\"",
+          "raw_text": "The Marshmallow Overcoat \"Out of Our Minds\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -852,7 +858,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "A.C. 900 ft Jesus \"UFO's are Real\"",
+          "raw_text": "MC 900ft Jesus \"UFO's are Real\"",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -880,7 +886,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Green On Red \"The Drifter\"",
+          "raw_text": "Green on Red \"The Drifter\"",
           "confidence": "high",
           "type_raw": null,
           "notes": null,

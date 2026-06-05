@@ -4,16 +4,16 @@
   "image_path": "../pages/1990/April 1990/1990-04apr0712/page-22.png",
   "pdf_path": "1990/April 1990/1990-04apr0712.pdf",
   "page_number": 22,
-  "model_version": "gemini-3.1-pro-preview",
-  "extracted_at": "2026-05-13T02:16:45.385084+00:00",
+  "model_version": "gemini:gemini-3.1-pro-preview",
+  "extracted_at": "2026-06-05T13:35:56.803584+00:00",
   "page_date_raw": "Tue 10 Apr 90",
   "comments_raw": null,
   "oddities": [
-    "Note 'Performance = Roxy tonite' is written at the very top of the page.",
-    "Text 'ANTHRAX I'm the Man' is written at the very top of the page.",
-    "Text 'MARVIN SMITH' is written near the top center.",
-    "A lengthy note reading 'ROKY ERIKSON - stealing someone's mail - 13TH FLOOR ELEVATORS mail tacked up on wall in motel room in Missouri Benefits to pay expenses' is written in the top right corner.",
-    "Crossed-out text 'DEAD KENNEDY FRESH FRUIT' is written in the top left margin."
+    "A note above the WXYC logo says 'Performance = Ruey tonite'.",
+    "A note above the WXYC logo says 'ANTHRAX I'm the Man'.",
+    "A scribbled out note in the top left margin reads 'DEAD KENNEDY' and below it 'FRESH FRUIT'.",
+    "Notes in the top right margin read 'ROKY ERIKSON - stealing someone's mail - 13th FLOOR ELEVATORS mail tacked up on wall in motel room in Missouri Benefits to pay expenses'.",
+    "The name 'MARVIN SMITH' is written in the space below the WXYC logo."
   ],
   "quadrants": [
     {
@@ -24,12 +24,12 @@
         1285,
         2428
       ],
-      "hour_raw": "2 PM",
+      "hour_raw": "2pm",
       "jock_raw": "Amy Buchanan",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "FAIRPORT CONVENTION : SLOTH",
+          "raw_text": "FAIRPORT CONVENTION: SLOTH",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -43,13 +43,11 @@
         },
         {
           "row_index": 1,
-          "raw_text": "NICE STRONG ARM - WHITE WONDER",
+          "raw_text": "NICE STRONG ARM: WHITE WONDER",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "annotation 'Der Mann im Fahrstuhl' is written in the left margin next to this row"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             655,
@@ -59,11 +57,13 @@
         },
         {
           "row_index": 2,
-          "raw_text": "HEINER GOEBBELS : IT IS SUICIDE",
+          "raw_text": "Heiner GOEBBELS: IT IS SUICIDE",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [],
+          "oddities": [
+            "marginal note in left margin reads 'Der Mann im Fahrstuhl'"
+          ],
           "row_bbox": [
             0,
             731,
@@ -73,12 +73,12 @@
         },
         {
           "row_index": 3,
-          "raw_text": "LOUIS ARMSTRONG : SHADRACK",
+          "raw_text": "LOUIS ARMSTRONG: SHADRACK",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "annotation 'Louis & The Good Book' is written in the left margin next to this row"
+            "marginal note in left margin reads 'Louis & The Good Book'"
           ],
           "row_bbox": [
             0,
@@ -89,7 +89,7 @@
         },
         {
           "row_index": 4,
-          "raw_text": "THE CHURCH : LAUGHING",
+          "raw_text": "THE CHURCH: LAUGHING",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -103,13 +103,11 @@
         },
         {
           "row_index": 5,
-          "raw_text": "MC 900 FT JESUS: REAL BLACK ANGEL",
+          "raw_text": "MC 900 FT JESUS : REAL BLACK ANGEL",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
-          "oddities": [
-            "a hand-drawn line starts here and loops down to point at row 7"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             959,
@@ -119,7 +117,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "RED CLAY RAMBLER : FIDDLER A DRAM",
+          "raw_text": "RED CLAY RAMBLER: FIDDLER A DRAM",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -133,7 +131,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "JOHNNY CASH : STORY OF A BROKEN HEART",
+          "raw_text": "JOHNNY CASH: STORY OF A BROKEN HEART",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -161,7 +159,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "1/2 JAP : YOU'RE GONNA MISS ME",
+          "raw_text": "1/2 JAP: YOU'RE GONNA MISS ME",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -189,7 +187,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "HELIOS CREED : MONSTER LUST",
+          "raw_text": "HELIOS CREED: Monster LUST",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -202,7 +200,9 @@
           ]
         }
       ],
-      "oddities": []
+      "oddities": [
+        "A hand-drawn arrow originates from the left margin at row 5 and points down to row 8."
+      ]
     },
     {
       "position": "top_right",
@@ -212,13 +212,13 @@
         2550,
         2428
       ],
-      "hour_raw": "4 PM",
+      "hour_raw": "4pm",
       "jock_raw": "DAVE",
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "Angels at Ep. - the charm",
-          "confidence": "high",
+          "raw_text": "Angels of ep. - The Charm",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -231,8 +231,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Dub Synd. - Strike The Bal.",
-          "confidence": "high",
+          "raw_text": "Dub Synd. - Strike Me Bul.",
+          "confidence": "medium",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -245,7 +245,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "Scrawl - 1 = 1",
+          "raw_text": "Scrawl - 1=1",
           "confidence": "high",
           "type_raw": "O",
           "notes": null,
@@ -259,13 +259,11 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Capt Beefheart - Rock 'n' Rolls evil",
-          "confidence": "high",
+          "raw_text": "Capn Beefheart - Rock n' Rolls' evil",
+          "confidence": "medium",
           "type_raw": "O",
           "notes": null,
-          "oddities": [
-            "the word 'ball' is written below the end of the line"
-          ],
+          "oddities": [],
           "row_bbox": [
             1285,
             723,
@@ -289,12 +287,12 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Sheila Chandra - Shanti Shanti - shanti shanti",
-          "confidence": "medium",
+          "raw_text": "Sheila Chandra- Shanti Shanti-shanti",
+          "confidence": "high",
           "type_raw": "X",
           "notes": null,
           "oddities": [
-            "the second 'shanti shanti' drops down slightly below the line"
+            "A small question mark is drawn in the right margin after 'shanti'"
           ],
           "row_bbox": [
             1285,
@@ -305,7 +303,7 @@
         },
         {
           "row_index": 6,
-          "raw_text": "Biz Markie - Mudd foot",
+          "raw_text": "Biz Markie - Muddfoot",
           "confidence": "high",
           "type_raw": "NV",
           "notes": null,
@@ -319,13 +317,11 @@
         },
         {
           "row_index": 7,
-          "raw_text": "Cynics - Buss. as usual",
+          "raw_text": "Cynes - Bus as usual",
           "confidence": "medium",
           "type_raw": "X",
           "notes": null,
-          "oddities": [
-            "there is an illegible scribbled-out word at the beginning of the text entry"
-          ],
+          "oddities": [],
           "row_bbox": [
             1285,
             1023,
@@ -335,7 +331,7 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Psychefunkapus - Freedom",
+          "raw_text": "Psyche Funkapus - Freedom",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
@@ -349,8 +345,8 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Voodoo Gearshift - Looforacuda",
-          "confidence": "low",
+          "raw_text": "Voodoo Gearshift - loo for a ride",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -364,12 +360,10 @@
         {
           "row_index": 10,
           "raw_text": "White Zombie - True Crime",
-          "confidence": "medium",
+          "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "scribble mark before the word White"
-          ],
+          "oddities": [],
           "row_bbox": [
             1285,
             1172,
@@ -379,7 +373,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Digital Underground - Do what ya like",
+          "raw_text": "Digital Underground- Dowhatyalike",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -407,8 +401,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Bitch Mag - Americruis",
-          "confidence": "medium",
+          "raw_text": "Bitch Mag - Americrux.",
+          "confidence": "high",
           "type_raw": "X",
           "notes": null,
           "oddities": [],
@@ -421,7 +415,7 @@
         }
       ],
       "oddities": [
-        "a heavily scribbled-out name appears before the jock name DAVE"
+        "A jock name was written before 'DAVE' and heavily scribbled out."
       ]
     },
     {
@@ -432,7 +426,7 @@
         1285,
         4078
       ],
-      "hour_raw": "3 PM",
+      "hour_raw": "3PM",
       "jock_raw": "Amy Buchanan",
       "entries": [
         {
@@ -451,7 +445,7 @@
         },
         {
           "row_index": 1,
-          "raw_text": "SCREAMING TREES : INVISIBLE LANTERNS",
+          "raw_text": "SCREAMING TREES: INVISIBLE LANTERNS",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -465,7 +459,7 @@
         },
         {
           "row_index": 2,
-          "raw_text": "STONE ROSES : WHAT THE WORLD IS WAITING FOR",
+          "raw_text": "STONE ROSES: WHAT THE WORLD IS WAITING 4",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -479,7 +473,7 @@
         },
         {
           "row_index": 3,
-          "raw_text": "SALEM 66 : ACROSS THE SEA",
+          "raw_text": "SALEM 66: ACROSS THE SEA",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -493,12 +487,12 @@
         },
         {
           "row_index": 4,
-          "raw_text": "HENRY KAISER BAND : RIVER'S EDGE",
+          "raw_text": "HENRY KAISER BAND: RIVER'S EDGE",
           "confidence": "high",
           "type_raw": "L",
           "notes": null,
           "oddities": [
-            "a hand-drawn dark circle or dot is at the far right of the row"
+            "A scribble circle is drawn on the right side of this entry"
           ],
           "row_bbox": [
             0,
@@ -509,12 +503,12 @@
         },
         {
           "row_index": 5,
-          "raw_text": "GO BETWEENS: HOPE THEN STRIPE",
+          "raw_text": "GO BETWEENS: HOPE THEN STRIFE",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
           "oddities": [
-            "the type-column circle has been heavily scribbled out"
+            "A scribble circle is drawn in the left margin type column"
           ],
           "row_bbox": [
             0,
@@ -529,9 +523,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "the words 'OF IT' are written small above the line end"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             2970,
@@ -559,9 +551,7 @@
           "confidence": "high",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "a hand-drawn heart symbol replaces the word 'love'"
-          ],
+          "oddities": [],
           "row_bbox": [
             0,
             3122,
@@ -571,7 +561,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "DEAD KENNEDY'S STEALING PEOPLE'S MAIL",
+          "raw_text": "DEAD KENNEDYS: STEALING PEOPLE'S MAIL",
           "confidence": "high",
           "type_raw": "Req",
           "notes": null,
@@ -585,7 +575,7 @@
         },
         {
           "row_index": 10,
-          "raw_text": "VELVET MONKEYS : FAVORITE DAY",
+          "raw_text": "VELVET MONKEYS: FAVORITE DAY",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -613,7 +603,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "GIANT SAND : LOVING CUP",
+          "raw_text": "GIANT SAND: LOVING CUP",
           "confidence": "high",
           "type_raw": "M",
           "notes": null,
@@ -641,7 +631,7 @@
         },
         {
           "row_index": 14,
-          "raw_text": "MUZSIKAS : A WHITE DOVE HAS COME",
+          "raw_text": "MUZSIKAS: A WHITE DOVE HAS COME",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -655,7 +645,7 @@
         }
       ],
       "oddities": [
-        "three hand-drawn spiral symbols '@@@' are written next to the jock name"
+        "Three spiral symbols are drawn directly after the Jock name Amy Buchanan"
       ]
     },
     {
@@ -671,13 +661,11 @@
       "entries": [
         {
           "row_index": 0,
-          "raw_text": "the choids - Mr. punk rock",
-          "confidence": "low",
+          "raw_text": "techoids - Mr. punk rock voodoo man",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
-          "oddities": [
-            "the annotation 'voodoo man' is written far in the right margin"
-          ],
+          "oddities": [],
           "row_bbox": [
             1285,
             2046,
@@ -687,8 +675,8 @@
         },
         {
           "row_index": 1,
-          "raw_text": "Bongwater - he loved the weather",
-          "confidence": "medium",
+          "raw_text": "Bong Water - We loved the weather",
+          "confidence": "high",
           "type_raw": "H",
           "notes": null,
           "oddities": [],
@@ -703,7 +691,7 @@
           "row_index": 2,
           "raw_text": "Blue Aeroplanes - Weightless",
           "confidence": "high",
-          "type_raw": "O",
+          "type_raw": "X",
           "notes": null,
           "oddities": [],
           "row_bbox": [
@@ -715,8 +703,8 @@
         },
         {
           "row_index": 3,
-          "raw_text": "Cows - Dirty 6s",
-          "confidence": "medium",
+          "raw_text": "Cows - Dirty Cogs",
+          "confidence": "high",
           "type_raw": "NV",
           "notes": null,
           "oddities": [],
@@ -743,7 +731,7 @@
         },
         {
           "row_index": 5,
-          "raw_text": "Loven Spoonful - Do you believe in Magic",
+          "raw_text": "Lovi' Spoonful - Do you believe in Bagic",
           "confidence": "high",
           "type_raw": "hit",
           "notes": null,
@@ -771,7 +759,7 @@
         },
         {
           "row_index": 7,
-          "raw_text": "LL Cool J - I'm that type of guy",
+          "raw_text": "LL Cool J - in that type of guy",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -785,8 +773,8 @@
         },
         {
           "row_index": 8,
-          "raw_text": "Headless horseman - (Cece Medley)",
-          "confidence": "low",
+          "raw_text": "Leadless horsemen - (cece Melody)",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -799,7 +787,7 @@
         },
         {
           "row_index": 9,
-          "raw_text": "Public Enemy - Welcome to the terrordome",
+          "raw_text": "Public Enemy - welcome to the terrordome",
           "confidence": "high",
           "type_raw": "H",
           "notes": null,
@@ -813,8 +801,8 @@
         },
         {
           "row_index": 10,
-          "raw_text": "Yo La Tengo - the story of Jazz",
-          "confidence": "high",
+          "raw_text": "Yo la tengo - the story of Juzz",
+          "confidence": "medium",
           "type_raw": null,
           "notes": null,
           "oddities": [],
@@ -827,7 +815,7 @@
         },
         {
           "row_index": 11,
-          "raw_text": "Honeymoon Killers - the exorcist",
+          "raw_text": "Honeymoon Killers - the sexorcist",
           "confidence": "high",
           "type_raw": null,
           "notes": null,
@@ -841,7 +829,7 @@
         },
         {
           "row_index": 12,
-          "raw_text": "Acid Pop - Bill of wrongs",
+          "raw_text": "As it Pop - Bill of wrons",
           "confidence": "medium",
           "type_raw": "L",
           "notes": null,
@@ -855,8 +843,8 @@
         },
         {
           "row_index": 13,
-          "raw_text": "Leadbelly - there's a man going round taking names",
-          "confidence": "high",
+          "raw_text": "Leadbelly - There's a mon going round taking names",
+          "confidence": "medium",
           "type_raw": "L",
           "notes": "double_height",
           "oddities": [],
