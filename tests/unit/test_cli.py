@@ -172,7 +172,182 @@ def test_retry_page_unknown_exits_nonzero(stub_env: Path) -> None:
     assert result.exit_code != 0
 
 
+# --- reconcile-page --------------------------------------------------------
+
+
+def _write_minimal_page_result(path: Path) -> None:
+    """Write a minimal PageResult JSON to `path` for CLI roundtrip tests."""
+    import json
+
+    path.write_text(
+        json.dumps(
+            {
+                "page_date_raw": "Sun 4/1/90",
+                "comments_raw": None,
+                "oddities": [],
+                "quadrants": [
+                    {
+                        "position": "top_left",
+                        "hour_raw": "8AM",
+                        "jock_raw": "DJ",
+                        "entries": [
+                            {
+                                "row_index": 0,
+                                "raw_text": "STEREOLAB - Cybeles",
+                                "type_raw": None,
+                                "confidence": "high",
+                                "notes": None,
+                                "oddities": [],
+                            }
+                        ],
+                        "oddities": [],
+                    },
+                    {
+                        "position": "top_right",
+                        "hour_raw": None,
+                        "jock_raw": None,
+                        "entries": [],
+                        "oddities": [],
+                    },
+                    {
+                        "position": "bottom_left",
+                        "hour_raw": None,
+                        "jock_raw": None,
+                        "entries": [],
+                        "oddities": [],
+                    },
+                    {
+                        "position": "bottom_right",
+                        "hour_raw": None,
+                        "jock_raw": None,
+                        "entries": [],
+                        "oddities": [],
+                    },
+                ],
+                "model_version": "gemini-3.1-pro-preview",
+                "extracted_at": "2026-05-06T04:11:12.540095+00:00",
+            }
+        )
+    )
+
+
+def test_reconcile_page_writes_corrected_result(stub_env: Path, tmp_path: Path) -> None:
+    """`flowsheets reconcile-page` reads a PageResult JSON, calls
+    `reconcile()` with an LML client built from env, and writes the
+    corrected JSON to disk."""
+    import json
+
+    src = tmp_path / "page.json"
+    out = tmp_path / "page.reconciled.json"
+    _write_minimal_page_result(src)
+
+    async def stub_reconcile(page, *, lml, threshold):  # type: ignore[no-untyped-def]
+
+        # Rewrite the artist on the single row so we can assert the write happened.
+        q = page.quadrants[0]
+        new_entry = q.entries[0].model_copy(update={"raw_text": "Stereolab - Cybeles"})
+        new_quadrants = [q.model_copy(update={"entries": [new_entry]})] + page.quadrants[1:]
+        return page.model_copy(update={"quadrants": new_quadrants}), []
+
+    with (
+        patch.object(cli, "_build_lml_client", return_value=_FakeLMLContext()),
+        patch.object(cli, "reconcile", new=stub_reconcile),
+    ):
+        result = runner.invoke(
+            cli.app,
+            ["reconcile-page", str(src), "--out", str(out), "--threshold", "85"],
+        )
+    assert result.exit_code == 0, result.stdout
+    payload = json.loads(out.read_text())
+    assert payload["quadrants"][0]["entries"][0]["raw_text"] == "Stereolab - Cybeles"
+    # Page metadata round-trips.
+    assert payload["page_date_raw"] == "Sun 4/1/90"
+    assert payload["model_version"] == "gemini-3.1-pro-preview"
+
+
+def test_reconcile_page_writes_flagged_rows_alongside(stub_env: Path, tmp_path: Path) -> None:
+    """Below-threshold rows are written to a sibling `.flagged.json` so a
+    human can review without parsing the corrected result."""
+    import json
+
+    src = tmp_path / "page.json"
+    out = tmp_path / "page.reconciled.json"
+    _write_minimal_page_result(src)
+
+    from core.reconciliation import FlaggedRow
+
+    async def stub_reconcile(page, *, lml, threshold):  # type: ignore[no-untyped-def]
+        return page, [
+            FlaggedRow(
+                quadrant="top_left",
+                row_index=0,
+                original_artist="STEREOLAB",
+                suggested_artist="Stereolob",
+                score=70,
+                raw_text="STEREOLAB - Cybeles",
+            )
+        ]
+
+    with (
+        patch.object(cli, "_build_lml_client", return_value=_FakeLMLContext()),
+        patch.object(cli, "reconcile", new=stub_reconcile),
+    ):
+        result = runner.invoke(
+            cli.app,
+            ["reconcile-page", str(src), "--out", str(out)],
+        )
+    assert result.exit_code == 0, result.stdout
+    flagged_path = out.with_suffix(".flagged.json")
+    assert flagged_path.exists()
+    flagged = json.loads(flagged_path.read_text())
+    assert flagged == [
+        {
+            "quadrant": "top_left",
+            "row_index": 0,
+            "original_artist": "STEREOLAB",
+            "suggested_artist": "Stereolob",
+            "score": 70,
+            "raw_text": "STEREOLAB - Cybeles",
+        }
+    ]
+
+
+def test_reconcile_page_default_out_is_input_with_reconciled_suffix(
+    stub_env: Path, tmp_path: Path
+) -> None:
+    """When `--out` is omitted, the corrected JSON is written next to
+    the input as `<stem>.reconciled.json`."""
+    src = tmp_path / "page.json"
+    _write_minimal_page_result(src)
+
+    async def stub_reconcile(page, *, lml, threshold):  # type: ignore[no-untyped-def]
+        return page, []
+
+    with (
+        patch.object(cli, "_build_lml_client", return_value=_FakeLMLContext()),
+        patch.object(cli, "reconcile", new=stub_reconcile),
+    ):
+        result = runner.invoke(cli.app, ["reconcile-page", str(src)])
+    assert result.exit_code == 0
+    expected = src.with_suffix(".reconciled.json")
+    assert expected.exists()
+
+
 # --- Test helpers -----------------------------------------------------------
+
+
+class _FakeLMLContext:
+    """Stand-in for the LMLClient context manager. The CLI uses
+    `async with _build_lml_client() as lml:` so we need an async CM."""
+
+    async def __aenter__(self):  # type: ignore[no-untyped-def]
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):  # type: ignore[no-untyped-def]
+        return None
+
+    async def bulk_lookup(self, items):  # type: ignore[no-untyped-def]
+        return []
 
 
 class _MockStore:

@@ -15,6 +15,7 @@ Each command builds its dependencies from environment variables (see
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 from pathlib import Path
 from typing import Annotated
@@ -35,7 +36,16 @@ from rich.table import Table
 
 from core.gemini import GeminiClient, MediaResolution
 from core.jobs import JobError, JobStatus, JobStore
+from core.lml_client import DEFAULT_LML_URL, LMLClient
 from core.pipeline import discover_pdfs, process_pending, render_pending
+from core.reconciliation import FlaggedRow, reconcile
+from core.schema import PageResult
+
+# Tuned offline against the 19-page verified corpus by
+# `scripts/tune_reconciliation_threshold.py`. The smallest T where
+# (Gemini->LML correction) achieves precision >=95% against Alex's
+# verified.json. See the PR body for the precision/recall curve.
+DEFAULT_RECONCILIATION_THRESHOLD = 90
 
 app = typer.Typer(
     add_completion=False,
@@ -68,6 +78,22 @@ async def _init_store() -> JobStore:
     store = JobStore(_db_path())
     await store.init()
     return store
+
+
+def _build_lml_client() -> LMLClient:
+    """Construct an LMLClient from env. Patched out by unit tests.
+
+    Reads:
+      * `LML_URL` — base URL. Defaults to the deployed production service.
+      * `LML_API_KEY` — bearer token. Optional; LML enforces auth only
+        when `LML_REQUIRE_AUTH=true` on the server.
+    """
+    import httpx
+
+    base_url = os.environ.get("LML_URL", DEFAULT_LML_URL)
+    api_key = os.environ.get("LML_API_KEY") or None
+    http = httpx.AsyncClient(base_url=base_url, timeout=60)
+    return LMLClient(http=http, api_key=api_key)
 
 
 def _build_gemini_client() -> GeminiClient:
@@ -242,6 +268,112 @@ def retry_page(
 async def _retry_page(pdf_path: str, page_number: int) -> None:
     store = await _init_store()
     await store.retry(pdf_path, page_number)
+
+
+@app.command("reconcile-page")
+def reconcile_page(
+    result_path: Annotated[
+        Path,
+        typer.Argument(
+            help="Path to a PageResult JSON (Gemini's on-disk output).",
+            exists=True,
+            file_okay=True,
+            dir_okay=False,
+            readable=True,
+        ),
+    ],
+    out: Annotated[
+        Path | None,
+        typer.Option(
+            "--out",
+            help=(
+                "Where to write the corrected PageResult. Defaults to "
+                "`<input>.reconciled.json` next to the source."
+            ),
+        ),
+    ] = None,
+    threshold: Annotated[
+        int,
+        typer.Option(
+            "--threshold",
+            help=(
+                "Minimum token_set_ratio (0-100) between LML's "
+                "corrected_artist and the original to auto-accept the "
+                "correction. Tune via "
+                "`scripts/tune_reconciliation_threshold.py`."
+            ),
+            min=0,
+            max=100,
+        ),
+    ] = DEFAULT_RECONCILIATION_THRESHOLD,
+) -> None:
+    """Reconcile a single page's transcribed artists against the WXYC library.
+
+    Reads the on-disk PageResult JSON, calls LML's bulk lookup for each
+    row that parses to an artist, applies LML's `corrected_artist`
+    when its similarity to the Gemini-emitted artist is at or above
+    `threshold`, and writes the corrected page to `--out` (or
+    `<input>.reconciled.json`). Below-threshold suggestions are
+    written to a sibling `<out-stem>.flagged.json` for human review.
+
+    Track text and every non-`raw_text` Entry field is preserved
+    byte-identical. Page metadata (`page_date_raw`, `comments_raw`,
+    page-level `oddities`, `model_version`, `extracted_at`) survives
+    unchanged.
+    """
+    out_path = out if out is not None else result_path.with_suffix(".reconciled.json")
+    n_corrections, n_flagged = asyncio.run(
+        _reconcile_page(result_path, out_path=out_path, threshold=threshold)
+    )
+    console.print(
+        f"Reconciled [bold]{result_path.name}[/bold]: "
+        f"{n_corrections} corrections applied, {n_flagged} flagged for review."
+    )
+    console.print(f"  corrected -> {out_path}")
+    if n_flagged:
+        console.print(f"  flagged   -> {out_path.with_suffix('.flagged.json')}")
+
+
+async def _reconcile_page(result_path: Path, *, out_path: Path, threshold: int) -> tuple[int, int]:
+    page = PageResult.model_validate_json(result_path.read_text())
+    async with _build_lml_client() as lml:
+        corrected, flagged = await reconcile(page, lml=lml, threshold=threshold)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(corrected.model_dump_json(indent=2))
+    if flagged:
+        flagged_path = out_path.with_suffix(".flagged.json")
+        flagged_path.write_text(
+            json.dumps(
+                [_flagged_to_dict(f) for f in flagged],
+                indent=2,
+            )
+        )
+    return _diff_count(page, corrected), len(flagged)
+
+
+def _flagged_to_dict(flag: FlaggedRow) -> dict[str, object]:
+    """Convert a FlaggedRow dataclass to a stable JSON-friendly dict.
+
+    Explicit projection (instead of `dataclasses.asdict`) so the on-disk
+    JSON contract is reviewable here when `FlaggedRow` grows fields.
+    """
+    return {
+        "quadrant": flag.quadrant,
+        "row_index": flag.row_index,
+        "original_artist": flag.original_artist,
+        "suggested_artist": flag.suggested_artist,
+        "score": flag.score,
+        "raw_text": flag.raw_text,
+    }
+
+
+def _diff_count(before: PageResult, after: PageResult) -> int:
+    n = 0
+    for b, a in zip(before.quadrants, after.quadrants, strict=True):
+        for be, ae in zip(b.entries, a.entries, strict=True):
+            if be.raw_text != ae.raw_text:
+                n += 1
+    return n
 
 
 if __name__ == "__main__":
