@@ -247,13 +247,25 @@ async def test_auth_callback_400_on_tampered_state_cookie(
     assert r.status_code == 400
 
 
+@pytest.mark.parametrize(
+    "return_to",
+    [
+        "https://evil.example/",
+        "//evil.example/verifier",
+        # Word-boundary defense: '/verifierx-admin' looks like /verifier
+        # to a naive startswith check; the allowlist must reject it so
+        # an attacker can't smuggle a hostile route through a future
+        # mount whose name shares the prefix.
+        "/verifierx-admin/login",
+        "/verifierdata/leak",
+    ],
+)
 async def test_auth_callback_falls_back_to_verifier_for_off_allowlist_return_to(
-    serve_app, monkeypatch: pytest.MonkeyPatch
+    return_to: str, serve_app, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A return_to pointing anywhere off `/verifier` is replaced with
-    `/verifier/`. Open-redirect defense — a phishing link
-    `?return_to=https://evil` would otherwise land the user on the
-    attacker's site after a successful login."""
+    """Off-allowlist return_to → fallback to `/verifier/`. Open-redirect
+    defense AND a word-boundary check so `/verifier*` siblings can't
+    smuggle through a naive `startswith("/verifier")` check."""
 
     async def fake_exchange(*, code: str, code_verifier: str) -> ReviewerSession:
         return _make_reviewer()
@@ -261,10 +273,47 @@ async def test_auth_callback_falls_back_to_verifier_for_off_allowlist_return_to(
     monkeypatch.setattr(auth_mod, "exchange_code", fake_exchange)
 
     async with await _client(serve_app.app) as c:
-        await _seed_one_shots(c, "s", "v", "https://evil.example/")
+        await _seed_one_shots(c, "s", "v", return_to)
         r = await c.get("/auth/callback?code=c&state=s", follow_redirects=False)
     assert r.status_code == 302
     assert r.headers["location"] == "/verifier/"
+
+
+async def test_auth_login_503_when_env_var_missing(
+    serve_app, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A partial OIDC config — WXYC_OIDC_CLIENT_ID set but
+    WXYC_AUTH_ISSUER unset — surfaces as 503 ('auth not configured')
+    rather than 500 with the env-var name in the traceback.
+    Mirrors `core.auth.decode_session`'s RuntimeError catch for the
+    middleware path.
+    """
+
+    async def boom() -> tuple[str, str, str]:
+        raise RuntimeError("WXYC_AUTH_ISSUER is not set")
+
+    monkeypatch.setattr(auth_mod, "build_authorize_url", boom)
+    async with await _client(serve_app.app) as c:
+        r = await c.get("/auth/login", follow_redirects=False)
+    assert r.status_code == 503
+
+
+async def test_auth_callback_503_when_env_var_missing(
+    serve_app, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Same protection on the callback path — RuntimeError from
+    exchange_code (e.g., env var blanked mid-process) is mapped to 503,
+    not 500.
+    """
+
+    async def boom(*, code: str, code_verifier: str) -> ReviewerSession:
+        raise RuntimeError("WXYC_OIDC_CLIENT_SECRET is not set")
+
+    monkeypatch.setattr(auth_mod, "exchange_code", boom)
+    async with await _client(serve_app.app) as c:
+        await _seed_one_shots(c, "s", "v", "/verifier/")
+        r = await c.get("/auth/callback?code=c&state=s", follow_redirects=False)
+    assert r.status_code == 503
 
 
 async def test_auth_callback_503_on_token_endpoint_transport_failure(
@@ -643,6 +692,90 @@ async def test_no_gate_when_neither_set(tmp_path: Path, monkeypatch: pytest.Monk
     assert r.status_code == 200
     saved = json.loads((tmp_path / "data" / "verifier" / "open.verified.json").read_text())
     # No reviewer → verified_by stays None.
+    assert saved["verified_by"] is None
+
+
+async def test_no_auth_save_preserves_existing_verified_by(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A re-save in BasicAuth / no-auth mode must NOT clobber a
+    previously-recorded `verified_by` block on the on-disk file.
+
+    Sequence: an earlier OIDC-mode save left Alice's identity on the
+    file. The deployment is briefly flipped to no-auth (e.g. during an
+    OIDC outage rollback) and a volunteer re-saves the same stem. Per
+    the data-safety rule ('never overwrite successfully collected
+    data'), the existing `verified_by` block must survive even though
+    the current request has no authenticated reviewer to credit. The
+    bug this guards against: an unconditional `validated.verified_by =
+    None` silently destroys the provenance record on every re-save.
+    """
+    verifier_dir = tmp_path / "data" / "verifier"
+    verifier_dir.mkdir(parents=True, exist_ok=True)
+    # Plant a verified.json that already carries Alice's identity (as
+    # an OIDC save would have written).
+    prior_with_alice = {
+        **_page_result_dict(),
+        "verified_by": {
+            "user_id": "alice-id",
+            "username": "alice",
+            "real_name": "Alice Real",
+            "dj_name": "DJ Alice",
+            "verified_at": "2026-05-01T12:00:00Z",
+        },
+    }
+    (verifier_dir / "preserved.verified.json").write_text(json.dumps(prior_with_alice))
+
+    serve_mod = _reload_with_env(monkeypatch, tmp_path, oidc=False, basic=False)
+    async with await _client(serve_mod.app) as c:
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "preserved",
+                # The SPA round-trips the file's shape; mirror that.
+                "verified": prior_with_alice,
+                "corrections": _corrections_dict(),
+            },
+        )
+    assert r.status_code == 200
+    saved = json.loads((verifier_dir / "preserved.verified.json").read_text())
+    # Alice's identity survives the no-auth re-save.
+    assert saved["verified_by"] is not None
+    assert saved["verified_by"]["user_id"] == "alice-id"
+    assert saved["verified_by"]["real_name"] == "Alice Real"
+
+
+async def test_no_auth_save_ignores_client_supplied_verified_by_when_no_prior(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """In no-auth mode with NO prior on-disk file, a client-supplied
+    `verified_by` is still discarded — the server has no identity to
+    assert and no prior data to preserve, so the saved file's
+    `verified_by` is `None`. Pins the anti-spoof rule in non-OIDC
+    mode (a client can't write provenance unilaterally).
+    """
+    serve_mod = _reload_with_env(monkeypatch, tmp_path, oidc=False, basic=False)
+    spoofed = {
+        **_page_result_dict(),
+        "verified_by": {
+            "user_id": "attacker",
+            "username": "evil",
+            "real_name": None,
+            "dj_name": None,
+            "verified_at": "2026-05-01T00:00:00Z",
+        },
+    }
+    async with await _client(serve_mod.app) as c:
+        r = await c.post(
+            "/api/save",
+            json={
+                "stem": "fresh",
+                "verified": spoofed,
+                "corrections": _corrections_dict(),
+            },
+        )
+    assert r.status_code == 200
+    saved = json.loads((tmp_path / "data" / "verifier" / "fresh.verified.json").read_text())
     assert saved["verified_by"] is None
 
 
