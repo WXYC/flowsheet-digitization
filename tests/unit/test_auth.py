@@ -132,11 +132,30 @@ def test_decode_session_returns_none_when_signed_with_different_secret(
     deploy with a new secret" property the plan calls out.
     """
     signed_old = encode_session(_make_reviewer())
-    # Rotate to a new secret. Cache reset is needed because the signer
-    # picks up the env var at instantiation time.
+    # Rotate to a new secret. The next `_session_signer()` call passes a
+    # different cache key to `_signer_for` and gets a different
+    # TimestampSigner instance — no manual cache reset needed since the
+    # lru_cache is keyed on the secret itself.
     monkeypatch.setenv("WXYC_SESSION_SECRET", "y" * 64)
-    auth_mod._reset_metadata_cache()
     assert decode_session(signed_old) is None
+
+
+def test_decode_session_returns_none_when_past_session_ttl(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A cookie older than SESSION_TTL must decode as None. Pins the
+    12-hour freshness check at the codec boundary so a refactor that
+    drops `max_age` from the `unsign` call would surface here rather
+    than silently extending session lifetime.
+
+    Implementation: encode now, hold the wall clock SESSION_TTL + 60s
+    forward, then decode. itsdangerous reads `time.time()` at unsign
+    time so the patched clock makes the cookie appear stale.
+    """
+    signed = encode_session(_make_reviewer())
+    future = time.time() + SESSION_TTL.total_seconds() + 60
+    monkeypatch.setattr(time, "time", lambda: future)
+    assert decode_session(signed) is None
 
 
 # -- one-shot cookies (state / verifier / return_to) -----------------------
@@ -178,13 +197,30 @@ def test_verify_one_shot_raises_when_past_max_age(monkeypatch: pytest.MonkeyPatc
 # -- OIDC test fixtures ----------------------------------------------------
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def signing_key() -> Any:
     """Generate an RSA keypair used to sign the test id_token.
+
+    Module-scoped because RSA-2048 keygen is ~200-500ms per call and the
+    keypair is content-static (same kid, same modulus) — every test in
+    this file that needs a 'valid signing key' wants the same one. The
+    plan's tests aren't asserting key-content so sharing is safe.
 
     The public half is exposed via the stubbed `_load_jwks`; the private
     half signs the id_token in `_mint_id_token`. Mirrors what the auth
     server's JWKS endpoint would publish.
+    """
+    return JsonWebKey.generate_key("RSA", 2048, is_private=True)
+
+
+@pytest.fixture(scope="module")
+def foreign_signing_key() -> Any:
+    """A second RSA keypair NOT in the JWKS, used to mint id_tokens that
+    must fail signature verification.
+
+    Module-scoped for the same reason as `signing_key` — keygen is
+    expensive and the test only cares that this key is NOT the trusted
+    one.
     """
     return JsonWebKey.generate_key("RSA", 2048, is_private=True)
 
@@ -359,12 +395,13 @@ async def test_exchange_code_raises_on_iss_mismatch(
 async def test_exchange_code_raises_on_unknown_signing_key(
     monkeypatch: pytest.MonkeyPatch,
     stub_metadata: dict[str, Any],
+    foreign_signing_key: Any,
 ) -> None:
     """An id_token signed by a key NOT in the JWKS must fail signature
-    verification. Tests with a fresh keypair whose public half was never
-    added to the stubbed JWKS."""
-    foreign_key = JsonWebKey.generate_key("RSA", 2048, is_private=True)
-    _install_token_endpoint(monkeypatch, _mint_id_token(foreign_key))
+    verification — even after the single JWKS-refresh retry, since the
+    stubbed `_load_jwks` keeps returning the same trusted-key set.
+    """
+    _install_token_endpoint(monkeypatch, _mint_id_token(foreign_signing_key))
     with pytest.raises(JoseError):
         await exchange_code(code="auth-code", code_verifier="verifier")
 
@@ -378,6 +415,154 @@ async def test_exchange_code_propagates_token_endpoint_transport_failure(
     _install_token_endpoint(monkeypatch, httpx.ConnectError("auth server unreachable"))
     with pytest.raises(httpx.HTTPError):
         await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_propagates_4xx_from_token_endpoint(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """A 4xx from the token endpoint (e.g., `invalid_grant` on a replayed
+    authorization code) surfaces as `httpx.HTTPStatusError`, a subclass
+    of `HTTPError` the route layer's 503-mapping catches. Pins the
+    raise_for_status branch — previously only ConnectError was exercised.
+    """
+
+    class _Resp:
+        status_code = 400
+
+        def raise_for_status(self) -> None:
+            raise httpx.HTTPStatusError(
+                "400",
+                request=httpx.Request("POST", "https://auth.example/oauth2/token"),
+                response=httpx.Response(400),
+            )
+
+        def json(self) -> dict[str, Any]:
+            return {"error": "invalid_grant"}
+
+    async def fake_post(self, url: str, **kwargs: Any) -> _Resp:  # type: ignore[no-untyped-def]
+        return _Resp()
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", fake_post)
+    with pytest.raises(httpx.HTTPError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_raises_value_error_when_id_token_missing(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """A 2xx token response without an `id_token` field is a contract
+    violation by the auth server — surface it as `ValueError` so the
+    route layer's 400-mapping catches it rather than the prior raw
+    `KeyError` that bypassed the documented exception contract.
+    """
+
+    class _Resp:
+        status_code = 200
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, Any]:
+            # No id_token — e.g., the openid scope was dropped or an
+            # error response was returned with a 200 status.
+            return {"access_token": "x", "token_type": "Bearer"}
+
+    async def fake_post(self, url: str, **kwargs: Any) -> _Resp:  # type: ignore[no-untyped-def]
+        return _Resp()
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", fake_post)
+    with pytest.raises(ValueError, match="id_token"):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_raises_value_error_on_non_json_body(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """A 2xx token response with a non-JSON body (e.g., HTML challenge
+    page from a CDN) surfaces as `ValueError`, not the prior raw
+    `json.JSONDecodeError` that the route layer never anticipated.
+    """
+
+    class _Resp:
+        status_code = 200
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, Any]:
+            raise json.JSONDecodeError("Expecting value", "<!DOCTYPE html>", 0)
+
+    async def fake_post(self, url: str, **kwargs: Any) -> _Resp:  # type: ignore[no-untyped-def]
+        return _Resp()
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", fake_post)
+    with pytest.raises(ValueError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_raises_jose_error_when_sub_missing(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """An id_token missing the `sub` claim is rejected by authlib's
+    essential-claim check (we declared `sub` essential in claims_options)
+    rather than escaping as a raw `KeyError` at field-access time.
+    """
+    # Mint a token with `sub` removed. `_mint_id_token` overrides only
+    # accept replacements, so build the payload manually.
+    now = int(time.time())
+    payload = {
+        "iss": ISSUER,
+        "aud": CLIENT_ID,
+        "iat": now,
+        "exp": now + 600,
+        "email": "x@y",
+        # no `sub`
+    }
+    header = {"alg": "RS256", "kid": signing_key.kid}
+    no_sub_token = JsonWebToken(["RS256"]).encode(header, payload, signing_key).decode("utf-8")
+    _install_token_endpoint(monkeypatch, no_sub_token)
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_handles_jwks_rotation(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    jwks_from_key: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """After a single `BadSignatureError`, `exchange_code` invalidates
+    the JWKS cache, refetches via `_load_jwks`, and retries decode.
+    Simulated by having the first `_load_jwks` call return an empty key
+    set (signature fails) and the second return the trusted set
+    (signature passes) — mirrors what happens during a key rotation
+    where the cached JWKS is stale but a refetch picks up the new key.
+    """
+    # Toggle: first call returns the wrong JWKS, second call returns
+    # the right one.
+    call_count = {"n": 0}
+
+    async def _flipping_jwks() -> dict[str, Any]:
+        call_count["n"] += 1
+        if call_count["n"] == 1:
+            # First call: an unrelated key the trust pool doesn't know.
+            unrelated = JsonWebKey.generate_key("RSA", 2048, is_private=False)
+            pub = json.loads(unrelated.as_json(is_private=False))
+            pub["kid"] = "rotated-out"
+            return {"keys": [pub]}
+        return jwks_from_key
+
+    monkeypatch.setattr(auth_mod, "_load_jwks", _flipping_jwks)
+    _install_token_endpoint(monkeypatch, _mint_id_token(signing_key))
+
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.user_id == "user-abc"
+    assert call_count["n"] == 2, "_load_jwks should have been called twice"
 
 
 # -- _reset_metadata_cache -------------------------------------------------
