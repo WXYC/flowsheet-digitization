@@ -251,10 +251,16 @@ def _validate_return_to(raw: str) -> str:
     Defuses the open-redirect risk on `/auth/login?return_to=https://evil`
     — an attacker who tricks a user into clicking that link would
     otherwise see the user land on their site post-login.
+
+    The allowlist requires a path-separator-or-end boundary after the
+    prefix so `/verifier` itself, `/verifier/?bundle=…`, and `/verifier/…`
+    are accepted while a future sibling route like `/verifierx-admin`
+    or `/verifierdata` is not silently treated as in-scope. A plain
+    `startswith("/verifier")` would accept any of those.
     """
-    if not raw.startswith("/verifier"):
-        return "/verifier/"
-    return raw
+    if raw == "/verifier" or raw.startswith("/verifier/") or raw.startswith("/verifier?"):
+        return raw
+    return "/verifier/"
 
 
 # Cache of jobs.db paths whose `init()` migrations have already been
@@ -280,6 +286,27 @@ async def _open_jobs_store() -> JobStore | None:
         await store.init()
         _initialized_jobs_dbs.add(JOBS_DB_PATH)
     return store
+
+
+def _existing_verified_by(path: Path) -> VerifiedBy | None:
+    """Read `verified_by` from an existing on-disk verified.json, or
+    None if the file doesn't exist / isn't parseable / has no block.
+
+    Used by `/api/save` in BasicAuth and no-auth deployments to preserve
+    a previously-recorded reviewer identity across a re-save where the
+    server has no authenticated reviewer to assert — the data-safety
+    rule says we don't clobber successfully collected data without
+    explicit user direction.
+    """
+    if not path.is_file():
+        return None
+    try:
+        return PageResult.model_validate_json(path.read_text()).verified_by
+    except Exception:  # noqa: BLE001
+        # Malformed JSON or a shape that doesn't validate isn't fatal
+        # — the save proceeds, just without preservation. The save's
+        # downstream Pydantic validation will produce a clean file.
+        return None
 
 
 def _safe_stem(stem: str) -> str:
@@ -327,6 +354,16 @@ async def auth_login(return_to: str = "/verifier/") -> Response:
         url, state, code_verifier = await auth_mod.build_authorize_url()
     except httpx.HTTPError as exc:
         raise HTTPException(503, detail="auth server unavailable") from exc
+    except RuntimeError as exc:
+        # `RuntimeError` propagates from the env-var accessors in
+        # `core.auth` when a required var (WXYC_AUTH_ISSUER, etc.) is
+        # unset. `core.auth.decode_session` already catches this for
+        # the request-gating path; mirror the protection here so a
+        # misconfigured deploy with WXYC_OIDC_CLIENT_ID set but
+        # WXYC_AUTH_ISSUER missing returns 503 (matching the auth-
+        # server-unavailable shape) rather than 500 with the env-var
+        # name in the traceback.
+        raise HTTPException(503, detail="auth not configured") from exc
 
     response = RedirectResponse(url, status_code=302)
     one_shot_age = int(ONE_SHOT_TTL.total_seconds())
@@ -378,6 +415,13 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
         code_verifier = auth_mod.verify_one_shot(verifier_cookie, max_age=one_shot_age)
     except BadSignature as exc:
         raise HTTPException(400, detail="invalid auth state") from exc
+    except RuntimeError as exc:
+        # See the matching catch in `auth_login` — env-var unset
+        # surfaces as RuntimeError from `core.auth._session_secret()`
+        # via the one-shot signer. Map to 503 ("auth not configured")
+        # instead of letting it 500 with the env-var name in the
+        # traceback.
+        raise HTTPException(503, detail="auth not configured") from exc
 
     # `secrets.compare_digest` mirrors the precedent in
     # `_BasicAuthMiddleware` — constant-time string comparison so a
@@ -398,6 +442,10 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
         reviewer = await auth_mod.exchange_code(code=code, code_verifier=code_verifier)
     except httpx.HTTPError as exc:
         raise HTTPException(503, detail="auth server unavailable") from exc
+    except RuntimeError as exc:
+        # Same protection as the verify_one_shot block — env var unset
+        # surfaces from core.auth's accessor functions as RuntimeError.
+        raise HTTPException(503, detail="auth not configured") from exc
     except (JoseError, KeyError, ValueError) as exc:
         # `KeyError` covers a token response missing `id_token`;
         # `ValueError` covers any downstream parse error not caught
@@ -608,12 +656,26 @@ async def save(
             status_code=400, detail=f"verified payload not a valid PageResult: {exc}"
         ) from exc
 
-    # Server-authority overwrite. Whatever the client put in
-    # `verified.verified_by` is discarded; the authenticated reviewer's
-    # identity replaces it (or `None` when no reviewer is authenticated,
-    # e.g. BasicAuth or no-auth deployments). Pydantic's validation
-    # above runs first, so a malformed client-supplied block returns
-    # 400 before this overwrite ever runs.
+    VERIFIER_DIR.mkdir(parents=True, exist_ok=True)
+    verified_path = VERIFIER_DIR / f"{stem}.verified.json"
+    corrections_path = VERIFIER_DIR / f"{stem}.corrections.json"
+
+    # Server-authority overwrite, with prior-state preservation when
+    # there's no reviewer.
+    #
+    # OIDC mode (reviewer present): discard whatever the client sent
+    # for `verified_by` and write the authenticated reviewer's
+    # identity. The client cannot spoof another reviewer.
+    #
+    # BasicAuth / no-auth mode (reviewer is None): there's no identity
+    # to assert. Reading the prior on-disk `verified_by` and writing it
+    # back preserves any historical OIDC-recorded reviewer record (data-
+    # safety rule: never overwrite successfully collected data) while
+    # still discarding any value the client tried to forge — the client
+    # has no role in deciding `verified_by` in either mode.
+    #
+    # Pydantic's validation above runs first, so a malformed client-
+    # supplied block returns 400 before this overwrite ever runs.
     if reviewer is not None:
         validated.verified_by = VerifiedBy(
             user_id=reviewer.user_id,
@@ -623,11 +685,7 @@ async def save(
             verified_at=datetime.now(UTC),
         )
     else:
-        validated.verified_by = None
-
-    VERIFIER_DIR.mkdir(parents=True, exist_ok=True)
-    verified_path = VERIFIER_DIR / f"{stem}.verified.json"
-    corrections_path = VERIFIER_DIR / f"{stem}.corrections.json"
+        validated.verified_by = _existing_verified_by(verified_path)
     # Resolve status BEFORE we overwrite the existing corrections file,
     # so the preservation rule can see the prior on-disk value.
     resolved_status = _resolve_status(incoming_status, corrections_path)
@@ -642,12 +700,22 @@ async def save(
     if pdf_path and isinstance(page_number, int) and not isinstance(page_number, bool):
         store = await _open_jobs_store()
         if store is not None:
+            # Pair with the verified_by preservation rule above: when
+            # there's no reviewer to credit, send the prior `verified_by`'s
+            # user_id (read off disk) so the denormalized jobs.reviewer_id
+            # column doesn't get clobbered to NULL on a non-OIDC re-save.
+            reviewer_id_for_db: str | None
+            if reviewer is not None:
+                reviewer_id_for_db = reviewer.user_id
+            else:
+                preserved = validated.verified_by
+                reviewer_id_for_db = preserved.user_id if preserved is not None else None
             db_updated = await store.mark_verified(
                 pdf_path=pdf_path,
                 page_number=page_number,
                 verified_path=verified_path,
                 corrections_path=corrections_path,
-                reviewer_id=reviewer.user_id if reviewer else None,
+                reviewer_id=reviewer_id_for_db,
             )
 
     # Report paths relative to DATA_ROOT.parent so the UI displays

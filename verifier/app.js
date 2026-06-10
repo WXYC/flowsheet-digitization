@@ -123,7 +123,13 @@ async function loadBundleFromUrlParam() {
     // deploy (see scripts/railway_entrypoint.sh's overlay step). A
     // browser cache hit on a stale bundle would silently feed the old
     // bbox + entries into the UI.
-    const r = await fetch(path, { cache: "no-store" });
+    // authFetch (not plain fetch): the /data/ static mount is behind
+    // the session middleware when OIDC is enabled. A plain fetch with
+    // no Accept: application/json would receive the middleware's 302
+    // and silently follow it — then JSON.parse would fail on the
+    // login page HTML with a confusing "Unexpected token <" error.
+    // authFetch sets Accept and converts 401 into a clean redirect.
+    const r = await authFetch(path, { cache: "no-store" });
     if (!r.ok) throw new Error(`fetch ${path}: ${r.status}`);
     const bundle = await r.json();
     // If a verified.json exists alongside the bundle, overlay its data so
@@ -139,7 +145,7 @@ async function loadBundleFromUrlParam() {
       // browser will happily reuse a pre-save copy on the next page load,
       // which displays the OLD value and looks like the save never
       // happened.
-      const vr = await fetch(verifiedPath, { cache: "no-store" });
+      const vr = await authFetch(verifiedPath, { cache: "no-store" });
       if (vr.ok) {
         const verified = await vr.json();
         applyVerifiedToBundle(bundle, verified);
