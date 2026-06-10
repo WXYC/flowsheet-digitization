@@ -26,8 +26,23 @@ core/
   schema.py                      Pydantic models. GeminiPageResult is what
                                  the model returns (used as response_schema);
                                  PageResult adds caller-set model_version +
-                                 extracted_at and is what lands on disk. Entry
-                                 and Quadrant are shared between both.
+                                 extracted_at + verified_by and is what lands
+                                 on disk. Entry and Quadrant are shared
+                                 between both.
+  auth.py                        OIDC client (against Better Auth at
+                                 api.wxyc.org/auth), signed session-cookie
+                                 codec (itsdangerous), and the ReviewerSession
+                                 dataclass. Consumed by verifier/serve.py
+                                 (middleware + /api/save). Module-level cached
+                                 discovery doc + JWKS — configuration, not
+                                 per-request state; _reset_metadata_cache()
+                                 is the test seam. Lazy-loaded (not eager at
+                                 boot) so a transient auth-server slowdown
+                                 doesn't take the verifier offline; first
+                                 caller after a deploy pays ~50-150ms cold
+                                 start. Deviation from the DI pattern in
+                                 core/gemini.py is intentional; don't "fix"
+                                 it back — see the module docstring.
   prompts.py                     Extraction prompt (separate module so prompt
                                  changes are reviewable independently).
   gemini.py                      Async wrapper around google-genai. Dependency

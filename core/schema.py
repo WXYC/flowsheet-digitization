@@ -170,13 +170,61 @@ class GeminiPageResult(BaseModel):
         return self
 
 
+class VerifiedBy(BaseModel):
+    """Identity of the reviewer who saved this verified page.
+
+    Populated only by `verifier/serve.py`'s POST /api/save handler when
+    an authenticated reviewer session is present. Pipeline-written
+    PageResults leave `PageResult.verified_by` as None.
+
+    `user_id` is deliberately denormalized to `jobs.reviewer_id` (see
+    `core/jobs.py`) so per-reviewer queries don't have to parse every
+    JSON file on disk. The two values are always equal for the same
+    save call; both are written inside `/api/save` under server
+    authority — the client never sets either. A client-supplied
+    `verified_by` block on a save POST is overwritten with the
+    authenticated reviewer's values before persistence (see the
+    handler).
+    """
+
+    user_id: str = Field(description="Better Auth user.id (the OIDC `sub` claim).")
+    username: str | None = Field(
+        default=None,
+        description="Better Auth username, if set.",
+    )
+    real_name: str | None = Field(
+        default=None,
+        description="Reviewer's real name from the WXYC user record.",
+    )
+    dj_name: str | None = Field(
+        default=None,
+        description="Reviewer's on-air DJ name, if set.",
+    )
+    verified_at: datetime = Field(
+        description="When the verifier UI saved this page (UTC).",
+    )
+
+
 class PageResult(GeminiPageResult):
-    """On-disk shape: `GeminiPageResult` plus the two fields the caller owns.
+    """On-disk shape: `GeminiPageResult` plus the fields the caller owns.
 
     `model_version` and `extracted_at` are filled by the pipeline (or by
     each calibration adapter) at write-time. They are NOT part of the
     Gemini response_schema — see the module docstring.
+
+    `verified_by` is populated only by `verifier/serve.py` when a
+    reviewer saves a page through the verifier UI. Defaulting to None
+    keeps every pre-OIDC `verified.json` parseable (the field is
+    silently absent on old files); new saves write the block and old
+    files are upgraded on the next save.
     """
 
     model_version: str = Field(description="Model id that produced this result.")
     extracted_at: datetime = Field(description="When the extraction completed (UTC).")
+    verified_by: VerifiedBy | None = Field(
+        default=None,
+        description=(
+            "Reviewer who saved this corrected page via the verifier UI. "
+            "None for results that have only been through the automatic pipeline."
+        ),
+    )
