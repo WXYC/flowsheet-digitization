@@ -335,11 +335,15 @@ def decode_session(raw: str) -> ReviewerSession | None:
         unsigned = _session_signer().unsign(raw, max_age=int(SESSION_TTL.total_seconds()))
         payload = json.loads(unsigned)
         return ReviewerSession(**payload)
-    except (BadSignature, ValueError, TypeError):
+    except (BadSignature, ValueError, TypeError, RuntimeError):
         # BadSignature covers both tamper and expiry (SignatureExpired is
         # a subclass). ValueError covers malformed JSON. TypeError covers
         # a payload shape that doesn't match ReviewerSession's fields
-        # (missing-required or unknown-keyword on __init__).
+        # (missing-required or unknown-keyword on __init__). RuntimeError
+        # catches the env-unset case from `_session_secret()` — without
+        # it, a config-reload bug that unsets WXYC_SESSION_SECRET
+        # mid-process would 500 every request instead of redirecting to
+        # /auth/login.
         return None
 
 
@@ -545,26 +549,36 @@ async def exchange_code(*, code: str, code_verifier: str) -> ReviewerSession:
 
 
 def _optional_str(claims: Any, name: str) -> str | None:
-    """Return the claim value as a str, or None if the claim is absent.
+    """Return the claim value as a str, or None if the claim is absent
+    or explicitly null.
 
     Unlike `claims.get(name) or None`, this preserves an empty-string
     value — useful when distinguishing 'claim absent' from 'claim
     explicitly empty', which the falsy-coalesce form collapses.
+
+    JSON null is treated identically to 'absent' (both → None). A
+    naive `str(claims[name])` would coerce Python None to the literal
+    string `"None"`, which is exactly the silent corruption the
+    Optional[str] field was introduced to prevent.
     """
-    if name not in claims:
+    value = claims.get(name)
+    if value is None:
         return None
-    return str(claims[name])
+    return str(value)
 
 
 def _first_present(claims: Any, *names: str) -> str | None:
-    """Return the first claim from `names` that is present in `claims`,
-    or None if none are present.
+    """Return the first claim from `names` whose value is not absent
+    and not null, or None if none qualify.
 
-    Distinguishes 'absent' from 'empty string' on a per-claim basis,
-    so an IdP that intentionally emits an empty `preferred_username`
-    won't silently fall through to `username`.
+    Distinguishes 'present-with-content' (preserved, including empty
+    string) from 'absent' and 'null' (both treated as 'not really
+    there, try the next field'). Without the null-is-absent rule, a
+    `null` first claim would short-circuit and return the literal
+    string `"None"` rather than falling through to the second name.
     """
     for name in names:
-        if name in claims:
-            return str(claims[name])
+        value = claims.get(name)
+        if value is not None:
+            return str(value)
     return None
