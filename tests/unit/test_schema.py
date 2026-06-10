@@ -214,6 +214,80 @@ class TestPageResult:
                 extracted_at=datetime.now(UTC),
             )
 
+    def test_verified_by_defaults_to_none(self) -> None:
+        """A PageResult written by the pipeline has no reviewer. Default
+        matters: every verified.json on disk that pre-dates the OIDC PR
+        re-loads with `verified_by=None`, and no migration is needed."""
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=[
+                self._quad("top_left"),
+                self._quad("top_right"),
+                self._quad("bottom_left"),
+                self._quad("bottom_right"),
+            ],
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+        )
+        assert page.verified_by is None
+
+    def test_old_verified_json_without_verified_by_loads(self) -> None:
+        """Backwards compat: a verified.json saved before the OIDC PR
+        omits `verified_by` and must still parse. Exercises the same
+        load path the verifier server runs on every save (model_validate
+        of the on-disk JSON)."""
+        from core.schema import PageResult
+
+        old = {
+            "page_date_raw": None,
+            "quadrants": [
+                {
+                    "position": p,
+                    "hour_raw": None,
+                    "jock_raw": None,
+                    "entries": [],
+                    "oddities": [],
+                }
+                for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+            ],
+            "comments_raw": None,
+            "oddities": [],
+            "model_version": "m",
+            "extracted_at": "2026-05-01T00:00:00Z",
+            # No verified_by key — the pre-OIDC shape.
+        }
+        page = PageResult.model_validate(old)
+        assert page.verified_by is None
+
+    def test_verified_by_round_trips_through_pageresult(self) -> None:
+        """A populated `verified_by` survives encode -> decode through
+        `model_dump_json` -> `model_validate_json` so the verifier
+        server can write the file and the SPA reload reads back the
+        exact block it wrote."""
+        from core.schema import PageResult, VerifiedBy
+
+        page = PageResult(
+            page_date_raw=None,
+            quadrants=[
+                self._quad(p) for p in ("top_left", "top_right", "bottom_left", "bottom_right")
+            ],
+            model_version="m",
+            extracted_at=datetime.now(UTC),
+            verified_by=VerifiedBy(
+                user_id="u-1",
+                username="reviewer",
+                real_name="Real Name",
+                dj_name="DJ Name",
+                verified_at=datetime.now(UTC),
+            ),
+        )
+        roundtripped = PageResult.model_validate_json(page.model_dump_json())
+        assert roundtripped.verified_by is not None
+        assert roundtripped.verified_by.user_id == "u-1"
+        assert roundtripped.verified_by.username == "reviewer"
+        assert roundtripped.verified_by.real_name == "Real Name"
+        assert roundtripped.verified_by.dj_name == "DJ Name"
+
 
 def test_confidence_values() -> None:
     # Sanity: documents the exact set the pipeline contracts on.

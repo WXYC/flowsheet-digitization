@@ -61,6 +61,19 @@ body > header h1 {
 .status-pill.status-partial    { background: #fff5e0; color: #8a5a00; border: 1px solid #ecd9a8; }
 .status-pill.status-complete   { background: #e6f5e6; color: #1f6f1f; border: 1px solid #b8e0b8; }
 
+/* Signed-in reviewer chip in the header. Quiet by default — its job
+   is to tell the volunteer "you are X" without competing with the
+   page-status pill or the action buttons. */
+.reviewer-name {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: auto;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+}
+
 /* Index-mode table. */
 #bundle-list {
   width: 100%;

@@ -285,3 +285,78 @@ async def test_init_adds_late_columns_to_existing_db(tmp_path: Path) -> None:
     assert "verified_at" in cols
     assert "verified_path" in cols
     assert "corrections_path" in cols
+    # reviewer_id is the late column added by the OIDC PR. Without this
+    # branch the migration on an existing prod jobs.db would silently
+    # leave the column off and every mark_verified(reviewer_id=...) call
+    # would persist no reviewer at all.
+    assert "reviewer_id" in cols
+
+
+# -- reviewer_id (OIDC PR) -------------------------------------------------
+
+
+async def test_mark_verified_round_trips_reviewer_id(store: JobStore, tmp_path: Path) -> None:
+    """`mark_verified(..., reviewer_id="u-123")` persists to `jobs.reviewer_id`.
+
+    The verifier server denormalizes the OIDC user_id onto the row so
+    per-reviewer queries don't have to parse every verified.json on disk.
+    """
+    await store.register("scans/a.pdf", 1)
+    await store.mark_rendered("scans/a.pdf", 1, image_path=tmp_path / "a.png")
+    await store.mark_completed("scans/a.pdf", 1, result_path=tmp_path / "a.json", model_version="m")
+
+    matched = await store.mark_verified(
+        "scans/a.pdf",
+        1,
+        verified_path=tmp_path / "a.verified.json",
+        corrections_path=tmp_path / "a.corrections.json",
+        reviewer_id="u-123",
+    )
+    assert matched is True
+
+    job = await store.get("scans/a.pdf", 1)
+    assert job is not None
+    assert job.reviewer_id == "u-123"
+
+
+async def test_mark_verified_accepts_none_reviewer_id(store: JobStore, tmp_path: Path) -> None:
+    """`reviewer_id=None` (the default) writes NULL — the BasicAuth and
+    no-auth deployments don't have a reviewer to credit and the column
+    should accept that without a NOT NULL violation."""
+    await store.register("scans/a.pdf", 1)
+    await store.mark_rendered("scans/a.pdf", 1, image_path=tmp_path / "a.png")
+
+    matched = await store.mark_verified(
+        "scans/a.pdf",
+        1,
+        verified_path=tmp_path / "a.verified.json",
+        corrections_path=tmp_path / "a.corrections.json",
+        # reviewer_id omitted; defaults to None.
+    )
+    assert matched is True
+
+    job = await store.get("scans/a.pdf", 1)
+    assert job is not None
+    assert job.reviewer_id is None
+
+
+async def test_mark_verified_overwrites_reviewer_id_on_re_save(
+    store: JobStore, tmp_path: Path
+) -> None:
+    """A second `mark_verified` call updates `reviewer_id` to the latest
+    reviewer. Verification is "who last saved this page", not an
+    append-only log — matches the file-side semantics where verified.json
+    is rewritten by every save."""
+    await store.register("scans/a.pdf", 1)
+    await store.mark_rendered("scans/a.pdf", 1, image_path=tmp_path / "a.png")
+
+    paths = {
+        "verified_path": tmp_path / "a.verified.json",
+        "corrections_path": tmp_path / "a.corrections.json",
+    }
+    await store.mark_verified("scans/a.pdf", 1, **paths, reviewer_id="first")
+    await store.mark_verified("scans/a.pdf", 1, **paths, reviewer_id="second")
+
+    job = await store.get("scans/a.pdf", 1)
+    assert job is not None
+    assert job.reviewer_id == "second"

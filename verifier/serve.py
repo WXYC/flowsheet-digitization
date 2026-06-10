@@ -17,6 +17,22 @@ Serves the repo's static files (verifier/, data/, tests/) and provides:
                         verification state (incomplete / partial /
                         complete) for the index page and Prev/Next nav.
 
+Auth (when WXYC_OIDC_CLIENT_ID is set):
+
+  GET  /auth/login     — kick off the OIDC code+PKCE dance against
+                         api.wxyc.org/auth.
+  GET  /auth/callback  — exchange the code, seal the reviewer into a
+                         12-hour signed session cookie, redirect home.
+  POST /auth/logout    — clear the session cookie (local logout only —
+                         api.wxyc.org session is unaffected).
+  GET  /auth/me        — return the currently logged-in ReviewerSession.
+
+The middleware gate is tri-modal:
+  * OIDC session cookie when WXYC_OIDC_CLIENT_ID is set.
+  * HTTP Basic Auth when VERIFIER_PASSWORD is set.
+  * No gate otherwise (local-dev default).
+Modes are mutually exclusive; OIDC wins when both are configured.
+
 Run:
 
     .venv/bin/python verifier/serve.py
@@ -26,23 +42,35 @@ Then open http://localhost:8765/verifier/?bundle=/data/verifier/<stem>.bundle.js
 
 from __future__ import annotations
 
+import dataclasses
 import json
 import os
 import secrets
+import urllib.parse
 from base64 import b64decode
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Annotated
 
 import httpx
 import uvicorn
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import JSONResponse
+from authlib.jose.errors import JoseError
+from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
+from itsdangerous import BadSignature
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.types import ASGIApp
 
+import core.auth as auth_mod
+from core.auth import (
+    COOKIE_NAME,
+    ONE_SHOT_TTL,
+    SESSION_TTL,
+    ReviewerSession,
+)
 from core.jobs import JobStore
-from core.schema import PageResult
+from core.schema import PageResult, VerifiedBy
 
 REQUEST_O_MATIC_URL = os.environ.get(
     "REQUEST_O_MATIC_URL",
@@ -63,6 +91,16 @@ JOBS_DB_PATH = DATA_ROOT / "jobs.db"
 # remember a password.
 VERIFIER_PASSWORD = os.environ.get("VERIFIER_PASSWORD")
 VERIFIER_USER = os.environ.get("VERIFIER_USER", "verifier")
+
+# OIDC takes precedence over BasicAuth when both are configured. A
+# WXYC_OIDC_CLIENT_ID with an empty value (e.g. someone unsetting OIDC
+# by clearing the value rather than removing the line) is treated as
+# unset so the env-var-gate semantics match the BasicAuth path.
+OIDC_ENABLED = bool(os.environ.get("WXYC_OIDC_CLIENT_ID"))
+# `FLOWSHEET_PUBLIC_URL` decides whether session + one-shot cookies
+# carry `Secure`. Local dev runs plain HTTP; production runs HTTPS; the
+# flag tracks the URL scheme without a separate `IS_PRODUCTION` env.
+_COOKIE_SECURE = os.environ.get("FLOWSHEET_PUBLIC_URL", "").startswith("https")
 
 
 class _BasicAuthMiddleware(BaseHTTPMiddleware):
@@ -101,9 +139,123 @@ class _BasicAuthMiddleware(BaseHTTPMiddleware):
         )
 
 
+# Routes that must answer unauthenticated so the auth dance + Railway's
+# healthcheck can complete. `PUBLIC_PATHS` lists specific public routes;
+# do NOT widen the `/auth/` prefix to mean anything else — `/auth/me` is
+# deliberately gated, and a future `/auth/admin` would be too. Add new
+# public endpoints to PUBLIC_PATHS by name.
+#
+# `/api/version` is load-bearing: Railway uses it as the healthcheck. If
+# this set ever drops it, every deploy will roll back because the gate
+# redirects the healthcheck request to /auth/login.
+_PUBLIC_PATHS: frozenset[str] = frozenset(
+    {"/auth/login", "/auth/callback", "/auth/logout", "/api/version"}
+)
+
+
+class _SessionCookieMiddleware(BaseHTTPMiddleware):
+    """Gate all non-public paths on the signed session cookie.
+
+    Reads `flowsheet_session`, verifies it via `core.auth.decode_session`,
+    and stashes the resulting `ReviewerSession` on `request.state.reviewer`
+    so downstream handlers (and the `get_reviewer` dependency) can read
+    it without re-parsing the cookie.
+
+    A missing or invalid session redirects to `/auth/login?return_to=<path>`
+    for HTML requests, and returns a 401 JSON for AJAX requests (the SPA
+    inspects the response to know to redirect client-side).
+    """
+
+    async def dispatch(self, request: Request, call_next):
+        path = request.url.path
+        if path in _PUBLIC_PATHS:
+            request.state.reviewer = None
+            return await call_next(request)
+
+        raw = request.cookies.get(COOKIE_NAME, "")
+        reviewer = auth_mod.decode_session(raw)
+        if reviewer is None:
+            # AJAX / fetch — return 401 JSON so the SPA can redirect via
+            # location.href. Lets the verifier UI continue running its
+            # JS error handlers instead of getting an opaque 302.
+            if "application/json" in request.headers.get("accept", "").lower():
+                return JSONResponse({"detail": "authentication required"}, status_code=401)
+            # HTML / browser nav — server-side 302 to /auth/login with
+            # a signed return_to. The login handler will validate it
+            # against the /verifier prefix allowlist.
+            return_to = path
+            if request.url.query:
+                return_to += f"?{request.url.query}"
+            login_url = f"/auth/login?return_to={urllib.parse.quote(return_to)}"
+            return RedirectResponse(login_url, status_code=302)
+
+        request.state.reviewer = reviewer
+        return await call_next(request)
+
+
 app = FastAPI(docs_url=None, redoc_url=None)
-if VERIFIER_PASSWORD:
+# Tri-modal install. OIDC wins over BasicAuth so that the BasicAuth env
+# var can stay set during the transition period without competing with
+# the session gate.
+if OIDC_ENABLED:
+    app.add_middleware(_SessionCookieMiddleware)
+elif VERIFIER_PASSWORD:
     app.add_middleware(_BasicAuthMiddleware, user=VERIFIER_USER, password=VERIFIER_PASSWORD)
+
+
+def get_reviewer(request: Request) -> ReviewerSession | None:
+    """Read the authenticated reviewer off `request.state`, set by the
+    session middleware.
+
+    Returns None in two cases:
+      * Non-OIDC deployments (BasicAuth or no-auth) — there is no
+        ReviewerSession to read.
+      * Public routes the middleware bypassed — they don't need an
+        identity to answer.
+
+    Handlers that *require* identity (`/auth/me`, `/api/save` when we
+    want to credit the reviewer) raise 401 themselves on None.
+    """
+    return getattr(request.state, "reviewer", None)
+
+
+def _set_cookie(
+    response: Response,
+    key: str,
+    value: str,
+    *,
+    max_age: int,
+    path: str = "/",
+) -> None:
+    """Set a cookie with the project's standard flags.
+
+    HttpOnly + SameSite=lax + (Secure when serving over HTTPS) so the
+    OIDC redirect-back can carry one-shot cookies but no other site can
+    read the session cookie. SameSite=strict would drop the cookies on
+    the cross-site redirect from api.wxyc.org/auth.
+    """
+    response.set_cookie(
+        key=key,
+        value=value,
+        max_age=max_age,
+        httponly=True,
+        secure=_COOKIE_SECURE,
+        samesite="lax",
+        path=path,
+    )
+
+
+def _validate_return_to(raw: str) -> str:
+    """Allowlist `return_to` to a relative path under `/verifier`.
+
+    Defuses the open-redirect risk on `/auth/login?return_to=https://evil`
+    — an attacker who tricks a user into clicking that link would
+    otherwise see the user land on their site post-login.
+    """
+    if not raw.startswith("/verifier"):
+        return "/verifier/"
+    return raw
+
 
 # Cache of jobs.db paths whose `init()` migrations have already been
 # applied this process. Avoids re-running PRAGMAs + ALTER-TABLE checks
@@ -156,6 +308,147 @@ def _atomic_write_text(path: Path, content: str) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(content)
     os.replace(tmp, path)
+
+
+# -- auth routes -----------------------------------------------------------
+
+
+@app.get("/auth/login")
+async def auth_login(return_to: str = "/verifier/") -> Response:
+    """Kick off the OIDC code+PKCE dance.
+
+    Validates `return_to`, builds the authorize URL, stashes
+    `state` / `code_verifier` / `return_to` in three signed one-shot
+    cookies (so the callback can validate them) and 302s to the auth
+    server. A transient auth-server failure surfaces as 503.
+    """
+    return_to = _validate_return_to(return_to)
+    try:
+        url, state, code_verifier = await auth_mod.build_authorize_url()
+    except httpx.HTTPError as exc:
+        raise HTTPException(503, detail="auth server unavailable") from exc
+
+    response = RedirectResponse(url, status_code=302)
+    one_shot_age = int(ONE_SHOT_TTL.total_seconds())
+    # path="/auth" limits the one-shot cookies to the OIDC dance —
+    # they aren't sent on /verifier or /api/* requests.
+    _set_cookie(
+        response, "oidc_state", auth_mod.sign_one_shot(state), max_age=one_shot_age, path="/auth"
+    )
+    _set_cookie(
+        response,
+        "oidc_verifier",
+        auth_mod.sign_one_shot(code_verifier),
+        max_age=one_shot_age,
+        path="/auth",
+    )
+    _set_cookie(
+        response,
+        "oidc_return_to",
+        auth_mod.sign_one_shot(return_to),
+        max_age=one_shot_age,
+        path="/auth",
+    )
+    return response
+
+
+@app.get("/auth/callback")
+async def auth_callback(request: Request, code: str = "", state: str = "") -> Response:
+    """Validate the redirect, exchange the code, seal the session.
+
+    Failure paths:
+      * Missing / tampered / expired one-shot cookies → 400.
+      * `state` mismatch → 400 (CSRF defense).
+      * Auth server unreachable → 503.
+      * id_token signature or aud/iss mismatch → 400.
+
+    On success, sets `flowsheet_session` (12h) and 302s to the
+    validated `return_to`.
+    """
+    if not code or not state:
+        raise HTTPException(400, detail="missing code or state")
+
+    state_cookie = request.cookies.get("oidc_state", "")
+    verifier_cookie = request.cookies.get("oidc_verifier", "")
+    return_to_cookie = request.cookies.get("oidc_return_to", "")
+
+    one_shot_age = int(ONE_SHOT_TTL.total_seconds())
+    try:
+        signed_state = auth_mod.verify_one_shot(state_cookie, max_age=one_shot_age)
+        code_verifier = auth_mod.verify_one_shot(verifier_cookie, max_age=one_shot_age)
+    except BadSignature as exc:
+        raise HTTPException(400, detail="invalid auth state") from exc
+
+    # `secrets.compare_digest` mirrors the precedent in
+    # `_BasicAuthMiddleware` — constant-time string comparison so a
+    # timing attack can't unmask the expected state value.
+    if not secrets.compare_digest(state, signed_state):
+        raise HTTPException(400, detail="invalid auth state")
+
+    try:
+        return_to = _validate_return_to(
+            auth_mod.verify_one_shot(return_to_cookie, max_age=one_shot_age)
+        )
+    except BadSignature:
+        # A missing/tampered return_to cookie isn't fatal — fall back
+        # to the verifier index. The user gets logged in either way.
+        return_to = "/verifier/"
+
+    try:
+        reviewer = await auth_mod.exchange_code(code=code, code_verifier=code_verifier)
+    except httpx.HTTPError as exc:
+        raise HTTPException(503, detail="auth server unavailable") from exc
+    except (JoseError, KeyError, ValueError) as exc:
+        # `KeyError` covers a token response missing `id_token`;
+        # `ValueError` covers any downstream parse error not caught
+        # by the JOSE layer.
+        raise HTTPException(400, detail="invalid id token") from exc
+
+    response = RedirectResponse(return_to, status_code=302)
+    _set_cookie(
+        response,
+        COOKIE_NAME,
+        auth_mod.encode_session(reviewer),
+        max_age=int(SESSION_TTL.total_seconds()),
+        path="/",
+    )
+    # Clear the one-shots so a back-button retry can't replay the code
+    # (which Better Auth would reject anyway, but defense in depth).
+    for k in ("oidc_state", "oidc_verifier", "oidc_return_to"):
+        response.delete_cookie(k, path="/auth")
+    return response
+
+
+@app.post("/auth/logout")
+async def auth_logout() -> Response:
+    """Clear the local session cookie.
+
+    The Better Auth session at api.wxyc.org is unaffected — same
+    behavior Wiki.js has today. Single-sign-out is out of scope until
+    we have a per-session server-side store to revoke.
+    """
+    response = JSONResponse({"ok": True})
+    response.delete_cookie(COOKIE_NAME, path="/")
+    return response
+
+
+@app.get("/auth/me")
+async def auth_me(
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    """Return the currently logged-in reviewer.
+
+    Used by the SPA on page load to render the reviewer's name in the
+    header. 401 when no session — the SPA reads that as "redirect to
+    /auth/login" (the middleware would have done this for HTML
+    requests, but /auth/me is fetched as JSON).
+    """
+    if reviewer is None:
+        raise HTTPException(401, detail="not authenticated")
+    return JSONResponse(dataclasses.asdict(reviewer))
+
+
+# -- existing API routes ---------------------------------------------------
 
 
 @app.get("/api/version")
@@ -239,7 +532,10 @@ def _resolve_status(incoming: str | None, corrections_path: Path) -> str:
 
 
 @app.post("/api/save")
-async def save(request: Request) -> JSONResponse:
+async def save(
+    request: Request,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
     """Persist a verifier UI session to disk and (optionally) `jobs.db`.
 
     Expected body shape:
@@ -262,10 +558,17 @@ async def save(request: Request) -> JSONResponse:
     on-disk `"complete"` is preserved across plain Saves. See
     `_resolve_status` for the table.
 
+    Server-as-authority on `verified_by`: a client-supplied
+    `verified_by` block inside the `verified` payload is discarded —
+    the server writes its own block from the authenticated reviewer's
+    `ReviewerSession`. Without this rule, a malicious or buggy client
+    could spoof another reviewer's identity into the saved file.
+
     If `pdf_path` and `page_number` are present, also calls
-    `JobStore.mark_verified` to record the verification in `jobs.db`.
-    For bundles without a job key (test fixtures), only the files are
-    written and `db_updated` is False in the response.
+    `JobStore.mark_verified` to record the verification in `jobs.db`,
+    including the reviewer's user_id as `reviewer_id`. For bundles
+    without a job key (test fixtures), only the files are written and
+    `db_updated` is False in the response.
     """
     try:
         payload = await request.json()
@@ -305,6 +608,23 @@ async def save(request: Request) -> JSONResponse:
             status_code=400, detail=f"verified payload not a valid PageResult: {exc}"
         ) from exc
 
+    # Server-authority overwrite. Whatever the client put in
+    # `verified.verified_by` is discarded; the authenticated reviewer's
+    # identity replaces it (or `None` when no reviewer is authenticated,
+    # e.g. BasicAuth or no-auth deployments). Pydantic's validation
+    # above runs first, so a malformed client-supplied block returns
+    # 400 before this overwrite ever runs.
+    if reviewer is not None:
+        validated.verified_by = VerifiedBy(
+            user_id=reviewer.user_id,
+            username=reviewer.username,
+            real_name=reviewer.real_name,
+            dj_name=reviewer.dj_name,
+            verified_at=datetime.now(UTC),
+        )
+    else:
+        validated.verified_by = None
+
     VERIFIER_DIR.mkdir(parents=True, exist_ok=True)
     verified_path = VERIFIER_DIR / f"{stem}.verified.json"
     corrections_path = VERIFIER_DIR / f"{stem}.corrections.json"
@@ -327,6 +647,7 @@ async def save(request: Request) -> JSONResponse:
                 page_number=page_number,
                 verified_path=verified_path,
                 corrections_path=corrections_path,
+                reviewer_id=reviewer.user_id if reviewer else None,
             )
 
     # Report paths relative to DATA_ROOT.parent so the UI displays
