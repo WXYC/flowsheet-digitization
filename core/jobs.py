@@ -311,6 +311,7 @@ class JobStore:
         job row exists for the page (test fixtures), so a False return
         is not an error.
         """
+        now = _now()
         async with self._connect() as db:
             cursor = await db.execute(
                 """
@@ -323,11 +324,11 @@ class JobStore:
                 WHERE pdf_path = ? AND page_number = ?
                 """,
                 (
-                    _now(),
+                    now,
                     str(verified_path),
                     str(corrections_path),
                     reviewer_id,
-                    _now(),
+                    now,
                     pdf_path,
                     page_number,
                 ),
