@@ -298,6 +298,29 @@ async def test_auth_login_503_when_env_var_missing(
     assert r.status_code == 503
 
 
+async def test_auth_login_503_when_session_secret_unset(
+    serve_app, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """`build_authorize_url` succeeds but the subsequent `sign_one_shot`
+    calls reach `_session_secret()`, which raises RuntimeError if
+    WXYC_SESSION_SECRET is unset. The /auth/login handler must wrap
+    BOTH the URL build and the cookie-sealing steps so a config
+    rollout that updates WXYC_OIDC_CLIENT_ID and forgets
+    WXYC_SESSION_SECRET still produces 503 (not 500). Regression
+    guard for the earlier shape that only wrapped build_authorize_url.
+    """
+
+    async def fake_authorize() -> tuple[str, str, str]:
+        return ("https://auth.example/oauth2/authorize?fake=1", "state-x", "verifier-x")
+
+    monkeypatch.setattr(auth_mod, "build_authorize_url", fake_authorize)
+    # Now blank WXYC_SESSION_SECRET so sign_one_shot raises RuntimeError.
+    monkeypatch.delenv("WXYC_SESSION_SECRET", raising=False)
+    async with await _client(serve_app.app) as c:
+        r = await c.get("/auth/login", follow_redirects=False)
+    assert r.status_code == 503
+
+
 async def test_auth_callback_503_when_env_var_missing(
     serve_app, monkeypatch: pytest.MonkeyPatch
 ) -> None:
