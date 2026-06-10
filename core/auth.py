@@ -323,11 +323,15 @@ def encode_session(s: ReviewerSession) -> str:
 
 def decode_session(raw: str) -> ReviewerSession | None:
     """Return the signed `ReviewerSession`, or None if the cookie is
-    missing, tampered, expired, or otherwise unparseable.
+    missing, tampered, expired, otherwise unparseable, or signed
+    against a session secret that is no longer configured.
 
     Returns None (rather than raising) so the request-gating middleware
     has one branch — "no valid session, redirect to /auth/login" —
-    instead of needing a try/except on every protected request.
+    instead of needing a try/except on every protected request. The
+    env-unset branch (`RuntimeError` from `_session_secret()`) is
+    deliberately part of the None path: a config-reload bug must
+    redirect, not 500.
     """
     if not raw:
         return None

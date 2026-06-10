@@ -110,10 +110,18 @@ def test_encode_decode_session_round_trips_all_fields() -> None:
 def test_decode_session_returns_none_on_tamper() -> None:
     """A flipped byte in the cookie value verifies as None rather than
     raising — callers treat None as "no session, send to login" and
-    don't need to catch a tamper exception."""
+    don't need to catch a tamper exception.
+
+    Replace the last 4 chars (always inside the HMAC signature segment,
+    since itsdangerous signatures are ~27 chars). A 1-char tamper is
+    technically valid but intermittently flakes — base64url's 27-char
+    signature has 2 padding bits in the last char, so 4-of-64 random
+    last-char replacements decode to the same HMAC bytes; replacing 4
+    chars touches multiple HMAC bytes so verification deterministically
+    fails.
+    """
     signed = encode_session(_make_reviewer())
-    # Flip the last char; signature won't verify.
-    tampered = signed[:-1] + ("X" if signed[-1] != "X" else "Y")
+    tampered = signed[:-4] + "----"
     assert decode_session(tampered) is None
 
 
@@ -154,9 +162,8 @@ def test_invalidate_jwks_cache_clears_only_jwks(
     auth_mod._invalidate_jwks_cache()
     assert auth_mod._jwks is None
     assert auth_mod._metadata == {"jwks_uri": "https://example/jwks"}
-    # Restore so the autouse `_env` teardown doesn't surface a dirty
-    # cache on the next test.
-    auth_mod._reset_metadata_cache()
+    # The autouse `_env` fixture's teardown clears both caches; no
+    # explicit reset needed here.
 
 
 def test_decode_session_returns_none_when_signed_with_different_secret(
@@ -206,9 +213,13 @@ def test_sign_verify_one_shot_round_trips() -> None:
 def test_verify_one_shot_raises_on_tamper() -> None:
     """A tampered one-shot must raise — the callback handler relies on
     this to refuse a forged `oidc_state` even if the attacker knows the
-    payload shape."""
+    payload shape.
+
+    See `test_decode_session_returns_none_on_tamper` for why we replace
+    4 chars rather than 1 (deterministic vs probabilistic tamper).
+    """
     signed = sign_one_shot("verifier-token")
-    tampered = signed[:-1] + ("X" if signed[-1] != "X" else "Y")
+    tampered = signed[:-4] + "----"
     with pytest.raises(BadSignature):
         verify_one_shot(tampered, max_age=int(ONE_SHOT_TTL.total_seconds()))
 
