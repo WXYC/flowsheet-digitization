@@ -25,6 +25,72 @@
 
 const SUPPORTED_SCHEMA_VERSION = 2;
 
+// ---- auth: /auth/me + 401 → /auth/login redirect ------------------------
+//
+// When the verifier is deployed with OIDC enabled, every /api/* and
+// /verifier/* request goes through a session-cookie middleware. A
+// missing or expired cookie produces:
+//   * 302 → /auth/login?return_to=...     (for HTML nav)
+//   * 401 JSON                              (for fetch() requests with
+//                                             Accept: application/json)
+//
+// `authFetch` is the wrapper the SPA uses for every same-origin API
+// call. On 401 it sends the user to /auth/login with the current path
+// preserved as return_to, so after login they land back on the same
+// page they were trying to use.
+//
+// When the deployment has NO auth gate (local-dev default), /auth/me
+// returns 404 (no route installed). authFetch is a no-op around fetch
+// in that case.
+
+function redirectToLogin() {
+  const returnTo = location.pathname + location.search;
+  location.href = "/auth/login?return_to=" + encodeURIComponent(returnTo);
+}
+
+async function authFetch(input, init = {}) {
+  // Mark the request as JSON so the middleware returns 401 JSON
+  // instead of 302 — otherwise fetch() either follows the redirect
+  // silently (in which case the SPA can't react) or treats it as an
+  // opaque error.
+  const headers = new Headers(init.headers || {});
+  if (!headers.has("Accept")) headers.set("Accept", "application/json");
+  const response = await fetch(input, { ...init, headers });
+  if (response.status === 401) {
+    redirectToLogin();
+    // Throw so the calling code's catch surfaces a clear error rather
+    // than trying to parse an empty body.
+    throw new Error("authentication required");
+  }
+  return response;
+}
+
+async function renderReviewerName() {
+  // Fetch the current reviewer on load and show their name in the
+  // header. A 401 means the deployment has the gate enabled but our
+  // cookie is gone — let the middleware redirect us on the next API
+  // call rather than triggering an extra round-trip here. A 404 means
+  // the deployment has no auth, so nothing to render.
+  try {
+    const r = await fetch("/auth/me", {
+      headers: { "Accept": "application/json" },
+    });
+    if (!r.ok) return;
+    const me = await r.json();
+    const label = me.real_name || me.dj_name || me.username || me.email || "Signed in";
+    for (const id of ["reviewer-name", "reviewer-name-index"]) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      el.hidden = false;
+      el.textContent = label;
+      el.title = me.email || "";
+    }
+  } catch {
+    // Network error — silently leave the chip hidden. The next save
+    // attempt will surface the failure via authFetch.
+  }
+}
+
 const state = {
   bundle: null,            // mutable working copy
   originalBundle: null,    // immutable snapshot for diffing
@@ -194,7 +260,7 @@ function finishInit() {
 async function fetchBundleList() {
   // No-store: status changes on every save and the index list / pill
   // must reflect that immediately. Tiny payload, no reason to cache.
-  const r = await fetch("/api/bundles", { cache: "no-store" });
+  const r = await authFetch("/api/bundles", { cache: "no-store" });
   if (!r.ok) throw new Error(`/api/bundles ${r.status}`);
   const data = await r.json();
   state.bundleList = data.bundles || [];
@@ -614,7 +680,7 @@ async function saveAll(requestedStatus = null) {
   if (requestedStatus) body.status = requestedStatus;
 
   try {
-    const r = await fetch("/api/save", {
+    const r = await authFetch("/api/save", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -666,7 +732,7 @@ const toggleComplete = () =>
 // ---- artist/track lookup (request-o-matic via /api/lookup proxy) --------
 
 async function lookupOne(message) {
-  const r = await fetch("/api/lookup", {
+  const r = await authFetch("/api/lookup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message }),
@@ -1112,6 +1178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   installKeyboardShortcuts();
   // Fire-and-forget — must not block bundle loading.
   startVersionWatch().catch(() => {});
+  renderReviewerName().catch(() => {});
   const params = new URLSearchParams(location.search);
   const hasBundle = !!params.get("bundle");
   if (!hasBundle) {

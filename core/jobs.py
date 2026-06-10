@@ -53,6 +53,7 @@ class Job:
     verified_at: str | None
     verified_path: str | None
     corrections_path: str | None
+    reviewer_id: str | None
     created_at: str
     updated_at: str
 
@@ -73,6 +74,7 @@ class Job:
             verified_at=row["verified_at"] if "verified_at" in keys else None,
             verified_path=row["verified_path"] if "verified_path" in keys else None,
             corrections_path=(row["corrections_path"] if "corrections_path" in keys else None),
+            reviewer_id=row["reviewer_id"] if "reviewer_id" in keys else None,
             created_at=row["created_at"],
             updated_at=row["updated_at"],
         )
@@ -91,6 +93,7 @@ CREATE TABLE IF NOT EXISTS jobs (
     verified_at       TEXT,
     verified_path     TEXT,
     corrections_path  TEXT,
+    reviewer_id       TEXT,
     created_at        TEXT NOT NULL,
     updated_at        TEXT NOT NULL,
     PRIMARY KEY (pdf_path, page_number)
@@ -106,6 +109,11 @@ _LATE_COLUMNS: tuple[tuple[str, str], ...] = (
     ("verified_at", "TEXT"),
     ("verified_path", "TEXT"),
     ("corrections_path", "TEXT"),
+    # Denormalized OIDC user_id of the volunteer who last verified the
+    # page. Duplicates the user_id in `verified_by.user_id` inside the
+    # verified.json file, but lets per-reviewer queries run without
+    # parsing every JSON on disk.
+    ("reviewer_id", "TEXT"),
 )
 
 # Indexes that depend on late-added columns and therefore must be created
@@ -283,6 +291,7 @@ class JobStore:
         *,
         verified_path: Path,
         corrections_path: Path,
+        reviewer_id: str | None = None,
     ) -> bool:
         """Record that a page has been hand-verified via the verifier UI.
 
@@ -291,6 +300,11 @@ class JobStore:
         re-extracting a verified page resets the result but should NOT
         clear the verification record by default — that's a separate
         decision a human makes via `retry`).
+
+        `reviewer_id` is the OIDC user_id of the volunteer who saved the
+        page (`ReviewerSession.user_id`). Optional so the BasicAuth and
+        no-auth deployments — and the existing test fixtures — keep
+        compiling without a reviewer to credit.
 
         Returns True if a job row matched, False otherwise. Callers
         (e.g. the verifier server) may want to write files even when no
@@ -304,6 +318,7 @@ class JobStore:
                 SET verified_at = ?,
                     verified_path = ?,
                     corrections_path = ?,
+                    reviewer_id = ?,
                     updated_at = ?
                 WHERE pdf_path = ? AND page_number = ?
                 """,
@@ -311,6 +326,7 @@ class JobStore:
                     _now(),
                     str(verified_path),
                     str(corrections_path),
+                    reviewer_id,
                     _now(),
                     pdf_path,
                     page_number,
