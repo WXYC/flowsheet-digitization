@@ -38,7 +38,7 @@ from typing import Any
 import httpx
 import pytest
 from authlib.jose import JsonWebKey, JsonWebToken
-from authlib.jose.errors import JoseError
+from authlib.jose.errors import JoseError, MissingClaimError
 from itsdangerous import BadSignature
 
 import core.auth as auth_mod
@@ -122,6 +122,41 @@ def test_decode_session_returns_none_on_garbage() -> None:
     assert decode_session("") is None
     assert decode_session("not-a-real-cookie") is None
     assert decode_session("a.b.c") is None
+
+
+def test_decode_session_returns_none_when_session_secret_unset(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A config-reload bug that unsets WXYC_SESSION_SECRET mid-process
+    must not 500 every gated request — the middleware contract is
+    'None → redirect to /auth/login'. Pins the RuntimeError catch in
+    decode_session so a future refactor that drops it is caught by a
+    test rather than by users.
+    """
+    signed = encode_session(_make_reviewer())
+    monkeypatch.delenv("WXYC_SESSION_SECRET", raising=False)
+    assert decode_session(signed) is None
+
+
+def test_invalidate_jwks_cache_clears_only_jwks(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """`_invalidate_jwks_cache` must drop `_jwks` without touching
+    `_metadata`. Pins the cache-invalidation mechanism the rotation
+    retry path relies on — the rotation integration test monkeypatches
+    `_load_jwks` so it doesn't actually exercise the cache state; this
+    test does.
+    """
+    # Seed the module-level cache directly so we don't depend on the
+    # network or on _load_*.
+    auth_mod._metadata = {"jwks_uri": "https://example/jwks"}
+    auth_mod._jwks = {"keys": [{"kid": "old"}]}
+    auth_mod._invalidate_jwks_cache()
+    assert auth_mod._jwks is None
+    assert auth_mod._metadata == {"jwks_uri": "https://example/jwks"}
+    # Restore so the autouse `_env` teardown doesn't surface a dirty
+    # cache on the next test.
+    auth_mod._reset_metadata_cache()
 
 
 def test_decode_session_returns_none_when_signed_with_different_secret(
@@ -503,7 +538,7 @@ async def test_exchange_code_raises_value_error_on_non_json_body(
         await exchange_code(code="auth-code", code_verifier="verifier")
 
 
-async def test_exchange_code_raises_jose_error_when_sub_missing(
+async def test_exchange_code_raises_missing_claim_when_sub_absent(
     monkeypatch: pytest.MonkeyPatch,
     stub_metadata: dict[str, Any],
     signing_key: Any,
@@ -511,6 +546,12 @@ async def test_exchange_code_raises_jose_error_when_sub_missing(
     """An id_token missing the `sub` claim is rejected by authlib's
     essential-claim check (we declared `sub` essential in claims_options)
     rather than escaping as a raw `KeyError` at field-access time.
+
+    Assert on `MissingClaimError` specifically rather than the broader
+    `JoseError`, so a regression that flips `sub` out of `claims_options`
+    (which would let the token reach the field access and raise a
+    bare KeyError → would not be a JoseError at all) is distinguishable
+    from a signature/aud/iss failure.
     """
     # Mint a token with `sub` removed. `_mint_id_token` overrides only
     # accept replacements, so build the payload manually.
@@ -526,8 +567,52 @@ async def test_exchange_code_raises_jose_error_when_sub_missing(
     header = {"alg": "RS256", "kid": signing_key.kid}
     no_sub_token = JsonWebToken(["RS256"]).encode(header, payload, signing_key).decode("utf-8")
     _install_token_endpoint(monkeypatch, no_sub_token)
-    with pytest.raises(JoseError):
+    with pytest.raises(MissingClaimError):
         await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_preserves_empty_string_username(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """A claim that's explicitly an empty string is preserved verbatim
+    (distinguishes 'present-but-empty' from 'absent' / 'null'). Pins
+    the docstring contract that the falsy-coalesce form was changed to
+    avoid."""
+    token = _mint_id_token(signing_key, preferred_username="")
+    _install_token_endpoint(monkeypatch, token)
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.username == ""
+
+
+async def test_exchange_code_treats_null_claim_as_absent(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """A claim emitted as JSON null becomes Python None on ReviewerSession,
+    not the literal string 'None'. Pins the iter-2 fix to `_optional_str`
+    / `_first_present` — without this, a `null` value would short-circuit
+    the fallback chain and inject the four-character string 'None' into
+    a field that's meant to be Optional[str]."""
+    token = _mint_id_token(
+        signing_key,
+        email=None,
+        preferred_username=None,
+        username="djradio",  # fallback should be used
+        dj_name=None,
+        role=None,
+    )
+    _install_token_endpoint(monkeypatch, token)
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.email is None
+    # _first_present should have skipped the null preferred_username and
+    # picked up username — the prior buggy version returned the string
+    # 'None' here.
+    assert reviewer.username == "djradio"
+    assert reviewer.dj_name is None
+    assert reviewer.role is None
 
 
 async def test_exchange_code_handles_jwks_rotation(
