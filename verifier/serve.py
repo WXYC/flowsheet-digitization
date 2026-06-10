@@ -350,43 +350,51 @@ async def auth_login(return_to: str = "/verifier/") -> Response:
     server. A transient auth-server failure surfaces as 503.
     """
     return_to = _validate_return_to(return_to)
+    # Wrap the whole assembly (build_authorize_url + the three
+    # sign_one_shot calls) in one try/except. The sign_one_shot calls
+    # reach `_session_secret()` via `_one_shot_signer()`; a missing
+    # WXYC_SESSION_SECRET is a separate failure mode from the OIDC
+    # env vars that `build_authorize_url` touches, so a try wrapping
+    # only build_authorize_url would let RuntimeError leak as 500 here.
     try:
         url, state, code_verifier = await auth_mod.build_authorize_url()
+        response = RedirectResponse(url, status_code=302)
+        one_shot_age = int(ONE_SHOT_TTL.total_seconds())
+        # path="/auth" limits the one-shot cookies to the OIDC dance —
+        # they aren't sent on /verifier or /api/* requests.
+        _set_cookie(
+            response,
+            "oidc_state",
+            auth_mod.sign_one_shot(state),
+            max_age=one_shot_age,
+            path="/auth",
+        )
+        _set_cookie(
+            response,
+            "oidc_verifier",
+            auth_mod.sign_one_shot(code_verifier),
+            max_age=one_shot_age,
+            path="/auth",
+        )
+        _set_cookie(
+            response,
+            "oidc_return_to",
+            auth_mod.sign_one_shot(return_to),
+            max_age=one_shot_age,
+            path="/auth",
+        )
+        return response
     except httpx.HTTPError as exc:
         raise HTTPException(503, detail="auth server unavailable") from exc
     except RuntimeError as exc:
         # `RuntimeError` propagates from the env-var accessors in
-        # `core.auth` when a required var (WXYC_AUTH_ISSUER, etc.) is
-        # unset. `core.auth.decode_session` already catches this for
+        # `core.auth` when a required var (WXYC_AUTH_ISSUER,
+        # WXYC_OIDC_CLIENT_ID, WXYC_SESSION_SECRET, FLOWSHEET_PUBLIC_URL)
+        # is unset. `core.auth.decode_session` already catches this for
         # the request-gating path; mirror the protection here so a
-        # misconfigured deploy with WXYC_OIDC_CLIENT_ID set but
-        # WXYC_AUTH_ISSUER missing returns 503 (matching the auth-
-        # server-unavailable shape) rather than 500 with the env-var
-        # name in the traceback.
+        # misconfigured deploy returns 503 ('auth not configured')
+        # rather than 500 with the env-var name in the traceback.
         raise HTTPException(503, detail="auth not configured") from exc
-
-    response = RedirectResponse(url, status_code=302)
-    one_shot_age = int(ONE_SHOT_TTL.total_seconds())
-    # path="/auth" limits the one-shot cookies to the OIDC dance —
-    # they aren't sent on /verifier or /api/* requests.
-    _set_cookie(
-        response, "oidc_state", auth_mod.sign_one_shot(state), max_age=one_shot_age, path="/auth"
-    )
-    _set_cookie(
-        response,
-        "oidc_verifier",
-        auth_mod.sign_one_shot(code_verifier),
-        max_age=one_shot_age,
-        path="/auth",
-    )
-    _set_cookie(
-        response,
-        "oidc_return_to",
-        auth_mod.sign_one_shot(return_to),
-        max_age=one_shot_age,
-        path="/auth",
-    )
-    return response
 
 
 @app.get("/auth/callback")
@@ -437,6 +445,13 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
         # A missing/tampered return_to cookie isn't fatal — fall back
         # to the verifier index. The user gets logged in either way.
         return_to = "/verifier/"
+    except RuntimeError as exc:
+        # Same protection as the sibling verify_one_shot block above:
+        # env-var unset (e.g., a config-blank-mid-call between the two
+        # verify_one_shot calls) surfaces as RuntimeError; map to 503
+        # rather than 500. Without this catch, the previous block's
+        # RuntimeError protection would feel inconsistent.
+        raise HTTPException(503, detail="auth not configured") from exc
 
     try:
         reviewer = await auth_mod.exchange_code(code=code, code_verifier=code_verifier)
