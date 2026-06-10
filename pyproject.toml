@@ -26,6 +26,13 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn>=0.30",
     "httpx>=0.27",
+    # OIDC client (against api.wxyc.org/auth). authlib handles discovery,
+    # PKCE, token exchange, and id_token signature + claim validation as
+    # one library. itsdangerous powers the signed session cookie and the
+    # signed one-shot cookies (state / code_verifier / return_to) the
+    # OIDC redirect dance relies on.
+    "authlib>=1.3",
+    "itsdangerous>=2.2",
 ]
 
 [project.optional-dependencies]
@@ -83,6 +90,13 @@ disallow_incomplete_defs = true
 [[tool.mypy.overrides]]
 module = "tests.*"
 disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+# authlib ships no type stubs and `types-Authlib` is incomplete. Only
+# core/auth.py touches it and the contract is small (JWT/JWS/JWKS).
+# Suppressing missing-imports beats untyped-stub noise on every CI run.
+module = "authlib.*"
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
