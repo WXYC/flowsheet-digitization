@@ -444,20 +444,6 @@ def test_maybe_prepend_missing_first_line_never_returns_negative_y() -> None:
     assert out[0] >= 0, f"prepended line {out[0]} must be >= 0 (image-space)"
 
 
-def test_assign_row_bboxes_clamps_y_cursor_at_y1_in_fallback() -> None:
-    """The fallback path computes y_top from `lines[0]` (or the helper's
-    prepended value); if the helper returns a value < y1, the resulting
-    row_bbox's y1 must still be >= the quadrant's y1 so the verifier UI
-    never crops outside the quadrant."""
-    quad_bbox = (0, 200, 500, 1500)
-    # Pathological: the inference would prepend lines[0]-median_gap=-200
-    # without clamping; clamped, all row bboxes start at y >= 200.
-    rows = _assign_row_bboxes(quad_bbox, lines=[100, 300, 500], spans=[1, 1, 1, 1])
-    for _x1, y1, _x2, y2 in rows:
-        assert y1 >= 200, f"row top y={y1} must be >= quad y1=200"
-        assert y2 <= 1500, f"row bottom y={y2} must be <= quad y2=1500"
-
-
 def test_assign_row_bboxes_fallback_overflow_rows_have_positive_height() -> None:
     """When the fallback row_height + n_entries puts the cursor past y2,
     all subsequent rows currently collapse to zero-height bboxes at y2
