@@ -155,11 +155,11 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
             result.append((entry, 2))
         else:
             result.append((entry, 1))
-    # Reindex row_index 0..n-1 to close gaps left by absorbed continuations.
-    # The verifier UI's add-row handler assigns row_index = entries.length,
-    # which collides with a preserved predecessor's row_index when the
-    # sequence is sparse (entries.length <= max(row_index)).
-    return [(e.model_copy(update={"row_index": i}), span) for i, (e, span) in enumerate(result)]
+    # row_index is preserved (sparse after continuation absorption / blank
+    # drop) so any pre-existing verified.json overlay still joins on the
+    # original index. The verifier UI mints add-row indices off the running
+    # max — see the add-row handler in verifier/app.js.
+    return result
 
 
 # A "normal" first-row-line sits about one median row gap below the

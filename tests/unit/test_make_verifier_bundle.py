@@ -381,13 +381,15 @@ def test_merge_with_spans_drops_crossed_out_before_continuation_merge() -> None:
     assert merged.notes == "double_height"
 
 
-def test_merge_with_spans_reindexes_to_close_gaps_after_merge() -> None:
-    """After absorbing continuation rows into their predecessors, the
-    remaining entries must have contiguous row_index values 0..n-1. The
-    verifier UI's add-row handler (verifier/app.js) assigns
-    `row_index = quad.entries.length` and assumes per-quadrant uniqueness;
-    a sparse row_index (e.g. [0,1,3,4]) lets the UI mint a new row whose
-    row_index collides with an existing entry."""
+def test_merge_with_spans_preserves_row_index_through_continuation_absorption() -> None:
+    """The predecessor keeps its original `row_index` after absorbing a
+    `continuation` row. The continuation row's index is dropped from the
+    merged view, leaving the surviving sequence sparse. This is load-bearing
+    for backward compatibility: `verifier/app.js`'s `applyVerifiedToBundle`
+    joins on `row_index`, so any pre-existing `.verified.json` overlay
+    relies on the bundle's row_index values being the same as when the
+    verified.json was saved. Reindexing would silently misalign bboxes for
+    every row downstream of an absorbed continuation."""
     entries = [
         Entry(row_index=0, raw_text="The Standells - Sometimes Good Guys", confidence="high"),
         Entry(
@@ -401,9 +403,8 @@ def test_merge_with_spans_reindexes_to_close_gaps_after_merge() -> None:
     ]
     result = _merge_with_spans(entries)
     assert len(result) == 3
-    assert [e.row_index for e, _ in result] == [0, 1, 2], (
-        "row_index must be contiguous 0..n-1 after the merge so the verifier UI's "
-        "add-row handler can mint a unique new row_index"
+    assert [e.row_index for e, _ in result] == [0, 2, 3], (
+        "predecessor's row_index is preserved through continuation absorption"
     )
 
 
@@ -422,7 +423,10 @@ def test_merge_with_spans_drops_empty_raw_text_with_null_notes() -> None:
     result = _merge_with_spans(entries)
     assert len(result) == 2
     assert [e.raw_text for e, _ in result] == ["Pixies - Debaser", "Sonic Youth - Sugar Kane"]
-    assert [e.row_index for e, _ in result] == [0, 1], "row_index must reindex after drop"
+    assert [e.row_index for e, _ in result] == [0, 2], (
+        "row_index is preserved (sparse after drop) so a pre-existing "
+        ".verified.json overlay still joins on the original index"
+    )
 
 
 def test_maybe_prepend_missing_first_line_never_returns_negative_y() -> None:
