@@ -127,6 +127,14 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
             if raw_entry.notes == "crossed_out"
             else raw_entry
         )
+        # Drop structurally-blank rows (raw_text empty / whitespace-only) with
+        # no schema-relevant notes tag. These render as empty input fields in
+        # the verifier UI with no visual cue, and `scripts.derive_truth`
+        # silently drops them downstream, breaking row-count parity. A blank
+        # row that's tagged `illegible` is kept — it's information (the model
+        # saw something it couldn't read).
+        if not entry.raw_text.strip() and entry.notes is None:
+            continue
         if entry.notes == "continuation" and result:
             prior, prior_span = result[-1]
             joined = f"{prior.raw_text.rstrip()} {entry.raw_text.lstrip()}".strip()
@@ -147,7 +155,11 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
             result.append((entry, 2))
         else:
             result.append((entry, 1))
-    return result
+    # Reindex row_index 0..n-1 to close gaps left by absorbed continuations.
+    # The verifier UI's add-row handler assigns row_index = entries.length,
+    # which collides with a preserved predecessor's row_index when the
+    # sequence is sparse (entries.length <= max(row_index)).
+    return [(e.model_copy(update={"row_index": i}), span) for i, (e, span) in enumerate(result)]
 
 
 # A "normal" first-row-line sits about one median row gap below the
@@ -189,7 +201,12 @@ def _maybe_prepend_missing_first_line(quad_bbox: BBox, lines: list[int]) -> list
         return lines
     ratio = (lines[0] - y1) / median_gap
     if ratio < _HOUR_JOCK_CELL_LOW_RATIO or ratio > _HOUR_JOCK_CELL_HIGH_RATIO:
-        return [lines[0] - median_gap, *lines]
+        # The inferred row 0 top may legitimately dip slightly above y1
+        # (handwriting that bled into the header band) — keep that. But
+        # never let it go below 0 in image space; a negative-y bbox makes
+        # the verifier UI's ctx.drawImage clip outside the page, showing
+        # whitespace instead of the actual row.
+        return [max(0, lines[0] - median_gap), *lines]
     return lines
 
 
@@ -252,6 +269,17 @@ def _assign_row_bboxes(
         # still produce visible (if approximate) crops.
         y_top = y1
         row_height = max(1, (y2 - y1) // n_entries)
+
+    total_height_needed = sum(spans) * row_height
+    available = y2 - y_top
+    if total_height_needed > available:
+        # Detected `row_height` (from line gaps) overflows the remaining
+        # body space; the model emitted more rows than the printed grid
+        # can hold at that row_height. Squeeze every span proportionally
+        # so each entry still gets a non-zero bbox instead of collapsing
+        # to a zero-height strip at y2 — invisible rows in the verifier
+        # UI defeat per-row verification.
+        row_height = max(1, available // sum(spans))
 
     rows = []
     y_cursor = y_top
@@ -364,7 +392,28 @@ def main(argv: list[str] | None = None) -> int:
             "data/verifier/<image-stem>.bundle.json relative to the cwd."
         ),
     )
+    parser.add_argument(
+        "--pdf-path",
+        type=str,
+        default=None,
+        help=(
+            "PDF path (relative to scans/) for the job key. Required with "
+            "--page-number. When set, overrides the result-path inference and "
+            "lets one-shot rebake scripts produce bundles with corpus-unique "
+            "stem / pdf_path / page_number even when the result file isn't "
+            "under data/results/<rel>/page-NN.json."
+        ),
+    )
+    parser.add_argument(
+        "--page-number",
+        type=int,
+        default=None,
+        help="Page number for the job key. Required with --pdf-path.",
+    )
     args = parser.parse_args(argv)
+
+    if (args.pdf_path is None) != (args.page_number is None):
+        parser.error("--pdf-path and --page-number must be passed together")
 
     if not args.result.is_file():
         print(f"result not found: {args.result}", file=sys.stderr)
@@ -374,7 +423,10 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     page = PageResult.model_validate_json(args.result.read_text())
-    job_key = _parse_job_key_from_result_path(args.result)
+    if args.pdf_path is not None and args.page_number is not None:
+        job_key: tuple[str, int] | None = (args.pdf_path, args.page_number)
+    else:
+        job_key = _parse_job_key_from_result_path(args.result)
     if args.out is not None:
         out_path = args.out
     elif job_key is not None:

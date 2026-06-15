@@ -248,19 +248,20 @@ def test_assign_row_bboxes_drops_misattributed_lines_before_quad_top() -> None:
     assert rows[3] == (0, 2509, 500, 2585)
 
 
-def test_assign_row_bboxes_fallback_clamps_to_quadrant_bottom() -> None:
-    """If entries extend past the quadrant body bottom, the last bbox is
-    clamped — better a short crop than a crop that overshoots the page."""
+def test_assign_row_bboxes_fallback_squeezes_when_lines_undercover() -> None:
+    """If detected row_height * n_entries would overflow the quadrant
+    body, squeeze row_height so every entry gets a positive-height bbox.
+    Zero-height bboxes are invisible in the verifier UI and defeat
+    per-row verification, so any overflow is recomputed as an even
+    division of the remaining space."""
     quad_bbox = (0, 100, 500, 400)
     rows = _assign_row_bboxes(quad_bbox, lines=[150, 250], spans=[1, 1, 1, 1])
-    # Median gap 100. Entries 0, 1, 2 fit (150-250, 250-350, 350-400).
-    # Entry 3 would start at 400 = y2: clamped to a zero-height bbox at y2.
-    assert rows == [
-        (0, 150, 500, 250),
-        (0, 250, 500, 350),
-        (0, 350, 500, 400),
-        (0, 400, 500, 400),
-    ]
+    # Detected row_height = 100 but 4 entries × 100 = 400 > body height 250.
+    # Squeezed row_height = 250 // 4 = 62. Each entry gets a 62px-tall strip.
+    assert all(y2 > y1 for _, y1, _, y2 in rows), "no zero-height bboxes allowed"
+    assert rows[0][1] == 150  # first row anchored at y_top
+    # Final row should end at or before quad_bbox.y2.
+    assert rows[-1][3] <= 400
 
 
 def test_assign_row_bboxes_returns_empty_for_zero_entries() -> None:
@@ -378,6 +379,109 @@ def test_merge_with_spans_drops_crossed_out_before_continuation_merge() -> None:
     # The merged predecessor's tag should be `double_height` from the merge
     # rule, NOT `crossed_out` (which we just stripped).
     assert merged.notes == "double_height"
+
+
+def test_merge_with_spans_reindexes_to_close_gaps_after_merge() -> None:
+    """After absorbing continuation rows into their predecessors, the
+    remaining entries must have contiguous row_index values 0..n-1. The
+    verifier UI's add-row handler (verifier/app.js) assigns
+    `row_index = quad.entries.length` and assumes per-quadrant uniqueness;
+    a sparse row_index (e.g. [0,1,3,4]) lets the UI mint a new row whose
+    row_index collides with an existing entry."""
+    entries = [
+        Entry(row_index=0, raw_text="The Standells - Sometimes Good Guys", confidence="high"),
+        Entry(
+            row_index=1,
+            raw_text="Don't Wear White",
+            confidence="medium",
+            notes="continuation",
+        ),
+        Entry(row_index=2, raw_text="The Lovedolls - Pearls at Swine", confidence="high"),
+        Entry(row_index=3, raw_text="Pavement - Box Elder", confidence="high"),
+    ]
+    result = _merge_with_spans(entries)
+    assert len(result) == 3
+    assert [e.row_index for e, _ in result] == [0, 1, 2], (
+        "row_index must be contiguous 0..n-1 after the merge so the verifier UI's "
+        "add-row handler can mint a unique new row_index"
+    )
+
+
+def test_merge_with_spans_drops_empty_raw_text_with_null_notes() -> None:
+    """Gemini occasionally emits a phantom row with raw_text='', confidence='low',
+    and notes=None — a structurally-blank entry the model couldn't classify as
+    illegible/continuation/double_height/crossed_out. Such rows render as empty
+    input fields in the verifier UI with no visual cue, and `scripts.derive_truth`
+    silently drops them, breaking row-count parity. Drop them at bake time."""
+    entries = [
+        Entry(row_index=0, raw_text="Pixies - Debaser", confidence="high"),
+        Entry(row_index=1, raw_text="", confidence="low"),  # phantom blank
+        Entry(row_index=2, raw_text="Sonic Youth - Sugar Kane", confidence="high"),
+        Entry(row_index=3, raw_text="   ", confidence="low"),  # whitespace-only
+    ]
+    result = _merge_with_spans(entries)
+    assert len(result) == 2
+    assert [e.raw_text for e, _ in result] == ["Pixies - Debaser", "Sonic Youth - Sugar Kane"]
+    assert [e.row_index for e, _ in result] == [0, 1], "row_index must reindex after drop"
+
+
+def test_maybe_prepend_missing_first_line_never_returns_negative_y() -> None:
+    """The prepended `lines[0] - median_gap` can go negative when the
+    detected median_gap is larger than `lines[0]` itself (page header
+    layout mis-detection). A negative y in the first row's bbox makes
+    `ctx.drawImage` in the verifier UI clip outside the image, showing
+    whitespace instead of the row. Must clamp to image-space minimum 0."""
+    from scripts.make_verifier_bundle import _maybe_prepend_missing_first_line
+
+    # quad body at y1=10; lines[0]=20 (gap=10), median_gap=200 → prepended=-180.
+    quad_bbox = (0, 10, 500, 1500)
+    lines = [20, 220, 420, 620]
+    out = _maybe_prepend_missing_first_line(quad_bbox, lines)
+    assert out[0] >= 0, f"prepended line {out[0]} must be >= 0 (image-space)"
+
+
+def test_assign_row_bboxes_clamps_y_cursor_at_y1_in_fallback() -> None:
+    """The fallback path computes y_top from `lines[0]` (or the helper's
+    prepended value); if the helper returns a value < y1, the resulting
+    row_bbox's y1 must still be >= the quadrant's y1 so the verifier UI
+    never crops outside the quadrant."""
+    quad_bbox = (0, 200, 500, 1500)
+    # Pathological: the inference would prepend lines[0]-median_gap=-200
+    # without clamping; clamped, all row bboxes start at y >= 200.
+    rows = _assign_row_bboxes(quad_bbox, lines=[100, 300, 500], spans=[1, 1, 1, 1])
+    for _x1, y1, _x2, y2 in rows:
+        assert y1 >= 200, f"row top y={y1} must be >= quad y1=200"
+        assert y2 <= 1500, f"row bottom y={y2} must be <= quad y2=1500"
+
+
+def test_assign_row_bboxes_fallback_overflow_rows_have_positive_height() -> None:
+    """When the fallback row_height + n_entries puts the cursor past y2,
+    all subsequent rows currently collapse to zero-height bboxes at y2
+    (y_cursor == y_end == y2). The fix: a zero-height row is invisible in
+    the verifier UI; better to either clamp the height down OR drop the
+    overflow rows. This test asserts the new contract: no row in a
+    returned bbox list has y_end == y_start (i.e., no zero-height bboxes)."""
+    quad_bbox = (0, 200, 500, 600)  # height 400
+    # row_height from lines = 200; 5 entries needs 5 * 200 = 1000px, but
+    # the body is only 400 tall — overflow at entry 3.
+    rows = _assign_row_bboxes(quad_bbox, lines=[200, 400, 600], spans=[1, 1, 1, 1, 1])
+    for _x1, y1, _x2, y2 in rows:
+        assert y2 > y1, f"row bbox must have positive height; got y1={y1}, y2={y2}"
+
+
+def test_merge_with_spans_keeps_empty_raw_text_when_tagged_illegible() -> None:
+    """An illegible-tagged row with raw_text='' is information: the model
+    saw something but couldn't read it. The verifier UI surfaces it as a
+    flagged row for the volunteer to attempt manually. Do not drop it."""
+    entries = [
+        Entry(row_index=0, raw_text="Pixies - Debaser", confidence="high"),
+        Entry(row_index=1, raw_text="", confidence="low", notes="illegible"),
+        Entry(row_index=2, raw_text="Sonic Youth - Sugar Kane", confidence="high"),
+    ]
+    result = _merge_with_spans(entries)
+    assert len(result) == 3
+    assert result[1][0].notes == "illegible"
+    assert result[1][0].raw_text == ""
 
 
 # -- make_bundle ------------------------------------------------------------
@@ -558,6 +662,90 @@ def test_main_validates_bundle_against_page_result_shape(tmp_path: Path) -> None
     PageResult.model_validate(bundle)
 
 
+def test_main_explicit_pdf_path_and_page_number_flags(tmp_path: Path) -> None:
+    """When the result path doesn't follow the canonical
+    `data/results/<rel>/page-NN.json` layout (one-shot rebake scripts,
+    test fixtures, ad-hoc dumps), `--pdf-path` and `--page-number` flags
+    let the caller supply the job key explicitly so the baked bundle
+    still carries corpus-unique `stem`, `pdf_path`, and `page_number`."""
+    result_path = tmp_path / "result.json"  # NOT a results/-layout path
+    image_path = _white_page(tmp_path)
+    _write_minimal_result(result_path)
+
+    out_path = tmp_path / "out.bundle.json"
+    rc = main(
+        [
+            str(result_path),
+            str(image_path),
+            "--out",
+            str(out_path),
+            "--pdf-path",
+            "1990/April 1990/1990-04apr0106.pdf",
+            "--page-number",
+            "25",
+        ]
+    )
+    assert rc == 0
+    bundle = json.loads(out_path.read_text())
+    assert bundle["pdf_path"] == "1990/April 1990/1990-04apr0106.pdf"
+    assert bundle["page_number"] == 25
+    assert bundle["stem"] == "1990-04apr0106-page25"
+
+
+def test_main_explicit_pdf_path_overrides_path_inference(tmp_path: Path) -> None:
+    """If the result path happens to follow the canonical layout AND the
+    caller passes explicit flags, the explicit values win — useful when
+    re-keying an existing extraction."""
+    results_dir = tmp_path / "results" / "1990" / "April 1990" / "1990-04apr0106"
+    results_dir.mkdir(parents=True)
+    result_path = results_dir / "page-25.json"
+    image_path = _white_page(tmp_path)
+    _write_minimal_result(result_path)
+
+    out_path = tmp_path / "out.bundle.json"
+    rc = main(
+        [
+            str(result_path),
+            str(image_path),
+            "--out",
+            str(out_path),
+            "--pdf-path",
+            "1990/April 1990/1990-04apr0712.pdf",
+            "--page-number",
+            "7",
+        ]
+    )
+    assert rc == 0
+    bundle = json.loads(out_path.read_text())
+    assert bundle["pdf_path"] == "1990/April 1990/1990-04apr0712.pdf"
+    assert bundle["page_number"] == 7
+    assert bundle["stem"] == "1990-04apr0712-page07"
+
+
+def test_main_requires_both_flags_or_neither(tmp_path: Path) -> None:
+    """`--pdf-path` and `--page-number` form a job key together. Passing
+    one without the other is ambiguous: silently treating it as `None`
+    on the missing side would silently fall back to path-parsing and
+    confuse the caller. argparse exits with code 2 on bad usage."""
+    result_path = tmp_path / "result.json"
+    image_path = _white_page(tmp_path)
+    _write_minimal_result(result_path)
+    out_path = tmp_path / "out.bundle.json"
+
+    # Only --pdf-path: should fail
+    with pytest.raises(SystemExit):
+        main(
+            [
+                str(result_path),
+                str(image_path),
+                "--out",
+                str(out_path),
+                "--pdf-path",
+                "1990/foo.pdf",
+            ]
+        )
+
+
 # -- _parse_job_key_from_result_path ----------------------------------------
 
 
@@ -602,14 +790,19 @@ def test_main_returns_nonzero_when_inputs_missing(tmp_path: Path) -> None:
 
 
 @pytest.mark.parametrize(
-    ("entry_text", "expected_bbox_count"),
+    ("entry_text", "notes", "expected_bbox_count"),
     [
-        ("Juana Molina - la paradoja", 1),
-        ("", 1),  # blank entries still get a bbox (UI shows them)
+        ("Juana Molina - la paradoja", None, 1),
+        # Untagged blank entries are phantom rows the model couldn't classify;
+        # the baker drops them so they don't surface in the verifier UI.
+        ("", None, 0),
+        # An illegible-tagged blank IS information (the model saw something
+        # it couldn't read). Kept so the volunteer can attempt the row.
+        ("", "illegible", 1),
     ],
 )
 def test_make_bundle_handles_entry_text_variants(
-    tmp_path: Path, entry_text: str, expected_bbox_count: int
+    tmp_path: Path, entry_text: str, notes: str | None, expected_bbox_count: int
 ) -> None:
     image_path = _white_page(tmp_path)
     result = PageResult(
@@ -619,7 +812,14 @@ def test_make_bundle_handles_entry_text_variants(
                 position=p,
                 hour_raw=None,
                 jock_raw=None,
-                entries=[Entry(row_index=0, raw_text=entry_text, confidence="high")],
+                entries=[
+                    Entry(
+                        row_index=0,
+                        raw_text=entry_text,
+                        confidence="high",
+                        notes=notes,  # type: ignore[arg-type]
+                    )
+                ],
             )
             for p in QUADRANT_ORDER
         ],
