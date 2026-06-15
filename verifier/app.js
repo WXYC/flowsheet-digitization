@@ -413,8 +413,13 @@ function renderQuadrants() {
     }
 
     $(".add-row", node).addEventListener("click", () => {
+      // Mint a new row_index off the running max — NOT entries.length.
+      // The baker preserves sparse row_index values when continuations are
+      // absorbed or blank rows are dropped, so entries.length can collide
+      // with an existing row's index (sequence is sparse: length <= max).
+      const maxIndex = quad.entries.reduce((m, e) => Math.max(m, e.row_index), -1);
       const newEntry = {
-        row_index: quad.entries.length,
+        row_index: maxIndex + 1,
         raw_text: "",
         confidence: "low",
         type_raw: null,
