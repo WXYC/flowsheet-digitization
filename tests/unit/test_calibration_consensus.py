@@ -373,7 +373,9 @@ class TestTypeRawDoodleCluster:
         ]
         canonical, agreement, target = _run(subs)
         # All 3 fold to `_unknown` → agree.
-        assert target == 2 or target == 3  # depends on whether text agrees; test uses default text agreement
+        assert (
+            target == 2 or target == 3
+        )  # depends on whether text agrees; test uses default text agreement
         assert canonical is not None
         row = canonical.rows[0]
         assert row.verification.type_raw_status == "unanimous"

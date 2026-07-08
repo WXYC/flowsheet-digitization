@@ -150,9 +150,7 @@ def _default_canonical_out_path(stem: str, out_root: Path | None) -> Path:
     return out_root / _year_from_stem(stem) / f"{stem}.truth.json"
 
 
-def derive_truth_from_canonical(
-    canonical: CalibrationCanonical, bundle: dict
-) -> GoldenTruth:
+def derive_truth_from_canonical(canonical: CalibrationCanonical, bundle: dict) -> GoldenTruth:
     """Merge canonical rows onto bundle quadrant structure to emit truth.
 
     Status handling (per plan §Truth derivation wiring):
@@ -172,9 +170,7 @@ def derive_truth_from_canonical(
         entries = quad.get("entries") if isinstance(quad, dict) else []
         if isinstance(entries, list):
             for entry in entries:
-                flat_bundle_rows.append(
-                    (quad_idx, entry if isinstance(entry, dict) else {})
-                )
+                flat_bundle_rows.append((quad_idx, entry if isinstance(entry, dict) else {}))
 
     # Injections (bundle_row_index is None) carry no quadrant assignment
     # in canonical, so they're skipped in the emit path. Under subset
@@ -196,9 +192,7 @@ def derive_truth_from_canonical(
             continue
         if 0 <= row.bundle_row_index < len(flat_bundle_rows):
             quad_idx, _ = flat_bundle_rows[row.bundle_row_index]
-            per_quadrant_rows[quad_idx].append(
-                RowTruth(raw_substring=_row_substring(row.raw_text))
-            )
+            per_quadrant_rows[quad_idx].append(RowTruth(raw_substring=_row_substring(row.raw_text)))
 
     quadrants_out: list[QuadrantTruth] = []
     for quad_idx, quad in enumerate(quadrants):
@@ -224,9 +218,7 @@ def derive_truth_from_canonical(
     )
 
 
-def from_canonical(
-    canonical_path: Path, *, out_root: Path | None = None
-) -> Path:
+def from_canonical(canonical_path: Path, *, out_root: Path | None = None) -> Path:
     """Read `canonical.json` at `canonical_path`, emit the corresponding
     `<stem>.truth.json`, and return the written path.
 
@@ -245,9 +237,7 @@ def from_canonical(
     try:
         canonical = CalibrationCanonical.model_validate_json(canonical_path.read_text())
     except Exception as exc:  # noqa: BLE001
-        raise CanonicalReadError(
-            f"canonical.json parse failed: {canonical_path}: {exc}"
-        ) from exc
+        raise CanonicalReadError(f"canonical.json parse failed: {canonical_path}: {exc}") from exc
     if canonical.schema_version != CALIBRATION_SCHEMA_VERSION:
         raise CanonicalReadError(
             f"canonical schema_version {canonical.schema_version} != "
@@ -259,9 +249,7 @@ def from_canonical(
     try:
         bundle = json.loads(bundle_path.read_text())
     except Exception as exc:  # noqa: BLE001
-        raise CanonicalReadError(
-            f"bundle.json parse failed: {bundle_path}: {exc}"
-        ) from exc
+        raise CanonicalReadError(f"bundle.json parse failed: {bundle_path}: {exc}") from exc
 
     truth = derive_truth_from_canonical(canonical, bundle)
     out_path = _default_canonical_out_path(canonical.stem, out_root)

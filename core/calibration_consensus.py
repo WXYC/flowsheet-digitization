@@ -124,9 +124,7 @@ def _text_consensus(
         return None, "insufficient", []
     # N=3 with no majority (1-1-1) → illegible.
     dissents = [
-        RowDissent(reviewer_short=rs, value=t)
-        for group in groups.values()
-        for rs, t in group
+        RowDissent(reviewer_short=rs, value=t) for group in groups.values() for rs, t in group
     ]
     return _ILLEGIBLE, "illegible", dissents
 
@@ -422,9 +420,7 @@ def _analyze_row(
         text_status = "unanimous"
 
     # Type side computed over all reviewers (folding doodle cluster).
-    type_values: list[tuple[str, str | None]] = [
-        (rs, entry.type_raw) for rs, entry in per_row
-    ]
+    type_values: list[tuple[str, str | None]] = [(rs, entry.type_raw) for rs, entry in per_row]
     type_choice, type_status, type_dissents = _type_raw_consensus(type_values)
 
     # Notes histogram.
@@ -436,17 +432,18 @@ def _analyze_row(
     # from first reviewer as an informational value.
     chosen_confidence: Confidence = "high"
     if text_choice is not None and text_choice != _ILLEGIBLE:
-        for rs, entry in per_row:
+        for _rs, entry in per_row:
             if (
                 not entry.spurious_flag
                 and entry.edited_text is not None
-                and _normalize_raw_text(entry.edited_text)
-                == _normalize_raw_text(text_choice)
+                and _normalize_raw_text(entry.edited_text) == _normalize_raw_text(text_choice)
             ):
                 chosen_confidence = "high"  # Confidence dropped per plan; default informational.
                 break
 
-    needs_more = spurious_needs_more or text_status == "insufficient" or type_status == "insufficient"
+    needs_more = (
+        spurious_needs_more or text_status == "insufficient" or type_status == "insufficient"
+    )
 
     return {
         "spurious_status": spurious_status,
@@ -465,9 +462,7 @@ def _analyze_row(
     }
 
 
-def _build_canonical_row(
-    canonical_idx: int, bundle_idx: int, analysis: dict
-) -> CanonicalRow:
+def _build_canonical_row(canonical_idx: int, bundle_idx: int, analysis: dict) -> CanonicalRow:
     spurious_status: SpuriousFlagStatus = analysis["spurious_status"]
     row_status = _worst_of_row_status(
         analysis["text_status"], analysis["type_status"], spurious_status
@@ -532,7 +527,11 @@ def _build_injection(
         text_status_field = "illegible"
         row_status: RowStatus = "under_emit_no_text_agreement"
     else:
-        text_status_field = "majority" if len({_normalize_raw_text(m.suggested_text) for _, m in reporters}) > 1 else "unanimous"
+        text_status_field = (
+            "majority"
+            if len({_normalize_raw_text(m.suggested_text) for _, m in reporters}) > 1
+            else "unanimous"
+        )
         row_status = "under_emit_majority"
 
     # type_raw among reporters.
@@ -657,9 +656,7 @@ def _find_row(
     return next((r for r in rows if r.bundle_row_index == idx), None)
 
 
-def _row_texts_agree(
-    a: CalibrationRowSubmission, b: CalibrationRowSubmission
-) -> bool:
+def _row_texts_agree(a: CalibrationRowSubmission, b: CalibrationRowSubmission) -> bool:
     """Agreement rule for pair-concordance text comparison.
 
     Both spurious → agree.

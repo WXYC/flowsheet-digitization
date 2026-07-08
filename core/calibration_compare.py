@@ -40,8 +40,8 @@ _STRIP_PUNCT = str.maketrans(
     {
         ".": "",
         ",": "",
-        "'": "",   # straight single quote (U+0027)
-        '"': "",   # straight double quote (U+0022)
+        "'": "",  # straight single quote (U+0027)
+        '"': "",  # straight double quote (U+0022)
         "‘": "",  # left single quotation mark
         "’": "",  # right single quotation mark (also used as apostrophe)
         "“": "",  # left double quotation mark
