@@ -77,8 +77,8 @@ scripts/
   make_verifier_bundle.py        PageResult JSON + page PNG -> verifier
                                  bundle.json with per-quadrant + per-row
                                  bboxes for the SPA to canvas-crop. Hard-codes
-                                 SCHEMA_VERSION = 1; bump on incompatible
-                                 schema changes.
+                                 SCHEMA_VERSION = 2 (added row_bbox in v2);
+                                 bump on incompatible schema changes.
   derive_truth.py                <stem>.verified.json -> <stem>.truth.json
                                  by extracting short uppercased substrings
                                  (page date tokens, jock prefix, artist

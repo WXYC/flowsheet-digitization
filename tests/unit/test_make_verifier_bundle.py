@@ -429,6 +429,24 @@ def test_merge_with_spans_drops_empty_raw_text_with_null_notes() -> None:
     )
 
 
+def test_merge_with_spans_keeps_blank_row_when_originally_tagged() -> None:
+    """A blank row that was tagged crossed_out (or any other note) on the
+    original Gemini emission must NOT be dropped, even though the crossed_out
+    strip resets its notes to None. The tag was information — the volunteer
+    can read the struck text manually — so the row needs a slot in the UI.
+    The blank-row drop predicate reads from the pre-strip entry."""
+    entries = [
+        Entry(row_index=0, raw_text="Pixies - Debaser", confidence="high"),
+        Entry(row_index=1, raw_text="", confidence="low", notes="crossed_out"),
+        Entry(row_index=2, raw_text="Sonic Youth - Sugar Kane", confidence="high"),
+    ]
+    result = _merge_with_spans(entries)
+    assert len(result) == 3
+    assert [e.row_index for e, _ in result] == [0, 1, 2]
+    assert result[1][0].notes is None, "crossed_out is still stripped to None"
+    assert result[1][0].raw_text == "", "but the row itself survives"
+
+
 def test_maybe_prepend_missing_first_line_never_returns_negative_y() -> None:
     """The prepended `lines[0] - median_gap` can go negative when the
     detected median_gap is larger than `lines[0]` itself (page header
