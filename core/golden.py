@@ -47,6 +47,25 @@ class GoldenTruth(BaseModel):
         return cls.model_validate_json(path.read_text())
 
 
+def discover_truths(golden_dir: Path) -> list[Path]:
+    """Return every `*.truth.json` file under `golden_dir`, recursively.
+
+    Recurses so both flat truth files (`tests/golden/<stem>.truth.json`)
+    and calibration-derived truth files nested under
+    `tests/golden/calibration/<year>/<stem>.truth.json` are found by the
+    same call. See plans/multi-reviewer-calibration.md §Truth derivation
+    wiring for the coexistence rationale.
+
+    Paths are returned in sorted order so per-stem test IDs are stable
+    across runs. Returns an empty list if `golden_dir` doesn't exist —
+    tests that assume the fixture root exists should assert on the
+    result themselves.
+    """
+    if not golden_dir.is_dir():
+        return []
+    return sorted(golden_dir.rglob("*.truth.json"))
+
+
 @dataclass(slots=True)
 class AccuracyReport:
     matched_rows: int

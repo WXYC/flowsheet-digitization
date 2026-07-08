@@ -343,3 +343,48 @@ def test_accuracy_report_passed_requires_no_misses() -> None:
     assert r.passed
     r2 = AccuracyReport(matched_rows=2, missing_rows=[("top_left", "x")], header_misses=[])
     assert not r2.passed
+
+
+# -- discover_truths --------------------------------------------------------
+
+
+def _minimal_truth_json() -> str:
+    """A GoldenTruth JSON with the smallest valid shape."""
+    return GoldenTruth(page_date_substrings=[], quadrants=[]).model_dump_json()
+
+
+def test_discover_truths_finds_flat_layout(tmp_path) -> None:
+    from core.golden import discover_truths
+
+    (tmp_path / "1990-01jan-page01.truth.json").write_text(_minimal_truth_json())
+    (tmp_path / "1990-01jan-page02.truth.json").write_text(_minimal_truth_json())
+    found = discover_truths(tmp_path)
+    assert [p.name for p in found] == [
+        "1990-01jan-page01.truth.json",
+        "1990-01jan-page02.truth.json",
+    ]
+
+
+def test_discover_truths_finds_nested_calibration_layout(tmp_path) -> None:
+    """Calibration-derived truths live under
+    `tests/golden/calibration/<year>/<stem>.truth.json`. rglob picks them
+    up alongside flat files without any config change."""
+    from core.golden import discover_truths
+
+    (tmp_path / "1990-flat-page01.truth.json").write_text(_minimal_truth_json())
+    nested = tmp_path / "calibration" / "1990"
+    nested.mkdir(parents=True)
+    (nested / "1990-nested-page02.truth.json").write_text(_minimal_truth_json())
+    found = discover_truths(tmp_path)
+    names = [p.name for p in found]
+    assert "1990-flat-page01.truth.json" in names
+    assert "1990-nested-page02.truth.json" in names
+    # Loadable via GoldenTruth.load.
+    for path in found:
+        GoldenTruth.load(path)
+
+
+def test_discover_truths_missing_dir_returns_empty(tmp_path) -> None:
+    from core.golden import discover_truths
+
+    assert discover_truths(tmp_path / "does-not-exist") == []
