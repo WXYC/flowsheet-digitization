@@ -1331,12 +1331,81 @@ class _NoCalibrationStaticFiles(StaticFiles):
     or `_reviewers.json`) directly through `/data/calibration/...`,
     bypassing blind review entirely. 404 rather than 403 so we don't leak
     which specific paths exist.
+
+    The guard is structural, not URL-string-based. Two bypasses that a
+    URL-prefix check would miss:
+
+      * Case-insensitive filesystems (macOS APFS default, Windows NTFS):
+        `GET /data/CALIBRATION/...` resolves on disk to
+        `data/calibration/...` even though `CALIBRATION/` doesn't match
+        a lowercase startswith check.
+      * Symlinks planted under a permitted subtree (e.g. `data/verifier/
+        leak.json -> ../calibration/.../verified.<peer>.json`): the URL
+        `/data/verifier/leak.json` doesn't match the `calibration/`
+        prefix at all, but Starlette's own containment check follows
+        `os.path.realpath` and still passes.
+
+    Both are closed by resolving the requested path to its real filesystem
+    location and rejecting if it lands under CALIBRATION_ROOT.
     """
 
     async def get_response(self, path: str, scope):  # type: ignore[no-untyped-def]
-        if path == "calibration" or path.startswith("calibration/"):
+        if _resolves_under_calibration_root(self.directory, path):
             return Response(status_code=404)
         return await super().get_response(path, scope)
+
+
+def _resolves_under_calibration_root(directory, path: str) -> bool:  # type: ignore[no-untyped-def]
+    """True if joining `path` onto the mount `directory` resolves (via
+    realpath and case-insensitive-filesystem-aware stat identity) into
+    `CALIBRATION_ROOT`. Handles three bypasses a plain URL-prefix check
+    would miss:
+
+      * Case-insensitive filesystems (macOS APFS, Windows NTFS): a URL
+        like `CALIBRATION/xyz` resolves on disk to `calibration/xyz`
+        but `os.path.realpath` on macOS preserves the input case, so a
+        string compare against `CALIBRATION_ROOT` misses. Comparing
+        `stat().st_ino, st_dev` identifies the same inode regardless
+        of the name used to reach it.
+      * Symlinks planted in sibling subtrees (e.g. `data/verifier/leak
+        .json -> data/calibration/.../verified.<peer>.json`): the URL
+        prefix `verifier/` never matches `calibration/`, but the
+        realpath does.
+      * Parent-directory traversal (`data/foo/../calibration/xyz`):
+        `os.path.realpath` collapses the `..` and the containment
+        check catches it.
+    """
+    if directory is None or not CALIBRATION_ROOT.exists():
+        return False
+    try:
+        joined_real = os.path.realpath(os.path.join(str(directory), path))
+        cal_root_stat = os.stat(str(CALIBRATION_ROOT))
+    except (OSError, ValueError):
+        # Malformed path (null bytes, name-too-long) — Starlette's own
+        # 404 handling will catch this on the fallback path.
+        return False
+    # Walk up from the resolved target and compare stat identity against
+    # CALIBRATION_ROOT. Case-insensitive filesystems return the same
+    # (st_ino, st_dev) for `CALIBRATION` and `calibration`, so the
+    # comparison catches the case-variant bypass that a string compare
+    # of realpath output would miss.
+    cal_root_id = (cal_root_stat.st_ino, cal_root_stat.st_dev)
+    probe = joined_real
+    while True:
+        try:
+            st = os.stat(probe)
+        except OSError:
+            probe_parent = os.path.dirname(probe)
+            if probe_parent == probe:
+                return False
+            probe = probe_parent
+            continue
+        if (st.st_ino, st.st_dev) == cal_root_id:
+            return True
+        probe_parent = os.path.dirname(probe)
+        if probe_parent == probe:
+            return False
+        probe = probe_parent
 
 
 app.mount(
