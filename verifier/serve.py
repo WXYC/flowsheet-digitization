@@ -43,8 +43,10 @@ Then open http://localhost:8765/verifier/?bundle=/data/verifier/<stem>.bundle.js
 from __future__ import annotations
 
 import dataclasses
+import hashlib
 import json
 import os
+import re
 import secrets
 import urllib.parse
 from base64 import b64decode
@@ -69,8 +71,14 @@ from core.auth import (
     SESSION_TTL,
     ReviewerSession,
 )
+from core.calibration_consensus import merge as _calibration_merge
 from core.jobs import JobStore
-from core.schema import PageResult, VerifiedBy
+from core.schema import (
+    CALIBRATION_SCHEMA_VERSION,
+    CalibrationSubmission,
+    PageResult,
+    VerifiedBy,
+)
 
 REQUEST_O_MATIC_URL = os.environ.get(
     "REQUEST_O_MATIC_URL",
@@ -83,6 +91,7 @@ HOST = os.environ.get("VERIFIER_HOST", "127.0.0.1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = Path(os.environ.get("DATA_ROOT", REPO_ROOT / "data"))
 VERIFIER_DIR = DATA_ROOT / "verifier"
+CALIBRATION_ROOT = DATA_ROOT / "calibration"
 JOBS_DB_PATH = DATA_ROOT / "jobs.db"
 
 # When VERIFIER_PASSWORD is set, every request goes through HTTP Basic Auth.
@@ -835,6 +844,472 @@ def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str
     if verified_path.is_file():
         verified_at = datetime.fromtimestamp(verified_path.stat().st_mtime, tz=UTC).isoformat()
     return (status, verified_at)
+
+
+# -- calibration endpoints ------------------------------------------------
+#
+# Multi-reviewer calibration flow (plans/multi-reviewer-calibration.md).
+# Every endpoint requires an authenticated reviewer via _SessionCookieMiddleware.
+# Per-reviewer file access is gated at the endpoint layer (see
+# `_cal_can_read_verified`), not at the static-mount layer — direct reads of
+# `/data/calibration/*.json` continue to work for public files (bundle,
+# canonical, agreement) because those are fine to expose, and the sensitive
+# files (`draft.*.json`, pre-settlement `verified.*.json`) are only ever
+# READ through the gated `/api/calibration/*` routes and WRITTEN by the
+# server itself.
+
+_CAL_YEAR_RE = re.compile(r"^\d{4}$")
+_CAL_BUCKET_RE = re.compile(r"^[a-z_]+$")
+_CAL_STEM_RE = re.compile(r"^[A-Za-z0-9_-]+$")
+_CAL_SHORT_RE = re.compile(r"^[a-f0-9]{12}$")
+
+
+def _cal_short(user_id: str) -> str:
+    """The reviewer's 12-hex-char short prefix (SHA-256 of user_id)."""
+    return hashlib.sha256(user_id.encode("utf-8")).hexdigest()[:12]
+
+
+def _cal_validate_parts(year: str, bucket: str, stem: str) -> None:
+    """Reject path components that could escape CALIBRATION_ROOT or fail
+    to match the anchored per-part regexes.
+
+    Raises HTTPException(400) on malformed input — never 500.
+    """
+    if not _CAL_YEAR_RE.match(year):
+        raise HTTPException(status_code=400, detail="invalid year")
+    if not _CAL_BUCKET_RE.match(bucket):
+        raise HTTPException(status_code=400, detail="invalid bucket")
+    if not _CAL_STEM_RE.match(stem):
+        raise HTTPException(status_code=400, detail="invalid stem")
+
+
+def _cal_page_dir(year: str, bucket: str, stem: str) -> Path:
+    _cal_validate_parts(year, bucket, stem)
+    return CALIBRATION_ROOT / year / bucket / stem
+
+
+def _cal_require_reviewer(reviewer: ReviewerSession | None) -> ReviewerSession:
+    if reviewer is None:
+        raise HTTPException(status_code=401, detail="authentication required")
+    return reviewer
+
+
+def _cal_flatten_bundle_row_count(bundle_json: dict[str, object]) -> int:
+    """Total entries across all quadrants, in fixed quadrant order.
+
+    The submission's `bundle_row_index` is a flat 0..N-1 index over the
+    entries in the order they appear in `quadrants`. The submit handler
+    validates the client's row count matches this total.
+    """
+    quadrants = bundle_json.get("quadrants") or []
+    total = 0
+    for quad in quadrants:
+        entries = quad.get("entries") if isinstance(quad, dict) else None
+        if isinstance(entries, list):
+            total += len(entries)
+    return total
+
+
+def _cal_load_bundle(page_dir: Path) -> dict[str, object]:
+    """Read bundle.json (through the symlink) for the given page."""
+    bundle_path = page_dir / "bundle.json"
+    if not bundle_path.exists():
+        raise HTTPException(status_code=404, detail="bundle not found")
+    return json.loads(bundle_path.read_text())
+
+
+def _cal_absolute_image_path(bundle_json: dict[str, object]) -> str | None:
+    """Rewrite the bundle's relative `image_path` to a `/data/pages/...` URL.
+
+    The symlink target lives at `data/verifier/<stem>.bundle.json`, and
+    the `image_path` inside is written relative to that location (e.g.
+    `../pages/1990-04apr0106/page-14.png`). Since the calibration API
+    returns bundle JSON to the SPA — not through the `/data/` static
+    mount — the SPA can't resolve the relative path itself. Rewriting to
+    an absolute URL here means the SPA loads images through `/data/pages/`
+    regardless of where it fetched the bundle from.
+    """
+    image_path = bundle_json.get("image_path")
+    if not isinstance(image_path, str):
+        return None
+    parts = Path(image_path).parts
+    resolved = Path("data/verifier")
+    for part in parts:
+        if part == "..":
+            resolved = resolved.parent
+        else:
+            resolved = resolved / part
+    return "/" + str(resolved)
+
+
+def _cal_can_read_verified(
+    requester_short: str, filename: str, page_dir: Path
+) -> bool:
+    """Blind-review rule for `verified.<short>.json` reads.
+
+    Owner may always read own; others may read only after settlement
+    (canonical.json present).
+    """
+    if filename.startswith(f"verified.{requester_short}."):
+        return True
+    return (page_dir / "canonical.json").exists()
+
+
+def _cal_atomic_write_json(path: Path, obj: object) -> None:
+    """Same atomic write pattern as `_atomic_write_text`, but for JSON."""
+    _atomic_write_text(path, json.dumps(obj, indent=2, default=str))
+
+
+def _cal_read_json_or_none(path: Path) -> dict | None:
+    if not path.is_file():
+        return None
+    try:
+        parsed = json.loads(path.read_text())
+    except Exception:  # noqa: BLE001
+        return None
+    return parsed if isinstance(parsed, dict) else None
+
+
+def _cal_validate_submission_body(
+    body: dict, bundle: dict[str, object], stem: str
+) -> CalibrationSubmission:
+    """Validate the client body via Pydantic + cross-check against the bundle.
+
+    Cross-checks not expressible in the Pydantic model (they need the
+    bundle shape):
+      1. `rows` is complete, one per bundle row, with matching bundle_row_index.
+      2. Every missing_row_marker's between_bundle_rows is in
+         [0, bundle_row_count - 1] × [1, bundle_row_count].
+    """
+    row_count = _cal_flatten_bundle_row_count(bundle)
+    try:
+        submission = CalibrationSubmission.model_validate(body)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=400, detail=f"submission not valid: {exc}"
+        ) from exc
+
+    if submission.stem != stem:
+        raise HTTPException(status_code=400, detail="stem mismatch")
+    if len(submission.rows) != row_count:
+        raise HTTPException(
+            status_code=400,
+            detail=f"row count mismatch: expected {row_count}, got {len(submission.rows)}",
+        )
+    for i, row in enumerate(submission.rows):
+        if row.bundle_row_index != i:
+            raise HTTPException(
+                status_code=400,
+                detail=f"row {i} bundle_row_index mismatch (got {row.bundle_row_index})",
+            )
+    for marker in submission.missing_row_markers:
+        a, b = marker.between_bundle_rows
+        if a < 0 or b > row_count:
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    f"missing_row_marker out of range: ({a}, {b}) vs "
+                    f"{row_count} bundle rows"
+                ),
+            )
+    return submission
+
+
+def _cal_run_merge_if_settled(
+    stem: str, year: str, bucket: str, page_dir: Path
+) -> None:
+    """Load every present verified.*.json and re-run the merge.
+
+    Writes canonical.json + agreement.json atomically if settled. A page
+    that would still `target_reviewers = 3` after this call leaves the
+    two files absent, and the queue endpoint continues to surface the
+    page as awaiting the third submission.
+    """
+    verified_files = sorted(page_dir.glob("verified.*.json"))
+    if not verified_files:
+        return
+    submissions: list[CalibrationSubmission] = []
+    for vf in verified_files:
+        try:
+            submissions.append(CalibrationSubmission.model_validate_json(vf.read_text()))
+        except Exception:  # noqa: BLE001
+            # A malformed on-disk file should not block settlement of a
+            # correct one. Skip and continue.
+            continue
+
+    bundle = _cal_load_bundle(page_dir)
+    row_count = _cal_flatten_bundle_row_count(bundle)
+    canonical, agreement, _target = _calibration_merge(
+        stem=stem,
+        year=year,
+        bucket=bucket,
+        bundle_row_count=row_count,
+        submissions=submissions,
+        settled_at=datetime.now(UTC),
+    )
+    if canonical is not None and agreement is not None:
+        _cal_atomic_write_json(
+            page_dir / "canonical.json", canonical.model_dump(mode="json")
+        )
+        _cal_atomic_write_json(
+            page_dir / "agreement.json", agreement.model_dump(mode="json")
+        )
+
+
+def _cal_update_reviewers_mapping(reviewer: ReviewerSession) -> None:
+    """Best-effort update of `data/calibration/_reviewers.json`.
+
+    Append-only per plan §_reviewers.json: entries for a `user_id` are
+    written on first-time submission and never updated or deleted here.
+    Errors are swallowed — the mapping is auditing-only.
+    """
+    mapping_path = CALIBRATION_ROOT / "_reviewers.json"
+    try:
+        CALIBRATION_ROOT.mkdir(parents=True, exist_ok=True)
+        current: dict = {}
+        if mapping_path.is_file():
+            try:
+                current = json.loads(mapping_path.read_text())
+            except Exception:  # noqa: BLE001
+                current = {}
+        short = _cal_short(reviewer.user_id)
+        if short in current:
+            return
+        current[short] = {
+            "user_id": reviewer.user_id,
+            "username": reviewer.username,
+            "real_name": reviewer.real_name,
+            "dj_name": reviewer.dj_name,
+        }
+        _cal_atomic_write_json(mapping_path, current)
+    except Exception:  # noqa: BLE001
+        return
+
+
+@app.get("/api/calibration/queue")
+async def api_calibration_queue(
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    """The reviewer's eligible-page queue.
+
+    Ordering (highest first):
+      1. Pages the reviewer has a draft on ('your_state == "draft"').
+      2. Pages awaiting one more reviewer where the reviewer hasn't
+         submitted ('near-done first' — their submission settles the page).
+      3. Pages the reviewer hasn't started.
+    Suppressed:
+      * Pages the reviewer has already submitted to.
+      * Pages that have already reached settlement.
+    """
+    reviewer = _cal_require_reviewer(reviewer)
+    short = _cal_short(reviewer.user_id)
+    pages: list[dict] = []
+    if not CALIBRATION_ROOT.is_dir():
+        return JSONResponse({"pages": []})
+    for page_dir in sorted(CALIBRATION_ROOT.glob("*/*/*")):
+        if not page_dir.is_dir():
+            continue
+        rel = page_dir.relative_to(CALIBRATION_ROOT)
+        parts = rel.parts
+        if len(parts) != 3:
+            continue
+        year, bucket, stem = parts
+        if (page_dir / "canonical.json").exists():
+            continue  # settled → suppress
+        my_verified = page_dir / f"verified.{short}.json"
+        if my_verified.exists():
+            continue  # already submitted → suppress
+        my_draft = page_dir / f"draft.{short}.json"
+        verified_files = list(page_dir.glob("verified.*.json"))
+        submissions_so_far = len(verified_files)
+        your_state = "draft" if my_draft.exists() else "not_started"
+        pages.append(
+            {
+                "year": year,
+                "bucket": bucket,
+                "stem": stem,
+                "your_state": your_state,
+                "page_state": "awaiting_submissions",
+                "submissions_so_far": submissions_so_far,
+            }
+        )
+    pages.sort(
+        key=lambda p: (
+            0 if p["your_state"] == "draft" else (1 if p["submissions_so_far"] == 1 else 2),
+            p["stem"],
+        )
+    )
+    return JSONResponse({"pages": pages})
+
+
+@app.get("/api/calibration/{year}/{bucket}/{stem}/bundle")
+async def api_calibration_bundle(
+    year: str,
+    bucket: str,
+    stem: str,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    _cal_require_reviewer(reviewer)
+    page_dir = _cal_page_dir(year, bucket, stem)
+    bundle = _cal_load_bundle(page_dir)
+    image_url = _cal_absolute_image_path(bundle)
+    if image_url is not None:
+        bundle["image_url"] = image_url
+    return JSONResponse(bundle)
+
+
+@app.get("/api/calibration/{year}/{bucket}/{stem}/draft")
+async def api_calibration_draft_read(
+    year: str,
+    bucket: str,
+    stem: str,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    reviewer = _cal_require_reviewer(reviewer)
+    page_dir = _cal_page_dir(year, bucket, stem)
+    short = _cal_short(reviewer.user_id)
+    content = _cal_read_json_or_none(page_dir / f"draft.{short}.json")
+    if content is None:
+        raise HTTPException(status_code=404, detail="no draft")
+    return JSONResponse(content)
+
+
+@app.post("/api/calibration/{year}/{bucket}/{stem}/draft")
+async def api_calibration_draft_save(
+    year: str,
+    bucket: str,
+    stem: str,
+    request: Request,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    reviewer = _cal_require_reviewer(reviewer)
+    page_dir = _cal_page_dir(year, bucket, stem)
+    if not (page_dir / "bundle.json").exists():
+        raise HTTPException(status_code=404, detail="page not found")
+    if (page_dir / "canonical.json").exists():
+        raise HTTPException(status_code=400, detail="page already settled")
+    try:
+        body = await request.json()
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=400, detail=f"invalid JSON body: {exc}") from exc
+    if not isinstance(body, dict):
+        raise HTTPException(status_code=400, detail="body must be a JSON object")
+    page_dir.mkdir(parents=True, exist_ok=True)
+    short = _cal_short(reviewer.user_id)
+    _cal_atomic_write_json(page_dir / f"draft.{short}.json", body)
+    return JSONResponse({"status": "saved"})
+
+
+@app.post("/api/calibration/{year}/{bucket}/{stem}/submit")
+async def api_calibration_submit(
+    year: str,
+    bucket: str,
+    stem: str,
+    request: Request,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    reviewer = _cal_require_reviewer(reviewer)
+    page_dir = _cal_page_dir(year, bucket, stem)
+    if not (page_dir / "bundle.json").exists():
+        raise HTTPException(status_code=404, detail="page not found")
+    if (page_dir / "canonical.json").exists():
+        raise HTTPException(status_code=400, detail="page already settled")
+    short = _cal_short(reviewer.user_id)
+    verified_path = page_dir / f"verified.{short}.json"
+    if verified_path.exists():
+        raise HTTPException(status_code=400, detail="already submitted")
+
+    try:
+        body = await request.json()
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=400, detail=f"invalid JSON body: {exc}") from exc
+    if not isinstance(body, dict):
+        raise HTTPException(status_code=400, detail="body must be a JSON object")
+
+    bundle = _cal_load_bundle(page_dir)
+
+    # Server owns reviewer identity + submitted_at; client-supplied values
+    # are discarded before validation.
+    now = datetime.now(UTC)
+    body = dict(body)
+    body["stem"] = stem
+    body["schema_version"] = CALIBRATION_SCHEMA_VERSION
+    body["reviewer"] = {
+        "user_id": reviewer.user_id,
+        "username": reviewer.username,
+        "real_name": reviewer.real_name,
+        "dj_name": reviewer.dj_name,
+        "verified_at": now.isoformat(),
+    }
+    body["submitted_at"] = now.isoformat()
+    submission = _cal_validate_submission_body(body, bundle, stem)
+
+    page_dir.mkdir(parents=True, exist_ok=True)
+    _atomic_write_text(verified_path, submission.model_dump_json(indent=2))
+    # Draft is superseded — clean up.
+    draft_path = page_dir / f"draft.{short}.json"
+    if draft_path.exists():
+        draft_path.unlink(missing_ok=True)
+
+    _cal_run_merge_if_settled(stem, year, bucket, page_dir)
+    _cal_update_reviewers_mapping(reviewer)
+
+    settled = (page_dir / "canonical.json").exists()
+    return JSONResponse(
+        {"status": "submitted", "settled": settled, "short": short}
+    )
+
+
+@app.get("/api/calibration/{year}/{bucket}/{stem}/verified/{short}")
+async def api_calibration_verified_read(
+    year: str,
+    bucket: str,
+    stem: str,
+    short: str,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    reviewer = _cal_require_reviewer(reviewer)
+    if not _CAL_SHORT_RE.match(short):
+        raise HTTPException(status_code=400, detail="invalid short")
+    page_dir = _cal_page_dir(year, bucket, stem)
+    requester_short = _cal_short(reviewer.user_id)
+    verified_path = page_dir / f"verified.{short}.json"
+    if not _cal_can_read_verified(requester_short, verified_path.name, page_dir):
+        raise HTTPException(status_code=403)
+    content = _cal_read_json_or_none(verified_path)
+    if content is None:
+        raise HTTPException(status_code=404, detail="not found")
+    return JSONResponse(content)
+
+
+@app.get("/api/calibration/{year}/{bucket}/{stem}/canonical")
+async def api_calibration_canonical_read(
+    year: str,
+    bucket: str,
+    stem: str,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    _cal_require_reviewer(reviewer)
+    page_dir = _cal_page_dir(year, bucket, stem)
+    content = _cal_read_json_or_none(page_dir / "canonical.json")
+    if content is None:
+        raise HTTPException(status_code=404, detail="not settled")
+    return JSONResponse(content)
+
+
+@app.get("/api/calibration/{year}/{bucket}/{stem}/agreement")
+async def api_calibration_agreement_read(
+    year: str,
+    bucket: str,
+    stem: str,
+    reviewer: Annotated[ReviewerSession | None, Depends(get_reviewer)] = None,
+) -> JSONResponse:
+    _cal_require_reviewer(reviewer)
+    page_dir = _cal_page_dir(year, bucket, stem)
+    content = _cal_read_json_or_none(page_dir / "agreement.json")
+    if content is None:
+        raise HTTPException(status_code=404, detail="not settled")
+    return JSONResponse(content)
 
 
 # Static mounts. Each top-level dir we need to serve gets its own mount so
