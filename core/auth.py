@@ -67,6 +67,8 @@ if the id_token starts flowing further than the verifier process.
 from __future__ import annotations
 
 import asyncio
+import base64
+import binascii
 import json
 import os
 import secrets
@@ -78,7 +80,7 @@ from typing import Any
 import httpx
 from authlib.common.urls import add_params_to_uri
 from authlib.jose import JsonWebKey, JsonWebToken
-from authlib.jose.errors import BadSignatureError
+from authlib.jose.errors import BadSignatureError, DecodeError, UnsupportedAlgorithmError
 from authlib.oauth2.rfc7636 import create_s256_code_challenge
 from itsdangerous import BadSignature, TimestampSigner
 
@@ -100,15 +102,28 @@ _jwks: dict[str, Any] | None = None
 _metadata_lock = asyncio.Lock()
 _jwks_lock = asyncio.Lock()
 
-# Allowed signature algorithms. RS256 covers Better Auth's default; ES256
-# is here so a future migration to elliptic-curve keys doesn't require a
-# code change. Algorithms NOT in this set (HS256, none) are refused at
-# decode time — defense against alg-confusion attacks.
-_ALLOWED_SIG_ALGS: tuple[str, ...] = ("RS256", "ES256")
-# `JsonWebToken` is stateless and immutable once configured with an
-# algorithm list — hoist to module scope so we don't rebuild the
-# algorithm registry on every login.
-_JWT = JsonWebToken(list(_ALLOWED_SIG_ALGS))
+# Allowed signature algorithms. HS256 is what Better Auth's oidcProvider
+# uses today (symmetric HMAC, keyed off the per-client `client_secret`);
+# `api.wxyc.org/auth/.well-known/openid-configuration` advertises exactly
+# `["HS256"]` in `id_token_signing_alg_values_supported`. RS256 / ES256
+# stay in the allowlist so a future auth-server migration to JWKS-based
+# signing (RFC 7517) doesn't require a coordinated code change here.
+#
+# Alg-confusion defense (CVE-2016-10555 family): each accepted algorithm
+# is bound in `_verify_id_token` to a DISJOINT key material path — HS256
+# keys off `client_secret`, RS256 / ES256 key off the JWKS. An attacker
+# who reads the public JWKS cannot forge an HS256 token because the JWKS
+# key material is never presented to the HS256 verify path, and vice
+# versa. A single-decode call with an all-alg allowlist and both keys
+# available would be the classic bug — we route by parsed header alg
+# instead.
+_ALLOWED_SIG_ALGS: tuple[str, ...] = ("HS256", "RS256", "ES256")
+# Per-alg JWT decoders. Building each decoder with a single-element
+# algorithm allowlist means `decode()` cannot fall back to another
+# algorithm if a token claims one but is presented with the wrong key
+# material — pinning the alg here is defense in depth alongside the
+# header-based dispatch in `_verify_id_token`.
+_JWT_BY_ALG: dict[str, JsonWebToken] = {alg: JsonWebToken([alg]) for alg in _ALLOWED_SIG_ALGS}
 
 
 @dataclass(frozen=True)
@@ -256,20 +271,29 @@ def _reset_metadata_cache() -> None:
     _jwks = None
 
 
+# JWKS-path allowlist is a strict subset of `_ALLOWED_SIG_ALGS`: the JWKS
+# is only ever consulted for asymmetric verification (RS256 / ES256).
+# HS256 verification uses `client_secret` and never touches the JWKS —
+# admitting an `alg=HS256` JWK entry here would recreate the alg-confusion
+# attack the header-based dispatch in `_verify_id_token` exists to close.
+_JWKS_ALLOWED_SIG_ALGS: frozenset[str] = frozenset({"RS256", "ES256"})
+
+
 def _signing_keys_only(jwks: dict[str, Any]) -> dict[str, Any]:
-    """Return a JWKS subset containing only keys usable for signature
-    verification — keys whose `use` is `sig` or unspecified, and whose
-    `alg` (if present) is in `_ALLOWED_SIG_ALGS`.
+    """Return a JWKS subset containing only keys usable for asymmetric
+    signature verification — keys whose `use` is `sig` or unspecified,
+    and whose `alg` (if present) is in `_JWKS_ALLOWED_SIG_ALGS`.
 
     Defense against an auth server publishing an encryption key (or a
-    key for an unsupported alg) in the same JWKS that the verifier
-    would otherwise trust during signature verification.
+    symmetric-HMAC key masquerading as a JWKS entry) in the same JWKS
+    the verifier would otherwise trust during asymmetric signature
+    verification.
     """
     keep = []
     for k in jwks.get("keys", []):
         if k.get("use", "sig") != "sig":
             continue
-        if "alg" in k and k["alg"] not in _ALLOWED_SIG_ALGS:
+        if "alg" in k and k["alg"] not in _JWKS_ALLOWED_SIG_ALGS:
             continue
         keep.append(k)
     return {"keys": keep}
@@ -460,14 +484,72 @@ async def _fetch_token(metadata: dict[str, Any], code: str, code_verifier: str) 
             raise ValueError(f"token endpoint returned non-JSON body: {exc}") from exc
 
 
+def _parse_alg_header(id_token_raw: str) -> str:
+    """Return the `alg` field from the JWT's header segment WITHOUT any
+    signature or claim validation.
+
+    Used purely to dispatch verification: HS256 tokens go to the
+    `client_secret` verify path; RS256 / ES256 tokens go to the JWKS
+    path. See the alg-confusion defense note on `_ALLOWED_SIG_ALGS`.
+
+    Raises `DecodeError` (a `JoseError` subclass) on any structural
+    problem — missing segments, non-base64url header, non-JSON header,
+    missing `alg` field. Route layer maps this to the same 400 as
+    downstream authlib decode failures.
+    """
+    if not isinstance(id_token_raw, str) or id_token_raw.count(".") != 2:
+        raise DecodeError("id_token is not a compact JWS")
+    header_b64 = id_token_raw.split(".", 1)[0]
+    # authlib produces base64url without padding; restore it for decode.
+    padding = "=" * (-len(header_b64) % 4)
+    try:
+        header_bytes = base64.urlsafe_b64decode(header_b64 + padding)
+    except (ValueError, binascii.Error) as exc:
+        raise DecodeError("id_token header is not valid base64url") from exc
+    try:
+        header = json.loads(header_bytes)
+    except (ValueError, json.JSONDecodeError) as exc:
+        raise DecodeError("id_token header is not valid JSON") from exc
+    alg = header.get("alg") if isinstance(header, dict) else None
+    if not isinstance(alg, str):
+        raise DecodeError("id_token header missing string `alg`")
+    return alg
+
+
 def _verify_id_token(id_token_raw: str, jwks: dict[str, Any]) -> Any:
     """Verify the id_token signature + claims and return the claims object.
 
+    Dispatches on the parsed `alg` header:
+
+      * HS256 → HMAC-verified against `client_secret.encode("utf-8")`.
+        The JWKS is NEVER consulted for HS256 tokens, and this is the
+        entire alg-confusion defense — see `_ALLOWED_SIG_ALGS`.
+      * RS256 / ES256 → verified against the trusted JWKS subset
+        (`_signing_keys_only` drops encryption-only keys).
+
+    Any other `alg` — including `none` — raises `UnsupportedAlgorithmError`
+    before touching key material.
+
     Raises authlib's `JoseError` subclasses on signature, alg, or
-    aud/iss claim failures. The `_signing_keys_only` filter prevents
-    an encryption key in the JWKS from joining the trust pool used
-    for signature verification.
+    aud/iss/sub claim failures.
     """
+    alg = _parse_alg_header(id_token_raw)
+    decoder = _JWT_BY_ALG.get(alg)
+    if decoder is None:
+        raise UnsupportedAlgorithmError()
+
+    key: Any
+    if alg == "HS256":
+        # Symmetric: HMAC key is the client's `client_secret` bytes. This
+        # branch MUST NOT receive JWKS material — that's the vulnerability
+        # class the alg-confusion defense exists to close.
+        key = _client_secret().encode("utf-8")
+    else:
+        # Asymmetric: verify against the JWKS. `_signing_keys_only` drops
+        # encryption-only keys so an auth server that publishes an `enc`
+        # key can't accidentally join the signature trust pool.
+        key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
+
     # `aud` and `iss` are checked here, not somewhere downstream. Skipping
     # would let a Wiki.js-issued token (also signed by api.wxyc.org's JWKS)
     # authenticate to the verifier — that's a real cross-app confusion bug
@@ -480,10 +562,9 @@ def _verify_id_token(id_token_raw: str, jwks: dict[str, Any]) -> Any:
         # bare `KeyError` propagate from the field access below.
         "sub": {"essential": True},
     }
-    keyset = JsonWebKey.import_key_set(_signing_keys_only(jwks))
-    claims = _JWT.decode(
+    claims = decoder.decode(
         id_token_raw,
-        key=keyset,
+        key=key,
         claims_options=claims_options,
     )
     claims.validate()
