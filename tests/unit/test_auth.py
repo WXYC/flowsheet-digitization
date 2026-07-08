@@ -39,7 +39,12 @@ from typing import Any
 import httpx
 import pytest
 from authlib.jose import JsonWebKey, JsonWebToken
-from authlib.jose.errors import BadSignatureError, JoseError, MissingClaimError
+from authlib.jose.errors import (
+    BadSignatureError,
+    InvalidClaimError,
+    JoseError,
+    MissingClaimError,
+)
 from itsdangerous import BadSignature
 
 import core.auth as auth_mod
@@ -958,6 +963,64 @@ async def test_exchange_code_rotation_refetch_failure_reraises_signature_error(
 
     with pytest.raises(BadSignatureError):
         await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_rejects_token_missing_exp(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """A token without an `exp` claim must be rejected. authlib's
+    `validate_exp` silently no-ops when the claim is absent — verified
+    against authlib 1.6.x — so without an essential-claim declaration,
+    a token issued with no expiration would verify forever. This test
+    pins the round-3 hardening: any accepted id_token has a real
+    expiration authlib is checking against wall clock."""
+    now = int(time.time())
+    payload = {
+        "iss": ISSUER,
+        "sub": "user-abc",
+        "aud": CLIENT_ID,
+        "iat": now,
+        # no `exp`
+    }
+    header = {"alg": "RS256", "kid": signing_key.kid}
+    no_exp_token = JsonWebToken(["RS256"]).encode(header, payload, signing_key).decode("utf-8")
+    _install_token_endpoint(monkeypatch, no_exp_token)
+    with pytest.raises(MissingClaimError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_rejects_multi_aud_with_extra_audience(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """A token whose `aud` is a list containing our client_id AND another
+    audience must be rejected — even though authlib's default
+    `validate_aud` accepts it (any-of-set-membership semantics). Per OIDC
+    Core 3.1.3.7 §4-5, extra audiences must be explicitly trusted, and
+    multi-valued `aud` requires an `azp` claim we verify. We trust
+    no extra audience by default; require `aud == [client_id]`."""
+    token = _mint_id_token(signing_key, aud=[CLIENT_ID, "wikijs-client-id"])
+    _install_token_endpoint(monkeypatch, token)
+    with pytest.raises(InvalidClaimError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_accepts_single_element_aud_list(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    signing_key: Any,
+) -> None:
+    """An id_token whose `aud` is a single-element list containing our
+    client_id must be accepted (equivalent to the scalar form per OIDC
+    Core). Pins that the round-3 multi-aud defense doesn't over-reach
+    into rejecting a spec-legal shape."""
+    token = _mint_id_token(signing_key, aud=[CLIENT_ID])
+    _install_token_endpoint(monkeypatch, token)
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.user_id == "user-abc"
 
 
 # -- JWKS filter -----------------------------------------------------------
