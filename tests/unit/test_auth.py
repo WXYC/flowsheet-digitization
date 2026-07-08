@@ -661,6 +661,126 @@ async def test_exchange_code_handles_jwks_rotation(
     assert call_count["n"] == 2, "_load_jwks should have been called twice"
 
 
+# -- HS256 signing (Better Auth's oidcProvider default) -------------------
+#
+# api.wxyc.org/auth advertises id_token_signing_alg_values_supported=["HS256"].
+# Better Auth's oidcProvider signs id_tokens with the client's client_secret
+# as an HMAC key; the JWKS endpoint is still exposed (used by the JWT plugin
+# for Bearer tokens) but is not the id_token trust root. `core/auth.py` must
+# route HS256 tokens to `client_secret.encode()` and NEVER to a JWKS public
+# key, or an attacker holding the public key could sign an HS256 token that
+# the verifier accepts (classic alg-confusion attack).
+
+
+def _mint_hs256_id_token(secret: str, **claim_overrides: Any) -> str:
+    """Mint an HS256 id_token signed with `secret` as the HMAC key.
+
+    Mirrors `_mint_id_token` but uses symmetric HMAC — matches how Better
+    Auth's oidcProvider signs id_tokens in production.
+    """
+    now = int(time.time())
+    payload: dict[str, Any] = {
+        "iss": ISSUER,
+        "sub": "user-abc",
+        "aud": CLIENT_ID,
+        "iat": now,
+        "exp": now + 600,
+        "email": "reviewer@wxyc.org",
+        "preferred_username": "reviewer",
+        "name": "Real Name",
+        "dj_name": "Stage Name",
+        "role": "dj",
+    }
+    payload.update(claim_overrides)
+    header = {"alg": "HS256"}
+    return JsonWebToken(["HS256"]).encode(header, payload, secret.encode("utf-8")).decode("utf-8")
+
+
+async def test_exchange_code_hs256_happy_path_returns_reviewer(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """A valid HS256 id_token signed with the configured `client_secret`
+    verifies and returns a `ReviewerSession`. Pins the shape prod actually
+    ships (Better Auth's oidcProvider default) — without HS256 support,
+    turning on OIDC in Railway breaks every login at token-exchange."""
+    _install_token_endpoint(monkeypatch, _mint_hs256_id_token(CLIENT_SECRET))
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.user_id == "user-abc"
+    assert reviewer.email == "reviewer@wxyc.org"
+    assert reviewer.role == "dj"
+
+
+async def test_exchange_code_rejects_hs256_signed_with_wrong_secret(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """An HS256 id_token signed with any secret OTHER than our configured
+    `client_secret` fails signature verification. Confirms we're actually
+    verifying — not just accepting anything with `alg: HS256`."""
+    _install_token_endpoint(monkeypatch, _mint_hs256_id_token("not-our-secret"))
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_rejects_hs256_signed_with_jwks_public_key(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+    jwks_from_key: dict[str, Any],
+) -> None:
+    """Alg-confusion defense: an attacker who has read the auth server's
+    JWKS (published, public data) cannot use one of the RSA public key's
+    modulus bytes as an HMAC key and get an HS256 token accepted.
+
+    This works ONLY if the code paths for HS256 and RS256 use disjoint
+    key material: HS256 must key off `client_secret`, never the JWKS.
+    A naïve implementation that just extended the alg list to
+    `["HS256", "RS256"]` and passed both the client_secret and the JWKS
+    to `decode()` would fall to this attack — that's the whole point of
+    the CVE-2016-10555 family."""
+    public_key = jwks_from_key["keys"][0]
+    # `n` is the RSA modulus, the largest chunk of public bytes attackers
+    # can lift straight from the JWKS. Use it as the HMAC key exactly as
+    # the classic alg-confusion PoC does.
+    attacker_secret = public_key["n"]
+    _install_token_endpoint(monkeypatch, _mint_hs256_id_token(attacker_secret))
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_rejects_alg_none(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """A token with `alg: none` and no signature must be refused even
+    though it structurally looks like a JWT. Not restricted by any prior
+    test; asserts the defense stays intact after the HS256 change."""
+    # Hand-craft the `alg: none` token — authlib refuses to mint one via
+    # the standard `encode()` path (which is the correct default).
+    import base64
+
+    def _b64url(data: bytes) -> str:
+        return base64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
+
+    header = _b64url(json.dumps({"alg": "none", "typ": "JWT"}).encode("utf-8"))
+    now = int(time.time())
+    payload = _b64url(
+        json.dumps(
+            {
+                "iss": ISSUER,
+                "sub": "user-abc",
+                "aud": CLIENT_ID,
+                "iat": now,
+                "exp": now + 600,
+            }
+        ).encode("utf-8")
+    )
+    alg_none_token = f"{header}.{payload}."
+    _install_token_endpoint(monkeypatch, alg_none_token)
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
 # -- _reset_metadata_cache -------------------------------------------------
 
 
