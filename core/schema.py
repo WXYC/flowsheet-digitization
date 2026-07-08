@@ -228,3 +228,207 @@ class PageResult(GeminiPageResult):
             "None for results that have only been through the automatic pipeline."
         ),
     )
+
+
+# --------------------------------------------------------------------------- #
+# Multi-reviewer calibration (see plans/multi-reviewer-calibration.md).
+#
+# Four on-disk shapes:
+#   * `verified.<short>.json` — CalibrationSubmission (immutable, atomic write)
+#   * `draft.<short>.json`    — CalibrationSubmission (mutable; same shape,
+#                                submitted_at optional in drafts)
+#   * `canonical.json`        — CalibrationCanonical (post-settlement)
+#   * `agreement.json`        — CalibrationAgreement (post-settlement)
+#
+# `CALIBRATION_SCHEMA_VERSION` covers all four shapes — they bump together so
+# the cross-shape compatibility matrix stays trivially 1-to-1. It is
+# deliberately separate from `scripts/make_verifier_bundle.SCHEMA_VERSION`
+# (which covers bundles) because the two artifact families evolve
+# independently.
+# --------------------------------------------------------------------------- #
+
+CALIBRATION_SCHEMA_VERSION = 1
+
+RawTextStatus = Literal["unanimous", "majority", "illegible"]
+TypeRawStatus = Literal["unanimous", "majority", "unknown"]
+SpuriousFlagStatus = Literal[
+    "unanimous_keep",
+    "majority_keep",
+    "majority_spurious",
+    "unanimous_spurious",
+]
+RowStatus = Literal[
+    "unanimous",
+    "majority",
+    "illegible",
+    "majority_spurious",
+    "unanimous_spurious",
+    "under_emit_majority",
+    "under_emit_no_text_agreement",
+]
+
+
+class CalibrationRowSubmission(BaseModel):
+    """One reviewer's read of one bundle row.
+
+    `edited_text` is None iff `spurious_flag` is True (the SPA clears the
+    text field client-side when the reviewer engages the spurious toggle).
+    """
+
+    bundle_row_index: NonNegativeInt
+    edited_text: str | None
+    type_raw: str | None
+    notes: str | None
+    spurious_flag: bool
+
+
+class MissingRowMarker(BaseModel):
+    """Reviewer-inserted marker: 'Gemini missed a row between N and N+1'."""
+
+    between_bundle_rows: tuple[int, int]
+    suggested_text: str
+    type_raw: str | None
+    notes: str | None
+
+    @model_validator(mode="after")
+    def _adjacent(self) -> Self:
+        a, b = self.between_bundle_rows
+        if b != a + 1:
+            raise ValueError(
+                f"between_bundle_rows must be adjacent (N, N+1), got ({a}, {b})"
+            )
+        return self
+
+
+class CalibrationSubmission(BaseModel):
+    """One reviewer's complete submission for one page.
+
+    On disk as either `verified.<short>.json` (immutable) or
+    `draft.<short>.json` (mutable). `<short>` is the first 12 hex chars of
+    `sha256(reviewer.user_id)`.
+
+    `reviewer` reuses the existing `VerifiedBy` model so the calibration
+    `verified_by` block is byte-identical in shape to the regular-mode
+    block (`user_id`, `username`, `real_name`, `dj_name`, `verified_at`).
+    Keeping a single `VerifiedBy` model means any future identity-claim
+    change ripples once, not twice.
+
+    `submitted_at` is set server-side by the submit handler on promote
+    from draft; the client never provides it.
+    """
+
+    schema_version: Literal[1]
+    stem: str
+    reviewer: VerifiedBy
+    submitted_at: datetime
+    rows: list[CalibrationRowSubmission]
+    missing_row_markers: list[MissingRowMarker]
+
+
+class RowDissent(BaseModel):
+    """One reviewer's dissenting value on a row's field."""
+
+    reviewer_short: str
+    value: str
+
+
+class RowVerification(BaseModel):
+    """Per-row consensus record: how the four gating decisions resolved.
+
+    `status` is the worst-of across `raw_text_status`, `type_raw_status`,
+    and `spurious_flag_status` — the whole row's headline. Downstream
+    tooling (drift gate, `derive_truth.py`) branches on `status`.
+    """
+
+    status: RowStatus
+    raw_text_status: RawTextStatus
+    raw_text_dissents: list[RowDissent]
+    type_raw_status: TypeRawStatus
+    type_raw_dissents: list[RowDissent]
+    spurious_flag_status: SpuriousFlagStatus
+    spurious_flag_votes: dict[str, int]
+    notes_values: dict[str, int]
+    reviewer_shorts: list[str]
+
+
+class CanonicalRow(BaseModel):
+    """One row in the settled `canonical.json`.
+
+    Two variants:
+      * Bundle-row-derived: `bundle_row_index` is set,
+        `inserted_between_bundle_rows` is None.
+      * Missing-row injection: `bundle_row_index` is None,
+        `inserted_between_bundle_rows` is (N, N+1).
+
+    `raw_text` is None only when the row's `spurious_flag_status` is
+    `majority_spurious` or `unanimous_spurious` (the reviewers voted the
+    row doesn't exist). `raw_text` == `"__illegible__"` when three
+    reviewers disagreed on the text.
+    """
+
+    canonical_row_index: NonNegativeInt
+    bundle_row_index: NonNegativeInt | None
+    inserted_between_bundle_rows: tuple[int, int] | None
+    raw_text: str | None
+    type_raw: str | None
+    notes: str | None
+    confidence: Confidence
+    verification: RowVerification
+
+
+class MissingRowReport(BaseModel):
+    """Minority missing-row report — recorded but not injected into canonical."""
+
+    between_bundle_rows: tuple[int, int]
+    reporting_reviewer_shorts: list[str]
+    suggested_texts: list[str]
+
+
+class CalibrationCanonical(BaseModel):
+    """The settled canonical record for one page.
+
+    Written only after `target_reviewers` submissions have landed and every
+    gating decision has resolved (majority, unanimous, or auto-illegible).
+    Immutable once written.
+    """
+
+    schema_version: Literal[1]
+    stem: str
+    settled_at: datetime
+    target_reviewers: int
+    rows: list[CanonicalRow]
+    missing_row_reports: list[MissingRowReport]
+
+
+class SubmissionRecord(BaseModel):
+    """Per-reviewer submission timestamp, recorded in `agreement.json`."""
+
+    reviewer_short: str
+    submitted_at: datetime
+
+
+class PairConcordance(BaseModel):
+    """Pairwise agreement rate between two reviewers on this page."""
+
+    a: str
+    b: str
+    raw_text_agree_rate: float
+    type_raw_agree_rate: float
+
+
+class CalibrationAgreement(BaseModel):
+    """The settled agreement record for one page.
+
+    Companion to `canonical.json` — captures the inter-reviewer statistics
+    the drift-gate consumes. No year-level rollup lives here; that comes
+    from `scripts/calibration_report.py` walking the tree.
+    """
+
+    schema_version: Literal[1]
+    stem: str
+    year: str
+    bucket: str
+    target_reviewers: int
+    submissions: list[SubmissionRecord]
+    row_status_histogram: dict[str, int]
+    pair_concordance: list[PairConcordance]
