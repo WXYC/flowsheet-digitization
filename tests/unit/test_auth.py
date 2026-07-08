@@ -781,6 +781,127 @@ async def test_exchange_code_rejects_alg_none(
         await exchange_code(code="auth-code", code_verifier="verifier")
 
 
+async def test_exchange_code_hs256_does_not_load_jwks(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """HS256 verification is keyed off `client_secret`, not the JWKS — so
+    an HS256 login must NOT reach `_load_jwks()`. Prod (`api.wxyc.org`)
+    advertises HS256 only, and a JWKS-endpoint outage would otherwise
+    take every login offline for no gain. This pins the invariant that
+    the asymmetric-only fetch stays in the asymmetric branch."""
+
+    metadata = {
+        "issuer": ISSUER,
+        "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+        "token_endpoint": f"{ISSUER}/oauth2/token",
+        "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+    }
+
+    async def _meta() -> dict[str, Any]:
+        return metadata
+
+    async def _jwks_that_fails() -> dict[str, Any]:
+        raise AssertionError("_load_jwks must not be called for HS256")
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks_that_fails)
+    _install_token_endpoint(monkeypatch, _mint_hs256_id_token(CLIENT_SECRET))
+
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.user_id == "user-abc"
+
+
+async def test_exchange_code_hs256_bad_signature_does_not_invalidate_jwks(
+    monkeypatch: pytest.MonkeyPatch,
+    jwks_from_key: dict[str, Any],
+) -> None:
+    """A failed HS256 verification must NOT invalidate the JWKS cache.
+    The JWKS is irrelevant to HS256 (client_secret is the key material),
+    and a bad-secret HS256 login that flushed the cache would (a) waste
+    an httpx round-trip on the pointless refetch, and (b) amplify
+    auth-server load on a brute-force by evicting the cache for every
+    other in-flight asymmetric login on the process. Pins the invariant
+    that JWKS-rotation-recovery is scoped to the branch that actually
+    consumes the JWKS."""
+
+    metadata = {
+        "issuer": ISSUER,
+        "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+        "token_endpoint": f"{ISSUER}/oauth2/token",
+        "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+    }
+
+    async def _meta() -> dict[str, Any]:
+        return metadata
+
+    jwks_calls = {"n": 0}
+
+    async def _jwks_counting() -> dict[str, Any]:
+        jwks_calls["n"] += 1
+        return jwks_from_key
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks_counting)
+    _install_token_endpoint(monkeypatch, _mint_hs256_id_token("not-the-secret"))
+
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+    assert jwks_calls["n"] == 0, "HS256 failure must not touch JWKS"
+
+
+# -- JWKS filter -----------------------------------------------------------
+
+
+def test_signing_keys_only_drops_hs256_jwk_entry() -> None:
+    """`_signing_keys_only` filters JWK entries whose `alg` isn't in the
+    asymmetric allowlist. An `alg=HS256` JWK entry — nonsensical but
+    publishable — must never join the asymmetric trust pool: if it did,
+    an RS256/ES256 verify call could receive HMAC-shaped key material
+    and reopen the alg-confusion attack the header dispatch closes.
+    Pins the invariant so a future refactor that merges the symmetric
+    and asymmetric constant sets fails loudly here rather than silently
+    regressing verifier security."""
+    jwks = {
+        "keys": [
+            {"kid": "hmac-1", "kty": "oct", "alg": "HS256", "k": "AAAA", "use": "sig"},
+            {"kid": "rsa-1", "kty": "RSA", "alg": "RS256", "n": "n-value", "e": "AQAB"},
+        ]
+    }
+    filtered = auth_mod._signing_keys_only(jwks)
+    kids = [k.get("kid") for k in filtered["keys"]]
+    assert kids == ["rsa-1"]
+
+
+async def test_unsupported_algorithm_error_names_offending_alg(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """When `_verify_id_token` rejects an unknown alg, the raised
+    exception's message must include the offending alg string so
+    on-call can diagnose 'why is my token being rejected' from prod
+    logs without reproducing the raw token. Pins the debuggability
+    contract established for `UnsupportedAlgorithmError`."""
+
+    import base64 as _b64  # noqa: PLC0415 — test-local helper
+
+    def _b64url(data: bytes) -> str:
+        return _b64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
+
+    header = _b64url(json.dumps({"alg": "HS384", "typ": "JWT"}).encode("utf-8"))
+    now = int(time.time())
+    payload = _b64url(
+        json.dumps(
+            {"iss": ISSUER, "sub": "u", "aud": CLIENT_ID, "iat": now, "exp": now + 600}
+        ).encode("utf-8")
+    )
+    hs384_token = f"{header}.{payload}.deadbeef"
+    _install_token_endpoint(monkeypatch, hs384_token)
+
+    with pytest.raises(JoseError) as exc_info:
+        await exchange_code(code="auth-code", code_verifier="verifier")
+    assert "HS384" in str(exc_info.value)
+
+
 # -- _reset_metadata_cache -------------------------------------------------
 
 

@@ -102,22 +102,26 @@ _jwks: dict[str, Any] | None = None
 _metadata_lock = asyncio.Lock()
 _jwks_lock = asyncio.Lock()
 
-# Allowed signature algorithms. HS256 is what Better Auth's oidcProvider
-# uses today (symmetric HMAC, keyed off the per-client `client_secret`);
+# Allowed signature algorithms — split by verification style so the two
+# sets can't drift. HS256 is what Better Auth's oidcProvider uses today;
 # `api.wxyc.org/auth/.well-known/openid-configuration` advertises exactly
 # `["HS256"]` in `id_token_signing_alg_values_supported`. RS256 / ES256
-# stay in the allowlist so a future auth-server migration to JWKS-based
-# signing (RFC 7517) doesn't require a coordinated code change here.
+# stay in the asymmetric set so a future auth-server migration to
+# JWKS-based signing (RFC 7517) doesn't require a coordinated code change.
 #
 # Alg-confusion defense (CVE-2016-10555 family): each accepted algorithm
 # is bound in `_verify_id_token` to a DISJOINT key material path — HS256
 # keys off `client_secret`, RS256 / ES256 key off the JWKS. An attacker
 # who reads the public JWKS cannot forge an HS256 token because the JWKS
 # key material is never presented to the HS256 verify path, and vice
-# versa. A single-decode call with an all-alg allowlist and both keys
-# available would be the classic bug — we route by parsed header alg
-# instead.
-_ALLOWED_SIG_ALGS: tuple[str, ...] = ("HS256", "RS256", "ES256")
+# versa. `_ASYMMETRIC_SIG_ALGS` is what `_signing_keys_only` uses to
+# filter the JWKS trust pool; if it ever gained HS256 by refactor churn,
+# an HS256 JWK entry could join the asymmetric trust pool and reopen
+# the attack. Deriving `_ALLOWED_SIG_ALGS` from the union is the
+# single-source-of-truth so a new alg lands in exactly one set on purpose.
+_SYMMETRIC_SIG_ALGS: frozenset[str] = frozenset({"HS256"})
+_ASYMMETRIC_SIG_ALGS: frozenset[str] = frozenset({"RS256", "ES256"})
+_ALLOWED_SIG_ALGS: frozenset[str] = _SYMMETRIC_SIG_ALGS | _ASYMMETRIC_SIG_ALGS
 # Per-alg JWT decoders. Building each decoder with a single-element
 # algorithm allowlist means `decode()` cannot fall back to another
 # algorithm if a token claims one but is presented with the wrong key
@@ -271,18 +275,10 @@ def _reset_metadata_cache() -> None:
     _jwks = None
 
 
-# JWKS-path allowlist is a strict subset of `_ALLOWED_SIG_ALGS`: the JWKS
-# is only ever consulted for asymmetric verification (RS256 / ES256).
-# HS256 verification uses `client_secret` and never touches the JWKS —
-# admitting an `alg=HS256` JWK entry here would recreate the alg-confusion
-# attack the header-based dispatch in `_verify_id_token` exists to close.
-_JWKS_ALLOWED_SIG_ALGS: frozenset[str] = frozenset({"RS256", "ES256"})
-
-
 def _signing_keys_only(jwks: dict[str, Any]) -> dict[str, Any]:
     """Return a JWKS subset containing only keys usable for asymmetric
     signature verification — keys whose `use` is `sig` or unspecified,
-    and whose `alg` (if present) is in `_JWKS_ALLOWED_SIG_ALGS`.
+    and whose `alg` (if present) is in `_ASYMMETRIC_SIG_ALGS`.
 
     Defense against an auth server publishing an encryption key (or a
     symmetric-HMAC key masquerading as a JWKS entry) in the same JWKS
@@ -293,7 +289,7 @@ def _signing_keys_only(jwks: dict[str, Any]) -> dict[str, Any]:
     for k in jwks.get("keys", []):
         if k.get("use", "sig") != "sig":
             continue
-        if "alg" in k and k["alg"] not in _JWKS_ALLOWED_SIG_ALGS:
+        if "alg" in k and k["alg"] not in _ASYMMETRIC_SIG_ALGS:
             continue
         keep.append(k)
     return {"keys": keep}
@@ -508,48 +504,23 @@ def _parse_alg_header(id_token_raw: str) -> str:
         raise DecodeError("id_token header is not valid base64url") from exc
     try:
         header = json.loads(header_bytes)
-    except (ValueError, json.JSONDecodeError) as exc:
+    except json.JSONDecodeError as exc:
         raise DecodeError("id_token header is not valid JSON") from exc
-    alg = header.get("alg") if isinstance(header, dict) else None
+    if not isinstance(header, dict):
+        raise DecodeError("id_token header is not a JSON object")
+    alg = header.get("alg")
     if not isinstance(alg, str):
         raise DecodeError("id_token header missing string `alg`")
     return alg
 
 
-def _verify_id_token(id_token_raw: str, jwks: dict[str, Any]) -> Any:
-    """Verify the id_token signature + claims and return the claims object.
-
-    Dispatches on the parsed `alg` header:
-
-      * HS256 → HMAC-verified against `client_secret.encode("utf-8")`.
-        The JWKS is NEVER consulted for HS256 tokens, and this is the
-        entire alg-confusion defense — see `_ALLOWED_SIG_ALGS`.
-      * RS256 / ES256 → verified against the trusted JWKS subset
-        (`_signing_keys_only` drops encryption-only keys).
-
-    Any other `alg` — including `none` — raises `UnsupportedAlgorithmError`
-    before touching key material.
-
-    Raises authlib's `JoseError` subclasses on signature, alg, or
-    aud/iss/sub claim failures.
+def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
+    """Run authlib's decode + claims.validate for one specific alg/key
+    pair. Extracted from `_verify_id_token` so the asymmetric-branch
+    rotation-retry can call it twice against different JWKS revisions
+    without duplicating the claim-options block.
     """
-    alg = _parse_alg_header(id_token_raw)
-    decoder = _JWT_BY_ALG.get(alg)
-    if decoder is None:
-        raise UnsupportedAlgorithmError()
-
-    key: Any
-    if alg == "HS256":
-        # Symmetric: HMAC key is the client's `client_secret` bytes. This
-        # branch MUST NOT receive JWKS material — that's the vulnerability
-        # class the alg-confusion defense exists to close.
-        key = _client_secret().encode("utf-8")
-    else:
-        # Asymmetric: verify against the JWKS. `_signing_keys_only` drops
-        # encryption-only keys so an auth server that publishes an `enc`
-        # key can't accidentally join the signature trust pool.
-        key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
-
+    decoder = _JWT_BY_ALG[alg]
     # `aud` and `iss` are checked here, not somewhere downstream. Skipping
     # would let a Wiki.js-issued token (also signed by api.wxyc.org's JWKS)
     # authenticate to the verifier — that's a real cross-app confusion bug
@@ -559,16 +530,65 @@ def _verify_id_token(id_token_raw: str, jwks: dict[str, Any]) -> Any:
         "aud": {"essential": True, "value": _client_id()},
         # `sub` is mandatory per OIDC Core §2; mark essential so authlib
         # raises a JoseError on a token missing it, instead of letting a
-        # bare `KeyError` propagate from the field access below.
+        # bare `KeyError` propagate from the field access at the call site.
         "sub": {"essential": True},
     }
-    claims = decoder.decode(
-        id_token_raw,
-        key=key,
-        claims_options=claims_options,
-    )
+    claims = decoder.decode(id_token_raw, key=key, claims_options=claims_options)
     claims.validate()
     return claims
+
+
+async def _verify_id_token(id_token_raw: str) -> Any:
+    """Verify the id_token signature + claims and return the claims object.
+
+    Dispatches on the parsed `alg` header:
+
+      * HS256 → HMAC-verified against `client_secret.encode("utf-8")`.
+        The JWKS is NEVER consulted for HS256 tokens (neither the initial
+        load nor the rotation-retry branch) — this is the alg-confusion
+        defense stated on `_ALLOWED_SIG_ALGS`, and it also keeps HS256
+        logins up when the JWKS endpoint is transiently unreachable.
+      * RS256 / ES256 → loads the JWKS, verifies against the trusted
+        subset (`_signing_keys_only` drops encryption-only keys). On a
+        single `BadSignatureError` the JWKS cache is invalidated and one
+        re-verification is attempted against a freshly-fetched JWKS —
+        automatic recovery from a signing-key rotation.
+
+    Any other `alg` — including `none` — raises `UnsupportedAlgorithmError`
+    (message names the offending alg for on-call debuggability) before
+    touching key material.
+
+    Raises authlib's `JoseError` subclasses on signature, alg, or
+    aud/iss/sub claim failures; `httpx.HTTPError` when the asymmetric
+    branch cannot reach the JWKS endpoint.
+    """
+    alg = _parse_alg_header(id_token_raw)
+    if alg not in _ALLOWED_SIG_ALGS:
+        raise UnsupportedAlgorithmError(f"id_token alg {alg!r} not in allowlist")
+
+    if alg in _SYMMETRIC_SIG_ALGS:
+        # Symmetric: HMAC key is the client's `client_secret` bytes. This
+        # branch MUST NOT receive JWKS material — that's the vulnerability
+        # class the alg-confusion defense exists to close. This branch is
+        # also the reason `_load_jwks()` is NOT called upstream in
+        # `exchange_code`: in prod (api.wxyc.org advertises HS256 only), a
+        # JWKS-endpoint outage would otherwise take every login offline.
+        return _decode_with_key(id_token_raw, alg, _client_secret().encode("utf-8"))
+
+    # Asymmetric branch: RS256 / ES256. Load JWKS and try once; if the
+    # signature fails we may be looking at a stale JWKS post-rotation, so
+    # invalidate + refetch + retry exactly once. HS256 failures do NOT
+    # reach this branch, so a bad-secret login can never invalidate the
+    # JWKS cache used by legitimate asymmetric traffic.
+    jwks = await _load_jwks()
+    key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
+    try:
+        return _decode_with_key(id_token_raw, alg, key)
+    except BadSignatureError:
+        _invalidate_jwks_cache()
+        jwks = await _load_jwks()
+        key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
+        return _decode_with_key(id_token_raw, alg, key)
 
 
 async def exchange_code(*, code: str, code_verifier: str) -> ReviewerSession:
@@ -580,7 +600,9 @@ async def exchange_code(*, code: str, code_verifier: str) -> ReviewerSession:
       * `httpx.HTTPError` — token endpoint or JWKS endpoint unreachable
         / non-2xx (includes `httpx.HTTPStatusError` for 4xx from the
         token endpoint, e.g., replayed code → `invalid_grant`). Route
-        layer translates to 503.
+        layer translates to 503. Note: the JWKS endpoint is only reached
+        by the asymmetric verify branch inside `_verify_id_token`; HS256
+        logins do not depend on JWKS availability.
       * `authlib.jose.errors.JoseError` (and subclasses, including
         `InvalidClaimError` for `aud` / `iss` / `sub` failures, and
         `BadSignatureError` for an id_token signed by an unknown key
@@ -591,10 +613,8 @@ async def exchange_code(*, code: str, code_verifier: str) -> ReviewerSession:
         `id_token`, non-JSON body) or the discovery doc lacks a
         required endpoint URL. Route layer translates to 400.
 
-    On a single `BadSignatureError` the JWKS cache is invalidated and
-    one re-verification attempt is made against the fresh JWKS — this
-    recovers automatically from an auth-server key rotation without a
-    process restart.
+    JWKS rotation-recovery lives inside `_verify_id_token` so it only
+    fires for asymmetric algs — see that function's docstring.
     """
     metadata = await _load_metadata()
     body = await _fetch_token(metadata, code, code_verifier)
@@ -602,17 +622,7 @@ async def exchange_code(*, code: str, code_verifier: str) -> ReviewerSession:
     if not id_token_raw:
         raise ValueError("token response missing id_token field")
 
-    jwks = await _load_jwks()
-    try:
-        claims = _verify_id_token(id_token_raw, jwks)
-    except BadSignatureError:
-        # The cached JWKS may pre-date a signing-key rotation on the
-        # auth server. Drop it, refetch, and retry exactly once. If the
-        # second attempt also fails the BadSignatureError propagates as
-        # the documented JoseError path.
-        _invalidate_jwks_cache()
-        jwks = await _load_jwks()
-        claims = _verify_id_token(id_token_raw, jwks)
+    claims = await _verify_id_token(id_token_raw)
 
     # Better Auth's OIDC provider includes `preferred_username`, `email`,
     # `name`, and any extra claims `getAdditionalUserInfoClaim` returns
