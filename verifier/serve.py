@@ -903,6 +903,8 @@ def _cal_flatten_bundle_row_count(bundle_json: dict[str, object]) -> int:
     """
     quadrants = bundle_json.get("quadrants") or []
     total = 0
+    if not isinstance(quadrants, list):
+        return 0
     for quad in quadrants:
         entries = quad.get("entries") if isinstance(quad, dict) else None
         if isinstance(entries, list):
@@ -942,9 +944,7 @@ def _cal_absolute_image_path(bundle_json: dict[str, object]) -> str | None:
     return "/" + str(resolved)
 
 
-def _cal_can_read_verified(
-    requester_short: str, filename: str, page_dir: Path
-) -> bool:
+def _cal_can_read_verified(requester_short: str, filename: str, page_dir: Path) -> bool:
     """Blind-review rule for `verified.<short>.json` reads.
 
     Owner may always read own; others may read only after settlement
@@ -985,9 +985,7 @@ def _cal_validate_submission_body(
     try:
         submission = CalibrationSubmission.model_validate(body)
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(
-            status_code=400, detail=f"submission not valid: {exc}"
-        ) from exc
+        raise HTTPException(status_code=400, detail=f"submission not valid: {exc}") from exc
 
     if submission.stem != stem:
         raise HTTPException(status_code=400, detail="stem mismatch")
@@ -1007,17 +1005,12 @@ def _cal_validate_submission_body(
         if a < 0 or b > row_count:
             raise HTTPException(
                 status_code=400,
-                detail=(
-                    f"missing_row_marker out of range: ({a}, {b}) vs "
-                    f"{row_count} bundle rows"
-                ),
+                detail=(f"missing_row_marker out of range: ({a}, {b}) vs {row_count} bundle rows"),
             )
     return submission
 
 
-def _cal_run_merge_if_settled(
-    stem: str, year: str, bucket: str, page_dir: Path
-) -> None:
+def _cal_run_merge_if_settled(stem: str, year: str, bucket: str, page_dir: Path) -> None:
     """Load every present verified.*.json and re-run the merge.
 
     Writes canonical.json + agreement.json atomically if settled. A page
@@ -1048,12 +1041,8 @@ def _cal_run_merge_if_settled(
         settled_at=datetime.now(UTC),
     )
     if canonical is not None and agreement is not None:
-        _cal_atomic_write_json(
-            page_dir / "canonical.json", canonical.model_dump(mode="json")
-        )
-        _cal_atomic_write_json(
-            page_dir / "agreement.json", agreement.model_dump(mode="json")
-        )
+        _cal_atomic_write_json(page_dir / "canonical.json", canonical.model_dump(mode="json"))
+        _cal_atomic_write_json(page_dir / "agreement.json", agreement.model_dump(mode="json"))
 
 
 def _cal_update_reviewers_mapping(reviewer: ReviewerSession) -> None:
@@ -1255,9 +1244,7 @@ async def api_calibration_submit(
     _cal_update_reviewers_mapping(reviewer)
 
     settled = (page_dir / "canonical.json").exists()
-    return JSONResponse(
-        {"status": "submitted", "settled": settled, "short": short}
-    )
+    return JSONResponse({"status": "submitted", "settled": settled, "short": short})
 
 
 @app.get("/api/calibration/{year}/{bucket}/{stem}/verified/{short}")
