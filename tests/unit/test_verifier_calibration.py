@@ -14,7 +14,6 @@ from __future__ import annotations
 import hashlib
 import importlib
 import json
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -131,9 +130,7 @@ def _seed_bundle(root: Path, stem: str = STEM) -> Path:
     )
     page_dir = root / "data" / "calibration" / YEAR / BUCKET / stem
     page_dir.mkdir(parents=True, exist_ok=True)
-    (page_dir / "bundle.json").symlink_to(
-        Path("../../../..") / "verifier" / f"{stem}.bundle.json"
-    )
+    (page_dir / "bundle.json").symlink_to(Path("../../../..") / "verifier" / f"{stem}.bundle.json")
     return page_dir
 
 
@@ -179,9 +176,7 @@ def _submission_body(rows_count: int = 1) -> dict[str, Any]:
 # --------------------------------------------------------------------------- #
 
 
-async def test_bundle_read_serves_symlinked_content(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_bundle_read_serves_symlinked_content(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     reviewer = _make_reviewer()
     async with await _client(serve_app.app) as c:
@@ -216,9 +211,7 @@ async def test_bundle_read_rejects_path_traversal_year(serve_app) -> None:
 # --------------------------------------------------------------------------- #
 
 
-async def test_draft_save_writes_draft_short_file(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_draft_save_writes_draft_short_file(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     reviewer = _make_reviewer("sub-a")
     async with await _client(serve_app.app) as c:
@@ -229,13 +222,7 @@ async def test_draft_save_writes_draft_short_file(
         )
     assert r.status_code == 200
     draft_path = (
-        tmp_path
-        / "data"
-        / "calibration"
-        / YEAR
-        / BUCKET
-        / STEM
-        / f"draft.{_short('sub-a')}.json"
+        tmp_path / "data" / "calibration" / YEAR / BUCKET / STEM / f"draft.{_short('sub-a')}.json"
     )
     assert draft_path.is_file()
 
@@ -293,9 +280,7 @@ async def test_submit_writes_verified_atomically(serve_app, tmp_path: Path) -> N
     assert body["reviewer"]["user_id"] == "sub-a"
 
 
-async def test_submit_second_by_same_reviewer_is_rejected(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_submit_second_by_same_reviewer_is_rejected(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     reviewer = _make_reviewer("sub-a")
     async with await _client(serve_app.app) as c:
@@ -312,9 +297,7 @@ async def test_submit_second_by_same_reviewer_is_rejected(
     assert second.status_code == 400
 
 
-async def test_second_reviewer_submit_settles_page(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_second_reviewer_submit_settles_page(serve_app, tmp_path: Path) -> None:
     """Two agreeing reviewers → canonical.json + agreement.json land."""
     _seed_bundle(tmp_path)
     async with await _client(serve_app.app) as c:
@@ -352,15 +335,11 @@ async def test_reading_other_reviewers_verified_pre_settlement_denied(
         )
         assert r.status_code == 200
         c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-b")))
-        r = await c.get(
-            f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/verified/{_short('sub-a')}"
-        )
+        r = await c.get(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/verified/{_short('sub-a')}")
     assert r.status_code == 403
 
 
-async def test_reading_own_verified_always_allowed(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_reading_own_verified_always_allowed(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     async with await _client(serve_app.app) as c:
         c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
@@ -369,9 +348,7 @@ async def test_reading_own_verified_always_allowed(
             json=_submission_body(),
         )
         assert r.status_code == 200
-        r = await c.get(
-            f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/verified/{_short('sub-a')}"
-        )
+        r = await c.get(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/verified/{_short('sub-a')}")
     assert r.status_code == 200
 
 
@@ -393,15 +370,11 @@ async def test_reading_other_reviewers_verified_post_settlement_allowed(
         )
         # sub-a can now read sub-b's file (settled).
         c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
-        r = await c.get(
-            f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/verified/{_short('sub-b')}"
-        )
+        r = await c.get(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/verified/{_short('sub-b')}")
     assert r.status_code == 200
 
 
-async def test_reading_other_reviewers_draft_denied(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_reading_other_reviewers_draft_denied(serve_app, tmp_path: Path) -> None:
     """Drafts are owner-only regardless of settlement — you can't peek at
     an in-progress reading."""
     _seed_bundle(tmp_path)
@@ -422,9 +395,7 @@ async def test_reading_other_reviewers_draft_denied(
 # --------------------------------------------------------------------------- #
 
 
-async def test_canonical_read_denied_before_settlement(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_canonical_read_denied_before_settlement(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     async with await _client(serve_app.app) as c:
         c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
@@ -436,9 +407,7 @@ async def test_canonical_read_denied_before_settlement(
     assert r.status_code == 404
 
 
-async def test_canonical_and_agreement_read_after_settlement(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_canonical_and_agreement_read_after_settlement(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     async with await _client(serve_app.app) as c:
         c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
@@ -464,9 +433,7 @@ async def test_canonical_and_agreement_read_after_settlement(
 # --------------------------------------------------------------------------- #
 
 
-async def test_queue_lists_reviewer_eligible_pages(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_queue_lists_reviewer_eligible_pages(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     reviewer = _make_reviewer("sub-a")
     async with await _client(serve_app.app) as c:
@@ -481,9 +448,7 @@ async def test_queue_lists_reviewer_eligible_pages(
     assert entry["page_state"] == "awaiting_submissions"
 
 
-async def test_queue_hides_already_submitted_pages(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_queue_hides_already_submitted_pages(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     async with await _client(serve_app.app) as c:
         c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
@@ -514,9 +479,7 @@ async def test_submit_rejects_row_count_mismatch(serve_app, tmp_path: Path) -> N
     assert r.status_code == 400
 
 
-async def test_submit_rejects_out_of_range_missing_row_marker(
-    serve_app, tmp_path: Path
-) -> None:
+async def test_submit_rejects_out_of_range_missing_row_marker(serve_app, tmp_path: Path) -> None:
     _seed_bundle(tmp_path)
     body = _submission_body()
     body["missing_row_markers"] = [
@@ -530,7 +493,5 @@ async def test_submit_rejects_out_of_range_missing_row_marker(
     reviewer = _make_reviewer("sub-a")
     async with await _client(serve_app.app) as c:
         c.cookies.set("flowsheet_session", _session_cookie(reviewer))
-        r = await c.post(
-            f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=body
-        )
+        r = await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=body)
     assert r.status_code == 400
