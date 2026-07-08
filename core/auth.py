@@ -80,7 +80,12 @@ from typing import Any
 import httpx
 from authlib.common.urls import add_params_to_uri
 from authlib.jose import JsonWebKey, JsonWebToken
-from authlib.jose.errors import BadSignatureError, DecodeError, UnsupportedAlgorithmError
+from authlib.jose.errors import (
+    BadSignatureError,
+    DecodeError,
+    InvalidClaimError,
+    UnsupportedAlgorithmError,
+)
 from authlib.oauth2.rfc7636 import create_s256_code_challenge
 from itsdangerous import BadSignature, TimestampSigner
 
@@ -254,9 +259,11 @@ async def _load_jwks() -> dict[str, Any]:
 def _invalidate_jwks_cache() -> None:
     """Drop the cached JWKS without touching discovery.
 
-    Called by `exchange_code` after a signature failure that might
-    indicate the auth server rotated its signing key — the next
-    `_load_jwks()` call refetches.
+    Called by `_verify_id_token`'s asymmetric branch after a signature
+    failure that might indicate the auth server rotated its signing key
+    — the next `_load_jwks()` call refetches. Scoped to the asymmetric
+    branch so a bad-secret HS256 login can never invalidate the cache
+    used by legitimate asymmetric traffic.
     """
     global _jwks
     _jwks = None
@@ -522,26 +529,41 @@ def _parse_alg_header(id_token_raw: str) -> str:
 
 
 def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
-    """Run authlib's decode + claims.validate for one specific alg/key
-    pair. Extracted from `_verify_id_token` so the asymmetric-branch
-    rotation-retry can call it twice against different JWKS revisions
-    without duplicating the claim-options block.
+    """Run authlib's decode + claims.validate + explicit multi-aud guard
+    for one specific alg/key pair. Called from all three branches of
+    `_verify_id_token` (symmetric, asymmetric primary, asymmetric retry).
     """
     decoder = _JWT_BY_ALG[alg]
-    # `aud` and `iss` are checked here, not somewhere downstream. Skipping
-    # would let a Wiki.js-issued token (also signed by api.wxyc.org's JWKS)
-    # authenticate to the verifier — that's a real cross-app confusion bug
-    # the plan calls out explicitly.
+    # `aud`, `iss`, `sub`, `exp` are checked here. Skipping any one has a
+    # concrete failure mode:
+    #   - Missing `aud` → Wiki.js token authenticates as us.
+    #   - Missing `iss` → attacker-controlled issuer signs an id_token our
+    #     JWKS or client_secret happens to also verify.
+    #   - Missing `sub` → `KeyError` at claim-lookup site downstream.
+    #   - Missing `exp` → authlib's `validate_exp` silently no-ops when
+    #     `exp` is absent (verified against authlib 1.6.x). A token issued
+    #     without an expiration would then verify forever.
     claims_options = {
         "iss": {"essential": True, "value": _issuer()},
         "aud": {"essential": True, "value": _client_id()},
-        # `sub` is mandatory per OIDC Core §2; mark essential so authlib
-        # raises a JoseError on a token missing it, instead of letting a
-        # bare `KeyError` propagate from the field access at the call site.
         "sub": {"essential": True},
+        "exp": {"essential": True},
     }
     claims = decoder.decode(id_token_raw, key=key, claims_options=claims_options)
     claims.validate()
+    # Multi-audience defense (OIDC Core 3.1.3.7 §4-5). authlib's default
+    # `validate_aud` accepts a token whose `aud` is a LIST containing our
+    # client_id even when other audiences are present — technically valid
+    # per the spec's "aud MAY contain an array" clause, but only if the
+    # extra audiences are trusted AND an `azp` claim confirms we are the
+    # authorized party. We don't trust any extra audience by default, so
+    # require `aud` to be exactly our client_id (single-value or a
+    # single-element list). If a future consumer needs multi-aud support,
+    # extend this to check `claims["azp"] == _client_id()` per spec.
+    aud = claims.get("aud")
+    aud_list = [aud] if isinstance(aud, str) else list(aud or ())
+    if aud_list != [_client_id()]:
+        raise InvalidClaimError("aud")
     return claims
 
 
@@ -559,7 +581,11 @@ async def _verify_id_token(id_token_raw: str) -> Any:
         subset (`_signing_keys_only` drops encryption-only keys). On a
         single `BadSignatureError` the JWKS cache is invalidated and one
         re-verification is attempted against a freshly-fetched JWKS —
-        automatic recovery from a signing-key rotation.
+        automatic recovery from a signing-key rotation. If the refetch
+        itself fails (`httpx.HTTPError` or `ValueError` from a malformed
+        JWKS body), the original `BadSignatureError` is re-raised so a
+        forged token during a JWKS outage still surfaces as an auth
+        failure (400), not a transport failure (503).
 
     Any other `alg` — including `none` — raises `UnsupportedAlgorithmError`
     (message names the offending alg for on-call debuggability) before
@@ -575,9 +601,7 @@ async def _verify_id_token(id_token_raw: str) -> Any:
         # `error='unsupported_algorithm'` short code is preserved. Passing
         # the human message positionally clobbers `error` and would break
         # any observability filter grouping on the short code.
-        raise UnsupportedAlgorithmError(
-            description=f"id_token alg {alg!r} not in allowlist"
-        )
+        raise UnsupportedAlgorithmError(description=f"id_token alg {alg!r} not in allowlist")
 
     if alg in _SYMMETRIC_SIG_ALGS:
         # Symmetric: HMAC key is the client's `client_secret` bytes. This
@@ -601,13 +625,14 @@ async def _verify_id_token(id_token_raw: str) -> Any:
         _invalidate_jwks_cache()
         try:
             jwks = await _load_jwks()
-        except httpx.HTTPError:
-            # Refetch failed. The original outcome — a legitimate
-            # signature failure — is the correct signal here: converting
-            # it to `httpx.HTTPError` (route: 503 'auth unavailable')
-            # would obscure a forged-token probe as an auth-server
-            # incident. Surface the original BadSignatureError so on-call
-            # sees the 400 the client actually earned.
+        except (httpx.HTTPError, ValueError):
+            # Refetch failed for any reason (transport error, malformed
+            # JWKS body, discovery-doc regression). Re-raise the original
+            # signature failure so a forged-token probe surfaces as 400,
+            # not as a 503 that would misfile the attack as an ops
+            # incident. `ValueError` covers `json.JSONDecodeError` from
+            # `r.json()` on a non-JSON body and the sentinel raise inside
+            # `_load_jwks` for a discovery doc missing `jwks_uri`.
             raise original from None
         key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
         return _decode_with_key(id_token_raw, alg, key)

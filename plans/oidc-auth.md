@@ -320,7 +320,7 @@ async def exchange_code(code: str, code_verifier: str) -> ReviewerSession:
     """Exchange the authorization code for an id_token; verify it; return reviewer.
 
     Raises if the auth server is unreachable, if the id_token's signature
-    doesn't verify against the JWKS, or if `aud` / `iss` don't match.
+    doesn't verify, or if `aud` / `iss` / `sub` / `exp` don't match.
     The verifier serve.py middleware translates these into a 503 (transport
     failure) or 400 (claim failure) — see `/auth/callback` handler.
     """
@@ -365,6 +365,8 @@ SESSION_TTL = timedelta(hours=12)
 **Considered and rejected: eager load at app startup.** Fetching discovery + JWKS during `verifier/serve.py`'s module load would avoid the "first user pays a ~50-150ms cold-start" cost and would let tests treat the cache as immutable. We rejected it because it couples verifier process boot to the auth server's reachability — a brief api.wxyc.org slowdown during a flowsheet deploy would prevent the verifier from starting at all, including its `/api/version` healthcheck, which Railway uses to decide whether to keep the new revision alive. The current lazy approach degrades more gracefully: a transient auth-server failure surfaces as a 503 on the first `/auth/*` call, the verifier process stays up, and the next request retries. If the cold-start latency becomes a real complaint, the right fix is async pre-warming on app startup (fire-and-forget `_load_metadata()` in a startup event, with the cache populated by the time the first user clicks login), not making boot blocking.
 
 The module docstring should state this trade-off in those terms so a future reader doesn't "fix" it back to the DI pattern by reflex.
+
+**Signing-algorithm dispatch (added post-merge, see PR #79 series).** This plan originally assumed the auth server would sign id_tokens with RS256/ES256 keyed off the JWKS. In practice, Better Auth's `oidcProvider` plugin signs with the client's `client_secret` as an HMAC key (HS256) — `api.wxyc.org/auth/.well-known/openid-configuration` advertises exactly `["HS256"]` in `id_token_signing_alg_values_supported`. `_verify_id_token` parses the token's `alg` header first and dispatches to disjoint key material: HS256 → `client_secret.encode("utf-8")`; RS256/ES256 → filtered JWKS via `_signing_keys_only`. Two disjoint constants (`_SYMMETRIC_SIG_ALGS`, `_ASYMMETRIC_SIG_ALGS`) name the split, and `_ALLOWED_SIG_ALGS` is their union so a new alg lands in exactly one set on purpose. Consequences: HS256 logins do NOT consume the JWKS (cached or otherwise), the JWKS rotation-retry lives strictly inside the asymmetric branch, and a bad-secret HS256 login can never invalidate the cache used by legitimate asymmetric traffic. Multi-audience `aud` claims require exact `[client_id]` match (OIDC Core 3.1.3.7 §4-5); `exp` is essential to prevent tokens without expiration from verifying forever. The alg-confusion attack class (CVE-2016-10555 family — attacker signs an HS256 token using JWKS public-key bytes as HMAC secret) is closed by construction because the HS256 verify path never receives JWKS material.
 
 Why this lives under `core/` and not `verifier/`: `core/` is the project's home for "pure modules with no FastAPI deps" per the existing layout. The dataclass and codec are pure; only the OIDC HTTP calls reach out, and they use `httpx` (already a project dep). Tests live under `tests/unit/test_auth.py` and can run without spinning up the FastAPI app.
 
