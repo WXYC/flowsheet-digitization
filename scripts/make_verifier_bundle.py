@@ -124,7 +124,7 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
     a verifier-geometry concern. The on-disk pipeline doesn't need it.
     """
     result: list[tuple[Entry, int]] = []
-    for raw_entry in entries:
+    for i, raw_entry in enumerate(entries):
         # Strip unreliable `crossed_out` tags before any merge / span logic.
         # Done first so a stripped crossed_out predecessor can still absorb
         # a following continuation row instead of blocking the merge.
@@ -141,7 +141,19 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
         # tagged crossed_out has just had its notes reset to None, but the tag
         # is still information — the volunteer may be able to read the struck
         # text manually. Same for illegible and any other future tag.
-        if not raw_entry.raw_text.strip() and raw_entry.notes is None:
+        #
+        # BUT: don't drop if the NEXT row is a continuation. A blank row that
+        # sits between a real entry and a continuation is a load-bearing
+        # anchor — the continuation folds into IT (rather than jumping the
+        # gap into the row above), so the merged bbox correctly covers the
+        # physical row carrying the continuation's ink instead of stopping
+        # short by one grid row.
+        next_notes = entries[i + 1].notes if i + 1 < len(entries) else None
+        if (
+            not raw_entry.raw_text.strip()
+            and raw_entry.notes is None
+            and next_notes != "continuation"
+        ):
             continue
         if entry.notes == "continuation" and result:
             prior, prior_span = result[-1]
@@ -292,7 +304,16 @@ def _assign_row_bboxes(
         y_top = y1
         row_height = max(1, (y2 - y1) // n_entries)
 
-    total_height_needed = sum(spans) * row_height
+    total_physical = sum(spans)
+    if y2 - y_top < total_physical:
+        # Not enough vertical space to give every physical row even 1px
+        # (e.g. detected lines cluster near y2, or an inference put y_top
+        # very close to y2). Bail to the y1-anchored even-split so every
+        # row still gets a positive-height crop.
+        y_top = y1
+        row_height = max(1, (y2 - y1) // n_entries)
+
+    total_height_needed = total_physical * row_height
     available = y2 - y_top
     squeezed = total_height_needed > available
     if squeezed:
@@ -302,7 +323,7 @@ def _assign_row_bboxes(
         # so each entry still gets a non-zero bbox instead of collapsing
         # to a zero-height strip at y2 — invisible rows in the verifier
         # UI defeat per-row verification.
-        row_height = max(1, available // sum(spans))
+        row_height = max(1, available // total_physical)
 
     rows = []
     y_cursor = y_top

@@ -429,6 +429,44 @@ def test_merge_with_spans_drops_empty_raw_text_with_null_notes() -> None:
     )
 
 
+def test_merge_with_spans_keeps_blank_row_when_followed_by_continuation() -> None:
+    """A phantom blank row (raw_text='', notes=None) sitting BETWEEN a real
+    entry and a `continuation` row must NOT be dropped. Dropping it makes
+    the continuation fold into the real entry ABOVE the blank, then the
+    bbox assigner stretches that entry to span the blank's physical row
+    but stops SHORT of the continuation's actual ink. Preserving the
+    blank as a span-1 slot lets the continuation fold into IT, so the
+    merged bbox correctly covers the physical rows carrying the
+    continuation's ink.
+
+    Regression: iter-3 introduced the phantom-blank drop; iter-5 review
+    caught this case where the blank is load-bearing as a continuation
+    anchor.
+    """
+    entries = [
+        Entry(row_index=0, raw_text="Nirvana - Come As You Are", confidence="high"),
+        Entry(row_index=1, raw_text="", confidence="low"),  # blank untagged
+        Entry(row_index=2, raw_text="(single)", confidence="medium", notes="continuation"),
+        Entry(row_index=3, raw_text="Pavement - Box Elder", confidence="high"),
+    ]
+    result = _merge_with_spans(entries)
+    # E0 stays alone; E1 (blank) survives and absorbs E2 (continuation).
+    # E3 stays as its own entry.
+    assert len(result) == 3
+    # Continuation merged into the blank at row 1, not into row 0.
+    e0, span0 = result[0]
+    e1, span1 = result[1]
+    e3, span2 = result[2]
+    assert e0.raw_text == "Nirvana - Come As You Are"
+    assert span0 == 1
+    assert e1.row_index == 1
+    assert e1.raw_text == "(single)"
+    assert span1 == 2, (
+        "continuation must fold into the blank, spanning the physical row it lives on"
+    )
+    assert e3.raw_text == "Pavement - Box Elder"
+
+
 def test_merge_with_spans_keeps_blank_row_when_originally_tagged() -> None:
     """A blank row that was tagged crossed_out (or any other note) on the
     original Gemini emission must NOT be dropped, even though the crossed_out
@@ -501,6 +539,21 @@ def test_assign_row_bboxes_squeeze_covers_full_body_height() -> None:
     assert rows[-1][3] == quad_bbox[3], (
         f"final row must extend to y2={quad_bbox[3]}, got y_end={rows[-1][3]}"
     )
+
+
+def test_assign_row_bboxes_handles_available_less_than_span_count() -> None:
+    """When detected lines cluster within `sum(spans)` pixels of `y2`,
+    the squeeze's `available // sum(spans)` floors to 0 → row_height=1 →
+    every row past the first collapses to zero-height at y2. The 'no
+    zero-height bboxes' contract must survive this pathological case
+    too: bail to the y1-anchored even-split fallback."""
+    quad_bbox = (0, 0, 500, 400)
+    # Single detected line at 399 (very near y2). available = 1 for 3 spans
+    # → floor gives row_height=0, clamped to 1 by max(1, ...), but the
+    # emission loop still produces zero-height rows past the first.
+    rows = _assign_row_bboxes(quad_bbox, lines=[399], spans=[1, 1, 1])
+    for _x1, y1, _x2, y2 in rows:
+        assert y1 < y2, f"row bbox must have positive height; got y1={y1}, y2={y2}"
 
 
 def test_assign_row_bboxes_handles_y_top_above_y2() -> None:
