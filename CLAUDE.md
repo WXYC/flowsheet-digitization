@@ -69,6 +69,24 @@ core/
   continuations.py               Read-time merge of `notes="continuation"`
                                  rows into the prior entry's raw_text.
                                  Pure function; on-disk shape unchanged.
+  calibration_compare.py         Pure normalization + agreement comparator
+                                 for the multi-reviewer calibration flow.
+                                 `_normalize_raw_text`, `_normalize_type_raw`,
+                                 `rows_agree(a, b, *, canonicalize=None)`.
+                                 Tier-2 `canonicalize` hook reserved for
+                                 an LML canonicalizer that doesn't ship in
+                                 this plan. NOT to be confused with
+                                 core/calibration.py — the file-name pair
+                                 is intentional; this module compares
+                                 REVIEWER text, `calibration.py` scores
+                                 MODELS against goldens.
+  calibration_consensus.py       Pure-function merge over per-reviewer
+                                 CalibrationSubmission objects. Produces
+                                 (CalibrationCanonical, CalibrationAgreement,
+                                 target_reviewers) — None/None/target while
+                                 the page is still awaiting more submissions.
+                                 Named `_consensus` rather than `_merge` to
+                                 disambiguate from core/calibration.py.
 
 cli.py                           Typer entrypoint: `flowsheets <subcommand>`.
                                  Builds dependencies from env, calls into core.
@@ -84,7 +102,23 @@ scripts/
                                  (page date tokens, jock prefix, artist
                                  portion of raw_text). Single source of
                                  truth for those rules — the UI doesn't
-                                 derive truth itself.
+                                 derive truth itself. Two source modes:
+                                 --from verified (single-reviewer path,
+                                 default) and --from canonical (settled
+                                 multi-reviewer canonical.json under
+                                 data/calibration/<year>/<bucket>/<stem>/).
+                                 The canonical mode auto-computes the
+                                 output path as tests/golden/calibration/
+                                 <year>/<stem>.truth.json.
+  seed_calibration_anomaly.py    Bootstrap for the 5 seed pathology
+                                 bundles (project_bbox_sweep_result.md).
+                                 Creates data/calibration/<year>/anomaly/
+                                 <stem>/ with a relative symlink back to
+                                 data/verifier/<stem>.bundle.json.
+                                 Idempotent. --dry-run to preview;
+                                 --refresh-reviewers to rebuild the
+                                 append-only _reviewers.json ops mapping
+                                 from existing verified.*.json submissions.
 ```
 
 ## Why these choices
@@ -108,6 +142,15 @@ scripts/
 | Date normalization to ISO | raw only | reconciled with filename's year/range |
 | Reconciliation against `@wxyc/shared` canonical artists | — | fuzzy-match + auto-correct |
 | Bulk full-corpus run | not in this PR | calibrate first, then schedule |
+
+## Multi-reviewer calibration mode
+
+The regular flow above assigns one reviewer per page. For the calibration *anomaly bucket* (5 named seed pathology pages today, plus per-year sampled anomalies later — see `plans/multi-reviewer-calibration.md`) we run a blind multi-reviewer protocol so ground truth carries an inter-reviewer agreement rate, not just one person's reading. The per-page state lives under `data/calibration/<year>/<bucket>/<stem>/` — a symlinked `bundle.json` plus per-reviewer `draft.<short>.json` / `verified.<short>.json` files, and a settled `canonical.json` + `agreement.json` pair. Everything reads and writes through gated `/api/calibration/*` endpoints in `verifier/serve.py`; the on-disk shape is authoritative and no separate SQLite table tracks calibration state.
+
+Two important disambiguations for future readers:
+
+- **`core/calibration_compare.py` + `core/calibration_consensus.py`** (multi-reviewer text agreement + settled canonical merge) vs. **`core/calibration.py`** (extraction-model scoring against goldens). Distinct concerns, coincident naming — both belong. Don't refactor toward a single "calibration" module.
+- **`CALIBRATION_SCHEMA_VERSION`** (in `core/schema.py`) covers the four calibration on-disk shapes and evolves independently from **`SCHEMA_VERSION`** in `scripts/make_verifier_bundle.py` (which covers bundles).
 
 ## Marker scheme
 

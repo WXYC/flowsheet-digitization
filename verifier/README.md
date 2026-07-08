@@ -226,6 +226,50 @@ The seed-on-first-boot logic only fires when the volume's `verifier/` is empty. 
 - Use the Railway shell (`railway run /bin/sh`) and `cp /seed/verifier/<new>.bundle.json /data/verifier/`, then copy the matching PNG into `/data/pages/...`. Awkward but works.
 - Or do a one-off "reseed" deploy: bump a marker file, redeploy, and have the entrypoint re-copy missing files (not implemented today — file a ticket if this becomes a regular need).
 
+## Calibration mode (multi-reviewer, backend surface)
+
+The verifier serves a second, blind-review flow for pages in the calibration *anomaly bucket* — the 5 seed pathology bundles today (`project_bbox_sweep_result.md`), and per-year sampled anomalies later. Each page is reviewed independently by 2+ reviewers; a third joins automatically on any gating-field disagreement. A pure-function merge produces `canonical.json` + `agreement.json` per page. See `plans/multi-reviewer-calibration.md` for the full protocol.
+
+The backend PR provides the API surface. The SPA calibration-mode UI ships separately.
+
+### Endpoints
+
+Every endpoint is gated on the same session middleware as the regular verifier flow. The `<year>`, `<bucket>`, and `<stem>` path parts are validated against anchored regexes before touching disk.
+
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/api/calibration/queue` | The reviewer's eligible-page queue (draft → near-done → not-started). Suppresses already-submitted or settled pages. |
+| GET | `/api/calibration/<year>/<bucket>/<stem>/bundle` | The symlinked `bundle.json` with `image_url` rewritten to an absolute `/data/pages/...` URL. |
+| GET / POST | `/api/calibration/<year>/<bucket>/<stem>/draft` | The requesting reviewer's `draft.<short>.json`. Owner-only; a non-owner GET returns 404 (not 403) so drafts aren't distinguishable from absence. |
+| POST | `/api/calibration/<year>/<bucket>/<stem>/submit` | Atomically promotes to `verified.<short>.json`, runs the merge, and writes `canonical.json` + `agreement.json` iff settlement is reached. |
+| GET | `/api/calibration/<year>/<bucket>/<stem>/verified/<short>` | Access-gated: owner may always read own; others may read only after settlement. |
+| GET | `/api/calibration/<year>/<bucket>/<stem>/canonical` | Settled canonical only; 404 pre-settlement. |
+| GET | `/api/calibration/<year>/<bucket>/<stem>/agreement` | Settled agreement only; 404 pre-settlement. |
+
+### Blind-review file layout
+
+```
+data/calibration/<year>/<bucket>/<stem>/
+    bundle.json             # relative symlink to data/verifier/<stem>.bundle.json
+    draft.<short>.json      # mutable; owner-only
+    verified.<short>.json   # immutable; access-gated
+    canonical.json          # written only at settlement
+    agreement.json          # written only at settlement
+```
+
+`<short> = sha256(reviewer.user_id).hexdigest()[:12]`. `data/calibration/_reviewers.json` is an append-only mapping from short → identity fields, updated best-effort on first-time submission and never read by the merge handler. Regenerate with `scripts/seed_calibration_anomaly.py --refresh-reviewers` when a reviewer's real_name / dj_name goes stale.
+
+### Bootstrap
+
+To populate the anomaly bucket with the 5 seed bundles once:
+
+```bash
+.venv/bin/python scripts/seed_calibration_anomaly.py --dry-run   # preview
+.venv/bin/python scripts/seed_calibration_anomaly.py            # go
+```
+
+The script is idempotent — re-running creates nothing new and never overwrites an existing symlink or file.
+
 ## Known rough edges (v1)
 
 - **No autosave / localStorage.** Close the tab and unsaved edits are lost. Export before navigating away.
