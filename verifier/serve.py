@@ -850,13 +850,13 @@ def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str
 #
 # Multi-reviewer calibration flow (plans/multi-reviewer-calibration.md).
 # Every endpoint requires an authenticated reviewer via _SessionCookieMiddleware.
-# Per-reviewer file access is gated at the endpoint layer (see
-# `_cal_can_read_verified`), not at the static-mount layer — direct reads of
-# `/data/calibration/*.json` continue to work for public files (bundle,
-# canonical, agreement) because those are fine to expose, and the sensitive
-# files (`draft.*.json`, pre-settlement `verified.*.json`) are only ever
-# READ through the gated `/api/calibration/*` routes and WRITTEN by the
-# server itself.
+# Per-reviewer file access is gated at the endpoint layer
+# (`_cal_can_read_verified`). The `/data` static mount cannot serve any
+# calibration file — `_NoCalibrationStaticFiles` below returns 404 for the
+# entire `calibration/` subtree so the blind-review rules can never be
+# bypassed by a direct static read of `/data/calibration/<year>/<bucket>/
+# <stem>/verified.<peer_short>.json`. All calibration reads go through
+# `/api/calibration/*`; all writes are done by the server itself.
 
 _CAL_YEAR_RE = re.compile(r"^\d{4}$")
 _CAL_BUCKET_RE = re.compile(r"^[a-z_]+$")
@@ -1322,12 +1322,29 @@ class _NoCacheStaticFiles(StaticFiles):
         return response
 
 
+class _NoCalibrationStaticFiles(StaticFiles):
+    """`StaticFiles` that returns 404 for anything under `calibration/`.
+
+    Calibration files are per-reviewer and gated by `_cal_can_read_verified`
+    at the `/api/calibration/*` layer. Without this guard, any authenticated
+    reviewer could read a peer's `verified.<peer_short>.json` (or `draft.*`,
+    or `_reviewers.json`) directly through `/data/calibration/...`,
+    bypassing blind review entirely. 404 rather than 403 so we don't leak
+    which specific paths exist.
+    """
+
+    async def get_response(self, path: str, scope):  # type: ignore[no-untyped-def]
+        if path == "calibration" or path.startswith("calibration/"):
+            return Response(status_code=404)
+        return await super().get_response(path, scope)
+
+
 app.mount(
     "/verifier",
     _NoCacheStaticFiles(directory=REPO_ROOT / "verifier", html=True),
     name="verifier",
 )
-app.mount("/data", StaticFiles(directory=DATA_ROOT, check_dir=False), name="data")
+app.mount("/data", _NoCalibrationStaticFiles(directory=DATA_ROOT, check_dir=False), name="data")
 # tests/ is dev-only (golden fixtures). Mount it conditionally so the
 # Docker runtime image — which excludes tests/ — doesn't crash at boot.
 if (REPO_ROOT / "tests").is_dir():
