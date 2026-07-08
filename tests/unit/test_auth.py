@@ -991,18 +991,51 @@ async def test_exchange_code_rejects_token_missing_exp(
         await exchange_code(code="auth-code", code_verifier="verifier")
 
 
+@pytest.mark.parametrize(
+    "alg,aud_value",
+    [
+        # RS256, client_id first → rejected regardless of position.
+        ("RS256", [CLIENT_ID, "wikijs-client-id"]),
+        # RS256, client_id NOT first → pins that the check isn't
+        # position-sensitive. A regression to `aud_list[0] != client_id`
+        # would accept this even though extra audiences are present.
+        ("RS256", ["wikijs-client-id", CLIENT_ID]),
+        # HS256 (production path) — same rejection must hold. A refactor
+        # that moved the multi-aud guard to the asymmetric-only branch
+        # would silently regress HS256 login safety without this case.
+        ("HS256", [CLIENT_ID, "wikijs-client-id"]),
+        ("HS256", ["wikijs-client-id", CLIENT_ID]),
+    ],
+    ids=[
+        "rs256-client-first",
+        "rs256-client-second",
+        "hs256-client-first",
+        "hs256-client-second",
+    ],
+)
 async def test_exchange_code_rejects_multi_aud_with_extra_audience(
     monkeypatch: pytest.MonkeyPatch,
     stub_metadata: dict[str, Any],
     signing_key: Any,
+    alg: str,
+    aud_value: list[str],
 ) -> None:
     """A token whose `aud` is a list containing our client_id AND another
     audience must be rejected — even though authlib's default
     `validate_aud` accepts it (any-of-set-membership semantics). Per OIDC
     Core 3.1.3.7 §4-5, extra audiences must be explicitly trusted, and
-    multi-valued `aud` requires an `azp` claim we verify. We trust
-    no extra audience by default; require `aud == [client_id]`."""
-    token = _mint_id_token(signing_key, aud=[CLIENT_ID, "wikijs-client-id"])
+    multi-valued `aud` requires an `azp` claim we verify. We trust no
+    extra audience by default.
+
+    Parametrized over (alg, position) so:
+      * Both alg branches share the multi-aud guard (regression that
+        migrated the check to asymmetric-only would fail HS256 cases).
+      * Position of client_id in the array is irrelevant (regression to
+        first-element check would accept the client-second cases)."""
+    if alg == "HS256":
+        token = _mint_hs256_id_token(CLIENT_SECRET, aud=aud_value)
+    else:
+        token = _mint_id_token(signing_key, aud=aud_value)
     _install_token_endpoint(monkeypatch, token)
     with pytest.raises(InvalidClaimError):
         await exchange_code(code="auth-code", code_verifier="verifier")
