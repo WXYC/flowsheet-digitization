@@ -584,3 +584,53 @@ async def test_static_data_still_serves_non_calibration(serve_app, tmp_path: Pat
         r = await c.get(f"/data/verifier/{STEM}.bundle.json")
     assert r.status_code == 200
     assert r.json()["stem"] == STEM
+
+
+async def test_static_data_blocks_case_variant_calibration(serve_app, tmp_path: Path) -> None:
+    """The static-mount guard must not be defeated by URL-case variance on
+    case-insensitive filesystems (macOS APFS default, Windows NTFS).
+    A prefix check like `path.startswith('calibration/')` compares the URL
+    path in original case, but the OS resolves 'CALIBRATION/xyz' to
+    'calibration/xyz' on the disk — so the guard has to close that gap."""
+    _seed_bundle(tmp_path)
+    peer = _make_reviewer("sub-peer", "dj_peer")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(peer))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=_submission_body())
+    peer_short = _short("sub-peer")
+    other = _make_reviewer("sub-other", "dj_other")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(other))
+        # Uppercase URL segment. On a case-insensitive filesystem the disk
+        # resolves 'CALIBRATION' to 'calibration' and the peer file would
+        # be reachable if the guard only string-matched the URL path.
+        r = await c.get(f"/data/CALIBRATION/{YEAR}/{BUCKET}/{STEM}/verified.{peer_short}.json")
+    assert r.status_code == 404
+
+
+async def test_static_data_blocks_symlink_bypass_via_verifier(serve_app, tmp_path: Path) -> None:
+    """A symlink under a permitted subtree (data/verifier/) pointing into
+    the calibration tree must not be servable through /data. Starlette
+    follows realpath in its containment check, so the symlink's real
+    target passes StaticFiles's own guard — the calibration wrapper has
+    to also check the real target, not just the URL prefix."""
+    _seed_bundle(tmp_path)
+    peer = _make_reviewer("sub-peer", "dj_peer")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(peer))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=_submission_body())
+    peer_short = _short("sub-peer")
+    verified_target = (
+        tmp_path / "data" / "calibration" / YEAR / BUCKET / STEM / f"verified.{peer_short}.json"
+    )
+    assert verified_target.is_file()
+    # Plant a symlink under data/verifier/ that points at the peer's
+    # verified.json. A URL under /data/verifier/ doesn't match the
+    # "calibration/" prefix, so a URL-string guard would let it through.
+    leak_link = tmp_path / "data" / "verifier" / "leak.json"
+    leak_link.symlink_to(verified_target)
+    other = _make_reviewer("sub-other", "dj_other")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(other))
+        r = await c.get("/data/verifier/leak.json")
+    assert r.status_code == 404
