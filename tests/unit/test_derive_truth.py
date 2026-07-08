@@ -175,6 +175,150 @@ def test_derive_truth_skips_empty_raw_text_rows() -> None:
 # -- main CLI ---------------------------------------------------------------
 
 
+# -- --from canonical (multi-reviewer path) ---------------------------------
+
+
+def _canonical_bundle_pair(
+    tmp_path: Path, *, stem: str = "1990-04apr0106-page14"
+) -> tuple[Path, Path]:
+    """Materialize a minimal canonical.json + bundle.json pair under
+    `tmp_path/data/calibration/1990/anomaly/<stem>/`."""
+    page_dir = tmp_path / "data" / "calibration" / "1990" / "anomaly" / stem
+    page_dir.mkdir(parents=True, exist_ok=True)
+    bundle = {
+        "schema_version": 2,
+        "stem": stem,
+        "page_date_raw": "Mon 1 Jan 90",
+        "quadrants": [
+            {
+                "position": "top_left",
+                "hour_raw": "6AM",
+                "jock_raw": "Andrew",
+                "entries": [
+                    {"row_index": 0, "raw_text": "PRIMAL SCREAM - LOADED"},
+                ],
+            },
+            {
+                "position": "top_right",
+                "hour_raw": None,
+                "jock_raw": None,
+                "entries": [
+                    {"row_index": 0, "raw_text": "BEASTIE BOYS - SABOTAGE"},
+                ],
+            },
+            {"position": "bottom_left", "hour_raw": None, "jock_raw": None, "entries": []},
+            {"position": "bottom_right", "hour_raw": None, "jock_raw": None, "entries": []},
+        ],
+    }
+    (page_dir / "bundle.json").write_text(json.dumps(bundle))
+    canonical = {
+        "schema_version": 1,
+        "stem": stem,
+        "settled_at": "2026-06-12T14:35:11+00:00",
+        "target_reviewers": 2,
+        "rows": [
+            {
+                "canonical_row_index": 0,
+                "bundle_row_index": 0,
+                "inserted_between_bundle_rows": None,
+                "raw_text": "PRIMAL SCREAM - LOADED",
+                "type_raw": "H",
+                "notes": None,
+                "confidence": "high",
+                "verification": {
+                    "status": "unanimous",
+                    "raw_text_status": "unanimous",
+                    "raw_text_dissents": [],
+                    "type_raw_status": "unanimous",
+                    "type_raw_dissents": [],
+                    "spurious_flag_status": "unanimous_keep",
+                    "spurious_flag_votes": {"keep": 2, "spurious": 0},
+                    "notes_values": {"null": 2},
+                    "reviewer_shorts": ["a", "b"],
+                },
+            },
+            {
+                "canonical_row_index": 1,
+                "bundle_row_index": 1,
+                "inserted_between_bundle_rows": None,
+                "raw_text": None,
+                "type_raw": None,
+                "notes": None,
+                "confidence": "high",
+                "verification": {
+                    "status": "majority_spurious",
+                    "raw_text_status": "majority",
+                    "raw_text_dissents": [],
+                    "type_raw_status": "unanimous",
+                    "type_raw_dissents": [],
+                    "spurious_flag_status": "majority_spurious",
+                    "spurious_flag_votes": {"keep": 1, "spurious": 2},
+                    "notes_values": {"null": 3},
+                    "reviewer_shorts": ["a", "b", "c"],
+                },
+            },
+        ],
+        "missing_row_reports": [],
+    }
+    canonical_path = page_dir / "canonical.json"
+    canonical_path.write_text(json.dumps(canonical))
+    return canonical_path, page_dir
+
+
+def test_from_canonical_emits_truth_at_default_path(tmp_path: Path) -> None:
+    from scripts.derive_truth import from_canonical
+
+    canonical_path, _ = _canonical_bundle_pair(tmp_path)
+    out_root = tmp_path / "golden"
+    written = from_canonical(canonical_path, out_root=out_root)
+    assert written == out_root / "1990" / "1990-04apr0106-page14.truth.json"
+    assert written.is_file()
+
+    truth = GoldenTruth.load(written)
+    assert truth.page_date_substrings == ["Mon", "1", "Jan", "90"]
+    by_pos = {q.position: q for q in truth.quadrants}
+    # Row 0 (top_left) is unanimous → emitted.
+    assert [r.raw_substring for r in by_pos["top_left"].rows] == ["PRIMAL SCREAM"]
+    # Row 1 (top_right) is majority_spurious → skipped.
+    assert [r.raw_substring for r in by_pos["top_right"].rows] == []
+
+
+def test_from_canonical_wrong_schema_version_raises(tmp_path: Path) -> None:
+    from scripts.derive_truth import CanonicalReadError, from_canonical
+
+    canonical_path, _ = _canonical_bundle_pair(tmp_path)
+    data = json.loads(canonical_path.read_text())
+    data["schema_version"] = 99
+    canonical_path.write_text(json.dumps(data))
+    with pytest.raises(CanonicalReadError):
+        from_canonical(canonical_path)
+
+
+def test_from_canonical_missing_bundle_raises(tmp_path: Path) -> None:
+    from scripts.derive_truth import CanonicalReadError, from_canonical
+
+    canonical_path, page_dir = _canonical_bundle_pair(tmp_path)
+    (page_dir / "bundle.json").unlink()
+    with pytest.raises(CanonicalReadError):
+        from_canonical(canonical_path)
+
+
+def test_main_from_canonical_cli(tmp_path: Path) -> None:
+    canonical_path, _ = _canonical_bundle_pair(tmp_path)
+    out_root = tmp_path / "golden"
+    rc = main(
+        [
+            "--from",
+            "canonical",
+            str(canonical_path),
+            "--out",
+            str(out_root / "placeholder"),
+        ]
+    )
+    assert rc == 0
+    assert (out_root / "1990" / "1990-04apr0106-page14.truth.json").is_file()
+
+
 def test_main_writes_truth_file(tmp_path: Path) -> None:
     page = _page(
         "Tues 4/3 90",
