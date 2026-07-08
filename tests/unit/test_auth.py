@@ -31,6 +31,7 @@ boundary (no DI on `core/auth.py`'s httpx client, by design).
 
 from __future__ import annotations
 
+import base64
 import json
 import time
 from typing import Any
@@ -38,7 +39,7 @@ from typing import Any
 import httpx
 import pytest
 from authlib.jose import JsonWebKey, JsonWebToken
-from authlib.jose.errors import JoseError, MissingClaimError
+from authlib.jose.errors import BadSignatureError, JoseError, MissingClaimError
 from itsdangerous import BadSignature
 
 import core.auth as auth_mod
@@ -76,6 +77,14 @@ def _env(monkeypatch: pytest.MonkeyPatch) -> None:
     auth_mod._reset_metadata_cache()
     yield
     auth_mod._reset_metadata_cache()
+
+
+def _b64url(data: bytes) -> str:
+    """Base64url-encode `data` without padding, matching the JWT compact-
+    serialization convention. Used by tests that hand-craft raw JWTs
+    (`alg: none`, unsupported-alg probes, invalid-UTF-8 headers) —
+    authlib's `encode()` refuses to mint these by design."""
+    return base64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
 
 
 def _make_reviewer(**overrides: Any) -> ReviewerSession:
@@ -757,11 +766,6 @@ async def test_exchange_code_rejects_alg_none(
     test; asserts the defense stays intact after the HS256 change."""
     # Hand-craft the `alg: none` token — authlib refuses to mint one via
     # the standard `encode()` path (which is the correct default).
-    import base64
-
-    def _b64url(data: bytes) -> str:
-        return base64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
-
     header = _b64url(json.dumps({"alg": "none", "typ": "JWT"}).encode("utf-8"))
     now = int(time.time())
     payload = _b64url(
@@ -840,13 +844,120 @@ async def test_exchange_code_hs256_bad_signature_does_not_invalidate_jwks(
         jwks_calls["n"] += 1
         return jwks_from_key
 
+    invalidate_calls = {"n": 0}
+
+    def _invalidate_counting() -> None:
+        invalidate_calls["n"] += 1
+
     monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
     monkeypatch.setattr(auth_mod, "_load_jwks", _jwks_counting)
+    monkeypatch.setattr(auth_mod, "_invalidate_jwks_cache", _invalidate_counting)
     _install_token_endpoint(monkeypatch, _mint_hs256_id_token("not-the-secret"))
 
     with pytest.raises(JoseError):
         await exchange_code(code="auth-code", code_verifier="verifier")
     assert jwks_calls["n"] == 0, "HS256 failure must not touch JWKS"
+    # Also pin that the cache-eviction function itself isn't called — a
+    # bug that speculatively evicted without refetching would leave the
+    # `_load_jwks` counter at 0 and pass the assertion above, while still
+    # clobbering the cached JWKS used by legitimate asymmetric traffic.
+    assert invalidate_calls["n"] == 0, "HS256 failure must not invalidate JWKS cache"
+
+
+async def test_exchange_code_hs256_rejects_wrong_aud(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """An HS256 id_token whose `aud` targets a different OIDC client
+    (e.g. Wiki.js) must be rejected. Pins cross-app isolation for the
+    symmetric branch — the `claims_options` mechanism that closed this
+    class of confusion bug for RS256 also applies for HS256, and this
+    test fires loudly if a refactor bypasses claims_options on the
+    symmetric path."""
+    _install_token_endpoint(
+        monkeypatch, _mint_hs256_id_token(CLIENT_SECRET, aud="wikijs-client-id")
+    )
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_hs256_rejects_wrong_iss(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """An HS256 id_token minted by a different issuer must be rejected
+    even if it addresses our `aud`. Mirrors the RS256 iss-check test for
+    the symmetric verify path so an issuer-forgery attempt against a
+    known client_secret still hits the essential-claim check."""
+    _install_token_endpoint(
+        monkeypatch,
+        _mint_hs256_id_token(CLIENT_SECRET, iss="https://evil.example/auth"),
+    )
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_rejects_non_utf8_header(
+    monkeypatch: pytest.MonkeyPatch,
+    stub_metadata: dict[str, Any],
+) -> None:
+    """A token whose header segment base64url-decodes to bytes that are
+    not valid UTF-8 must surface as `DecodeError`, not the raw
+    `UnicodeDecodeError` that `json.loads(bytes)` produces on invalid
+    UTF-8 input. Pins the regression fixed in round 2: an earlier
+    revision narrowed the except clause to `json.JSONDecodeError` alone
+    (which does NOT catch UnicodeDecodeError), letting attacker-crafted
+    non-UTF-8 headers escape the DecodeError contract and 500 the route
+    layer instead of the documented 400."""
+    # Header segment whose bytes are not valid UTF-8. \x80 is a
+    # continuation byte with no lead byte; \xc0\x28 is an over-long
+    # 2-byte sequence encoding an ASCII char, which is also invalid.
+    invalid_utf8 = base64.urlsafe_b64encode(b"\x80\xc0\x28").rstrip(b"=").decode("ascii")
+    token = f"{invalid_utf8}.eyJzdWIiOiJ4In0.deadbeef"
+    _install_token_endpoint(monkeypatch, token)
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_rotation_refetch_failure_reraises_signature_error(
+    monkeypatch: pytest.MonkeyPatch,
+    foreign_signing_key: Any,
+    jwks_from_key: dict[str, Any],
+) -> None:
+    """When the initial JWKS-based verify fails with `BadSignatureError`
+    and the rotation-retry refetch itself raises `httpx.HTTPError`, the
+    ORIGINAL signature failure must be re-raised (route: 400 'invalid
+    token'), NOT the transport error (route: 503 'auth unavailable').
+
+    Otherwise an attacker probing with a forged token during a brief
+    JWKS-endpoint outage sees their 400-worthy forgery obscured as a
+    503 auth incident — misleads on-call, dilutes attack telemetry."""
+    metadata = {
+        "issuer": ISSUER,
+        "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+        "token_endpoint": f"{ISSUER}/oauth2/token",
+        "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+    }
+
+    async def _meta() -> dict[str, Any]:
+        return metadata
+
+    calls = {"n": 0}
+
+    async def _jwks_first_ok_then_500(*args: Any, **kwargs: Any) -> dict[str, Any]:
+        calls["n"] += 1
+        if calls["n"] == 1:
+            # First fetch succeeds — signature will fail against foreign key
+            return jwks_from_key
+        # Refetch (rotation-retry): JWKS endpoint blip
+        raise httpx.ConnectError("jwks endpoint unavailable")
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks_first_ok_then_500)
+    _install_token_endpoint(monkeypatch, _mint_id_token(foreign_signing_key))
+
+    with pytest.raises(BadSignatureError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
 
 
 # -- JWKS filter -----------------------------------------------------------
@@ -877,16 +988,12 @@ async def test_unsupported_algorithm_error_names_offending_alg(
     stub_metadata: dict[str, Any],
 ) -> None:
     """When `_verify_id_token` rejects an unknown alg, the raised
-    exception's message must include the offending alg string so
+    exception must (a) carry authlib's canonical
+    `error='unsupported_algorithm'` short code (observability filters
+    group on this) and (b) name the offending alg in `description` so
     on-call can diagnose 'why is my token being rejected' from prod
-    logs without reproducing the raw token. Pins the debuggability
-    contract established for `UnsupportedAlgorithmError`."""
-
-    import base64 as _b64  # noqa: PLC0415 — test-local helper
-
-    def _b64url(data: bytes) -> str:
-        return _b64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
-
+    logs without reproducing the raw token. Passing the human message
+    positionally clobbers the `error` slot — pin both invariants."""
     header = _b64url(json.dumps({"alg": "HS384", "typ": "JWT"}).encode("utf-8"))
     now = int(time.time())
     payload = _b64url(
@@ -899,7 +1006,11 @@ async def test_unsupported_algorithm_error_names_offending_alg(
 
     with pytest.raises(JoseError) as exc_info:
         await exchange_code(code="auth-code", code_verifier="verifier")
-    assert "HS384" in str(exc_info.value)
+    exc = exc_info.value
+    assert exc.error == "unsupported_algorithm", (
+        f"authlib short code clobbered: error={exc.error!r}"
+    )
+    assert "HS384" in (exc.description or "")
 
 
 # -- _reset_metadata_cache -------------------------------------------------

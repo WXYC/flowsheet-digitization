@@ -489,28 +489,35 @@ def _parse_alg_header(id_token_raw: str) -> str:
     path. See the alg-confusion defense note on `_ALLOWED_SIG_ALGS`.
 
     Raises `DecodeError` (a `JoseError` subclass) on any structural
-    problem — missing segments, non-base64url header, non-JSON header,
-    missing `alg` field. Route layer maps this to the same 400 as
-    downstream authlib decode failures.
+    problem — missing segments, non-base64url header, non-UTF-8 header,
+    non-JSON header, missing `alg` field. Route layer maps this to the
+    same 400 as downstream authlib decode failures. The raise sites all
+    use `description=` so authlib's canonical `error='decode_error'`
+    short code is preserved for observability filters.
     """
-    if not isinstance(id_token_raw, str) or id_token_raw.count(".") != 2:
-        raise DecodeError("id_token is not a compact JWS")
+    if id_token_raw.count(".") != 2:
+        raise DecodeError(description="id_token is not a compact JWS")
     header_b64 = id_token_raw.split(".", 1)[0]
     # authlib produces base64url without padding; restore it for decode.
     padding = "=" * (-len(header_b64) % 4)
     try:
         header_bytes = base64.urlsafe_b64decode(header_b64 + padding)
     except (ValueError, binascii.Error) as exc:
-        raise DecodeError("id_token header is not valid base64url") from exc
+        raise DecodeError(description="id_token header is not valid base64url") from exc
+    # `json.loads(bytes)` auto-decodes UTF-8/16/32 and raises `UnicodeDecodeError`
+    # (a `ValueError` subclass, NOT a `json.JSONDecodeError`) on invalid UTF-8.
+    # Catching `ValueError` covers both — a narrow `except json.JSONDecodeError`
+    # would let an attacker-crafted non-UTF-8 header escape the DecodeError
+    # contract and 500 the route.
     try:
         header = json.loads(header_bytes)
-    except json.JSONDecodeError as exc:
-        raise DecodeError("id_token header is not valid JSON") from exc
+    except ValueError as exc:
+        raise DecodeError(description="id_token header is not valid JSON") from exc
     if not isinstance(header, dict):
-        raise DecodeError("id_token header is not a JSON object")
+        raise DecodeError(description="id_token header is not a JSON object")
     alg = header.get("alg")
     if not isinstance(alg, str):
-        raise DecodeError("id_token header missing string `alg`")
+        raise DecodeError(description="id_token header missing string `alg`")
     return alg
 
 
@@ -564,7 +571,13 @@ async def _verify_id_token(id_token_raw: str) -> Any:
     """
     alg = _parse_alg_header(id_token_raw)
     if alg not in _ALLOWED_SIG_ALGS:
-        raise UnsupportedAlgorithmError(f"id_token alg {alg!r} not in allowlist")
+        # `description=` (not positional) so authlib's canonical
+        # `error='unsupported_algorithm'` short code is preserved. Passing
+        # the human message positionally clobbers `error` and would break
+        # any observability filter grouping on the short code.
+        raise UnsupportedAlgorithmError(
+            description=f"id_token alg {alg!r} not in allowlist"
+        )
 
     if alg in _SYMMETRIC_SIG_ALGS:
         # Symmetric: HMAC key is the client's `client_secret` bytes. This
@@ -584,9 +597,18 @@ async def _verify_id_token(id_token_raw: str) -> Any:
     key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
     try:
         return _decode_with_key(id_token_raw, alg, key)
-    except BadSignatureError:
+    except BadSignatureError as original:
         _invalidate_jwks_cache()
-        jwks = await _load_jwks()
+        try:
+            jwks = await _load_jwks()
+        except httpx.HTTPError:
+            # Refetch failed. The original outcome — a legitimate
+            # signature failure — is the correct signal here: converting
+            # it to `httpx.HTTPError` (route: 503 'auth unavailable')
+            # would obscure a forged-token probe as an auth-server
+            # incident. Surface the original BadSignatureError so on-call
+            # sees the 400 the client actually earned.
+            raise original from None
         key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
         return _decode_with_key(id_token_raw, alg, key)
 
