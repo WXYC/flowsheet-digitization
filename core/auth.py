@@ -534,6 +534,10 @@ def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
     `_verify_id_token` (symmetric, asymmetric primary, asymmetric retry).
     """
     decoder = _JWT_BY_ALG[alg]
+    # Snapshot `client_id` once so the claims-options `value` and the
+    # post-validate strict-aud check can't disagree if a config-reload
+    # bug flipped `WXYC_OIDC_CLIENT_ID` mid-call.
+    client_id = _client_id()
     # `aud`, `iss`, `sub`, `exp` are checked here. Skipping any one has a
     # concrete failure mode:
     #   - Missing `aud` → Wiki.js token authenticates as us.
@@ -545,7 +549,7 @@ def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
     #     without an expiration would then verify forever.
     claims_options = {
         "iss": {"essential": True, "value": _issuer()},
-        "aud": {"essential": True, "value": _client_id()},
+        "aud": {"essential": True, "value": client_id},
         "sub": {"essential": True},
         "exp": {"essential": True},
     }
@@ -559,10 +563,10 @@ def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
     # authorized party. We don't trust any extra audience by default, so
     # require `aud` to be exactly our client_id (single-value or a
     # single-element list). If a future consumer needs multi-aud support,
-    # extend this to check `claims["azp"] == _client_id()` per spec.
+    # extend this to check `claims["azp"] == client_id` per spec.
     aud = claims.get("aud")
     aud_list = [aud] if isinstance(aud, str) else list(aud or ())
-    if aud_list != [_client_id()]:
+    if aud_list != [client_id]:
         raise InvalidClaimError("aud")
     return claims
 
