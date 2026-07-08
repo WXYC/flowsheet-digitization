@@ -294,9 +294,7 @@ class MissingRowMarker(BaseModel):
     def _adjacent(self) -> Self:
         a, b = self.between_bundle_rows
         if b != a + 1:
-            raise ValueError(
-                f"between_bundle_rows must be adjacent (N, N+1), got ({a}, {b})"
-            )
+            raise ValueError(f"between_bundle_rows must be adjacent (N, N+1), got ({a}, {b})")
         return self
 
 
