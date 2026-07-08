@@ -185,10 +185,20 @@ function applyVerifiedToBundle(bundle, verified) {
     bq.jock_raw = vq.jock_raw ?? null;
     bq.oddities = Array.isArray(vq.oddities) ? vq.oddities : [];
     const bboxByIndex = new Map(bq.entries.map(e => [e.row_index, e.row_bbox]));
-    bq.entries = (vq.entries ?? []).map(e => ({
-      ...e,
-      row_bbox: bboxByIndex.get(e.row_index) ?? null,
-    }));
+    bq.entries = (vq.entries ?? []).map(e => {
+      const bbox = bboxByIndex.get(e.row_index);
+      if (bbox !== undefined) return { ...e, row_bbox: bbox };
+      // The verified.json overlay carries a row the fresh bundle no longer
+      // emits — typically an old verified.json paired with a re-baked
+      // bundle whose blank-row-drop rules have tightened. Without `_added`
+      // the row's edits vanish from corrections.json on save
+      // (buildCorrectionsExport falls to findOriginalEntry → null → the
+      // "existing, not deleted" branch emits no row_correction), even
+      // though the text lives on in verified.json. Treating the resurfaced
+      // row as added is the honest reconciliation: from the fresh bundle's
+      // perspective the row IS new, and the audit trail records it.
+      return { ...e, row_bbox: null, _added: true };
+    });
   }
 }
 
