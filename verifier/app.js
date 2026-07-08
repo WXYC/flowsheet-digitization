@@ -16,7 +16,9 @@
 //   state.originalBundle  — immutable snapshot of the loaded bundle. Never
 //                           mutated; used as the diff baseline on save.
 //   state.bundle          — working copy. Mutated by edits and UI flags
-//                           (`_added`, `_deleted`).
+//                           (`_added` for user-created rows, `_deleted`
+//                           for rows the user removed, `_resurfaced` for
+//                           overlay rows the fresh bundle no longer emits).
 //   state.bundleList      — cached /api/bundles response, used by Prev/Next
 //                           and the keyboard shortcuts. Refreshed after a
 //                           successful save so the status pill reflects truth.
@@ -138,6 +140,7 @@ async function loadBundleFromUrlParam() {
     // original Gemini output on every reload — edits "don't save."
     const verifiedPath = path.replace(/\.bundle\.json$/, ".verified.json");
     let overlaidFrom = null;  // timestamp string when overlay applied
+    let overlay = null;       // parsed verified.json (deferred to initBundle)
     try {
       // `cache: "no-store"` is load-bearing: this file is rewritten on
       // every save (`POST /api/save`), and the `/data` static mount sends
@@ -147,15 +150,14 @@ async function loadBundleFromUrlParam() {
       // happened.
       const vr = await authFetch(verifiedPath, { cache: "no-store" });
       if (vr.ok) {
-        const verified = await vr.json();
-        applyVerifiedToBundle(bundle, verified);
+        overlay = await vr.json();
         const lm = vr.headers.get("last-modified");
-        overlaidFrom = lm || verified.extracted_at || "unknown";
+        overlaidFrom = lm || overlay.extracted_at || "unknown";
       }
     } catch (e) {
       console.warn("verified.json fetch failed; using model output as-is", e);
     }
-    await initBundle(bundle, { bundleUrl: path });
+    await initBundle(bundle, { bundleUrl: path, overlay });
     if (overlaidFrom) {
       // Visible cue so the volunteer can tell at a glance whether their
       // prior edits were restored — if this message is missing on a page
@@ -171,9 +173,14 @@ async function loadBundleFromUrlParam() {
 }
 
 // Overlay a saved PageResult ("verified.json") onto the bundle so the UI
-// shows the volunteer's prior edits as the starting state. The bundle's
-// per-entry `row_bbox` is geometry (computed from the page image) and is
-// preserved by matching entries on `row_index`; added rows get null.
+// shows the volunteer's prior edits as the starting state. Mutates
+// `bundle` — the caller must clone `state.originalBundle` FIRST if it
+// wants an unpolluted diff baseline. Per-entry `row_bbox` is geometry
+// (computed from the page image) and is preserved by matching entries on
+// `row_index`; rows the overlay carries but the fresh bundle no longer
+// emits are tagged `_resurfaced: true` so buildCorrectionsExport routes
+// them to `resurfaced_rows[]` instead of conflating them with user-added
+// rows.
 function applyVerifiedToBundle(bundle, verified) {
   bundle.page_date_raw = verified.page_date_raw ?? null;
   bundle.comments_raw = verified.comments_raw ?? null;
@@ -186,18 +193,20 @@ function applyVerifiedToBundle(bundle, verified) {
     bq.oddities = Array.isArray(vq.oddities) ? vq.oddities : [];
     const bboxByIndex = new Map(bq.entries.map(e => [e.row_index, e.row_bbox]));
     bq.entries = (vq.entries ?? []).map(e => {
-      const bbox = bboxByIndex.get(e.row_index);
-      if (bbox !== undefined) return { ...e, row_bbox: bbox };
-      // The verified.json overlay carries a row the fresh bundle no longer
-      // emits — typically an old verified.json paired with a re-baked
-      // bundle whose blank-row-drop rules have tightened. Without `_added`
-      // the row's edits vanish from corrections.json on save
-      // (buildCorrectionsExport falls to findOriginalEntry → null → the
-      // "existing, not deleted" branch emits no row_correction), even
-      // though the text lives on in verified.json. Treating the resurfaced
-      // row as added is the honest reconciliation: from the fresh bundle's
-      // perspective the row IS new, and the audit trail records it.
-      return { ...e, row_bbox: null, _added: true };
+      // `.has()` — not `!== undefined` — so a fresh-bundle entry with
+      // row_bbox=null is still recognized as existing (the row is there,
+      // just without geometry) instead of being routed through the
+      // resurfaced-row rescue.
+      if (bboxByIndex.has(e.row_index)) {
+        return { ...e, row_bbox: bboxByIndex.get(e.row_index) };
+      }
+      // Overlay carries a row the fresh bundle no longer emits (typically
+      // an old verified.json paired with a re-baked bundle whose
+      // blank-row-drop rules tightened). Mark as `_resurfaced` — distinct
+      // from `_added` (user-created via the Add Row button) — so the
+      // corrections.json audit trail keeps the two signals separate and
+      // downstream reviewer-effort metrics aren't distorted.
+      return { ...e, row_bbox: null, _resurfaced: true };
     });
   }
 }
@@ -212,7 +221,7 @@ async function loadBundleFromFile(file) {
   }
 }
 
-async function initBundle(bundle, { bundleUrl }) {
+async function initBundle(bundle, { bundleUrl, overlay = null }) {
   if (bundle.schema_version !== SUPPORTED_SCHEMA_VERSION) {
     setStatus(
       `Unsupported schema_version ${bundle.schema_version}; ` +
@@ -221,8 +230,16 @@ async function initBundle(bundle, { bundleUrl }) {
     );
     return;
   }
+  // Clone BEFORE applying the overlay so `state.originalBundle` is the
+  // pristine fresh-bake baseline (findOriginalEntry and the row-diff loop
+  // depend on that invariant). Applying the overlay after the clone
+  // stamps `_resurfaced: true` only on state.bundle entries, keeping the
+  // baseline free of UI flags.
   state.originalBundle = cloneDeep(bundle);
   state.bundle = cloneDeep(bundle);
+  if (overlay) {
+    applyVerifiedToBundle(state.bundle, overlay);
+  }
   state.pageImage = null;
 
   if (bundleUrl) {
@@ -455,7 +472,10 @@ function buildRow(entry, quad) {
   if (entry.row_bbox) {
     drawCrop(canvas, entry.row_bbox);
   } else {
-    canvas.outerHTML = `<div class="row-crop no-crop">no crop (added row)</div>`;
+    const label = entry._resurfaced
+      ? "no crop (kept from earlier save; baker no longer emits)"
+      : "no crop (added row)";
+    canvas.outerHTML = `<div class="row-crop no-crop">${label}</div>`;
   }
 
   const textEl = $(".raw-text", node);
@@ -593,6 +613,11 @@ function buildCorrectionsExport() {
   const row_corrections = [];
   const added_rows = [];
   const deleted_rows = [];
+  // Rows the overlay carried but the fresh bundle dropped — kept
+  // separate from `added_rows` (which is user contributions via the Add
+  // Row button) so downstream analysis can distinguish baker-drift from
+  // reviewer effort.
+  const resurfaced_rows = [];
 
   for (const quad of state.bundle.quadrants) {
     const origQuad = findOriginalQuadrant(quad.position);
@@ -612,11 +637,22 @@ function buildCorrectionsExport() {
     }
 
     for (const entry of quad.entries) {
-      // Added-and-then-deleted: dropped entirely, no signal worth keeping.
-      if (entry._added && entry._deleted) continue;
+      // Added/resurfaced-and-then-deleted: dropped entirely.
+      if ((entry._added || entry._resurfaced) && entry._deleted) continue;
 
       if (entry._added) {
         added_rows.push({
+          position: quad.position,
+          row_index: entry.row_index,
+          raw_text: entry.raw_text,
+          type_raw: entry.type_raw,
+          notes: entry.notes,
+        });
+        continue;
+      }
+
+      if (entry._resurfaced) {
+        resurfaced_rows.push({
           position: quad.position,
           row_index: entry.row_index,
           raw_text: entry.raw_text,
@@ -666,6 +702,7 @@ function buildCorrectionsExport() {
     row_corrections,
     added_rows,
     deleted_rows,
+    resurfaced_rows,
   };
 }
 
