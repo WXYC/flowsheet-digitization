@@ -106,12 +106,22 @@ python -m http.server 8765
 # http://localhost:8765/verifier/?bundle=/data/verifier/<stem>.bundle.json
 
 # Derive a truth file from the exported verified.json
-python -m scripts.derive_truth \
+python -m scripts.derive_truth --from verified \
     data/verifier/<stem>.verified.json \
     --out tests/golden/<stem>.truth.json
 ```
 
 See `verifier/README.md` for the bundle schema, expected file layout, and the substring-derivation rules.
+
+### Multi-reviewer calibration (anomaly bucket)
+
+Pages in the calibration anomaly bucket are reviewed independently by 2+ reviewers (blind); a third joins automatically on any gating-field disagreement. Bootstrap the 5 seed pathology bundles from `project_bbox_sweep_result.md`:
+
+```bash
+.venv/bin/python scripts/seed_calibration_anomaly.py
+```
+
+The verifier's `/api/calibration/*` endpoints handle reviewer submissions, run the consensus merge, and emit `canonical.json` + `agreement.json` per page when settlement is reached. `derive_truth --from canonical` then produces `tests/golden/calibration/<year>/<stem>.truth.json` for consumption alongside the flat golden layout. See `plans/multi-reviewer-calibration.md` and the "Calibration mode" section in `verifier/README.md`.
 
 ## Cost calibration
 
