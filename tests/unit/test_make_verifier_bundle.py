@@ -447,18 +447,30 @@ def test_merge_with_spans_keeps_blank_row_when_originally_tagged() -> None:
     assert result[1][0].raw_text == "", "but the row itself survives"
 
 
-def test_maybe_prepend_missing_first_line_never_returns_negative_y() -> None:
-    """The prepended `lines[0] - median_gap` can go negative when the
-    detected median_gap is larger than `lines[0]` itself (page header
-    layout mis-detection). A negative y in the first row's bbox makes
-    `ctx.drawImage` in the verifier UI clip outside the image, showing
-    whitespace instead of the row. Must clamp to image-space minimum 0."""
-    from scripts.make_verifier_bundle import _maybe_prepend_missing_first_line
+def test_maybe_prepend_missing_first_line_stays_near_quadrant_body_top() -> None:
+    """The prepended `lines[0] - median_gap` must stay within a bounded
+    distance ABOVE `quad_bbox.y1` (a fixed `_MAX_HEADER_BLEED_PX` cap).
+    For a BOTTOM quadrant with a misdetected huge median_gap, an
+    image-space-only clamp (max(0, …)) would let y_top drop into the
+    top quadrant — the resulting crop would show top-half content next
+    to a bottom-quadrant text field."""
+    from scripts.make_verifier_bundle import (
+        _MAX_HEADER_BLEED_PX,
+        _maybe_prepend_missing_first_line,
+    )
 
-    # quad body at y1=10; lines[0]=20 (gap=10), median_gap=200 → prepended=-180.
-    quad_bbox = (0, 10, 500, 1500)
-    lines = [20, 220, 420, 620]
-    out = _maybe_prepend_missing_first_line(quad_bbox, lines)
+    # Bottom-quadrant case: y1=1500 (mid-page), lines[0]=1600, median_gap=2000
+    # → prepended would be -400; must clamp to within `_MAX_HEADER_BLEED_PX`
+    # of y1=1500, NOT to image-space 0.
+    bottom_quad = (0, 1500, 500, 3000)
+    lines = [1600, 3600]  # gap 2000
+    out = _maybe_prepend_missing_first_line(bottom_quad, lines)
+    assert out[0] >= bottom_quad[1] - _MAX_HEADER_BLEED_PX, (
+        f"bottom quadrant: prepended line {out[0]} must be within "
+        f"_MAX_HEADER_BLEED_PX={_MAX_HEADER_BLEED_PX} of quad y1 "
+        f"{bottom_quad[1]}; got dip of {bottom_quad[1] - out[0]}px"
+    )
+    # And still non-negative (image-space guard).
     assert out[0] >= 0, f"prepended line {out[0]} must be >= 0 (image-space)"
 
 
@@ -475,6 +487,36 @@ def test_assign_row_bboxes_fallback_overflow_rows_have_positive_height() -> None
     rows = _assign_row_bboxes(quad_bbox, lines=[200, 400, 600], spans=[1, 1, 1, 1, 1])
     for _x1, y1, _x2, y2 in rows:
         assert y2 > y1, f"row bbox must have positive height; got y1={y1}, y2={y2}"
+
+
+def test_assign_row_bboxes_squeeze_covers_full_body_height() -> None:
+    """The overflow squeeze uses floor division to compute row_height, so
+    the final row can end short of y2 — a strip of un-cropped ink at the
+    bottom. The last row's y_end must be y2 exactly, so the volunteer sees
+    every printed row completely."""
+    quad_bbox = (0, 100, 500, 400)  # height 300
+    rows = _assign_row_bboxes(quad_bbox, lines=[100, 200], spans=[1, 1, 1, 1, 1, 1, 1])
+    # available=300, sum(spans)=7, floor 300//7=42; 42*7=294 leaves 6 pixels
+    # of un-cropped ink at the bottom without a final adjustment.
+    assert rows[-1][3] == quad_bbox[3], (
+        f"final row must extend to y2={quad_bbox[3]}, got y_end={rows[-1][3]}"
+    )
+
+
+def test_assign_row_bboxes_handles_y_top_above_y2() -> None:
+    """Pathological detection where every detected line sits above the
+    quadrant body bottom pushes `y_top` past `y2`. Without a guard the
+    squeeze would produce bboxes with y1 > y2 (negative height), silently
+    violating the 'positive height' contract asserted just above. The
+    fallback should recover with the full quadrant body space."""
+    quad_bbox = (0, 800, 500, 1000)  # bottom quadrant, height 200
+    # Both detected lines above y2=1000 (line-detector overshoot).
+    rows = _assign_row_bboxes(quad_bbox, lines=[1100, 1150], spans=[1, 1, 1])
+    for _x1, y1, _x2, y2 in rows:
+        assert y1 < y2, f"row bbox must have positive height; got y1={y1}, y2={y2}"
+        assert quad_bbox[1] <= y1 <= quad_bbox[3], (
+            f"row y1 {y1} must land inside quad body [{quad_bbox[1]}, {quad_bbox[3]}]"
+        )
 
 
 def test_merge_with_spans_keeps_empty_raw_text_when_tagged_illegible() -> None:
@@ -730,18 +772,52 @@ def test_main_explicit_pdf_path_overrides_path_inference(tmp_path: Path) -> None
     assert bundle["stem"] == "1990-04apr0712-page07"
 
 
-def test_main_requires_both_flags_or_neither(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    "extra_args",
+    [
+        pytest.param(["--pdf-path", "1990/foo.pdf"], id="pdf-path-without-page-number"),
+        pytest.param(["--page-number", "25"], id="page-number-without-pdf-path"),
+    ],
+)
+def test_main_requires_both_flags_or_neither(tmp_path: Path, extra_args: list[str]) -> None:
     """`--pdf-path` and `--page-number` form a job key together. Passing
     one without the other is ambiguous: silently treating it as `None`
-    on the missing side would silently fall back to path-parsing and
-    confuse the caller. argparse exits with code 2 on bad usage."""
+    on the missing side would fall back to path-parsing and confuse the
+    caller. argparse exits with code 2 on usage errors — pin that so a
+    future path swapping parser.error() for a plain sys.exit(1) doesn't
+    silently regress the caller contract."""
     result_path = tmp_path / "result.json"
     image_path = _white_page(tmp_path)
     _write_minimal_result(result_path)
     out_path = tmp_path / "out.bundle.json"
 
-    # Only --pdf-path: should fail
-    with pytest.raises(SystemExit):
+    with pytest.raises(SystemExit) as exc_info:
+        main([str(result_path), str(image_path), "--out", str(out_path), *extra_args])
+    assert exc_info.value.code == 2, (
+        f"argparse usage errors must exit with code 2, got {exc_info.value.code}"
+    )
+
+
+@pytest.mark.parametrize(
+    "pdf_path_value",
+    [
+        pytest.param("", id="empty-string"),
+        pytest.param("1990/foo", id="missing-pdf-extension"),
+    ],
+)
+def test_main_rejects_malformed_pdf_path(tmp_path: Path, pdf_path_value: str) -> None:
+    """`--pdf-path` must be non-empty and end with `.pdf`. Empty string
+    slips past a bare `is None` check and produces a bundle keyed against
+    `''` — the /api/save endpoint gates the jobs.db update on truthy
+    pdf_path so the DB row silently stays pending. A missing `.pdf`
+    extension causes the same silent mismatch against the canonical
+    key form used by `_parse_job_key_from_result_path`."""
+    result_path = tmp_path / "result.json"
+    image_path = _white_page(tmp_path)
+    _write_minimal_result(result_path)
+    out_path = tmp_path / "out.bundle.json"
+
+    with pytest.raises(SystemExit) as exc_info:
         main(
             [
                 str(result_path),
@@ -749,9 +825,12 @@ def test_main_requires_both_flags_or_neither(tmp_path: Path) -> None:
                 "--out",
                 str(out_path),
                 "--pdf-path",
-                "1990/foo.pdf",
+                pdf_path_value,
+                "--page-number",
+                "25",
             ]
         )
+    assert exc_info.value.code == 2
 
 
 # -- _parse_job_key_from_result_path ----------------------------------------

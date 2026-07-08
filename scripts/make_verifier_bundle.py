@@ -186,6 +186,17 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
 _HOUR_JOCK_CELL_LOW_RATIO = 0.5
 _HOUR_JOCK_CELL_HIGH_RATIO = 1.5
 
+# Maximum vertical distance (px) the inferred row 0 top may sit ABOVE
+# `quad_bbox.y1`. Handwriting that starts inside the printed Hour/Jock
+# cell legitimately bleeds a few dozen pixels above the body top; a
+# well-detected page has median row gaps of ~75-100 px so one row of
+# bleed is comfortably under this cap. But a misdetected median_gap
+# (from very few lines being detected) can be thousands of pixels, and
+# without this cap the clamp would let the inferred anchor cross into
+# the neighboring quadrant — for a bottom quadrant that means row 0's
+# crop shows top-quadrant content.
+_MAX_HEADER_BLEED_PX = 100
+
 
 def _filter_misattributed_leading_lines(quad_bbox: BBox, lines: list[int]) -> list[int]:
     """Drop any leading lines that sit ABOVE the quadrant body top.
@@ -209,12 +220,14 @@ def _maybe_prepend_missing_first_line(quad_bbox: BBox, lines: list[int]) -> list
         return lines
     ratio = (lines[0] - y1) / median_gap
     if ratio < _HOUR_JOCK_CELL_LOW_RATIO or ratio > _HOUR_JOCK_CELL_HIGH_RATIO:
-        # The inferred row 0 top may legitimately dip slightly above y1
-        # (handwriting that bled into the header band) — keep that. But
-        # never let it go below 0 in image space; a negative-y bbox makes
-        # the verifier UI's ctx.drawImage clip outside the page, showing
-        # whitespace instead of the actual row.
-        return [max(0, lines[0] - median_gap), *lines]
+        # Two floors, whichever is higher wins:
+        #   - `y1 - _MAX_HEADER_BLEED_PX`: keep the inferred anchor within
+        #     a bounded distance of the quadrant body top, so a misdetected
+        #     median_gap (e.g. from very few detected lines) can't push the
+        #     anchor into a neighboring quadrant.
+        #   - `0`: never negative-y (would clip outside the page image).
+        floor = max(0, y1 - _MAX_HEADER_BLEED_PX)
+        return [max(floor, lines[0] - median_gap), *lines]
     return lines
 
 
@@ -264,7 +277,7 @@ def _assign_row_bboxes(
     # gate, so a well-detected page with exactly enough lines stays on
     # the clean-pair path).
     lines = _maybe_prepend_missing_first_line(quad_bbox, lines)
-    if lines:
+    if lines and lines[0] < y2:
         y_top = lines[0]
         if len(lines) >= 2:
             gaps = sorted(b - a for a, b in zip(lines, lines[1:], strict=False))
@@ -272,15 +285,17 @@ def _assign_row_bboxes(
         else:
             row_height = max(1, (y2 - y_top) // n_entries)
     else:
-        # No detected lines — even-space the full body. Same as the old
-        # fallback, kept so quadrants where line detection fails entirely
-        # still produce visible (if approximate) crops.
+        # No usable detected lines — either detection produced nothing, or
+        # every detected line sits at/past y2 (pathological overshoot).
+        # Even-space the full body from y1 so crops stay inside the
+        # quadrant even when line detection fails.
         y_top = y1
         row_height = max(1, (y2 - y1) // n_entries)
 
     total_height_needed = sum(spans) * row_height
     available = y2 - y_top
-    if total_height_needed > available:
+    squeezed = total_height_needed > available
+    if squeezed:
         # Detected `row_height` (from line gaps) overflows the remaining
         # body space; the model emitted more rows than the printed grid
         # can hold at that row_height. Squeeze every span proportionally
@@ -295,6 +310,15 @@ def _assign_row_bboxes(
         y_end = min(y2, y_cursor + row_height * span)
         rows.append((x1, y_cursor, x2, y_end))
         y_cursor = y_end
+    # Floor-division in the squeeze can leave up to `sum(spans) - 1` pixels
+    # of un-cropped ink at the bottom of the last row. Extend the final
+    # row to y2 so every printed row is fully covered. Only in the squeeze
+    # path: the median-gap-cadence fallback intentionally stops at the
+    # detected/expected row boundary (extending would show blank space
+    # below the last row, not more ink).
+    if squeezed and rows and rows[-1][3] < y2:
+        x1_last, y1_last, x2_last, _ = rows[-1]
+        rows[-1] = (x1_last, y1_last, x2_last, y2)
     return rows
 
 
@@ -422,6 +446,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if (args.pdf_path is None) != (args.page_number is None):
         parser.error("--pdf-path and --page-number must be passed together")
+    if args.pdf_path is not None and (not args.pdf_path or not args.pdf_path.endswith(".pdf")):
+        # Empty string slips past the `is None` gate above and produces a
+        # bundle whose pdf_path is '' — /api/save gates the jobs.db update
+        # on truthiness so the DB row silently stays pending. A missing
+        # `.pdf` extension causes the same silent mismatch against the
+        # canonical form from `_parse_job_key_from_result_path`.
+        parser.error("--pdf-path must be a non-empty path ending in .pdf")
 
     if not args.result.is_file():
         print(f"result not found: {args.result}", file=sys.stderr)
