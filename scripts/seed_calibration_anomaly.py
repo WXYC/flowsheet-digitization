@@ -76,9 +76,7 @@ def seed_one(stem: str, *, dry_run: bool = False) -> str:
     bundle_source = VERIFIER_DIR / f"{stem}.bundle.json"
 
     if not bundle_source.is_file():
-        raise SystemExit(
-            f"missing source bundle: {bundle_source} — cannot seed {stem!r}"
-        )
+        raise SystemExit(f"missing source bundle: {bundle_source} — cannot seed {stem!r}")
 
     # `is_symlink()` catches broken links that `exists()` reports as False.
     if bundle_link.is_symlink() or bundle_link.exists():
@@ -125,9 +123,7 @@ def refresh_reviewers_mapping(*, dry_run: bool = False) -> None:
             "dj_name": reviewer.get("dj_name"),
         }
     if dry_run:
-        logger.info(
-            "would write %d reviewer entries to %s", len(current), mapping_path
-        )
+        logger.info("would write %d reviewer entries to %s", len(current), mapping_path)
         return
     CALIBRATION_ROOT.mkdir(parents=True, exist_ok=True)
     tmp = mapping_path.with_suffix(mapping_path.suffix + ".tmp")
