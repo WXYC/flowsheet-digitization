@@ -109,6 +109,12 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
         review work than true-positive value. The raw_text is preserved
         verbatim — only the notes value is reset, so Alex can mark genuine
         strike-throughs by toggling the dropdown.
+      - raw_text empty / whitespace-only AND notes=None on the original
+        entry: dropped. Gemini occasionally emits a phantom row the model
+        couldn't classify; it renders as an empty input field with no UI
+        cue and `scripts.derive_truth` skips it anyway. Rows that were
+        tagged (e.g. illegible, crossed_out) are preserved even when blank,
+        since the tag is information the volunteer can act on.
       - All others: span 1.
 
     A leading "continuation" with nothing above it is preserved as-is with
@@ -129,11 +135,13 @@ def _merge_with_spans(entries: list[Entry]) -> list[tuple[Entry, int]]:
         )
         # Drop structurally-blank rows (raw_text empty / whitespace-only) with
         # no schema-relevant notes tag. These render as empty input fields in
-        # the verifier UI with no visual cue, and `scripts.derive_truth`
-        # silently drops them downstream, breaking row-count parity. A blank
-        # row that's tagged `illegible` is kept — it's information (the model
-        # saw something it couldn't read).
-        if not entry.raw_text.strip() and entry.notes is None:
+        # the verifier UI with no visual cue, and `scripts.derive_truth` skips
+        # them anyway (its docstring is explicit), so they only break row-count
+        # parity downstream. Read from `raw_entry`, NOT `entry`: a row that was
+        # tagged crossed_out has just had its notes reset to None, but the tag
+        # is still information — the volunteer may be able to read the struck
+        # text manually. Same for illegible and any other future tag.
+        if not raw_entry.raw_text.strip() and raw_entry.notes is None:
             continue
         if entry.notes == "continuation" and result:
             prior, prior_span = result[-1]
