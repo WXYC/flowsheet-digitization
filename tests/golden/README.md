@@ -11,6 +11,16 @@ For each page you want to validate, two files share a stem:
 
 The stem typically encodes the source PDF and page, e.g. `1990-01jan0106-page05`.
 
+### Calibration-derived truth sub-layout
+
+Truth files produced by the multi-reviewer calibration flow live under a nested path:
+
+- `tests/golden/calibration/<year>/<stem>.truth.json`
+
+These are emitted by `scripts/derive_truth.py --from canonical` from a settled `data/calibration/<year>/<bucket>/<stem>/canonical.json`. The provenance is the sibling `agreement.json` under `data/calibration/`; the truth file itself carries no reviewer metadata. Do NOT hand-edit these files — they will be silently overwritten by the next run of `derive_truth --from canonical`. To correct a calibration-derived truth, fix the reviewer submissions upstream (which is what the multi-reviewer protocol is *for*). Flat truth files (`tests/golden/*.truth.json`) remain unchanged and are the correct home for hand-transcribed regressions.
+
+`core.golden.discover_truths(golden_dir)` uses `rglob` so both layouts are found by the same call — a single `pytest` invocation exercises both.
+
 ## Truth file shape
 
 ```json
