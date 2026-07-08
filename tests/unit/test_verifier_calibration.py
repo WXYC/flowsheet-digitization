@@ -495,3 +495,92 @@ async def test_submit_rejects_out_of_range_missing_row_marker(serve_app, tmp_pat
         c.cookies.set("flowsheet_session", _session_cookie(reviewer))
         r = await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=body)
     assert r.status_code == 400
+
+
+# --------------------------------------------------------------------------- #
+# Static-mount blind-review bypass guard
+#
+# The `/data` static mount serves DATA_ROOT wholesale; every calibration
+# file lives under `data/calibration/`. Without an explicit guard, a
+# reviewer could read a peer's `verified.<peer_short>.json` (or draft, or
+# the `_reviewers.json` short-to-identity map) by walking the static path
+# and skipping the gated `/api/calibration/*` route entirely. These tests
+# pin the guard.
+# --------------------------------------------------------------------------- #
+
+
+async def test_static_data_blocks_peer_verified(serve_app, tmp_path: Path) -> None:
+    """A submitted verified.<peer_short>.json is served only through the
+    gated API, never through /data. Regression: without _NoCalibrationStaticFiles
+    the peer's raw submission is readable to any authenticated reviewer."""
+    _seed_bundle(tmp_path)
+    peer = _make_reviewer("sub-peer", "dj_peer")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(peer))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=_submission_body())
+    peer_short = _short("sub-peer")
+    verified_path = (
+        tmp_path / "data" / "calibration" / YEAR / BUCKET / STEM / f"verified.{peer_short}.json"
+    )
+    assert verified_path.is_file()  # file exists on disk
+    other = _make_reviewer("sub-other", "dj_other")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(other))
+        r = await c.get(f"/data/calibration/{YEAR}/{BUCKET}/{STEM}/verified.{peer_short}.json")
+    assert r.status_code == 404
+
+
+async def test_static_data_blocks_peer_draft(serve_app, tmp_path: Path) -> None:
+    """Drafts are private to the owner until submitted. Never leak them
+    through /data — a peer's in-progress reading anchors this one."""
+    _seed_bundle(tmp_path)
+    peer = _make_reviewer("sub-peer", "dj_peer")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(peer))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/draft", json=_submission_body())
+    peer_short = _short("sub-peer")
+    other = _make_reviewer("sub-other", "dj_other")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(other))
+        r = await c.get(f"/data/calibration/{YEAR}/{BUCKET}/{STEM}/draft.{peer_short}.json")
+    assert r.status_code == 404
+
+
+async def test_static_data_blocks_reviewers_mapping(serve_app, tmp_path: Path) -> None:
+    """`_reviewers.json` maps <short> → identity fields. Reading it hands
+    an attacker every peer's short, so it must never be served via /data."""
+    _seed_bundle(tmp_path)
+    reviewer = _make_reviewer("sub-a")
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(reviewer))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=_submission_body())
+        r = await c.get("/data/calibration/_reviewers.json")
+    assert r.status_code == 404
+
+
+async def test_static_data_blocks_settled_canonical(serve_app, tmp_path: Path) -> None:
+    """Even a settled canonical.json must go through the API. Blocking the
+    entire calibration subtree at the static layer is the invariant; the
+    API layer is the sole reader of every calibration file."""
+    _seed_bundle(tmp_path)
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=_submission_body())
+        c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-b", "dj_b")))
+        await c.post(f"/api/calibration/{YEAR}/{BUCKET}/{STEM}/submit", json=_submission_body())
+        # Settlement lands canonical.json; verify it exists on disk.
+        canonical = tmp_path / "data" / "calibration" / YEAR / BUCKET / STEM / "canonical.json"
+        assert canonical.is_file()
+        r = await c.get(f"/data/calibration/{YEAR}/{BUCKET}/{STEM}/canonical.json")
+    assert r.status_code == 404
+
+
+async def test_static_data_still_serves_non_calibration(serve_app, tmp_path: Path) -> None:
+    """The bundle file under data/verifier/ must remain readable through
+    /data — the calibration guard should scope only to `calibration/`."""
+    _seed_bundle(tmp_path)
+    async with await _client(serve_app.app) as c:
+        c.cookies.set("flowsheet_session", _session_cookie(_make_reviewer("sub-a")))
+        r = await c.get(f"/data/verifier/{STEM}.bundle.json")
+    assert r.status_code == 200
+    assert r.json()["stem"] == STEM
