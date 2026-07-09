@@ -364,6 +364,66 @@ class TestMissingRowGapMajorityNoTextConsensus:
         assert len(injected.verification.raw_text_dissents) == 3
 
 
+class TestMissingRowInjectionTypeRawDissents:
+    def test_injection_preserves_type_raw_dissents(self) -> None:
+        # Three reviewers all report the same gap and the same suggested
+        # text; two say type_raw='H', one says type_raw='M'. A separate
+        # non-injection row triggers escalation to N=3, so the injection
+        # itself is materialised. The injection must record the
+        # type_raw dissent so downstream (Phase 2 rotation reconciliation,
+        # per plan §Auto-illegible-vs-auto-recover) can inspect readings.
+        subs = [
+            _submission(
+                "sub-a",
+                [_row(0, text="X"), _row(1)],
+                missing_row_markers=[
+                    MissingRowMarker(
+                        between_bundle_rows=(0, 1),
+                        suggested_text="LOU REED - PERFECT DAY",
+                        type_raw="H",
+                        notes=None,
+                    )
+                ],
+            ),
+            _submission(
+                "sub-b",
+                [_row(0, text="X"), _row(1)],
+                missing_row_markers=[
+                    MissingRowMarker(
+                        between_bundle_rows=(0, 1),
+                        suggested_text="LOU REED - PERFECT DAY",
+                        type_raw="H",
+                        notes=None,
+                    )
+                ],
+            ),
+            _submission(
+                "sub-c",
+                [_row(0, text="Y"), _row(1)],  # dissent on row 0 forces N=3
+                missing_row_markers=[
+                    MissingRowMarker(
+                        between_bundle_rows=(0, 1),
+                        suggested_text="LOU REED - PERFECT DAY",
+                        type_raw="M",
+                        notes=None,
+                    )
+                ],
+            ),
+        ]
+        canonical, _agreement, target = _run(subs, bundle_row_count=2)
+        assert target == 3
+        assert canonical is not None
+        # Bundle rows 0 and 1 plus one injection between them.
+        assert len(canonical.rows) == 3
+        injected = canonical.rows[1]
+        assert injected.verification.status == "under_emit_majority"
+        assert injected.type_raw == "H"
+        assert injected.verification.type_raw_status == "majority"
+        assert len(injected.verification.type_raw_dissents) == 1
+        assert injected.verification.type_raw_dissents[0].reviewer_short == _short("sub-c")
+        assert injected.verification.type_raw_dissents[0].value == "M"
+
+
 class TestTypeRawDoodleCluster:
     def test_doodle_cluster_folds_to_unknown(self) -> None:
         subs = [
