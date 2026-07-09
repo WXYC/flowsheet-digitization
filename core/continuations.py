@@ -33,6 +33,14 @@ def merge_continuations(entries: list[Entry]) -> list[Entry]:
     The continuation's `oddities` are concatenated onto the predecessor's
     so we don't lose row-level annotations on the dropped row.
 
+    The merged predecessor's `notes` is set to `"double_height"` — a
+    row that absorbed a continuation is, by definition, multi-row on the
+    page. This keeps the read-time shape in agreement with
+    `scripts.make_verifier_bundle._merge_with_spans`, which applies the
+    same tag at bake time. Both merges of the same input now produce the
+    same `notes` value, so downstream consumers don't see two different
+    labels depending on which path they read through.
+
     What the merge intentionally does NOT touch on the predecessor:
 
       * `confidence` — kept as-is. A "high" predecessor with a "medium"
@@ -67,6 +75,7 @@ def merge_continuations(entries: list[Entry]) -> list[Entry]:
                 update={
                     "raw_text": joined,
                     "oddities": [*prior.oddities, *entry.oddities],
+                    "notes": "double_height",
                 }
             )
         else:

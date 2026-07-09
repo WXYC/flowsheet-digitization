@@ -11,9 +11,12 @@ Sibling pattern: `core.continuations.merge_continuations`,
 
 from __future__ import annotations
 
+import re
+from pathlib import Path
+
 import pytest
 
-from core.parse import parse_artist_track
+from core.parse import _SEPARATOR, parse_artist_track
 
 
 class TestParseArtistTrack:
@@ -112,3 +115,24 @@ class TestParseArtistTrack:
         artist, track = parse_artist_track("STEREOLAB")
         assert (artist, track) == ("STEREOLAB", None)
         assert parse_artist_track(artist) == ("STEREOLAB", None)
+
+
+class TestJsParity:
+    """Guard that `verifier/app.js`'s ARTIST_TRACK_SEPARATOR uses the same
+    strict `\\s+` (whitespace-on-both-sides) form as `core.parse._SEPARATOR`.
+    A drift to `\\s*` on the JS side would split "X-RAY SPEX" on the
+    internal hyphen and disagree with the Python read-time split, so the
+    verifier UI's artist lookup would ask for the wrong artist."""
+
+    _APP_JS = Path(__file__).resolve().parents[2] / "verifier" / "app.js"
+    _JS_LINE = re.compile(
+        r"const\s+ARTIST_TRACK_SEPARATOR\s*=\s*/(?P<body>[^/]+)/(?P<flags>[a-z]*)\s*;"
+    )
+
+    def _js_pattern(self) -> str:
+        m = self._JS_LINE.search(self._APP_JS.read_text())
+        assert m is not None, "ARTIST_TRACK_SEPARATOR literal not found in verifier/app.js"
+        return m.group("body")
+
+    def test_js_separator_matches_python(self) -> None:
+        assert self._js_pattern() == _SEPARATOR.pattern

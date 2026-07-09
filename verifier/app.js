@@ -676,9 +676,10 @@ async function lookupOne(message) {
 }
 
 // Same separator regex as `core.parse.parse_artist_track` (Python side).
-// Pulls the artist out of a flowsheet `Artist - Track` string for
-// comparison against the library-resolved artist.
-const ARTIST_TRACK_SEPARATOR = /\s*[-–—]\s*/;
+// Whitespace on BOTH sides is load-bearing: without it, "X-RAY SPEX"
+// splits on the internal hyphen and the UI asks the library for the
+// wrong artist. `tests/unit/test_parse.py::TestJsParity` guards drift.
+const ARTIST_TRACK_SEPARATOR = /\s+[-–—]\s+/;
 
 // Stop words and bibliographic prefixes that the WXYC corpus often
 // drops or adds inconsistently. Stripping them prevents a "the" / "a"

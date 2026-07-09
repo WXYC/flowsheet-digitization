@@ -49,6 +49,12 @@ def test_single_continuation_folds_into_prior() -> None:
     # The merged row keeps the predecessor's row_index — the merge does
     # not invent a new position on the page.
     assert out[0].row_index == 0
+    # A predecessor that absorbed a continuation is now, by definition, a
+    # multi-row entry. Mark it `double_height` so the on-disk shape agrees
+    # with `scripts.make_verifier_bundle._merge_with_spans` — otherwise
+    # the read-time merge and the bake-time merge disagree on the same
+    # input and downstream consumers see two different `notes` values.
+    assert out[0].notes == "double_height"
 
 
 def test_chained_continuations_fold_in_order() -> None:
