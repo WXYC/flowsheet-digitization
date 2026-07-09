@@ -186,12 +186,18 @@ async function loadBundleFromUrlParam() {
 // `_added: true` so `buildCorrectionsExport` routes them to `added_rows[]`
 // (findOriginalEntry would return null otherwise, dropping the reviewer's
 // edits from the audit trail). Fresh-bundle rows the overlay lacks are
-// appended verbatim so a rebake surfacing new content doesn't silently
-// disappear behind a stale verified.json.
+// merged in and the combined list is sorted by row_index so a rebake
+// surfacing new content doesn't silently disappear behind a stale
+// verified.json AND doesn't render out-of-order relative to the printed
+// page grid.
 function applyVerifiedToBundle(bundle, verified) {
   bundle.page_date_raw = verified.page_date_raw ?? null;
   bundle.comments_raw = verified.comments_raw ?? null;
-  bundle.oddities = Array.isArray(verified.oddities) ? verified.oddities : [];
+  // Only overwrite when the overlay actually carries the field. An older
+  // verified.json saved before oddities were part of the schema has
+  // `verified.oddities === undefined`; overwriting with `[]` would silently
+  // discard the fresh bake's page-level oddities on every reload.
+  if (Array.isArray(verified.oddities)) bundle.oddities = verified.oddities;
   // Preserve the overlay's OCR provenance. buildVerifiedExport writes
   // these fields back to disk on save; without this copy, a save on top
   // of a stale overlay would overwrite verified.json's model_version
@@ -202,9 +208,17 @@ function applyVerifiedToBundle(bundle, verified) {
   for (const vq of verified.quadrants ?? []) {
     const bq = bundle.quadrants.find(q => q.position === vq.position);
     if (!bq) continue;
-    bq.hour_raw = vq.hour_raw ?? null;
-    bq.jock_raw = vq.jock_raw ?? null;
-    bq.oddities = Array.isArray(vq.oddities) ? vq.oddities : [];
+    // Only overwrite hour_raw / jock_raw when the overlay carries a
+    // non-null value. A previous review session may have left these null
+    // (unreadable at the time); a rebake that now extracts a real value
+    // should surface it rather than being silently discarded by a stale
+    // overlay null. Reviewer can still re-clear the field if the rebake
+    // repopulated it incorrectly.
+    if (vq.hour_raw != null) bq.hour_raw = vq.hour_raw;
+    if (vq.jock_raw != null) bq.jock_raw = vq.jock_raw;
+    // Same rationale as page-level oddities: skip when the overlay lacks
+    // the field so a legacy verified.json doesn't wipe fresh-bake oddities.
+    if (Array.isArray(vq.oddities)) bq.oddities = vq.oddities;
     const bboxByIndex = new Map(bq.entries.map(e => [e.row_index, e.row_bbox]));
     const overlayIndexes = new Set((vq.entries ?? []).map(e => e.row_index));
     const overlaid = (vq.entries ?? []).map(e => {
@@ -216,11 +230,17 @@ function applyVerifiedToBundle(bundle, verified) {
       }
       return { ...e, row_bbox: null, _added: true };
     });
-    // Append any fresh-bundle rows the overlay lacks — a rebake with
-    // looser rules surfaces rows the reviewer never saw, and dropping
-    // them silently would hide the model's new output.
+    // Fresh-bundle rows the overlay lacks are surfaced — a rebake with
+    // looser rules exposes rows the reviewer never saw, and dropping them
+    // would hide the model's new output. Sort the merged list by
+    // row_index so a rebake that adds interior rows (overlay [0,3,4] +
+    // fresh [0,1,2,3,4]) renders them in page order [0,1,2,3,4], not
+    // [0,3,4,1,2] — the naive concat would break per-row alignment with
+    // the printed grid.
     const freshExtra = bq.entries.filter(e => !overlayIndexes.has(e.row_index));
-    bq.entries = [...overlaid, ...freshExtra];
+    bq.entries = [...overlaid, ...freshExtra].sort(
+      (a, b) => a.row_index - b.row_index
+    );
   }
 }
 
@@ -244,11 +264,13 @@ async function initBundle(bundle, { bundleUrl, overlay = null }) {
     return;
   }
   state.bundle = cloneDeep(bundle);
-  // Gate on `overlay.quadrants` — a truncated verified.json that parses
-  // to `{}` would still be truthy and would silently null out the fresh
-  // bake's page-level fields (page_date_raw, comments_raw, oddities)
-  // without touching quadrants. Require the shape check before applying.
-  if (overlay && overlay.quadrants) {
+  // Gate on `Array.isArray(overlay.quadrants) && length > 0` — a truncated
+  // verified.json that parses to `{}`, `{quadrants: []}`, or
+  // `{quadrants: <non-array>}` would otherwise slip past a simple
+  // truthiness check and silently null out the fresh bake's page-level
+  // fields (page_date_raw, comments_raw) without touching quadrants, or
+  // throw on the `for (vq of ...)` loop.
+  if (overlay && Array.isArray(overlay.quadrants) && overlay.quadrants.length > 0) {
     applyVerifiedToBundle(state.bundle, overlay);
   }
   // Snapshot AFTER the overlay so `state.originalBundle` is the session
