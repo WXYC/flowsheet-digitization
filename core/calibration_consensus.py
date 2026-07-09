@@ -428,18 +428,11 @@ def _analyze_row(
     for _, entry in per_row:
         notes_counter[entry.notes if entry.notes is not None else "null"] += 1
 
-    # Confidence: taken from majority text reviewer if we have one, else
-    # from first reviewer as an informational value.
+    # Confidence is dropped from the agreement computation per plan
+    # §notes-and-confidence (`confidence` is anti-calibrated per the n=19
+    # baseline; reviewer-edited confidence is noise). The canonical row's
+    # `confidence` field is informational only.
     chosen_confidence: Confidence = "high"
-    if text_choice is not None and text_choice != _ILLEGIBLE:
-        for _rs, entry in per_row:
-            if (
-                not entry.spurious_flag
-                and entry.edited_text is not None
-                and _normalize_raw_text(entry.edited_text) == _normalize_raw_text(text_choice)
-            ):
-                chosen_confidence = "high"  # Confidence dropped per plan; default informational.
-                break
 
     needs_more = (
         spurious_needs_more or text_status == "insufficient" or type_status == "insufficient"
@@ -536,7 +529,7 @@ def _build_injection(
 
     # type_raw among reporters.
     types = [(rs, m.type_raw) for rs, m in reporters]
-    type_choice, type_status, _ = _type_raw_consensus(types)
+    type_choice, type_status, type_dissents = _type_raw_consensus(types)
     if type_status == "unknown":
         type_status_field = "unknown"
     elif type_status == "majority":
@@ -549,7 +542,7 @@ def _build_injection(
         raw_text_status=text_status_field,
         raw_text_dissents=dissents,
         type_raw_status=type_status_field,
-        type_raw_dissents=[],
+        type_raw_dissents=type_dissents,
         spurious_flag_status="unanimous_keep",
         spurious_flag_votes={"keep": len(reporters), "spurious": 0},
         notes_values={"null": len(reporters)},
