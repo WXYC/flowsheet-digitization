@@ -66,7 +66,7 @@ Where:
 - `<stem>` is the bundle stem as used today by the verifier (e.g., `1990-04apr0106-page14`).
 - `<short> = sha256(user_id).hexdigest()[:12]` — a 48-bit hex prefix of the reviewer's OIDC subject (`ReviewerSession.user_id`). Stable, filesystem-safe, short enough to read in `ls`, collision-negligible for any plausible reviewer pool size. The full identity lives inside the file in the `verified_by` block (a `VerifiedBy` instance); a mapping table at `data/calibration/_reviewers.json` exposes `short → {user_id, username, real_name, dj_name}` for ops debugging and is never consulted by the merge handler.
 
-The `bundle.json` is a relative symlink (`../../../../verifier/<stem>.bundle.json`) so that future bundle regenerations propagate automatically without copies going stale invisibly. The verifier app's static mount follows symlinks by default.
+The `bundle.json` is a relative symlink (`../../../../verifier/<stem>.bundle.json`) so that future bundle regenerations propagate automatically without copies going stale invisibly. Bundle reads for calibration mode go through the gated `/api/calibration/<year>/<bucket>/<stem>/bundle` endpoint (which resolves the symlink via `read_text()`), not through the `/data` static mount — Starlette's `StaticFiles` enforces realpath containment, and the guard in *Server-side blind-review enforcement* explicitly rejects `/data/calibration/**` reads by inode identity (walking `os.path.realpath` up to `CALIBRATION_ROOT`), so a symlink whose real target lands under `data/calibration/` is 404'd through `/data` regardless of the URL used to reach it (case-variant, sibling-subtree symlink, or `..` traversal all covered).
 
 Year-stratified placement matters for two reasons: it makes per-year drift-gate aggregation a directory walk rather than a metadata query, and it positions the layout to absorb #66's per-year sampler output without re-shaping. The `<bucket>` dimension is similarly forward-looking: if random-bucket multi-reviewer is ever added, the path generalises with no rename.
 
@@ -120,7 +120,7 @@ The bundle's row list is the spine of the per-page consensus. A reviewer in cali
 - Flag a bundle row as `spurious` (the SPA clears that row's text field; downstream the merge treats this as a negative vote on the row's existence).
 - Insert a missing-row marker between bundle rows `N` and `N+1`, with suggested text, `type_raw`, and `notes`.
 
-This is a deliberately less-powerful UI than the regular verifier (which exposes `add-row` at `app.js:343` and tracks `deleted_rows`). The trade-off is that the merge becomes a trivial O(rows) index-aligned scan instead of a sequence-alignment problem, while preserving the under-emit and over-emit signal that the n=19 empirical failure modes specifically named (3% under-emit, 0% over-emit).
+This is a deliberately less-powerful UI than the regular verifier (which exposes `.add-row` at `verifier/app.js:415` and tracks `deleted_rows`). The trade-off is that the merge becomes a trivial O(rows) index-aligned scan instead of a sequence-alignment problem, while preserving the under-emit and over-emit signal that the n=19 empirical failure modes specifically named (3% under-emit, 0% over-emit).
 
 The canonical row layout reflects the spine plus injections:
 
@@ -128,13 +128,14 @@ The canonical row layout reflects the spine plus injections:
 {
   "canonical_row_index": 7,         // 0..M-1 across all canonical rows
   "bundle_row_index": 6,            // index into bundle.rows; null for missing-row injections
-  "raw_text": "BEATLES - HELP",     // null when spurious_majority wins
+  "raw_text": "BEATLES - HELP",     // null when majority_spurious wins
   "type_raw": "H",
-  "notes": null,
   "confidence": "high",             // taken from the majority's submission; informational
-  "verification": { ... }            // see Merge algorithm below
+  "verification": { ... }           // see Merge algorithm below; per-reviewer `notes` lives here as `notes_values`
 }
 ```
+
+The canonical row has **no top-level `notes` field**. Notes are per-reviewer and inherently disagree-friendly (see *`notes` and `confidence`* below), so they only appear inside `verification.notes_values` as a histogram — never lifted to the row level. This keeps the canonical row's shape a byte-identical Pydantic serialisation whether one, two, or three reviewers touched it, and matches the schema example in *Schemas (final)* (which likewise omits row-level `notes`).
 
 A canonical row's `canonical_row_index` is a contiguous 0..M-1 sequence assigned at merge time. Rows derived from bundle rows preserve `bundle_row_index`; missing-row injections carry `bundle_row_index: null` plus a sidecar `inserted_between_bundle_rows: [N, N+1]`.
 
@@ -185,7 +186,7 @@ The SPA in calibration mode stays LML-blind even after Tier 2 ships. The whole p
 2. Collapse the doodle/blank cluster: `{"", null, "?", "-", "doodle", "scribble"}` → sentinel `"_unknown"`.
 3. Byte-compare normalized values.
 
-The collapse is informed by `project_oddity_doodle_entry.md`: doodles in the type-column circle are an established pattern, not a transcription error. Reviewers will inconsistently transcribe them as `?`, `doodle`, or leave blank — folding these to a sentinel prevents spurious escalation while keeping the actual letter alphabet (H/M/L/S/Std/O/R) gating in the normal way. Per the user, the H/M/L/S core vocabulary is stable across the 1990–2001 corpus and remains in use today, so disagreement on these specific letters is real signal that should escalate.
+The collapse is informed by `project_oddity_doodle_entry.md`: doodles in the type-column circle are an established pattern, not a transcription error. Reviewers will inconsistently transcribe them as `?`, `doodle`, or leave blank — folding these to a sentinel prevents spurious escalation while keeping the actual letter alphabet (H/M/L/Std/O/R, matching CLAUDE.md's Phase-1 table) gating in the normal way. Per the user, the H/M/L core vocabulary is stable across the 1990–2001 corpus and remains in use today, so disagreement on these specific letters is real signal that should escalate.
 
 ### `notes` and `confidence`
 
@@ -207,6 +208,8 @@ Binary vote per bundle row, "keep" vs "spurious":
 | 3 spurious | `unanimous_spurious` | row's `raw_text` set to null; no dissent |
 
 At N=2, a 1-1 split on `spurious_flag` triggers escalation to N=3. When the SPA's flag-spurious affordance is engaged on a row, the row's text field is cleared client-side; the merge function additionally treats any spurious-flagged row as having no text contribution to the row's text-agreement tally, so text agreement among "keepers" is computed only over reviewers who did not flag spurious.
+
+**N=3 `majority_keep` with disagreeing keepers.** The 2-keep/1-spurious row (status `majority_keep`) has two remaining reviewers whose text votes decide `raw_text`. If those two disagree under Tier-1 normalization, no majority text exists among the keepers and the escalation cap of 3 is already exhausted (`target_reviewers` cannot bump beyond 3). The row settles with `raw_text_status = "illegible_after_escalation"` and `raw_text = "__illegible__"`, with both keepers' readings recorded in `verification.raw_text_dissents` alongside the spurious-flagger's dissent. `derive_truth.py` skips such rows the same way it skips the ordinary `illegible` case. This mirrors the general 1-1-1 auto-illegible rule for `raw_text` at N=3: whenever the escalation cap is reached without a text majority among the reviewers whose text votes count, the row goes to `__illegible__` rather than crashing the merge with an unhandled shape.
 
 Downstream: `derive_truth.py` skips rows where the spurious status is `majority_spurious` or `unanimous_spurious` (no truth row to emit).
 
@@ -261,7 +264,7 @@ Pseudocode (the implementation lives in `core/calibration_consensus.py` — name
 ```
 target = 2
 status_per_row = []
-for i, bundle_row in enumerate(bundle.rows):
+for i in range(bundle_row_count):
     votes = collect_per_row_votes(submissions, i)
     row_status = compute_row_status(votes)
     if row_status.needs_more_reviewers and len(submissions) < 3:
@@ -276,12 +279,14 @@ if any(gap.needs_more_reviewers and len(submissions) < 3 for gap in gap_status):
 if len(submissions) < target:
     return None, None, target  # not yet settled
 
-canonical = build_canonical(bundle, status_per_row, gap_status)
-agreement = build_agreement(canonical, submissions, target)
+canonical = build_canonical(status_per_row, gap_status, submissions, settled_at)
+agreement = build_agreement(canonical, submissions, target, settled_at)
 return canonical, agreement, target
 ```
 
-`compute_row_status` evaluates each of the four gating decisions independently and returns a row-level status that's the worst-of across them. `compute_gap_status` evaluates missing-row markers per gap.
+`compute_row_status` evaluates each of the four gating decisions independently and returns a row-level status that's the worst-of across them. `compute_gap_status` evaluates missing-row markers per gap. Both `build_canonical` and `build_agreement` receive `submissions` because the canonical row's `verification.raw_text_dissents`, `spurious_flag_votes`, `notes_values` histogram, and `reviewer_shorts` (see *Schemas (final)*) come directly from the per-reviewer inputs, not just from the derived per-row status. Both also receive `settled_at` so it stamps the `settled_at` top-level field in both output files.
+
+**Monotonic ratchet — why it holds trivially.** The pseudocode initialises `target = 2` on every invocation without carrying prior state, and the finding "the ratchet could revert if a later submission changes votes" needs to be answered explicitly: it can't. `verified.<short>.json` files are immutable (write-once, blocked by cross-check #5 in *Submission validation*); once submitter A's reading is on disk, submitter A cannot revise. So any disagreement revealed at N=2 remains revealable at N=3 (the same two files are still on disk plus one more). Re-running `merge()` after a third submission processes the same immutable A and B plus C — if A vs B disagreed, that disagreement re-triggers `target = 3` on this invocation just as it did on the prior one. The ratchet is therefore not a stored-state property; it's an immutability-of-inputs property, so a pure-function merge preserves it by construction.
 
 The merge function is invoked synchronously by the submit handler immediately after a `verified.<short>.json` lands on disk. If `target_reviewers` is met and no new disagreement appears, the handler writes `canonical.json` and `agreement.json` atomically (write to temp, fsync, rename) in the page directory. If `target_reviewers` is now 3 (i.e., the freshly-submitted file pushed the count to 2 and revealed disagreement), no canonical is written and the page surfaces in queue queries as "awaiting third reviewer."
 
@@ -291,8 +296,8 @@ A single submit POST performs up to four disk writes: the durable `verified.<sho
 
 Rules, in order:
 
-1. **`verified.<short>.json` first**, atomically (write to `verified.<short>.json.tmp`, fsync, `os.replace` to final name). This is the reviewer's durable record; a crash after this step just means later steps run on the next request.
-2. **Merge, then `canonical.json` + `agreement.json`** — same atomic pattern. Written only if `target_reviewers` is met and every gating decision is resolved. If a crash happens between the two files, the page directory has `canonical.json` but no `agreement.json` (or vice versa); the queue endpoint treats a directory with `canonical.json xor agreement.json` as *inconsistent* and skips it with a WARN log, prompting an operator to re-run the merge idempotently via `scripts/derive_truth.py --from canonical --replay-missing` (which also re-emits agreement from the canonical + submissions). Since both files derive purely from the on-disk submissions, replay is safe.
+1. **`verified.<short>.json` first**, atomically (write to `verified.<short>.json.tmp` in the **same directory** as the final name, fsync, `os.replace` to final name). Same-directory `.tmp` is load-bearing: `os.replace` requires the tmp and destination to share a filesystem, and Linux containers (Railway, Docker) commonly have `/tmp` on a separate tmpfs so `tempfile.NamedTemporaryFile()` (default under `/tmp`) will raise `OSError: [Errno 18] EXDEV`. Use the page directory as the tmp location — same tmpfs guarantee, and any orphan `.tmp` left behind after a crash is trivially auditable next to the file it was meant to replace. Same pattern for every atomic-write recipe below (`canonical.json`, `agreement.json`, `_reviewers.json`, `truth.json`). This is the reviewer's durable record; a crash after this step just means later steps run on the next request.
+2. **Merge, then `canonical.json` + `agreement.json`** — same atomic pattern. Written only if `target_reviewers` is met and every gating decision is resolved. If a crash happens between the two files, the page directory has `canonical.json` but no `agreement.json` (or vice versa); the queue endpoint treats a directory with `canonical.json xor agreement.json` as *inconsistent* and skips it with a WARN log. Recovery is manual and out of scope for `derive_truth.py` (which only re-derives truth files, not settlement artefacts): the operator deletes the orphan file and re-submits (or invokes the merge function directly for that page directory) so the atomic write pair happens again cleanly. `--replay-missing` on `derive_truth.py` is the truth-file backfill described below, not a settlement-repair tool — the two concerns are deliberately separate.
 3. **`_reviewers.json` last**, non-fatal on error. "First-time submission for a given `user_id`" is detected by reading the current `_reviewers.json`, computing `<short>`, and checking membership — not by scanning the page directory for `verified.*.json` files, which would race against step 1 during concurrent submits by the same reviewer to different pages. On membership miss: read → append → write-temp → fsync → rename, guarded by a per-file `fcntl.flock` so concurrent submit handlers serialise their read-modify-write against each other. On any error at this step (I/O failure, unexpected schema, lock timeout), the handler logs `reviewers_mapping_stale` at WARN with `(user_id_short, exc)` and returns 200 to the client — the mapping is auditing-only, and the `--refresh-reviewers` bootstrap flag documented under `_reviewers.json` above will rebuild it from durable state.
 
 The lock scope is deliberately narrow: only step 3 takes a lock, and only over `_reviewers.json`. Steps 1 and 2 are per-page directory writes that don't need cross-request coordination — the filename encodes the reviewer, so two reviewers submitting simultaneously to the same page write to different files, and one reviewer can't submit twice to the same page (blocked by cross-check #5 in *Submission validation*).
@@ -343,7 +348,7 @@ class CalibrationSubmission(BaseModel):
 Cross-checks performed in the submit handler (not in the model, because they require the bundle):
 
 1. `rows` is a complete list, one entry per bundle row, with `bundle_row_index` matching position.
-2. Every `between_bundle_rows` pair satisfies `0 <= N < bundle.row_count`.
+2. Every `between_bundle_rows` pair satisfies `0 <= N < bundle_row_count` (the total flat entry count across all quadrants; the bundle's on-disk shape carries a nested `quadrants[].entries`, so `bundle_row_count` is computed by the handler as the flat sum, not read as a field).
 3. `reviewer.user_id` from the request body matches `request.state.reviewer.user_id` (confused-deputy defence; mirrors the same check the regular-mode `/api/save` handler in `verifier/serve.py` already performs).
 4. The page is in `awaiting_submissions` (no `canonical.json` present).
 5. The reviewer has not already submitted (no existing `verified.<short>.json` for their `<short>`); drafts may be overwritten freely.
@@ -367,17 +372,28 @@ def can_read_calibration_file(
     if filename == "bundle.json":
         return True  # any authenticated session
     if filename == "canonical.json" or filename == "agreement.json":
-        return file_path.exists()  # presence implies settled; readable to anyone
+        # "Settled" requires BOTH files present. Reading canonical.json in
+        # the microsecond window between os.replace(canonical) and
+        # os.replace(agreement) — see *Submit handler write ordering* —
+        # would leak the majority reading to a reviewer whose own draft is
+        # still open, defeating blind review the same way an ungated
+        # verified.<peer>.json read would.
+        return (page_dir / "canonical.json").exists() and (page_dir / "agreement.json").exists()
     if filename.startswith("draft."):
         return _matches_owner(filename, requester_user_id)
     if filename.startswith("verified."):
         if _matches_owner(filename, requester_user_id):
             return True
-        return (page_dir / "canonical.json").exists()  # settled → others may read
+        # Same gate: peer verified.*.json is readable only once BOTH
+        # settlement artefacts are on disk. Using canonical.json alone
+        # would open the same TOCTOU window as above.
+        return (page_dir / "canonical.json").exists() and (page_dir / "agreement.json").exists()
     return False
 ```
 
 `_matches_owner(filename, requester_user_id)` recomputes `sha256(requester_user_id)[:12]` and compares against the filename's short prefix. The check is constant-time-equivalent at this scale; no timing-attack hardening is warranted.
+
+The "settled" predicate is deliberately conjunctive (`canonical AND agreement`) rather than "canonical exists." A crash between the two atomic writes leaves the page in the inconsistent state described in *Submit handler write ordering*; the queue endpoint's WARN log surfaces it, and the two-file gate here means the inconsistent window does not leak a majority reading to any peer reviewer. Same directory-scoped stat calls used to enforce the guard — no separate coordination surface.
 
 Denied reads return 403 with no body content (do not leak which file shape was requested). The server logs denials at INFO level with `(requester_short, file_path, reason)` — small audit trail, helps catch SPA bugs.
 
@@ -490,7 +506,9 @@ When issue #66's per-year sampler ships, it can call into this script's helper f
 
 The script also gains an optional `--year YYYY` argument; when omitted, the year is parsed from the stem prefix by splitting on the first `-` and asserting the prefix matches `^\d{4}$`. If the prefix is missing or non-numeric, both the CLI and `from_canonical()` raise `CanonicalReadError` with a message that names the offending stem — the pipeline stops loudly rather than emitting truth under a wrong-year directory or silently skipping the file. Default output path becomes `tests/golden/calibration/<year>/<stem>.truth.json`.
 
-Auto-invocation: the verifier submit handler, after a successful merge that materialises `canonical.json`, calls `derive_truth.from_canonical(canonical_path)` synchronously. Manual CLI invocation keeps the old single-reviewer path (`derive_truth.py --from verified ...`) for the regular flow.
+Auto-invocation: the verifier submit handler, after a successful merge that materialises `canonical.json`, calls `derive_truth.from_canonical(canonical_path)` synchronously.
+
+The existing single-reviewer CLI (`python scripts/derive_truth.py <verified.json> --out <truth.json>` — positional path plus required `--out`, no mode flag) is preserved unchanged for backward compatibility; every current invocation keeps working. The `--from canonical` mode is a NEW opt-in flag that switches the parser to accept a canonical.json path instead: `python scripts/derive_truth.py --from canonical <canonical.json>` (with `--out` optional in this mode; if omitted, defaults to `tests/golden/calibration/<year>/<stem>.truth.json`, year extracted from the stem prefix per *year-parse edge case* below).
 
 The auto-invoked function is the same shape as the module's existing helper, exposed as a plain function so the submit handler doesn't shell out:
 
@@ -626,7 +644,7 @@ The top-level `verification.status` is the worst-of across `raw_text_status`, `t
     "unanimous": 18,
     "majority": 4,
     "illegible": 1,
-    "spurious_majority": 2
+    "majority_spurious": 2
   },
   "pair_concordance": [
     { "a": "a3b9e7c41f02", "b": "9d27e6b5fa18",
@@ -676,7 +694,7 @@ Under `tests/fixtures/calibration/<scenario_stem>/`, one directory per scenario:
 - `majority_n3/` — two agreeing submissions and one dissenter; expect `status = majority` with the dissent captured.
 - `illegible_111/` — three different `raw_text` readings on the same row; expect `__illegible__` sentinel with three dissents.
 - `n2_disagrees_bumps_to_3/` — two reviewers disagree; merge returns `target_reviewers=3` and no canonical until a third submission lands.
-- `spurious_majority/` — two reviewers flag a row spurious; expect canonical row's text = null and `majority_spurious` status.
+- `majority_spurious/` — two reviewers flag a row spurious; expect canonical row's text = null and `majority_spurious` status.
 - `missing_row_majority/` — two reviewers insert the same missing-row marker; expect the row injected with `under_emit_majority` status.
 - `missing_row_minority/` — only one reviewer reports a gap; expect no injection, sidecar `missing_row_reports` populated.
 - `type_raw_doodle_cluster/` — reviewers write `""`, `"?"`, `"doodle"` for the same row; expect agreement under the `_unknown` collapse.
