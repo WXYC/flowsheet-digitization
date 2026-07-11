@@ -178,15 +178,29 @@ def _is_document_navigation(request: Request) -> bool:
     which every current browser sends: `document` for a top-level
     navigation, and `image` / `empty` / `style` / `script` / etc. for
     subresources. When it is absent (older browsers, some proxies, curl)
-    we fall back to the `Accept` header advertising `text/html`, which a
-    document navigation always does and an asset or XHR fetch does not.
-    The `Sec-Fetch-Dest` value, when present, is authoritative — the
-    `Accept` fallback is only consulted when it is missing.
+    we fall back to the `Accept` header advertising `text/html` (and not
+    also `application/json` — an XHR that tolerates html must not be
+    routed to /auth/login), which a real document navigation does and an
+    asset or XHR fetch does not.
+
+    A speculative prefetch/prerender is NOT a real navigation even though
+    it carries `Sec-Fetch-Dest: document`: it is issued by the browser
+    ahead of any user intent, and following its 302 into /auth/login would
+    mint a fresh OIDC `state` and clobber the one-shot cookie of a
+    concurrent real login — the very failure this gate exists to prevent.
+    A prefetch is identified by `Sec-Purpose` (or the legacy `Purpose`)
+    advertising `prefetch`/`prerender`, and is demoted to a subresource.
     """
+    purpose = (
+        request.headers.get("sec-purpose", "") + " " + request.headers.get("purpose", "")
+    ).lower()
+    if "prefetch" in purpose or "prerender" in purpose:
+        return False
     dest = request.headers.get("sec-fetch-dest", "").strip().lower()
     if dest:
         return dest == "document"
-    return "text/html" in request.headers.get("accept", "").lower()
+    accept = request.headers.get("accept", "").lower()
+    return "text/html" in accept and "application/json" not in accept
 
 
 class _SessionCookieMiddleware(BaseHTTPMiddleware):
@@ -493,9 +507,13 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
         raise HTTPException(503, detail="auth not configured") from exc
 
     # `secrets.compare_digest` mirrors the precedent in
-    # `_BasicAuthMiddleware` — constant-time string comparison so a
-    # timing attack can't unmask the expected state value.
-    if not secrets.compare_digest(state, signed_state):
+    # `_BasicAuthMiddleware` — constant-time comparison so a timing attack
+    # can't unmask the expected state value. Compare UTF-8 bytes, not str:
+    # `compare_digest` raises TypeError on a non-ASCII str operand, and
+    # `state` is attacker-controlled from the query string — a crafted
+    # `state=caf%C3%A9` would otherwise 500 here instead of taking the
+    # intended 400 mismatch path.
+    if not secrets.compare_digest(state.encode("utf-8"), signed_state.encode("utf-8")):
         # The cookie was valid but its state doesn't match the state the
         # IdP echoed back. In practice this means the one-shot cookie was
         # overwritten by a second /auth/login (a concurrent tab, a reload,
