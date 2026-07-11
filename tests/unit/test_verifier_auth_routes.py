@@ -98,8 +98,8 @@ def _make_reviewer() -> ReviewerSession:
 def serve_app(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     """Build a fresh OIDC-enabled FastAPI app rooted at `tmp_path`.
 
-    Reloads `verifier.serve` after env is set so `OIDC_ENABLED`
-    + the middleware install pick up our env. Cleans up module-level
+    Reloads `verifier.serve` after env is set so the per-request
+    `_oidc_enabled()` accessor sees our env. Cleans up module-level
     state on teardown so subsequent tests start clean.
     """
     monkeypatch.setenv("DATA_ROOT", str(tmp_path / "data"))
