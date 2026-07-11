@@ -1,8 +1,15 @@
 """Shared fixtures + helpers for `tests/unit/`.
 
-Created in the OIDC PR for `_reset_serve_module_state`, which the
-parametrized middleware-precedence and Secure-flag tests need to keep
-test cases from leaking module-level state into each other.
+Two pieces of shared machinery live here:
+
+  * `_restore_environ` (autouse) — snapshots and restores `os.environ`
+    around every test so a durable env mutation (e.g. a CLI's
+    `load_dotenv` leaking into the shared process) can't poison a later
+    test regardless of collection order. This is the #91 order-pollution
+    guard; see the fixture docstring.
+  * `_reset_serve_module_state` — clears the module-level caches that
+    survive `importlib.reload(serve_mod)`, so tests that flip DATA_ROOT
+    or WXYC_AUTH_ISSUER between reloads don't inherit stale state.
 """
 
 from __future__ import annotations

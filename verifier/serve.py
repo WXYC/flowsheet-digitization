@@ -139,9 +139,10 @@ def _dispatch_basic_auth(request: Request, password: str) -> Response | None:
     """Return an HTTP 401 challenge unless the request carries valid
     Basic Auth credentials, in which case return None (let it through).
 
-    Both static mounts (/verifier/, /data/) and the /api/* endpoints are
-    behind the gate — the verifier UI loads the bundle JSON via the same
-    static mount, so any leak of /data/ leaks the corpus.
+    `_AuthGateMiddleware` runs this helper for every request in BasicAuth
+    mode, so both static mounts (/verifier/, /data/) and the /api/*
+    endpoints are behind the gate — the verifier UI loads the bundle JSON
+    via the same static mount, so any leak of /data/ leaks the corpus.
 
     `secrets.compare_digest` runs the credential check in constant time
     relative to length, which is the only reasonable thing to do with a
@@ -186,7 +187,7 @@ def _is_document_navigation(request: Request) -> bool:
     Everything else (fetch/XHR, favicon, images, stylesheets, prefetch)
     returns False and is answered with a 401 instead of being redirected
     through the state-minting /auth/login endpoint. See the clobber note
-    in `_SessionCookieMiddleware.dispatch`.
+    in `_dispatch_oidc_session`.
 
     Detection prefers the Fetch Metadata `Sec-Fetch-Dest` request header,
     which every current browser sends: `document` for a top-level
@@ -547,7 +548,7 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
         raise HTTPException(503, detail="auth not configured") from exc
 
     # `secrets.compare_digest` mirrors the precedent in
-    # `_BasicAuthMiddleware` — constant-time comparison so a timing attack
+    # `_dispatch_basic_auth` — constant-time comparison so a timing attack
     # can't unmask the expected state value. Compare UTF-8 bytes, not str:
     # `compare_digest` raises TypeError on a non-ASCII str operand, and
     # `state` is attacker-controlled from the query string — a crafted
@@ -966,7 +967,9 @@ def _bundle_state(corrections_path: Path, verified_path: Path) -> tuple[str, str
 # -- calibration endpoints ------------------------------------------------
 #
 # Multi-reviewer calibration flow (plans/multi-reviewer-calibration.md).
-# Every endpoint requires an authenticated reviewer via _SessionCookieMiddleware.
+# Every endpoint requires an authenticated reviewer: _AuthGateMiddleware
+# (in OIDC mode) populates request.state.reviewer, and each handler calls
+# _cal_require_reviewer to 401 when it is absent.
 # Per-reviewer file access is gated at the endpoint layer
 # (`_cal_can_read_verified`). The `/data` static mount cannot serve any
 # calibration file — `_NoCalibrationStaticFiles` below returns 404 for the
