@@ -7,7 +7,36 @@ test cases from leaking module-level state into each other.
 
 from __future__ import annotations
 
+import os
+from collections.abc import Iterator
 from types import ModuleType
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _restore_environ() -> Iterator[None]:
+    """Snapshot `os.environ` before each test and restore it after.
+
+    Some tests mutate the process environment durably, outside pytest's
+    `monkeypatch` (which self-restores). The concrete case that motivated
+    this: `test_cli` invokes the Typer CLI, whose `@app.callback()` runs
+    `load_dotenv(override=False)`, which reads the developer's real `.env`
+    and injects `WXYC_OIDC_CLIENT_ID=flowsheet` (and secrets) into
+    `os.environ` for the *rest of the process*. Every later test that
+    rebuilds the verifier app then sees OIDC enabled and 401s where it
+    expected an open gate — the #91 order-dependent failure.
+
+    Restoring the full environment after every test makes the suite
+    order-independent regardless of what mutated it, and is the airtight
+    counterpart to the per-request env reads in `verifier/serve.py`. CI
+    doesn't hit the failure (its `.env` has no real values), which is
+    exactly why the leak went unnoticed; this guards it everywhere.
+    """
+    snapshot = dict(os.environ)
+    yield
+    os.environ.clear()
+    os.environ.update(snapshot)
 
 
 def _reset_serve_module_state(serve_mod: ModuleType) -> None:

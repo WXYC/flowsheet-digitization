@@ -63,7 +63,6 @@ from fastapi.responses import JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from itsdangerous import BadSignature
 from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.types import ASGIApp
 
 import core.auth as auth_mod
 from core.auth import (
@@ -97,26 +96,48 @@ VERIFIER_DIR = DATA_ROOT / "verifier"
 CALIBRATION_ROOT = DATA_ROOT / "calibration"
 JOBS_DB_PATH = DATA_ROOT / "jobs.db"
 
-# When VERIFIER_PASSWORD is set, every request goes through HTTP Basic Auth.
-# Unset → no auth, matching the local-dev default the README documents.
-# VERIFIER_USER defaults to a placeholder so the volunteer only has to
-# remember a password.
-VERIFIER_PASSWORD = os.environ.get("VERIFIER_PASSWORD")
-VERIFIER_USER = os.environ.get("VERIFIER_USER", "verifier")
-
-# OIDC takes precedence over BasicAuth when both are configured. A
-# WXYC_OIDC_CLIENT_ID with an empty value (e.g. someone unsetting OIDC
-# by clearing the value rather than removing the line) is treated as
-# unset so the env-var-gate semantics match the BasicAuth path.
-OIDC_ENABLED = bool(os.environ.get("WXYC_OIDC_CLIENT_ID"))
-# `FLOWSHEET_PUBLIC_URL` decides whether session + one-shot cookies
-# carry `Secure`. Local dev runs plain HTTP; production runs HTTPS; the
-# flag tracks the URL scheme without a separate `IS_PRODUCTION` env.
-_COOKIE_SECURE = os.environ.get("FLOWSHEET_PUBLIC_URL", "").startswith("https")
+# Auth configuration is read from the environment *per request* via the
+# accessors below, never frozen into module-level globals at import time.
+# Freezing was the #91 bug: a durable os.environ mutation elsewhere in a
+# shared process (e.g. a CLI's load_dotenv leaking into the test suite)
+# would be baked into whichever middleware happened to be installed at
+# import, making auth behavior depend on import timing. Reading per
+# request costs an os.environ.get() and mirrors the lazy env pattern in
+# core/auth.py (`_client_id()`, `_issuer()`).
 
 
-class _BasicAuthMiddleware(BaseHTTPMiddleware):
-    """Gates every request with HTTP Basic Auth when a password is set.
+def _verifier_password() -> str | None:
+    """HTTP Basic Auth password, or None when unset (no BasicAuth gate).
+
+    An empty value is treated as unset so `VERIFIER_PASSWORD=` reads the
+    same as an absent variable — matching `_oidc_enabled`'s handling.
+    """
+    return os.environ.get("VERIFIER_PASSWORD") or None
+
+
+def _verifier_user() -> str:
+    """Basic Auth username; defaults to a placeholder so the volunteer
+    only has to remember a password."""
+    return os.environ.get("VERIFIER_USER", "verifier")
+
+
+def _oidc_enabled() -> bool:
+    """True when OIDC is configured. A WXYC_OIDC_CLIENT_ID with an empty
+    value (someone unsetting OIDC by clearing the value rather than
+    removing the line) is treated as unset."""
+    return bool(os.environ.get("WXYC_OIDC_CLIENT_ID"))
+
+
+def _cookie_secure() -> bool:
+    """Whether session + one-shot cookies carry `Secure`. Local dev runs
+    plain HTTP; production runs HTTPS; the flag tracks the URL scheme via
+    `FLOWSHEET_PUBLIC_URL` without a separate `IS_PRODUCTION` env."""
+    return os.environ.get("FLOWSHEET_PUBLIC_URL", "").startswith("https")
+
+
+def _dispatch_basic_auth(request: Request, password: str) -> Response | None:
+    """Return an HTTP 401 challenge unless the request carries valid
+    Basic Auth credentials, in which case return None (let it through).
 
     Both static mounts (/verifier/, /data/) and the /api/* endpoints are
     behind the gate — the verifier UI loads the bundle JSON via the same
@@ -126,29 +147,22 @@ class _BasicAuthMiddleware(BaseHTTPMiddleware):
     relative to length, which is the only reasonable thing to do with a
     shared bearer-style password.
     """
-
-    def __init__(self, app: ASGIApp, *, user: str, password: str) -> None:
-        super().__init__(app)
-        self._user = user
-        self._password = password
-
-    async def dispatch(self, request: Request, call_next):
-        auth = request.headers.get("authorization", "")
-        if auth.lower().startswith("basic "):
-            try:
-                decoded = b64decode(auth[6:]).decode("utf-8")
-            except Exception:  # noqa: BLE001
-                decoded = ""
-            user, _, password = decoded.partition(":")
-            if secrets.compare_digest(user, self._user) and secrets.compare_digest(
-                password, self._password
-            ):
-                return await call_next(request)
-        return JSONResponse(
-            {"detail": "authentication required"},
-            status_code=401,
-            headers={"WWW-Authenticate": 'Basic realm="WXYC Verifier"'},
-        )
+    auth = request.headers.get("authorization", "")
+    if auth.lower().startswith("basic "):
+        try:
+            decoded = b64decode(auth[6:]).decode("utf-8")
+        except Exception:  # noqa: BLE001
+            decoded = ""
+        user, _, supplied = decoded.partition(":")
+        if secrets.compare_digest(user, _verifier_user()) and secrets.compare_digest(
+            supplied, password
+        ):
+            return None
+    return JSONResponse(
+        {"detail": "authentication required"},
+        status_code=401,
+        headers={"WWW-Authenticate": 'Basic realm="WXYC Verifier"'},
+    )
 
 
 # Routes that must answer unauthenticated so the auth dance + Railway's
@@ -203,65 +217,91 @@ def _is_document_navigation(request: Request) -> bool:
     return "text/html" in accept and "application/json" not in accept
 
 
-class _SessionCookieMiddleware(BaseHTTPMiddleware):
-    """Gate all non-public paths on the signed session cookie.
+def _dispatch_oidc_session(request: Request) -> Response | None:
+    """Gate a non-public path on the signed session cookie.
 
     Reads `flowsheet_session`, verifies it via `core.auth.decode_session`,
     and stashes the resulting `ReviewerSession` on `request.state.reviewer`
-    so downstream handlers (and the `get_reviewer` dependency) can read
-    it without re-parsing the cookie.
+    so downstream handlers (and the `get_reviewer` dependency) can read it
+    without re-parsing the cookie. Returns None to let the request through.
 
-    A missing or invalid session redirects to `/auth/login?return_to=<path>`
-    for HTML requests, and returns a 401 JSON for AJAX requests (the SPA
+    A missing or invalid session returns a `/auth/login?return_to=<path>`
+    redirect for HTML requests, and a 401 JSON for AJAX requests (the SPA
     inspects the response to know to redirect client-side).
+    """
+    path = request.url.path
+    if path in _PUBLIC_PATHS:
+        request.state.reviewer = None
+        return None
+
+    raw = request.cookies.get(COOKIE_NAME, "")
+    reviewer = auth_mod.decode_session(raw)
+    if reviewer is None:
+        # Only a genuine top-level browser navigation is 302'd to
+        # /auth/login. Every other request type (fetch/XHR, favicon,
+        # images, CSS/JS, prefetch) gets a 401 instead.
+        #
+        # This is load-bearing, not just cosmetic: /auth/login mints a
+        # fresh OIDC `state` and overwrites the single one-shot cookie.
+        # If a gated subresource (a favicon, say) were funneled through
+        # /auth/login mid-login, its redirect would clobber the state
+        # of the login the user is actually completing, and the
+        # callback would then fail with a state mismatch ("invalid
+        # auth state"). Returning 401 keeps subresources away from the
+        # state-minting endpoint entirely.
+        if not _is_document_navigation(request):
+            # SPA fetches inspect this 401 and redirect via
+            # location.href; non-browser clients just see the 401.
+            return JSONResponse({"detail": "authentication required"}, status_code=401)
+        # HTML / browser nav — server-side 302 to /auth/login with
+        # a signed return_to. The login handler will validate it
+        # against the /verifier prefix allowlist.
+        return_to = path
+        if request.url.query:
+            return_to += f"?{request.url.query}"
+        login_url = f"/auth/login?return_to={urllib.parse.quote(return_to)}"
+        return RedirectResponse(login_url, status_code=302)
+
+    request.state.reviewer = reviewer
+    return None
+
+
+class _AuthGateMiddleware(BaseHTTPMiddleware):
+    """The single, always-installed auth gate. Picks its mode per request.
+
+    Reading the mode from `os.environ` on every request — rather than
+    freezing it at import into a module global, or baking it into *which*
+    middleware got installed — is what makes the gate immune to a durable
+    env mutation elsewhere in a shared process (#91). The old design chose
+    the middleware at import; a later os.environ change (or an import under
+    a transiently-mutated env) could not be undone without a module reload.
+
+    Precedence, evaluated per request (modes are mutually exclusive):
+      * OIDC session cookie when WXYC_OIDC_CLIENT_ID is set.
+      * HTTP Basic Auth when VERIFIER_PASSWORD is set.
+      * No gate otherwise (local-dev default).
+    OIDC wins when both are configured, so the BasicAuth env var can stay
+    set during the transition period without competing with the session
+    gate.
     """
 
     async def dispatch(self, request: Request, call_next):
-        path = request.url.path
-        if path in _PUBLIC_PATHS:
-            request.state.reviewer = None
-            return await call_next(request)
-
-        raw = request.cookies.get(COOKIE_NAME, "")
-        reviewer = auth_mod.decode_session(raw)
-        if reviewer is None:
-            # Only a genuine top-level browser navigation is 302'd to
-            # /auth/login. Every other request type (fetch/XHR, favicon,
-            # images, CSS/JS, prefetch) gets a 401 instead.
-            #
-            # This is load-bearing, not just cosmetic: /auth/login mints a
-            # fresh OIDC `state` and overwrites the single one-shot cookie.
-            # If a gated subresource (a favicon, say) were funneled through
-            # /auth/login mid-login, its redirect would clobber the state
-            # of the login the user is actually completing, and the
-            # callback would then fail with a state mismatch ("invalid
-            # auth state"). Returning 401 keeps subresources away from the
-            # state-minting endpoint entirely.
-            if not _is_document_navigation(request):
-                # SPA fetches inspect this 401 and redirect via
-                # location.href; non-browser clients just see the 401.
-                return JSONResponse({"detail": "authentication required"}, status_code=401)
-            # HTML / browser nav — server-side 302 to /auth/login with
-            # a signed return_to. The login handler will validate it
-            # against the /verifier prefix allowlist.
-            return_to = path
-            if request.url.query:
-                return_to += f"?{request.url.query}"
-            login_url = f"/auth/login?return_to={urllib.parse.quote(return_to)}"
-            return RedirectResponse(login_url, status_code=302)
-
-        request.state.reviewer = reviewer
+        if _oidc_enabled():
+            challenge = _dispatch_oidc_session(request)
+        elif (password := _verifier_password()) is not None:
+            challenge = _dispatch_basic_auth(request, password)
+        else:
+            # No gate configured — local-dev default.
+            challenge = None
+        if challenge is not None:
+            return challenge
         return await call_next(request)
 
 
 app = FastAPI(docs_url=None, redoc_url=None)
-# Tri-modal install. OIDC wins over BasicAuth so that the BasicAuth env
-# var can stay set during the transition period without competing with
-# the session gate.
-if OIDC_ENABLED:
-    app.add_middleware(_SessionCookieMiddleware)
-elif VERIFIER_PASSWORD:
-    app.add_middleware(_BasicAuthMiddleware, user=VERIFIER_USER, password=VERIFIER_PASSWORD)
+# One gate, always installed; it selects OIDC / BasicAuth / open per
+# request. See `_AuthGateMiddleware` for why the mode is not decided here.
+app.add_middleware(_AuthGateMiddleware)
 
 
 def get_reviewer(request: Request) -> ReviewerSession | None:
@@ -300,7 +340,7 @@ def _set_cookie(
         value=value,
         max_age=max_age,
         httponly=True,
-        secure=_COOKIE_SECURE,
+        secure=_cookie_secure(),
         samesite="lax",
         path=path,
     )
