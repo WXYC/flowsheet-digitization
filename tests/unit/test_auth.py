@@ -1205,6 +1205,67 @@ async def test_exchange_code_validates_iss_against_discovery_issuer(
     assert reviewer.user_id == "user-abc"
 
 
+async def test_exchange_code_rejects_eddsa_with_wrong_iss(
+    monkeypatch: pytest.MonkeyPatch,
+    ed25519_signing_key: Any,
+) -> None:
+    """An EdDSA id_token whose signature verifies against the JWKS but whose
+    `iss` does not match the discovery `issuer` must be rejected. The iss
+    check lives in `_decode_with_key`, so it is alg-agnostic — this pins that
+    the asymmetric EdDSA path enforces it just as the RS256/HS256 paths do,
+    so a signature-valid token minted for a different issuer cannot log in."""
+    eddsa_jwks = _public_jwks(ed25519_signing_key)
+
+    async def _meta() -> dict[str, Any]:
+        return {
+            "issuer": ISSUER,
+            "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+            "token_endpoint": f"{ISSUER}/oauth2/token",
+            "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+        }
+
+    async def _jwks() -> dict[str, Any]:
+        return eddsa_jwks
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks)
+    _install_token_endpoint(
+        monkeypatch,
+        _mint_eddsa_id_token(ed25519_signing_key, iss="https://evil.example/auth"),
+    )
+
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_raises_when_discovery_doc_missing_issuer(
+    monkeypatch: pytest.MonkeyPatch,
+    signing_key: Any,
+) -> None:
+    """A discovery doc without an `issuer` field has no source for the
+    required `iss` claim check, so `_verify_id_token` raises `ValueError`
+    (route layer → 400) rather than letting a `None`/`KeyError` escape or
+    silently skipping the `iss` check. Mirrors the `jwks_uri` guard."""
+
+    async def _meta() -> dict[str, Any]:
+        # No `issuer` key — the guard under test.
+        return {
+            "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+            "token_endpoint": f"{ISSUER}/oauth2/token",
+            "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+        }
+
+    async def _jwks() -> dict[str, Any]:
+        return _public_jwks(signing_key)
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks)
+    _install_token_endpoint(monkeypatch, _mint_id_token(signing_key))
+
+    with pytest.raises(ValueError, match="discovery doc missing issuer"):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
 # -- JWKS filter -----------------------------------------------------------
 
 
