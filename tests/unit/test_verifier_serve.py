@@ -646,6 +646,43 @@ async def test_auth_protects_static_and_save(serve_app_with_password) -> None:
         assert r.status_code == 401
 
 
+async def test_auth_gate_evaluated_per_request_not_frozen_at_import(
+    serve_app, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The gate must read auth env per-request, not freeze it at import.
+
+    Regression guard for #91: a durable `os.environ` mutation after import
+    (e.g. a CLI's `load_dotenv` leaking into the shared test process, or a
+    later env change in production) must change gate behavior on the *same*
+    app instance without a module reload. If auth mode is frozen at import
+    the second assertion fails, because flipping the env after the app is
+    built has no effect on a gate that only consulted the env once.
+    """
+    app = serve_app.app
+    # No auth env -> open (local-dev default).
+    monkeypatch.delenv("WXYC_OIDC_CLIENT_ID", raising=False)
+    monkeypatch.delenv("VERIFIER_PASSWORD", raising=False)
+    async with await _client(app) as c:
+        r = await c.get("/api/bundles")
+    assert r.status_code == 200
+
+    # Enable OIDC after the app is already built — no reload. A per-request
+    # gate must now challenge the unauthenticated request.
+    monkeypatch.setenv("WXYC_OIDC_CLIENT_ID", "flowsheet")
+    async with await _client(app) as c:
+        r = await c.get("/api/bundles", headers={"accept": "application/json"})
+    assert r.status_code == 401
+
+    # Swap OIDC for BasicAuth, still no reload — the gate follows the env.
+    monkeypatch.delenv("WXYC_OIDC_CLIENT_ID", raising=False)
+    monkeypatch.setenv("VERIFIER_PASSWORD", "hunter2")
+    async with await _client(app) as c:
+        r = await c.get("/api/bundles")
+        assert r.status_code == 401
+        r = await c.get("/api/bundles", auth=("verifier", "hunter2"))
+        assert r.status_code == 200
+
+
 async def test_save_skips_db_when_no_jobs_db_file(serve_app, tmp_path: Path) -> None:
     """If `data/jobs.db` doesn't exist (no pipeline has run), Save still
     succeeds — no DB integration is attempted."""

@@ -40,6 +40,11 @@ dev = [
     "pytest>=7.0.0",
     "pytest-asyncio>=0.21.0",
     "pytest-cov>=4.0.0",
+    # Shuffles collection order every run (printing a reproducible seed) so
+    # order-dependent test pollution can't hide behind an incidental order —
+    # the #91 regression guard. Without it, CI's fixed collection order
+    # happened to avoid the poisoning sequence and the leak went unnoticed.
+    "pytest-randomly>=3.0.0",
     # Pinned (not >=) so a new release that changes lint or type-check rules
     # cannot silently fail CI on an unrelated PR. Bumps should be deliberate.
     # Mirrors library-metadata-lookup.
