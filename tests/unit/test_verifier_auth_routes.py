@@ -231,6 +231,28 @@ async def test_auth_callback_400_on_state_mismatch(
     assert r.json()["detail"] == "auth state mismatch"
 
 
+async def test_auth_callback_400_on_non_ascii_state(
+    serve_app, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A non-ASCII `state` query param must be rejected as a mismatch
+    (400), not crash the constant-time compare with a TypeError (500).
+
+    `secrets.compare_digest` raises TypeError on non-ASCII str operands;
+    the handler must compare bytes so a crafted `state=caf%C3%A9` (with
+    the attacker's own valid one-shot cookies) is a clean 400."""
+
+    async def fake_exchange(*, code: str, code_verifier: str) -> ReviewerSession:
+        raise AssertionError("exchange_code must not be called when state mismatches")
+
+    monkeypatch.setattr(auth_mod, "exchange_code", fake_exchange)
+
+    async with await _client(serve_app.app) as c:
+        await _seed_one_shots(c, "expected-state", "v", "/verifier/")
+        r = await c.get("/auth/callback?code=auth-code&state=caf%C3%A9", follow_redirects=False)
+    assert r.status_code == 400
+    assert r.json()["detail"] == "auth state mismatch"
+
+
 async def test_auth_callback_400_on_tampered_state_cookie(
     serve_app, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -541,6 +563,51 @@ async def test_gated_subresource_fetch_returns_401_not_redirect(serve_app) -> No
                 "sec-fetch-dest": "image",
                 "accept": "image/avif,image/webp,image/png,*/*",
             },
+            follow_redirects=False,
+        )
+    assert r.status_code == 401
+    assert "location" not in r.headers
+
+
+async def test_gated_prefetch_document_returns_401(serve_app) -> None:
+    """A speculative prefetch/prerender carries `Sec-Fetch-Dest: document`
+    but also `Sec-Purpose: prefetch`. It must be treated as a subresource
+    (401), NOT a real navigation — otherwise the prefetch 302s to
+    /auth/login and mints a fresh OIDC state that clobbers the one-shot
+    cookie of a concurrent real login (the exact bug this PR fixes)."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/verifier/",
+            headers={"sec-fetch-dest": "document", "sec-purpose": "prefetch;prerender"},
+            follow_redirects=False,
+        )
+    assert r.status_code == 401
+    assert "location" not in r.headers
+
+
+async def test_gated_legacy_purpose_prefetch_returns_401(serve_app) -> None:
+    """The legacy `Purpose: prefetch` header (older Chromium / some
+    crawlers) must also demote a document-dest request to a subresource."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/verifier/",
+            headers={"sec-fetch-dest": "document", "purpose": "prefetch"},
+            follow_redirects=False,
+        )
+    assert r.status_code == 401
+    assert "location" not in r.headers
+
+
+async def test_gated_both_accept_types_without_fetch_metadata_returns_401(serve_app) -> None:
+    """When `Sec-Fetch-Dest` is absent, an `Accept` that advertises BOTH
+    application/json and text/html must NOT be routed to the state-minting
+    /auth/login. The pre-Fetch-Metadata gate excluded any request
+    advertising application/json; the fallback preserves that so an XHR
+    tolerant of html doesn't reach /auth/login."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/auth/me",
+            headers={"accept": "application/json, text/html"},
             follow_redirects=False,
         )
     assert r.status_code == 401
