@@ -93,7 +93,13 @@ from itsdangerous import BadSignature, TimestampSigner
 # both depend on these names not changing silently.
 COOKIE_NAME = "flowsheet_session"
 SESSION_TTL = timedelta(hours=12)
-ONE_SHOT_TTL = timedelta(minutes=10)
+# The one-shot state/verifier/return_to cookies must outlive the full
+# interactive login round-trip (verifier -> api.wxyc.org -> dj.wxyc.org
+# sign-in -> back). 10 minutes was too tight for a first-time login that
+# involves finding credentials or provisioning an account; a stale cookie
+# then fails the callback with "missing or expired auth cookie". 30 gives
+# comfortable headroom while still bounding replay of a signed state.
+ONE_SHOT_TTL = timedelta(minutes=30)
 
 # Discovery doc + JWKS are cached at module scope. See the module
 # docstring for why this deviates from `core/gemini.py`'s DI pattern.

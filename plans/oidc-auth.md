@@ -307,11 +307,13 @@ class ReviewerSession:
     role: str | None  # "stationManager" | "musicDirector" | "dj" | "member" | None
 
 # One-shot cookies (state, PKCE verifier, return_to) live for the duration
-# of the OIDC redirect bounce — 10 minutes is generous; Better Auth's own
-# authorize code expiry is ~5 minutes. Kept as a `timedelta` to mirror
-# SESSION_TTL below; call sites use `.total_seconds()` for itsdangerous's
-# max_age and `int(.total_seconds())` for cookie max-age headers.
-ONE_SHOT_TTL = timedelta(minutes=10)
+# of the OIDC redirect bounce. Originally 10 minutes; raised to 30 after a
+# first-time interactive login (find credentials / provision account on the
+# dj.wxyc.org sign-in) exceeded 10 and failed the callback with an expired
+# one-shot cookie. Kept as a `timedelta` to mirror SESSION_TTL below; call
+# sites use `.total_seconds()` for itsdangerous's max_age and
+# `int(.total_seconds())` for cookie max-age headers.
+ONE_SHOT_TTL = timedelta(minutes=30)
 
 async def build_authorize_url(return_to: str) -> tuple[str, str, str]:
     """Return (authorize_url, state, code_verifier). Caller stashes state+verifier."""
@@ -405,7 +407,7 @@ Three deltas:
 
 3. **Add a `Depends(get_reviewer)` to `/api/save`**, and write a `verified_by` block into the saved JSON. The middleware and the dependency play distinct roles — the *middleware* gates "are you allowed past `/api/*`" (request rejected with 302/401 if no session); the *`Depends(get_reviewer)`* extracts the typed `ReviewerSession` object out of `request.state.reviewer` so the handler can call `reviewer.user_id` etc. without dotting through framework internals. The middleware runs first and is the security boundary; the Depends is just typed access. They are not redundant. `/api/bundles` and `/api/lookup` are gated by the middleware (neither is in `PUBLIC_PATHS`) but don't need the Depends because they don't read the reviewer — `/api/bundles` because the bundle list is corpus data we don't want anonymous traffic seeing, `/api/lookup` because the proxy adds an authentication-free hop to request-o-matic's station-wide rate-limit budget that we don't want unauthenticated visitors burning. See the "Open questions" section below for the prior framing of the lookup decision.
 
-The middleware itself is ~30 lines: extract cookie → `decode_session` → if missing/invalid, 302 to `/auth/login?return_to=<current path>` (or 401 JSON for `Accept: application/json`) → otherwise stash `reviewer` on `request.state`. The bypass rule is two-part: `PUBLIC_PATHS = {"/auth/login", "/auth/callback", "/auth/logout", "/api/version"}` is the exact-match set, and *additionally* any path starting with `/auth/` bypasses the gate so the redirect dance can complete. A comment in the middleware body should call this out explicitly — "`PUBLIC_PATHS` lists specific public routes; `path.startswith('/auth/')` is the second condition for the OIDC dance. Add new public endpoints to `PUBLIC_PATHS`; don't widen the `/auth/` prefix to mean anything else."
+The middleware itself is ~30 lines: extract cookie → `decode_session` → if missing/invalid, 302 to `/auth/login?return_to=<current path>` for a genuine top-level document navigation, else 401 JSON → otherwise stash `reviewer` on `request.state`. (Document navigation is detected via `Sec-Fetch-Dest: document`, falling back to an `Accept: text/html` when the header is absent. The earlier design 302'd everything that wasn't `Accept: application/json`, but that funneled gated subresource fetches — a favicon, a prefetch — through `/auth/login`, and each such call mints a fresh OIDC `state` that overwrites the single one-shot cookie, breaking the concurrent real login's callback with a state mismatch. Only document navigations may reach the state-minting `/auth/login`; everything else 401s.) The bypass rule is two-part: `PUBLIC_PATHS = {"/auth/login", "/auth/callback", "/auth/logout", "/api/version"}` is the exact-match set, and *additionally* any path starting with `/auth/` bypasses the gate so the redirect dance can complete. A comment in the middleware body should call this out explicitly — "`PUBLIC_PATHS` lists specific public routes; `path.startswith('/auth/')` is the second condition for the OIDC dance. Add new public endpoints to `PUBLIC_PATHS`; don't widen the `/auth/` prefix to mean anything else."
 
 `/api/version` stays open so the Railway healthcheck doesn't need a credential. This is load-bearing for the deploy pipeline — Railway uses `/api/version` to decide whether a new revision is healthy; if the OIDC middleware ever drops it from `PUBLIC_PATHS`, every deploy will roll back because the gate redirects the healthcheck to `/auth/login`. The PR description for PR #3 should call this out so a future refactor doesn't break it silently. `/auth/me` stays gated — calling it unauthenticated should 401 so the SPA knows to redirect.
 

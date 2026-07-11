@@ -45,6 +45,7 @@ from __future__ import annotations
 import dataclasses
 import hashlib
 import json
+import logging
 import os
 import re
 import secrets
@@ -79,6 +80,8 @@ from core.schema import (
     PageResult,
     VerifiedBy,
 )
+
+logger = logging.getLogger(__name__)
 
 REQUEST_O_MATIC_URL = os.environ.get(
     "REQUEST_O_MATIC_URL",
@@ -162,6 +165,30 @@ _PUBLIC_PATHS: frozenset[str] = frozenset(
 )
 
 
+def _is_document_navigation(request: Request) -> bool:
+    """True only for a genuine top-level browser navigation to a page —
+    the one request type the session gate 302s to /auth/login.
+
+    Everything else (fetch/XHR, favicon, images, stylesheets, prefetch)
+    returns False and is answered with a 401 instead of being redirected
+    through the state-minting /auth/login endpoint. See the clobber note
+    in `_SessionCookieMiddleware.dispatch`.
+
+    Detection prefers the Fetch Metadata `Sec-Fetch-Dest` request header,
+    which every current browser sends: `document` for a top-level
+    navigation, and `image` / `empty` / `style` / `script` / etc. for
+    subresources. When it is absent (older browsers, some proxies, curl)
+    we fall back to the `Accept` header advertising `text/html`, which a
+    document navigation always does and an asset or XHR fetch does not.
+    The `Sec-Fetch-Dest` value, when present, is authoritative — the
+    `Accept` fallback is only consulted when it is missing.
+    """
+    dest = request.headers.get("sec-fetch-dest", "").strip().lower()
+    if dest:
+        return dest == "document"
+    return "text/html" in request.headers.get("accept", "").lower()
+
+
 class _SessionCookieMiddleware(BaseHTTPMiddleware):
     """Gate all non-public paths on the signed session cookie.
 
@@ -184,10 +211,21 @@ class _SessionCookieMiddleware(BaseHTTPMiddleware):
         raw = request.cookies.get(COOKIE_NAME, "")
         reviewer = auth_mod.decode_session(raw)
         if reviewer is None:
-            # AJAX / fetch — return 401 JSON so the SPA can redirect via
-            # location.href. Lets the verifier UI continue running its
-            # JS error handlers instead of getting an opaque 302.
-            if "application/json" in request.headers.get("accept", "").lower():
+            # Only a genuine top-level browser navigation is 302'd to
+            # /auth/login. Every other request type (fetch/XHR, favicon,
+            # images, CSS/JS, prefetch) gets a 401 instead.
+            #
+            # This is load-bearing, not just cosmetic: /auth/login mints a
+            # fresh OIDC `state` and overwrites the single one-shot cookie.
+            # If a gated subresource (a favicon, say) were funneled through
+            # /auth/login mid-login, its redirect would clobber the state
+            # of the login the user is actually completing, and the
+            # callback would then fail with a state mismatch ("invalid
+            # auth state"). Returning 401 keeps subresources away from the
+            # state-minting endpoint entirely.
+            if not _is_document_navigation(request):
+                # SPA fetches inspect this 401 and redirect via
+                # location.href; non-browser clients just see the 401.
                 return JSONResponse({"detail": "authentication required"}, status_code=401)
             # HTML / browser nav — server-side 302 to /auth/login with
             # a signed return_to. The login handler will validate it
@@ -431,7 +469,21 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
         signed_state = auth_mod.verify_one_shot(state_cookie, max_age=one_shot_age)
         code_verifier = auth_mod.verify_one_shot(verifier_cookie, max_age=one_shot_age)
     except BadSignature as exc:
-        raise HTTPException(400, detail="invalid auth state") from exc
+        # The one-shot cookies are missing, expired (older than
+        # ONE_SHOT_TTL), or tampered. Distinct detail + a log line so this
+        # is separable from the state-mismatch case below — the two were
+        # both "invalid auth state" before, which made these 400s
+        # undiagnosable from the outside. The log records which cookies
+        # were present so an expired-vs-dropped-vs-clobbered failure can
+        # be told apart from the server side.
+        logger.warning(
+            "auth callback rejected: one-shot cookie invalid "
+            "(state_present=%s verifier_present=%s return_to_present=%s)",
+            bool(state_cookie),
+            bool(verifier_cookie),
+            bool(return_to_cookie),
+        )
+        raise HTTPException(400, detail="missing or expired auth cookie") from exc
     except RuntimeError as exc:
         # See the matching catch in `auth_login` — env-var unset
         # surfaces as RuntimeError from `core.auth._session_secret()`
@@ -444,7 +496,14 @@ async def auth_callback(request: Request, code: str = "", state: str = "") -> Re
     # `_BasicAuthMiddleware` — constant-time string comparison so a
     # timing attack can't unmask the expected state value.
     if not secrets.compare_digest(state, signed_state):
-        raise HTTPException(400, detail="invalid auth state")
+        # The cookie was valid but its state doesn't match the state the
+        # IdP echoed back. In practice this means the one-shot cookie was
+        # overwritten by a second /auth/login (a concurrent tab, a reload,
+        # or a stale earlier attempt) after the authorize request that
+        # produced this callback. Distinct detail from the missing/expired
+        # path so the two are separable in logs.
+        logger.warning("auth callback rejected: state mismatch (query state != cookie state)")
+        raise HTTPException(400, detail="auth state mismatch")
 
     try:
         return_to = _validate_return_to(
