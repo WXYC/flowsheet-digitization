@@ -285,12 +285,31 @@ def foreign_signing_key() -> Any:
     return JsonWebKey.generate_key("RSA", 2048, is_private=True)
 
 
-@pytest.fixture
-def jwks_from_key(signing_key: Any) -> dict[str, Any]:
-    """The JWKS the stubbed `_load_jwks` returns — just the public half."""
+@pytest.fixture(scope="module")
+def ed25519_signing_key() -> Any:
+    """An Ed25519 keypair used to sign EdDSA id_tokens.
+
+    api.wxyc.org's JWKS publishes a single OKP/Ed25519 signing key and its
+    discovery advertises `id_token_signing_alg_values_supported=["RS256",
+    "EdDSA"]` — EdDSA is the algorithm production actually signs with.
+    Module-scoped like the RSA fixtures; keygen is cheap but content-static
+    sharing keeps the kid stable across tests.
+    """
+    return JsonWebKey.generate_key("OKP", "Ed25519", is_private=True)
+
+
+def _public_jwks(signing_key: Any) -> dict[str, Any]:
+    """The JWKS a stubbed `_load_jwks` returns for `signing_key` — public
+    half only, with `kid` populated. Works for any kty (RSA / OKP)."""
     pub = json.loads(signing_key.as_json(is_private=False))
     pub["kid"] = signing_key.kid
     return {"keys": [pub]}
+
+
+@pytest.fixture
+def jwks_from_key(signing_key: Any) -> dict[str, Any]:
+    """The JWKS the stubbed `_load_jwks` returns — just the public half."""
+    return _public_jwks(signing_key)
 
 
 @pytest.fixture
@@ -675,15 +694,16 @@ async def test_exchange_code_handles_jwks_rotation(
     assert call_count["n"] == 2, "_load_jwks should have been called twice"
 
 
-# -- HS256 signing (Better Auth's oidcProvider default) -------------------
+# -- HS256 signing (other Better Auth deployments) ------------------------
 #
-# api.wxyc.org/auth advertises id_token_signing_alg_values_supported=["HS256"].
-# Better Auth's oidcProvider signs id_tokens with the client's client_secret
-# as an HMAC key; the JWKS endpoint is still exposed (used by the JWT plugin
-# for Bearer tokens) but is not the id_token trust root. `core/auth.py` must
-# route HS256 tokens to `client_secret.encode()` and NEVER to a JWKS public
-# key, or an attacker holding the public key could sign an HS256 token that
-# the verifier accepts (classic alg-confusion attack).
+# api.wxyc.org/auth now advertises ["RS256", "EdDSA"] and signs with EdDSA
+# (see the EdDSA section below). HS256 support is kept because Better Auth's
+# oidcProvider CAN be configured to HMAC-sign id_tokens with the client
+# secret, and other WXYC deployments may do so. When it does, `core/auth.py`
+# must route HS256 tokens to `client_secret.encode()` and NEVER to a JWKS
+# public key, or an attacker holding the public key could sign an HS256 token
+# that the verifier accepts (classic alg-confusion attack). These tests pin
+# that invariant regardless of which alg prod happens to advertise.
 
 
 def _mint_hs256_id_token(secret: str, **claim_overrides: Any) -> str:
@@ -794,10 +814,10 @@ async def test_exchange_code_hs256_does_not_load_jwks(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """HS256 verification is keyed off `client_secret`, not the JWKS — so
-    an HS256 login must NOT reach `_load_jwks()`. Prod (`api.wxyc.org`)
-    advertises HS256 only, and a JWKS-endpoint outage would otherwise
-    take every login offline for no gain. This pins the invariant that
-    the asymmetric-only fetch stays in the asymmetric branch."""
+    an HS256 login must NOT reach `_load_jwks()`. For a deployment that
+    HMAC-signs, a JWKS-endpoint outage would otherwise take every login
+    offline for no gain. This pins the invariant that the asymmetric-only
+    fetch stays in the asymmetric branch."""
 
     metadata = {
         "issuer": ISSUER,
@@ -1052,6 +1072,135 @@ async def test_exchange_code_accepts_single_element_aud_list(
     into rejecting a spec-legal shape."""
     token = _mint_id_token(signing_key, aud=[CLIENT_ID])
     _install_token_endpoint(monkeypatch, token)
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.user_id == "user-abc"
+
+
+# -- EdDSA signing (api.wxyc.org production default) -----------------------
+#
+# api.wxyc.org/auth advertises id_token_signing_alg_values_supported=["RS256",
+# "EdDSA"] and publishes a single OKP/Ed25519 JWKS key — EdDSA is what prod
+# actually signs id_tokens with. These tests pin that the asymmetric verify
+# path accepts EdDSA against the JWKS exactly as it does RS256.
+
+
+def _mint_eddsa_id_token(signing_key: Any, **claim_overrides: Any) -> str:
+    """Mint an EdDSA (Ed25519) id_token signed by `signing_key`.
+
+    Mirrors `_mint_id_token` but with the alg api.wxyc.org uses in
+    production. The public half goes in the stubbed JWKS; the private half
+    signs here.
+    """
+    now = int(time.time())
+    payload: dict[str, Any] = {
+        "iss": ISSUER,
+        "sub": "user-abc",
+        "aud": CLIENT_ID,
+        "iat": now,
+        "exp": now + 600,
+        "email": "reviewer@wxyc.org",
+        "preferred_username": "reviewer",
+        "name": "Real Name",
+        "dj_name": "Stage Name",
+        "role": "dj",
+    }
+    payload.update(claim_overrides)
+    header = {"alg": "EdDSA", "kid": signing_key.kid}
+    return JsonWebToken(["EdDSA"]).encode(header, payload, signing_key).decode("utf-8")
+
+
+async def test_exchange_code_eddsa_happy_path_returns_reviewer(
+    monkeypatch: pytest.MonkeyPatch,
+    ed25519_signing_key: Any,
+) -> None:
+    """A valid EdDSA id_token signed by the JWKS's Ed25519 key verifies and
+    returns a `ReviewerSession`. This is the shape prod ships — without
+    EdDSA in the alg allowlist, every real login dies at token-exchange
+    with `UnsupportedAlgorithmError` (surfacing as `invalid id token`)."""
+    eddsa_jwks = _public_jwks(ed25519_signing_key)
+
+    async def _meta() -> dict[str, Any]:
+        return {
+            "issuer": ISSUER,
+            "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+            "token_endpoint": f"{ISSUER}/oauth2/token",
+            "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+        }
+
+    async def _jwks() -> dict[str, Any]:
+        return eddsa_jwks
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks)
+    _install_token_endpoint(monkeypatch, _mint_eddsa_id_token(ed25519_signing_key))
+
+    reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
+    assert reviewer.user_id == "user-abc"
+    assert reviewer.email == "reviewer@wxyc.org"
+    assert reviewer.role == "dj"
+
+
+async def test_exchange_code_rejects_eddsa_signed_with_unknown_key(
+    monkeypatch: pytest.MonkeyPatch,
+    ed25519_signing_key: Any,
+) -> None:
+    """An EdDSA id_token signed by a key NOT in the JWKS must fail signature
+    verification — confirms EdDSA support is a real verify against the
+    published key, not blanket acceptance of `alg: EdDSA`."""
+    trusted_jwks = _public_jwks(ed25519_signing_key)
+    attacker_key = JsonWebKey.generate_key("OKP", "Ed25519", is_private=True)
+
+    async def _meta() -> dict[str, Any]:
+        return {
+            "issuer": ISSUER,
+            "authorization_endpoint": f"{ISSUER}/oauth2/authorize",
+            "token_endpoint": f"{ISSUER}/oauth2/token",
+            "jwks_uri": f"{ISSUER}/.well-known/jwks.json",
+        }
+
+    async def _jwks() -> dict[str, Any]:
+        return trusted_jwks
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks)
+    _install_token_endpoint(monkeypatch, _mint_eddsa_id_token(attacker_key))
+
+    with pytest.raises(JoseError):
+        await exchange_code(code="auth-code", code_verifier="verifier")
+
+
+async def test_exchange_code_validates_iss_against_discovery_issuer(
+    monkeypatch: pytest.MonkeyPatch,
+    signing_key: Any,
+) -> None:
+    """The expected `iss` is the discovery doc's `issuer`, NOT
+    `WXYC_AUTH_ISSUER`. Better Auth publishes discovery under the endpoint
+    base (`https://api.wxyc.org/auth/.well-known/...`) but sets `issuer` to
+    the bare origin (`https://api.wxyc.org`), so the id_token's `iss` matches
+    the discovery `issuer` and legitimately differs from the endpoint base.
+    Validating against `WXYC_AUTH_ISSUER` rejects every real token."""
+    # WXYC_AUTH_ISSUER stays the endpoint base; discovery `issuer` is the
+    # bare origin. The token's iss matches the origin, not the base.
+    monkeypatch.setenv("WXYC_AUTH_ISSUER", "https://api.example/auth")
+    auth_mod._reset_metadata_cache()
+    discovery_issuer = "https://api.example"
+    assert discovery_issuer != "https://api.example/auth"
+
+    async def _meta() -> dict[str, Any]:
+        return {
+            "issuer": discovery_issuer,
+            "authorization_endpoint": "https://api.example/auth/oauth2/authorize",
+            "token_endpoint": "https://api.example/auth/oauth2/token",
+            "jwks_uri": "https://api.example/auth/jwks",
+        }
+
+    async def _jwks() -> dict[str, Any]:
+        return _public_jwks(signing_key)
+
+    monkeypatch.setattr(auth_mod, "_load_metadata", _meta)
+    monkeypatch.setattr(auth_mod, "_load_jwks", _jwks)
+    _install_token_endpoint(monkeypatch, _mint_id_token(signing_key, iss=discovery_issuer))
+
     reviewer = await exchange_code(code="auth-code", code_verifier="verifier")
     assert reviewer.user_id == "user-abc"
 

@@ -114,24 +114,27 @@ _metadata_lock = asyncio.Lock()
 _jwks_lock = asyncio.Lock()
 
 # Allowed signature algorithms — split by verification style so the two
-# sets can't drift. HS256 is what Better Auth's oidcProvider uses today;
-# `api.wxyc.org/auth/.well-known/openid-configuration` advertises exactly
-# `["HS256"]` in `id_token_signing_alg_values_supported`. RS256 / ES256
-# stay in the asymmetric set so a future auth-server migration to
-# JWKS-based signing (RFC 7517) doesn't require a coordinated code change.
+# sets can't drift. Production (`api.wxyc.org/auth/.well-known/openid-
+# configuration`) advertises `["RS256", "EdDSA"]` and publishes a single
+# OKP/Ed25519 JWKS key, so EdDSA is the algorithm real id_tokens are signed
+# with today; RS256 / ES256 stay in the asymmetric set for a future signing-
+# key migration. HS256 remains in the symmetric set for defense in depth and
+# so other Better Auth deployments (whose oidcProvider can be configured to
+# HMAC-sign with the client secret) still verify — but it is NOT what
+# api.wxyc.org uses anymore.
 #
 # Alg-confusion defense (CVE-2016-10555 family): each accepted algorithm
 # is bound in `_verify_id_token` to a DISJOINT key material path — HS256
-# keys off `client_secret`, RS256 / ES256 key off the JWKS. An attacker
-# who reads the public JWKS cannot forge an HS256 token because the JWKS
-# key material is never presented to the HS256 verify path, and vice
+# keys off `client_secret`, RS256 / ES256 / EdDSA key off the JWKS. An
+# attacker who reads the public JWKS cannot forge an HS256 token because the
+# JWKS key material is never presented to the HS256 verify path, and vice
 # versa. `_ASYMMETRIC_SIG_ALGS` is what `_signing_keys_only` uses to
 # filter the JWKS trust pool; if it ever gained HS256 by refactor churn,
 # an HS256 JWK entry could join the asymmetric trust pool and reopen
 # the attack. Deriving `_ALLOWED_SIG_ALGS` from the union is the
 # single-source-of-truth so a new alg lands in exactly one set on purpose.
 _SYMMETRIC_SIG_ALGS: frozenset[str] = frozenset({"HS256"})
-_ASYMMETRIC_SIG_ALGS: frozenset[str] = frozenset({"RS256", "ES256"})
+_ASYMMETRIC_SIG_ALGS: frozenset[str] = frozenset({"RS256", "ES256", "EdDSA"})
 _ALLOWED_SIG_ALGS: frozenset[str] = _SYMMETRIC_SIG_ALGS | _ASYMMETRIC_SIG_ALGS
 # Per-alg JWT decoders. Building each decoder with a single-element
 # algorithm allowlist means `decode()` cannot fall back to another
@@ -534,10 +537,14 @@ def _parse_alg_header(id_token_raw: str) -> str:
     return alg
 
 
-def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
+def _decode_with_key(id_token_raw: str, alg: str, key: Any, expected_iss: str) -> Any:
     """Run authlib's decode + claims.validate + explicit multi-aud guard
     for one specific alg/key pair. Called from all three branches of
     `_verify_id_token` (symmetric, asymmetric primary, asymmetric retry).
+
+    `expected_iss` is the discovery document's `issuer` (see
+    `_verify_id_token`) — the OIDC-spec-authoritative provider identity,
+    which is NOT necessarily `WXYC_AUTH_ISSUER` (the endpoint base).
     """
     decoder = _JWT_BY_ALG[alg]
     # Snapshot `client_id` once so the claims-options `value` and the
@@ -554,7 +561,7 @@ def _decode_with_key(id_token_raw: str, alg: str, key: Any) -> Any:
     #     `exp` is absent (verified against authlib 1.6.x). A token issued
     #     without an expiration would then verify forever.
     claims_options = {
-        "iss": {"essential": True, "value": _issuer()},
+        "iss": {"essential": True, "value": expected_iss},
         "aud": {"essential": True, "value": client_id},
         "sub": {"essential": True},
         "exp": {"essential": True},
@@ -587,8 +594,9 @@ async def _verify_id_token(id_token_raw: str) -> Any:
         load nor the rotation-retry branch) — this is the alg-confusion
         defense stated on `_ALLOWED_SIG_ALGS`, and it also keeps HS256
         logins up when the JWKS endpoint is transiently unreachable.
-      * RS256 / ES256 → loads the JWKS, verifies against the trusted
-        subset (`_signing_keys_only` drops encryption-only keys). On a
+      * RS256 / ES256 / EdDSA → loads the JWKS, verifies against the trusted
+        subset (`_signing_keys_only` drops encryption-only keys). EdDSA
+        (Ed25519) is what api.wxyc.org signs id_tokens with today. On a
         single `BadSignatureError` the JWKS cache is invalidated and one
         re-verification is attempted against a freshly-fetched JWKS —
         automatic recovery from a signing-key rotation. If the refetch
@@ -613,24 +621,42 @@ async def _verify_id_token(id_token_raw: str) -> Any:
         # any observability filter grouping on the short code.
         raise UnsupportedAlgorithmError(description=f"id_token alg {alg!r} not in allowlist")
 
+    # The expected `iss` is the discovery document's `issuer` field — the
+    # OIDC-spec-authoritative provider identity — NOT `WXYC_AUTH_ISSUER`,
+    # which is the endpoint base used to build request URLs. Better Auth
+    # serves discovery under `<origin>/auth/.well-known/openid-configuration`
+    # but sets `issuer` to the bare `<origin>`, so the two legitimately
+    # differ and the id_token's `iss` matches the discovery `issuer`.
+    # `_load_metadata()` is cached (module-level) and hits discovery, not
+    # JWKS, so reading it here does not couple the symmetric verify path to
+    # JWKS-endpoint availability.
+    metadata = await _load_metadata()
+    expected_iss = metadata.get("issuer")
+    if not expected_iss:
+        # A discovery doc without `issuer` is unusable for the required
+        # `iss` claim check; surface as ValueError so the route layer maps
+        # it to 400 rather than a bare KeyError escaping the contract.
+        raise ValueError("discovery doc missing issuer")
+
     if alg in _SYMMETRIC_SIG_ALGS:
         # Symmetric: HMAC key is the client's `client_secret` bytes. This
         # branch MUST NOT receive JWKS material — that's the vulnerability
-        # class the alg-confusion defense exists to close. This branch is
-        # also the reason `_load_jwks()` is NOT called upstream in
-        # `exchange_code`: in prod (api.wxyc.org advertises HS256 only), a
-        # JWKS-endpoint outage would otherwise take every login offline.
-        return _decode_with_key(id_token_raw, alg, _client_secret().encode("utf-8"))
+        # class the alg-confusion defense exists to close. It also never
+        # calls `_load_jwks()`: a JWKS-endpoint outage must not take HMAC
+        # logins offline. (api.wxyc.org signs with EdDSA today, so this
+        # branch is exercised only by other Better Auth deployments
+        # configured to HMAC-sign, and by tests.)
+        return _decode_with_key(id_token_raw, alg, _client_secret().encode("utf-8"), expected_iss)
 
-    # Asymmetric branch: RS256 / ES256. Load JWKS and try once; if the
-    # signature fails we may be looking at a stale JWKS post-rotation, so
+    # Asymmetric branch: RS256 / ES256 / EdDSA. Load JWKS and try once; if
+    # the signature fails we may be looking at a stale JWKS post-rotation, so
     # invalidate + refetch + retry exactly once. HS256 failures do NOT
     # reach this branch, so a bad-secret login can never invalidate the
     # JWKS cache used by legitimate asymmetric traffic.
     jwks = await _load_jwks()
     key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
     try:
-        return _decode_with_key(id_token_raw, alg, key)
+        return _decode_with_key(id_token_raw, alg, key, expected_iss)
     except BadSignatureError as original:
         _invalidate_jwks_cache()
         try:
@@ -645,7 +671,7 @@ async def _verify_id_token(id_token_raw: str) -> Any:
             # `_load_jwks` for a discovery doc missing `jwks_uri`.
             raise original from None
         key = JsonWebKey.import_key_set(_signing_keys_only(jwks))
-        return _decode_with_key(id_token_raw, alg, key)
+        return _decode_with_key(id_token_raw, alg, key, expected_iss)
 
 
 async def exchange_code(*, code: str, code_verifier: str) -> ReviewerSession:
