@@ -38,9 +38,10 @@ const SUPPORTED_SCHEMA_VERSION = 2;
 // When the verifier is deployed with OIDC enabled, every /api/* and
 // /verifier/* request goes through a session-cookie middleware. A
 // missing or expired cookie produces:
-//   * 302 → /auth/login?return_to=...     (for HTML nav)
-//   * 401 JSON                              (for fetch() requests with
-//                                             Accept: application/json)
+//   * 302 → /auth/login?return_to=...     (only for a genuine top-level
+//                                             document navigation)
+//   * 401 JSON                              (for every other request:
+//                                             fetch/XHR, images, prefetch)
 //
 // `authFetch` is the wrapper the SPA uses for every same-origin API
 // call. On 401 it sends the user to /auth/login with the current path
@@ -57,10 +58,9 @@ function redirectToLogin() {
 }
 
 async function authFetch(input, init = {}) {
-  // Mark the request as JSON so the middleware returns 401 JSON
-  // instead of 302 — otherwise fetch() either follows the redirect
-  // silently (in which case the SPA can't react) or treats it as an
-  // opaque error.
+  // Mark the request as JSON so the gate's 401 carries a JSON body we
+  // can reason about. (The gate 401s any non-document request regardless
+  // of Accept, but a JSON body keeps error handling uniform.)
   const headers = new Headers(init.headers || {});
   if (!headers.has("Accept")) headers.set("Accept", "application/json");
   const response = await fetch(input, { ...init, headers });
@@ -132,11 +132,11 @@ async function loadBundleFromUrlParam() {
     // browser cache hit on a stale bundle would silently feed the old
     // bbox + entries into the UI.
     // authFetch (not plain fetch): the /data/ static mount is behind
-    // the session middleware when OIDC is enabled. A plain fetch with
-    // no Accept: application/json would receive the middleware's 302
-    // and silently follow it — then JSON.parse would fail on the
-    // login page HTML with a confusing "Unexpected token <" error.
-    // authFetch sets Accept and converts 401 into a clean redirect.
+    // the session middleware when OIDC is enabled. A fetch without a
+    // session gets a 401 from the gate (only genuine document
+    // navigations are 302'd to login); a plain fetch would then throw on
+    // JSON.parse of an error body. authFetch converts that 401 into a
+    // clean redirect to /auth/login instead.
     const r = await authFetch(path, { cache: "no-store" });
     if (!r.ok) throw new Error(`fetch ${path}: ${r.status}`);
     const bundle = await r.json();

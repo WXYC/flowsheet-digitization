@@ -1157,9 +1157,9 @@ async def test_reset_metadata_cache_forces_re_fetch(
 
 
 def test_module_constants_match_plan() -> None:
-    """SESSION_TTL is 12 hours; ONE_SHOT_TTL is 10 minutes; cookie name
+    """SESSION_TTL is 12 hours; ONE_SHOT_TTL is 30 minutes; cookie name
     is `flowsheet_session`. These are stable contract surface — a UI or
     middleware that hard-codes them shouldn't break silently on a typo."""
     assert SESSION_TTL.total_seconds() == 12 * 60 * 60
-    assert ONE_SHOT_TTL.total_seconds() == 10 * 60
+    assert ONE_SHOT_TTL.total_seconds() == 30 * 60
     assert COOKIE_NAME == "flowsheet_session"

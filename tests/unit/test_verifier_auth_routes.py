@@ -226,6 +226,9 @@ async def test_auth_callback_400_on_state_mismatch(
         await _seed_one_shots(c, "expected-state", "v", "/verifier/")
         r = await c.get("/auth/callback?code=auth-code&state=wrong-state", follow_redirects=False)
     assert r.status_code == 400
+    # Distinct detail from the missing/expired-cookie path so the two
+    # 400s are separable in logs and by the SPA.
+    assert r.json()["detail"] == "auth state mismatch"
 
 
 async def test_auth_callback_400_on_tampered_state_cookie(
@@ -245,6 +248,26 @@ async def test_auth_callback_400_on_tampered_state_cookie(
         c.cookies.set("oidc_return_to", auth_mod.sign_one_shot("/verifier/"))
         r = await c.get("/auth/callback?code=auth-code&state=anything", follow_redirects=False)
     assert r.status_code == 400
+    assert r.json()["detail"] == "missing or expired auth cookie"
+
+
+async def test_auth_callback_400_on_missing_state_cookie(
+    serve_app, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """No `oidc_state` cookie at all (e.g. expired past ONE_SHOT_TTL, or
+    dropped by the browser) yields the missing/expired-cookie 400 —
+    distinct detail from a genuine state mismatch."""
+
+    async def fake_exchange(*, code: str, code_verifier: str) -> ReviewerSession:
+        raise AssertionError("exchange must not run when the state cookie is absent")
+
+    monkeypatch.setattr(auth_mod, "exchange_code", fake_exchange)
+
+    async with await _client(serve_app.app) as c:
+        # A code+state on the URL but no one-shot cookies in the jar.
+        r = await c.get("/auth/callback?code=auth-code&state=anything", follow_redirects=False)
+    assert r.status_code == 400
+    assert r.json()["detail"] == "missing or expired auth cookie"
 
 
 @pytest.mark.parametrize(
@@ -435,17 +458,23 @@ async def test_api_version_is_public(serve_app) -> None:
 # -- /api/save -------------------------------------------------------------
 
 
-async def test_api_save_redirects_without_session_for_html_requests(serve_app) -> None:
-    """A browser nav (no `Accept: application/json`) without a session
-    redirects to /auth/login with `return_to=` set to the original path."""
+async def test_api_save_returns_401_for_non_document_fetch(serve_app) -> None:
+    """A fetch to /api/save without a session (and without an explicit
+    `Accept: application/json`) gets a 401, NOT a 302 to /auth/login.
+
+    /api/save is only ever called by the SPA via fetch(); it is never a
+    top-level browser navigation. Redirecting a non-document request to
+    /auth/login would mint a fresh OIDC `state` and clobber the one-shot
+    cookie of an in-flight login (the state-mismatch bug). Only genuine
+    document navigations redirect; everything else 401s."""
     async with await _client(serve_app.app) as c:
         r = await c.post(
             "/api/save",
             json={"stem": "x", "verified": _page_result_dict(), "corrections": _corrections_dict()},
             follow_redirects=False,
         )
-    assert r.status_code == 302
-    assert r.headers["location"].startswith("/auth/login?return_to=")
+    assert r.status_code == 401
+    assert "location" not in r.headers
 
 
 async def test_api_save_returns_401_json_for_ajax_without_session(serve_app) -> None:
@@ -459,6 +488,89 @@ async def test_api_save_returns_401_json_for_ajax_without_session(serve_app) -> 
             follow_redirects=False,
         )
     assert r.status_code == 401
+
+
+# -- session gate: document navigation vs subresource ----------------------
+#
+# Only a genuine top-level browser navigation is 302'd to /auth/login.
+# Every other request type (subresource fetch, favicon, prefetch, XHR)
+# gets a 401. This prevents a gated subresource from being funneled
+# through /auth/login mid-login, which mints a fresh OIDC `state` and
+# clobbers the one-shot cookie of the login the user is completing —
+# the "invalid auth state" (state mismatch) bug.
+
+
+async def test_gated_document_navigation_redirects_to_login(serve_app) -> None:
+    """A top-level navigation (`Sec-Fetch-Dest: document`) to a gated
+    path without a session 302s to /auth/login with `return_to` set."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/auth/me",
+            headers={"sec-fetch-dest": "document"},
+            follow_redirects=False,
+        )
+    assert r.status_code == 302
+    assert r.headers["location"].startswith("/auth/login?return_to=")
+
+
+async def test_gated_html_accept_without_fetch_metadata_redirects(serve_app) -> None:
+    """Fallback for clients that omit `Sec-Fetch-Dest` (old browsers,
+    some proxies): an `Accept: text/html` request is treated as a
+    document navigation and redirected."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/auth/me",
+            headers={"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
+            follow_redirects=False,
+        )
+    assert r.status_code == 302
+    assert r.headers["location"].startswith("/auth/login?return_to=")
+
+
+async def test_gated_subresource_fetch_returns_401_not_redirect(serve_app) -> None:
+    """A subresource fetch (favicon-style, `Sec-Fetch-Dest: image`)
+    without a session gets a 401 and is NOT redirected to /auth/login.
+
+    Regression test for the state-clobber: if this 302'd, the browser
+    would follow it to /auth/login, mint a new OIDC state, and break the
+    concurrent real login's callback with 'invalid auth state'."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/favicon.ico",
+            headers={
+                "sec-fetch-dest": "image",
+                "accept": "image/avif,image/webp,image/png,*/*",
+            },
+            follow_redirects=False,
+        )
+    assert r.status_code == 401
+    assert "location" not in r.headers
+
+
+async def test_gated_empty_dest_fetch_returns_401(serve_app) -> None:
+    """A programmatic fetch/XHR (`Sec-Fetch-Dest: empty`) without a
+    session gets a 401, not a redirect."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/auth/me",
+            headers={"sec-fetch-dest": "empty"},
+            follow_redirects=False,
+        )
+    assert r.status_code == 401
+    assert "location" not in r.headers
+
+
+async def test_document_dest_wins_over_non_html_accept(serve_app) -> None:
+    """`Sec-Fetch-Dest` is authoritative when present: a document
+    navigation redirects even if its `Accept` header lacks text/html."""
+    async with await _client(serve_app.app) as c:
+        r = await c.get(
+            "/auth/me",
+            headers={"sec-fetch-dest": "document", "accept": "*/*"},
+            follow_redirects=False,
+        )
+    assert r.status_code == 302
+    assert r.headers["location"].startswith("/auth/login?return_to=")
 
 
 async def test_api_save_writes_verified_by_from_session(serve_app, tmp_path: Path) -> None:
@@ -673,7 +785,13 @@ async def test_oidc_wins_over_basicauth_when_both_set(
     async with await _client(serve_mod.app) as c:
         r = await c.post(
             "/api/save",
-            headers={"authorization": f"Basic {creds}"},
+            headers={
+                "authorization": f"Basic {creds}",
+                # A document navigation so the OIDC gate 302s to login —
+                # the behavior that distinguishes it from BasicAuth (which
+                # would answer 401 with WWW-Authenticate for any request).
+                "sec-fetch-dest": "document",
+            },
             json={
                 "stem": "x",
                 "verified": _page_result_dict(),
@@ -681,7 +799,7 @@ async def test_oidc_wins_over_basicauth_when_both_set(
             },
             follow_redirects=False,
         )
-    # OIDC middleware ignores Basic and redirects (HTML default Accept).
+    # OIDC middleware ignores Basic and redirects the document nav to login.
     assert r.status_code == 302
     assert r.headers["location"].startswith("/auth/login")
 
